@@ -12,6 +12,8 @@ El trabajo local está en `G:\AtlanticOS`. El repositorio es independiente del
 port UEFI G20. Ese proyecto tiene resultados físicos propios: no pertenecen a
 AtlanticOS. Véanse [matriz de hechos](docs/FACT_MATRIX.md),
 [estado de fases](docs/PHASE_STATUS.md) y [fuentes fijadas](docs/SOURCE_INDEX.md).
+La [primera entrega verificada](docs/DELIVERY_REPORT.md) registra 46 tests locales,
+reproducción en clon limpio y CI Ubuntu aprobada.
 
 ## Reproducir
 
