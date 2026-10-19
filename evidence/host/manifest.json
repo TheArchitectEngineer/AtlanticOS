@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-19",
+  "label": "HOST_TESTED",
+  "scope": "Host policy, renderer and audits only; no XNU execution",
+  "artifacts": [
+    {
+      "path": "tests.log",
+      "sha256": "2bde304766b8c1aea860211cfb96881dcaefd3ff67742d220e1acce1604e9a10"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "83685418dae7519a9a965bc5dacdcd15a8cdab4f6cbfb94b6dffa6410fa354f2"
+    },
+    {
+      "path": "host-memory.json",
+      "sha256": "e967fcd801c6aecedc88fe7e9e505d62199e96906bd92b57b29cb908df11b427"
+    },
+    {
+      "path": "source-hashes.json",
+      "sha256": "57bd837d8ca94648d8dd0f7d5b6ba285c11ae30ada851624224d11a78a65a250"
+    },
+    {
+      "path": "realtime-timer.json",
+      "sha256": "f575ad13e34c11981dbe66b2e7e84e02b63bcd47c5b4e5fb150a18464aef9c3a"
+    },
+    {
+      "path": "tk-smoke.json",
+      "sha256": "9068868cb6c264b0c2682e412d5cac1a9faa384b38142604e04f940939087786"
+    },
+    {
+      "path": "config-integration.json",
+      "sha256": "eb4ab63b4f1af46cd438058b944060e1650cd7eb6d79914e44da2846103961e9"
+    },
+    {
+      "path": "countdown.json",
+      "sha256": "ac29bd32c3807801d6b6209ad5329d7b56ac8b5080416470cf5e637145a793dc"
+    },
+    {
+      "path": "held-volume-down.json",
+      "sha256": "17cc7cd319d6ad66fba6c02213ced51aebcd488eb2ae2eba1823aa1cbdd4b57d"
+    },
+    {
+      "path": "menu.json",
+      "sha256": "4dd08f9f49934edd883a3ac19c40884016594bad05b8fd7694f91ae3920b321d"
+    },
+    {
+      "path": "safe-recovery.json",
+      "sha256": "52de1ecd4dfebd821052308dc7a60f5742e5c96ef28e4636d9798e05436db75b"
+    },
+    {
+      "path": "menu.png",
+      "sha256": "07048d1c19ec7c19ca358e5e0ad67e0c508bba3805dea4e291f7c211ba919aec"
+    },
+    {
+      "path": "safe-recovery.png",
+      "sha256": "3fcff76ff44ccf6656cdb926e10aa6f7c13392db24a01f6de8fd7f5ea8263735"
+    },
+    {
+      "path": "countdown-5.png",
+      "sha256": "71cbb702ff3857eb8e33ffc5f95136566ffb4f3795920eb9353177bdfbdbef0d"
+    },
+    {
+      "path": "setup.png",
+      "sha256": "bbb8a1057ef532556883353733c07caece994b09f3ae53f2c9495aea1781d24d"
+    },
+    {
+      "path": "power-confirmation.png",
+      "sha256": "489fe72b7643a8247d419a8968ef01bd4f6d3a6570e279610288bf8c376f35b5"
+    },
+    {
+      "path": "provenance.json",
+      "sha256": "6a3bff8ecc81d8caefc994aa8e2afb7081527f23065dc1e023d33d4bfd3e8cd3"
+    }
+  ]
+}

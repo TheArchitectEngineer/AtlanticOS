@@ -1,0 +1,11 @@
+work/
+xnu-upstream/
+__pycache__/
+*.pyc
+.venv/
+*.pem
+*.key
+*.p12
+*.pfx
+*.img
+!tests/fixtures/*.json

@@ -1,0 +1,9 @@
+[project]
+name = "atlanticos-host"
+version = "0.1.0"
+description = "Host-only AtlanticBIOS policy prototype; no kernel or device access"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.ruff]
+line-length = 100

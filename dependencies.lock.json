@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-19",
+  "runtime": {"python": "3.11.9", "tk": "8.6", "third_party_python_packages": []},
+  "xnu": {
+    "url": "https://github.com/apple-oss-distributions/xnu.git",
+    "commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+    "tag": "xnu-12377.1.9", "license": "APSL-2.0 plus per-file notices",
+    "use": "upstream source audit; not built, linked or executed"
+  },
+  "g20_reference": {
+    "url": "https://github.com/h0nda1337/Moto-G20_EDK2_UEFI.git",
+    "commit": "321c01f87c78e7e9c5d82f692b71fcdad8ef921a",
+    "use": "research only; no source or binary integration"
+  },
+  "edk2_future_target": {
+    "url": "https://github.com/tianocore/edk2.git",
+    "reference_commit": "b03a21a63e3bd001f52c527e5a57feddb53a690b",
+    "use": "reference project's revision only; not fetched or linked by AtlanticOS"
+  },
+  "motorola_research": {
+    "url": "https://github.com/MotorolaMobilityLLC/kernel-sprd",
+    "reference_commit": "261390cdfff66efef9082bd70c1af0abd21d77f2",
+    "use": "provenance found in reference manifest; native code not imported"
+  },
+  "tested_tools": {"git": "2.54.0.windows.1", "clang": "22.1.4", "arm64_target": "aarch64-none-elf"},
+  "crypto": {"implementation": null, "state": "UNIMPLEMENTED - default deny"},
+  "forbidden_dependencies": ["BootShim", "binary wrappers", "existing platform ports as substitute"]
+}

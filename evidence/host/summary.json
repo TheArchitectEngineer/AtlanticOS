@@ -1,0 +1,9 @@
+{
+  "label": "HOST_TESTED",
+  "unit_exit_code": 0,
+  "scenarios": 4,
+  "real_time_countdown": true,
+  "firmware_built": false,
+  "device_verified": false,
+  "source_hashes_sha256": "57bd837d8ca94648d8dd0f7d5b6ba285c11ae30ada851624224d11a78a65a250"
+}

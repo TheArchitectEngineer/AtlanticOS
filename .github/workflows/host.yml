@@ -1,0 +1,21 @@
+name: Host policy and ARM64 ABI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  host:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Record available tools
+        run: |
+          python3 --version
+          clang --version
+      - name: Run host tests, captures, timer and memory reports
+        run: python3 tools/validate.py
+      - name: Compile unsupported BSP ABI object only
+        run: python3 tools/build_abi.py
+      - name: Validate checked-in evidence hashes
+        run: |
+          python3 tools/evidence-validator/validate_evidence.py evidence/host/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/arm64/manifest.json

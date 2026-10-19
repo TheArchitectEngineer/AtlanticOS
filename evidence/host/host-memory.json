@@ -1,0 +1,23 @@
+{
+  "label": "HOST_TESTED",
+  "scope": "VALIDATION_PROCESS_NOT_XNU_FIRMWARE",
+  "python": "3.11.9",
+  "os": "Windows 10",
+  "baseline": {
+    "method": "GetProcessMemoryInfo",
+    "rss_bytes": 21745664,
+    "peak_rss_bytes": 21745664
+  },
+  "after_render_and_timer": {
+    "method": "GetProcessMemoryInfo",
+    "rss_bytes": 35962880,
+    "peak_rss_bytes": 39550976
+  },
+  "tracemalloc_current_bytes": 877188,
+  "tracemalloc_peak_bytes": 7798335,
+  "firmware_resident_bytes": null,
+  "device_target_pass": null,
+  "framebuffer_host_rgb_bytes": 2280000,
+  "font_glyphs": 81,
+  "font_min_bitpacked_bytes": 355
+}

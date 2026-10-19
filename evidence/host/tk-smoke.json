@@ -1,0 +1,5 @@
+{
+  "status": "HOST_TESTED",
+  "tk_version": "8.6",
+  "scope": "offscreen Tk PNG display construction; no human click test"
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-19",
+  "label": "BUILT_ARM64",
+  "scope": "Original unsupported BSP shell ELF object only; no XNU, entry or hardware drivers",
+  "artifacts": [
+    {
+      "path": "build.json",
+      "sha256": "3ddd63b856f8057c8e9f6b912aeb50ccef2d98c95266d9248bc4f33a8294a5bf"
+    },
+    {
+      "path": "build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "moto-g20-bsp.o",
+      "sha256": "7d0c5bb9fe60dbf343cf7d2d4ceee80f706961287e6d499f713211a0fab169ea"
+    }
+  ]
+}

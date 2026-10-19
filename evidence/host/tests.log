@@ -1,0 +1,51 @@
+test_device_metadata_does_not_replace_binary_and_capture (test_evidence.EvidenceTests.test_device_metadata_does_not_replace_binary_and_capture) ... ok
+test_hash_mismatch (test_evidence.EvidenceTests.test_hash_mismatch) ... ok
+test_no_upgrade_to_device_without_physical_artifacts (test_evidence.EvidenceTests.test_no_upgrade_to_device_without_physical_artifacts) ... ok
+test_path_traversal_and_duplicates (test_evidence.EvidenceTests.test_path_traversal_and_duplicates) ... ok
+test_valid_host_record (test_evidence.EvidenceTests.test_valid_host_record) ... ok
+test_available_but_unverified_stays_blocked (test_policy.PolicyTests.test_available_but_unverified_stays_blocked) ... ok
+test_clock_reversal_fails_closed (test_policy.PolicyTests.test_clock_reversal_fails_closed) ... ok
+test_committed_handoff_has_no_returning_ui (test_policy.PolicyTests.test_committed_handoff_has_no_returning_ui) ... ok
+test_debounce_bounce_then_press (test_policy.PolicyTests.test_debounce_bounce_then_press) ... ok
+test_default_no_unproven_android_message (test_policy.PolicyTests.test_default_no_unproven_android_message) ... ok
+test_double_press_only_one_navigation_after_entry (test_policy.PolicyTests.test_double_press_only_one_navigation_after_entry) ... ok
+test_down_held_at_start_no_repeat_when_stuck (test_policy.PolicyTests.test_down_held_at_start_no_repeat_when_stuck) ... ok
+test_down_just_before_deadline_cancels_autoboot (test_policy.PolicyTests.test_down_just_before_deadline_cancels_autoboot) ... ok
+test_exact_countdown_boundary (test_policy.PolicyTests.test_exact_countdown_boundary) ... ok
+test_fallback_boolean_alone_is_not_enough (test_policy.PolicyTests.test_fallback_boolean_alone_is_not_enough) ... ok
+test_handoff_quiesce_failure (test_policy.PolicyTests.test_handoff_quiesce_failure) ... ok
+test_invalid_key_rejected (test_policy.PolicyTests.test_invalid_key_rejected) ... ok
+test_long_power_confirmation_defaults_to_cancel (test_policy.PolicyTests.test_long_power_confirmation_defaults_to_cancel) ... ok
+test_navigation_wrap_and_missing_media (test_policy.PolicyTests.test_navigation_wrap_and_missing_media) ... ok
+test_network_default_and_negative_permissions (test_policy.PolicyTests.test_network_default_and_negative_permissions) ... ok
+test_no_framebuffer_has_complete_console_view (test_policy.PolicyTests.test_no_framebuffer_has_complete_console_view) ... ok
+test_noise_fails_to_maintenance (test_policy.PolicyTests.test_noise_fails_to_maintenance) ... ok
+test_partial_handoff_no_retry (test_policy.PolicyTests.test_partial_handoff_no_retry) ... ok
+test_power_off_and_restart_require_separate_confirmation (test_policy.PolicyTests.test_power_off_and_restart_require_separate_confirmation) ... ok
+test_power_quiesce_failure (test_policy.PolicyTests.test_power_quiesce_failure) ... ok
+test_remote_cannot_confirm_power (test_policy.PolicyTests.test_remote_cannot_confirm_power) ... ok
+test_settings_navigable_and_locked (test_policy.PolicyTests.test_settings_navigable_and_locked) ... ok
+test_short_power_selects_on_release (test_policy.PolicyTests.test_short_power_selects_on_release) ... ok
+test_stuck_power_only_opens_dialog (test_policy.PolicyTests.test_stuck_power_only_opens_dialog) ... ok
+test_unsupported_power (test_policy.PolicyTests.test_unsupported_power) ... ok
+test_watchdog_fault (test_policy.PolicyTests.test_watchdog_fault) ... ok
+test_block_bounds_and_io_error (test_policy.ValidationTests.test_block_bounds_and_io_error) ... ok
+test_block_not_a_file_or_device_interface (test_policy.ValidationTests.test_block_not_a_file_or_device_interface) ... ok
+test_config_corrupt_checksum (test_policy.ValidationTests.test_config_corrupt_checksum) ... ok
+test_config_duplicate_and_oversized (test_policy.ValidationTests.test_config_duplicate_and_oversized) ... ok
+test_config_every_truncation (test_policy.ValidationTests.test_config_every_truncation) ... ok
+test_config_roundtrip (test_policy.ValidationTests.test_config_roundtrip) ... ok
+test_config_unsafe_network_rejected (test_policy.ValidationTests.test_config_unsafe_network_rejected) ... ok
+test_gpt_header_mutations (test_policy.ValidationTests.test_gpt_header_mutations) ... ok
+test_gpt_primary_fixture (test_policy.ValidationTests.test_gpt_primary_fixture) ... ok
+test_gpt_table_bounds_even_with_valid_header_crc (test_policy.ValidationTests.test_gpt_table_bounds_even_with_valid_header_crc) ... ok
+test_gpt_table_crc_failure (test_policy.ValidationTests.test_gpt_table_crc_failure) ... ok
+test_memory_includes_framebuffer_and_budget_boundary (test_policy.ValidationTests.test_memory_includes_framebuffer_and_budget_boundary) ... ok
+test_memory_overlap_and_overflow_rejected (test_policy.ValidationTests.test_memory_overlap_and_overflow_rejected) ... ok
+test_render_all_screens_no_clipping (test_policy.ValidationTests.test_render_all_screens_no_clipping) ... ok
+test_signature_absent_invalid_and_hash_mismatch (test_policy.ValidationTests.test_signature_absent_invalid_and_hash_mismatch) ... ok
+
+----------------------------------------------------------------------
+Ran 46 tests in 0.185s
+
+OK

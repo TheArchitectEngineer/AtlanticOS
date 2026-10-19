@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "label": "BUILT_ARM64",
+  "scope": "UNSUPPORTED_BSP_ABI_OBJECT_ONLY_NO_XNU_NO_ENTRY_NO_DRIVERS",
+  "compiler": "clang version 22.1.4 (https://github.com/msys2/MINGW-packages 42681e05ad3617c25e48a935a48eddc72a3ac7e2)",
+  "command": [
+    "clang",
+    "--target=aarch64-none-elf",
+    "-std=c11",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-Iinclude",
+    "-c",
+    "platforms/unisoc/ums512/moto-g20/bsp.c",
+    "-o",
+    "work/arm64-abi/moto-g20-bsp.o"
+  ],
+  "elf_machine": 183,
+  "bytes": 2432,
+  "object_sha256": "7d0c5bb9fe60dbf343cf7d2d4ceee80f706961287e6d499f713211a0fab169ea",
+  "sources": {
+    "include/atlantic/platform.h": "2243a39176a096e1ffd6db16d6f72ae5da22d71d00fdb2eed396282700755e5c",
+    "platforms/unisoc/ums512/moto-g20/bsp.c": "dc4914c059ff704849a96d3fa721cdf57765b58092a60485ce748df13ba443c0"
+  }
+}

@@ -1,0 +1,1 @@
+{"mock_android":true,"samples":[{"us":0,"keys":["down"]},{"us":30000,"keys":["down"]},{"us":10000000,"keys":["down"]}],"expected":"MENU"}

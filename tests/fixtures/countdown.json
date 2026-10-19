@@ -1,0 +1,1 @@
+{"mock_android":true,"samples":[{"us":0},{"us":1000000},{"us":2000000},{"us":3000000},{"us":4000000},{"us":4999999},{"us":5000000}],"expected":"HANDED_OFF"}

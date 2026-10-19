@@ -1,0 +1,73 @@
+{
+  "label": "HOST_TESTED",
+  "scope": "SIMULATED_POLICY_NO_XNU",
+  "scenario": "safe-recovery.json",
+  "frames": [
+    {
+      "us": 0,
+      "state": "RECOVERY",
+      "lines": [
+        "AtlanticOS / AtlanticBIOS 0.1",
+        "HOST_TESTED - POLICY SIMULATOR / NO XNU",
+        "Moto G20 / Unisoc T700 - hardware UNTESTED",
+        "",
+        "STATE: RECOVERY  ENTRY: RECOVERY",
+        "",
+        "Safe maintenance / independent Android recovery",
+        "Power short: open menu. Volume Down: enter setup.",
+        "",
+        "Android fallback UNVERIFIED. Maintenance only.",
+        "",
+        "Volume +/-: navigate | Power short: select",
+        "Power hold 1.5 s: shutdown dialog | Network OFF"
+      ]
+    },
+    {
+      "us": 0,
+      "state": "RECOVERY",
+      "lines": [
+        "AtlanticOS / AtlanticBIOS 0.1",
+        "HOST_TESTED - POLICY SIMULATOR / NO XNU",
+        "Moto G20 / Unisoc T700 - hardware UNTESTED",
+        "",
+        "STATE: RECOVERY  ENTRY: RECOVERY",
+        "",
+        "Safe maintenance / independent Android recovery",
+        "Power short: open menu. Volume Down: enter setup.",
+        "",
+        "Android fallback UNVERIFIED. Maintenance only.",
+        "",
+        "Volume +/-: navigate | Power short: select",
+        "Power hold 1.5 s: shutdown dialog | Network OFF"
+      ]
+    },
+    {
+      "us": 10000000,
+      "state": "RECOVERY",
+      "lines": [
+        "AtlanticOS / AtlanticBIOS 0.1",
+        "HOST_TESTED - POLICY SIMULATOR / NO XNU",
+        "Moto G20 / Unisoc T700 - hardware UNTESTED",
+        "",
+        "STATE: RECOVERY  ENTRY: RECOVERY",
+        "",
+        "Safe maintenance / independent Android recovery",
+        "Power short: open menu. Volume Down: enter setup.",
+        "",
+        "Android fallback UNVERIFIED. Maintenance only.",
+        "",
+        "Volume +/-: navigate | Power short: select",
+        "Power hold 1.5 s: shutdown dialog | Network OFF"
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "us": 0,
+      "event": "start",
+      "state": "RECOVERY",
+      "reason": "RECOVERY"
+    }
+  ],
+  "effects": []
+}

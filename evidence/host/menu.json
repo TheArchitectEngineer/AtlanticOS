@@ -1,0 +1,117 @@
+{
+  "label": "HOST_TESTED",
+  "scope": "SIMULATED_POLICY_NO_XNU",
+  "scenario": "menu.json",
+  "frames": [
+    {
+      "us": 0,
+      "state": "RECOVERY",
+      "lines": [
+        "AtlanticOS / AtlanticBIOS 0.1",
+        "HOST_TESTED - POLICY SIMULATOR / NO XNU",
+        "Moto G20 / Unisoc T700 - hardware UNTESTED",
+        "",
+        "STATE: RECOVERY  ENTRY: RECOVERY",
+        "",
+        "Safe maintenance / independent Android recovery",
+        "Power short: open menu. Volume Down: enter setup.",
+        "",
+        "Android fallback UNVERIFIED. Maintenance only.",
+        "",
+        "Volume +/-: navigate | Power short: select",
+        "Power hold 1.5 s: shutdown dialog | Network OFF"
+      ]
+    },
+    {
+      "us": 0,
+      "state": "RECOVERY",
+      "lines": [
+        "AtlanticOS / AtlanticBIOS 0.1",
+        "HOST_TESTED - POLICY SIMULATOR / NO XNU",
+        "Moto G20 / Unisoc T700 - hardware UNTESTED",
+        "",
+        "STATE: RECOVERY  ENTRY: RECOVERY",
+        "",
+        "Safe maintenance / independent Android recovery",
+        "Power short: open menu. Volume Down: enter setup.",
+        "",
+        "Android fallback UNVERIFIED. Maintenance only.",
+        "",
+        "Volume +/-: navigate | Power short: select",
+        "Power hold 1.5 s: shutdown dialog | Network OFF"
+      ]
+    },
+    {
+      "us": 30000,
+      "state": "MENU",
+      "lines": [
+        "AtlanticOS / AtlanticBIOS 0.1",
+        "HOST_TESTED - POLICY SIMULATOR / NO XNU",
+        "Moto G20 / Unisoc T700 - hardware UNTESTED",
+        "",
+        "STATE: MENU  ENTRY: KEY_HELD",
+        "",
+        "AtlanticBIOS Setup / Boot Menu",
+        "> Boot Android [UNAVAILABLE]",
+        "  Boot UEFI / Windows ARM64 [UNAVAILABLE]",
+        "  Boot USB [UNAVAILABLE]",
+        "  Boot microSD [UNAVAILABLE]",
+        "  Boot internal partition [UNAVAILABLE]",
+        "  Boot from filesystem [UNAVAILABLE]",
+        "  BIOS Setup ",
+        "  Optional VNC [UNAVAILABLE]",
+        "  Power Off [UNAVAILABLE]",
+        "  Restart [UNAVAILABLE]",
+        "  Recovery / Diagnostics ",
+        "",
+        "Android fallback UNVERIFIED. Maintenance only.",
+        "",
+        "Volume +/-: navigate | Power short: select",
+        "Power hold 1.5 s: shutdown dialog | Network OFF"
+      ]
+    },
+    {
+      "us": 100000,
+      "state": "MENU",
+      "lines": [
+        "AtlanticOS / AtlanticBIOS 0.1",
+        "HOST_TESTED - POLICY SIMULATOR / NO XNU",
+        "Moto G20 / Unisoc T700 - hardware UNTESTED",
+        "",
+        "STATE: MENU  ENTRY: KEY_HELD",
+        "",
+        "AtlanticBIOS Setup / Boot Menu",
+        "> Boot Android [UNAVAILABLE]",
+        "  Boot UEFI / Windows ARM64 [UNAVAILABLE]",
+        "  Boot USB [UNAVAILABLE]",
+        "  Boot microSD [UNAVAILABLE]",
+        "  Boot internal partition [UNAVAILABLE]",
+        "  Boot from filesystem [UNAVAILABLE]",
+        "  BIOS Setup ",
+        "  Optional VNC [UNAVAILABLE]",
+        "  Power Off [UNAVAILABLE]",
+        "  Restart [UNAVAILABLE]",
+        "  Recovery / Diagnostics ",
+        "",
+        "Android fallback UNVERIFIED. Maintenance only.",
+        "",
+        "Volume +/-: navigate | Power short: select",
+        "Power hold 1.5 s: shutdown dialog | Network OFF"
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "us": 0,
+      "event": "start",
+      "state": "RECOVERY",
+      "reason": "RECOVERY"
+    },
+    {
+      "us": 30000,
+      "event": "menu",
+      "reason": "KEY_HELD"
+    }
+  ],
+  "effects": []
+}

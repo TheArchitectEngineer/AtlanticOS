@@ -1,0 +1,20 @@
+{
+  "audit_date": "2026-10-19",
+  "label": "HOST_TESTED",
+  "scope": "SOURCE_AUDIT_AND_HOST_ONLY_POLICY",
+  "main_spec_sha256": "4c266664e23c5fffa3abef4dbce6c808fa71ed109900ca1560b9806ff76babf1",
+  "xnu_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+  "xnu_patchset": "EMPTY",
+  "g20_reference_commit": "321c01f87c78e7e9c5d82f692b71fcdad8ef921a",
+  "reference_code_imported": false,
+  "reference_binary_downloaded_or_used": false,
+  "device_connected": false,
+  "flashed": false,
+  "android_modified": false,
+  "reference_photo": {
+    "source": "docs/evidence/IMG_1581.jpeg",
+    "sha256": "4c1970360c053d001925fc1186e520966904949dd11b523241170d5b777d8be3",
+    "ownership": "EXTERNAL_G20_UEFI_PROJECT",
+    "inspection": "visual source audit only; not redistributed"
+  }
+}
