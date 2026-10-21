@@ -34,3 +34,10 @@ No se ocultaron esos errores con headers vacíos, funciones de éxito ni warning
 desactivados. El enlace y la ejecución XNU continúan pendientes, así como pmap,
 Platform Expert, contexto, IRQ y drivers AtlanticOS. El perfil de laboratorio
 no selecciona VMAPPLE ni CPU Apple y no acredita compatibilidad del G20.
+
+Ampliación 2026-10-21: genassym.c genera 137 offsets/constantes del target, con
+aserciones de layout y rechazo de un offset alterado. Start.s y cswitch.s se
+ensamblan como dos objetos genuinos adicionales; el patch 0004 aísla tunables
+Apple en el laboratorio. Siete unidades compilan, sin enlace ni ejecución.
+El inventario agregado de símbolos pendientes orienta el cierre de dependencias;
+no sustituye un enlace real. Se conservan los fallos de thread.c y vm_map.c.

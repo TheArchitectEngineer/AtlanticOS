@@ -7,6 +7,8 @@ on:
       - 'tools/fetch_mig.py'
       - 'tools/fetch_xnu.py'
       - 'tools/build_xnu_lab.py'
+      - 'tools/xnu_assym.py'
+      - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
       - 'tests/xnu_port/**'
       - 'tools/mig-host/**'
@@ -19,6 +21,8 @@ on:
       - 'tools/fetch_mig.py'
       - 'tools/fetch_xnu.py'
       - 'tools/build_xnu_lab.py'
+      - 'tools/xnu_assym.py'
+      - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
       - 'tests/xnu_port/**'
       - 'tools/mig-host/**'
@@ -48,7 +52,9 @@ jobs:
           llvm-nm --version
       - name: Build MIG and generate ARM64 interfaces (no kernel execution)
         run: python3 tools/build_mig.py
-      - name: Compile five real XNU ARM64 units and verify internal boot ABI (no link)
+      - name: Test strict target-layout extraction
+        run: python3 -m unittest discover -s tests -p test_xnu_assym.py -v
+      - name: Compile seven real XNU ARM64 units and verify target layouts (no link)
         run: python3 tools/build_xnu_lab.py
       - name: Retain metadata and unit diagnostics on success or failure
         if: always()
@@ -65,3 +71,8 @@ jobs:
             work/xnu-lab-builds/*/clock.log
             work/xnu-lab-builds/*/vm_init.log
             work/xnu-lab-builds/*/vm_kern.log
+            work/xnu-lab-builds/*/genassym.log
+            work/xnu-lab-builds/*/assym-abi.log
+            work/xnu-lab-builds/*/reject-assym-offset.log
+            work/xnu-lab-builds/*/start.log
+            work/xnu-lab-builds/*/cswitch.log

@@ -15,6 +15,7 @@ import shlex
 import shutil
 import struct
 import subprocess
+from xnu_assym import parse_assym, render_assym
 
 ROOT = Path(__file__).resolve().parents[1]
 PROFILE = ROOT/'xnu-port/config/MASTER.arm64.atlanticlab.AtlanticOS'
@@ -22,7 +23,11 @@ UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
          'osfmk/kern/sched_prim.c': '_sched_init',
          'osfmk/kern/clock.c': '_clock_init',
          'osfmk/vm/vm_init.c': '_vm_mem_bootstrap',
-         'osfmk/vm/vm_kern.c': '_kmem_alloc_guard'}
+         'osfmk/vm/vm_kern.c': '_kmem_alloc_guard',
+         'osfmk/arm64/cswitch.s': '_Switch_context',
+         'osfmk/arm64/start.s': '_start_first_cpu'}
+EXTRA_SYMBOLS = {'osfmk/arm64/cswitch.s': ['_machine_load_context', '_Call_continuation'],
+                 'osfmk/arm64/start.s': ['__start', '_LowResetVectorBase']}
 PROBES = ['osfmk/kern/thread.c', 'osfmk/vm/vm_map.c']
 
 
@@ -107,9 +112,11 @@ def main():
         if digest(ROOT/name) != sha:
             ap.error('MIG host adaptation changed; rebuild it first')
     build_inputs = {'tools/build_xnu_lab.py': digest(__file__),
+                    'tools/xnu_assym.py': digest(ROOT/'tools/xnu_assym.py'),
                     'xnu-port/patches.lock.json': digest(ROOT/'xnu-port/patches.lock.json'),
                     'xnu-port/config/'+PROFILE.name: digest(PROFILE),
-                    'tests/xnu_port/boot_abi.c': digest(ROOT/'tests/xnu_port/boot_abi.c')}
+                    'tests/xnu_port/boot_abi.c': digest(ROOT/'tests/xnu_port/boot_abi.c'),
+                    'tests/xnu_port/assym_abi.c': digest(ROOT/'tests/xnu_port/assym_abi.c')}
     build_id = hashlib.sha256(json.dumps({'port_id': port_id, 'inputs': build_inputs}, sort_keys=True).encode()).hexdigest()
     out = ROOT/'work/xnu-lab-builds'/build_id[:16]
     out.mkdir(parents=True, exist_ok=True)
@@ -137,6 +144,9 @@ def main():
     shutil.copyfile(source/'config/MASTER', masters/'MASTER')
     shutil.copyfile(PROFILE, masters/PROFILE.name)
     config = out/'config';config.mkdir(exist_ok=True)
+    # doconf can mask config failures; do not accept these outputs from an old run.
+    for name in ['meta_features.h', 'Makefile']:
+        (config/name).unlink(missing_ok=True)
     env = dict(os.environ, OBJROOT=str(out/'obj'), SRCROOT=str(source), SOURCE=str(source/'osfmk/conf')+'/', ASAN_OPTIONS='detect_leaks=0')
     run(['csh', '-f', str(conf_src/'doconf'), '-c', '-cpu', 'arm64', '-soc', 'atlanticlab', '-platform', 'AtlanticOS',
          '-d', str(config), '-s', str(source/'osfmk/conf'), '-m', str(masters), 'ATLANTIC'], env=env, name='config-generate')
@@ -187,13 +197,30 @@ def main():
     clang_resource = subprocess.check_output(['clang','-print-resource-dir'], text=True).strip()
     target = ['clang', '--target=arm64-apple-macos11.0', '-mcpu=cortex-a57', '-std=gnu11', '-ffreestanding', '-nostdinc',
               '-fno-builtin', '-fno-stack-protector', '-mkernel', '-fblocks', '-O1', '-g', '-Darm64', '-DARM64', '-D__ARM64__',
-              '-DLP64', '-DPAGE_SIZE_FIXED', '-DPRIVATE', '-DAPPLE', '-D__MACHO__=1', '-DXNU_KERN_EVENT_DATA_IS_VLA',
+              '-DLP64', '-DPAGE_SIZE_FIXED', '-DVM_KERNEL_LINK_ADDRESS=0xfffffff007004000',
+              '-DPRIVATE', '-DAPPLE', '-D__MACHO__=1', '-DXNU_KERN_EVENT_DATA_IS_VLA',
               '-DKERNEL', '-DKERNEL_PRIVATE', '-DXNU_KERNEL_PRIVATE', '-DMACH_KERNEL_PRIVATE', '-DMACH_KERNEL',
               '-DARM64_BOARD_CONFIG_ATLANTIC_LAB', '-include', str(config/'meta_features.h'),
               '-ffile-prefix-map='+str(ROOT)+'=.', '-fdebug-compilation-dir=.', '-I'+str(config), '-I'+str(inc)]
     target += ['-I'+str(source/p) for p in ['osfmk','bsd','pexpert','libkern','iokit','osfmk/libsa','libsa','EXTERNAL_HEADERS','.']]
     target += ['-isystem', clang_resource+'/include', *defines]
     abi = run([*target, '-c', str(ROOT/'tests/xnu_port/boot_abi.c'), '-o', str(out/'boot-abi.o')], name='boot-abi')
+    # Generate assembler offsets with the target compiler, never a host ABI.
+    genassym = out/'genassym.s'
+    run([*target, '-fno-integrated-as', '-S', str(source/'osfmk/arm64/genassym.c'), '-o', str(genassym)], name='genassym')
+    assym_values = parse_assym(genassym.read_text(), required=['TH_KSTACKPTR','ACT_CPUDATAP','CPU_ACTIVE_THREAD',
+        'SS64_KERNEL_SP','NS64_KERNEL_D8','BA_VIRT_BASE','BA_PHYS_BASE','BA_BOOT_FLAGS'])
+    assym = inc/'assym.s'
+    assym.write_text(render_assym(assym_values), encoding='utf-8', newline='\n')
+    (inc/'assym-check.h').write_text(render_assym(assym_values, prefix='ATL_ASSYM_'), encoding='utf-8', newline='\n')
+    run([*target, '-c', str(ROOT/'tests/xnu_port/assym_abi.c'), '-o', str(out/'assym-abi.o')], name='assym-abi')
+    bad_assym = out/'invalid-assym';bad_assym.mkdir(exist_ok=True)
+    wrong = dict(assym_values);wrong['TH_KSTACKPTR'] += 1
+    (bad_assym/'assym-check.h').write_text(render_assym(wrong, prefix='ATL_ASSYM_'), encoding='utf-8', newline='\n')
+    rejection = run([target[0], '-I'+str(bad_assym), *target[1:], '-c', str(ROOT/'tests/xnu_port/assym_abi.c'),
+                     '-o', str(out/'invalid-assym.o')], expected=1, name='reject-assym-offset')
+    if 'TH_KSTACKPTR target layout' not in rejection.stderr:
+        raise RuntimeError('Wrong generated-offset rejection reason')
     # Reject accidental PMU enablement and forbidden BSD/IOKit composition.
     bad = '#undef CONFIG_CPU_COUNTERS\n#define CONFIG_CPU_COUNTERS 1\n#include <pexpert/arm64/board_config.h>\n'
     rejection = run([*target, '-E', '-x', 'c', '-'], data=bad, expected=1, name='reject-pmu')
@@ -210,6 +237,8 @@ def main():
         obj = out/(Path(rel).stem+'.o')
         # This flag is mandated for VM sources by upstream Makefile.template.
         per_file = ['-DVM_UNSAFE_TYPES'] if rel.startswith('osfmk/vm/') else []
+        if rel.endswith('.s'):
+            per_file += ['-x', 'assembler-with-cpp']
         cmd = [*target, *per_file, '-c', str(source/rel), '-o', str(obj)]
         r = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, timeout=60)
         commands.append([str(s).replace(str(ROOT),'<ROOT>') for s in cmd])
@@ -223,16 +252,23 @@ def main():
         if len(raw)<32 or struct.unpack_from('<4I',raw) != (0xfeedfacf,0x100000c,0,1):
             raise RuntimeError('Expected AArch64 Mach-O object, not a kernel image')
         nm = run(['llvm-nm','--defined-only',str(obj)],name=obj.stem+'-defined').stdout
-        if rel in UNITS and not any(line.split()[-1:]==[UNITS[rel]] for line in nm.splitlines()):
-            raise RuntimeError('Missing real XNU function: '+UNITS[rel])
+        required_symbols = ([UNITS[rel]]+EXTRA_SYMBOLS.get(rel, [])) if rel in UNITS else []
+        for symbol in required_symbols:
+            if not any(line.split()[-1:]==[symbol] for line in nm.splitlines()):
+                raise RuntimeError('Missing real XNU function: '+symbol)
         undefined = run(['llvm-nm','--undefined-only',str(obj)],name=obj.stem+'-undefined').stdout.splitlines()
+        exported = run(['llvm-nm','--extern-only','--defined-only','--format=posix',str(obj)],
+                       name=obj.stem+'-exports').stdout.splitlines()
+        exported = [s.split()[0] for s in exported if s.split()]
         if rel.endswith('/startup.c') and not {'_vm_mem_bootstrap','_sched_init','_task_init','_thread_init'}.issubset(set(undefined)):
             raise RuntimeError('Bootstrap no longer references substantive Mach initialization')
         if rel.endswith('/startup.c') and any('trust_cache' in s or 'code_signing_init' in s for s in undefined):
             raise RuntimeError('Unexpected Apple userland trust-cache dependency in firmware bootstrap')
         objects.append({'source':rel,'source_sha256':digest(source/rel),'object':obj.name,'object_sha256':digest(obj),
-                        'object_file_bytes':len(raw),'required_symbol':UNITS.get(rel),
-                        'undefined_symbols':undefined})
+                        'object_file_bytes':len(raw),'required_symbol':UNITS.get(rel),'required_symbols':required_symbols,
+                        'defined_external_symbols':exported,'undefined_symbols':undefined})
+    selected_definitions = {s for item in objects for s in item['defined_external_symbols']}
+    missing_symbols = sorted({s for item in objects for s in item['undefined_symbols']} - selected_definitions)
     report = {'schema_version':1,'label':'BUILT_ARM64','scope':'REAL_XNU_CORE_OBJECTS_ONLY_NOT_LINKED_OR_EXECUTED',
               'upstream_commit':lock['xnu']['commit'],'patches':patches,'port_id':port_id,'build_id':build_id,
               'inputs':build_inputs,'profile':'atlanticlab','kernel_linked':False,'xnu_executed':False,'phone_accessed':False,
@@ -243,6 +279,12 @@ def main():
                                     for name in ['bison','flex','csh']},
               'config_headers':[{'path':p.relative_to(out).as_posix(),'sha256':digest(p)} for p in sorted(config.glob('*.h'))],
               'version_header_sha256':digest(version),
+              'assym':{'source_sha256':digest(source/'osfmk/arm64/genassym.c'),'assembly_sha256':digest(genassym),
+                       'header_sha256':digest(assym),'definitions':assym_values,'extraction':'strict-decimal-ascii-no-fallback',
+                       'target_layout_assertions_passed':True},
+              'virtual_link_address':'0xfffffff007004000','physical_link_or_load_address':None,
+              'selected_object_symbol_inventory':{'scope':'NAME_INVENTORY_ONLY_NOT_A_LINK_OR_RELOCATION_CHECK',
+                  'defined_external_count':len(selected_definitions),'unprovided_symbols':missing_symbols},
               'generated_headers':[{'path':p.relative_to(out).as_posix(),'sha256':digest(p)} for p in generated],
               'objects':objects,'failed_units':failures}
     (out/'report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')

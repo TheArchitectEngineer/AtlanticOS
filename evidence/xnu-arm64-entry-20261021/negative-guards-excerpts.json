@@ -1,0 +1,13 @@
+{
+  "reject-pmu": [
+    "<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/pexpert/pexpert/arm64/ATLANTIC_LAB.h:25:2: error: AtlanticOS laboratory PMU backend is not implemented"
+  ],
+  "reject-mach_bsd": [
+    "     vmp_error:1,",
+    "<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/startup.c:70:2: error: AtlanticOS firmware profile excludes BSD userland and IOKit"
+  ],
+  "reject-iokit": [
+    "     vmp_error:1,",
+    "<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/startup.c:70:2: error: AtlanticOS firmware profile excludes BSD userland and IOKit"
+  ]
+}

@@ -1,7 +1,8 @@
 # Build incremental XNU ARM64 — 2026-10-21
 
-El perfil original atlanticlab compila cinco unidades reales del XNU fijado:
-bootstrap, scheduler, reloj, inicialización de VM y allocator kernel. Produce
+El perfil original atlanticlab compila siete unidades reales del XNU fijado:
+bootstrap, scheduler, reloj, inicialización de VM, allocator, entrada ARM64 y
+cambio de contexto. Produce
 objetos AArch64 Mach-O sin enlazar. No genera una imagen de teléfono ni ejecuta
 XNU. El arranque físico y el handoff continúan pendientes.
 
@@ -69,7 +70,8 @@ El perfil es uniprocesador de laboratorio. G20 conserva un BSP separado y no
 recibe esos parámetros como validación de hardware. No selecciona BSD userland,
 IOKit o libkern C++; conserva Mach, VM, scheduler, bloques y coalitions.
 CONFIG_PMAP_PPL selecciona la familia pmap no SPTM de upstream; no demuestra
-PPL o monitor Apple funcionando. Entry y pmap aún deben construirse y ejecutarse.
+PPL o monitor Apple funcionando. Start.s y cswitch.s están ensamblados; faltan
+su enlace, pmap y ejecución integrada.
 
 El ABI interno boot_args conserva campos upstream con CommandLine=1024. La
 prueba ARM64 comprueba sizeof=1152 y offsets de vídeo, árbol, comando y flags.
@@ -92,6 +94,8 @@ aserciones de layout ni se desactivaron errores de tipos.
 | osfmk/kern/clock.c | clock_init |
 | osfmk/vm/vm_init.c | vm_mem_bootstrap |
 | osfmk/vm/vm_kern.c | kmem_alloc_guard |
+| osfmk/arm64/start.s | start_first_cpu, __start, LowResetVectorBase |
+| osfmk/arm64/cswitch.s | Switch_context, machine_load_context, Call_continuation |
 
 Se comprueban magic/tipo/arquitectura Mach-O, fuentes y objetos hasheados,
 símbolos definidos y pendientes. Bootstrap debe referenciar vm_mem_bootstrap,
@@ -100,7 +104,47 @@ task_init, thread_init y sched_init: no se cuentan prototipos sin cuerpo.
 Work/xnu-lab-builds/<build-id>/report.json contiene comandos, versiones,
 opciones, headers generados, hashes y resultados. Los .o y fuentes completos
 permanecen privados; se publica metadata y el patchset correspondiente.
-Un exit 0 del driver solo acredita esas cinco compilaciones.
+Un exit 0 del driver solo acredita esas siete compilaciones y los checks
+descritos. El inventario agregado resta símbolos externos definidos por los
+objetos a los requeridos; no es una prueba de enlace, relocaciones o reachability.
+
+## Offsets y ensamblador nativos
+
+Genassym.c oficial se compila para ARM64 a assembly con -fno-integrated-as,
+como exige Makefile.template. Un extractor original acepta únicamente los
+marcadores decimales .ascii emitidos por ese modo; rechaza duplicados, aliases
+en conflicto, valores fuera de rango, formatos desconocidos y campos faltantes.
+No ejecuta un generador con ABI host ni inventa valores ante errores.
+
+La salida contiene 137 definiciones de este perfil, cada una con alias _NUM.
+Una segunda unidad C compara offsets de boot_args, thread, cpu_data y contexto
+con offsetof del mismo target. Una copia con TH_KSTACKPTR desplazado un byte
+debe fallar con la aserción esperada. Ocho tests del parser incluyen metadata
+malformada e intentos de introducir texto en vez de constantes.
+
+La primera prueba sin -fno-integrated-as transformó .ascii de un carácter en
+.byte; se rechazó esa representación. Se conserva el formato upstream adecuado
+en lugar de adivinar el valor de una línea que el parser no comprende.
+
+Patch 0004 excluye include y llamada de tunables Apple solamente bajo
+ATLANTIC_ARM64_LAB. No agrega un archivo tunables vacío ni define APPLY_TUNABLES
+como éxito. No aporta erratas/configuración de CPU reales para G20.
+
+VM_KERNEL_LINK_ADDRESS=0xfffffff007004000 es un parámetro explícito de
+compilación, tomado del layout small-memory de MakeInc.def. Aún no hay linker
+ni imagen que satisfagan ese layout y no es una dirección física de carga.
+El report deja physical_link_or_load_address=null.
+
+Se comprueba ARM_PGSHIFT=12, granulo hardware de 4 KiB. PAGE_MAX_SHIFT=14 es un
+máximo upstream diferente. PAGE_SHIFT usa PAGE_SHIFT_CONST, inicializado en
+runtime por arm_init según memoria anunciada; no es constante en este perfil.
+No se reemplaza esa variable por un define para forzar el test ni se reduce
+artificialmente memSize para elegir otro tamaño. El mapa VM todavía debe
+demostrar esa selección y el backing físico real.
+
+Cswitch preserva registros FP/NEON; todavía no se ha ejecutado ni inicializado
+un contexto válido para él. El preflight propio mantiene FP desactivado y no
+salta a estos objetos. No son pruebas equivalentes ni se conectan por un cast.
 
 Para intentar además las unidades restantes:
 
@@ -125,4 +169,5 @@ CONFIG_ZONE_MAP_MIN=120586240 del upstream: hay que estudiar reserva virtual y
 backing físico. No se interpreta como medición DRAM ni como cumplimiento de
 menos de 100 MiB.
 
-Evidencia: [xnu-lab-20261021](../evidence/xnu-lab-20261021/manifest.json).
+Evidencia histórica de cinco unidades: [xnu-lab-20261021](../evidence/xnu-lab-20261021/manifest.json).
+Ampliación a siete y offsets: [xnu-arm64-entry-20261021](../evidence/xnu-arm64-entry-20261021/manifest.json).

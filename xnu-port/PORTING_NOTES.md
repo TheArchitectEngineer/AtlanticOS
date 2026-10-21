@@ -14,8 +14,10 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 | clock.c / reloj Mach | Objeto AArch64 Mach-O compilado | Sin IRQ/timer probado |
 | vm_init.c / bootstrap VM | Objeto AArch64 Mach-O compilado | Sin VM inicializada |
 | vm_kern.c / allocator kernel | Objeto AArch64 Mach-O compilado | Sin asignaciones ejecutadas |
+| start.s / start_first_cpu | Ensamblado con patch de tunables exclusivo del laboratorio | Sin MMU ni bootstrap ejecutados |
+| cswitch.s / Switch_context | Ensamblado con offsets generados por el target | Sin cambio de hilo ejecutado |
 | thread.c y vm_map.c | Probes fallidos, diagnósticos conservados | Pendientes |
-| Entry XNU, pmap y contexto | Sin construir/enlazar como conjunto | UNIMPLEMENTED |
+| Entry XNU, pmap y contexto integrados | Sin construir/enlazar como conjunto | UNIMPLEMENTED |
 | Platform Expert y BSP G20 | Sin drivers AtlanticOS funcionales | UNIMPLEMENTED |
 | Handoff EDK2 y RAM física | Sin prueba | UNIMPLEMENTED / UNMEASURED |
 
@@ -36,6 +38,10 @@ no contiene BootShim ni código de plataforma de ports ajenos.
    No agrega verificadores que devuelvan éxito ni reemplazos de VM/IPC. Mueve
    la declaración serverperfmode fuera del guard BSD: startup.c define ese
    tunable aun sin BSD y vm_kern.c lo utiliza. Su definición real se conserva.
+4. `0004`: excluye el include y la llamada a tunables Apple en start.s solo para
+   ATLANTIC_ARM64_LAB. No crea un proveedor vacío ni hereda los ajustes de otro
+   SoC. Los targets upstream restantes conservan su ruta. No satisface la
+   investigación de erratas y configuración de CPU del G20.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
@@ -57,7 +63,7 @@ vm_map.c aún alcanza TrustCache/API.h mediante headers de code signing.
 Se debe completar ese límite de funcionalidades y preservar una política de
 ejecución explícita, sin sustituirla por respuestas de éxito.
 
-Los cinco objetos siguen teniendo símbolos sin resolver. No hay kernel, entry
+Los siete objetos siguen teniendo símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.

@@ -1,3 +1,4 @@
 0001-add-atlantic-arm64-laboratory-profile.patch
 0002-define-atlantic-laboratory-boot-line-abi.patch
 0003-separate-firmware-bootstrap-from-apple-userland.patch
+0004-isolate-apple-soc-tunables-from-laboratory-entry.patch

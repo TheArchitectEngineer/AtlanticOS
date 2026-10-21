@@ -1,11 +1,12 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "58224d3c7739f69abcb5d278bc941c2ff2f0adcc6584a8f0473fe6e9810a1b5f",
+  "port_id": "17cffe15324dc9a34a1cf273b4c2f311f382d3220124cc6a0d210e92a64a1d44",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
-    "0003-separate-firmware-bootstrap-from-apple-userland.patch": "fb9c0de2be8b1db499463d1b5a304d71e4d0fe5902157c133379758d517e8b94"
+    "0003-separate-firmware-bootstrap-from-apple-userland.patch": "fb9c0de2be8b1db499463d1b5a304d71e4d0fe5902157c133379758d517e8b94",
+    "0004-isolate-apple-soc-tunables-from-laboratory-entry.patch": "4de1aeeb429ea629f000adeca10f4c8154afe84c6b901b2fd15cafa9a71ef0f9"
   },
   "canonical_lf_files": [
     {
@@ -37,6 +38,11 @@
       "path": "pexpert/pexpert/arm64/boot.h",
       "preimage_sha256": "c96e02ceeef71846e20a3fa723dcb57d3f4991820509d83a950a1f47d51b7a99",
       "postimage_sha256": "fd32f9dc4addce1716409fd4cdf95e6c91357c058a5d7d981fdacb80200d62a3"
+    },
+    {
+      "path": "osfmk/arm64/start.s",
+      "preimage_sha256": "f150da40d412e8830213e24a952cb9c1ff66e74c641419d1ac42d31f9ed91b6b",
+      "postimage_sha256": "0874939da938724be4539f3b167c2be33573e2a096e772cc995ad528555e506c"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"
