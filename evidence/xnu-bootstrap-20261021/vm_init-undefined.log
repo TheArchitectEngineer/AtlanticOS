@@ -1,0 +1,11 @@
+_kernel_debug_string_early
+_kernel_startup_initialize_upto
+_kernel_startup_tunable_init
+_kmem_init
+_kprintf
+_vm_fault_init
+_vm_map_init
+_vm_object_bootstrap
+_vm_page_bootstrap
+_vm_retire_boot_pages
+_zone_bootstrap

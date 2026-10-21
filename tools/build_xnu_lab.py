@@ -25,9 +25,17 @@ UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
          'osfmk/vm/vm_init.c': '_vm_mem_bootstrap',
          'osfmk/vm/vm_kern.c': '_kmem_alloc_guard',
          'osfmk/arm64/cswitch.s': '_Switch_context',
-         'osfmk/arm64/start.s': '_start_first_cpu'}
+         'osfmk/arm64/start.s': '_start_first_cpu',
+         'osfmk/arm64/locore.s': '_ExceptionVectorsBase',
+         'osfmk/arm64/machine_routines_asm.s': '_set_mmu_ttb',
+         'osfmk/arm/arm_init.c': '_arm_init',
+         'osfmk/arm64/arm_vm_init.c': '_arm_vm_init'}
 EXTRA_SYMBOLS = {'osfmk/arm64/cswitch.s': ['_machine_load_context', '_Call_continuation'],
-                 'osfmk/arm64/start.s': ['__start', '_LowResetVectorBase']}
+                 'osfmk/arm64/start.s': ['__start', '_LowResetVectorBase'],
+                 'osfmk/arm64/locore.s': ['_fleh_synchronous', '_fleh_irq'],
+                 'osfmk/arm64/machine_routines_asm.s': ['_set_mmu_ttb_alternate'],
+                 'osfmk/arm/arm_init.c': ['_arm_init_cpu', '_arm_init_idle_cpu', '_const_boot_args'],
+                 'osfmk/arm64/arm_vm_init.c': ['_bootstrap_pagetables']}
 PROBES = ['osfmk/kern/thread.c', 'osfmk/vm/vm_map.c']
 
 
@@ -238,7 +246,8 @@ def main():
         # This flag is mandated for VM sources by upstream Makefile.template.
         per_file = ['-DVM_UNSAFE_TYPES'] if rel.startswith('osfmk/vm/') else []
         if rel.endswith('.s'):
-            per_file += ['-x', 'assembler-with-cpp']
+            # Match upstream SFLAGS_GEN, including the non-Clang ASSEMBLER guard.
+            per_file += ['-DASSEMBLER', '-D__ASSEMBLER__', '-x', 'assembler-with-cpp']
         cmd = [*target, *per_file, '-c', str(source/rel), '-o', str(obj)]
         r = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, timeout=60)
         commands.append([str(s).replace(str(ROOT),'<ROOT>') for s in cmd])
@@ -253,6 +262,8 @@ def main():
             raise RuntimeError('Expected AArch64 Mach-O object, not a kernel image')
         nm = run(['llvm-nm','--defined-only',str(obj)],name=obj.stem+'-defined').stdout
         required_symbols = ([UNITS[rel]]+EXTRA_SYMBOLS.get(rel, [])) if rel in UNITS else []
+        if rel in UNITS and not any(line.split()[-2:]==['T', UNITS[rel]] for line in nm.splitlines()):
+            raise RuntimeError('Expected real external text symbol: '+UNITS[rel])
         for symbol in required_symbols:
             if not any(line.split()[-1:]==[symbol] for line in nm.splitlines()):
                 raise RuntimeError('Missing real XNU function: '+symbol)

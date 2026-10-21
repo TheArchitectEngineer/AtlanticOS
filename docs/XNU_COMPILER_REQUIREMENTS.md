@@ -32,6 +32,14 @@ su versión/licencia y probar la semántica para el target antes de integrarlo;
 o desarrollar generación original de metadata fiel al layout del compilador,
 rechazando casos que todavía no pueda representar. No importar un port ajeno.
 
+Se inspeccionaron seis archivos concretos del fork público swiftlang/llvm-project,
+commit 725c8c73c8413d3075a6a100676e8d4b80036947: Builtins.def/td, TokenKinds.def,
+AST/Type.h, ParseExpr.cpp y SemaExpr.cpp. No contienen los tres nombres literales.
+Las URLs y hashes de esos archivos están en el [registro de inspección](research/swift-clang-source-audit-20261021.json).
+Esto es una búsqueda textual limitada, no una compilación de ese fork ni prueba
+de ausencia en todo el repositorio, otras ramas o compiladores. No se integró
+ese fork como dependencia ni se importó código de su implementación al port.
+
 La batería de aceptación debe cubrir aliases y calificadores, records de igual
 firma pero distinta identidad, datos y punteros mezclados, arrays, padding,
 unions/bitfields y tipos incompletos/no soportados. Debe comprobar tamaños y

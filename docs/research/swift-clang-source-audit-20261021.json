@@ -1,0 +1,84 @@
+{
+  "scope": "LIMITED_PRIMARY_SOURCE_TEXT_AUDIT_NOT_A_COMPILER_CAPABILITY_OR_GLOBAL_ABSENCE_PROOF",
+  "repository": "https://github.com/swiftlang/llvm-project",
+  "commit": "725c8c73c8413d3075a6a100676e8d4b80036947",
+  "files": [
+    {
+      "path": "clang/include/clang/Basic/Builtins.def",
+      "url": "https://raw.githubusercontent.com/swiftlang/llvm-project/725c8c73c8413d3075a6a100676e8d4b80036947/clang/include/clang/Basic/Builtins.def",
+      "sha256": "bdd54c7f7648c6609e88c40246943da069430875ed1c0cfa289b40babc3d786b",
+      "bytes": 5163,
+      "literal_matches": {
+        "__builtin_xnu_types_compatible": 0,
+        "__builtin_xnu_type_summary": 0,
+        "__builtin_xnu_type_signature": 0
+      },
+      "xnu_casefold_lines": []
+    },
+    {
+      "path": "clang/include/clang/Basic/Builtins.td",
+      "url": "https://raw.githubusercontent.com/swiftlang/llvm-project/725c8c73c8413d3075a6a100676e8d4b80036947/clang/include/clang/Basic/Builtins.td",
+      "sha256": "26b4b78c2f96f01419e121bfea60245264189ebad04290b26053109e2292db65",
+      "bytes": 183898,
+      "literal_matches": {
+        "__builtin_xnu_types_compatible": 0,
+        "__builtin_xnu_type_summary": 0,
+        "__builtin_xnu_type_signature": 0
+      },
+      "xnu_casefold_lines": [
+        1643,
+        1644
+      ]
+    },
+    {
+      "path": "clang/include/clang/Basic/TokenKinds.def",
+      "url": "https://raw.githubusercontent.com/swiftlang/llvm-project/725c8c73c8413d3075a6a100676e8d4b80036947/clang/include/clang/Basic/TokenKinds.def",
+      "sha256": "733aef5b1f8ce626aca1c55c0ea59c9d1ea6b6b4726064abb4d90aa00024b21b",
+      "bytes": 36467,
+      "literal_matches": {
+        "__builtin_xnu_types_compatible": 0,
+        "__builtin_xnu_type_summary": 0,
+        "__builtin_xnu_type_signature": 0
+      },
+      "xnu_casefold_lines": []
+    },
+    {
+      "path": "clang/include/clang/AST/Type.h",
+      "url": "https://raw.githubusercontent.com/swiftlang/llvm-project/725c8c73c8413d3075a6a100676e8d4b80036947/clang/include/clang/AST/Type.h",
+      "sha256": "4d7c4acaeec4760b18a08afc7de5bd9051665965d31f7d919b9e4834899b958c",
+      "bytes": 3110,
+      "literal_matches": {
+        "__builtin_xnu_types_compatible": 0,
+        "__builtin_xnu_type_summary": 0,
+        "__builtin_xnu_type_signature": 0
+      },
+      "xnu_casefold_lines": []
+    },
+    {
+      "path": "clang/lib/Parse/ParseExpr.cpp",
+      "url": "https://raw.githubusercontent.com/swiftlang/llvm-project/725c8c73c8413d3075a6a100676e8d4b80036947/clang/lib/Parse/ParseExpr.cpp",
+      "sha256": "38694d23904fd84d2af454a6a08cf6ae97e767f887781b1549cc9cb8d5d7650b",
+      "bytes": 144160,
+      "literal_matches": {
+        "__builtin_xnu_types_compatible": 0,
+        "__builtin_xnu_type_summary": 0,
+        "__builtin_xnu_type_signature": 0
+      },
+      "xnu_casefold_lines": [
+        864
+      ]
+    },
+    {
+      "path": "clang/lib/Sema/SemaExpr.cpp",
+      "url": "https://raw.githubusercontent.com/swiftlang/llvm-project/725c8c73c8413d3075a6a100676e8d4b80036947/clang/lib/Sema/SemaExpr.cpp",
+      "sha256": "749889d6e21cf3257af5b07558b4afa86d46ec0994bc22cccd1dbf8b608b7853",
+      "bytes": 1114560,
+      "literal_matches": {
+        "__builtin_xnu_types_compatible": 0,
+        "__builtin_xnu_type_summary": 0,
+        "__builtin_xnu_type_signature": 0
+      },
+      "xnu_casefold_lines": []
+    }
+  ]
+}

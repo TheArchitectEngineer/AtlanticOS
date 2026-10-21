@@ -1,8 +1,8 @@
 # Build incremental XNU ARM64 — 2026-10-21
 
-El perfil original atlanticlab compila siete unidades reales del XNU fijado:
+El perfil original atlanticlab compila once unidades reales del XNU fijado:
 bootstrap, scheduler, reloj, inicialización de VM, allocator, entrada ARM64 y
-cambio de contexto. Produce
+cambio de contexto, vectores, rutinas de máquina, arm_init y arm_vm_init. Produce
 objetos AArch64 Mach-O sin enlazar. No genera una imagen de teléfono ni ejecuta
 XNU. El arranque físico y el handoff continúan pendientes.
 
@@ -96,6 +96,10 @@ aserciones de layout ni se desactivaron errores de tipos.
 | osfmk/vm/vm_kern.c | kmem_alloc_guard |
 | osfmk/arm64/start.s | start_first_cpu, __start, LowResetVectorBase |
 | osfmk/arm64/cswitch.s | Switch_context, machine_load_context, Call_continuation |
+| osfmk/arm64/locore.s | ExceptionVectorsBase, fleh_synchronous, fleh_irq |
+| osfmk/arm64/machine_routines_asm.s | set_mmu_ttb, set_mmu_ttb_alternate |
+| osfmk/arm/arm_init.c | arm_init, arm_init_cpu, arm_init_idle_cpu; const_boot_args real |
+| osfmk/arm64/arm_vm_init.c | arm_vm_init; bootstrap_pagetables real |
 
 Se comprueban magic/tipo/arquitectura Mach-O, fuentes y objetos hasheados,
 símbolos definidos y pendientes. Bootstrap debe referenciar vm_mem_bootstrap,
@@ -104,9 +108,12 @@ task_init, thread_init y sched_init: no se cuentan prototipos sin cuerpo.
 Work/xnu-lab-builds/<build-id>/report.json contiene comandos, versiones,
 opciones, headers generados, hashes y resultados. Los .o y fuentes completos
 permanecen privados; se publica metadata y el patchset correspondiente.
-Un exit 0 del driver solo acredita esas siete compilaciones y los checks
+Un exit 0 del driver solo acredita esas once compilaciones y los checks
 descritos. El inventario agregado resta símbolos externos definidos por los
 objetos a los requeridos; no es una prueba de enlace, relocaciones o reachability.
+Cada símbolo principal debe estar definido como texto externo (T); los buffers
+de arranque exigidos deben tener su definición real. Cpu_ttep sigue sin proveedor
+en este subconjunto: no se le agrega una definición arbitraria para cerrar el grafo.
 
 ## Offsets y ensamblador nativos
 
@@ -121,6 +128,11 @@ Una segunda unidad C compara offsets de boot_args, thread, cpu_data y contexto
 con offsetof del mismo target. Una copia con TH_KSTACKPTR desplazado un byte
 debe fallar con la aserción esperada. Ocho tests del parser incluyen metadata
 malformada e intentos de introducir texto en vez de constantes.
+
+Assembler-with-cpp define __ASSEMBLER__ en Clang pero no ASSEMBLER. La receta
+pasa ambos, siguiendo SFLAGS_GEN de MakeInc.def. Los primeros probes de locore
+y machine_routines sin ese segundo define intentaron ensamblar declaraciones C
+de headers. Se corrigió la receta; no se borraron declaraciones ni verificaciones.
 
 La primera prueba sin -fno-integrated-as transformó .ascii de un carácter en
 .byte; se rechazó esa representación. Se conserva el formato upstream adecuado
@@ -171,3 +183,4 @@ menos de 100 MiB.
 
 Evidencia histórica de cinco unidades: [xnu-lab-20261021](../evidence/xnu-lab-20261021/manifest.json).
 Ampliación a siete y offsets: [xnu-arm64-entry-20261021](../evidence/xnu-arm64-entry-20261021/manifest.json).
+Ampliación a once y bootstrap ARM64: [xnu-bootstrap-20261021](../evidence/xnu-bootstrap-20261021/manifest.json).

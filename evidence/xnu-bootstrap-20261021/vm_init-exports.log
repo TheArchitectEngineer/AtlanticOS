@@ -1,0 +1,4 @@
+_iokit_iomd_setownership_enabled S d0 0
+_vm_max_kernel_address S c8 0
+_vm_mem_bootstrap T 0 0
+_vm_min_kernel_address S c0 0

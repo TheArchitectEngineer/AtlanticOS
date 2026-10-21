@@ -54,7 +54,7 @@ jobs:
         run: python3 tools/build_mig.py
       - name: Test strict target-layout extraction
         run: python3 -m unittest discover -s tests -p test_xnu_assym.py -v
-      - name: Compile seven real XNU ARM64 units and verify target layouts (no link)
+      - name: Compile eleven real XNU ARM64 units and verify target layouts (no link)
         run: python3 tools/build_xnu_lab.py
       - name: Retain metadata and unit diagnostics on success or failure
         if: always()
@@ -76,3 +76,7 @@ jobs:
             work/xnu-lab-builds/*/reject-assym-offset.log
             work/xnu-lab-builds/*/start.log
             work/xnu-lab-builds/*/cswitch.log
+            work/xnu-lab-builds/*/locore.log
+            work/xnu-lab-builds/*/machine_routines_asm.log
+            work/xnu-lab-builds/*/arm_init.log
+            work/xnu-lab-builds/*/arm_vm_init.log

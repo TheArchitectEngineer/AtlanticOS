@@ -16,6 +16,10 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 | vm_kern.c / allocator kernel | Objeto AArch64 Mach-O compilado | Sin asignaciones ejecutadas |
 | start.s / start_first_cpu | Ensamblado con patch de tunables exclusivo del laboratorio | Sin MMU ni bootstrap ejecutados |
 | cswitch.s / Switch_context | Ensamblado con offsets generados por el target | Sin cambio de hilo ejecutado |
+| locore.s / vectores | Ensamblado con SFLAGS upstream | Sin excepción XNU ejecutada |
+| machine_routines_asm.s | Rutinas de registros/TTB ensambladas | No ejecutadas |
+| arm_init.c | Bootstrap C y const_boot_args compilados | No ejecutado |
+| arm_vm_init.c | Inicialización VM y bootstrap_pagetables compilados | Sin mapa VM operativo |
 | thread.c y vm_map.c | Probes fallidos, diagnósticos conservados | Pendientes |
 | Entry XNU, pmap y contexto integrados | Sin construir/enlazar como conjunto | UNIMPLEMENTED |
 | Platform Expert y BSP G20 | Sin drivers AtlanticOS funcionales | UNIMPLEMENTED |
@@ -63,7 +67,7 @@ vm_map.c aún alcanza TrustCache/API.h mediante headers de code signing.
 Se debe completar ese límite de funcionalidades y preservar una política de
 ejecución explícita, sin sustituirla por respuestas de éxito.
 
-Los siete objetos siguen teniendo símbolos sin resolver. No hay kernel, entry
+Los once objetos siguen teniendo símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.

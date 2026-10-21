@@ -41,3 +41,4 @@ jobs:
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-lab-20261021/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/entry-el1-20261021/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-arm64-entry-20261021/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/xnu-bootstrap-20261021/manifest.json

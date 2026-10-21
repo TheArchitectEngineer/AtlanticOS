@@ -15,9 +15,9 @@
 | 1: configuración | HOST_TESTED parcial | validación versionada y logs en sesión; prioridad/destino/timeout/red bloqueados en defaults seguros |
 | 1: RAM | HOST_TESTED solo proceso host | informe RSS/tracemalloc; objetivo firmware sin medir |
 | 2: entry ARM64 de laboratorio | EMULATED / BUILT_ARM64 | preflight original, EL1/EL2→EL1h, stack, FDT, contador y BRK; XNU_NOT_LINKED |
-| 2: entry G20 y ejecución bootstrap XNU real | UNIMPLEMENTED | siete objetos compilados no acreditan arranque; enlace/pmap/Platform Expert pendientes |
+| 2: entry G20 y ejecución bootstrap XNU real | UNIMPLEMENTED | once objetos compilados no acreditan arranque; enlace/pmap/Platform Expert pendientes |
 | Herramienta oficial MIG | HOST_TESTED | MIG_HOST_BUILD.md: binario host genuino, ABI de metadata y 20 archivos de interfaces generados; sin compilar esos C ni enlazar kernel |
-| Port XNU incremental de laboratorio | BUILT_ARM64 | XNU_LAB_BUILD.md: cinco unidades C, start/cswitch, offsets del target, ABI y guards comprobados; thread/vm_map fallan; sin enlace ni ejecución |
+| Port XNU incremental de laboratorio | BUILT_ARM64 | XNU_LAB_BUILD.md: siete unidades C y cuatro assembler, offsets del target, ABI y guards comprobados; thread/vm_map fallan; sin enlace ni ejecución |
 | 2: ABI C BSP | BUILT_ARM64 si build_abi termina | objeto sin drivers y sin kernel, hash propio |
 | 3: energía y fallback Android | UNIMPLEMENTED | método de reset/PMIC y vía OEM por demostrar |
 | 4: handoff EDK2 y almacenamiento | UNIMPLEMENTED | contrato propuesto; sin driver AtlanticOS |

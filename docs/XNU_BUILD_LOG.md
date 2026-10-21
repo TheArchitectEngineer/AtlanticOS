@@ -41,3 +41,10 @@ ensamblan como dos objetos genuinos adicionales; el patch 0004 aísla tunables
 Apple en el laboratorio. Siete unidades compilan, sin enlace ni ejecución.
 El inventario agregado de símbolos pendientes orienta el cierre de dependencias;
 no sustituye un enlace real. Se conservan los fallos de thread.c y vm_map.c.
+
+La ampliación posterior compila locore.s, machine_routines_asm.s, arm_init.c y
+arm_vm_init.c sin parches adicionales. El flag ASSEMBLER que faltaba en los
+probes se toma de SFLAGS_GEN upstream, junto con __ASSEMBLER__. Ahora son once
+objetos, con símbolos reales de bootstrap/vectores y buffers upstream; sin
+enlace ni ejecución. Cpu_ttep se conserva como dependencia sin resolver, no
+como un dato inventado. Las pruebas Python suman 74, ocho de ellas del extractor.

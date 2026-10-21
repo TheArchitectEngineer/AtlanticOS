@@ -11,7 +11,7 @@
     "commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
     "tag": "xnu-12377.1.9",
     "license": "APSL-2.0 plus per-file notices",
-    "use": "pristine upstream audit snapshot; original laboratory patches compile five real ARM64 units in a separate checkout, not linked or executed"
+    "use": "pristine upstream audit snapshot; genuine ARM64 laboratory units compiled in a separate patched checkout, not linked or executed"
   },
   "g20_reference": {
     "url": "https://github.com/h0nda1337/Moto-G20_EDK2_UEFI.git",
