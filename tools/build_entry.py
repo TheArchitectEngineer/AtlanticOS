@@ -42,7 +42,7 @@ def main():
         commands.append([Path(command[0]).name,*[str(s).replace(str(ROOT),'<ROOT>') for s in command[1:]]])
         logs.append(r.stdout+r.stderr)
         if r.returncode:
-            (out/'build.log').write_text('\n'.join(logs),encoding='utf-8',newline='\n')
+            (out/'build.log').write_text('\n'.join(log for log in logs if log),encoding='utf-8',newline='\n')
             print(r.stdout+r.stderr)
             raise SystemExit(r.returncode)
     objects=[]
@@ -70,7 +70,7 @@ def main():
             'commands':commands,'image_file_bytes':len(data),'image_memory_bytes':memory_bytes,
             'image_sha256':hashlib.sha256(data).hexdigest(),'elf_sha256':hashlib.sha256(raw_elf).hexdigest(),
             'phone_packaged':False,'xnu_linked':False,'bootshim_used':False}
-    (out/'build.log').write_text('\n'.join(logs),encoding='utf-8',newline='\n')
+    (out/'build.log').write_text('\n'.join(log for log in logs if log),encoding='utf-8',newline='\n')
     (out/'build.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps(report,indent=2))
 
