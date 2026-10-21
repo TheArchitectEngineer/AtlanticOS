@@ -6,6 +6,7 @@
 #endif
 struct AtlanticEntryCapture atlantic_entry_capture;
 extern uint8_t __image_start[], __image_memory_end[];
+extern uint8_t __stack_bottom[], __stack_top[], atl_entry_vectors[];
 
 static void line(const char *text) { (void)atlantic_early_platform.write(text); }
 static void hex(const char *key, uint64_t value) {
@@ -51,6 +52,31 @@ void atl_entry_main(const struct AtlanticEntryCapture *c) {
     hex("DTB_BYTES=",dt.total_bytes);
     hex("DTB_RESERVATIONS=",dt.reservation_count);
     if (!c->cntfrq) { line("FAIL:TIMER_FREQUENCY\n"); finish(1); }
+    if (atl_entry_prepare_el1()!=1) { line("FAIL:EL1_TRANSITION\n"); finish(1); }
+    uint64_t el, sctlr, daif, stack, vectors, freq, first, last;
+    __asm__ volatile("mrs %0, CurrentEL" : "=r"(el));
+    __asm__ volatile("mrs %0, SCTLR_EL1" : "=r"(sctlr));
+    __asm__ volatile("mrs %0, DAIF" : "=r"(daif));
+    __asm__ volatile("mov %0, sp" : "=r"(stack));
+    __asm__ volatile("mrs %0, VBAR_EL1" : "=r"(vectors));
+    __asm__ volatile("mrs %0, CNTFRQ_EL0" : "=r"(freq));
+    __asm__ volatile("isb; mrs %0, CNTVCT_EL0" : "=r"(first));
+    for (unsigned i=0;i<10000;++i) __asm__ volatile("nop");
+    __asm__ volatile("isb; mrs %0, CNTVCT_EL0" : "=r"(last));
+    hex("EXECUTION_EL=",el>>2); hex("EL1_SCTLR=",sctlr);
+    hex("EL1_DAIF=",daif); hex("EL1_SP=",stack); hex("EL1_VBAR=",vectors);
+    hex("EL1_COUNTER_DELTA=",last-first);
+    if (el!=4 || (sctlr&0x1005) || (daif&0x3c0)!=0x3c0 || (stack&15) ||
+        stack<(uint64_t)(uintptr_t)__stack_bottom || stack>(uint64_t)(uintptr_t)__stack_top ||
+        vectors!=(uint64_t)(uintptr_t)atl_entry_vectors || freq!=c->cntfrq || last<=first) {
+        line("FAIL:EL1_STATE\n"); finish(1);
+    }
+    line("PASS:EL1_STACK_VECTORS_COUNTER\n");
+#if ATL_TEST_EL1_TRAP
+    line("TEST:EL1_BRK_EXPECTED\nNO_XNU_BOOT_CLAIM\n");
+    __asm__ volatile("brk #0xa71");
+    line("FAIL:BRK_RETURNED\n"); finish(1);
+#endif
     line("PASS:ENTRY_CAPTURE_DTB_TIMER\nNO_XNU_BOOT_CLAIM\n");
     finish(0);
 }

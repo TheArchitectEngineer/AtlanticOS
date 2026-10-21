@@ -19,5 +19,7 @@ extern const struct AtlanticEarlyPlatform atlantic_early_platform;
 extern struct AtlanticEntryCapture atlantic_entry_capture;
 void atl_entry_main(const struct AtlanticEntryCapture *capture);
 void atl_entry_exception(uint64_t esr, uint64_t elr, uint64_t far);
+/* Laboratory BSP provider only; hardware BSPs must establish their own contract. */
+unsigned atl_entry_prepare_el1(void);
 _Static_assert(sizeof(struct AtlanticEntryCapture) == 112, "assembly capture ABI");
 #endif

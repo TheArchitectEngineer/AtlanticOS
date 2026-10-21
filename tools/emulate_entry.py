@@ -42,9 +42,17 @@ def main():
             raise SystemExit(f'QEMU EL{el} timed out; no successful entry claim')
         print(log)
         observed=re.search(r'INITIAL_EL=0x([0-9A-F]+)',log)
-        if r.returncode or not observed or int(observed[1],16)!=el or 'PASS:ENTRY_CAPTURE_DTB_TIMER' not in log or 'XNU_NOT_LINKED' not in log:
+        execution=re.search(r'EXECUTION_EL=0x([0-9A-F]+)',log)
+        is_trap=meta.get('probe')=='el1-trap'
+        expected_exit=1 if is_trap else 0
+        esr=re.search(r'ESR=0x([0-9A-F]+)',log)
+        result_ok = (esr and int(esr[1],16)==0xf2000a71 and 'TEST:EL1_BRK_EXPECTED' in log
+                     and 'ATLANTIC_ENTRY_EXCEPTION' in log) if is_trap else 'PASS:ENTRY_CAPTURE_DTB_TIMER' in log
+        if (r.returncode!=expected_exit or not observed or int(observed[1],16)!=el or not execution or int(execution[1],16)!=1
+            or 'PASS:EL1_STACK_VECTORS_COUNTER' not in log or not result_ok or 'FAIL:' in log or 'XNU_NOT_LINKED' not in log):
             raise SystemExit(f'EL{el} preflight failed (exit={r.returncode})')
-        records.append({'expected_el':el,'observed_el':int(observed[1],16),'exit_code':r.returncode,
+        records.append({'expected_el':el,'observed_el':int(observed[1],16),'execution_el':int(execution[1],16),
+                        'expected_exit_code':expected_exit,'exit_code':r.returncode,'probe':meta.get('probe'),
                         'log_sha256':hashlib.sha256((folder/f'qemu-el{el}.log').read_bytes()).hexdigest(),
                         'command':[Path(command[0]).name,*[s.replace(str(ROOT),'<ROOT>') for s in command[1:]]]})
     report={'schema_version':1,'label':'EMULATED','scope':'ORIGINAL_ARM64_ENTRY_ONLY_NOT_XNU_NOT_G20',

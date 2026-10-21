@@ -14,7 +14,7 @@
 | Inspector offline de firmware | HOST_TESTED | 12 tests adicionales (suite 66), PAC 64 bits, boot v0-v2, DT tables y gzip/newc acotados; sin IO de teléfono |
 | 1: configuración | HOST_TESTED parcial | validación versionada y logs en sesión; prioridad/destino/timeout/red bloqueados en defaults seguros |
 | 1: RAM | HOST_TESTED solo proceso host | informe RSS/tracemalloc; objetivo firmware sin medir |
-| 2: entry ARM64 común de laboratorio | EMULATED / BUILT_ARM64 | preflight original en QEMU EL1/EL2, captura y FDT; XNU_NOT_LINKED |
+| 2: entry ARM64 de laboratorio | EMULATED / BUILT_ARM64 | preflight original, EL1/EL2→EL1h, stack, FDT, contador y BRK; XNU_NOT_LINKED |
 | 2: entry G20 y ejecución bootstrap XNU real | UNIMPLEMENTED | cinco objetos compilados no acreditan arranque; entry XNU/pmap/Platform Expert pendientes |
 | Herramienta oficial MIG | HOST_TESTED | MIG_HOST_BUILD.md: binario host genuino, ABI de metadata y 20 archivos de interfaces generados; sin compilar esos C ni enlazar kernel |
 | Port XNU incremental de laboratorio | BUILT_ARM64 | XNU_LAB_BUILD.md: startup/sched_prim/clock/vm_init/vm_kern reales, ABI y guards comprobados; thread/vm_map fallan; sin enlace ni ejecución |

@@ -30,6 +30,11 @@ No se reemplazan esas operaciones por macros ni se ocultan los errores.
 En Ubuntu se instala además libclang-rt-19-dev explícitamente: contiene el
 runtime ASan/UBSan del generador host y no forma parte del kernel objetivo.
 
+La [CI del commit daaed8e](https://github.com/h0nda1337/AtlanticOS/actions/runs/39605850951)
+aprobó generación y las cinco compilaciones con Ubuntu Clang 19.1.1.
+La evidencia local usa Debian Clang 19.1.7. Ambos resultados son de objetos
+sin enlace; esa CI no intenta las dos unidades que aún fallan en el probe.
+
 El driver comprueba commit y limpieza de xnu-upstream, crea un checkout separado
 LF bajo work/xnu-lab-sources y aplica la serie con Git al índice. Verifica
 hashes de parches, preimágenes, postimágenes y diferencias esperadas. Rechaza

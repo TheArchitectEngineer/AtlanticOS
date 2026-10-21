@@ -23,7 +23,18 @@ atl_entry_start:
     b.eq 1f
     cmp x23, #8
     b.ne atl_entry_halt
-1:  msr DAIFSet, #15
+1:  /* Reject unknown translation/cache state before touching stack or BSS. */
+    cmp x23, #8
+    b.eq .Lread_initial_el2
+    mrs x26, SCTLR_EL1
+    b .Lcheck_initial_sctlr
+.Lread_initial_el2:
+    mrs x26, SCTLR_EL2
+.Lcheck_initial_sctlr:
+    tbnz x26, #0, atl_entry_halt
+    tbnz x26, #2, atl_entry_halt
+    tbnz x26, #12, atl_entry_halt
+    msr DAIFSet, #15
     msr SPSel, #1
     adrp x4, __stack_top
     add x4, x4, :lo12:__stack_top

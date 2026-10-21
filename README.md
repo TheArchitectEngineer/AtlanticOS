@@ -19,7 +19,8 @@ El [inventario propio del G20 del 2026-10-20](docs/DEVICE_INTAKE_20261020.md)
 confirma identidad Android y desbloqueo por ADB, sin ejecutar firmware AtlanticOS.
 La [meta activa](docs/ACTIVE_GOAL.md) prioriza XNU real y handoff EDK2; AtlanticBIOS
 completo, VNC y Wi-Fi quedan para después. El [preflight ARM64](docs/ENTRY_LAB.md)
-se ejecuta en QEMU EL1/EL2, con BSP propio y sin XNU enlazado.
+se ejecuta en QEMU desde EL1/EL2 y continúa en EL1h, con BSP propio, stack,
+vectores y excepciones comprobados; sin XNU enlazado.
 
 El [análisis offline del firmware](docs/STOCK_FIRMWARE_ANALYSIS.md) identifica
 boot header v2, DTB y overlays de un paquete con fingerprint coincidente.

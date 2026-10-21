@@ -7,7 +7,7 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 
 | Componente | Estado comprobado | Ejecución |
 |---|---|---|
-| Entry ARM64 original | QEMU EL1/EL2, preflight sin XNU | EMULATED; no G20 |
+| Entry ARM64 original | QEMU EL1/EL2→EL1h, stack/contador/vectores y BRK | EMULATED; no XNU ni G20 |
 | MIG y config oficiales | Compilados como herramientas host | HOST_TESTED |
 | startup.c / kernel_bootstrap | Objeto AArch64 Mach-O, símbolos reales | Sin enlazar ni ejecutar |
 | sched_prim.c / scheduler | Objeto AArch64 Mach-O compilado | No ejecutado |
@@ -15,7 +15,7 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 | vm_init.c / bootstrap VM | Objeto AArch64 Mach-O compilado | Sin VM inicializada |
 | vm_kern.c / allocator kernel | Objeto AArch64 Mach-O compilado | Sin asignaciones ejecutadas |
 | thread.c y vm_map.c | Probes fallidos, diagnósticos conservados | Pendientes |
-| Entry XNU, EL2→EL1, pmap y contexto | Sin construir/enlazar como conjunto | UNIMPLEMENTED |
+| Entry XNU, pmap y contexto | Sin construir/enlazar como conjunto | UNIMPLEMENTED |
 | Platform Expert y BSP G20 | Sin drivers AtlanticOS funcionales | UNIMPLEMENTED |
 | Handoff EDK2 y RAM física | Sin prueba | UNIMPLEMENTED / UNMEASURED |
 

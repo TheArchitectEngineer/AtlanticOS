@@ -1,0 +1,11 @@
+{
+  "audit_date": "2026-10-21",
+  "scope": "ORIGINAL_QEMU_ENTRY_PREPARATION_ONLY_NO_XNU_OR_G20",
+  "tools": {
+    "tools/build_entry.py": "6e023b1cdd5a2f5fed3d83c168a033e7f668622d08d6162d6d7329fcd02e8dbf",
+    "tools/emulate_entry.py": "af0477dd4d8714726c08b17fe0bfb2f9f201b6ba061d271a643e6cdc78453419"
+  },
+  "physical_phone_accessed": false,
+  "xnu_executed": false,
+  "resident_xnu_ram_measured": false
+}

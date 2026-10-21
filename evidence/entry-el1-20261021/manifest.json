@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-21",
+  "label": "EMULATED",
+  "scope": "ORIGINAL_QEMU_EL1_EL2_TO_EL1_STACK_COUNTER_AND_EXPECTED_BRK_ONLY_NO_XNU_NO_G20",
+  "artifacts": [
+    {
+      "path": "el1-trap/build.json",
+      "sha256": "398384c0622642bcf7097b6f675a5145f3ede47217d02f833c3e4e2306270c18"
+    },
+    {
+      "path": "el1-trap/build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "el1-trap/emulation.json",
+      "sha256": "a8b0d3ab1123312bfa8c4b8cd12a3912e78adb574d49c06e3fb41fabd904d694"
+    },
+    {
+      "path": "el1-trap/entry.bin",
+      "sha256": "6cb8c5b3cb4dcd137433314539ab54a5fd31eb407220c2088289ebeead00ca9d"
+    },
+    {
+      "path": "el1-trap/entry.elf",
+      "sha256": "5786ab175bbb77912ac0c3ba6b3230891cb7bc367527506ca3e88d7008cf98ab"
+    },
+    {
+      "path": "el1-trap/qemu-el1.log",
+      "sha256": "44f8a8ae7a89846f6b3ca8cf38897e2ec65243e66c49330c897f70e76e524161"
+    },
+    {
+      "path": "el1-trap/qemu-el2.log",
+      "sha256": "350567a64a76940dee9bdf459c68b1063c2828fc030fdf60b9e116ef2b9015c8"
+    },
+    {
+      "path": "normal/build.json",
+      "sha256": "d5e4690e8dc2f87c5f6cb87bedc99a773f6862e62fefa115135986cbf733c55c"
+    },
+    {
+      "path": "normal/build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "normal/emulation.json",
+      "sha256": "a764f9cdde1fe336026bfc25c56c6d92a47e0ec6ad48801e1ec4d2357dffde76"
+    },
+    {
+      "path": "normal/entry.bin",
+      "sha256": "36def659c9fdf6a110ab0996ad2af3699abbd6338834b6964271d6bbc88d1fa2"
+    },
+    {
+      "path": "normal/entry.elf",
+      "sha256": "0fae50d0d6ad049b7d0fe0060a99f5e712961f3a905f0913055b708dca0260b1"
+    },
+    {
+      "path": "normal/qemu-el1.log",
+      "sha256": "2c755c54d8825f2d7c8fe5fb6e42d056fa634597760baa93a42f3f4bc10ab13d"
+    },
+    {
+      "path": "normal/qemu-el2.log",
+      "sha256": "a7923ff72642ae8247aa8daf017157f215289a46ddc8bbca9bd9f84135a5417d"
+    },
+    {
+      "path": "provenance.json",
+      "sha256": "c2f3d5b62f79ff30996e5943eb57d4ba8088b2e1fa8a5b2ddabd728f70ebdbca"
+    }
+  ]
+}

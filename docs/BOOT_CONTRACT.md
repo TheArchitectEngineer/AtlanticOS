@@ -20,7 +20,10 @@ La evidencia externa sugiere EL2 con MMU/I/D-cache OFF ([S07/S17](SOURCE_INDEX.m
 En cada nueva imagen medirlo de nuevo. No suponer que EL2 permanece disponible
 si un bootloader diferente entra en EL1. EL2→EL1, HCR, SPSR, timers y GIC deben
 tener transiciones explícitas, barreras y vectores válidos; no existe código
-AtlanticOS que las implemente todavía. Secure world y EL3 quedan bajo OEM.
+G20 que las implemente todavía. El [laboratorio QEMU](ENTRY_LAB.md) ya comprueba
+EL2→EL1, stack, contador y excepciones con código original específico de ese
+BSP; faltan MMU, IRQ/GIC y bootstrap XNU integrado. Secure world y EL3 quedan
+bajo OEM.
 
 Validar FDT por magic, totalsize acotado, offsets/alineación y terminadores.
 Copiarlo a RAM propia antes de liberar memoria del loader. Extraer memory,

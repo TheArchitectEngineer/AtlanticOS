@@ -13,13 +13,15 @@ import subprocess
 ROOT=Path(__file__).resolve().parents[1]
 SOURCES=['atlantic-entry/entry.S','atlantic-entry/preflight.c','atlantic-entry/link.ld',
          'atlantic-core/fdt.c','include/atlantic/entry.h','include/atlantic/fdt.h',
-         'platforms/qemu-virt/early.c','platforms/qemu-virt/board.json']
+         'platforms/qemu-virt/early.c','platforms/qemu-virt/board.json',
+         'platforms/qemu-virt/el1.S']
 
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--board',choices=['qemu-virt'],default='qemu-virt')
     parser.add_argument('--output',type=Path,default=ROOT/'work/entry-qemu')
+    parser.add_argument('--probe',choices=['normal','el1-trap'],default='normal')
     args=parser.parse_args()
     cc,ld,objcopy=(shutil.which(x) for x in ['clang','ld.lld','llvm-objcopy'])
     if not all((cc,ld,objcopy)):
@@ -29,12 +31,12 @@ def main():
         raise SystemExit('Build output must remain under work/')
     out.mkdir(parents=True,exist_ok=True)
     hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCES}
-    build_id=hashlib.sha256(json.dumps(hashes,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    build_id=hashlib.sha256(json.dumps({'sources':hashes,'probe':args.probe},sort_keys=True,separators=(',',':')).encode()).hexdigest()
     flags=['--target=aarch64-none-elf','-mcpu=cortex-a57','-mgeneral-regs-only',
            '-std=c11','-ffreestanding','-fno-builtin','-fno-stack-protector',
            '-fno-unwind-tables','-fno-asynchronous-unwind-tables','-O2','-g',
            '-Wall','-Wextra','-Werror','-Iinclude',f'-DATL_BUILD_ID="{build_id}"',
-           '-ffile-prefix-map='+str(ROOT)+'=.']
+           '-ffile-prefix-map='+str(ROOT)+'=.', '-DATL_TEST_EL1_TRAP='+str(int(args.probe=='el1-trap'))]
     commands=[]
     logs=[]
     def run(command):
@@ -46,7 +48,7 @@ def main():
             print(r.stdout+r.stderr)
             raise SystemExit(r.returncode)
     objects=[]
-    for source in [SOURCES[0],SOURCES[1],SOURCES[3],SOURCES[6]]:
+    for source in [SOURCES[0],SOURCES[1],SOURCES[3],SOURCES[6],SOURCES[8]]:
         obj=out/(Path(source).stem+'.o')
         run([cc,*flags,'-c',source,'-o',str(obj)])
         objects.append(str(obj))
@@ -64,7 +66,7 @@ def main():
     if raw_elf[:6]!=b'\x7fELF\x02\x01' or struct.unpack_from('<H',raw_elf,18)[0]!=183:
         raise SystemExit('Invalid AArch64 ELF')
     report={'schema_version':1,'label':'BUILT_ARM64','scope':'ORIGINAL_ENTRY_PREFLIGHT_ONLY_XNU_NOT_LINKED',
-            'board_id':'qemu,virt-laboratory','build_id':build_id,'sources':hashes,
+            'board_id':'qemu,virt-laboratory','build_id':build_id,'sources':hashes,'probe':args.probe,
             'compiler':subprocess.check_output([cc,'--version'],text=True).splitlines()[0],
             'linker':subprocess.check_output([ld,'--version'],text=True).strip(),
             'commands':commands,'image_file_bytes':len(data),'image_memory_bytes':memory_bytes,
