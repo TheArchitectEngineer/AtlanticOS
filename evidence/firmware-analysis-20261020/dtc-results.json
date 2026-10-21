@@ -1,0 +1,32 @@
+[
+  {
+    "input": "boot-dtb-0.dtb",
+    "exit_code": 0,
+    "warning_lines": 279
+  },
+  {
+    "input": "dtbo-0.dtb",
+    "exit_code": 0,
+    "warning_lines": 175
+  },
+  {
+    "input": "dtbo-1.dtb",
+    "exit_code": 0,
+    "warning_lines": 175
+  },
+  {
+    "input": "dtbo-2.dtb",
+    "exit_code": 0,
+    "warning_lines": 143
+  },
+  {
+    "input": "dtbo-3.dtb",
+    "exit_code": 0,
+    "warning_lines": 187
+  },
+  {
+    "input": "dtbo-4.dtb",
+    "exit_code": 0,
+    "warning_lines": 114
+  }
+]

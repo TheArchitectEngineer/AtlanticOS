@@ -24,6 +24,15 @@ build=subprocess.run(command,cwd=ROOT,capture_output=True,text=True,timeout=30)
 if build.returncode:
     print(build.stdout+build.stderr)
     raise SystemExit(build.returncode)
+if sys.platform != 'win32':
+    harness = subprocess.run([cc, *flags, '-D_POSIX_C_SOURCE=200809L',
+                              'tools/fdt_check.c', 'atlantic-core/fdt.c',
+                              '-o', str(out/'fdt-check')],
+                             cwd=ROOT, capture_output=True, text=True, timeout=30)
+    (out/'file-harness-build.log').write_text(harness.stdout+harness.stderr, encoding='utf-8', newline='\n')
+    if harness.returncode:
+        print(harness.stdout+harness.stderr)
+        raise SystemExit(harness.returncode)
 test=subprocess.run([str(exe)],cwd=ROOT,capture_output=True,text=True,timeout=20)
 (out/'test.log').write_text(test.stdout+test.stderr,encoding='utf-8',newline='\n')
 print(test.stdout+test.stderr)

@@ -34,7 +34,7 @@ Las declaraciones del código sin log/foto suficiente se distinguen expresamente
 | Botones Volume/Power GPIO/PMIC y debounce real | UNKNOWN | No BSP físico AtlanticOS | Identificar DT y medir sin adivinar MMIO |
 | Reinicio forzado volvió a Android tras V1 | CONFIRMED, evidencia externa acotada | [S11](SOURCE_INDEX.md#s11), [S19](SOURCE_INDEX.md#s19) | 2026-10-04; foto revisada visualmente y hash validado aquí |
 | Fallback Android tras V4 / con AtlanticOS | UNKNOWN | [S10](SOURCE_INDEX.md#s10): NOT_CHECKED_DURING_PUBLICATION | No generalizar V1 a nueva imagen |
-| Boot header real/version/page size del teléfono nuevo | UNKNOWN | [S04/S15](SOURCE_INDEX.md#s04) solo validan partes del contenedor base | Falta stock exacto; no se descargó wrapper |
+| Boot header/version/page size | CONFIRMED en candidato descargado, UNKNOWN igualdad con teléfono | [Análisis offline](STOCK_FIRMWARE_ANALYSIS.md): v2 / 2048, fingerprint ramdisk coincide | Canal RETBR frente a amxmx; sin lectura de boot original ni verificación de firma OEM |
 | fastboot boot temporal soportado | UNKNOWN | No prueba propia | Requiere teléfono y estudio OEM; no asumir por A/B |
 | Insertar menú bajo Orange State sin bootloader | BLOCKED_BY_BOOTLOADER | Diseño BOOT_CHAIN.md | No hay API demostrada |
 | Upstream XNU identificado y descargado | CONFIRMED, HOST_TESTED de procedencia | [X01-X12](SOURCE_INDEX.md#x01), dependencies.lock.json | xnu-12377.1.9; sin cambios |

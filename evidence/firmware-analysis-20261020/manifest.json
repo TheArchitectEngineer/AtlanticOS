@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-20",
+  "label": "HOST_TESTED",
+  "scope": "OFFLINE_OEM_CANDIDATE_FORMAT_RESEARCH_NO_ATLANTICOS_HARDWARE_EXECUTION",
+  "artifacts": [
+    {
+      "path": "android-return-observation.json",
+      "sha256": "f2b0e4c3adafd2ef6efe9c6ed8d87737ff5bad1955706542d4fe3abed1350c34"
+    },
+    {
+      "path": "device-region-observation.json",
+      "sha256": "5fd259efefcdf7eb26aaf839a85ebd74d7b1328c2585002c1a47714057f4be73"
+    },
+    {
+      "path": "dtc-results.json",
+      "sha256": "4b081a1f01d8d92246930b40b9a93ac50baba2ba13700f1d3792d2f3450075a4"
+    },
+    {
+      "path": "fdt-fixtures.log",
+      "sha256": "996e68cca7fea1b07e81eb8887a99d5c1b0a800315925e00b8059f56123e4aad"
+    },
+    {
+      "path": "fdt-validation.json",
+      "sha256": "b030b9e3f2980b13940f70f9ce891ca6b61e86dca27e906a0e5ccab1f2dc54bd"
+    },
+    {
+      "path": "host-tests.log",
+      "sha256": "e1a64e6a47ce499c33d78e363537b910daddcd88f080cf28ad701954c71471b4"
+    },
+    {
+      "path": "offline-report.json",
+      "sha256": "1dfc72bb364dcd8b63aec8c159911a8056da9f088a6e32db50283e04b696ebcb"
+    },
+    {
+      "path": "provenance.json",
+      "sha256": "ebf8e4562e0d346f938e7fa9f306dff6b4fc2619da7c545e21e201649e2e6052"
+    }
+  ]
+}

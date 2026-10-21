@@ -1,0 +1,14 @@
+{
+  "ro.carrier": {
+    "exit_code": 0,
+    "value": "amxmx"
+  },
+  "ro.boot.carrier": {
+    "exit_code": 0,
+    "value": "amxmx"
+  },
+  "ro.product.name": {
+    "exit_code": 0,
+    "value": "java_retail"
+  }
+}

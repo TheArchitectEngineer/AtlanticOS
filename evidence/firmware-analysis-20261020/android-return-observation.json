@@ -1,0 +1,6 @@
+{
+  "sys.boot_completed": "1",
+  "ro.build.fingerprint": "motorola/java_retail/java:11/RTAS31.68-66-3/66-3:user/release-keys",
+  "ro.boot.slot_suffix": "_a",
+  "device_alias": "g20-465614bbe76d"
+}

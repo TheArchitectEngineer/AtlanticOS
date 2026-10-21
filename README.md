@@ -20,6 +20,10 @@ La [meta activa](docs/ACTIVE_GOAL.md) prioriza XNU real y handoff EDK2; Atlantic
 completo, VNC y Wi-Fi quedan para después. El [preflight ARM64](docs/ENTRY_LAB.md)
 se ejecuta en QEMU EL1/EL2, con BSP propio y sin XNU enlazado.
 
+El [análisis offline del firmware](docs/STOCK_FIRMWARE_ANALYSIS.md) identifica
+boot header v2, DTB y overlays de un paquete con fingerprint coincidente.
+La variante de canal y las firmas OEM siguen pendientes; sus binarios permanecen privados.
+
 ## Reproducir
 
 Python 3.11 o superior, sin paquetes adicionales. Desde la raíz:

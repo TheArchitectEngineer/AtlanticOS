@@ -32,3 +32,4 @@ jobs:
           python3 tools/evidence-validator/validate_evidence.py evidence/device-intake-20261020/adb/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/device-intake-20261020/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/entry-lab-20261020/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/firmware-analysis-20261020/manifest.json

@@ -7,9 +7,11 @@
 | 0: identidad Android y bloqueo de este G20 | CONFIRMED por ADB de solo lectura | DEVICE_INTAKE_20261020.md; variante XT2128-1, fingerprint, slot _a y desbloqueo observados |
 | 0: recorrido OEM Android → bootloader → Android | CONFIRMED por observación USB/ADB | adb reboot bootloader, is-userspace=no, fastboot reboot y mismo fingerprint/slot; no prueba payload fallback |
 | 0: acceso manual a Recovery y bootloader | OBSERVED parcialmente | Recovery confirmado por ADB/ro.bootmode y menú descrito por usuario; posterior is-userspace=no tras selección manual |
-| 0: salida física independiente, metadata A/B y vía temporal | PENDING / UNKNOWN | Retorno realizado por fastboot reboot a petición del usuario; Power no probado; 26 variables fastboot vacías; formato y método temporal pendientes |
+| 0: salida física independiente, metadata A/B y vía temporal | PENDING / UNKNOWN | Retorno realizado por fastboot reboot a petición del usuario; Power no probado; 26 variables fastboot vacías; equivalencia OEM y método temporal pendientes |
+| 0: firmware descargado y formato offline | HOST_TESTED / PARTIAL_MATCH | STOCK_FIRMWARE_ANALYSIS.md: fingerprint coincide, cabecera v2, DTB + cinco overlays; mirror RETBR frente a amxmx, firmas y equivalencia exacta pendientes |
 | 1: política, menú, temporizador, teclas, errores | HOST_TESTED | tests, escenarios y captura en evidence/host |
 | Herramientas de inventario de dispositivo | HOST_TESTED | 8 tests nuevos; suite total 54; evidencia de consultas y límites en evidence/device-intake-20261020 |
+| Inspector offline de firmware | HOST_TESTED | 12 tests adicionales (suite 66), PAC 64 bits, boot v0-v2, DT tables y gzip/newc acotados; sin IO de teléfono |
 | 1: configuración | HOST_TESTED parcial | validación versionada y logs en sesión; prioridad/destino/timeout/red bloqueados en defaults seguros |
 | 1: RAM | HOST_TESTED solo proceso host | informe RSS/tracemalloc; objetivo firmware sin medir |
 | 2: entry ARM64 común de laboratorio | EMULATED / BUILT_ARM64 | preflight original en QEMU EL1/EL2, captura y FDT; XNU_NOT_LINKED |

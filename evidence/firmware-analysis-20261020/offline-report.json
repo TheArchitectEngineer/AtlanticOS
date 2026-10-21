@@ -1,0 +1,519 @@
+{
+  "dialect": "BP_R2.0.1",
+  "bytes": 4838913003,
+  "entry_count": 42,
+  "directory_end": 110484,
+  "entries": [
+    {
+      "index": 0,
+      "id": "FDL2",
+      "name": "fdl2-sign.bin",
+      "offset": 110484,
+      "size": 905380
+    },
+    {
+      "index": 1,
+      "id": "FDL",
+      "name": "fdl1-sign.bin",
+      "offset": 1015864,
+      "size": 59220
+    },
+    {
+      "index": 2,
+      "id": "VBMETA",
+      "name": "vbmeta-sign.img",
+      "offset": 1075084,
+      "size": 1048576
+    },
+    {
+      "index": 3,
+      "id": "DFS",
+      "name": "sharkl5pro_cm4.bin",
+      "offset": 2123660,
+      "size": 1048576
+    },
+    {
+      "index": 4,
+      "id": "EraseMisc",
+      "name": "",
+      "offset": 0,
+      "size": 0
+    },
+    {
+      "index": 5,
+      "id": "BootLogo",
+      "name": "logo.bin",
+      "offset": 3172236,
+      "size": 875378
+    },
+    {
+      "index": 6,
+      "id": "Teecfg",
+      "name": "teecfg-sign.bin",
+      "offset": 4047614,
+      "size": 4420
+    },
+    {
+      "index": 7,
+      "id": "SML",
+      "name": "sml-sign.bin",
+      "offset": 4052034,
+      "size": 63172
+    },
+    {
+      "index": 8,
+      "id": "VBMETA_PRODUCT",
+      "name": "vbmeta_product.img",
+      "offset": 4115206,
+      "size": 4096
+    },
+    {
+      "index": 9,
+      "id": "Fastboot_Logo",
+      "name": "unisoc_FHD_1080_2160.bmp",
+      "offset": 4119302,
+      "size": 3456054
+    },
+    {
+      "index": 10,
+      "id": "Modem_WCN",
+      "name": "EXEC_KERNEL_IMAGE-sign.bin",
+      "offset": 7575356,
+      "size": 948292
+    },
+    {
+      "index": 11,
+      "id": "CONFILE",
+      "name": "",
+      "offset": 0,
+      "size": 0
+    },
+    {
+      "index": 12,
+      "id": "EraseSysdumpdb",
+      "name": "",
+      "offset": 0,
+      "size": 0
+    },
+    {
+      "index": 13,
+      "id": "VBMETA_VENDOR",
+      "name": "vbmeta_vendor.img",
+      "offset": 8523648,
+      "size": 4096
+    },
+    {
+      "index": 14,
+      "id": "PhaseCheck",
+      "name": "",
+      "offset": 0,
+      "size": 0
+    },
+    {
+      "index": 15,
+      "id": "EraseMetadata",
+      "name": "",
+      "offset": 0,
+      "size": 0
+    },
+    {
+      "index": 16,
+      "id": "DSP_LTE_CDMA",
+      "name": "sharkl5pro_pubcp_CDMA_DSP.bin",
+      "offset": 8527744,
+      "size": 1048576
+    },
+    {
+      "index": 17,
+      "id": "Super",
+      "name": "super.img",
+      "offset": 9576320,
+      "size": 4621177868
+    },
+    {
+      "index": 18,
+      "id": "Odmko",
+      "name": "odmko.img",
+      "offset": 4630754188,
+      "size": 258172
+    },
+    {
+      "index": 19,
+      "id": "Socko",
+      "name": "socko.img",
+      "offset": 4631012360,
+      "size": 59121788
+    },
+    {
+      "index": 20,
+      "id": "FLASH_LTE",
+      "name": "",
+      "offset": 0,
+      "size": 0
+    },
+    {
+      "index": 21,
+      "id": "EraseUBOOTLOG",
+      "name": "",
+      "offset": 0,
+      "size": 0
+    },
+    {
+      "index": 22,
+      "id": "BOOT",
+      "name": "boot.img",
+      "offset": 4690134148,
+      "size": 67108864
+    },
+    {
+      "index": 23,
+      "id": "Modem_LTE_DELTANV",
+      "name": "sharkl5pro_pubcp_customer_deltanv.bin",
+      "offset": 4757243012,
+      "size": 1671
+    },
+    {
+      "index": 24,
+      "id": "EraseUBOOT",
+      "name": "",
+      "offset": 0,
+      "size": 0
+    },
+    {
+      "index": 25,
+      "id": "DSP_LTE_LTE",
+      "name": "sharkl5pro_pubcp_LTEA_DSP.bin",
+      "offset": 4757244683,
+      "size": 20971520
+    },
+    {
+      "index": 26,
+      "id": "NV_LTE",
+      "name": "sharkl5pro_pubcp_customer_nvitem.bin",
+      "offset": 4778216203,
+      "size": 884388
+    },
+    {
+      "index": 27,
+      "id": "UserData",
+      "name": "userdata.img",
+      "offset": 4779100591,
+      "size": 2253076
+    },
+    {
+      "index": 28,
+      "id": "VBMETA_SYSTEM_EXT",
+      "name": "vbmeta_system_ext.img",
+      "offset": 4781353667,
+      "size": 4096
+    },
+    {
+      "index": 29,
+      "id": "SPLLoader",
+      "name": "u-boot-spl-16k-sign.bin",
+      "offset": 4781357763,
+      "size": 62772
+    },
+    {
+      "index": 30,
+      "id": "DSP_LTE_GGE",
+      "name": "sharkl5pro_pubcp_DM_DSP.bin",
+      "offset": 4781420535,
+      "size": 10485760
+    },
+    {
+      "index": 31,
+      "id": "DSP_LTE_AG",
+      "name": "sharkl5pro_pubcp_AGCP_DSP.bin",
+      "offset": 4791906295,
+      "size": 6291456
+    },
+    {
+      "index": 32,
+      "id": "Persist",
+      "name": "persist.img",
+      "offset": 4798197751,
+      "size": 2097152
+    },
+    {
+      "index": 33,
+      "id": "Trustos",
+      "name": "tos-sign.bin",
+      "offset": 4800294903,
+      "size": 2382772
+    },
+    {
+      "index": 34,
+      "id": "Cache",
+      "name": "cache.img",
+      "offset": 4802677675,
+      "size": 45132
+    },
+    {
+      "index": 35,
+      "id": "VBMETA_SYSTEM",
+      "name": "vbmeta_system.img",
+      "offset": 4802722807,
+      "size": 4096
+    },
+    {
+      "index": 36,
+      "id": "DTBO",
+      "name": "dtbo.img",
+      "offset": 4802726903,
+      "size": 8388608
+    },
+    {
+      "index": 37,
+      "id": "Modem_LTE",
+      "name": "SC9600_sharkl5pro_pubcp_modem.dat",
+      "offset": 4811115511,
+      "size": 26214400
+    },
+    {
+      "index": 38,
+      "id": "UBOOTLoader",
+      "name": "u-boot-sign.bin",
+      "offset": 4837329911,
+      "size": 905380
+    },
+    {
+      "index": 39,
+      "id": "ProdNV",
+      "name": "prodnv.img",
+      "offset": 4838235291,
+      "size": 45132
+    },
+    {
+      "index": 40,
+      "id": "Modem_GNSS",
+      "name": "gnssmodem-sign.bin",
+      "offset": 4838280423,
+      "size": 595828
+    },
+    {
+      "index": 41,
+      "id": "",
+      "name": "p352.xml",
+      "offset": 4838876251,
+      "size": 36752
+    }
+  ],
+  "pac_internal_crc": "NOT_IMPLEMENTED",
+  "oem_authentication": "NOT_VERIFIED",
+  "label": "HOST_TESTED",
+  "scope": "OFFLINE_DOWNLOADED_FIRMWARE_ONLY",
+  "firmware_executed": false,
+  "phone_accessed": false,
+  "source_path_published": false,
+  "extracted": [
+    {
+      "index": 2,
+      "id": "VBMETA",
+      "name": "vbmeta-sign.img",
+      "offset": 1075084,
+      "size": 1048576,
+      "sha256": "19214ce314891f89420e067fea3ecc6dc38c041aff751f99b05f3f0ddfee90c2"
+    },
+    {
+      "index": 22,
+      "id": "BOOT",
+      "name": "boot.img",
+      "offset": 4690134148,
+      "size": 67108864,
+      "sha256": "4c9401e83db54ab14f2cf7a548e12b018165f8aeb25074d3e182cb4f64762d0f",
+      "boot": {
+        "header_version": 2,
+        "header_size": 1660,
+        "page_size": 2048,
+        "os_version": "11.0.0",
+        "patch_month": "2023-03",
+        "tags_header_field": 256,
+        "sections": [
+          {
+            "name": "kernel",
+            "offset": 2048,
+            "size": 19017744,
+            "header_load_field": 32768,
+            "sha256": "dd836ba33dc0fe4eae9503f3a5e3a826924226daaa592670bd4b5db48f40f443",
+            "prefix_hex": "00c03814000000000000080000000000"
+          },
+          {
+            "name": "ramdisk",
+            "offset": 19021824,
+            "size": 9184020,
+            "header_load_field": 88080384,
+            "sha256": "7d9263c5e793d7ab1d9ec20747a6115b0bb79551ed891dee0e1059822178f8d5",
+            "prefix_hex": "1f8b0800000000000003ec7d099c2355"
+          },
+          {
+            "name": "second",
+            "offset": 28207104,
+            "size": 0,
+            "header_load_field": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "prefix_hex": ""
+          },
+          {
+            "name": "recovery_dtbo",
+            "offset": 28207104,
+            "size": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "prefix_hex": ""
+          },
+          {
+            "name": "dtb",
+            "offset": 28207104,
+            "size": 155425,
+            "header_load_field": 32505856,
+            "sha256": "621effd73a3838aff199a520536c14dd6c3e7fd2b90bb06269991b1a713adf78",
+            "prefix_hex": "d7b7ab1e00025f210000002000000020"
+          }
+        ],
+        "standard_sections_end": 28362752,
+        "trailing_bytes": 38746112,
+        "load_fields_interpretation": "HEADER_VALUES_ONLY_NOT_RUNTIME_ADDRESSES"
+      },
+      "ramdisk_identity": {
+        "unpacked_bytes": 21113600,
+        "properties": [
+          {
+            "file": "prop.default",
+            "sha256": "118d3631de6fd4a2341055509245565777c3690f6d24b982be67ac8c4e84870a",
+            "values": {
+              "ro.build.id": "RTAS31.68-66-3",
+              "ro.build.version.incremental": "66-3",
+              "ro.build.version.security_patch": "2023-03-01",
+              "ro.build.fingerprint": "motorola/java_retail/java:11/RTAS31.68-66-3/66-3:user/release-keys",
+              "ro.bootimage.build.fingerprint": "motorola/java_retail/java:11/RTAS31.68-66-3/66-3:user/release-keys",
+              "ro.carrier": "unknown"
+            }
+          }
+        ],
+        "archive_entries_executed_or_installed": false
+      },
+      "boot_dt_table": {
+        "total_size": 155425,
+        "page_size": 2048,
+        "version": 0,
+        "entries": [
+          {
+            "index": 0,
+            "offset": 64,
+            "size": 155361,
+            "id": 0,
+            "revision": 0,
+            "custom": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "sha256": "0f2d1d69744410c3fc6b852514522c6df17e25f6ba312d3f3c61a1e5b5536d75"
+          }
+        ]
+      }
+    },
+    {
+      "index": 36,
+      "id": "DTBO",
+      "name": "dtbo.img",
+      "offset": 4802726903,
+      "size": 8388608,
+      "sha256": "8f58093611e6512cafee23c6cf4fed3b6f730386068374926617b0ab718ae55f",
+      "dt_table": {
+        "total_size": 349433,
+        "page_size": 2048,
+        "version": 0,
+        "entries": [
+          {
+            "index": 0,
+            "offset": 192,
+            "size": 98783,
+            "id": 0,
+            "revision": 0,
+            "custom": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "sha256": "771d213499c37ed82fc525c315f1c2db0ebbd36fbf5cfad3d67845de95ba6525"
+          },
+          {
+            "index": 1,
+            "offset": 98975,
+            "size": 92108,
+            "id": 0,
+            "revision": 0,
+            "custom": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "sha256": "5ed3d5e141c3f14a92a15ecf0f67d31c8b048de40b13c7c4d2b1fd8e155ae779"
+          },
+          {
+            "index": 2,
+            "offset": 191083,
+            "size": 32921,
+            "id": 0,
+            "revision": 0,
+            "custom": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "sha256": "31dc25060caa072429deacacb1487e07ebde3a147e654b8701feddc93a37c8be"
+          },
+          {
+            "index": 3,
+            "offset": 224004,
+            "size": 94347,
+            "id": 0,
+            "revision": 0,
+            "custom": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "sha256": "1a3d9c7f7f3b331f4b8429ba8ac2a08c49a6e875fb5f75af8041a447801a3171"
+          },
+          {
+            "index": 4,
+            "offset": 318351,
+            "size": 31082,
+            "id": 0,
+            "revision": 0,
+            "custom": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "sha256": "23de72553d3d8d3e499146c2a5000d6dc69faf14efbf9e8fdee5d3258cd03e2f"
+          }
+        ]
+      }
+    },
+    {
+      "index": 38,
+      "id": "UBOOTLoader",
+      "name": "u-boot-sign.bin",
+      "offset": 4837329911,
+      "size": 905380,
+      "sha256": "48c7f8d0169b9ba23ea16db1bc3a9878e7c7a1a153ae7f8b471684d177dcb07e"
+    },
+    {
+      "index": 41,
+      "id": "",
+      "name": "p352.xml",
+      "offset": 4838876251,
+      "size": 36752,
+      "sha256": "c4d3d76c6d8f3c53e6f1880fc94e16736aa8dbdf3da2430e76668631f343d068"
+    }
+  ]
+}

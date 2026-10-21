@@ -1,0 +1,30 @@
+{
+  "timestamp_utc": "2026-10-21T02:35:04.452969+00:00",
+  "download_url": "https://drive.usercontent.google.com/download?id=1Iei_uO5gcSJtGcebjSLWyXb-Am-HYtVH&export=download&confirm=t",
+  "discovery_page": "https://www.stockrom.net/2023/03/xt2128-1-retbr-11r-rtas31-68-66-3.html",
+  "source_kind": "THIRD_PARTY_MIRROR",
+  "cryptographic_oem_authentication": "NOT_VERIFIED",
+  "device_region_match": "NOT_ESTABLISHED_DEVICE_AMXMX_MIRROR_RETBR",
+  "device_build_match": "RAMDISK_FINGERPRINT_MATCHES_ADB_OBSERVATION",
+  "firmware_executed": false,
+  "phone_written": false,
+  "zip_bytes": 2443730615,
+  "zip_sha256": "27b7a4050b3d6821f46934e1dbb13442d2e1ffe7921bc3c5d3677394942d5489",
+  "zip_entries": [
+    {
+      "name": "P352CE_PVT_11.0_64B_CFC_68-66-3.01-01.pac",
+      "bytes": 4838913003,
+      "crc32": "ea39d0af"
+    },
+    {
+      "name": "_stockrom.net_firmwares_tutoriais.url",
+      "bytes": 125,
+      "crc32": "57877679"
+    }
+  ],
+  "pac_bytes": 4838913003,
+  "pac_sha256": "aa131a143dd5cb448012bb318d271e6f425df1207b8bd1771455d2a8d4b0eb44",
+  "zip_pac_crc_check": "PASS",
+  "label": "HOST_TESTED",
+  "scope": "DOWNLOADED_CANDIDATE_NOT_A_DEVICE_BACKUP"
+}

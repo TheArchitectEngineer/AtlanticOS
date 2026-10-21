@@ -1,0 +1,78 @@
+{
+  "label": "HOST_TESTED",
+  "scope": "SIX_DOWNLOADED_DT_BLOBS_WITH_ORIGINAL_C_PARSER_ONLY",
+  "compiler": "Debian clang 19.1.7",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "phone_accessed": false,
+  "results": [
+    {
+      "file": "boot-dtb-0.dtb",
+      "sha256": "0f2d1d69744410c3fc6b852514522c6df17e25f6ba312d3f3c61a1e5b5536d75",
+      "exit_code": 0,
+      "result": {
+        "parser_status": 0,
+        "input_bytes": 155361,
+        "scope": "HOST_FILE_ONLY"
+      },
+      "stderr": ""
+    },
+    {
+      "file": "dtbo-0.dtb",
+      "sha256": "771d213499c37ed82fc525c315f1c2db0ebbd36fbf5cfad3d67845de95ba6525",
+      "exit_code": 0,
+      "result": {
+        "parser_status": 0,
+        "input_bytes": 98783,
+        "scope": "HOST_FILE_ONLY"
+      },
+      "stderr": ""
+    },
+    {
+      "file": "dtbo-1.dtb",
+      "sha256": "5ed3d5e141c3f14a92a15ecf0f67d31c8b048de40b13c7c4d2b1fd8e155ae779",
+      "exit_code": 0,
+      "result": {
+        "parser_status": 0,
+        "input_bytes": 92108,
+        "scope": "HOST_FILE_ONLY"
+      },
+      "stderr": ""
+    },
+    {
+      "file": "dtbo-2.dtb",
+      "sha256": "31dc25060caa072429deacacb1487e07ebde3a147e654b8701feddc93a37c8be",
+      "exit_code": 0,
+      "result": {
+        "parser_status": 0,
+        "input_bytes": 32921,
+        "scope": "HOST_FILE_ONLY"
+      },
+      "stderr": ""
+    },
+    {
+      "file": "dtbo-3.dtb",
+      "sha256": "1a3d9c7f7f3b331f4b8429ba8ac2a08c49a6e875fb5f75af8041a447801a3171",
+      "exit_code": 0,
+      "result": {
+        "parser_status": 0,
+        "input_bytes": 94347,
+        "scope": "HOST_FILE_ONLY"
+      },
+      "stderr": ""
+    },
+    {
+      "file": "dtbo-4.dtb",
+      "sha256": "23de72553d3d8d3e499146c2a5000d6dc69faf14efbf9e8fdee5d3258cd03e2f",
+      "exit_code": 0,
+      "result": {
+        "parser_status": 0,
+        "input_bytes": 31082,
+        "scope": "HOST_FILE_ONLY"
+      },
+      "stderr": ""
+    }
+  ]
+}

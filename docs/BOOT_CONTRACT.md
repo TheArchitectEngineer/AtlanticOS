@@ -5,6 +5,11 @@ bootloader OEM o el EDK2 publicado acepten estos campos. Estado: UNIMPLEMENTED.
 
 ## Entrada OEM a AtlanticOS
 
+El [candidato OEM analizado offline](STOCK_FIRMWARE_ANALYSIS.md) usa cabecera
+Android v2 / página 2048 y lleva una Android DT table dentro de su sección dtb.
+Sus campos de carga no son todavía direcciones runtime demostradas de esta
+unidad. No empaquetar AtlanticOS suponiendo v3 por la existencia de vendor_boot.
+
 Entry AArch64 little endian, fuente propia. Guardar x0-x3, MPIDR y CurrentEL en
 zona propia antes de llamar a C. No usar stack ajeno sin validar. Capturar SCTLR,
 VBAR y registros de traducción del EL disponible; nunca leer registros EL2 desde
