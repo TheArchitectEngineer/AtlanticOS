@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-21",
+  "label": "HOST_TESTED",
+  "scope": "ORIGINAL_COMPILER_BUILD_C_LAYOUT_API_FIXTURES_AND_FAILED_REAL_XNU_THREAD_PROBE_NO_RUNTIME_NO_PHONE",
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "2130ca5d5fcecb05d7b2f86beccb47ad94ded7b605a611e0f9b2c5ee1b6765c4"
+    },
+    {
+      "path": "api-report.json",
+      "sha256": "8ea0c65ec6666782a2a7c7f6b3ada0ea45d40b762b4862e21b276312eb0b1b91"
+    },
+    {
+      "path": "arm64e_rejected.log",
+      "sha256": "a33062d6ad9316f2ef83f57030b2d69e87b65a79d2e4946dae7f511250a38e37"
+    },
+    {
+      "path": "big_endian_rejected.log",
+      "sha256": "a33062d6ad9316f2ef83f57030b2d69e87b65a79d2e4946dae7f511250a38e37"
+    },
+    {
+      "path": "boolean_vector.log",
+      "sha256": "4cadddb18fdb09a29d8883ae101584b07fa305833e9249d7e839f61ad0220790"
+    },
+    {
+      "path": "build_clang-command.json",
+      "sha256": "d36ba7dc374728b60db1ab229502521c90d19e94a0182a0699574a159e04eb15"
+    },
+    {
+      "path": "build_clang.log",
+      "sha256": "f775e568f4286de33b51cf46a8df591b752c04076bea73f460ca00b3c1e92327"
+    },
+    {
+      "path": "compile_layout_object-command.json",
+      "sha256": "e03f3cbcbd44c879cf4aec9fac1de401ec3816618d42f90e5daeaaa50fd6747c"
+    },
+    {
+      "path": "compile_layout_object.log",
+      "sha256": "130bf84d293df89de68c037e8824e3246871c856d1380678acad94f54f1bf0a7"
+    },
+    {
+      "path": "configure-command.json",
+      "sha256": "f04295187d789ac653697e0046c7cc45a8b03d68b6f6c4cfb6519eaf7e608742"
+    },
+    {
+      "path": "configure.log",
+      "sha256": "f92d06e2e038fc67f3a1c87265fce168a40fa613c06f6169fe2d94b916cc137c"
+    },
+    {
+      "path": "cplusplus_rejected.log",
+      "sha256": "a33062d6ad9316f2ef83f57030b2d69e87b65a79d2e4946dae7f511250a38e37"
+    },
+    {
+      "path": "different_incomplete.log",
+      "sha256": "950866ab74e53ece9676c7c0f52175e14f36ac45bda30512d4f0df047dba46c5"
+    },
+    {
+      "path": "empty_record.log",
+      "sha256": "30c5e5bfeff1a3c5ac0668175de87c65eb197f378416672a3736055bba3a3309"
+    },
+    {
+      "path": "experimental-header.diff",
+      "sha256": "aca53cf426310aaa02808c1fd3e69b8e85355c99e0e70010447b2fc315b36993"
+    },
+    {
+      "path": "extra_argument.log",
+      "sha256": "fa2d42fb9c7b01688814ddac5f068c476bad8de08601be610ee8b3d695193d81"
+    },
+    {
+      "path": "function_metadata.log",
+      "sha256": "382206ad4fca430f0c38095bd13b07e8ac052a1053d240915f8f0e8d7cd38c77"
+    },
+    {
+      "path": "incomplete.log",
+      "sha256": "7530c0f3212f3739907e50423944f1183268d4facea04dc059f6551a6998efe0"
+    },
+    {
+      "path": "large.log",
+      "sha256": "283da1589cf2a67fabfc9172920cc6799fd266d421e744fe382655a6007902e8"
+    },
+    {
+      "path": "llvm-ir.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "missing_second_type.log",
+      "sha256": "23aba0dae759ebbc03d386ce144c9c3681f05cbd0367c51b6511e6c865377ac2"
+    },
+    {
+      "path": "positive.ll",
+      "sha256": "9c63b97ac624b11f68e8c81f0d106f8a2a72d44311754a1a7d52982c20a1c594"
+    },
+    {
+      "path": "positive.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "positive.o",
+      "sha256": "519d2ff06290644855e12d9e5cdb5a65f0014ab19398595bebf14a7765c16066"
+    },
+    {
+      "path": "thread-probe-report.json",
+      "sha256": "246fee9c7305a79cf3a4a3f1752818cf1b53d96d6c53fcc30e9da689423da540"
+    },
+    {
+      "path": "thread-probe.log",
+      "sha256": "91d27956ef8c3f42ded80c4bc56b219c103ebc72e35697e0fdb77041847745f3"
+    },
+    {
+      "path": "vla.log",
+      "sha256": "f929857cd0d3d9a67413a22e7195f05866189cf871a763ba7e15af42432cf3db"
+    },
+    {
+      "path": "void_metadata.log",
+      "sha256": "7e927a7b83248399d961d7e82cf06d100c735389bef0f6c08ef76ed1c7530ab3"
+    },
+    {
+      "path": "wrong_compatibility.log",
+      "sha256": "681ad8bb79b4244c8e86dbd47bc8b2d7538e705aff12880bb145e9de92771d4a"
+    },
+    {
+      "path": "wrong_signature.log",
+      "sha256": "0f8736f7f9cd81334a70ad604d5a462c0488467029c17e73f3ee9f1ed558a31b"
+    },
+    {
+      "path": "x86_rejected.log",
+      "sha256": "a33062d6ad9316f2ef83f57030b2d69e87b65a79d2e4946dae7f511250a38e37"
+    }
+  ]
+}

@@ -42,6 +42,15 @@
     "binary wrappers",
     "existing platform ports as substitute"
   ],
+  "experimental_layout_compiler": {
+    "url": "https://github.com/llvm/llvm-project.git",
+    "tag": "llvmorg-19.1.7",
+    "commit": "cd708029e0b2869e80abe31ddb175f7c35361f90",
+    "archive_url": "https://codeload.github.com/llvm/llvm-project/tar.gz/cd708029e0b2869e80abe31ddb175f7c35361f90",
+    "archive_sha256": "05e6d7fe6d188dd4d33b812ab5cce7654b886b7c9ce405aa1d942c866bbe959f",
+    "license": "Apache-2.0 WITH LLVM-exception plus upstream per-file notices",
+    "use": "experimental original C-layout compiler API; built and fixture-tested; not enabled in the normal XNU build or a firmware SDK"
+  },
   "mig_host_tool": {
     "url": "https://github.com/apple-oss-distributions/bootstrap_cmds.git",
     "commit": "c71d2d72f48995baaea76148f61002e5299841de",

@@ -1,0 +1,388 @@
+ninja: Entering directory `<ROOT>/work/llvm-toolchain/native-linux/build-layout-v1'
+[1/384] Building CXX object lib/Demangle/CMakeFiles/LLVMDemangle.dir/Demangle.cpp.o
+[2/384] Building CXX object lib/Demangle/CMakeFiles/LLVMDemangle.dir/MicrosoftDemangleNodes.cpp.o
+[3/384] Building CXX object lib/Demangle/CMakeFiles/LLVMDemangle.dir/DLangDemangle.cpp.o
+[4/384] Building CXX object lib/Demangle/CMakeFiles/LLVMDemangle.dir/RustDemangle.cpp.o
+[5/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ABIBreak.cpp.o
+[6/384] Building CXX object lib/Demangle/CMakeFiles/LLVMDemangle.dir/MicrosoftDemangle.cpp.o
+[7/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/APFixedPoint.cpp.o
+[8/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/AMDGPUMetadata.cpp.o
+[9/384] Building CXX object lib/Demangle/CMakeFiles/LLVMDemangle.dir/ItaniumDemangle.cpp.o
+[10/384] Linking CXX static library lib/libLLVMDemangle.a
+[11/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/APSInt.cpp.o
+[12/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ARMBuildAttrs.cpp.o
+[13/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/APFloat.cpp.o
+[14/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ARMWinEH.cpp.o
+[15/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/AutoConvert.cpp.o
+[16/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Allocator.cpp.o
+[17/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/APInt.cpp.o
+[18/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ARMAttributeParser.cpp.o
+[19/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Base64.cpp.o
+[20/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/BinaryStreamError.cpp.o
+[21/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/BinaryStreamReader.cpp.o
+[22/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/BinaryStreamRef.cpp.o
+[23/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/BinaryStreamWriter.cpp.o
+[24/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/BlockFrequency.cpp.o
+[25/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/BuryPointer.cpp.o
+[26/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/BranchProbability.cpp.o
+[27/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/BalancedPartitioning.cpp.o
+[28/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/circular_raw_ostream.cpp.o
+[29/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/COM.cpp.o
+[30/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Chrono.cpp.o
+[31/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/CachePruning.cpp.o
+[32/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Caching.cpp.o
+[33/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/CRC.cpp.o
+[34/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Compression.cpp.o
+[35/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ConvertUTF.cpp.o
+[36/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ConvertEBCDIC.cpp.o
+[37/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/CodeGenCoverage.cpp.o
+[38/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/CrashRecoveryContext.cpp.o
+[39/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ConvertUTFWrapper.cpp.o
+[40/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/CSKYAttributes.cpp.o
+[41/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/CSKYAttributeParser.cpp.o
+[42/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/DataExtractor.cpp.o
+[43/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Debug.cpp.o
+[44/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/DivisionByConstantInfo.cpp.o
+[45/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/DeltaAlgorithm.cpp.o
+[46/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/CommandLine.cpp.o
+[47/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/DebugCounter.cpp.o
+[48/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/DJB.cpp.o
+[49/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/DAGDeltaAlgorithm.cpp.o
+[50/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/DynamicAPInt.cpp.o
+[51/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ELFAttributes.cpp.o
+[52/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ErrorHandling.cpp.o
+[53/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ExtensibleRTTI.cpp.o
+[54/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Error.cpp.o
+[55/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ExponentialBackoff.cpp.o
+[56/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ELFAttributeParser.cpp.o
+[57/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/FloatingPointMode.cpp.o
+[58/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/FileOutputBuffer.cpp.o
+[59/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/FileUtilities.cpp.o
+[60/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/FileCollector.cpp.o
+[61/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/FoldingSet.cpp.o
+[62/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/FormattedStream.cpp.o
+[63/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/FormatVariadic.cpp.o
+[64/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/HexagonAttributeParser.cpp.o
+[65/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/HexagonAttributes.cpp.o
+[66/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/GraphWriter.cpp.o
+[67/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/GlobPattern.cpp.o
+[68/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/InstructionCost.cpp.o
+[69/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/IntEqClasses.cpp.o
+[70/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/InitLLVM.cpp.o
+[71/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/IntervalMap.cpp.o
+[72/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/LEB128.cpp.o
+[73/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/LineIterator.cpp.o
+[74/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Locale.cpp.o
+[75/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/KnownBits.cpp.o
+[76/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/MathExtras.cpp.o
+[77/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/MemAlloc.cpp.o
+[78/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ManagedStatic.cpp.o
+[79/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/JSON.cpp.o
+[80/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/LockFileManager.cpp.o
+[81/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/MemoryBufferRef.cpp.o
+[82/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/MSP430Attributes.cpp.o
+[83/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/MemoryBuffer.cpp.o
+[84/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/MD5.cpp.o
+[85/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/MSP430AttributeParser.cpp.o
+[86/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Optional.cpp.o
+[87/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/OptimizedStructLayout.cpp.o
+[88/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/NativeFormatting.cpp.o
+[89/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/PluginLoader.cpp.o
+[90/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/PrettyStackTrace.cpp.o
+[91/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/PGOOptions.cpp.o
+[92/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Parallel.cpp.o
+[93/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/RISCVAttributes.cpp.o
+[94/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Regex.cpp.o
+[95/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/RandomNumberGenerator.cpp.o
+[96/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/RISCVISAUtils.cpp.o
+[97/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/RISCVAttributeParser.cpp.o
+[98/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ScaledNumber.cpp.o
+[99/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Signposts.cpp.o
+[100/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/SHA1.cpp.o
+[101/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/SHA256.cpp.o
+[102/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/SmallPtrSet.cpp.o
+[103/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/SipHash.cpp.o
+[104/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/SlowDynamicAPInt.cpp.o
+[105/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ScopedPrinter.cpp.o
+[106/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/SmallVector.cpp.o
+[107/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/StringExtras.cpp.o
+[108/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/SourceMgr.cpp.o
+[109/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/StringMap.cpp.o
+[110/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Statistic.cpp.o
+[111/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/SpecialCaseList.cpp.o
+[112/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/StringSaver.cpp.o
+[113/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/SuffixTreeNode.cpp.o
+[114/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/SystemUtils.cpp.o
+[115/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/SuffixTree.cpp.o
+[116/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/StringRef.cpp.o
+[117/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/TarWriter.cpp.o
+[118/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ThreadPool.cpp.o
+[119/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/ToolOutputFile.cpp.o
+[120/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Twine.cpp.o
+[121/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/TimeProfiler.cpp.o
+[122/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/TypeSize.cpp.o
+[123/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Timer.cpp.o
+[124/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Unicode.cpp.o
+[125/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/UnicodeCaseFold.cpp.o
+[126/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/UnicodeNameToCodepointGenerated.cpp.o
+[127/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/VersionTuple.cpp.o
+[128/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/UnicodeNameToCodepoint.cpp.o
+[129/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/WithColor.cpp.o
+[130/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/raw_os_ostream.cpp.o
+[131/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/YAMLTraits.cpp.o
+[132/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/YAMLParser.cpp.o
+[133/384] Building C object lib/Support/CMakeFiles/LLVMSupport.dir/regcomp.c.o
+[134/384] Building C object lib/Support/CMakeFiles/LLVMSupport.dir/regerror.c.o
+[135/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/raw_ostream.cpp.o
+[136/384] Building C object lib/Support/CMakeFiles/LLVMSupport.dir/regfree.c.o
+[137/384] Building C object lib/Support/CMakeFiles/LLVMSupport.dir/regstrlcpy.c.o
+[138/384] Building C object lib/Support/CMakeFiles/LLVMSupport.dir/regexec.c.o
+[139/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/raw_socket_stream.cpp.o
+[140/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Atomic.cpp.o
+[141/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/xxhash.cpp.o
+[142/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Z3Solver.cpp.o
+[143/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Errno.cpp.o
+[144/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/VirtualFileSystem.cpp.o
+[145/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/DynamicLibrary.cpp.o
+[146/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Memory.cpp.o
+[147/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Process.cpp.o
+[148/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/RWMutex.cpp.o
+[149/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Program.cpp.o
+[150/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Valgrind.cpp.o
+[151/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Watchdog.cpp.o
+[152/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Path.cpp.o
+[153/384] Building C object lib/Support/BLAKE3/CMakeFiles/LLVMSupportBlake3.dir/blake3.c.o
+[154/384] Building C object lib/Support/BLAKE3/CMakeFiles/LLVMSupportBlake3.dir/blake3_dispatch.c.o
+[155/384] Building C object lib/Support/BLAKE3/CMakeFiles/LLVMSupportBlake3.dir/blake3_neon.c.o
+[156/384] Building ASM object lib/Support/BLAKE3/CMakeFiles/LLVMSupportBlake3.dir/blake3_sse2_x86-64_unix.S.o
+[157/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Threading.cpp.o
+[158/384] Building C object lib/Support/BLAKE3/CMakeFiles/LLVMSupportBlake3.dir/blake3_portable.c.o
+[159/384] Building ASM object lib/Support/BLAKE3/CMakeFiles/LLVMSupportBlake3.dir/blake3_sse41_x86-64_unix.S.o
+[160/384] Building ASM object lib/Support/BLAKE3/CMakeFiles/LLVMSupportBlake3.dir/blake3_avx2_x86-64_unix.S.o
+[161/384] Building ASM object lib/Support/BLAKE3/CMakeFiles/LLVMSupportBlake3.dir/blake3_avx512_x86-64_unix.S.o
+[162/384] Building CXX object lib/Support/CMakeFiles/LLVMSupport.dir/Signals.cpp.o
+[163/384] Linking CXX static library lib/libLLVMSupport.a
+[164/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/Error.cpp.o
+[165/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/DetailedRecordsBackend.cpp.o
+[166/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/JSONBackend.cpp.o
+[167/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/Main.cpp.o
+[168/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/Parser.cpp.o
+[169/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/StringMatcher.cpp.o
+[170/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/SetTheory.cpp.o
+[171/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/TableGenBackend.cpp.o
+[172/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/TableGenBackendSkeleton.cpp.o
+[173/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/TGLexer.cpp.o
+[174/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/Record.cpp.o
+[175/384] Building CXX object utils/TableGen/CMakeFiles/llvm-min-tblgen.dir/TableGen.cpp.o
+[176/384] Building CXX object utils/TableGen/CMakeFiles/llvm-min-tblgen.dir/Attributes.cpp.o
+[177/384] Building CXX object utils/TableGen/CMakeFiles/llvm-min-tblgen.dir/ARMTargetDefEmitter.cpp.o
+[178/384] Building CXX object lib/TableGen/CMakeFiles/LLVMTableGen.dir/TGParser.cpp.o
+[179/384] Linking CXX static library lib/libLLVMTableGen.a
+[180/384] Building CXX object utils/TableGen/CMakeFiles/llvm-min-tblgen.dir/RISCVTargetDefEmitter.cpp.o
+[181/384] Building CXX object utils/TableGen/CMakeFiles/llvm-min-tblgen.dir/DirectiveEmitter.cpp.o
+[182/384] Building CXX object utils/TableGen/CMakeFiles/llvm-min-tblgen.dir/VTEmitter.cpp.o
+[183/384] Building CXX object utils/TableGen/CMakeFiles/llvm-min-tblgen.dir/IntrinsicEmitter.cpp.o
+[184/384] Building CXX object utils/TableGen/Basic/CMakeFiles/obj.LLVMTableGenBasic.dir/SDNodeProperties.cpp.o
+[185/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ASTTableGen.cpp.o
+[186/384] Building CXX object utils/TableGen/Basic/CMakeFiles/obj.LLVMTableGenBasic.dir/CodeGenIntrinsics.cpp.o
+[187/384] Linking CXX executable bin/llvm-min-tblgen
+clang++-19: warning: '-fuse-ld=' taking a path is deprecated; use '--ld-path=' instead [-Wfuse-ld-path]
+[188/384] Building GenVT.inc...
+[189/384] Building Attributes.inc...
+[190/384] Building IntrinsicEnums.inc...
+[191/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangASTNodesEmitter.cpp.o
+[192/384] Building IntrinsicsAArch64.h...
+[193/384] Building IntrinsicImpl.inc...
+[194/384] Building IntrinsicsAMDGPU.h...
+[195/384] Building IntrinsicsARM.h...
+[196/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangASTPropertiesEmitter.cpp.o
+[197/384] Building IntrinsicsBPF.h...
+[198/384] Building IntrinsicsDirectX.h...
+[199/384] Building IntrinsicsHexagon.h...
+[200/384] Building IntrinsicsLoongArch.h...
+[201/384] Building IntrinsicsMips.h...
+[202/384] Building IntrinsicsNVPTX.h...
+[203/384] Building IntrinsicsPowerPC.h...
+[204/384] Building IntrinsicsR600.h...
+[205/384] Building IntrinsicsRISCV.h...
+[206/384] Building IntrinsicsS390.h...
+[207/384] Building IntrinsicsSPIRV.h...
+[208/384] Building IntrinsicsVE.h...
+[209/384] Building IntrinsicsWebAssembly.h...
+[210/384] Building IntrinsicsX86.h...
+[211/384] Building IntrinsicsXCore.h...
+[212/384] Building CXX object lib/CodeGenTypes/CMakeFiles/LLVMCodeGenTypes.dir/LowLevelType.cpp.o
+[213/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangBuiltinsEmitter.cpp.o
+[214/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/ARMTargetDefEmitter.cpp.o
+[215/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/Attributes.cpp.o
+[216/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangAttrEmitter.cpp.o
+[217/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/CallingConvEmitter.cpp.o
+[218/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/CodeEmitterGen.cpp.o
+[219/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/AsmWriterEmitter.cpp.o
+[220/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/CodeGenMapTable.cpp.o
+[221/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/AsmMatcherEmitter.cpp.o
+[222/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/CTagsEmitter.cpp.o
+[223/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/CompressInstEmitter.cpp.o
+[224/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/DAGISelEmitter.cpp.o
+[225/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/DAGISelMatcherGen.cpp.o
+[226/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/DAGISelMatcherOpt.cpp.o
+[227/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/DAGISelMatcherEmitter.cpp.o
+[228/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/DFAEmitter.cpp.o
+[229/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/DFAPacketizerEmitter.cpp.o
+[230/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/DecoderEmitter.cpp.o
+[231/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/DisassemblerEmitter.cpp.o
+[232/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/DirectiveEmitter.cpp.o
+[233/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/ExegesisEmitter.cpp.o
+[234/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/DXILEmitter.cpp.o
+[235/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/FastISelEmitter.cpp.o
+[236/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/InstrDocsEmitter.cpp.o
+[237/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/IntrinsicEmitter.cpp.o
+[238/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/MacroFusionPredicatorEmitter.cpp.o
+[239/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/GlobalISelCombinerEmitter.cpp.o
+[240/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/InstrInfoEmitter.cpp.o
+[241/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/OptRSTEmitter.cpp.o
+[242/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/GlobalISelEmitter.cpp.o
+[243/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/OptParserEmitter.cpp.o
+[244/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/PseudoLoweringEmitter.cpp.o
+[245/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/RegisterBankEmitter.cpp.o
+[246/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/RISCVTargetDefEmitter.cpp.o
+[247/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/TableGen.cpp.o
+[248/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/SearchableTableEmitter.cpp.o
+[249/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/VTEmitter.cpp.o
+[250/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/WebAssemblyDisassemblerEmitter.cpp.o
+[251/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/RegisterInfoEmitter.cpp.o
+[252/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/SubtargetEmitter.cpp.o
+[253/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/X86DisassemblerTables.cpp.o
+[254/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/X86ModRMFilters.cpp.o
+[255/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/X86InstrMappingEmitter.cpp.o
+[256/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/X86MnemonicTables.cpp.o
+[257/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/X86FoldTablesEmitter.cpp.o
+[258/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/GlobalISel/CodeExpander.cpp.o
+[259/384] Building CXX object utils/TableGen/CMakeFiles/llvm-tblgen.dir/X86RecognizableInstr.cpp.o
+[260/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/GlobalISel/CXXPredicates.cpp.o
+[261/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/GlobalISel/CombinerUtils.cpp.o
+[262/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/GlobalISel/GlobalISelMatchTableExecutorEmitter.cpp.o
+[263/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/GlobalISel/PatternParser.cpp.o
+[264/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/GlobalISel/Patterns.cpp.o
+[265/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/AsmWriterInst.cpp.o
+[266/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/CodeGenHwModes.cpp.o
+[267/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/CodeGenInstAlias.cpp.o
+[268/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/CodeGenInstruction.cpp.o
+[269/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/GlobalISel/GlobalISelMatchTable.cpp.o
+[270/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/CodeGenDAGPatterns.cpp.o
+[271/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/CodeGenTarget.cpp.o
+[272/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/CodeGenSchedule.cpp.o
+[273/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/InfoByHwMode.cpp.o
+[274/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/DAGISelMatcher.cpp.o
+[275/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/OptEmitter.cpp.o
+[276/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/Types.cpp.o
+[277/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/CodeGenRegisters.cpp.o
+[278/384] Linking CXX static library lib/libLLVMCodeGenTypes.a
+[279/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/PredicateExpander.cpp.o
+[280/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/SubtargetFeatureInfo.cpp.o
+[281/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangCommentCommandInfoEmitter.cpp.o
+[282/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangCommentHTMLNamedCharacterReferenceEmitter.cpp.o
+[283/384] Building CXX object utils/TableGen/Common/CMakeFiles/obj.LLVMTableGenCommon.dir/VarLenCodeEmitterGen.cpp.o
+[284/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangCommentHTMLTagsEmitter.cpp.o
+[285/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangDataCollectorsEmitter.cpp.o
+[286/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangOpcodesEmitter.cpp.o
+[287/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangOptionDocEmitter.cpp.o
+[288/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangOpenCLBuiltinEmitter.cpp.o
+[289/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangSACheckersEmitter.cpp.o
+[290/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangDiagnosticsEmitter.cpp.o
+[291/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangTypeNodesEmitter.cpp.o
+[292/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/ClangSyntaxEmitter.cpp.o
+[293/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/RISCVVEmitter.cpp.o
+[294/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/SveEmitter.cpp.o
+[295/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/MveEmitter.cpp.o
+[296/384] Linking CXX executable bin/llvm-tblgen
+clang++-19: warning: '-fuse-ld=' taking a path is deprecated; use '--ld-path=' instead [-Wfuse-ld-path]
+[297/384] Building OMP.h.inc...
+[298/384] Building OMP.inc...
+[299/384] Building Options.inc...
+[300/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/TableGen.cpp.o
+[301/384] Building CXX object tools/clang/utils/TableGen/CMakeFiles/clang-tblgen.dir/NeonEmitter.cpp.o
+[302/384] Building CXX object tools/clang/lib/Support/CMakeFiles/obj.clangSupport.dir/RISCVVIntrinsicUtils.cpp.o
+[303/384] Linking CXX executable bin/clang-tblgen
+clang++-19: warning: '-fuse-ld=' taking a path is deprecated; use '--ld-path=' instead [-Wfuse-ld-path]
+[304/384] Building AttrTextNodeDump.inc...
+[305/384] Building AttrNodeTraverse.inc...
+[306/384] Building Attrs.inc...
+[307/384] Building StmtNodes.inc...
+[308/384] Building DeclNodes.inc...
+[309/384] Building AttrImpl.inc...
+[310/384] Building TypeNodes.inc...
+[311/384] Building AbstractBasicReader.inc...
+[312/384] Building AbstractBasicWriter.inc...
+[313/384] Building CommentNodes.inc...
+[314/384] Building AbstractTypeReader.inc...
+[315/384] Building CommentHTMLTags.inc...
+[316/384] Building AbstractTypeWriter.inc...
+[317/384] Building CommentHTMLTagsProperties.inc...
+[318/384] Building AttrVisitor.inc...
+[319/384] Building CommentHTMLNamedCharacterReferences.inc...
+[320/384] Building StmtDataCollectors.inc...
+[321/384] Building CommentCommandList.inc...
+[322/384] Building CommentCommandInfo.inc...
+[323/384] Building DiagnosticAnalysisKinds.inc...
+[324/384] Building DiagnosticCommentKinds.inc...
+[325/384] Building DiagnosticASTKinds.inc...
+[326/384] Building DiagnosticCommonKinds.inc...
+[327/384] Building DiagnosticCrossTUKinds.inc...
+[328/384] Building DiagnosticDriverKinds.inc...
+[329/384] Building DiagnosticFrontendKinds.inc...
+[330/384] Building DiagnosticInstallAPIKinds.inc...
+[331/384] Building DiagnosticLexKinds.inc...
+[332/384] Building DiagnosticRefactoringKinds.inc...
+[333/384] Building DiagnosticParseKinds.inc...
+[334/384] Building DiagnosticSemaKinds.inc...
+[335/384] Building AttrList.inc...
+[336/384] Building AttrSubMatchRulesList.inc...
+[337/384] Building DiagnosticIndexName.inc...
+[338/384] Building DiagnosticSerializationKinds.inc...
+[339/384] Building DiagnosticGroups.inc...
+[340/384] Building RegularKeywordAttrInfo.inc...
+[341/384] Building BuiltinsBPF.inc...
+[342/384] Building BuiltinsRISCV.inc...
+[343/384] Building Builtins.inc...
+[344/384] Building AttrHasAttributeImpl.inc...
+[345/384] Building arm_fp16.inc...
+[346/384] Building arm_neon.inc...
+[347/384] Building arm_mve_builtins.inc...
+[348/384] Building arm_mve_builtin_sema.inc...
+[349/384] Building arm_mve_builtin_cg.inc...
+[350/384] Building arm_mve_builtin_aliases.inc...
+[351/384] Building arm_sve_typeflags.inc...
+[352/384] Building arm_sve_streaming_attrs.inc...
+[353/384] Building arm_sme_builtins.inc...
+[354/384] Building arm_sme_builtin_cg.inc...
+[355/384] Building arm_sve_builtin_cg.inc...
+[356/384] Building arm_sve_builtins.inc...
+[357/384] Building arm_sme_streaming_attrs.inc...
+[358/384] Building arm_sme_builtins_za_state.inc...
+[359/384] Building arm_sme_sema_rangechecks.inc...
+[360/384] Building arm_cde_builtins.inc...
+[361/384] Building arm_cde_builtin_cg.inc...
+[362/384] Building arm_cde_builtin_sema.inc...
+[363/384] Building arm_cde_builtin_aliases.inc...
+[364/384] Building arm_sve_sema_rangechecks.inc...
+[365/384] Building riscv_sifive_vector_builtins.inc...
+[366/384] Building riscv_sifive_vector_builtin_cg.inc...
+[367/384] Building riscv_sifive_vector_builtin_sema.inc...
+[368/384] Building AttrParserStringSwitches.inc...
+[369/384] Building AttrSubMatchRulesParserStringSwitches.inc...
+[370/384] Building AttrTemplateInstantiate.inc...
+[371/384] Building AttrParsedAttrList.inc...
+[372/384] Building AttrParsedAttrKinds.inc...
+[373/384] Building AttrSpellingListIndex.inc...
+[374/384] Building riscv_vector_builtins.inc...
+[375/384] Building riscv_vector_builtin_sema.inc...
+[376/384] Building AttrPCHRead.inc...
+[377/384] Building Checkers.inc...
+[378/384] Building AttrParsedAttrImpl.inc...
+[379/384] Building AttrPCHWrite.inc...
+[380/384] Building Nodes.inc...
+[381/384] Building NodeClasses.inc...
+[382/384] Building riscv_vector_builtin_cg.inc...
+[383/384] Building OpenCLBuiltins.inc...
+[384/384] Building CXX object tools/clang/lib/Sema/CMakeFiles/obj.clangSema.dir/SemaAtlanticLayout.cpp.o

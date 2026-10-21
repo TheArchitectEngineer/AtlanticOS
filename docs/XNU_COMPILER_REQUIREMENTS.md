@@ -46,6 +46,14 @@ unions/bitfields y tipos incompletos/no soportados. Debe comprobar tamaños y
 offsets reales del target, firmas/resúmenes exactos y rechazo de usos inválidos.
 No bastaría compilar thread.c con errores silenciados o chequear solo sizeof.
 
+Actualización experimental: [compiler-port](../compiler-port/README.md) contiene
+una API original de layouts C sobre LLVM 19.1.7, con source/patch fijados.
+El compilador completo se construyó y pasó 18 comprobaciones preparadas. No
+declara implementar los builtins privados Apple. Un probe de thread.c con
+selección explícita de esas operaciones conserva diez errores BSD y ya no
+reporta errores de metadata. El build normal de once unidades todavía no lo
+activa; sigue pendiente comprobar la integración y cerrar dependencias.
+
 Otro límite independiente es vm_map.c: sys/code_signing.h alcanza pmap_cs.h y
 TrustCache/API.h ausente. Recortar solo ese include no resuelve las llamadas ni
 la política de ejecución. El perfil sin userland necesita una separación

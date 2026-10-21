@@ -48,3 +48,10 @@ probes se toma de SFLAGS_GEN upstream, junto con __ASSEMBLER__. Ahora son once
 objetos, con símbolos reales de bootstrap/vectores y buffers upstream; sin
 enlace ni ejecución. Cpu_ttep se conserva como dependencia sin resolver, no
 como un dato inventado. Las pruebas Python suman 74, ocho de ellas del extractor.
+
+Experimento de compilador: compiler-port/ contiene una extensión original sobre
+LLVM 19.1.7 que calcula metadata de layouts C con el AST del target. Se construyó
+el compilador completo y pasaron 18 comprobaciones con fixtures propios. No
+suplanta los builtins privados Apple ni un SDK. Un probe de thread.c con un
+header experimental explícito deja diez errores BSD y ya no reporta errores
+de esas operaciones. El build normal de once objetos todavía no lo activa.

@@ -1,0 +1,7 @@
+<stdin>:1:43: error: expected ')'
+    1 | unsigned x = __atlantic_layout_summary(int, long);
+      |                                           ^
+<stdin>:1:39: note: to match this '('
+    1 | unsigned x = __atlantic_layout_summary(int, long);
+      |                                       ^
+1 error generated.

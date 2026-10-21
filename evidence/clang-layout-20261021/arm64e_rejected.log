@@ -1,0 +1,4 @@
+<stdin>:1:14: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+    1 | unsigned x = __atlantic_layout_summary(int);
+      |              ^
+1 error generated.

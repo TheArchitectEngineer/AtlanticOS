@@ -3,3 +3,4 @@
 *.o binary
 evidence/** -text -whitespace
 xnu-port/*.patch -whitespace
+compiler-port/*.patch -whitespace

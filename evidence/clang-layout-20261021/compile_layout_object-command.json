@@ -1,0 +1,8 @@
+[
+  "ninja",
+  "-C",
+  "<ROOT>/work/llvm-toolchain/native-linux/build-layout-v1",
+  "-j",
+  "4",
+  "tools/clang/lib/Sema/CMakeFiles/obj.clangSema.dir/SemaAtlanticLayout.cpp.o"
+]

@@ -1,0 +1,4 @@
+<stdin>:1:14: error: AtlanticOS layout: requires a complete, fixed-size object type
+    1 | unsigned x = __atlantic_layout_summary(int(void));
+      |              ^
+1 error generated.

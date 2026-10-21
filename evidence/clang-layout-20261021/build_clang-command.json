@@ -1,0 +1,8 @@
+[
+  "ninja",
+  "-C",
+  "<ROOT>/work/llvm-toolchain/native-linux/build-layout-v1",
+  "-j",
+  "4",
+  "clang"
+]

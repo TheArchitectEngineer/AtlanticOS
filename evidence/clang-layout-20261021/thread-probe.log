@@ -1,0 +1,40 @@
+In file included from <ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.c:101:
+In file included from <ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/extmod_statistics.h:39:
+In file included from <ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/task.h:133:
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.h:1641:49: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1641 | extern void             uthread_cred_ref(struct ucred *);
+      |                                                 ^
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.h:1642:50: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1642 | extern void             uthread_cred_free(struct ucred *);
+      |                                                  ^
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.c:584:4: error: call to undeclared function 'kdebug_proc_name_args'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  584 |                         kdebug_proc_name_args(bsd_info, args);
+      |                         ^
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.c:608:13: error: call to undeclared function 'proc_encode_exit_exception_code'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  608 |                 subcode = proc_encode_exit_exception_code(bsd_info);
+      |                           ^
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.c:609:3: error: call to undeclared function 'proc_exit'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  609 |                 proc_exit(bsd_info);
+      |                 ^
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.c:624:29: error: call to undeclared function 'get_exception_from_corpse_crashinfo'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  624 |                         exception_type_t etype = get_exception_from_corpse_crashinfo(task->corpse_info);
+      |                                                  ^
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.c:1590:3: error: call to undeclared function 'kdebug_proc_name_args'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1590 |                 kdebug_proc_name_args(get_bsdtask_info(parent_task), args);
+      |                 ^
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.c:2767:2: error: call to undeclared function 'proc_name'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2767 |         proc_name(pid, procname, sizeof(procname));
+      |         ^
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.c:3291:40: error: call to undeclared function 'get_dispatchqueue_offset_from_proc'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 3291 |                 dispatchqueue_addr = thread_handle + get_dispatchqueue_offset_from_proc(bsd_info);
+      |                                                      ^
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.c:3316:38: error: call to undeclared function 'get_wq_quantum_offset_from_proc'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 3316 |         uint64_t wq_quantum_expiry_offset = get_wq_quantum_offset_from_proc(get_bsdtask_info(task));
+      |                                             ^
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.c:3346:22: error: call to undeclared function 'get_return_to_kernel_offset_from_proc'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 3346 |                 rettokern_offset = get_return_to_kernel_offset_from_proc(bsd_info);
+      |                                    ^
+<ROOT>/work/xnu-lab-sources/17cffe15324dc9a3/osfmk/kern/thread.c:3684:38: error: call to undeclared function 'get_wq_quantum_offset_from_proc'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 3684 |         uint64_t wq_quantum_expiry_offset = get_wq_quantum_offset_from_proc(bsd_info);
+      |                                             ^
+2 warnings and 10 errors generated.

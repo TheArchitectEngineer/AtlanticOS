@@ -1,0 +1,18 @@
+[
+  {"name":"incomplete", "code":"struct Forward; unsigned x = __atlantic_layout_summary(struct Forward);", "diagnostic":"complete, fixed-size"},
+  {"name":"void_metadata", "code":"unsigned x = __atlantic_layout_summary(void);", "diagnostic":"complete, fixed-size"},
+  {"name":"function_metadata", "code":"unsigned x = __atlantic_layout_summary(int(void));", "diagnostic":"complete, fixed-size"},
+  {"name":"vla", "code":"void f(int n) { unsigned x = __atlantic_layout_summary(int[n]); (void)x; }", "diagnostic":"complete, fixed-size"},
+  {"name":"empty_record", "code":"struct Empty {}; unsigned x = __atlantic_layout_summary(struct Empty);", "diagnostic":"object size is zero"},
+  {"name":"large", "code":"unsigned x = __atlantic_layout_summary(char[1048577]);", "diagnostic":"1 MiB metadata limit"},
+  {"name":"boolean_vector", "code":"typedef _Bool B __attribute__((ext_vector_type(8))); unsigned x = __atlantic_layout_summary(B);", "diagnostic":"boolean vector"},
+  {"name":"wrong_signature", "code":"struct R { void *p; }; _Static_assert(__builtin_strcmp(__atlantic_layout_signature(struct R), \"2\") == 0, \"pointer must not be data\");", "diagnostic":"pointer must not be data"},
+  {"name":"wrong_compatibility", "code":"_Static_assert(__atlantic_layout_compatible(void *, unsigned long), \"pointer and data must differ\");", "diagnostic":"pointer and data must differ"},
+  {"name":"different_incomplete", "code":"struct A; struct B; unsigned x = __atlantic_layout_compatible(struct A, struct B);", "diagnostic":"complete, fixed-size"},
+  {"name":"x86_rejected", "flags":["--target=x86_64-unknown-linux-gnu"], "code":"unsigned x = __atlantic_layout_summary(int);", "diagnostic":"requires C and little-endian"},
+  {"name":"big_endian_rejected", "flags":["--target=aarch64_be-none-elf"], "code":"unsigned x = __atlantic_layout_summary(int);", "diagnostic":"requires C and little-endian"},
+  {"name":"arm64e_rejected", "flags":["--target=arm64e-apple-macos11"], "code":"unsigned x = __atlantic_layout_summary(int);", "diagnostic":"requires C and little-endian"},
+  {"name":"cplusplus_rejected", "flags":["-x","c++","-std=gnu++17"], "code":"unsigned x = __atlantic_layout_summary(int);", "diagnostic":"requires C and little-endian"},
+  {"name":"missing_second_type", "code":"unsigned x = __atlantic_layout_compatible(int);", "diagnostic":"expected ','"},
+  {"name":"extra_argument", "code":"unsigned x = __atlantic_layout_summary(int, long);", "diagnostic":"expected ')'"}
+]

@@ -1,0 +1,7 @@
+<stdin>:1:39: error: static assertion failed due to requirement '__builtin_strcmp("1", "2") == 0': pointer must not be data
+    1 | struct R { void *p; }; _Static_assert(__builtin_strcmp(__atlantic_layout_signature(struct R), "2") == 0, "pointer must not be data");
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<stdin>:1:100: note: expression evaluates to '-1 == 0'
+    1 | struct R { void *p; }; _Static_assert(__builtin_strcmp(__atlantic_layout_signature(struct R), "2") == 0, "pointer must not be data");
+      |                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+1 error generated.
