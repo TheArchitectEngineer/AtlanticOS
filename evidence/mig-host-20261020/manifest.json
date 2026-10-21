@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-20",
+  "label": "HOST_TESTED",
+  "scope": "OFFICIAL_MIG_TOOL_BUILD_AND_ARM64_INTERFACE_GENERATION_NOT_KERNEL_EXECUTION",
+  "artifacts": [
+    {
+      "path": "build-and-test.log",
+      "sha256": "e5786128af065a8b0c3a9740c493a9bbccbbfb673c596b55a8be74802b44312d"
+    },
+    {
+      "path": "report.json",
+      "sha256": "66c45947a5a097a88450e5412a43300c17cfaf475c83e144e29611f592acac53"
+    }
+  ]
+}

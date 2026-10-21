@@ -16,6 +16,7 @@
 | 1: RAM | HOST_TESTED solo proceso host | informe RSS/tracemalloc; objetivo firmware sin medir |
 | 2: entry ARM64 común de laboratorio | EMULATED / BUILT_ARM64 | preflight original en QEMU EL1/EL2, captura y FDT; XNU_NOT_LINKED |
 | 2: entry G20 y bootstrap XNU real | UNIMPLEMENTED | herramientas Apple/adaptación y contratos de CPU pendientes |
+| Herramienta oficial MIG | HOST_TESTED | MIG_HOST_BUILD.md: binario host genuino, ABI de metadata y 20 archivos de interfaces generados; sin compilar esos C ni enlazar kernel |
 | 2: ABI C BSP | BUILT_ARM64 si build_abi termina | objeto sin drivers y sin kernel, hash propio |
 | 3: energía y fallback Android | UNIMPLEMENTED | método de reset/PMIC y vía OEM por demostrar |
 | 4: handoff EDK2 y almacenamiento | UNIMPLEMENTED | contrato propuesto; sin driver AtlanticOS |

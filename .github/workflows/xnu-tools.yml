@@ -1,0 +1,38 @@
+name: Official XNU host tools
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tools/build_mig.py'
+      - 'tools/fetch_mig.py'
+      - 'tools/fetch_xnu.py'
+      - 'tools/mig-host/**'
+      - 'tests/mig/**'
+      - 'dependencies.lock.json'
+      - '.github/workflows/xnu-tools.yml'
+  pull_request:
+    paths:
+      - 'tools/build_mig.py'
+      - 'tools/fetch_mig.py'
+      - 'tools/fetch_xnu.py'
+      - 'tools/mig-host/**'
+      - 'tests/mig/**'
+      - 'dependencies.lock.json'
+      - '.github/workflows/xnu-tools.yml'
+permissions:
+  contents: read
+jobs:
+  mig:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Install host compiler and parser generators
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends clang bison flex git
+      - name: Fetch pinned official Apple sources
+        run: |
+          python3 tools/fetch_xnu.py
+          python3 tools/fetch_mig.py
+      - name: Build MIG and generate ARM64 interfaces (no kernel execution)
+        run: python3 tools/build_mig.py

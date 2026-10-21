@@ -1,11 +1,16 @@
 {
   "schema_version": 1,
   "audit_date": "2026-10-19",
-  "runtime": {"python": "3.11.9", "tk": "8.6", "third_party_python_packages": []},
+  "runtime": {
+    "python": "3.11.9",
+    "tk": "8.6",
+    "third_party_python_packages": []
+  },
   "xnu": {
     "url": "https://github.com/apple-oss-distributions/xnu.git",
     "commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-    "tag": "xnu-12377.1.9", "license": "APSL-2.0 plus per-file notices",
+    "tag": "xnu-12377.1.9",
+    "license": "APSL-2.0 plus per-file notices",
     "use": "upstream source audit; not built, linked or executed"
   },
   "g20_reference": {
@@ -23,7 +28,25 @@
     "reference_commit": "261390cdfff66efef9082bd70c1af0abd21d77f2",
     "use": "provenance found in reference manifest; native code not imported"
   },
-  "tested_tools": {"git": "2.54.0.windows.1", "clang": "22.1.4", "arm64_target": "aarch64-none-elf"},
-  "crypto": {"implementation": null, "state": "UNIMPLEMENTED - default deny"},
-  "forbidden_dependencies": ["BootShim", "binary wrappers", "existing platform ports as substitute"]
+  "tested_tools": {
+    "git": "2.54.0.windows.1",
+    "clang": "22.1.4",
+    "arm64_target": "aarch64-none-elf"
+  },
+  "crypto": {
+    "implementation": null,
+    "state": "UNIMPLEMENTED - default deny"
+  },
+  "forbidden_dependencies": [
+    "BootShim",
+    "binary wrappers",
+    "existing platform ports as substitute"
+  ],
+  "mig_host_tool": {
+    "url": "https://github.com/apple-oss-distributions/bootstrap_cmds.git",
+    "commit": "c71d2d72f48995baaea76148f61002e5299841de",
+    "tag": "bootstrap_cmds-138",
+    "license": "APSL plus per-file CMU/Apple notices; preserve upstream files",
+    "use": "genuine Apple MIG built as host tool with isolated original Linux bridge; not a kernel SDK or port"
+  }
 }

@@ -1,0 +1,45 @@
+STEP 1 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+
+STEP 2 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+
+STEP 3 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+
+STEP 4 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+PASS: host MIG metadata widths and message layouts; not runtime IPC
+
+STEP 5 EXPECTED_EXIT=1 ACTUAL_EXIT=1
+In file included from <stdin>:1:
+tools/mig-host/include/atl_mig_host_guard.h:7:2: error: "Never include the MIG host bridge in a kernel or target build"
+    7 | #error "Never include the MIG host bridge in a kernel or target build"
+      |  ^
+1 error generated.
+
+STEP 6 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+<ROOT>/work/references/bootstrap_cmds/migcom.tproj/server.c:76:85: warning: backslash and newline separated by space [-Wbackslash-newline-escape]
+   76 |     fatal("mach_msg2 KernelServer support for this code block is unimplemented."); \   
+      |                                                                                     ^
+1 warning generated.
+
+STEP 7 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+bootstrap_cmds-138 AtlanticOS Linux host adapter
+
+STEP 8 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+
+STEP 9 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+
+STEP 10 EXPECTED_EXIT=1 ACTUAL_EXIT=1
+"<no name yet>", line -1: syntax error
+mig: fatal: "<no name yet>", line 0: 1 errors found. Abort.
+
+
+STEP 11 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+
+STEP 12 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+
+STEP 13 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+
+STEP 14 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+
+STEP 15 EXPECTED_EXIT=0 ACTUAL_EXIT=0
+
+STEP 16 EXPECTED_EXIT=0 ACTUAL_EXIT=0

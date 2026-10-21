@@ -39,7 +39,7 @@ Las declaraciones del código sin log/foto suficiente se distinguen expresamente
 | Insertar menú bajo Orange State sin bootloader | BLOCKED_BY_BOOTLOADER | Diseño BOOT_CHAIN.md | No hay API demostrada |
 | Upstream XNU identificado y descargado | CONFIRMED, HOST_TESTED de procedencia | [X01-X12](SOURCE_INDEX.md#x01), dependencies.lock.json | xnu-12377.1.9; sin cambios |
 | XNU contiene ruta GICv3 para VMAPPLE | CONFIRMED en fuente | [X09/X10](SOURCE_INDEX.md#x09) | Depende de features Apple/virtualización y Group0; no copiar configuración |
-| Clang genérico compila XNU completo sin SDK Apple | BLOCKED en entorno actual | [X02](SOURCE_INDEX.md#x02), falta xcrun/mig/iig/SDK | No se ejecutó un build completo fallido para demostrar imposibilidad universal |
+| Clang genérico compila XNU completo sin SDK Apple | BLOCKED en entorno actual | [X02](SOURCE_INDEX.md#x02), xcrun/iig/SDK y dependencias sin resolver; [MIG host ya construido](MIG_HOST_BUILD.md) | No se ejecutó un build completo fallido para demostrar imposibilidad universal |
 | XNU ejecutado / RAM <100 MiB en G20 | UNKNOWN / UNIMPLEMENTED | Ninguna evidencia propia | No hay DEVICE_VERIFIED AtlanticOS |
 
 No se ejecutaron suites del port UEFI ni se recompilaron sus drivers: esos

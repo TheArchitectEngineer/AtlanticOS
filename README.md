@@ -23,6 +23,8 @@ se ejecuta en QEMU EL1/EL2, con BSP propio y sin XNU enlazado.
 El [análisis offline del firmware](docs/STOCK_FIRMWARE_ANALYSIS.md) identifica
 boot header v2, DTB y overlays de un paquete con fingerprint coincidente.
 La variante de canal y las firmas OEM siguen pendientes; sus binarios permanecen privados.
+La [receta MIG oficial](docs/MIG_HOST_BUILD.md) compila el generador de Apple y
+produce interfaces ARM64 de XNU; el kernel todavía no está compilado ni enlazado.
 
 ## Reproducir
 

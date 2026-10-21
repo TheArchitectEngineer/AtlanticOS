@@ -40,7 +40,9 @@ Host observado: Windows, Python 3.11.9, Git 2.54.0.windows.1, Clang 22.1.4,
 LLD/llvm-readobj disponibles. El objeto BSP puede compilarse para aarch64-none-elf;
 eso solo demuestra toolchain de C freestanding, no build Mach-O XNU.
 
-xcrun, mig y SDK Apple no están configurados en esta sesión. El Makefile público
+xcrun y SDK Apple no están configurados en esta sesión. MIG oficial ya se construyó
+como herramienta host aislada ([receta](MIG_HOST_BUILD.md)); falta conectarlo al
+build del kernel y resolver el resto de herramientas. El Makefile público
 resuelve herramientas mediante xcrun. El README usa SDKROOT y ejemplos internal;
 no afirmar que todos sus caminos requieran necesariamente un SDK privado.
 Separar tres investigaciones: headers/generados públicos, herramientas abiertas

@@ -1,0 +1,5 @@
+/* SPDX-License-Identifier: MIT - Synthetic generator input; no runtime service. */
+subsystem AtlanticMigProbe 44000;
+type probe_port_t = MACH_MSG_TYPE_COPY_SEND;
+type probe_word_t = MACH_MSG_TYPE_INTEGER_32;
+routine probe_ping(request_port: probe_port_t; value: probe_word_t; out reply: probe_word_t);

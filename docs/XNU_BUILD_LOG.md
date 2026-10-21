@@ -15,9 +15,15 @@ c71d2d72f48995baaea76148f61002e5299841de / bootstrap_cmds-138, como herramienta
 de generación. No es un port de XNU ni un BSP. Su código usa headers Mach y
 conserva avisos APSL/CMU por archivo; no se integra todavía un binario generado.
 
+Actualización: [MIG_HOST_BUILD](MIG_HOST_BUILD.md) contiene una receta original
+Linux para construir migcom genuino de ese upstream, con puente host aislado y
+aserciones de metadata. El experimento generó interfaces ARM64 clock/mach_host/
+mach_port KernelServer. No se compilaron los C generados ni el kernel. Se añade
+CI específica para repetir esa generación desde las fuentes oficiales fijadas.
+
 Próximas salidas: sustituir de manera explícita consultas host de scheduling por
-parámetros de build reales, inventariar headers/generados y construir MIG de
-fuentes oficiales. Conservar las dependencias de ABI Mach, no fingir un SDK con
+parámetros de build reales, inventariar headers/generados y conectar MIG al build
+del kernel. Conservar las dependencias de ABI Mach, no fingir un SDK con
 types o primitivas de kernel inventados. Mach-O y librerías de seguridad siguen
 pendientes de resolver para el perfil AtlanticOS, que no puede heredar SME2/PAC
 o configuración Apple VMAPPLE en Cortex-A75/A55.
