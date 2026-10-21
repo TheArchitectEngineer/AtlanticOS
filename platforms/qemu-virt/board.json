@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "board_id": "qemu,virt-laboratory",
+  "role": "LABORATORY_ONLY_NOT_A_SUPPORTED_PHONE",
+  "arch": "aarch64",
+  "link_base": "0x40080000",
+  "ram_base": "0x40000000",
+  "ram_bytes": 134217728,
+  "entry_component": "PREFLIGHT_ONLY_XNU_NOT_LINKED",
+  "device_verified": false
+}

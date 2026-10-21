@@ -1,0 +1,36 @@
+make: Entering directory '/mnt/g/AtlanticOS/xnu-upstream'
+sysctl: cannot stat /proc/sys/hw/physicalcpu: No such file or directory
+sysctl: cannot stat /proc/sys/hw/logicalcpu: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: sw_vers: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make: /usr/bin/xcrun: No such file or directory
+make  -r --jobs=1 -f /mnt/g/AtlanticOS/xnu-upstream/makedefs/MakeInc.top all
+make[1]: Entering directory '/mnt/g/AtlanticOS/xnu-upstream'
+sysctl: cannot stat /proc/sys/hw/memsize: No such file or directory
+/bin/sh: 1: [: -le: unexpected operator
+/bin/sh: 1: arithmetic expression: expecting primary: " * 4294967296"
+/mnt/g/AtlanticOS/xnu-upstream/makedefs/MakeInc.cmd:567: *** invalid second argument to 'wordlist' function: empty value.  Stop.
+make[1]: Leaving directory '/mnt/g/AtlanticOS/xnu-upstream'
+make: *** [Makefile:238: all] Error 2
+make: Leaving directory '/mnt/g/AtlanticOS/xnu-upstream'

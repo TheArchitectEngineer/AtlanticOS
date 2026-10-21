@@ -7,8 +7,10 @@
 | BUILT_ARM64 | artefacto concreto compilado para ARM64, sin afirmar ejecución |
 | DEVICE_VERIFIED | binario exacto ejecutado en teléfono identificado, con prueba física |
 
-La entrega contiene HOST_TESTED y, cuando build_abi pasa, BUILT_ARM64 de un
-objeto BSP que devuelve UNSUPPORTED. No hay EMULATED ni DEVICE_VERIFIED propios.
+La entrega inicial contiene HOST_TESTED y BUILT_ARM64 de un objeto BSP que
+devuelve UNSUPPORTED. La etapa posterior agrega EMULATED del preflight ARM64
+original en QEMU EL1/EL2; no ejecuta XNU ni prueba G20. No hay DEVICE_VERIFIED
+de firmware AtlanticOS. Ver ENTRY_LAB.md y evidence/entry-lab-20261020.
 Los tests Python no simulan CPU ni temporización eléctrica. La foto pública
 V1 se auditó como evidencia externa, nunca se incorpora como logro AtlanticOS.
 

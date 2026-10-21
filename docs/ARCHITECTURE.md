@@ -24,11 +24,11 @@ flowchart TD
 
 | Capa | Responsabilidad | Implementación actual |
 |---|---|---|
-| atlantic-entry | capturar estado OEM, validar memoria, adaptador XNU | especificación, UNIMPLEMENTED |
+| atlantic-entry | capturar estado OEM, validar memoria, adaptador XNU | preflight propio QEMU EL1/EL2; adaptador XNU/G20 pendiente |
 | xnu-upstream | fuente auténtica fijada, Mach/VM/scheduler | checkout oficial intacto, sin build |
 | xnu-port | parches revisables, Platform Expert, build portable | series vacía y notas |
 | atlantic_core | máquina de estados/eventos/config/validación | Python host original |
-| atlantic-core | futura implementación freestanding C de la política | reserva de módulo; Python no se enlaza a firmware |
+| atlantic-core | implementación freestanding C de servicios comunes | parser FDT acotado; política C futura; Python no se enlaza a firmware |
 | include/atlantic + platforms | ABI v1, capacidad y estado de evidencia | header y BSP G20 que devuelve UNSUPPORTED |
 | ui | framebuffer textual mínimo y consola | render RGB original en host; GUI opcional |
 | io | bloques/particiones/FAT32/USB/red | fixtures en memoria; drivers UNIMPLEMENTED |

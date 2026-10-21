@@ -5,7 +5,8 @@ f6217f891ac0bb64f3d375211650a4c1ff8ca1ea. Patchset vacío.
 
 | Componente | Ejecutado por AtlanticOS | Estado |
 |---|---|---|
-| Entry ARM64 propio / EL2 a EL1 | No | UNIMPLEMENTED |
+| Entry ARM64 propio, preflight | Solo QEMU EL1/EL2 | EMULATED sin XNU enlazado; no G20 |
+| Transición EL2 a EL1 para XNU | No | UNIMPLEMENTED |
 | osfmk/arm64/start.s / osfmk/arm/arm_init.c | No | UNIMPLEMENTED |
 | Mach VM, allocators, scheduler, hilos | No | UNIMPLEMENTED |
 | Platform Expert UMS512 | No | UNIMPLEMENTED |

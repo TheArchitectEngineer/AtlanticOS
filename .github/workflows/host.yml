@@ -15,9 +15,14 @@ jobs:
         run: python3 tools/validate.py
       - name: Compile unsupported BSP ABI object only
         run: python3 tools/build_abi.py
+      - name: Test original freestanding parser with sanitizers
+        run: python3 tools/test_freestanding.py --sanitize
+      - name: Build original ARM64 entry preflight (no XNU)
+        run: python3 tools/build_entry.py
       - name: Validate checked-in evidence hashes
         run: |
           python3 tools/evidence-validator/validate_evidence.py evidence/host/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/arm64/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/device-intake-20261020/adb/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/device-intake-20261020/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/entry-lab-20261020/manifest.json

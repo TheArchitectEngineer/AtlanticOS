@@ -1,6 +1,7 @@
-# Entry ARM64 propio — UNIMPLEMENTED
+# Entry ARM64 propio — preflight de laboratorio
 
-No se incluye entry con bucle y nombre XNU. Fase 2 debe conservar x0-x3 y registrar
-CurrentEL, SCTLR y DTB antes de alterar la máquina; construir desde fuente propia
-el contenedor que acepte el bootloader. Ver docs/BOOT_CONTRACT.md. No BootShim,
-wrappers binarios externos ni reutilización del contenedor del port UEFI.
+entry.S y preflight.c implementan captura de estado y validación FDT para el BSP
+de laboratorio QEMU. Se identifican como XNU_NOT_LINKED: no son bootstrap Mach.
+Ver docs/ENTRY_LAB.md para comandos, evidencia y límites. El entry del G20 y su
+contenedor propio siguen pendientes de formato/recuperación comprobados.
+Sin BootShim, wrappers binarios externos o contenedor del port UEFI previo.

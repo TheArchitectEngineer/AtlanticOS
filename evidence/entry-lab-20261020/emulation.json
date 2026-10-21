@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "label": "EMULATED",
+  "scope": "ORIGINAL_ARM64_ENTRY_ONLY_NOT_XNU_NOT_G20",
+  "qemu_version": "QEMU emulator version 10.0.13 (Debian 1:10.0.13+ds-0+deb13u1)",
+  "image_sha256": "69213946b27d562f5930976cf0426f7ac59f46bd5a7ff486a092cb7ab37ad2d0",
+  "build_id": "954e279c89253de1cb5af42bdf511474ee6e62d15514e5c33fe963bedc4a2f22",
+  "runs": [
+    {
+      "expected_el": 1,
+      "observed_el": 1,
+      "exit_code": 0,
+      "log_sha256": "dcf9c429d546d21806897a97fb8b1ea5b3e449d3e2f555ad11f37dec96878c84",
+      "command": [
+        "qemu-system-aarch64",
+        "-machine",
+        "virt,virtualization=off",
+        "-cpu",
+        "cortex-a57",
+        "-m",
+        "128M",
+        "-smp",
+        "1",
+        "-nographic",
+        "-monitor",
+        "none",
+        "-serial",
+        "stdio",
+        "-nic",
+        "none",
+        "-no-reboot",
+        "-semihosting-config",
+        "enable=on,target=native",
+        "-kernel",
+        "<ROOT>/work/entry-qemu/entry.bin"
+      ]
+    },
+    {
+      "expected_el": 2,
+      "observed_el": 2,
+      "exit_code": 0,
+      "log_sha256": "c0eee30bb5737ac7e76ad58028ea4e6d41c3f6f68c916ee71fc1c9e472036dc4",
+      "command": [
+        "qemu-system-aarch64",
+        "-machine",
+        "virt,virtualization=on",
+        "-cpu",
+        "cortex-a57",
+        "-m",
+        "128M",
+        "-smp",
+        "1",
+        "-nographic",
+        "-monitor",
+        "none",
+        "-serial",
+        "stdio",
+        "-nic",
+        "none",
+        "-no-reboot",
+        "-semihosting-config",
+        "enable=on,target=native",
+        "-kernel",
+        "<ROOT>/work/entry-qemu/entry.bin"
+      ]
+    }
+  ],
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "network_enabled": false,
+  "disks_attached": false
+}

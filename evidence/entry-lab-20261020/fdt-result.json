@@ -1,0 +1,7 @@
+{
+  "label": "HOST_TESTED",
+  "scope": "ORIGINAL_FREESTANDING_FDT_PARSER_NOT_HARDWARE",
+  "sanitizers": true,
+  "exit_code": 0,
+  "compiler": "Debian clang version 19.1.7 (3+b1)"
+}

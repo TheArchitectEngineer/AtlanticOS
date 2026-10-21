@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-20",
+  "label": "EMULATED",
+  "scope": "ORIGINAL_ARM64_ENTRY_PREFLIGHT_EL1_EL2_ONLY_NO_XNU_NO_G20_EXECUTION",
+  "artifacts": [
+    {
+      "path": "build.json",
+      "sha256": "3d461696d1ed53722eb12ec211c422f14831f441215abfa81a4d3b8bb94045d1"
+    },
+    {
+      "path": "build.log",
+      "sha256": "7c370d9536d7d0d6a0f7cd7f9826692acd93e4fb05ba46f7b630b879740343d3"
+    },
+    {
+      "path": "emulation.json",
+      "sha256": "0e78b479be3f5e4915e402df0819d4ab34fba34890caa8a62724833ac91d53cd"
+    },
+    {
+      "path": "entry.bin",
+      "sha256": "69213946b27d562f5930976cf0426f7ac59f46bd5a7ff486a092cb7ab37ad2d0"
+    },
+    {
+      "path": "entry.elf",
+      "sha256": "1addf5578523a625febcb8d4a323be353f4cdc4328bc4cdefd12d6f871f79a7d"
+    },
+    {
+      "path": "fdt-result.json",
+      "sha256": "c5824db244115fbaa36709eb40b70810b5adf3fc41e43ae0a948fc9fe06df1aa"
+    },
+    {
+      "path": "fdt-test.log",
+      "sha256": "996e68cca7fea1b07e81eb8887a99d5c1b0a800315925e00b8059f56123e4aad"
+    },
+    {
+      "path": "qemu-el1.log",
+      "sha256": "dcf9c429d546d21806897a97fb8b1ea5b3e449d3e2f555ad11f37dec96878c84"
+    },
+    {
+      "path": "qemu-el2.log",
+      "sha256": "c0eee30bb5737ac7e76ad58028ea4e6d41c3f6f68c916ee71fc1c9e472036dc4"
+    },
+    {
+      "path": "xnu-upstream-dry-run.log",
+      "sha256": "ca7de90b47b7e7a215ac2c56fadea170612581fc3dc6f1eab5d42be31b283772"
+    }
+  ]
+}

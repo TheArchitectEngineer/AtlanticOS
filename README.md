@@ -16,6 +16,9 @@ La [primera entrega verificada](docs/DELIVERY_REPORT.md) registra 46 tests local
 reproducción en clon limpio y CI Ubuntu aprobada.
 El [inventario propio del G20 del 2026-10-20](docs/DEVICE_INTAKE_20261020.md)
 confirma identidad Android y desbloqueo por ADB, sin ejecutar firmware AtlanticOS.
+La [meta activa](docs/ACTIVE_GOAL.md) prioriza XNU real y handoff EDK2; AtlanticBIOS
+completo, VNC y Wi-Fi quedan para después. El [preflight ARM64](docs/ENTRY_LAB.md)
+se ejecuta en QEMU EL1/EL2, con BSP propio y sin XNU enlazado.
 
 ## Reproducir
 

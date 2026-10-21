@@ -5,6 +5,7 @@
   "status": "UNIMPLEMENTED",
   "device_verified": false,
   "android_fallback_verified": false,
+  "fastbootd": {"state": "USER_REPORTED_UNAVAILABLE", "policy": "DO_NOT_ENTER"},
   "capabilities": [],
   "research_reference": "h0nda1337/Moto-G20_EDK2_UEFI@321c01f87c78e7e9c5d82f692b71fcdad8ef921a",
   "warning": "Reference addresses are deliberately absent from executable BSP code."

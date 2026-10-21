@@ -1,0 +1,23 @@
+# Adaptación de build XNU — investigación activa
+
+Upstream sigue intacto en f6217f891ac0bb64f3d375211650a4c1ff8ca1ea.
+Un make -n real en Debian/WSL con SDKROOT=/ y salidas dirigidas a work/ terminó
+con exit 2 antes de compilar. Se registraron llamadas a /usr/bin/xcrun ausente,
+sw_vers ausente y sysctl hw.memsize/hw.physicalcpu de macOS no disponibles.
+La consulta vacía de memoria impidió construir la jerarquía de paralelismo.
+
+El log está en evidence/entry-lab-20261020/xnu-upstream-dry-run.log. Este intento
+es diagnóstico, no demuestra que portar el build sin SDK Apple sea imposible.
+No se hicieron stubs de funciones kernel ni de seguridad para ocultar errores.
+
+Se está examinando bootstrap_cmds oficial (MIG), commit
+c71d2d72f48995baaea76148f61002e5299841de / bootstrap_cmds-138, como herramienta
+de generación. No es un port de XNU ni un BSP. Su código usa headers Mach y
+conserva avisos APSL/CMU por archivo; no se integra todavía un binario generado.
+
+Próximas salidas: sustituir de manera explícita consultas host de scheduling por
+parámetros de build reales, inventariar headers/generados y construir MIG de
+fuentes oficiales. Conservar las dependencias de ABI Mach, no fingir un SDK con
+types o primitivas de kernel inventados. Mach-O y librerías de seguridad siguen
+pendientes de resolver para el perfil AtlanticOS, que no puede heredar SME2/PAC
+o configuración Apple VMAPPLE en Cortex-A75/A55.
