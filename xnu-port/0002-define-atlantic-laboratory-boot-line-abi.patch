@@ -1,0 +1,15 @@
+--- a/pexpert/pexpert/arm64/boot.h
++++ b/pexpert/pexpert/arm64/boot.h
+@@ -15,7 +15,11 @@
+ #include <pexpert/arm/consistent_debug.h>
+ #include <pexpert/arm/protos.h>
+ 
+-#if !TARGET_OS_SIMULATOR
++#if defined(ARM64_BOARD_CONFIG_ATLANTIC_LAB)
++/* AtlanticOS owns both producers and consumers of this internal boot ABI.
++ * This is not an iBoot ABI claim; do not reinterpret an OEM buffer as boot_args. */
++#define BOOT_LINE_LENGTH 1024
++#elif !TARGET_OS_SIMULATOR
+ /*
+  * Maximum size of an environment variable value. This particular value is
+  * chosen to accommodate the maximum encoded size of the system token as

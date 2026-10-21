@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+  "port_id": "58224d3c7739f69abcb5d278bc941c2ff2f0adcc6584a8f0473fe6e9810a1b5f",
+  "patches": {
+    "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
+    "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
+    "0003-separate-firmware-bootstrap-from-apple-userland.patch": "fb9c0de2be8b1db499463d1b5a304d71e4d0fe5902157c133379758d517e8b94"
+  },
+  "canonical_lf_files": [
+    {
+      "path": "osfmk/arm64/proc_reg.h",
+      "preimage_sha256": "7308c061ed6d2fede6bb90c7c5ede8dc09db79737d97c5a06726412b70560618",
+      "postimage_sha256": "e43591d314c89dc8d09656a227918223d0fa125f66415ec54eb2545377dd96f3"
+    },
+    {
+      "path": "osfmk/kern/startup.c",
+      "preimage_sha256": "0196b64546c2845df7898fcab3203017f08fe2477df7ab0946dd7433097d13c5",
+      "postimage_sha256": "66aa78d1fcb5b49544823d1c1d4ac34db73128fe04da129c3c14cfaae908cded"
+    },
+    {
+      "path": "osfmk/kern/startup.h",
+      "preimage_sha256": "a81a90f153b1c374b6c6e94ee7324efa9a7bcbe4917fc7e3c028aba34acbf813",
+      "postimage_sha256": "d3bd820cc94b485554b6f8cc217c9692ca00a8b263ed90bc685ffdc5683fcf1f"
+    },
+    {
+      "path": "pexpert/pexpert/arm64/ATLANTIC_LAB.h",
+      "preimage_sha256": null,
+      "postimage_sha256": "c5433f4e2fcca9b500167f500296df9072af48ceb1ff2000d7e19fbad4951efd"
+    },
+    {
+      "path": "pexpert/pexpert/arm64/board_config.h",
+      "preimage_sha256": "93a53007d88b13bb42335ae43e5ccd8e8b1f759781a23105e91c7512fddd59c9",
+      "postimage_sha256": "1f3c88b784281af311885eed4590a43d6cc51afd0497942f4d61747ccf159404"
+    },
+    {
+      "path": "pexpert/pexpert/arm64/boot.h",
+      "preimage_sha256": "c96e02ceeef71846e20a3fa723dcb57d3f4991820509d83a950a1f47d51b7a99",
+      "postimage_sha256": "fd32f9dc4addce1716409fd4cdf95e6c91357c058a5d7d981fdacb80200d62a3"
+    }
+  ],
+  "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"
+}

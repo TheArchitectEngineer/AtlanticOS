@@ -1,0 +1,58 @@
+--- a/pexpert/pexpert/arm64/board_config.h
++++ b/pexpert/pexpert/arm64/board_config.h
+@@ -49,6 +49,10 @@
+  * across all clusters.
+  */
+ 
++#ifdef ARM64_BOARD_CONFIG_ATLANTIC_LAB
++#include <pexpert/arm64/ATLANTIC_LAB.h>
++#endif
++
+ #ifdef ARM64_BOARD_CONFIG_T6000
+ #include <pexpert/arm64/H13.h>
+ 
+--- /dev/null
++++ b/pexpert/pexpert/arm64/ATLANTIC_LAB.h
+@@ -0,0 +1,27 @@
++/* SPDX-License-Identifier: MIT
++ * Original AtlanticOS laboratory compile profile. Not a Moto G20 BSP.
++ * ARMv8-A, one CPU, 4 KiB translation granule, QEMU Cortex-A57 cache model.
++ * No Apple PAC, SME, AIC, CTRR, KTRR, SPTM or monitor features are selected.
++ */
++#ifndef ATLANTIC_XNU_LAB_BOARD_H
++#define ATLANTIC_XNU_LAB_BOARD_H
++#define ATLANTIC_ARM64_LAB 1
++#define __ARM_ARCH__ 8
++#define __ARM_VMSA__ 8
++#define __ARM_VFP__ 4
++#define __ARM_COHERENT_CACHE__ 1
++#define __ARM_COHERENT_IO__ 1
++#define __ARM_IC_NOALIAS_ICACHE__ 1
++#define __ARM_DEBUG__ 7
++#define MAX_L2_CLINE 6
++#define MAX_CPUS 1
++#define MAX_CPU_CLUSTERS 1
++#define NO_MONITOR 1
++#define NO_ECORE 1
++#define ARM_ARCH_TIMER 1
++/* Metadata has two fixed slots; no hardware counter backend is enabled. */
++#define CORE_NCTRS 2
++#if CONFIG_CPU_COUNTERS
++#error AtlanticOS laboratory PMU backend is not implemented
++#endif
++#endif
+--- a/osfmk/arm64/proc_reg.h
++++ b/osfmk/arm64/proc_reg.h
+@@ -234,6 +234,12 @@
+ 
+ /* D-Cache, 128KB for AppleH16 PCore, 8-way. 64KB for ECore, 8-way. */
+ #define MMU_CLINE   6                      /* cache line size is 1<<MMU_CLINE (64) */
++
++#elif defined (ATLANTIC_ARM64_LAB)
++
++/* Laboratory cache-line configuration, measured separately on real boards. */
++#define MMU_I_CLINE 6
++#define MMU_CLINE 6
+ 
+ #elif defined (VMAPPLE)
+ 

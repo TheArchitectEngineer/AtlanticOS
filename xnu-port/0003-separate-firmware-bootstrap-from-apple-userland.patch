@@ -1,0 +1,84 @@
+--- a/osfmk/kern/startup.c
++++ b/osfmk/kern/startup.c
+@@ -65,6 +65,10 @@
+ /*
+  *	Mach kernel startup.
+  */
++
++#if CONFIG_ATLANTIC_FIRMWARE && (defined(MACH_BSD) || defined(IOKIT))
++#error AtlanticOS firmware profile excludes BSD userland and IOKit
++#endif
+ 
+ #include <debug.h>
+ #include <mach_kdp.h>
+@@ -125,8 +129,10 @@
+ #include <sys/kdebug.h>
+ #include <sys/random.h>
+ #include <sys/ktrace.h>
++#if !CONFIG_ATLANTIC_FIRMWARE
+ #include <sys/trust_caches.h>
+ #include <sys/code_signing.h>
++#endif
+ #include <libkern/section_keywords.h>
+ 
+ #include <kern/waitq.h>
+@@ -505,7 +511,9 @@
+ 	thread_t        thread;
+ 	char            namep[16];
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE
+ 	code_signing_config_t cs_config;
++#endif
+ 
+ 	printf("%s\n", version); /* log kernel version */
+ 
+@@ -607,6 +615,7 @@
+ 	coalitions_init();
+ #endif
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE
+ 	kernel_bootstrap_log("code_signing_init");
+ 	code_signing_init();
+ 	code_signing_configuration(NULL, &cs_config);
+@@ -615,6 +624,7 @@
+ 		AMFI_bootarg_disable_mach_hardening = true;
+ 	}
+ #endif /* XNU_TARGET_OS_OSX && (DEVELOPMENT || DEBUG) */
++#endif /* !CONFIG_ATLANTIC_FIRMWARE */
+ 
+ 	kernel_bootstrap_log("task_init");
+ 	task_init();
+@@ -841,6 +851,7 @@
+ 	csm_initialize_provisioning_profiles();
+ #endif
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE
+ 	kernel_bootstrap_log("trust_cache_init");
+ 
+ 	/* Initialize the runtime for the trust cache interface */
+@@ -848,6 +859,7 @@
+ 
+ 	/* Load the static and engineering trust caches */
+ 	load_static_trust_cache();
++#endif /* !CONFIG_ATLANTIC_FIRMWARE */
+ 
+ 	kernel_startup_initialize_upto(STARTUP_SUB_LOCKDOWN);
+ 
+--- a/osfmk/kern/startup.h
++++ b/osfmk/kern/startup.h
+@@ -938,12 +938,13 @@
+ 	__STARTUP_ARG(name, lno, EVENT, STARTUP_RANK_FIRST,                     \
+ 	    event_register_handler, &name##_event_##lno.evt_link)
+ 
++/* startup.c defines this tunable independently of the BSD subsystem. */
++extern int serverperfmode;
++
+ #ifdef  MACH_BSD
+ 
+ /* BSD subsystem initialization */
+ extern void bsd_init(void);
+-
+-extern int serverperfmode;
+ 
+ #if defined(XNU_TARGET_OS_OSX)
+ static inline bool

@@ -21,9 +21,16 @@ aserciones de metadata. El experimento generó interfaces ARM64 clock/mach_host/
 mach_port KernelServer. No se compilaron los C generados ni el kernel. Se añade
 CI específica para repetir esa generación desde las fuentes oficiales fijadas.
 
-Próximas salidas: sustituir de manera explícita consultas host de scheduling por
-parámetros de build reales, inventariar headers/generados y conectar MIG al build
-del kernel. Conservar las dependencias de ABI Mach, no fingir un SDK con
-types o primitivas de kernel inventados. Mach-O y librerías de seguridad siguen
-pendientes de resolver para el perfil AtlanticOS, que no puede heredar SME2/PAC
-o configuración Apple VMAPPLE en Cortex-A75/A55.
+Actualización 2026-10-21: [XNU_LAB_BUILD](XNU_LAB_BUILD.md) conecta config y MIG
+oficiales a cinco unidades reales, compiladas como objetos Mach-O AArch64.
+La receta sustituye la orquestación de ese subconjunto con parámetros explícitos;
+no simula un SDK ni acredita el Makefile completo. La serie original tiene
+preimágenes y postimágenes fijadas, un perfil ARMv8-A de laboratorio y un ABI
+interno probado. El snapshot de auditoría sigue intacto.
+
+El probe extendido devuelve exit 1: thread.c requiere separar APIs BSD y resolver
+builtins Apple de tipos/metadata; vm_map.c alcanza TrustCache/API.h ausente.
+No se ocultaron esos errores con headers vacíos, funciones de éxito ni warnings
+desactivados. El enlace y la ejecución XNU continúan pendientes, así como pmap,
+Platform Expert, contexto, IRQ y drivers AtlanticOS. El perfil de laboratorio
+no selecciona VMAPPLE ni CPU Apple y no acredita compatibilidad del G20.

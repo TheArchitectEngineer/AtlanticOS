@@ -1,0 +1,7 @@
+In file included from <ROOT>/work/xnu-lab-sources/58224d3c7739f69a/osfmk/vm/vm_map.c:134:
+In file included from <ROOT>/work/xnu-lab-sources/58224d3c7739f69a/bsd/sys/code_signing.h:126:
+In file included from <ROOT>/work/xnu-lab-sources/58224d3c7739f69a/bsd/sys/code_signing_internal.h:39:
+<ROOT>/work/xnu-lab-sources/58224d3c7739f69a/osfmk/vm/pmap_cs.h:63:10: fatal error: 'TrustCache/API.h' file not found
+   63 | #include <TrustCache/API.h>
+      |          ^~~~~~~~~~~~~~~~~~
+1 error generated.

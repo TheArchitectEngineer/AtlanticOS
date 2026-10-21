@@ -3,8 +3,9 @@
 Firmware de prearranque ARM64 propuesto, basado en un port auténtico y reducido
 de XNU. Primera placa: Motorola Moto G20 / Unisoc T700 (UMS512).
 
-**Estado 2026-10-19: auditoría documental Fase 0 y prototipo host Fase 1.
-El port XNU y los drivers AtlanticOS están UNIMPLEMENTED. No hay firmware de
+**Estado 2026-10-21: auditoría Fase 0, prototipo host Fase 1 y port XNU
+incremental. Cinco unidades reales de XNU compilan a objetos ARM64; todavía
+no hay kernel enlazado, ejecución XNU ni drivers G20 funcionales. No hay firmware
 AtlanticOS ejecutado en teléfono, ni medición de su RAM residente.**
 
 Repositorio público: [h0nda1337/AtlanticOS](https://github.com/h0nda1337/AtlanticOS).
@@ -24,7 +25,10 @@ El [análisis offline del firmware](docs/STOCK_FIRMWARE_ANALYSIS.md) identifica
 boot header v2, DTB y overlays de un paquete con fingerprint coincidente.
 La variante de canal y las firmas OEM siguen pendientes; sus binarios permanecen privados.
 La [receta MIG oficial](docs/MIG_HOST_BUILD.md) compila el generador de Apple y
-produce interfaces ARM64 de XNU; el kernel todavía no está compilado ni enlazado.
+produce interfaces ARM64 de XNU. El [build incremental](docs/XNU_LAB_BUILD.md)
+compila bootstrap, scheduler, reloj, bootstrap VM y allocator kernel con un
+perfil original. Las pruebas de thread.c y vm_map.c fallan y conservan sus
+diagnósticos. Esos objetos no forman todavía un kernel ejecutable.
 
 ## Reproducir
 
@@ -45,7 +49,8 @@ Logs, capturas y hashes reproducibles se generan en `work/validation/`.
 
 Clang es opcional: `python tools/build_abi.py` comprueba el contrato BSP como
 objeto AArch64 independiente. **Ese objeto no es XNU, no enlaza un kernel y no
-es una imagen arrancable.** `BUILT_ARM64` solo se aplica a ese artefacto.
+es una imagen arrancable.** `BUILT_ARM64` identifica compilación de un artefacto,
+con el alcance declarado en cada manifiesto; nunca acredita ejecución.
 
 `python tools/fetch_xnu.py` obtiene el upstream oficial fijado; queda ignorado
 por Git. No se incluyen imágenes stock, claves, binarios UEFI ni wrappers.

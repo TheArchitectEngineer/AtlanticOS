@@ -1,4 +1,5 @@
 * text=auto eol=lf
 *.png binary
 *.o binary
-evidence/** -text
+evidence/** -text -whitespace
+xnu-port/*.patch -whitespace

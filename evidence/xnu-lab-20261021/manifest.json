@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-21",
+  "label": "BUILT_ARM64",
+  "scope": "FIVE_REAL_XNU_CORE_OBJECTS_TWO_FAILED_PROBES_NO_LINK_NO_EXECUTION",
+  "artifacts": [
+    {
+      "path": "boot-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "clock-defined.log",
+      "sha256": "613d6b8a3700a39496f2a60948fa7ab70565caaff5f39c945751775a6c0856e8"
+    },
+    {
+      "path": "clock-undefined.log",
+      "sha256": "0c70accb01501caa60d22195de11d0b3fe0f3a109c4edc520369101248bfdc06"
+    },
+    {
+      "path": "clock.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "config-bison.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "config-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "config-flex.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "config-generate.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "negative-guards-excerpts.json",
+      "sha256": "4629f53a3488103498ab2f13ab185d9e6fff37047e8bb97944e48d4553c4a29d"
+    },
+    {
+      "path": "README.md",
+      "sha256": "86520a1122ec33ecbcfbdb690fcae326731dee38e48348712959f0e7f5c18a5f"
+    },
+    {
+      "path": "report.json",
+      "sha256": "186e0c1313ba3a264b0b699ba8ad2a82e2b0a36a2d200e12fefa9cac39dbda79"
+    },
+    {
+      "path": "sched_prim-defined.log",
+      "sha256": "cd177647838d960885af70e607106cec79bc42d31a5b7727d8a2467123683b6b"
+    },
+    {
+      "path": "sched_prim-undefined.log",
+      "sha256": "0bebc21d96fc52604b8f0ce283e37fa9f425e7a724323bbbab225f28933bba76"
+    },
+    {
+      "path": "sched_prim.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "startup-defined.log",
+      "sha256": "6ec892390a64f61a47c7ffa58dd481330222abc62d26e7b0797c1ceca56b2796"
+    },
+    {
+      "path": "startup-undefined.log",
+      "sha256": "fa8ef3597c8d5fdbedd980879f95d2d9a148ca57f564202f90f7a0e80ff04403"
+    },
+    {
+      "path": "startup.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thread.log",
+      "sha256": "3edd6bfea35bf3231d7635f536dbd013eb683c6a8a17392e338533f3094885e8"
+    },
+    {
+      "path": "version-generate.log",
+      "sha256": "b769f927db3afc5a73235cd53037bc6c9d096bc866f8fcf769b8a98ee60fadd5"
+    },
+    {
+      "path": "vm_init-defined.log",
+      "sha256": "c91f693d3e2a0bf6a896672e8b96b59132ce48db450991cd221ffcbafeb29070"
+    },
+    {
+      "path": "vm_init-undefined.log",
+      "sha256": "6a15a10ec072e4fade27800cb2dc6144cdb0ed603e3125d0d057113842bedd97"
+    },
+    {
+      "path": "vm_init.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "vm_kern-defined.log",
+      "sha256": "fde75d54823bdccd0ecacac0a17efdff00e1eedde658fa3aa9e965aa7a200abc"
+    },
+    {
+      "path": "vm_kern-undefined.log",
+      "sha256": "ffedea8211f31b5dc67a59f513c6826d2ef41b28a3f87cae5b7ae78794a5188b"
+    },
+    {
+      "path": "vm_kern.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "vm_map.log",
+      "sha256": "d1a9fe791e35028466ddc23fb2b28ff3a35eeb5702588f0de3504f4d79d57847"
+    }
+  ]
+}

@@ -1,1 +1,3 @@
-# Empty: no patches have been applied. Upstream snapshot is only being audited.
+0001-add-atlantic-arm64-laboratory-profile.patch
+0002-define-atlantic-laboratory-boot-line-abi.patch
+0003-separate-firmware-bootstrap-from-apple-userland.patch
