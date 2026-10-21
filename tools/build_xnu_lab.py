@@ -53,6 +53,12 @@ def main():
     for tool in [git, 'clang', 'bison', 'flex', 'csh', 'unifdef', 'perl', 'llvm-nm', 'llvm-size']:
         if not shutil.which(tool):
             ap.error('Missing build tool: '+tool)
+    capability = subprocess.run(['clang', '--target=arm64-apple-macos11.0', '-nostdinc', '-fsyntax-only', '-x', 'c', '-'],
+        input='#if !__has_builtin(__builtin_clzg) || !__has_builtin(__builtin_ctzg)\n'
+              '#error This XNU revision requires generic count-leading/trailing-zero builtins (Clang 19+)\n#endif\n',
+        text=True, capture_output=True, timeout=10)
+    if capability.returncode:
+        ap.error('Selected clang lacks required target builtins. Use Clang 19 or newer: '+capability.stderr)
     def path_arg(p):
         return subprocess.check_output(['wslpath', '-w', str(p)], text=True).strip() if args.windows_git else str(p)
     def scm(folder, *argv):

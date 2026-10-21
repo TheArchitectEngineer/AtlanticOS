@@ -7,7 +7,8 @@ XNU. El arranque físico y el handoff continúan pendientes.
 
 ## Receta y procedencia
 
-Desde Linux/WSL x86_64, con clang, llvm, bison, flex, tcsh, unifdef, perl y git:
+Desde Linux/WSL x86_64, con Clang/LLVM 19 o posterior, bison, flex, tcsh,
+unifdef, perl y git:
 
 ```sh
 python3 tools/fetch_xnu.py
@@ -21,6 +22,11 @@ usar `--windows-git` en ambos builds para comprobar integridad con git.exe.
 Compilador y generadores siguen siendo Linux. No se simulan xcrun, sw_vers ni
 un SDK. El driver sustituye la orquestación de build de este subconjunto;
 no demuestra que el Makefile completo funcione.
+
+La primera CI usó Clang 18.1.3 y falló las cinco unidades en bits.h porque no
+reconocía __builtin_clzg/ctzg. CI selecciona ahora LLVM 19 explícitamente y el
+driver comprueba ambas capacidades para el target antes de preparar fuentes.
+No se reemplazan esas operaciones por macros ni se ocultan los errores.
 
 El driver comprueba commit y limpieza de xnu-upstream, crea un checkout separado
 LF bajo work/xnu-lab-sources y aplica la serie con Git al índice. Verifica
