@@ -38,3 +38,11 @@ aprobaron el commit 75b3f17. No hay ejecución XNU, resultado físico AtlanticOS
 handoff EDK2 ni RAM firmware medida. Los siguientes límites de build están en
 [XNU_COMPILER_REQUIREMENTS](XNU_COMPILER_REQUIREMENTS.md); las pruebas físicas
 pendientes se detallan en [DEVICE_TEST_PLAN](DEVICE_TEST_PLAN.md).
+
+Ampliación posterior: once unidades reales compiladas, incluyendo start,
+cswitch, locore, rutinas de máquina, arm_init y arm_vm_init. [CI host](https://github.com/h0nda1337/AtlanticOS/actions/runs/39611682565)
+y [CI XNU](https://github.com/h0nda1337/AtlanticOS/actions/runs/39611682795)
+aprobaron 6a2bb69; las 137 constantes de layout coinciden entre Clang 19.1.1 y
+19.1.7. Hay 74 pruebas host aprobadas. Siguen pendientes el cierre de símbolos,
+hilos/VM completos, enlace, ejecución XNU y evidencia física. Compilar más
+unidades no cambia el criterio de aceptación del objetivo.

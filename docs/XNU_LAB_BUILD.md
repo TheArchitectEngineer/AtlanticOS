@@ -36,6 +36,11 @@ aprobó generación y las cinco compilaciones con Ubuntu Clang 19.1.1.
 La evidencia local usa Debian Clang 19.1.7. Ambos resultados son de objetos
 sin enlace; esa CI no intenta las dos unidades que aún fallan en el probe.
 
+La [CI de 6a2bb69](https://github.com/h0nda1337/AtlanticOS/actions/runs/39611682795)
+amplía el resultado a once unidades con Clang 19.1.1. Su reporte descargado y el
+local comparten hashes de inputs/parches y las mismas 137 constantes de layout.
+No se afirma igualdad byte a byte de objetos entre versiones del compilador.
+
 El driver comprueba commit y limpieza de xnu-upstream, crea un checkout separado
 LF bajo work/xnu-lab-sources y aplica la serie con Git al índice. Verifica
 hashes de parches, preimágenes, postimágenes y diferencias esperadas. Rechaza
