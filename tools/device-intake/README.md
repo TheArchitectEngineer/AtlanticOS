@@ -7,14 +7,16 @@ batería. Las consultas están enumeradas; no aceptan comandos arbitrarios.
 
 ```powershell
 python tools/device-intake/collect.py --output work/device-intake/session-01
-# Solo después de llegar por botones al bootloader y dejar el teléfono allí:
-python tools/device-intake/fastboot_readonly.py --output work/device-intake/bootloader-01
+# Después de una transición observada y con el teléfono detenido en fastboot:
+python tools/device-intake/fastboot_readonly.py --output work/device-intake/bootloader-01 --entry-method user-buttons
 ```
 
 Cada destino debe ser un directorio nuevo dentro de work/. Se conserva stdout y
 stderr privado; los seriales del transporte se redactan en public/. Revisar esos
 archivos antes de copiar al repositorio. La enumeración exige un único transporte
 autorizado; ADB acepta --serial para selección explícita si existen varios.
+--entry-method puede registrar adb-reboot-bootloader o unknown. Ese metadato
+no prueba botones y la herramienta nunca cambia de modo.
 
 Propiedades ausentes, acceso denegado y timeouts se conservan como tales. Un
 fingerprint OEM no demuestra integridad stock. Listar /dev/block/by-name no

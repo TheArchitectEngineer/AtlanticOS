@@ -2,8 +2,8 @@
 
 | Prioridad | Desconocido | Experimento / criterio de cierre |
 |---|---|---|
-| P0 | Variantes XT2128/build stock y bloqueo real | T00; identidad y hashes sin PII |
-| P0 | Recuperación Android realmente independiente | T01/T02; retorno stock reproducido sin cambiar metadata |
+| P0 | Integridad stock de la variante ya identificada | T00 observa XT2128-1/RTAS31.68-66-3, unlocked/orange; faltan hashes de firmware exacto, sin PII |
+| P0 | Recuperación Android realmente independiente | Recorrido OEM por comandos reproducido; T01 por botones y retorno tras payload no probados. T02: metadata de slots vacía |
 | P0 | Vía temporal aceptada por OEM, header/compresión | T03/T04; formato y mecanismo demostrados; BLOCKED si no existe |
 | P0 | Toolchain XNU y librerías no resueltas | Headers/assym/MIG; grafo de símbolos; clasificar -lcc_kext y seguridad |
 | P0 | EL inicial / transición EL2→EL1, DT y carveouts | T05; registros capturados con entry original y rangos validados |

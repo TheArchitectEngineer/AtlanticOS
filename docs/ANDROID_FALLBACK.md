@@ -1,8 +1,12 @@
 # Android independiente y recuperación
 
-Estado actual: no se ha conectado teléfono ni comprobado ruta propia.
-El teléfono nuevo debe permanecer stock durante el inventario. No hay scripts
-de flasheo, escritura de particiones, selección de slot, AVB o desbloqueo.
+Estado actualizado 2026-10-20: teléfono conectado con desbloqueo previo del
+usuario; identidad y Android actual observados por ADB. Se comprobó entrada
+solicitada con adb reboot bootloader y regreso con fastboot reboot al mismo
+fingerprint/slot. Ver DEVICE_INTAKE_20261020.md. No se comprobó recuperación
+física ni retorno tras payload propio; no se habilita fallback AtlanticOS.
+No hay scripts de flasheo, escritura de particiones, selección de slot, AVB o
+desbloqueo. No se alteró el contenido de imágenes Android.
 
 No saltar a boot_a/boot_b desde XNU. Son contenedores que requieren bootloader,
 DT, ramdisk, autenticación y estado de CPU correctos. A/B no garantiza que ambos

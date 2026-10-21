@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audit_date": "2026-10-20",
   "label": "HOST_TESTED",
-  "scope": "READ_ONLY_DEVICE_OBSERVATIONS_AND_HOST_COLLECTOR_TESTS_NOT_ATLANTICOS_FIRMWARE",
+  "scope": "PHYSICAL_ANDROID_AND_FASTBOOT_OBSERVATIONS_WITH_HOST_TOOLING_NOT_ATLANTICOS_FIRMWARE",
   "artifacts": [
     {
       "path": "adb/adb-intake.json",
@@ -13,12 +13,28 @@
       "sha256": "8d03fc20cbc5e2150fa4bc4a1c5ca9514f335eddc99e328f2f22c2412ddce702"
     },
     {
+      "path": "collector-source-hashes.json",
+      "sha256": "62878f1861f46d5a68dd41c0ebc5d41128928c14ce66de83508ce7f9ee488e36"
+    },
+    {
+      "path": "fastboot/fastboot-intake.json",
+      "sha256": "85f5c87177458464393308a767e34ea22ce068812be8b439936df35d29e4bd93"
+    },
+    {
+      "path": "fastboot/manifest.json",
+      "sha256": "23d998de5792292c71f6f340a6a8a05135c2d05d16606d534e037fff77aa090c"
+    },
+    {
       "path": "host-tests.log",
       "sha256": "8d2708856bdcfd9cf91795d21a546a0698b4d8aa893c7853a5a7b28b7fdae2f1"
     },
     {
-      "path": "collector-source-hashes.json",
-      "sha256": "78c6e20a1a9ad49dc20e186e95d79dc6d27606555286e59e1b81952d0dc84f5f"
+      "path": "transition/return-android.json",
+      "sha256": "9c5672cc53bf72eaaf2508d3fe56227b5c759b2d07342fdac16a65185592f603"
+    },
+    {
+      "path": "transition/transition.json",
+      "sha256": "f6c6deb59b9d01edff31eda1209e3e73e55c71187edfc9c52f85eff936ed1efc"
     }
   ]
 }

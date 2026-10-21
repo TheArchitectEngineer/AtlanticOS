@@ -1,0 +1,36 @@
+{
+  "label": "HOST_TESTED",
+  "scope": "ADB_REQUESTED_BOOTLOADER_TRANSITION_NO_PAYLOAD_OR_FLASH",
+  "device_alias": "g20-465614bbe76d",
+  "request_exit_code": 0,
+  "request_transcript": "",
+  "matching_fastboot_detected": true,
+  "observations": [
+    {
+      "elapsed_s": 0.969,
+      "fastboot_transports": 0
+    },
+    {
+      "elapsed_s": 2.984,
+      "fastboot_transports": 0
+    },
+    {
+      "elapsed_s": 5.0,
+      "fastboot_transports": 0
+    },
+    {
+      "elapsed_s": 7.031,
+      "fastboot_transports": 0
+    },
+    {
+      "elapsed_s": 9.094,
+      "fastboot_transports": 0
+    },
+    {
+      "elapsed_s": 11.141,
+      "fastboot_transports": 1
+    }
+  ],
+  "physical_button_entry_verified": false,
+  "battery_queried": false
+}

@@ -1,0 +1,379 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "PHYSICAL_FASTBOOT_METADATA_ONLY_NO_ATLANTICOS_EXECUTION",
+  "timestamp_utc": "2026-10-21T01:51:53.362706+00:00",
+  "device_alias": "g20-465614bbe76d",
+  "mode_entry_method": "adb-reboot-bootloader",
+  "physical_button_entry_verified_by_tool": false,
+  "battery_queried": false,
+  "writes_or_flashing": false,
+  "mode_changed_by_tool": false,
+  "variables": {
+    "product": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "product"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "product: \nFinished. Total time: 0.000s\n"
+    },
+    "version": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "version"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "1.0",
+      "transcript": "version: 1.0\nFinished. Total time: 0.000s\n"
+    },
+    "version-bootloader": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "version-bootloader"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "version-bootloader: \nFinished. Total time: 0.000s\n"
+    },
+    "secure": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "secure"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "secure: \nFinished. Total time: 0.000s\n"
+    },
+    "unlocked": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "unlocked"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "unlocked: \nFinished. Total time: 0.000s\n"
+    },
+    "is-userspace": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "is-userspace"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "no",
+      "transcript": "is-userspace: no\nFinished. Total time: 0.000s\n"
+    },
+    "current-slot": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "current-slot"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "current-slot: \nFinished. Total time: 0.000s\n"
+    },
+    "slot-count": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "slot-count"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "slot-count: \nFinished. Total time: 0.000s\n"
+    },
+    "has-slot:boot": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "has-slot:boot"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "has-slot:boot: \nFinished. Total time: 0.000s\n"
+    },
+    "has-slot:vendor_boot": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "has-slot:vendor_boot"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "has-slot:vendor_boot: \nFinished. Total time: 0.000s\n"
+    },
+    "has-slot:dtb": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "has-slot:dtb"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "has-slot:dtb: \nFinished. Total time: 0.000s\n"
+    },
+    "has-slot:dtbo": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "has-slot:dtbo"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "has-slot:dtbo: \nFinished. Total time: 0.000s\n"
+    },
+    "slot-successful:a": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "slot-successful:a"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "slot-successful:a: \nFinished. Total time: 0.000s\n"
+    },
+    "slot-successful:b": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "slot-successful:b"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "slot-successful:b: \nFinished. Total time: 0.000s\n"
+    },
+    "slot-unbootable:a": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "slot-unbootable:a"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "slot-unbootable:a: \nFinished. Total time: 0.000s\n"
+    },
+    "slot-unbootable:b": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "slot-unbootable:b"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "slot-unbootable:b: \nFinished. Total time: 0.000s\n"
+    },
+    "slot-retry-count:a": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "slot-retry-count:a"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "slot-retry-count:a: \nFinished. Total time: 0.000s\n"
+    },
+    "slot-retry-count:b": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "slot-retry-count:b"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "slot-retry-count:b: \nFinished. Total time: 0.000s\n"
+    },
+    "partition-size:boot_a": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "partition-size:boot_a"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "partition-size:boot_a: \nFinished. Total time: 0.000s\n"
+    },
+    "partition-size:boot_b": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "partition-size:boot_b"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "partition-size:boot_b: \nFinished. Total time: 0.000s\n"
+    },
+    "partition-size:vendor_boot_a": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "partition-size:vendor_boot_a"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "partition-size:vendor_boot_a: \nFinished. Total time: 0.000s\n"
+    },
+    "partition-size:vendor_boot_b": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "partition-size:vendor_boot_b"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "partition-size:vendor_boot_b: \nFinished. Total time: 0.000s\n"
+    },
+    "partition-size:dtb_a": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "partition-size:dtb_a"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "partition-size:dtb_a: \nFinished. Total time: 0.000s\n"
+    },
+    "partition-size:dtb_b": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "partition-size:dtb_b"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "partition-size:dtb_b: \nFinished. Total time: 0.000s\n"
+    },
+    "partition-size:dtbo_a": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "partition-size:dtbo_a"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "partition-size:dtbo_a: \nFinished. Total time: 0.000s\n"
+    },
+    "partition-size:dtbo_b": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "partition-size:dtbo_b"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "partition-size:dtbo_b: \nFinished. Total time: 0.000s\n"
+    },
+    "partition-type:boot_a": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "partition-type:boot_a"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "partition-type:boot_a: \nFinished. Total time: 0.000s\n"
+    },
+    "max-download-size": {
+      "command": [
+        "fastboot",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "getvar",
+        "max-download-size"
+      ],
+      "status": "VALUE_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "transcript": "max-download-size: \nFinished. Total time: 0.000s\n"
+    }
+  },
+  "mode_reported": "BOOTLOADER"
+}

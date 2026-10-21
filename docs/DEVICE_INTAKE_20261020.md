@@ -45,11 +45,45 @@ slot sea arrancable. No se afirma AVB deshabilitado porque veritymode sigue
 declarando enforcing. El Orange State observado como propiedad no es una foto
 del aviso dibujado por el bootloader.
 
-Pendiente: T01 entrada física por botones y retorno stock independientes; T02
-slot-successful/unbootable/retry y tamaños de partición por consultas fastboot;
-T03 firmware exacto/header/DTB; T04 ruta temporal real. El usuario realizará la
-transición física y avisará; ninguna herramienta reinicia automáticamente.
+## Fastboot y regreso Android observados en la misma sesión
+
+La secuencia de botones propuesta no dio entrada verificable; el usuario indicó
+que no lograba entrar. No se concluye que los botones estén averiados. Se envió
+una única solicitud explícita `adb -s <dispositivo> reboot bootloader` fuera del
+colector y se detectó el mismo transporte fastboot a los 11.141 s de muestreo.
+No se usó `adb reboot fastboot` ni se solicitó fastbootd.
+
+[Transición registrada](../evidence/device-intake-20261020/transition/transition.json).
+El colector fastboot consultó 28 variables permitidas, sin getvar all, OEM o
+comandos de escritura. Solo dos devolvieron valores no vacíos:
+
+| Variable | Respuesta / interpretación |
+|---|---|
+| version | 1.0; protocolo declarado, no versión de firmware |
+| is-userspace | no; el dispositivo declara bootloader, no fastbootd |
+| product, version-bootloader, secure, unlocked | Vacíos con exit 0: VALUE_NOT_CONFIRMED |
+| current-slot, slot-count, has-slot y slot-successful/unbootable/retry | Vacíos con exit 0; no contradicen lo observado en Android ni prueban slots inválidos |
+| partition-size, partition-type, max-download-size | Vacíos con exit 0; tamaños y capacidad de carga siguen UNKNOWN |
+
+[Informe de fastboot](../evidence/device-intake-20261020/fastboot/fastboot-intake.json).
+No se deriva soporte de boot temporal de la presencia de fastboot o del
+desbloqueo. No se probaron comandos OEM desconocidos para suplir esas respuestas.
+
+Se envió una única solicitud normal `fastboot -s <dispositivo> reboot` y Android
+regresó: ADB reapareció en el muestreo de 16.469 s y boot_completed=1 se observó
+en la iteración de aproximadamente 36 s, con el mismo fingerprint, slot `_a` y
+flash.locked=0. [Registro de retorno](../evidence/device-intake-20261020/transition/return-android.json).
+No se cambió slot, cargó imagen, leyó contenido de partición ni flasheó.
+
+Esto comprueba Android → bootloader fastboot → Android mediante comandos OEM
+normales. **No comprueba recuperación mediante botones ni retorno tras payload
+AtlanticOS**. La capacidad android_fallback_verified de la BSP permanece false.
+T01 sigue abierta; T02 tiene observaciones parciales con metadata A/B y tamaños
+no disponibles; T03 firmware exacto/header/DTB y T04 boot temporal siguen UNKNOWN.
+El teléfono se dejó en Android, no detenido en fastboot.
 
 Referencia de la secuencia física: [soporte Motorola, pasos de entrada 2-3](https://en-us.support.motorola.com/app/answers/detail/a_id/150983/~/reset-phone).
 Se usa únicamente entrada al menú, **no** el procedimiento de borrado del artículo.
 Semántica A/B: [documentación oficial AOSP](https://source.android.com/docs/core/ota/ab/ab_implement).
+La diferencia bootloader/fastbootd y `is-userspace` está definida por
+[AOSP fastbootd](https://source.android.com/docs/core/architecture/bootloader/fastbootd).

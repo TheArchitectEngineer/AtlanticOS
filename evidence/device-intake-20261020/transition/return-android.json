@@ -1,0 +1,109 @@
+{
+  "label": "HOST_TESTED",
+  "scope": "OEM_FASTBOOT_NORMAL_REBOOT_TO_ANDROID_NOT_PAYLOAD_FALLBACK",
+  "timestamp_utc": "2026-10-21T01:53:16.883248+00:00",
+  "device_alias": "g20-465614bbe76d",
+  "command": [
+    "fastboot",
+    "-s",
+    "<PRIVATE_DEVICE>",
+    "reboot"
+  ],
+  "request_exit_code": 0,
+  "request_transcript": "Rebooting                                          OKAY [  0.000s]\nFinished. Total time: 0.000s\n",
+  "observations": [
+    {
+      "elapsed_s": 0.032,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 2.063,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 4.094,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 6.141,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 8.188,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 10.297,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 12.36,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 14.407,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 16.469,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 18.985,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 21.391,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 23.829,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 26.25,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 28.657,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 31.047,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 33.547,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 35.969,
+      "adb_state": "device"
+    }
+  ],
+  "properties": {
+    "sys.boot_completed": {
+      "exit_code": 0,
+      "value": "1"
+    },
+    "ro.build.fingerprint": {
+      "exit_code": 0,
+      "value": "motorola/java_retail/java:11/RTAS31.68-66-3/66-3:user/release-keys"
+    },
+    "ro.boot.slot_suffix": {
+      "exit_code": 0,
+      "value": "_a"
+    },
+    "ro.boot.flash.locked": {
+      "exit_code": 0,
+      "value": "0"
+    }
+  },
+  "same_fingerprint": true,
+  "android_boot_completed": true,
+  "physical_button_entry_verified": false,
+  "payload_fallback_verified": false,
+  "slot_change_requested": false,
+  "flashing": false,
+  "battery_queried": false
+}

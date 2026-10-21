@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "PHYSICAL_FASTBOOT_METADATA_ONLY_NO_ATLANTICOS_EXECUTION",
+  "artifacts": [
+    {
+      "path": "fastboot-intake.json",
+      "sha256": "85f5c87177458464393308a767e34ea22ce068812be8b439936df35d29e4bd93"
+    }
+  ]
+}

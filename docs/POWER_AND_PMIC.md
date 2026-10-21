@@ -2,6 +2,9 @@
 
 Estado G20 AtlanticOS: UNSUPPORTED. El shell BSP C no realiza SMC, MMIO, GPIO,
 reinicio ni apagado. El host registra únicamente mock:power:off/restart.
+El 2026-10-20 se comprobó fastboot reboot desde el bootloader OEM y retorno al
+mismo Android; es una operación del firmware OEM, no de power_request AtlanticOS
+ni prueba de SYSTEM_RESET/SYSTEM_OFF/PMIC. Ver DEVICE_INTAKE_20261020.md.
 
 La cabecera de referencia declara PSCI arm,psci-0.2 mediante SMC
 ([S05](SOURCE_INDEX.md#s05)); no equivale a validar SYSTEM_RESET o SYSTEM_OFF.

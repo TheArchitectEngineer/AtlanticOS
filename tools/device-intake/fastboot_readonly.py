@@ -1,7 +1,7 @@
-"""Query ONLY enumerated fastboot metadata after a human reaches bootloader.
+"""Query ONLY enumerated fastboot metadata after a separately observed transition.
 
 No reboot, boot, flash, erase, set_active, OEM, unlock or getvar all operations.
-The user controls physical mode changes; this command never enters/leaves a mode.
+This command never enters/leaves a mode. Entry provenance is recorded separately.
 """
 import argparse
 from datetime import datetime, timezone
@@ -50,6 +50,7 @@ def extract_value(variable, output):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--entry-method',choices=['user-buttons','adb-reboot-bootloader','unknown'],default='unknown')
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[2]
     out = args.output.resolve()
@@ -83,7 +84,7 @@ def main():
             status = 'VALUE_NOT_CONFIRMED'
         records[variable] = {'command':['fastboot','-s','<PRIVATE_DEVICE>','getvar',variable],
                              'status':status,'exit_code':code,'value':value,'transcript':safe}
-        print(variable+': '+(value if value is not None else status+'/VALUE_NOT_CONFIRMED'),flush=True)
+        print(variable+': '+(value if value else status),flush=True)
         # Stop on a transport timeout instead of queuing more operations to a
         # potentially absent/rebooted device. No automatic recovery commands.
         if status == 'TIMEOUT':
@@ -92,7 +93,8 @@ def main():
               'scope':'PHYSICAL_FASTBOOT_METADATA_ONLY_NO_ATLANTICOS_EXECUTION',
               'timestamp_utc':datetime.now(timezone.utc).isoformat(),
               'device_alias':'g20-'+hashlib.sha256(serial.encode()).hexdigest()[:12],
-              'mode_entry_method':'HUMAN_PHYSICAL_ACTION_REQUIRES_USER_OBSERVATION',
+              'mode_entry_method':args.entry_method,
+              'physical_button_entry_verified_by_tool':False,
               'battery_queried':False,'writes_or_flashing':False,'mode_changed_by_tool':False,
               'variables':records}
     userspace = records.get('is-userspace',{}).get('value')
