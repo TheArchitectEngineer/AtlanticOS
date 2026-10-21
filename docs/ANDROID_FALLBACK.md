@@ -3,8 +3,10 @@
 Estado actualizado 2026-10-20: teléfono conectado con desbloqueo previo del
 usuario; identidad y Android actual observados por ADB. Se comprobó entrada
 solicitada con adb reboot bootloader y regreso con fastboot reboot al mismo
-fingerprint/slot. Ver DEVICE_INTAKE_20261020.md. No se comprobó recuperación
-física ni retorno tras payload propio; no se habilita fallback AtlanticOS.
+fingerprint/slot. Después se observó Recovery tras acciones manuales y bootloader
+tras selección del menú reportada por el usuario. El retorno se hizo con fastboot
+reboot a petición del usuario; salida autónoma por Power y retorno tras payload
+propio no probados. Ver DEVICE_INTAKE_20261020.md. No se habilita fallback AtlanticOS.
 No hay scripts de flasheo, escritura de particiones, selección de slot, AVB o
 desbloqueo. No se alteró el contenido de imágenes Android.
 

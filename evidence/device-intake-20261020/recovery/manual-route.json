@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "USER_REPORTED_RECOVERY_MENU_ROUTE_CORROBORATED_BY_HOST_TRANSPORT_NOT_ATLANTICOS_EXECUTION",
+  "observed_client_date": "2026-10-20",
+  "device_alias": "g20-465614bbe76d",
+  "recovery_menu_source": "User described the visible OEM Recovery menu",
+  "entry_action_instructed": "Reboot to bootloader",
+  "user_followup": "entro a fastboot",
+  "host_fastboot_state": "fastboot",
+  "host_getvar_is_userspace": "no",
+  "host_query_exit_code": 0,
+  "host_transcript_transcribed_from_tool_result": "is-userspace: no\nFinished. Total time: 0.000s\n",
+  "capture_note": "Host query result transcribed from this chat tool output; no separate original file was captured for that query. Recovery and return have separate captured JSON records.",
+  "screen_reported_by_user": "Fastboot text and scanning/code bar, no menu",
+  "mode_change_sent_by_host_for_this_entry": false,
+  "exact_physical_key_sequence_instrumented": false,
+  "physical_power_return_verified": false,
+  "user_requested_return_command": "fastboot reboot",
+  "atlantic_payload_executed": false,
+  "payload_fallback_verified": false,
+  "battery_queried": false
+}

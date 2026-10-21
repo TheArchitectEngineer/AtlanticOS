@@ -82,6 +82,32 @@ T01 sigue abierta; T02 tiene observaciones parciales con metadata A/B y tamaños
 no disponibles; T03 firmware exacto/header/DTB y T04 boot temporal siguen UNKNOWN.
 El teléfono se dejó en Android, no detenido en fastboot.
 
+## Recorrido manual por Recovery y segundo retorno solicitado
+
+Después, el usuario manipuló el teléfono siguiendo la guía de botones y pidió
+comprobarlo. Se observó ADB en estado recovery y ro.bootmode=recovery, con el
+mismo fingerprint y `_a`. El usuario describió el menú OEM, incluidos Reboot
+system now, Reboot to bootloader y Enter fastboot. No se envió un reinicio desde
+el PC para entrar a ese Recovery; la secuencia exacta de teclas no se midió.
+[Observación de Recovery](../evidence/device-intake-20261020/recovery/recovery-observed.json).
+
+Se indicó Reboot to bootloader y el usuario respondió que entró a fastboot.
+El mismo transporte respondió is-userspace=no; la pantalla fue descrita como
+texto Fastboot con barra/código de escaneo, sin menú. Esto documenta acceso a
+Recovery y posterior bootloader mediante interacción del usuario, separado de
+la primera entrada por adb reboot bootloader. [Registro de procedencia](../evidence/device-intake-20261020/recovery/manual-route.json).
+
+Se propuso probar el reinicio físico manteniendo Power. El usuario pidió usar
+fastboot reboot en su lugar. Se ejecutó una única solicitud dirigida al G20 y
+se observó Android completado aproximadamente a los 36.157 s, con mismo
+fingerprint y `_a`. [Segundo retorno](../evidence/device-intake-20261020/recovery/return-android-requested.json).
+No se ejecutó payload ni escritura de imagen, y no se solicitó cambio de slot.
+
+T01 avanza como observación parcial de acceso manual a Recovery/bootloader,
+pero no demuestra aún salida física autónoma desde fastboot, recuperación tras
+un payload fallido o fallback AtlanticOS. android_fallback_verified sigue false.
+La segunda sesión también terminó dejando el teléfono en Android.
+
 Referencia de la secuencia física: [soporte Motorola, pasos de entrada 2-3](https://en-us.support.motorola.com/app/answers/detail/a_id/150983/~/reset-phone).
 Se usa únicamente entrada al menú, **no** el procedimiento de borrado del artículo.
 Semántica A/B: [documentación oficial AOSP](https://source.android.com/docs/core/ota/ab/ab_implement).

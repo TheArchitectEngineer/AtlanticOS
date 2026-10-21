@@ -29,6 +29,18 @@
       "sha256": "8d2708856bdcfd9cf91795d21a546a0698b4d8aa893c7853a5a7b28b7fdae2f1"
     },
     {
+      "path": "recovery/manual-route.json",
+      "sha256": "5dbdf3373e4fa6fee655cf8c2b1b3c22543b25e7c39c0bc3f40248e10a2c7821"
+    },
+    {
+      "path": "recovery/recovery-observed.json",
+      "sha256": "68a5c05ae1aa8b9392759faccc3a1d1d3439c3d1f62d48a93276b645584e0ba6"
+    },
+    {
+      "path": "recovery/return-android-requested.json",
+      "sha256": "f0223bea175ac6d9ef28a86af9b06c7a11df41b0368978def46504f200a31cff"
+    },
+    {
       "path": "transition/return-android.json",
       "sha256": "9c5672cc53bf72eaaf2508d3fe56227b5c759b2d07342fdac16a65185592f603"
     },

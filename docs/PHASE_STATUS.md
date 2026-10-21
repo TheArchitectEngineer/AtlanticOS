@@ -6,7 +6,8 @@
 | 0: auditoría G20, código activo, XNU, arquitectura | HOST_TESTED (herramientas) / revisión documental | sources.lock.json y FACT_MATRIX.md |
 | 0: identidad Android y bloqueo de este G20 | CONFIRMED por ADB de solo lectura | DEVICE_INTAKE_20261020.md; variante XT2128-1, fingerprint, slot _a y desbloqueo observados |
 | 0: recorrido OEM Android → bootloader → Android | CONFIRMED por observación USB/ADB | adb reboot bootloader, is-userspace=no, fastboot reboot y mismo fingerprint/slot; no prueba payload fallback |
-| 0: recuperación física independiente, metadata A/B y vía temporal | PENDING / UNKNOWN | Botones sin entrada verificada; 26 variables fastboot vacías; firmware exacto y método temporal pendientes |
+| 0: acceso manual a Recovery y bootloader | OBSERVED parcialmente | Recovery confirmado por ADB/ro.bootmode y menú descrito por usuario; posterior is-userspace=no tras selección manual |
+| 0: salida física independiente, metadata A/B y vía temporal | PENDING / UNKNOWN | Retorno realizado por fastboot reboot a petición del usuario; Power no probado; 26 variables fastboot vacías; formato y método temporal pendientes |
 | 1: política, menú, temporizador, teclas, errores | HOST_TESTED | tests, escenarios y captura en evidence/host |
 | Herramientas de inventario de dispositivo | HOST_TESTED | 8 tests nuevos; suite total 54; evidencia de consultas y límites en evidence/device-intake-20261020 |
 | 1: configuración | HOST_TESTED parcial | validación versionada y logs en sesión; prioridad/destino/timeout/red bloqueados en defaults seguros |

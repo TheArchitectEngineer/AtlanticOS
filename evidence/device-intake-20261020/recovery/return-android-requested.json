@@ -1,0 +1,102 @@
+{
+  "label": "HOST_TESTED",
+  "scope": "USER_REQUESTED_OEM_FASTBOOT_REBOOT_NOT_ATLANTICOS_FALLBACK",
+  "timestamp_utc": "2026-10-21T02:08:52.567737+00:00",
+  "device_alias": "g20-465614bbe76d",
+  "request_exit_code": 0,
+  "transcript": "Rebooting                                          OKAY [  0.000s]\nFinished. Total time: 0.000s\n",
+  "observations": [
+    {
+      "elapsed_s": 0.047,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 2.063,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 4.079,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 6.141,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 8.157,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 10.188,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 12.235,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 14.282,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 16.329,
+      "adb_state": "absent"
+    },
+    {
+      "elapsed_s": 18.375,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 20.672,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 22.86,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 25.094,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 27.266,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 29.454,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 31.625,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 33.813,
+      "adb_state": "device"
+    },
+    {
+      "elapsed_s": 36.0,
+      "adb_state": "device"
+    }
+  ],
+  "properties": {
+    "sys.boot_completed": {
+      "exit_code": 0,
+      "value": "1"
+    },
+    "ro.build.fingerprint": {
+      "exit_code": 0,
+      "value": "motorola/java_retail/java:11/RTAS31.68-66-3/66-3:user/release-keys"
+    },
+    "ro.boot.slot_suffix": {
+      "exit_code": 0,
+      "value": "_a"
+    }
+  },
+  "physical_power_return_verified": false,
+  "slot_change_requested": false,
+  "flash_requested": false,
+  "battery_queried": false,
+  "android_boot_completed": true,
+  "same_fingerprint": true
+}

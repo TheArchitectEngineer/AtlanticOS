@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "OBSERVED_RECOVERY_ADB_TRANSPORT_NOT_ATLANTICOS_EXECUTION",
+  "timestamp_utc": "2026-10-21T02:02:16.911054+00:00",
+  "device_alias": "g20-465614bbe76d",
+  "adb_transport_state": "recovery",
+  "entry_provenance": "User asked to inspect after physical-button guidance; actual button sequence not directly observed",
+  "device_mode_changed_by_tool": false,
+  "battery_queried": false,
+  "queries": {
+    "ro.bootmode": {
+      "exit_code": 0,
+      "value": "recovery",
+      "stderr": ""
+    },
+    "ro.boot.bootreason": {
+      "exit_code": 0,
+      "value": "",
+      "stderr": ""
+    },
+    "ro.build.fingerprint": {
+      "exit_code": 0,
+      "value": "motorola/java_retail/java:11/RTAS31.68-66-3/66-3:user/release-keys",
+      "stderr": ""
+    },
+    "ro.boot.slot_suffix": {
+      "exit_code": 0,
+      "value": "_a",
+      "stderr": ""
+    }
+  }
+}
