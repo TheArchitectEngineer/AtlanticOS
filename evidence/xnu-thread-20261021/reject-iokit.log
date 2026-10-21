@@ -1,0 +1,2 @@
+     vmp_error:1,
+<ROOT>/work/xnu-lab-sources/d43c2f38e38f2999/osfmk/kern/startup.c:70:2: error: AtlanticOS firmware profile excludes BSD userland and IOKit

@@ -35,7 +35,8 @@ EXTRA_SYMBOLS = {'osfmk/arm64/cswitch.s': ['_machine_load_context', '_Call_conti
                  'osfmk/arm64/locore.s': ['_fleh_synchronous', '_fleh_irq'],
                  'osfmk/arm64/machine_routines_asm.s': ['_set_mmu_ttb_alternate'],
                  'osfmk/arm/arm_init.c': ['_arm_init_cpu', '_arm_init_idle_cpu', '_const_boot_args'],
-                 'osfmk/arm64/arm_vm_init.c': ['_bootstrap_pagetables']}
+                 'osfmk/arm64/arm_vm_init.c': ['_bootstrap_pagetables'],
+                 'osfmk/kern/thread.c': ['_kernel_thread_start', '_thread_terminate_self']}
 PROBES = ['osfmk/kern/thread.c', 'osfmk/vm/vm_map.c']
 
 
@@ -59,14 +60,46 @@ def main():
     ap.add_argument('--windows-git', action='store_true')
     ap.add_argument('--probe-remaining', action='store_true',
                     help='Also compile thread.c and vm_map.c; any failure returns nonzero')
+    ap.add_argument('--layout-compiler', type=Path,
+                    help='Explicit experimental compiler; also builds genuine thread.c')
+    ap.add_argument('--layout-proof', type=Path,
+                    help='Successful tools/test_atlantic_clang.py report for this compiler')
     args = ap.parse_args()
     if platform.system() != 'Linux' or platform.machine() != 'x86_64':
         ap.error('Use Linux x86_64 or Debian/WSL')
+    if bool(args.layout_compiler) != bool(args.layout_proof):
+        ap.error('--layout-compiler and --layout-proof must be selected together')
+    target_compiler = 'clang'
+    provider = None
+    if args.layout_compiler:
+        target_compiler = str(args.layout_compiler.resolve(strict=True))
+        proof = json.loads(args.layout_proof.read_text())
+        required_inputs = ['compiler-port/SemaAtlanticLayout.cpp', 'compiler-port/ParseAtlanticLayout.inc',
+            'compiler-port/patches.lock.json', 'tests/clang_layout/positive.c',
+            'tests/clang_layout/negative.json', 'tools/test_atlantic_clang.py']
+        inputs = {p: digest(ROOT/p) for p in required_inputs}
+        cases = json.loads((ROOT/'tests/clang_layout/negative.json').read_text())
+        expected = [('positive', 0, None), ('llvm-ir', 0, None)] + [
+            (c['name'], 1, c['diagnostic']) for c in cases]
+        outcomes = proof.get('outcomes', [])
+        actual = [(c.get('name'), c.get('expected'), c.get('required_diagnostic')) for c in outcomes]
+        if (proof.get('scope') != 'EXPERIMENTAL_C_LAYOUT_COMPILER_API_ONLY_NOT_XNU_OR_PHONE_EXECUTION' or
+            proof.get('label') != 'HOST_TESTED' or proof.get('inputs') != inputs or
+            proof.get('compiler_sha256') != digest(target_compiler) or actual != expected or
+            any(c.get('passed') is not True or c.get('exit_code') != c.get('expected') for c in outcomes)):
+            ap.error('Experimental compiler proof is stale, incomplete, or for another binary')
+        compiler_lock = json.loads((ROOT/'compiler-port/patches.lock.json').read_text())
+        compiler_patch = ROOT/'compiler-port/0001-add-atlantic-c-layout-primitives.patch'
+        if digest(compiler_patch) != compiler_lock['patch_sha256']:
+            ap.error('Compiler patch differs from the tested provenance lock')
+        provider = {'api': 'ATLANTIC_C_LAYOUT_V1_EXPERIMENTAL', 'compiler_sha256': digest(target_compiler),
+                    'proof_sha256': digest(args.layout_proof), 'proof_inputs': inputs,
+                    'compiler_patch_sha256': digest(compiler_patch), 'api_checks_passed': len(outcomes)}
     git = 'git.exe' if args.windows_git else 'git'
     for tool in [git, 'clang', 'bison', 'flex', 'csh', 'unifdef', 'perl', 'llvm-nm', 'llvm-size']:
         if not shutil.which(tool):
             ap.error('Missing build tool: '+tool)
-    capability = subprocess.run(['clang', '--target=arm64-apple-macos11.0', '-nostdinc', '-fsyntax-only', '-x', 'c', '-'],
+    capability = subprocess.run([target_compiler, '--target=arm64-apple-macos11.0', '-nostdinc', '-fsyntax-only', '-x', 'c', '-'],
         input='#if !__has_builtin(__builtin_clzg) || !__has_builtin(__builtin_ctzg)\n'
               '#error This XNU revision requires generic count-leading/trailing-zero builtins (Clang 19+)\n#endif\n',
         text=True, capture_output=True, timeout=10)
@@ -125,7 +158,10 @@ def main():
                     'xnu-port/config/'+PROFILE.name: digest(PROFILE),
                     'tests/xnu_port/boot_abi.c': digest(ROOT/'tests/xnu_port/boot_abi.c'),
                     'tests/xnu_port/assym_abi.c': digest(ROOT/'tests/xnu_port/assym_abi.c')}
-    build_id = hashlib.sha256(json.dumps({'port_id': port_id, 'inputs': build_inputs}, sort_keys=True).encode()).hexdigest()
+    if provider:
+        build_inputs['tests/xnu_port/kalloc_layout.c'] = digest(ROOT/'tests/xnu_port/kalloc_layout.c')
+    build_id = hashlib.sha256(json.dumps({'port_id': port_id, 'inputs': build_inputs,
+        'layout_provider': provider, 'probe_remaining': args.probe_remaining}, sort_keys=True).encode()).hexdigest()
     out = ROOT/'work/xnu-lab-builds'/build_id[:16]
     out.mkdir(parents=True, exist_ok=True)
     commands, steps = [], []
@@ -202,8 +238,8 @@ def main():
     venv = dict(os.environ, SRCROOT=str(source), OBJROOT=str(out), TARGET=str(out), CURRENT_KERNEL_CONFIG_LC='atlantic-lab',
                 KERNEL_BUILD_DATE='SOURCE_DATE_EPOCH=0', KERNEL_BUILD_OBJROOT='AtlanticOS-laboratory')
     run(['perl', str(source/'config/newvers.pl'), str(version)], cwd=out, env=venv, name='version-generate')
-    clang_resource = subprocess.check_output(['clang','-print-resource-dir'], text=True).strip()
-    target = ['clang', '--target=arm64-apple-macos11.0', '-mcpu=cortex-a57', '-std=gnu11', '-ffreestanding', '-nostdinc',
+    clang_resource = subprocess.check_output([target_compiler,'-print-resource-dir'], text=True).strip()
+    target = [target_compiler, '--target=arm64-apple-macos11.0', '-mcpu=cortex-a57', '-std=gnu11', '-ffreestanding', '-nostdinc',
               '-fno-builtin', '-fno-stack-protector', '-mkernel', '-fblocks', '-O1', '-g', '-Darm64', '-DARM64', '-D__ARM64__',
               '-DLP64', '-DPAGE_SIZE_FIXED', '-DVM_KERNEL_LINK_ADDRESS=0xfffffff007004000',
               '-DPRIVATE', '-DAPPLE', '-D__MACHO__=1', '-DXNU_KERN_EVENT_DATA_IS_VLA',
@@ -212,6 +248,19 @@ def main():
               '-ffile-prefix-map='+str(ROOT)+'=.', '-fdebug-compilation-dir=.', '-I'+str(config), '-I'+str(inc)]
     target += ['-I'+str(source/p) for p in ['osfmk','bsd','pexpert','libkern','iokit','osfmk/libsa','libsa','EXTERNAL_HEADERS','.']]
     target += ['-isystem', clang_resource+'/include', *defines]
+    if provider:
+        target += ['-DCONFIG_ATLANTIC_C_LAYOUT=1']
+        layout_fixture = str(ROOT/'tests/xnu_port/kalloc_layout.c')
+        run([*target, '-c', layout_fixture, '-o', str(out/'kalloc-layout.o')], name='kalloc-layout')
+        rejection = run([*target, '-DATL_TEST_BAD_POINTER=1', '-fsyntax-only', layout_fixture],
+                        expected=1, name='reject-kalloc-layout-pointer')
+        if 'Pointer type is not compatible with specified type' not in rejection.stderr:
+            raise RuntimeError('Wrong incompatible-pointer rejection reason')
+    # A stock compiler must not silently accept the opt-in metadata provider.
+    rejection = run(['clang', *target[1:], '-DCONFIG_ATLANTIC_C_LAYOUT=1', '-E', '-x', 'c', '-'],
+                    data='#include <kern/kalloc.h>\n', expected=1, name='reject-untested-layout-provider')
+    if 'requires the tested AtlanticOS compiler API v1' not in rejection.stderr:
+        raise RuntimeError('Wrong compiler-provider rejection reason')
     abi = run([*target, '-c', str(ROOT/'tests/xnu_port/boot_abi.c'), '-o', str(out/'boot-abi.o')], name='boot-abi')
     # Generate assembler offsets with the target compiler, never a host ABI.
     genassym = out/'genassym.s'
@@ -240,7 +289,10 @@ def main():
         if 'firmware profile excludes BSD userland and IOKit' not in rejection.stderr:
             raise RuntimeError('Wrong forbidden composition rejection reason')
     objects, failures = [], []
-    units = list(UNITS) + (PROBES if args.probe_remaining else [])
+    selected_units = dict(UNITS)
+    if provider:
+        selected_units['osfmk/kern/thread.c'] = '_thread_init'
+    units = list(selected_units) + ([p for p in PROBES if p not in selected_units] if args.probe_remaining else [])
     for rel in units:
         obj = out/(Path(rel).stem+'.o')
         # This flag is mandated for VM sources by upstream Makefile.template.
@@ -261,9 +313,9 @@ def main():
         if len(raw)<32 or struct.unpack_from('<4I',raw) != (0xfeedfacf,0x100000c,0,1):
             raise RuntimeError('Expected AArch64 Mach-O object, not a kernel image')
         nm = run(['llvm-nm','--defined-only',str(obj)],name=obj.stem+'-defined').stdout
-        required_symbols = ([UNITS[rel]]+EXTRA_SYMBOLS.get(rel, [])) if rel in UNITS else []
-        if rel in UNITS and not any(line.split()[-2:]==['T', UNITS[rel]] for line in nm.splitlines()):
-            raise RuntimeError('Expected real external text symbol: '+UNITS[rel])
+        required_symbols = ([selected_units[rel]]+EXTRA_SYMBOLS.get(rel, [])) if rel in selected_units else []
+        if rel in selected_units and not any(line.split()[-2:]==['T', selected_units[rel]] for line in nm.splitlines()):
+            raise RuntimeError('Expected real external text symbol: '+selected_units[rel])
         for symbol in required_symbols:
             if not any(line.split()[-1:]==[symbol] for line in nm.splitlines()):
                 raise RuntimeError('Missing real XNU function: '+symbol)
@@ -276,7 +328,7 @@ def main():
         if rel.endswith('/startup.c') and any('trust_cache' in s or 'code_signing_init' in s for s in undefined):
             raise RuntimeError('Unexpected Apple userland trust-cache dependency in firmware bootstrap')
         objects.append({'source':rel,'source_sha256':digest(source/rel),'object':obj.name,'object_sha256':digest(obj),
-                        'object_file_bytes':len(raw),'required_symbol':UNITS.get(rel),'required_symbols':required_symbols,
+                        'object_file_bytes':len(raw),'required_symbol':selected_units.get(rel),'required_symbols':required_symbols,
                         'defined_external_symbols':exported,'undefined_symbols':undefined})
     selected_definitions = {s for item in objects for s in item['defined_external_symbols']}
     missing_symbols = sorted({s for item in objects for s in item['undefined_symbols']} - selected_definitions)
@@ -285,7 +337,8 @@ def main():
               'inputs':build_inputs,'profile':'atlanticlab','kernel_linked':False,'xnu_executed':False,'phone_accessed':False,
               'object_sizes_are_not_runtime_ram':True,'host_generator_sanitizers':['address','undefined'],
               'host_generator_leak_check':False,'selected_defines':defines,'commands':commands,'steps':steps,
-              'compiler':subprocess.check_output(['clang','--version'],text=True).splitlines()[0],
+              'compiler':subprocess.check_output([target_compiler,'--version'],text=True).splitlines()[0],
+              'layout_provider':provider,
               'generator_versions':{name:subprocess.check_output([name,'--version'],text=True).splitlines()[0]
                                     for name in ['bison','flex','csh']},
               'config_headers':[{'path':p.relative_to(out).as_posix(),'sha256':digest(p)} for p in sorted(config.glob('*.h'))],

@@ -55,3 +55,10 @@ el compilador completo y pasaron 18 comprobaciones con fixtures propios. No
 suplanta los builtins privados Apple ni un SDK. Un probe de thread.c con un
 header experimental explícito deja diez errores BSD y ya no reporta errores
 de esas operaciones. El build normal de once objetos todavía no lo activa.
+
+Integración posterior: patches 0005/0006 añaden selector explícito del proveedor
+y guards MACH_BSD. El modo estándar vuelve a compilar once unidades; el
+experimental compila doce, incluido thread.c, con 137 offsets y comprobaciones
+de kalloc/ABI. Se rechazaron pruebas de compilador incompletas o de otro binario.
+Vm_map.c continúa fallando por TrustCache/API.h. No hay enlace ni ejecución.
+Receta, advertencias y límites: [XNU_THREAD_BUILD](XNU_THREAD_BUILD.md).

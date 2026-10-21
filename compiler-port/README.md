@@ -2,8 +2,8 @@
 
 Estado: compilador completo construido y 18 comprobaciones aprobadas: fixture
 positivo, LLVM IR y 16 rechazos por diagnóstico previsto. No está activado en
-el build XNU normal de once unidades. El primer probe sobre thread.c ya no
-reporta errores de layout; falla por diez usos BSD sin declarar. No prueba
+el build XNU normal de once unidades. El [modo explícito experimental](../docs/XNU_THREAD_BUILD.md)
+compila doce unidades reales, incluido thread.c con guards BSD. No prueba
 un kernel ni compatibilidad del teléfono.
 
 El XNU fijado usa metadata de tipos en su allocator. Su código público describe
@@ -72,8 +72,9 @@ manuales y offsets del target; incluyen alias, padding, packed, arrays, unions,
 bitfields, bloques y atomic, y rechazo de tipos/plataformas no soportados.
 También exigen literals en LLVM IR sin llamadas runtime a esta API.
 La suite se ejecutó con el compilador terminado y produjo literals en IR.
-Falta integrar y comprobar un selector explícito en el port XNU. El éxito de
-estos fixtures por sí solo no demuestra que hilos, VM o allocator XNU funcionan.
+El selector explícito en XNU pasó además los checks de clasificación y punteros
+de kalloc. El éxito de estos fixtures y objetos no demuestra que hilos, VM o
+allocator XNU funcionan.
 
 Evidencia: [clang-layout-20261021](../evidence/clang-layout-20261021/manifest.json).
 

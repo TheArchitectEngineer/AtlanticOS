@@ -1,0 +1,4 @@
+_cpu_doshutdown
+_cpu_idle
+_ml_set_interrupts_enabled
+_thread_terminate

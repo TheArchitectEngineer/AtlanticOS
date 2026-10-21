@@ -7,10 +7,10 @@ en osfmk/kern/kalloc.h del commit f6217f891ac0bb64f3d375211650a4c1ff8ca1ea.
 
 | Operación | Semántica observada en la fuente primaria | Estado |
 |---|---|---|
-| __builtin_clzg / __builtin_ctzg | Operaciones genéricas de bits usadas en kern/bits.h | Clang 19 compila las cinco unidades; Clang 18.1.3 falla. El driver exige capacidades del target, sin fallback |
-| __builtin_xnu_types_compatible | Tipos iguales o compatibles por firma XNU; kalloc trata void como wildcard | Sin proveedor probado; no reemplazado |
-| __builtin_xnu_type_summary | Resumen del layout: presencia de encodings de granulos, incluidos solapamientos | Sin proveedor probado; no reemplazado |
-| __builtin_xnu_type_signature | Firma por granulos de ocho bytes; distingue padding, punteros, datos y PAC | Sin proveedor probado; no reemplazado |
+| __builtin_clzg / __builtin_ctzg | Operaciones genéricas de bits usadas en kern/bits.h | Clang 19 compila once unidades estándar; Clang 18.1.3 falla. El driver exige capacidades del target, sin fallback |
+| __builtin_xnu_types_compatible | Tipos iguales o compatibles por firma XNU; kalloc trata void como wildcard | API Apple sin proveedor probado; alternativa explícita C experimental |
+| __builtin_xnu_type_summary | Resumen del layout: presencia de encodings de granulos, incluidos solapamientos | API Apple sin proveedor probado; alternativa explícita C experimental |
+| __builtin_xnu_type_signature | Firma por granulos de ocho bytes; distingue padding, punteros, datos y PAC | API Apple sin proveedor probado; alternativa explícita C sin PAC |
 
 Los comentarios upstream describen los bits bajos del resumen y reservan el
 resto para otras semánticas. KALLOC_TYPE_ADJUST_FLAGS y KALLOC_TYPE_EMIT_SIG
@@ -49,10 +49,11 @@ No bastaría compilar thread.c con errores silenciados o chequear solo sizeof.
 Actualización experimental: [compiler-port](../compiler-port/README.md) contiene
 una API original de layouts C sobre LLVM 19.1.7, con source/patch fijados.
 El compilador completo se construyó y pasó 18 comprobaciones preparadas. No
-declara implementar los builtins privados Apple. Un probe de thread.c con
-selección explícita de esas operaciones conserva diez errores BSD y ya no
-reporta errores de metadata. El build normal de once unidades todavía no lo
-activa; sigue pendiente comprobar la integración y cerrar dependencias.
+declara implementar los builtins privados Apple. El selector explícito de kalloc
+y los guards BSD permiten compilar thread.c como duodécimo objeto real. Los
+checks de macros kalloc y rechazo de punteros incompatibles pasaron. El build
+normal de once unidades no lo activa; el enlace y runtime siguen pendientes.
+Véase [XNU_THREAD_BUILD](XNU_THREAD_BUILD.md).
 
 Otro límite independiente es vm_map.c: sys/code_signing.h alcanza pmap_cs.h y
 TrustCache/API.h ausente. Recortar solo ese include no resuelve las llamadas ni

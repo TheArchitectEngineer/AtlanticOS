@@ -171,7 +171,7 @@ python3 tools/build_xnu_lab.py --probe-remaining
 
 Este modo también compila thread.c y vm_map.c y devuelve exit 1 si alguna
 falla, conservando resultados parciales. No es un build completo aprobado.
-Thread.c falla por APIs BSD sin declarar y __builtin_xnu_types_compatible;
+En el modo estándar thread.c falla por las operaciones privadas de tipos;
 vm_map.c por TrustCache/API.h. Se consultó ese builtin con target ARM64 Darwin
 en Clang 19.1.7 Linux y 22.1.4 MSYS2 y ambos informaron que no estaba disponible.
 Eso no demuestra que ningún otro toolchain o adaptación correcta lo resuelva.
@@ -189,3 +189,11 @@ menos de 100 MiB.
 Evidencia histórica de cinco unidades: [xnu-lab-20261021](../evidence/xnu-lab-20261021/manifest.json).
 Ampliación a siete y offsets: [xnu-arm64-entry-20261021](../evidence/xnu-arm64-entry-20261021/manifest.json).
 Ampliación a once y bootstrap ARM64: [xnu-bootstrap-20261021](../evidence/xnu-bootstrap-20261021/manifest.json).
+
+## Proveedor experimental explícito
+
+El [build de doce unidades](XNU_THREAD_BUILD.md) añade thread.c con un compilador
+LLVM modificado por AtlanticOS y guards MACH_BSD. Los parches 0005/0006 están
+incluidos en la serie; el proveedor solo se activa con --layout-compiler y su
+--layout-proof correspondiente. El modo estándar de once unidades también se
+volvió a verificar. Los resultados no acreditan allocator o hilos en ejecución.

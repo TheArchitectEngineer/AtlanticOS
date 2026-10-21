@@ -1,0 +1,55 @@
+AtlanticOS: opt in to the original C-layout API without pretending Apple builtin support.
+
+--- a/osfmk/kern/kalloc.h
++++ b/osfmk/kern/kalloc.h
+@@ -797,8 +797,29 @@
+  *
+  * @param type          The type to analyze
+  */
++/*
++ * AtlanticOS C-layout metadata provider: explicit laboratory opt-in only.
++ * This is our own compiler API, not a declaration of private Apple builtins.
++ * Other builds preserve their original provider and all allocator checks.
++ */
++#if CONFIG_ATLANTIC_C_LAYOUT
++#if !CONFIG_ATLANTIC_FIRMWARE || !ATLANTIC_ARM64_LAB
++#error Atlantic C layout requires the AtlanticOS firmware laboratory profile
++#endif
++#if !defined(__ATLANTIC_XNU_LAYOUT__) || __ATLANTIC_XNU_LAYOUT__ != 1
++#error Atlantic C layout requires the tested AtlanticOS compiler API v1
++#endif
++#define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
++#define KALLOC_LAYOUT_SIGNATURE(type) __atlantic_layout_signature(type)
++#define KALLOC_LAYOUT_COMPATIBLE(a, b) __atlantic_layout_compatible(a, b)
++#else
++#define KALLOC_LAYOUT_SUMMARY(type) __builtin_xnu_type_summary(type)
++#define KALLOC_LAYOUT_SIGNATURE(type) __builtin_xnu_type_signature(type)
++#define KALLOC_LAYOUT_COMPATIBLE(a, b) __builtin_xnu_types_compatible(a, b)
++#endif
++
+ #define KT_SUMMARY_GRANULES(type) \
+-	(__builtin_xnu_type_summary(type) & KT_SUMMARY_MASK_TYPE_BITS)
++	(KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+ 
+ /*!
+  * @macro KALLOC_TYPE_SIG_CHECK
+@@ -860,8 +881,8 @@
+  * @param type          the type which the pointer will be checked against.
+  */
+ #define KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type)                         \
+-	(__builtin_xnu_types_compatible(os_get_pointee_type(ptr), type) ||   \
+-	    __builtin_xnu_types_compatible(os_get_pointee_type(ptr), void))  \
++	(KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), type) ||   \
++	    KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), void))  \
+ 
+ #define KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER(ptr, type) \
+ 	_Static_assert(KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type), \
+@@ -1579,7 +1600,7 @@
+ #define KALLOC_TYPE_EMIT_SIG(sig_type, ...)                              \
+ 	(KALLOC_TYPE_CHECK(KT_SUMMARY_MASK_DATA, sig_type, ##__VA_ARGS__) || \
+ 	KALLOC_TYPE_VM_SIZE_CHECK(sig_type, ##__VA_ARGS__))?                 \
+-	"" : __builtin_xnu_type_signature(sig_type)
++	"" : KALLOC_LAYOUT_SIGNATURE(sig_type)
+ 
+ /*
+  * Kalloc type flags are adjusted to indicate if the type is "data-only" or

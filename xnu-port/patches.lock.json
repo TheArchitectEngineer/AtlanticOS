@@ -1,12 +1,14 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "17cffe15324dc9a34a1cf273b4c2f311f382d3220124cc6a0d210e92a64a1d44",
+  "port_id": "d43c2f38e38f2999f38b049bd7778fd42fb57bfab75004c9c0338e5e866fe537",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
     "0003-separate-firmware-bootstrap-from-apple-userland.patch": "fb9c0de2be8b1db499463d1b5a304d71e4d0fe5902157c133379758d517e8b94",
-    "0004-isolate-apple-soc-tunables-from-laboratory-entry.patch": "4de1aeeb429ea629f000adeca10f4c8154afe84c6b901b2fd15cafa9a71ef0f9"
+    "0004-isolate-apple-soc-tunables-from-laboratory-entry.patch": "4de1aeeb429ea629f000adeca10f4c8154afe84c6b901b2fd15cafa9a71ef0f9",
+    "0005-select-explicit-atlantic-c-layout-provider.patch": "772f135d5cdd777bddc87d40959c6ece13d19cff015911f0ebfe0c217b321bbd",
+    "0006-guard-bsd-process-and-workqueue-thread-paths.patch": "907cb456f5c5c601bc13e0905cb2127deabd79285566a9b9e028242b2064ba1e"
   },
   "canonical_lf_files": [
     {
@@ -43,6 +45,16 @@
       "path": "osfmk/arm64/start.s",
       "preimage_sha256": "f150da40d412e8830213e24a952cb9c1ff66e74c641419d1ac42d31f9ed91b6b",
       "postimage_sha256": "0874939da938724be4539f3b167c2be33573e2a096e772cc995ad528555e506c"
+    },
+    {
+      "path": "osfmk/kern/kalloc.h",
+      "preimage_sha256": "94bce42abcae3dbb290b15bc5f32269d7cbaefa75a078bb439311928fff306d6",
+      "postimage_sha256": "66e0f9bda6dcafffcd7d69679c8bda8a2d74658ee4d0e49821a0288d74a12ff9"
+    },
+    {
+      "path": "osfmk/kern/thread.c",
+      "preimage_sha256": "8a4d00524913a5082c8d157b33e9ed52c0899c82de371e1188b6f5c3143426e2",
+      "postimage_sha256": "c65602911849b1f5f200e74051a0d2fce4b88add47f3b9637f98f4e72ce99731"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

@@ -1,0 +1,4 @@
+usage: build_xnu_lab.py [-h] [--windows-git] [--probe-remaining]
+                        [--layout-compiler LAYOUT_COMPILER]
+                        [--layout-proof LAYOUT_PROOF]
+build_xnu_lab.py: error: Experimental compiler proof is stale, incomplete, or for another binary

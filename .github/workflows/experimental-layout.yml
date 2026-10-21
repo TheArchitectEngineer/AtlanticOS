@@ -1,0 +1,41 @@
+name: Experimental layout compiler and XNU thread object
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compiler:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Install explicit Linux build dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends clang-19 lld-19 llvm-19 libclang-rt-19-dev cmake ninja-build bison flex git tcsh unifdef perl
+          echo "/usr/lib/llvm-19/bin" >> "$GITHUB_PATH"
+      - name: Build pinned LLVM with original API and run its contract fixtures
+        run: python3 tools/build_atlantic_clang.py --cache work/clang-layout-ci --jobs 2
+      - name: Fetch official XNU and MIG; build genuine host generator
+        run: |
+          python3 tools/fetch_xnu.py
+          python3 tools/fetch_mig.py
+          python3 tools/build_mig.py
+      - name: Compile twelve genuine XNU units with explicit provider (no link or execution)
+        run: |
+          python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
+      - name: Retain commands, checks and diagnostics, including partial failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: experimental-layout-and-xnu-metadata
+          retention-days: 7
+          path: |
+            work/clang-layout-ci/report.json
+            work/clang-layout-ci/build/*.log
+            work/clang-layout-ci/tests/report.json
+            work/clang-layout-ci/tests/*.log
+            work/clang-layout-ci/tests/positive.ll
+            work/mig-host/report.json
+            work/xnu-lab-builds/*/report.json
+            work/xnu-lab-builds/*/*.log

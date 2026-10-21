@@ -20,7 +20,8 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 | machine_routines_asm.s | Rutinas de registros/TTB ensambladas | No ejecutadas |
 | arm_init.c | Bootstrap C y const_boot_args compilados | No ejecutado |
 | arm_vm_init.c | Inicialización VM y bootstrap_pagetables compilados | Sin mapa VM operativo |
-| thread.c y vm_map.c | Probes fallidos, diagnósticos conservados | Pendientes |
+| thread.c | Objeto real con proveedor experimental explícito y guardas BSD | Sin enlazar ni ejecutar |
+| vm_map.c | Probe fallido por TrustCache/API.h | Pendiente |
 | Entry XNU, pmap y contexto integrados | Sin construir/enlazar como conjunto | UNIMPLEMENTED |
 | Platform Expert y BSP G20 | Sin drivers AtlanticOS funcionales | UNIMPLEMENTED |
 | Handoff EDK2 y RAM física | Sin prueba | UNIMPLEMENTED / UNMEASURED |
@@ -46,6 +47,12 @@ no contiene BootShim ni código de plataforma de ports ajenos.
    ATLANTIC_ARM64_LAB. No crea un proveedor vacío ni hereda los ajustes de otro
    SoC. Los targets upstream restantes conservan su ruta. No satisface la
    investigación de erratas y configuración de CPU del G20.
+5. `0005`: selector explícito de nuestra API de layouts C en kalloc.h; exige
+   perfil de firmware de laboratorio y compilador probado. Conserva los checks
+   upstream y las operaciones originales cuando el selector está desactivado.
+6. `0006`: guards MACH_BSD para salidas de proceso, nombres y workqueues
+   cooperativas en thread.c. Conserva la implementación Mach; no sustituye
+   funciones con stubs. Permanecen dependencias BSD sin enlazar.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
@@ -60,14 +67,15 @@ pruebas y herramientas es MIT; no cambia la licencia de XNU modificado.
 
 ## Límites restantes
 
-thread.c utiliza APIs de proceso BSD fuera de guards y el builtin
-`__builtin_xnu_types_compatible`, ausente en los Clang probados. No se han
-silenciado las declaraciones implícitas ni los chequeos de tipos para compilarlo.
+Thread.c compila con el selector experimental y el compilador original probado,
+como documenta [XNU_THREAD_BUILD](../docs/XNU_THREAD_BUILD.md). El modo estándar
+no activa el selector y todavía necesita proveedor para las operaciones Apple.
+No se han silenciado declaraciones implícitas ni los chequeos de tipos.
 vm_map.c aún alcanza TrustCache/API.h mediante headers de code signing.
 Se debe completar ese límite de funcionalidades y preservar una política de
 ejecución explícita, sin sustituirla por respuestas de éxito.
 
-Los once objetos siguen teniendo símbolos sin resolver. No hay kernel, entry
+Los once objetos estándar y doce experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.

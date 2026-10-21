@@ -1,0 +1,36 @@
+{
+  "scope": "CLI_REJECTION_OF_INVALID_COMPILER_PROOF_ONLY",
+  "driver_sha256": "f022ababd9915b772648109347f55de6296f791578f0fc7745fc40b803c4139a",
+  "cases": [
+    {
+      "name": "wrong-binary",
+      "exit_code": 2,
+      "expected": 2,
+      "command": [
+        "python3",
+        "<ROOT>/tools/build_xnu_lab.py",
+        "--layout-compiler",
+        "<ROOT>/work/llvm-toolchain/native-active/build-layout-v1/bin/clang",
+        "--layout-proof",
+        "<ROOT>/work/xnu-layout-negative-proofs-20261021/wrong-binary.json"
+      ],
+      "invalid_proof_sha256": "76c6310ff602f7893835d81a2cd65ae38af978e56de5dfbbee74c5c1749fc6f3"
+    },
+    {
+      "name": "missing-negative-case",
+      "exit_code": 2,
+      "expected": 2,
+      "command": [
+        "python3",
+        "<ROOT>/tools/build_xnu_lab.py",
+        "--layout-compiler",
+        "<ROOT>/work/llvm-toolchain/native-active/build-layout-v1/bin/clang",
+        "--layout-proof",
+        "<ROOT>/work/xnu-layout-negative-proofs-20261021/missing-negative-case.json"
+      ],
+      "invalid_proof_sha256": "a03abab46df6e7324ea962ff7390087a1be099fa23a6e28b2bc62389ecd72f3e"
+    }
+  ],
+  "xnu_executed": false,
+  "phone_accessed": false
+}

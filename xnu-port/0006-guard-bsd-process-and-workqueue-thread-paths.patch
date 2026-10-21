@@ -1,0 +1,134 @@
+AtlanticOS: compile out BSD process and cooperative-workqueue paths when MACH_BSD is absent.
+Retain genuine Mach thread initialization, creation, termination and scheduling code.
+No replacement functions or success-returning allocator/VM/IPC stubs.
+
+--- a/osfmk/kern/thread.c
++++ b/osfmk/kern/thread.c
+@@ -515,6 +515,7 @@
+ 
+ 	bank_swap_thread_bank_ledger(thread, NULL);
+ 
++#ifdef MACH_BSD
+ 	if (kdebug_enable && bsd_hasthreadname(get_bsdthread_info(thread))) {
+ 		char threadname[MAXTHREADNAMESIZE];
+ 		bsd_getthreadname(get_bsdthread_info(thread), threadname);
+@@ -553,6 +554,8 @@
+ 		KDBG_RELEASE(TRACE_DATA_THREAD_TERMINATE_PID, dbg_arg1, dbg_arg2);
+ 	}
+ 
++#endif /* MACH_BSD */
++
+ 	/*
+ 	 * After this subtraction, this thread should never access
+ 	 * task->bsd_info unless it got 0 back from the os_atomic_dec.  It
+@@ -576,6 +579,7 @@
+ 	 * If we are the last thread to terminate and the task is
+ 	 * associated with a BSD process, perform BSD process exit.
+ 	 */
++#ifdef MACH_BSD
+ 	if (threadcnt == 0 && bsd_info != NULL) {
+ 		mach_exception_data_type_t subcode = 0;
+ 		if (kdebug_enable) {
+@@ -626,6 +630,8 @@
+ 		}
+ 	}
+ 
++#endif /* MACH_BSD */
++
+ 	if (threadcnt == 0) {
+ 		task_lock(task);
+ 		if (task_is_a_corpse_fork(task)) {
+@@ -1587,9 +1593,11 @@
+ 		KDBG_RELEASE(TRACE_DATA_NEWTHREAD, (uintptr_t)thread_tid(new_thread),
+ 		    args[1], args[2], args[3]);
+ 
++#ifdef MACH_BSD
+ 		kdebug_proc_name_args(get_bsdtask_info(parent_task), args);
+ 		KDBG_RELEASE(TRACE_STRING_NEWTHREAD, args[0], args[1], args[2],
+ 		    args[3]);
++#endif
+ 	}
+ 
+ 	DTRACE_PROC1(lwp__create, thread_t, *out_thread);
+@@ -2764,7 +2772,9 @@
+ 		return;
+ 	}
+ 
++#ifdef MACH_BSD
+ 	proc_name(pid, procname, sizeof(procname));
++#endif
+ 
+ 	/*
+ 	 * Skip all checks for testing when exc_resource_threads_enabled is overriden
+@@ -3284,12 +3294,18 @@
+ 	}
+ 
+ 	task = get_threadtask(thread);
++#ifdef MACH_BSD
+ 	void *bsd_info = get_bsdtask_info(task);
++#endif
+ 	if (thread->inspection == TRUE) {
+ 		dispatchqueue_addr = thread_handle + get_task_dispatchqueue_offset(task);
+-	} else if (bsd_info) {
++	}
++#ifdef MACH_BSD
++	else if (bsd_info) {
+ 		dispatchqueue_addr = thread_handle + get_dispatchqueue_offset_from_proc(bsd_info);
+-	} else {
++	}
++#endif
++	else {
+ 		dispatchqueue_addr = 0;
+ 	}
+ 
+@@ -3297,6 +3313,7 @@
+ }
+ 
+ 
++#ifdef MACH_BSD
+ uint64_t
+ thread_wqquantum_addr(thread_t thread)
+ {
+@@ -3357,6 +3374,8 @@
+ 
+ 	return rettokern_addr;
+ }
++
++#endif /* MACH_BSD */
+ 
+ /*
+  * Export routines to other components for things that are done as macros
+@@ -3668,6 +3687,7 @@
+ 
+ #endif /* CONFIG_COALITIONS */
+ 
++#ifdef MACH_BSD
+ extern struct workqueue *
+ proc_get_wqptr(void *proc);
+ 
+@@ -3700,6 +3720,8 @@
+ 	return task_supports_cooperative_workqueue(task) &&
+ 	       bsdthread_part_of_cooperative_workqueue(uth);
+ }
++
++#endif /* MACH_BSD */
+ 
+ static inline bool
+ thread_has_armed_workqueue_quantum(thread_t thread)
+@@ -3723,6 +3745,7 @@
+  * it to the next actual scheduler quantum deadline and expire it if it is
+  * within a certain leeway.
+  */
++#ifdef MACH_BSD
+ static inline uint64_t
+ thread_workq_quantum_size(thread_t thread)
+ {
+@@ -3767,6 +3790,8 @@
+ 
+ 	WORKQ_QUANTUM_HISTORY_WRITE_ENTRY(thread, thread->workq_quantum_deadline, true);
+ }
++
++#endif /* MACH_BSD */
+ 
+ /* Called by a thread on itself when it is about to park */
+ void
