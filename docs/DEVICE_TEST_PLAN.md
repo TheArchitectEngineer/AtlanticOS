@@ -1,8 +1,10 @@
 # Plan exacto de pruebas del Moto G20
 
 Se necesita el teléfono **para cerrar la parte experimental de Fase 0 y después
-iniciar bring-up**, no para seguir compilando el simulador. Empezar stock, batería
-cargada y cable de datos estable. No desbloquear, flashear ni instalar imágenes
+iniciar bring-up**, no para seguir compilando el simulador. El 2026-10-20 se recibió
+acceso a un G20 que el usuario entregó ya desbloqueado. Por instrucción del usuario,
+la batería no es umbral de aceptación ni se consulta en el inventario. Usar cable
+de datos estable. No desbloquear, flashear ni instalar imágenes
 para las observaciones T00-T02. Todo resultado se liga a variante/build exactos.
 
 | ID / orden | Observación requerida y procedimiento | Interpretación / gate |
@@ -28,5 +30,7 @@ seriales, IMEI, cuentas o claves nunca es necesario. Conservar originales privad
 
 No hay instrucciones ejecutables de flash en este plan. Cualquier desbloqueo o
 escritura sería trabajo separado con consentimiento y recuperación concreta.
-El primer teléfono se requiere ahora para T00-T02; las etapas posteriores deben
-esperar a tener sus puertas previas y el código revisable correspondiente.
+T00 ya tiene observaciones ADB propias en DEVICE_INTAKE_20261020.md. T01 y T02
+requieren la transición física/observación del usuario y consultas fastboot, sin
+escrituras. Las etapas posteriores deben esperar a sus puertas previas y código
+revisable. La identidad Android observada no prueba integridad de cada imagen.

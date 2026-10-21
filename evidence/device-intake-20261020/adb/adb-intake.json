@@ -1,0 +1,617 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "READ_ONLY_ADB_OBSERVATIONS_OF_OEM_BUILD_ANDROID_NOT_IMAGE_INTEGRITY_OR_ATLANTICOS_EXECUTION",
+  "observation_method": "AUTHORIZED_ADB_USB",
+  "timestamp_utc": "2026-10-21T01:45:47.373586+00:00",
+  "device_alias": "g20-465614bbe76d",
+  "battery_is_acceptance_gate": false,
+  "battery_queried": false,
+  "device_rebooted": false,
+  "root_requested": false,
+  "partition_data_read": false,
+  "writes_or_flashing": false,
+  "atlantic_firmware_executed": false,
+  "queries": {
+    "prop-ro.product.manufacturer": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.product.manufacturer"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "motorola",
+      "stderr": "",
+      "raw_stdout_sha256": "73d2a221640b90b116a39caa33f87907348a94b054013fb4961e2a77febad859"
+    },
+    "prop-ro.product.model": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.product.model"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "moto g(20)",
+      "stderr": "",
+      "raw_stdout_sha256": "0de934066419973deae313bd777bf5c545fa0f3b048d176549468e5d025cc1eb"
+    },
+    "prop-ro.product.device": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.product.device"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "java",
+      "stderr": "",
+      "raw_stdout_sha256": "c3b9b7b7a84769d53ffa5b31cecd27964283b36b0417761be1b1b1e5f250e9e3"
+    },
+    "prop-ro.product.board": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.product.board"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "p352",
+      "stderr": "",
+      "raw_stdout_sha256": "8ef3631b731208ce28a45159d86905efa5c924a0190064ed8474421c98f2bf0d"
+    },
+    "prop-ro.product.vendor.model": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.product.vendor.model"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "moto g(20)",
+      "stderr": "",
+      "raw_stdout_sha256": "0de934066419973deae313bd777bf5c545fa0f3b048d176549468e5d025cc1eb"
+    },
+    "prop-ro.hardware": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.hardware"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "ums512_1h10",
+      "stderr": "",
+      "raw_stdout_sha256": "51a2c00e6e4e1d2ed3b661680fc09ba9a7f31d71da44f060d4041cb96b652387"
+    },
+    "prop-ro.soc.manufacturer": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.soc.manufacturer"
+      ],
+      "status": "EMPTY_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "stderr": "",
+      "raw_stdout_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "prop-ro.soc.model": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.soc.model"
+      ],
+      "status": "EMPTY_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "stderr": "",
+      "raw_stdout_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "prop-ro.build.fingerprint": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.build.fingerprint"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "motorola/java_retail/java:11/RTAS31.68-66-3/66-3:user/release-keys",
+      "stderr": "",
+      "raw_stdout_sha256": "5a6eb3624479fc13f41fde35aa4f1f209298a4105cdd71b93d0da2e4465ca0b3"
+    },
+    "prop-ro.build.id": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.build.id"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "RTAS31.68-66-3",
+      "stderr": "",
+      "raw_stdout_sha256": "9c1fb48269bda18912cf4fdaee5f3af3b1e7e273dfed1be18719a3fc51aad0f5"
+    },
+    "prop-ro.build.version.incremental": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.build.version.incremental"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "66-3",
+      "stderr": "",
+      "raw_stdout_sha256": "ed2b3d784018f46bffa28e508f0298ed6f539f1c8282388b5d4005995bc3e345"
+    },
+    "prop-ro.build.version.release": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.build.version.release"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "11",
+      "stderr": "",
+      "raw_stdout_sha256": "412a8da13330793d63a3a17bed32c76be361edad27fe0f6a0ceb144d3f0aa50e"
+    },
+    "prop-ro.build.version.sdk": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.build.version.sdk"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "30",
+      "stderr": "",
+      "raw_stdout_sha256": "c5dbb92bcb2ba79188091ae09688fc17d60b46256d913b3712d785dbc16bc954"
+    },
+    "prop-ro.build.version.security_patch": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.build.version.security_patch"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "2023-03-01",
+      "stderr": "",
+      "raw_stdout_sha256": "127d95a21f931121f646335673a8148b0273af017713753c7abb4b338a046daa"
+    },
+    "prop-ro.bootloader": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.bootloader"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "U-Boot 2015.07 (Feb 21 2023 - 13:36:54 +0800)SHARKL5PRO",
+      "stderr": "",
+      "raw_stdout_sha256": "66f9f3eff2ca8deef0a1d517567a781892ff6fc0c6e84bdf4e697edb97e77f53"
+    },
+    "prop-ro.boot.bootloader": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.boot.bootloader"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "U-Boot 2015.07 (Feb 21 2023 - 13:36:54 +0800)SHARKL5PRO",
+      "stderr": "",
+      "raw_stdout_sha256": "66f9f3eff2ca8deef0a1d517567a781892ff6fc0c6e84bdf4e697edb97e77f53"
+    },
+    "prop-ro.boot.hardware": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.boot.hardware"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "ums512_1h10",
+      "stderr": "",
+      "raw_stdout_sha256": "51a2c00e6e4e1d2ed3b661680fc09ba9a7f31d71da44f060d4041cb96b652387"
+    },
+    "prop-ro.boot.hardware.sku": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.boot.hardware.sku"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "XT2128-1",
+      "stderr": "",
+      "raw_stdout_sha256": "a824df7867ad56df27066576074376560e512a933a266f80d76af710690d58ae"
+    },
+    "prop-ro.boot.flash.locked": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.boot.flash.locked"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "0",
+      "stderr": "",
+      "raw_stdout_sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    "prop-ro.boot.vbmeta.device_state": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.boot.vbmeta.device_state"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "unlocked",
+      "stderr": "",
+      "raw_stdout_sha256": "c3b576479b16474f3cdb10149376a84d39bf8a862d0ac32c71aa6e7cbc166831"
+    },
+    "prop-ro.boot.verifiedbootstate": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.boot.verifiedbootstate"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "orange",
+      "stderr": "",
+      "raw_stdout_sha256": "83690ddb0902822301b245dd9a86906df52b2e32a8e46d55eb4bf30f6c72cde5"
+    },
+    "prop-ro.boot.veritymode": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.boot.veritymode"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "enforcing",
+      "stderr": "",
+      "raw_stdout_sha256": "1deb436e619d11ff09782c9259bc0b7f815e98193b83579e44168133b5d6345c"
+    },
+    "prop-ro.boot.slot_suffix": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.boot.slot_suffix"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "_a",
+      "stderr": "",
+      "raw_stdout_sha256": "9a41f00e9b434e000105b45228c6c019eb3e25471e01bfe963fe95a291abd884"
+    },
+    "prop-ro.boot.slot": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.boot.slot"
+      ],
+      "status": "EMPTY_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "stderr": "",
+      "raw_stdout_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "prop-ro.build.ab_update": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.build.ab_update"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "true",
+      "stderr": "",
+      "raw_stdout_sha256": "49628009a4b6e1f4b66b9f3b6842423d60085f9ec94467f3ccbbf28862d78f7a"
+    },
+    "prop-ro.virtual_ab.enabled": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.virtual_ab.enabled"
+      ],
+      "status": "EMPTY_NOT_CONFIRMED",
+      "exit_code": 0,
+      "value": "",
+      "stderr": "",
+      "raw_stdout_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    "prop-ro.boot.bootreason": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.boot.bootreason"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "reboot,factory_reset",
+      "stderr": "",
+      "raw_stdout_sha256": "95f86147c3eddc9e94b21d858abb2ce01001b1045688ea6c26f3b016408e35c1"
+    },
+    "prop-ro.bootmode": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.bootmode"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "unknown",
+      "stderr": "",
+      "raw_stdout_sha256": "ff0a7d8548aef17f9bba7e3dc1b4017b0513f9ce60f8c2908f1d06f249a6e497"
+    },
+    "prop-sys.boot_completed": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "1",
+      "stderr": "",
+      "raw_stdout_sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+    },
+    "prop-ro.product.cpu.abilist": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.product.cpu.abilist"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "arm64-v8a,armeabi-v7a,armeabi",
+      "stderr": "",
+      "raw_stdout_sha256": "cdd88508602b58eab46d0bb2fccbb3df401788d20b81c650391a9dbd3c8c1e10"
+    },
+    "prop-ro.product.cpu.abilist64": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "getprop",
+        "ro.product.cpu.abilist64"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "arm64-v8a",
+      "stderr": "",
+      "raw_stdout_sha256": "93a5f09ca2fe8b37c612145e5749beaf159a7218b686023da3c3c22d9d363327"
+    },
+    "identity": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "id"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "uid=2000(shell) gid=2000(shell) groups=2000(shell),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid) context=u:r:shell:s0",
+      "stderr": "",
+      "raw_stdout_sha256": "6bd22c319e4fe9b5bc8e8427aee4201c06c97214a3823a29ce581bf1160f3b11"
+    },
+    "kernel-release": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "cat",
+        "/proc/sys/kernel/osrelease"
+      ],
+      "status": "COMMAND_ERROR",
+      "exit_code": 1,
+      "value": "",
+      "stderr": "cat: /proc/sys/kernel/osrelease: Permission denied",
+      "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "kernel-version": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "cat",
+        "/proc/version"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "Linux version 4.14.193-ab66-3 (android@HTSVR16) (Android (6573524 based on r383902b) clang version 11.0.2 (https://android.googlesource.com/toolchain/llvm-project b397f81060ce6d701042b782172ed13bee898b79), LLD 11.0.2 (/buildbot/tmp/tmpF3FjA8 b397f81060ce6d701042b782172ed13bee898b79)) #1 SMP PREEMPT Tue Feb 21 13:39:02 CST 2023",
+      "stderr": "",
+      "raw_stdout_sha256": "354369e06a6b41e634d3115a466fe1ee495b4a058d361c9013a6ecd496360268"
+    },
+    "memory-info": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "cat",
+        "/proc/meminfo"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "MemTotal:        3570364 kB\r\nMemFree:          126656 kB\r\nMemAvailable:    2052108 kB\r\nBuffers:            1016 kB\r\nCached:          2104020 kB\r\nSwapCached:        74580 kB\r\nActive:          1078740 kB\r\nInactive:        1450088 kB\r\nActive(anon):     392708 kB\r\nInactive(anon):   213348 kB\r\nActive(file):     686032 kB\r\nInactive(file):  1236740 kB\r\nUnevictable:      171388 kB\r\nMlocked:          171388 kB\r\nSwapTotal:       2606360 kB\r\nSwapFree:        2147096 kB\r\nDirty:               200 kB\r\nWriteback:             0 kB\r\nAnonPages:        589624 kB\r\nMapped:           763084 kB\r\nShmem:             11800 kB\r\nKReclaimable:     124736 kB\r\nSlab:             167516 kB\r\nSReclaimable:      50940 kB\r\nSUnreclaim:       116576 kB\r\nKernelStack:       33468 kB\r\nPageTables:        61796 kB\r\nNFS_Unstable:          0 kB\r\nBounce:                0 kB\r\nWritebackTmp:          0 kB\r\nCommitLimit:     4391540 kB\r\nCommitted_AS:   59756576 kB\r\nVmallocTotal:   263061440 kB\r\nVmallocUsed:       62124 kB\r\nVmallocChunk:          0 kB\r\nPActive(anon):         0 kB\r\nPInactive(anon):       0 kB\r\nPActive(file):         0 kB\r\nPInactive(file):       0 kB",
+      "stderr": "",
+      "raw_stdout_sha256": "123633f1f57ffbcde1dea2cd4d27dc2e86711d500fbca14c0ed90eb60f48816c"
+    },
+    "cpu-present": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "cat",
+        "/sys/devices/system/cpu/present"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "0-7",
+      "stderr": "",
+      "raw_stdout_sha256": "191d27953506c0bbcb21ebead14e0435a32d1d872a6c2f755a7aaef698f57e51"
+    },
+    "partition-names": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "ls",
+        "-l",
+        "/dev/block/by-name"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "total 0\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 boot_a -> /dev/block/mmcblk0p43\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 boot_b -> /dev/block/mmcblk0p44\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 cache -> /dev/block/mmcblk0p55\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 dtb_a -> /dev/block/mmcblk0p47\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 dtb_b -> /dev/block/mmcblk0p48\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 dtbo_a -> /dev/block/mmcblk0p49\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 dtbo_b -> /dev/block/mmcblk0p50\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 elabel -> /dev/block/mmcblk0p52\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 fbootlogo -> /dev/block/mmcblk0p14\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 gnssmodem_a -> /dev/block/mmcblk0p22\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 gnssmodem_b -> /dev/block/mmcblk0p23\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 journey_data -> /dev/block/mmcblk0p53\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 journey_persist -> /dev/block/mmcblk0p54\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_agdsp_a -> /dev/block/mmcblk0p35\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_agdsp_b -> /dev/block/mmcblk0p36\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_cdsp_a -> /dev/block/mmcblk0p37\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_cdsp_b -> /dev/block/mmcblk0p38\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_deltanv_a -> /dev/block/mmcblk0p29\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_deltanv_b -> /dev/block/mmcblk0p30\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_fixnv1_a -> /dev/block/mmcblk0p16\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_fixnv1_b -> /dev/block/mmcblk0p18\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_fixnv2_a -> /dev/block/mmcblk0p17\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_fixnv2_b -> /dev/block/mmcblk0p19\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_gdsp_a -> /dev/block/mmcblk0p31\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_gdsp_b -> /dev/block/mmcblk0p32\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_ldsp_a -> /dev/block/mmcblk0p33\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_ldsp_b -> /dev/block/mmcblk0p34\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_modem_a -> /dev/block/mmcblk0p27\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_modem_b -> /dev/block/mmcblk0p28\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_runtimenv1 -> /dev/block/mmcblk0p20\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 l_runtimenv2 -> /dev/block/mmcblk0p21\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 logo -> /dev/block/mmcblk0p13\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 metadata -> /dev/block/mmcblk0p62\r\nlrwxrwxrwx 1 root root 20 2026-10-20 00:03 misc -> /dev/block/mmcblk0p3\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 misc2 -> /dev/block/mmcblk0p15\r\nlrwxrwxrwx 1 root root 20 2026-10-20 00:03 miscdata -> /dev/block/mmcblk0p2\r\nlrwxrwxrwx 1 root root 18 2026-10-20 00:03 mmcblk0 -> /dev/block/mmcblk0\r\nlrwxrwxrwx 1 root root 23 2026-10-20 00:03 mmcblk0boot0 -> /dev/block/mmcblk0boot0\r\nlrwxrwxrwx 1 root root 23 2026-10-20 00:03 mmcblk0boot1 -> /dev/block/mmcblk0boot1\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 odmko_a -> /dev/block/mmcblk0p58\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 odmko_b -> /dev/block/mmcblk0p59\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 persist -> /dev/block/mmcblk0p26\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 pm_sys_a -> /dev/block/mmcblk0p39\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 pm_sys_b -> /dev/block/mmcblk0p40\r\nlrwxrwxrwx 1 root root 20 2026-10-20 00:03 prodnv -> /dev/block/mmcblk0p1\r\nlrwxrwxrwx 1 root root 20 2026-10-20 00:03 sml_a -> /dev/block/mmcblk0p6\r\nlrwxrwxrwx 1 root root 20 2026-10-20 00:03 sml_b -> /dev/block/mmcblk0p7\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 socko_a -> /dev/block/mmcblk0p56\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 socko_b -> /dev/block/mmcblk0p57\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 super -> /dev/block/mmcblk0p51\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 sysdumpdb -> /dev/block/mmcblk0p63\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 teecfg_a -> /dev/block/mmcblk0p41\r\nlrwxrwxrwx 1 root root 20 2026-10-20 00:03 teecfg_b -> /dev/block/mmcblk0p9\r\nlrwxrwxrwx 1 root root 20 2026-10-20 00:03 trustos_a -> /dev/block/mmcblk0p4\r\nlrwxrwxrwx 1 root root 20 2026-10-20 00:03 trustos_b -> /dev/block/mmcblk0p5\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 uboot_a -> /dev/block/mmcblk0p10\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 uboot_b -> /dev/block/mmcblk0p11\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 uboot_log -> /dev/block/mmcblk0p12\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 userdata -> /dev/block/mmcblk0p72\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vbmeta_a -> /dev/block/mmcblk0p60\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vbmeta_b -> /dev/block/mmcblk0p61\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vbmeta_product_a -> /dev/block/mmcblk0p70\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vbmeta_product_b -> /dev/block/mmcblk0p71\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vbmeta_system_a -> /dev/block/mmcblk0p64\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vbmeta_system_b -> /dev/block/mmcblk0p65\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vbmeta_system_ext_a -> /dev/block/mmcblk0p68\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vbmeta_system_ext_b -> /dev/block/mmcblk0p69\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vbmeta_vendor_a -> /dev/block/mmcblk0p66\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vbmeta_vendor_b -> /dev/block/mmcblk0p67\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vendor_boot_a -> /dev/block/mmcblk0p45\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 vendor_boot_b -> /dev/block/mmcblk0p46\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 wcnmodem_a -> /dev/block/mmcblk0p24\r\nlrwxrwxrwx 1 root root 21 2026-10-20 00:03 wcnmodem_b -> /dev/block/mmcblk0p25",
+      "stderr": "",
+      "raw_stdout_sha256": "2ec113164741f75f746a9e17df8a7dd0a0ac46b9fc2afeb1c9638cbb5b80610e"
+    },
+    "dt-property-names": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "ls",
+        "/sys/firmware/devicetree/base"
+      ],
+      "status": "OK",
+      "exit_code": 0,
+      "value": "#address-cells\r\n#size-cells\r\n__symbols__\r\naliases\r\napipe-cmd-in\r\napipe-cmd-out\r\napipe-pcm\r\naudio-dsp-dump@0\r\naudio-dsp-dump@1\r\naudio-dsp-dump@2\r\naudio-mem-mgr\r\naudio-sipc\r\naudio_pipe_bthal\r\naudio_pipe_effect\r\naudio_pipe_voice\r\naudio_pipe_voiceproc\r\naudiocp_boot\r\naudiocp_dvfs\r\nautotest\r\nbattery\r\ncharger-manager\r\nchosen\r\nclk-13m\r\nclk-1m\r\nclk-250k\r\nclk-4m3\r\nclk-6m5\r\ncompatible\r\ncooling-devices\r\ncpp-dvfs\r\ncpufreq-atb\r\ncpufreq-clus0\r\ncpufreq-clus1\r\ncpufreq-gic\r\ncpufreq-periph\r\ncpufreq-scu\r\ncpuinfo_hardware\r\ncpus\r\ndcam-axi-dvfs\r\ndcam-if-dvfs\r\ndisplay-subsystem\r\ndphy-204m8\r\ndphy-273m\r\ndpu-dvfs\r\ndvfs_pubcp\r\ndvfs_wtlcp\r\nefuse@15c00\r\nenergy-costs\r\next-26m\r\next-32k\r\nextcon-gpio\r\nfd-dvfs\r\nfingerprint@0\r\nfirmware\r\nflash-gpio\r\nfpc1020\r\ngnss_common_ctl\r\ngpio-keys\r\ngpu-cooling-devices\r\nhwfeature\r\nidle-states\r\ninterrupt-controller\r\ninterrupt-controller@12000000\r\ninterrupt-parent\r\nion\r\nisp-dvfs\r\njpg-dvfs\r\nlcds\r\nmemory\r\nmmsys-dvfs\r\nmodel\r\nmtx-dvfs\r\nname\r\npmu\r\npower-debug\r\npsci\r\nqos\r\nrco-100m\r\nrco-25m\r\nrco-2m\r\nrco-4m\r\nrebootescrow@0\r\nreserved-memory\r\nscene-frequency\r\nscproc-pubcp\r\nserial-number\r\nseth@0\r\nseth@1\r\nseth@10\r\nseth@11\r\nseth@12\r\nseth@13\r\nseth@2\r\nseth@3\r\nseth@4\r\nseth@5\r\nseth@6\r\nseth@7\r\nseth@8\r\nseth@9\r\nsoc\r\nsound@0\r\nsound@1\r\nsprd,sc-id\r\nsprd-compr-audio\r\nsprd-fe-dai\r\nsprd-fm\r\nsprd-gsp\r\nsprd-headset\r\nsprd-iq\r\nsprd-marlin3\r\nsprd-mtty\r\nsprd-pcm-audio\r\nsprd-pcm-iis\r\nsprd-routing-pcm\r\nsprd-sensorhub\r\nsprd-sipc\r\nsprd-sipx\r\nsprd-spipe\r\nsprd-spool\r\nsprd-wlan\r\nsprd_uid\r\nthermal-sensor\r\nthermal-sensor@2\r\nthermal-sensor@4\r\nthermal-zones\r\ntimer\r\ntrusty\r\nvdsp-dvfs\r\nvsp-dvfs",
+      "stderr": "",
+      "raw_stdout_sha256": "758a480e254caca6db4fb74853a9a0dad3a99f4fb8372e1b2f1951e4b71accf0"
+    },
+    "dt-model": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "cat",
+        "/sys/firmware/devicetree/base/model"
+      ],
+      "status": "COMMAND_ERROR",
+      "exit_code": 1,
+      "value": "",
+      "stderr": "cat: /sys/firmware/devicetree/base/model: Permission denied",
+      "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "dt-compatible": {
+      "command": [
+        "adb",
+        "-s",
+        "<PRIVATE_DEVICE>",
+        "shell",
+        "cat",
+        "/sys/firmware/devicetree/base/compatible"
+      ],
+      "status": "COMMAND_ERROR",
+      "exit_code": 1,
+      "value": "",
+      "stderr": "cat: /sys/firmware/devicetree/base/compatible: Permission denied",
+      "raw_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

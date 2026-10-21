@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-20",
+  "label": "HOST_TESTED",
+  "scope": "READ_ONLY_DEVICE_OBSERVATIONS_AND_HOST_COLLECTOR_TESTS_NOT_ATLANTICOS_FIRMWARE",
+  "artifacts": [
+    {
+      "path": "adb/adb-intake.json",
+      "sha256": "ea1f681354ea717998a787cf147ecae100c1510e79ad3daa736d951c97165800"
+    },
+    {
+      "path": "adb/manifest.json",
+      "sha256": "8d03fc20cbc5e2150fa4bc4a1c5ca9514f335eddc99e328f2f22c2412ddce702"
+    },
+    {
+      "path": "host-tests.log",
+      "sha256": "8d2708856bdcfd9cf91795d21a546a0698b4d8aa893c7853a5a7b28b7fdae2f1"
+    },
+    {
+      "path": "collector-source-hashes.json",
+      "sha256": "78c6e20a1a9ad49dc20e186e95d79dc6d27606555286e59e1b81952d0dc84f5f"
+    }
+  ]
+}

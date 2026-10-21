@@ -1,7 +1,9 @@
 # Compatibilidad granular
 
-Estado 2026-10-19. La columna de referencia es del proyecto UEFI ajeno.
+Estado actualizado 2026-10-20. La columna de referencia es del proyecto UEFI ajeno.
 AtlanticOS no tiene ninguna capacidad DEVICE_VERIFIED en teléfono.
+El inventario Android/AVB propio está en DEVICE_INTAKE_20261020.md; no habilita
+capacidad BSP, fallback o XNU. La recuperación independiente sigue pendiente.
 
 | Capacidad | Moto G20 en port UEFI de referencia | Moto G20 en AtlanticOS | Host simulator |
 |---|---|---|---|

@@ -1,0 +1,10 @@
+{
+  "label": "HOST_TESTED",
+  "scope": "ORIGINAL_READ_ONLY_INTAKE_TOOLS_AND_54_HOST_TESTS",
+  "tool_source_sha256": {
+    "tools/device-intake/collect.py": "ad83fd7f887c5397fdd7a5e9ac1a404d1fdcb81c5727c0c083f925513d9075a5",
+    "tools/device-intake/fastboot_readonly.py": "7be9defcd8e03f68bcd44354630868bbb68252a81c461644b0ed2319d62d1378",
+    "tests/test_device_intake.py": "7d88972aad6399c564c64f57a833d7c119cb8e1be9ca884ef6ea328675d66819"
+  },
+  "hardware_commands_in_ci": false
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "READ_ONLY_ADB_OBSERVATIONS_OF_OEM_BUILD_ANDROID_NOT_IMAGE_INTEGRITY_OR_ATLANTICOS_EXECUTION",
+  "artifacts": [
+    {
+      "path": "adb-intake.json",
+      "sha256": "ea1f681354ea717998a787cf147ecae100c1510e79ad3daa736d951c97165800"
+    }
+  ]
+}

@@ -1,10 +1,11 @@
-# Puertas de entrega — 2026-10-19
+# Puertas de entrega — actualizado 2026-10-20
 
 | Fase / requisito | Estado exacto | Evidencia / siguiente puerta |
 |---|---|---|
 | 0: lectura completa del handoff | DONE | SHA-256 en evidence/host/provenance.json |
 | 0: auditoría G20, código activo, XNU, arquitectura | HOST_TESTED (herramientas) / revisión documental | sources.lock.json y FACT_MATRIX.md |
-| 0: comprobar vía temporal de arranque y fallback en este G20 | BLOCKED: teléfono no conectado | DEVICE_TEST_PLAN T00-T04; no suplir con resultados del otro port |
+| 0: identidad Android y bloqueo de este G20 | CONFIRMED por ADB de solo lectura | DEVICE_INTAKE_20261020.md; variante XT2128-1, fingerprint, slot _a y desbloqueo observados |
+| 0: recuperación independiente, metadata A/B y vía temporal | PENDING: transición física y consultas / imagen exacta | DEVICE_TEST_PLAN T01-T04; no suplir con resultados del otro port |
 | 1: política, menú, temporizador, teclas, errores | HOST_TESTED | tests, escenarios y captura en evidence/host |
 | 1: configuración | HOST_TESTED parcial | validación versionada y logs en sesión; prioridad/destino/timeout/red bloqueados en defaults seguros |
 | 1: RAM | HOST_TESTED solo proceso host | informe RSS/tracemalloc; objetivo firmware sin medir |

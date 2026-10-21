@@ -14,6 +14,8 @@ AtlanticOS. Véanse [matriz de hechos](docs/FACT_MATRIX.md),
 [estado de fases](docs/PHASE_STATUS.md) y [fuentes fijadas](docs/SOURCE_INDEX.md).
 La [primera entrega verificada](docs/DELIVERY_REPORT.md) registra 46 tests locales,
 reproducción en clon limpio y CI Ubuntu aprobada.
+El [inventario propio del G20 del 2026-10-20](docs/DEVICE_INTAKE_20261020.md)
+confirma identidad Android y desbloqueo por ADB, sin ejecutar firmware AtlanticOS.
 
 ## Reproducir
 

@@ -19,3 +19,4 @@ jobs:
         run: |
           python3 tools/evidence-validator/validate_evidence.py evidence/host/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/arm64/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/device-intake-20261020/adb/manifest.json
