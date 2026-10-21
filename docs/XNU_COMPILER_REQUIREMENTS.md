@@ -1,0 +1,51 @@
+# Requisitos abiertos del compilador XNU — 2026-10-21
+
+La compilación incremental aprobada no acredita que Clang genérico pueda
+construir todas las unidades. El probe real de thread.c llega a tres builtins
+Apple que no están disponibles en los dos toolchains examinados. Sus usos están
+en osfmk/kern/kalloc.h del commit f6217f891ac0bb64f3d375211650a4c1ff8ca1ea.
+
+| Operación | Semántica observada en la fuente primaria | Estado |
+|---|---|---|
+| __builtin_clzg / __builtin_ctzg | Operaciones genéricas de bits usadas en kern/bits.h | Clang 19 compila las cinco unidades; Clang 18.1.3 falla. El driver exige capacidades del target, sin fallback |
+| __builtin_xnu_types_compatible | Tipos iguales o compatibles por firma XNU; kalloc trata void como wildcard | Sin proveedor probado; no reemplazado |
+| __builtin_xnu_type_summary | Resumen del layout: presencia de encodings de granulos, incluidos solapamientos | Sin proveedor probado; no reemplazado |
+| __builtin_xnu_type_signature | Firma por granulos de ocho bytes; distingue padding, punteros, datos y PAC | Sin proveedor probado; no reemplazado |
+
+Los comentarios upstream describen los bits bajos del resumen y reservan el
+resto para otras semánticas. KALLOC_TYPE_ADJUST_FLAGS y KALLOC_TYPE_EMIT_SIG
+consumen esos datos para clasificar allocations y producir descriptores de
+tipos. No son metadata decorativa que pueda sustituirse por cero o cadena vacía.
+Definir todos los tipos como compatibles eliminaría una comprobación real.
+
+Clang documenta [__builtin_types_compatible_p y __has_builtin](https://clang.llvm.org/docs/LanguageExtensions.html).
+La compatibilidad de tipos C no demuestra igualdad con la firma de layout XNU:
+dos records distintos pueden compartir firma. Un reemplazo directo no está
+justificado. Una política más estricta basada en identidad sería un cambio
+explícito de API con sus propios límites, nunca una emulación silenciosa del
+builtin Apple.
+
+No se ha identificado todavía un proveedor abierto y probado para estas tres
+operaciones. Los resultados de búsqueda no demuestran que no exista. Los
+siguientes pasos son inspeccionar un toolchain/fuente primario concreto, fijar
+su versión/licencia y probar la semántica para el target antes de integrarlo;
+o desarrollar generación original de metadata fiel al layout del compilador,
+rechazando casos que todavía no pueda representar. No importar un port ajeno.
+
+La batería de aceptación debe cubrir aliases y calificadores, records de igual
+firma pero distinta identidad, datos y punteros mezclados, arrays, padding,
+unions/bitfields y tipos incompletos/no soportados. Debe comprobar tamaños y
+offsets reales del target, firmas/resúmenes exactos y rechazo de usos inválidos.
+No bastaría compilar thread.c con errores silenciados o chequear solo sizeof.
+
+Otro límite independiente es vm_map.c: sys/code_signing.h alcanza pmap_cs.h y
+TrustCache/API.h ausente. Recortar solo ese include no resuelve las llamadas ni
+la política de ejecución. El perfil sin userland necesita una separación
+coherente de VM y firma Apple; carga dinámica/payloads sigue denegada mientras
+su verificación propia no esté implementada. No añadir TrustCache vacío ni
+funciones de seguridad que retornen éxito.
+
+Los diagnósticos conservados están en [XNU_LAB_BUILD](XNU_LAB_BUILD.md). El
+próximo éxito requerido sigue siendo código genuino compilable y enlazable,
+seguido de ejecución sustantiva instrumentada de Mach/VM/hilos/timer; este
+inventario no reemplaza ninguna de esas pruebas.

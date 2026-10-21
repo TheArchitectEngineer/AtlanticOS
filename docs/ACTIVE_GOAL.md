@@ -29,3 +29,12 @@ independientes. Añadir carpetas no concede compatibilidad.
 El usuario indica que este G20 no dispone de fastbootd. Se registra como
 USER_REPORTED_UNAVAILABLE y no se intentará entrar. La evidencia USB obtenida
 hasta ahora confirma is-userspace=no del bootloader; no es un test de fastbootd.
+
+Avance comprobado el 2026-10-21: cinco unidades genuinas XNU compiladas con
+perfil/ABI propios, aún sin enlace; entry QEMU original EL1/EL2→EL1h y excepción
+síncrona comprobada en cuatro recorridos. [CI host](https://github.com/h0nda1337/AtlanticOS/actions/runs/39606710568)
+y [CI XNU](https://github.com/h0nda1337/AtlanticOS/actions/runs/39606710790)
+aprobaron el commit 75b3f17. No hay ejecución XNU, resultado físico AtlanticOS,
+handoff EDK2 ni RAM firmware medida. Los siguientes límites de build están en
+[XNU_COMPILER_REQUIREMENTS](XNU_COMPILER_REQUIREMENTS.md); las pruebas físicas
+pendientes se detallan en [DEVICE_TEST_PLAN](DEVICE_TEST_PLAN.md).

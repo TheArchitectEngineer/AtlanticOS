@@ -34,3 +34,30 @@ T00 ya tiene observaciones ADB propias en DEVICE_INTAKE_20261020.md. T01 y T02
 requieren la transición física/observación del usuario y consultas fastboot, sin
 escrituras. Las etapas posteriores deben esperar a sus puertas previas y código
 revisable. La identidad Android observada no prueba integridad de cada imagen.
+
+## Subpruebas pendientes de T05: CPU del G20
+
+Las cuatro ejecuciones QEMU de [ENTRY_LAB](ENTRY_LAB.md) solo cierran el
+laboratorio. Para el G20 se necesitan estos resultados independientes, después
+de disponer de carga temporal y recuperación verificadas; no se ejecutan aquí:
+
+1. Captura inicial sin transición: hash de imagen/ELF, x0-x3, CurrentEL, MPIDR,
+   SCTLR del EL actual y CNTFRQ; canal de salida propio ya identificado y
+   timestamp de una grabación física. M/C/I activos no autorizan a borrarlos:
+   exigen estudiar coherencia y traducción. Sin salida, el resultado es
+   INDETERMINATE, no asumir que se alcanzó entry o una causa concreta.
+2. Imagen específica del BSP G20 que continúe en EL1h: registrar CurrentEL=1,
+   DAIF, stack alineado dentro de RAM propia y VBAR apuntando a vectores de esa
+   imagen. Desde EL1 no consultar HCR/CNTHCTL/otros registros EL2. Si el OEM ya
+   entra en EL1, debe seguir funcionando esa ruta sin una transición ficticia.
+3. Contador accesible que progrese y comparación de CNTFRQ contra tiempo
+   externo; después IRQ por separado con PPI/grupo/GIC identificados. Un delta
+   positivo por polling no acredita una interrupción ni valida la frecuencia.
+4. Excepción síncrona deliberada en una imagen de ensayo revisada: BRK con
+   inmediato conocido, ESR/ELR y PC simbolizado coincidentes, captura física y
+   retorno Android por la ruta independiente. No reutilizar la imagen QEMU ni
+   asumir que su semihosting existe en el teléfono. Si no hay recuperación
+   independiente probada, esta subprueba sigue pendiente.
+
+Ninguna de estas subpruebas, aun pasando, satisface T08: todavía haría falta
+ejecutar Mach/XNU real, ligado al upstream, patchset y binario exactos.

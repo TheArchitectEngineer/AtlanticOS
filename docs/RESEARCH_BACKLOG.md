@@ -6,6 +6,7 @@
 | P0 | Recuperación Android realmente independiente | Recorrido OEM por comandos reproducido; T01 por botones y retorno tras payload no probados. T02: metadata de slots vacía |
 | P0 | Vía temporal aceptada por OEM, header/compresión | T03/T04; formato y mecanismo demostrados; BLOCKED si no existe |
 | P0 | Toolchain XNU y librerías no resueltas | Headers/assym/MIG; grafo de símbolos; clasificar -lcc_kext y seguridad |
+| P0 | Builtins Apple de tipos y dependencia TrustCache en VM | [Requisitos de compilador](XNU_COMPILER_REQUIREMENTS.md); preservar firmas/segregación de allocator y definir límites sin userland; no generar éxitos ficticios |
 | P0 | EL inicial / transición EL2→EL1, DT y carveouts | T05; registros capturados con entry original y rangos validados |
 | P1 | Logging temprano y fallback sin framebuffer | Canal real identificado, trazas verificables sin MMIO especulativo |
 | P1 | Timer, GIC, grupos seguros y CPU features | T06; CNTFRQ y IRQ real, no flags VMAPPLE heredados |

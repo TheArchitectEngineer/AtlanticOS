@@ -40,9 +40,14 @@ Host observado: Windows, Python 3.11.9, Git 2.54.0.windows.1, Clang 22.1.4,
 LLD/llvm-readobj disponibles. El objeto BSP puede compilarse para aarch64-none-elf;
 eso solo demuestra toolchain de C freestanding, no build Mach-O XNU.
 
+Actualización 2026-10-21: [XNU_LAB_BUILD](XNU_LAB_BUILD.md) ya compila cinco
+unidades XNU reales como objetos Mach-O ARM64, con Clang 19, config y MIG
+oficiales y tres parches originales. CI Ubuntu reproduce ese subconjunto.
+No hay kernel enlazado ni ejecución; thread.c y vm_map.c siguen fallando.
+
 xcrun y SDK Apple no están configurados en esta sesión. MIG oficial ya se construyó
-como herramienta host aislada ([receta](MIG_HOST_BUILD.md)); falta conectarlo al
-build del kernel y resolver el resto de herramientas. El Makefile público
+como herramienta host aislada ([receta](MIG_HOST_BUILD.md)) y conectado al build
+incremental de laboratorio; falta completar el kernel y sus herramientas. El Makefile público
 resuelve herramientas mediante xcrun. El README usa SDKROOT y ejemplos internal;
 no afirmar que todos sus caminos requieran necesariamente un SDK privado.
 Separar tres investigaciones: headers/generados públicos, herramientas abiertas
