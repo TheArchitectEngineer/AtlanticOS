@@ -27,6 +27,8 @@ La primera CI usó Clang 18.1.3 y falló las cinco unidades en bits.h porque no
 reconocía __builtin_clzg/ctzg. CI selecciona ahora LLVM 19 explícitamente y el
 driver comprueba ambas capacidades para el target antes de preparar fuentes.
 No se reemplazan esas operaciones por macros ni se ocultan los errores.
+En Ubuntu se instala además libclang-rt-19-dev explícitamente: contiene el
+runtime ASan/UBSan del generador host y no forma parte del kernel objetivo.
 
 El driver comprueba commit y limpieza de xnu-upstream, crea un checkout separado
 LF bajo work/xnu-lab-sources y aplica la serie con Git al índice. Verifica
