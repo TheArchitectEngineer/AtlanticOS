@@ -40,7 +40,26 @@ jobs:
         run: |
           python3 tools/fetch_xnu.py
           python3 tools/fetch_mig.py
+      - name: Record compiler and generator versions
+        run: |
+          command -v clang
+          clang --version
+          llvm-nm --version
       - name: Build MIG and generate ARM64 interfaces (no kernel execution)
         run: python3 tools/build_mig.py
       - name: Compile five real XNU ARM64 units and verify internal boot ABI (no link)
         run: python3 tools/build_xnu_lab.py
+      - name: Retain metadata and unit diagnostics on success or failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: xnu-lab-metadata
+          retention-days: 7
+          path: |
+            work/mig-host/report.json
+            work/xnu-lab-builds/*/report.json
+            work/xnu-lab-builds/*/startup.log
+            work/xnu-lab-builds/*/sched_prim.log
+            work/xnu-lab-builds/*/clock.log
+            work/xnu-lab-builds/*/vm_init.log
+            work/xnu-lab-builds/*/vm_kern.log

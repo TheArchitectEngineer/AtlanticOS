@@ -211,6 +211,7 @@ def main():
         if r.returncode:
             failures.append({'source':rel,'exit_code':r.returncode,'log':log.name,
                              'diagnostics':[s.replace(str(ROOT),'<ROOT>') for s in r.stderr.splitlines() if 'error:' in s]})
+            print(json.dumps(failures[-1]), flush=True)
             continue
         raw = obj.read_bytes()
         if len(raw)<32 or struct.unpack_from('<4I',raw) != (0xfeedfacf,0x100000c,0,1):
@@ -239,7 +240,7 @@ def main():
               'generated_headers':[{'path':p.relative_to(out).as_posix(),'sha256':digest(p)} for p in generated],
               'objects':objects,'failed_units':failures}
     (out/'report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print(json.dumps({'label':report['label'],'compiled_units':len(objects),'failed_units':len(failures),
+    print(json.dumps({'label':report['label'],'compiler':report['compiler'],'compiled_units':len(objects),'failed_units':len(failures),
                       'kernel_linked':False,'xnu_executed':False,'report':str(out/'report.json')}))
     return 1 if failures else 0
 
