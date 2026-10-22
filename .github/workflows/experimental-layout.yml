@@ -1,4 +1,4 @@
-name: Experimental layout compiler and XNU thread object
+name: Experimental layout compiler and XNU core objects
 on:
   workflow_dispatch:
 permissions:
@@ -21,9 +21,13 @@ jobs:
           python3 tools/fetch_xnu.py
           python3 tools/fetch_mig.py
           python3 tools/build_mig.py
-      - name: Compile seventeen genuine XNU units with explicit provider (no link or execution)
+      - name: Compile eighteen genuine XNU units with explicit provider (no link or execution)
         run: |
           python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
+      - name: Verify pmap API rejection, object symbols and actual header dependencies
+        run: |
+          python3 tools/test_pmap_firmware.py --build work/xnu-lab-builds/*/report.json
+          python3 tools/test_pmap_cs_scope.py --build work/xnu-lab-builds/*/report.json
       - name: Retain commands, checks and diagnostics, including partial failures
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -39,3 +43,7 @@ jobs:
             work/mig-host/report.json
             work/xnu-lab-builds/*/report.json
             work/xnu-lab-builds/*/*.log
+            work/pmap-firmware-tests/report.json
+            work/pmap-firmware-tests/*.log
+            work/pmap-cs-scope-tests/report.json
+            work/pmap-cs-scope-tests/*.log

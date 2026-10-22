@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-21",
+  "label": "BUILT_ARM64",
+  "scope": "EIGHTEEN_EXPERIMENTAL_AND_THIRTEEN_STANDARD_XNU_OBJECTS_PMAP_API_AND_DEPENDENCY_CHECKS_NO_EXECUTION",
+  "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+  "port_id": "7cdda7f4114ff2f14eefd33322cba40f3d5dbe06405f7bc013a66d40db0c2b9a",
+  "experimental_build_exit_code": 0,
+  "standard_build_exit_code": 0,
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "artifacts": [
+    {
+      "path": "arm_init.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "arm_vm_init.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "assym-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "boot-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "clock.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compiler-api-report.json",
+      "sha256": "8ea0c65ec6666782a2a7c7f6b3ada0ea45d40b762b4862e21b276312eb0b1b91"
+    },
+    {
+      "path": "cswitch.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experimental-eighteen-report.json",
+      "sha256": "5baae8cbf65c7be3dbfe3959ef8cd98271cbc601ecec4dff690fc46f1a55d72e"
+    },
+    {
+      "path": "firmware-declarations.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "firmware-loaded-unavailable.log",
+      "sha256": "b004d3bf81bf20e12ce0af4f192a3b3e876d1745539357068ce695ab95c43d10"
+    },
+    {
+      "path": "firmware-report.json",
+      "sha256": "b3abb9d823f4d6f9f3fed5a96e7ac85ee5f60409301029d70376b30ca7098b14"
+    },
+    {
+      "path": "firmware-static-unavailable.log",
+      "sha256": "c256aedbb7753a0ee906d1fbe3f517c300951bcdbbbc5b98942ce1375e6ab2ee"
+    },
+    {
+      "path": "genassym.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ipc_init.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "kalloc-layout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "kalloc.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "locore.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "machine_routines.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "machine_routines_asm.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "name-inventory.json",
+      "sha256": "170328c0cafd7cd0efe9d9ad6a57450e18c8d128fb877c740cc67f30be2126fd"
+    },
+    {
+      "path": "pmap-defined.log",
+      "sha256": "eee6de9838fd6a2c184030181000d551ef8456a164f7bca5ea60771a267e1632"
+    },
+    {
+      "path": "pmap-exports.log",
+      "sha256": "0f734231d863f4dc36c5a64217c4c581c5de11903ac6be28e36fd37ec4ea6acc"
+    },
+    {
+      "path": "pmap-undefined.log",
+      "sha256": "d923565d9035c7bb2ef863da62a37ea3237ff8ce6b4a0080d93156b4e2bb010b"
+    },
+    {
+      "path": "pmap.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "README.md",
+      "sha256": "7f336cc8c324166ff03928f8555dbd405207818eb2c096daf3e9ce574b3048f2"
+    },
+    {
+      "path": "reject-assym-offset.log",
+      "sha256": "1e19beb09f926f0f1bc0fbf2a16b964a8839ecc2b5ac79b3c927ede5ae408e78"
+    },
+    {
+      "path": "reject-iokit.log",
+      "sha256": "49e07287a4067c4a760fd63a19e59cc7b4030de50c2d448df661f28832f40843"
+    },
+    {
+      "path": "reject-kalloc-layout-pointer.log",
+      "sha256": "3e4820315558e43f762ea6fadc7d07528246efd6bbcc7ca71645b64dbd8c0342"
+    },
+    {
+      "path": "reject-mach_bsd.log",
+      "sha256": "49e07287a4067c4a760fd63a19e59cc7b4030de50c2d448df661f28832f40843"
+    },
+    {
+      "path": "reject-pmu.log",
+      "sha256": "4dddef7e5388b84d76637a0d7cf36f4a756d74d06f6f6fac4db2b21515484bb1"
+    },
+    {
+      "path": "reject-untested-layout-provider.log",
+      "sha256": "611da52518ab4009d66a057298fa5b64bdb2d0218d7eddfc87355e655bbd3063"
+    },
+    {
+      "path": "sched_prim.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scope-no-monitor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "scope-ppl-requires-real-api.log",
+      "sha256": "370b0ee115312004dcdaf26a6ae0bdac2f256f61fabd55c7e85e30dce5f9c89e"
+    },
+    {
+      "path": "scope-report.json",
+      "sha256": "5031fd45ce1407006c212f9960ca900444fb12cde2b5aaa7efcbaecec094e82c"
+    },
+    {
+      "path": "scope-upstream-keeps-include.log",
+      "sha256": "8d3e8d94ee96aa12e0e911f8a79e005d94b963d23570fade43c9495c50493a27"
+    },
+    {
+      "path": "standard-firmware-declarations.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "standard-firmware-loaded-unavailable.log",
+      "sha256": "b004d3bf81bf20e12ce0af4f192a3b3e876d1745539357068ce695ab95c43d10"
+    },
+    {
+      "path": "standard-firmware-report.json",
+      "sha256": "21f16326e69308ac8e11c8ff24c0eb2c6880f8115cd445f03370bd3416f82097"
+    },
+    {
+      "path": "standard-firmware-static-unavailable.log",
+      "sha256": "c256aedbb7753a0ee906d1fbe3f517c300951bcdbbbc5b98942ce1375e6ab2ee"
+    },
+    {
+      "path": "standard-scope-no-monitor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "standard-scope-ppl-requires-real-api.log",
+      "sha256": "370b0ee115312004dcdaf26a6ae0bdac2f256f61fabd55c7e85e30dce5f9c89e"
+    },
+    {
+      "path": "standard-scope-report.json",
+      "sha256": "9e229b14289d55052e42def2d794b6ac476f6140b6dd5b0bd74b00076165902f"
+    },
+    {
+      "path": "standard-scope-upstream-keeps-include.log",
+      "sha256": "370b0ee115312004dcdaf26a6ae0bdac2f256f61fabd55c7e85e30dce5f9c89e"
+    },
+    {
+      "path": "standard-thirteen-report.json",
+      "sha256": "27bafeceefe94475dccc1b1ad7bd5d6d65bad4af192afca22fc1f5c75bc446b7"
+    },
+    {
+      "path": "start.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "startup.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "thread.log",
+      "sha256": "72dbb1e848b4b38c4c9edbd837f5e183ee93f541dc3c946b85748d05c4751a2f"
+    },
+    {
+      "path": "vm_init.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "vm_kern.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "vm_map.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "zalloc.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

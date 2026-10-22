@@ -199,6 +199,7 @@ Ampliación a once y bootstrap ARM64: [xnu-bootstrap-20261021](../evidence/xnu-b
 La [integración inicial de doce unidades](XNU_THREAD_BUILD.md) añadió thread.c
 con LLVM modificado por AtlanticOS y guards MACH_BSD. La
 [ampliación de VM y allocators](XNU_VM_ALLOCATOR_BUILD.md) llega a diecisiete,
-con parches 0007/0008. El proveedor solo se activa con --layout-compiler y su
+con parches 0007/0008. La [incorporación de pmap](XNU_PMAP_BUILD.md) llega a
+dieciocho con patch 0009. El proveedor solo se activa con --layout-compiler y su
 --layout-proof correspondiente. El modo estándar de trece unidades también se
 verificó. Los resultados no acreditan allocator o hilos en ejecución.

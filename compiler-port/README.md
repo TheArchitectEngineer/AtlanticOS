@@ -2,8 +2,8 @@
 
 Estado: compilador completo construido y 18 comprobaciones aprobadas: fixture
 positivo, LLVM IR y 16 rechazos por diagnóstico previsto. No está activado en
-el build XNU normal de trece unidades. El [modo explícito experimental](../docs/XNU_VM_ALLOCATOR_BUILD.md)
-compila diecisiete unidades reales, incluidos hilos, VM y allocators. No prueba
+el build XNU normal de trece unidades. El [modo explícito experimental](../docs/XNU_PMAP_BUILD.md)
+compila dieciocho unidades reales, incluidos hilos, VM, pmap y allocators. No prueba
 un kernel ni compatibilidad del teléfono.
 
 El XNU fijado usa metadata de tipos en su allocator. Su código público describe

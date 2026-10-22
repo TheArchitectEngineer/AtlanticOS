@@ -1,0 +1,15 @@
+<ROOT>/tests/xnu_port/kalloc_layout.c:25:1: error: static assertion failed due to requirement '0 || 0': Pointer type is not compatible with specified type
+   25 | KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER((struct atl_ptr *)0, struct atl_data);
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/7cdda7f4114ff2f1/osfmk/kern/kalloc.h:888:17: note: expanded from macro 'KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER'
+  888 |         _Static_assert(KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type), \
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/7cdda7f4114ff2f1/osfmk/kern/kalloc.h:884:3: note: expanded from macro 'KALLOC_TYPE_IS_COMPATIBLE_PTR'
+  884 |         (KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), type) ||   \
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  885 |             KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), void))  \
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/7cdda7f4114ff2f1/osfmk/kern/kalloc.h:814:40: note: expanded from macro 'KALLOC_LAYOUT_COMPATIBLE'
+  814 | #define KALLOC_LAYOUT_COMPATIBLE(a, b) __atlantic_layout_compatible(a, b)
+      |                                        ^
+1 error generated.

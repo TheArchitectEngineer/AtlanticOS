@@ -17,7 +17,7 @@
 | 2: entry ARM64 de laboratorio | EMULATED / BUILT_ARM64 | preflight original, EL1/EL2→EL1h, stack, FDT, contador y BRK; XNU_NOT_LINKED |
 | 2: entry G20 y ejecución bootstrap XNU real | UNIMPLEMENTED | objetos compilados no acreditan arranque; enlace/pmap/Platform Expert pendientes |
 | Herramienta oficial MIG | HOST_TESTED | MIG_HOST_BUILD.md: binario host genuino, ABI de metadata y 20 archivos de interfaces generados; sin compilar esos C ni enlazar kernel |
-| Port XNU incremental de laboratorio | BUILT_ARM64 | Trece objetos estándar; diecisiete con compilador experimental explícito. XNU_VM_ALLOCATOR_BUILD.md: hilos, VM, allocators e IPC compilados; task/pmap fallan; sin enlace ni ejecución |
+| Port XNU incremental de laboratorio | BUILT_ARM64 | Trece objetos estándar; dieciocho con compilador experimental explícito. XNU_PMAP_BUILD.md: pmap/VM/allocators/hilos/IPC compilados; task sigue pendiente; sin enlace ni ejecución |
 | 2: ABI C BSP | BUILT_ARM64 si build_abi termina | objeto sin drivers y sin kernel, hash propio |
 | 3: energía y fallback Android | UNIMPLEMENTED | método de reset/PMIC y vía OEM por demostrar |
 | 4: handoff EDK2 y almacenamiento | UNIMPLEMENTED | contrato propuesto; sin driver AtlanticOS |

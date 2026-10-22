@@ -73,3 +73,11 @@ unidades estándar y diecisiete experimentales, incluidos vm_map, kalloc y zallo
 Tres checks de dependencia exigen TrustCache real para PPL y targets upstream.
 El probe extendido retorna 1 por task.c y pmap; conserva ambos fallos.
 Receta y alcance: [XNU_VM_ALLOCATOR_BUILD](XNU_VM_ALLOCATOR_BUILD.md).
+
+Patch 0009 separa los servicios Apple de monitor y trust caches de pmap en el
+firmware de laboratorio, conserva RO no PPL y señala las consultas no soportadas
+como unavailable. El build experimental terminó con 18 objetos y cero fallos.
+Dos APIs de trust caches rechazaron sus consumidores; los checks del objeto
+exigen funciones sustantivas y ausencia de esos proveedores/dependencias.
+Task.c continúa pendiente; XNU_TASK_LIFETIME.md documenta su asignación conjunta
+con proc y metadata RO. No se han creado tareas ni tablas durante ejecución.

@@ -1,0 +1,12 @@
+{
+  "scope": "NAMES_ONLY_NOT_LINK_OR_RELOCATION_VALIDATION",
+  "input_report_sha256": "5baae8cbf65c7be3dbfe3959ef8cd98271cbc601ecec4dff690fc46f1a55d72e",
+  "defined_external_names": 1419,
+  "unprovided_names": 857,
+  "duplicates": {},
+  "cpu_ttep_defined_by": [
+    "osfmk/arm/pmap/pmap.c"
+  ],
+  "kernel_linked": false,
+  "xnu_executed": false
+}

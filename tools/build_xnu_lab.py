@@ -42,12 +42,14 @@ EXTRA_SYMBOLS = {'osfmk/arm64/cswitch.s': ['_machine_load_context', '_Call_conti
                  'osfmk/arm64/arm_vm_init.c': ['_bootstrap_pagetables'],
                  'osfmk/kern/thread.c': ['_kernel_thread_start', '_thread_terminate_self'],
                  'osfmk/kern/kalloc.c': ['_kalloc_type_impl_external', '_kfree_type_impl_external'],
-                 'osfmk/kern/zalloc.c': ['_zone_create_ext', '_zalloc_ext', '_zfree_ext']}
+                 'osfmk/kern/zalloc.c': ['_zone_create_ext', '_zalloc_ext', '_zfree_ext'],
+                 'osfmk/arm/pmap/pmap.c': ['_pmap_enter_options', '_pmap_page_protect', '_pmap_ro_zone_memcpy', '_cpu_ttep']}
 EXPERIMENTAL_UNITS = {'osfmk/kern/thread.c': '_thread_init',
                       'osfmk/kern/kalloc.c': '_kalloc_type_impl_internal',
                       'osfmk/kern/zalloc.c': '_zinit',
-                      'osfmk/vm/vm_map.c': '_vm_map_enter'}
-PROBES = [*EXPERIMENTAL_UNITS, 'osfmk/kern/task.c', 'osfmk/arm/pmap/pmap.c']
+                      'osfmk/vm/vm_map.c': '_vm_map_enter',
+                      'osfmk/arm/pmap/pmap.c': '_pmap_bootstrap'}
+PROBES = [*EXPERIMENTAL_UNITS, 'osfmk/kern/task.c']
 
 
 def digest(path):
@@ -335,6 +337,9 @@ def main():
         if rel == 'osfmk/ipc/ipc_init.c' and not any(
             line.split()[-1].startswith('___startup_MACH_IPC_entry_ipc_init_') for line in nm.splitlines() if line.split()):
             raise RuntimeError('Genuine static IPC initializer lost its startup registration')
+        if rel == 'osfmk/arm/pmap/pmap.c' and any('trust_cache' in line or '_amfi' in line or '_sart_' in line
+            for line in nm.splitlines()):
+            raise RuntimeError('Unexpected Apple monitor/trust-cache provider in firmware pmap')
         undefined = run(['llvm-nm','--undefined-only',str(obj)],name=obj.stem+'-undefined').stdout.splitlines()
         exported = run(['llvm-nm','--extern-only','--defined-only','--format=posix',str(obj)],
                        name=obj.stem+'-exports').stdout.splitlines()

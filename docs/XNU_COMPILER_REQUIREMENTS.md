@@ -53,14 +53,16 @@ declara implementar los builtins privados Apple. El selector explícito de kallo
 y los guards BSD permiten compilar thread.c como duodécimo objeto real. Los
 checks de macros kalloc y rechazo de punteros incompatibles pasaron. El build
 normal no lo activa; el enlace y runtime siguen pendientes. La ampliación
-posterior compila diecisiete objetos con VM/allocators. Véanse
-[XNU_THREAD_BUILD](XNU_THREAD_BUILD.md) y [XNU_VM_ALLOCATOR_BUILD](XNU_VM_ALLOCATOR_BUILD.md).
+posterior compila dieciocho objetos con VM/allocators/pmap. Véanse
+[XNU_THREAD_BUILD](XNU_THREAD_BUILD.md) y [XNU_PMAP_BUILD](XNU_PMAP_BUILD.md).
 
 El include de TrustCache se condicionó al monitor que utiliza sus tipos en el
 perfil de firmware; los targets upstream conservan el include. Vm_map.c compila
 sin modificar sus verificadores o protecciones, cuyas dependencias siguen sin
 cerrar. Las pruebas de selección exigen la API real para PPL y ruta upstream.
-Pmap todavía alcanza CoreEntitlements/V2/API.h y task.c requiere separar BSD/MAC.
+Pmap compila tras separar los servicios Apple no seleccionados; sus APIs de
+trust caches se diagnostican como unavailable, sin un proveedor alternativo.
+Task.c requiere separar BSD/MAC y resolver la vida útil conjunta con proc/RO.
 La carga dinámica/payloads sigue denegada mientras su verificación propia no esté
 implementada. No añadir headers vacíos ni funciones de seguridad que retornen éxito.
 

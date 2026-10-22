@@ -1,5 +1,8 @@
 # VM, allocators e inicialización IPC — 2026-10-21
 
+Esta entrega registra la ampliación a diecisiete. La incorporación posterior
+de [pmap](XNU_PMAP_BUILD.md) alcanza dieciocho objetos, aún sin enlace o ejecución.
+
 Compilan trece unidades estándar y diecisiete con el proveedor experimental de
 layouts C. La ampliación incorpora machine_routines.c, ipc_init.c, kalloc.c,
 zalloc.c y vm_map.c. Sus objetos no están enlazados ni ejecutados. Task.c y pmap

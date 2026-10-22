@@ -1,0 +1,158 @@
+AtlanticOS: keep genuine ARM pmap and native non-PPL RO protection, without Apple monitor backends.
+Apple trust-cache APIs are absent and diagnosed as unavailable, never replaced with successful verifiers.
+SART/UAT are excluded only in the laboratory; IOMMU compression panic retains its condition with raw PTE diagnostics.
+
+--- a/osfmk/arm/pmap/pmap.c
++++ b/osfmk/arm/pmap/pmap.c
+@@ -53,6 +53,9 @@
+ 
+ #include <vm/pmap.h>
+ #include <vm/pmap_cs.h>
++#if ATLANTIC_ARM64_LAB && (XNU_MONITOR || PMAP_CS_INCLUDE_CODE_SIGNING)
++#error AtlanticOS laboratory does not implement Apple monitor or code-signing backends
++#endif
+ #include <vm/vm_map_xnu.h>
+ #include <vm/vm_kern.h>
+ #include <vm/vm_protos.h>
+@@ -62,11 +65,15 @@
+ #include <vm/cpm_internal.h>
+ 
+ #include <libkern/img4/interface.h>
++#if !CONFIG_ATLANTIC_FIRMWARE || PMAP_CS_PPL_MONITOR || PMAP_CS_INCLUDE_CODE_SIGNING
+ #include <libkern/amfi/amfi.h>
++#endif
+ #include <libkern/section_keywords.h>
+ #include <sys/errno.h>
+ #include <sys/code_signing.h>
++#if !CONFIG_ATLANTIC_FIRMWARE || PMAP_CS_PPL_MONITOR || PMAP_CS_INCLUDE_CODE_SIGNING
+ #include <sys/trust_caches.h>
++#endif
+ 
+ #include <machine/atomic.h>
+ #include <machine/thread.h>
+@@ -85,8 +92,10 @@
+ 
+ #include <arm64/proc_reg.h>
+ #include <pexpert/arm64/boot.h>
++#if !ATLANTIC_ARM64_LAB
+ #include <arm64/ppl/sart.h>
+ #include <arm64/ppl/uat.h>
++#endif
+ 
+ #if defined(KERNEL_INTEGRITY_KTRR) || defined(KERNEL_INTEGRITY_CTRR) || defined(KERNEL_INTEGRITY_PV_CTRR)
+ #include <arm64/amcc_rorgn.h>
+@@ -110,6 +119,9 @@
+ #if HIBERNATION
+ #include <IOKit/IOHibernatePrivate.h>
+ #endif /* HIBERNATION */
++
++/* Native non-PPL definition is below its first caller. */
++MARK_AS_PMAP_TEXT static void pmap_phys_write_disable(vm_address_t va);
+ 
+ #define PMAP_L1_MAX_ENTRY (ARM_PTE_T1_REGION_MASK(TCR_EL1_BOOT) >> ARM_TT_L1_SHIFT)
+ #define PMAP_ROOT_ALLOC_SIZE ((PMAP_L1_MAX_ENTRY + 1) * sizeof(tt_entry_t))
+@@ -1213,6 +1225,7 @@
+ 
+ 
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || PMAP_CS_PPL_MONITOR
+ PMAP_SUPPORT_PROTOTYPES(
+ 	kern_return_t,
+ 	pmap_check_trust_cache_runtime_for_uuid, (const uint8_t check_uuid[kUUIDSize]),
+@@ -1228,15 +1241,20 @@
+ 	const vm_address_t img4_aux_manifest,
+ 	const vm_size_t img4_aux_manifest_len), PMAP_LOAD_TRUST_CACHE_WITH_TYPE_INDEX);
+ 
++#endif
++
+ PMAP_SUPPORT_PROTOTYPES(
+ 	void,
+ 	pmap_toggle_developer_mode, (bool state), PMAP_TOGGLE_DEVELOPER_MODE_INDEX);
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || PMAP_CS_PPL_MONITOR
+ PMAP_SUPPORT_PROTOTYPES(
+ 	kern_return_t,
+ 	pmap_query_trust_cache, (TCQueryType_t query_type,
+ 	const uint8_t cdhash[kTCEntryHashSize],
+ 	TrustCacheQueryToken_t * query_token), PMAP_QUERY_TRUST_CACHE_INDEX);
++
++#endif
+ 
+ PMAP_SUPPORT_PROTOTYPES(
+ 	errno_t,
+@@ -2347,7 +2365,9 @@
+ 	/**
+ 	 * Bootstrap any necessary SART data structures and values needed from the device tree.
+ 	 */
++#if !ATLANTIC_ARM64_LAB
+ 	sart_bootstrap();
++#endif
+ 
+ 	/**
+ 	 * Don't make any assumptions about the alignment of avail_start before this
+@@ -4965,8 +4985,13 @@
+ 			}
+ #endif
+ 			if (remove && (options & PMAP_OPTIONS_COMPRESSOR)) {
++#if ATLANTIC_ARM64_LAB
++				panic("pmap_page_protect: attempt to compress IOMMU-owned ppnum 0x%x, ptep=%p, pve_p=%p",
++				    ppnum, pte_p, pve_p);
++#else
+ 				panic("pmap_page_protect: attempt to compress ppnum 0x%x owned by iommu %p, pve_p=%p",
+ 				    ppnum, ptep_get_iommu(pte_p), pve_p);
++#endif
+ 			}
+ 			goto protect_skip_pve_pass1;
+ 		}
+@@ -12218,6 +12243,7 @@
+ #endif /* !XNU_MONITOR */
+ 
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || PMAP_CS_INCLUDE_CODE_SIGNING
+ MARK_AS_PMAP_TEXT static inline void
+ pmap_cs_lockdown_pages(vm_address_t kva, vm_size_t size, bool ppl_writable)
+ {
+@@ -12237,6 +12263,8 @@
+ 	pmap_ppl_unlockdown_pages(kva, size, 0, ppl_writable);
+ #endif
+ }
++
++#endif
+ 
+ /**
+  * Perform basic validation checks on the destination only and
+@@ -14234,6 +14262,7 @@
+ 
+ #endif /* PMAP_CS_INCLUDE_CODE_SIGNING */
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || PMAP_CS_PPL_MONITOR || PMAP_CS_INCLUDE_CODE_SIGNING
+ MARK_AS_PMAP_TEXT bool
+ pmap_lookup_in_loaded_trust_caches_internal(
+ 	const uint8_t cdhash[CS_CDHASH_LEN])
+@@ -14327,6 +14356,8 @@
+ 	return pmap_lookup_in_static_trust_cache_internal(cdhash);
+ #endif
+ }
++
++#endif
+ 
+ #if PMAP_CS_INCLUDE_CODE_SIGNING
+ 
+--- a/osfmk/vm/pmap.h
++++ b/osfmk/vm/pmap.h
+@@ -886,8 +886,15 @@
+ 
+ extern bool pmap_in_ppl(void);
+ 
++#if CONFIG_ATLANTIC_FIRMWARE
++extern uint32_t pmap_lookup_in_static_trust_cache(const uint8_t cdhash[CS_CDHASH_LEN])
++    __attribute__((unavailable("AtlanticOS firmware has no Apple trust-cache provider")));
++extern bool pmap_lookup_in_loaded_trust_caches(const uint8_t cdhash[CS_CDHASH_LEN])
++    __attribute__((unavailable("AtlanticOS firmware has no Apple trust-cache provider")));
++#else
+ extern uint32_t pmap_lookup_in_static_trust_cache(const uint8_t cdhash[CS_CDHASH_LEN]);
+ extern bool pmap_lookup_in_loaded_trust_caches(const uint8_t cdhash[CS_CDHASH_LEN]);
++#endif
+ 
+ /**
+  * Indicates whether the device supports register-level MMIO access control.

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "80a906b3c4ae00e643c0fc88dc7606ba0eb37fcbdea92503400042ef72815668",
+  "port_id": "7cdda7f4114ff2f14eefd33322cba40f3d5dbe06405f7bc013a66d40db0c2b9a",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -10,7 +10,8 @@
     "0005-select-explicit-atlantic-c-layout-provider.patch": "772f135d5cdd777bddc87d40959c6ece13d19cff015911f0ebfe0c217b321bbd",
     "0006-guard-bsd-process-and-workqueue-thread-paths.patch": "907cb456f5c5c601bc13e0905cb2127deabd79285566a9b9e028242b2064ba1e",
     "0007-scope-trustcache-types-to-selected-monitor.patch": "13cc2c11718d7207dde3f02eb95ce0aed47fd4e6421b4eab55bc069c9c26f2e4",
-    "0008-use-consistent-zone-logging-feature-name.patch": "f3ed5bec208de0720e3ce749e281c8ce72ee28bd5db96197d434ac7ee22991b8"
+    "0008-use-consistent-zone-logging-feature-name.patch": "f3ed5bec208de0720e3ce749e281c8ce72ee28bd5db96197d434ac7ee22991b8",
+    "0009-separate-laboratory-pmap-from-apple-monitor-services.patch": "292aa407b3419c71067397d46333f9fcbfc92829199310c38ce7bc49d5d6389f"
   },
   "canonical_lf_files": [
     {
@@ -72,6 +73,16 @@
       "path": "osfmk/kern/zalloc.c",
       "preimage_sha256": "cbeb1bbcae28695a2532966a8efa00f6c479d43661f70d2f45ceb4a91ccea3aa",
       "postimage_sha256": "c50d7df1fe1d849e548408ff39706b609d2d74890e89cb337f2384c775328855"
+    },
+    {
+      "path": "osfmk/arm/pmap/pmap.c",
+      "preimage_sha256": "03caf98130be25f3acd3e2b0f9882aadcc912024fa9b1c2e5397ab055ecd82a0",
+      "postimage_sha256": "405fce575bbbe2fcc3d13a300016bd7a9932078539db7585eeb5bc35197c151f"
+    },
+    {
+      "path": "osfmk/vm/pmap.h",
+      "preimage_sha256": "3350ba270c74eb1420b38e0a9b4b6e62bac82f97afc0a81cf0c849d671977acf",
+      "postimage_sha256": "9f2655414f51f4776e4c3224dd4b7faeaaa7a6744ac9930e218bfe4fa082ee88"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"
