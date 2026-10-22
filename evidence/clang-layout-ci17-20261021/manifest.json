@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-21",
+  "label": "BUILT_ARM64",
+  "scope": "CLEAN_CI_COMPILER_REBUILD_AND_HISTORICAL_SEVENTEEN_XNU_OBJECTS_ONLY_NO_EXECUTION",
+  "workflow_run": "https://github.com/h0nda1337/AtlanticOS/actions/runs/39700921227",
+  "git_commit": "2b13d0d9889540f247a8e82cf4b19bc2c4c48968",
+  "artifact_id": 12394962622,
+  "port_id": "80a906b3c4ae00e643c0fc88dc7606ba0eb37fcbdea92503400042ef72815668",
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "artifacts": [
+    {
+      "path": "compiler-api-report.json",
+      "sha256": "bd8bb7048d2ea7a51c7aed77991c30d33d047faf7084230541dff3c875188439"
+    },
+    {
+      "path": "compiler-report.json",
+      "sha256": "93941ce620d92e9ab6ccea7bd34b539f657fa99d316d3d5fbc54ba4fd77f3334"
+    },
+    {
+      "path": "README.md",
+      "sha256": "9da38184aacfb444be6a66f2d2541b224bdb4bfc52cf8dc9ad39a78924854784"
+    },
+    {
+      "path": "seventeen-unit-report.json",
+      "sha256": "32f9fc33e146ef3806677775192643c4d70b15c361ae49754f22aede2b66f725"
+    },
+    {
+      "path": "target-layout-comparison.json",
+      "sha256": "4af9a8f6a964b7911c26c04ec35fd125ac5f8afbeb28bbc010ea3758bd328c75"
+    },
+    {
+      "path": "workflow-run.json",
+      "sha256": "ada7c8ef55766cff6b3807df27fffe5f37a6bb4cd6f1f1b1f5f1a8b29daa3008"
+    }
+  ]
+}

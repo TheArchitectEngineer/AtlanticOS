@@ -26,6 +26,10 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 | pmap.c | Objeto real con patch 0009; cpu_ttep definido por upstream | Sin enlace, MMU o DMA ejecutados |
 | task.c / task_ref.c | Objetos genuinos; vida útil y referencias nativas conservadas | Sin ejecutar |
 | Metadata proc/task y get_bsdtask_info | Helpers XNU conservados, contextos privados separados y ABI cotejado | Sin asignación o protección RO ejecutada |
+| VM residente / objetos / faults | Objetos genuinos; selección de header Apple limitada a placa de laboratorio | Sin gestión física de páginas ejecutada |
+| Locks / ledgers / stack / waitq / turnstiles / SMR | Objetos genuinos y referencias originales | Sin concurrencia ejecutada |
+| Dualq / processor / thread_act / thread_call / timer / refcnt | Cuerpos nativos y tabla de despacho original | Sin contexto/hilo/timer ejecutados |
+| ipc_space / ipc_entry | Objetos genuinos | Otros componentes IPC siguen pendientes |
 | Entry XNU, pmap y contexto integrados | Sin construir/enlazar como conjunto | UNIMPLEMENTED |
 | Platform Expert y BSP G20 | Sin drivers AtlanticOS funcionales | UNIMPLEMENTED |
 | Handoff EDK2 y RAM física | Sin prueba | UNIMPLEMENTED / UNMEASURED |
@@ -76,6 +80,10 @@ no contiene BootShim ni código de plataforma de ports ajenos.
     memorystatus a sus features reales. Mantiene la lógica Mach/VM, no concede
     opt-out AMFI ni identidad init cuando faltan sus proveedores. No implementa
     los callbacks de IOKit que aún quedan sin resolver.
+12. `0012`: excluye AppleFeatures.h solo cuando ARM64_BOARD_CONFIG_ATLANTIC_LAB
+    ya selecciona la placa sin PAC. Conserva el include en otras placas. El
+    running-timer KPERF de processor.c usa el mismo guard que el enum original;
+    el static_assert que verifica tamaño de la tabla sigue activo.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
@@ -101,9 +109,11 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y veintidós experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y treinta y nueve experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.
 
 Receta y alcance: [XNU_LAB_BUILD](../docs/XNU_LAB_BUILD.md).
+El [cierre core](../docs/XNU_CORE_CLOSURE.md) registra los probes que siguen
+fallando y la limitación comprobada de -static en LLD 19.1.7.

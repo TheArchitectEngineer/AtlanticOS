@@ -1,0 +1,4 @@
+/mnt/g/AtlanticOS/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/kern/thread_call.c:2002:32: warning: cast to smaller integer type 'thread_call_flavor_t' from 'timer_call_param_t' (aka 'void *') [-Wvoid-pointer-to-enum-cast]
+ 2002 |         thread_call_flavor_t flavor = (thread_call_flavor_t) p1;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.

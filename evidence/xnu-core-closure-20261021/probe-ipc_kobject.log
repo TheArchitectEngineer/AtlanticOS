@@ -1,0 +1,4 @@
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/kern/ipc_kobject.c:78:10: fatal error: 'mach/mach_notify.h' file not found
+   78 | #include <mach/mach_notify.h>
+      |          ^~~~~~~~~~~~~~~~~~~~
+1 error generated.

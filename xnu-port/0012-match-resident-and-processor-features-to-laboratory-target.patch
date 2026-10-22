@@ -1,0 +1,30 @@
+AtlanticOS: omit AppleFeatures only for the selected non-PAC ARM64 lab board.
+Keep upstream feature selection on every other board.
+Match the processor running-timer table to the native KPERF-conditional enum.
+
+diff --git a/osfmk/vm/vm_resident.c b/osfmk/vm/vm_resident.c
+--- a/osfmk/vm/vm_resident.c
++++ b/osfmk/vm/vm_resident.c
+@@ -61,7 +61,9 @@
+  *
+  *	Resident memory management module.
+  */
++#if !defined(ARM64_BOARD_CONFIG_ATLANTIC_LAB)
+ #include <AppleFeatures.h>
++#endif
+ #include <debug.h>
+ #include <libkern/OSDebug.h>
+ 
+diff --git a/osfmk/kern/processor.c b/osfmk/kern/processor.c
+--- a/osfmk/kern/processor.c
++++ b/osfmk/kern/processor.c
+@@ -190,7 +190,9 @@
+ static timer_call_func_t running_timer_funcs[] = {
+ 	[RUNNING_TIMER_QUANTUM] = thread_quantum_expire,
+ 	[RUNNING_TIMER_PREEMPT] = thread_preempt_expire,
++#if KPERF
+ 	[RUNNING_TIMER_KPERF] = kperf_timer_expire,
++#endif
+ 	[RUNNING_TIMER_PERFCONTROL] = perfcontrol_timer_expire,
+ };
+ static_assert(sizeof(running_timer_funcs) / sizeof(running_timer_funcs[0])

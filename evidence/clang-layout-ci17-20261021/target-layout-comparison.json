@@ -1,0 +1,14 @@
+{
+  "scope": "HISTORICAL_SEVENTEEN_UNIT_PORT_AND_TARGET_LAYOUT_COMPARISON_ONLY",
+  "port_id": "80a906b3c4ae00e643c0fc88dc7606ba0eb37fcbdea92503400042ef72815668",
+  "source_hashes_match": true,
+  "unit_count": 17,
+  "target_constant_count": 137,
+  "target_constants_match": true,
+  "ci_report_sha256": "32f9fc33e146ef3806677775192643c4d70b15c361ae49754f22aede2b66f725",
+  "local_report_sha256": "0ef3854bd48852306cc2ce6e686dbeb689a5c32dc5984b743aa4966bc7e649f0",
+  "object_byte_identity_claimed": false,
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false
+}

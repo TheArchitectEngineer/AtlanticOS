@@ -1,0 +1,80 @@
+In file included from <ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:82:
+In file included from <ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/kern/policy_internal.h:42:
+In file included from <ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/kern/task.h:133:
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/kern/thread.h:1641:49: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1641 | extern void             uthread_cred_ref(struct ucred *);
+      |                                                 ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/kern/thread.h:1642:50: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1642 | extern void             uthread_cred_free(struct ucred *);
+      |                                                  ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1164:8: error: call to undeclared function 'ipc_port_clear_watchport_elem_internal'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1164 |         twe = ipc_port_clear_watchport_elem_internal(port);
+      |               ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1164:6: error: incompatible integer to pointer conversion assigning to 'struct task_watchport_elem *' from 'int' [-Wint-conversion]
+ 1164 |         twe = ipc_port_clear_watchport_elem_internal(port);
+      |             ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1227:4: error: call to undeclared function 'ipc_port_adjust_special_reply_port'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1227 |                         ipc_port_adjust_special_reply_port(port,
+      |                         ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1228:8: error: use of undeclared identifier 'IPC_PORT_ADJUST_SR_ALLOW_SYNC_LINKAGE'
+ 1228 |                             IPC_PORT_ADJUST_SR_ALLOW_SYNC_LINKAGE);
+      |                             ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1389:2: error: call to undeclared function 'ipc_port_send_turnstile_prepare'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1389 |         ipc_port_send_turnstile_prepare(dest);
+      |         ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1437:3: error: call to undeclared function 'ipc_port_send_turnstile_complete'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1437 |                 ipc_port_send_turnstile_complete(dest);
+      |                 ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1452:19: error: call to undeclared function 'ipc_port_clear_watchport_elem_internal'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1452 |         watchport_elem = ipc_port_clear_watchport_elem_internal(port);
+      |                          ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1452:17: error: incompatible integer to pointer conversion assigning to 'struct task_watchport_elem *' from 'int' [-Wint-conversion]
+ 1452 |         watchport_elem = ipc_port_clear_watchport_elem_internal(port);
+      |                        ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1473:3: error: call to undeclared function 'ipc_port_adjust_sync_link_state_locked'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1473 |                 ipc_port_adjust_sync_link_state_locked(port, PORT_SYNC_LINK_ANY, NULL);
+      |                 ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1759:1: error: conflicting types for 'ipc_port_send_turnstile_prepare'
+ 1759 | ipc_port_send_turnstile_prepare(ipc_port_t port)
+      | ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1389:2: note: previous implicit declaration is here
+ 1389 |         ipc_port_send_turnstile_prepare(dest);
+      |         ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1810:1: error: conflicting types for 'ipc_port_send_turnstile_complete'
+ 1810 | ipc_port_send_turnstile_complete(ipc_port_t port)
+      | ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1437:3: note: previous implicit declaration is here
+ 1437 |                 ipc_port_send_turnstile_complete(dest);
+      |                 ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:2059:14: error: use of undeclared identifier 'IPC_PORT_ADJUST_SR_RECEIVED_MSG'
+ 2059 |         if (flags & IPC_PORT_ADJUST_SR_RECEIVED_MSG) {
+      |                     ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:2063:14: error: use of undeclared identifier 'IPC_PORT_ADJUST_UNLINK_THREAD'
+ 2063 |         if (flags & IPC_PORT_ADJUST_UNLINK_THREAD) {
+      |                     ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:2067:14: error: use of undeclared identifier 'IPC_PORT_ADJUST_RESET_BOOSTRAP_CHECKIN'
+ 2067 |         if (flags & IPC_PORT_ADJUST_RESET_BOOSTRAP_CHECKIN) {
+      |                     ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:2085:14: error: use of undeclared identifier 'IPC_PORT_ADJUST_SR_LINK_WORKLOOP'
+ 2085 |         if (flags & IPC_PORT_ADJUST_SR_LINK_WORKLOOP) {
+      |                     ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:2090:21: error: use of undeclared identifier 'IPC_PORT_ADJUST_SR_ALLOW_SYNC_LINKAGE'
+ 2090 |         } else if (flags & IPC_PORT_ADJUST_SR_ALLOW_SYNC_LINKAGE) {
+      |                            ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:2140:15: error: use of undeclared identifier 'IPC_PORT_ADJUST_SR_ENABLE_EVENT'
+ 2140 |                 if (flags & IPC_PORT_ADJUST_SR_ENABLE_EVENT) {
+      |                             ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:2191:1: error: conflicting types for 'ipc_port_adjust_special_reply_port'
+ 2191 | ipc_port_adjust_special_reply_port(
+      | ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1227:4: note: previous implicit declaration is here
+ 1227 |                         ipc_port_adjust_special_reply_port(port,
+      |                         ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:2213:1: error: conflicting types for 'ipc_port_adjust_sync_link_state_locked'
+ 2213 | ipc_port_adjust_sync_link_state_locked(
+      | ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_port.c:1473:3: note: previous implicit declaration is here
+ 1473 |                 ipc_port_adjust_sync_link_state_locked(port, PORT_SYNC_LINK_ANY, NULL);
+      |                 ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+2 warnings and 20 errors generated.

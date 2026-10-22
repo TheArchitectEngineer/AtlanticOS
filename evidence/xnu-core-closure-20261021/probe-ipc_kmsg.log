@@ -1,0 +1,4 @@
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_kmsg.c:124:10: fatal error: 'device/device_server.h' file not found
+  124 | #include <device/device_server.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.

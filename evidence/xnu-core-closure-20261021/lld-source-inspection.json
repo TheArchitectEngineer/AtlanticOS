@@ -1,0 +1,35 @@
+{
+  "scope": "PINNED_OFFICIAL_SOURCE_INSPECTION_ONLY_NOT_STATIC_LINKER_IMPLEMENTATION",
+  "upstream_commit": "cd708029e0b2869e80abe31ddb175f7c35361f90",
+  "archive_sha256": "05e6d7fe6d188dd4d33b812ab5cce7654b886b7c9ce405aa1d942c866bbe959f",
+  "files": [
+    {
+      "path": "lld/MachO/Config.h",
+      "sha256": "0e73e32883dc3f05006290ca8da7ed99dfd47a63eb0f9f0c73763ad5c1053a96"
+    },
+    {
+      "path": "lld/MachO/Driver.cpp",
+      "sha256": "9358c38519590e73b439e03145c4c81efe7efd5fddae4e53faf07377dbd83c03"
+    },
+    {
+      "path": "lld/MachO/Options.td",
+      "sha256": "b3bb502fbbf09952a6db87b7fb85619d0eb945438c88688c12d36298d817c27b"
+    },
+    {
+      "path": "lld/MachO/SyntheticSections.cpp",
+      "sha256": "6b781950d2bdbf0be4389943c22ed217442bd5662e28a03a70f4933328cdcaeb"
+    },
+    {
+      "path": "lld/MachO/Writer.cpp",
+      "sha256": "9533d27409551d35c24b36532b50ca46d09747546534be643e256da17852d75d"
+    }
+  ],
+  "observations": [
+    "Driver warns that hidden kind options are not implemented",
+    "Writer adds LC_LOAD_DYLINKER and LC_MAIN to MH_EXECUTE",
+    "SyntheticSections writes MH_DYLDLINK into the header"
+  ],
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false
+}

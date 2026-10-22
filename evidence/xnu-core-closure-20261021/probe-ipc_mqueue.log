@@ -1,0 +1,4 @@
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_mqueue.c:395:4: error: call to undeclared function 'ipc_port_adjust_sync_link_state_locked'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  395 |                         ipc_port_adjust_sync_link_state_locked(port,
+      |                         ^
+1 error generated.

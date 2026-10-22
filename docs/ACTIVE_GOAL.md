@@ -46,3 +46,8 @@ aprobaron 6a2bb69; las 137 constantes de layout coinciden entre Clang 19.1.1 y
 19.1.7. Hay 74 pruebas host aprobadas. Siguen pendientes el cierre de símbolos,
 hilos/VM completos, enlace, ejecución XNU y evidencia física. Compilar más
 unidades no cambia el criterio de aceptación del objetivo.
+
+La ampliación de [dependencias core](XNU_CORE_CLOSURE.md) llega a 39 objetos
+experimentales con el compilador original explícito. Pageout, parte de IPC,
+enlazador estático, Platform Expert y BSP siguen pendientes. La evidencia
+compilada conserva ese alcance; el objetivo físico y el handoff no cambian.

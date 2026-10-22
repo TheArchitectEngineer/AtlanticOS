@@ -1,0 +1,28 @@
+In file included from <ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_right.c:81:
+In file included from <ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/kern/policy_internal.h:42:
+In file included from <ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/kern/task.h:133:
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/kern/thread.h:1641:49: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1641 | extern void             uthread_cred_ref(struct ucred *);
+      |                                                 ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/kern/thread.h:1642:50: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1642 | extern void             uthread_cred_free(struct ucred *);
+      |                                                  ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_right.c:1312:8: error: call to undeclared function 'ipc_port_has_prdrequest'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1312 |                         if (ipc_port_has_prdrequest(port)) {
+      |                             ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_right.c:1777:7: error: call to undeclared function 'ipc_port_has_prdrequest'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1777 |                 if (ipc_port_has_prdrequest(port)) {
+      |                     ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_right.c:2604:4: error: call to undeclared function 'ipc_port_adjust_special_reply_port_locked'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2604 |                         ipc_port_adjust_special_reply_port_locked(port,
+      |                         ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_right.c:2605:37: error: use of undeclared identifier 'IPC_PORT_ADJUST_SR_LINK_WORKLOOP'
+ 2605 |                             current_thread()->ith_knote, IPC_PORT_ADJUST_SR_LINK_WORKLOOP, FALSE);
+      |                                                          ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_right.c:2763:2: error: call to undeclared function 'ipc_port_adjust_port_locked'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2763 |         ipc_port_adjust_port_locked(port, kn, sync_bootstrap_checkin);
+      |         ^
+<ROOT>/work/xnu-lab-sources/30d8e4ad13bace51/osfmk/ipc/ipc_right.c:2789:3: error: call to undeclared function 'ipc_port_send_turnstile_complete'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2789 |                 ipc_port_send_turnstile_complete(dest);
+      |                 ^
+2 warnings and 6 errors generated.

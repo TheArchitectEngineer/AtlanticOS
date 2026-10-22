@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "e7556095aa5919d6fde77ae5cb69dd80921aad0908bc6e3a908f1efbc707dd04",
+  "port_id": "30d8e4ad13bace51ebbd1392e54bcf63540b059d073795d955420b0cf84b153c",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -13,7 +13,8 @@
     "0008-use-consistent-zone-logging-feature-name.patch": "f3ed5bec208de0720e3ce749e281c8ce72ee28bd5db96197d434ac7ee22991b8",
     "0009-separate-laboratory-pmap-from-apple-monitor-services.patch": "292aa407b3419c71067397d46333f9fcbfc92829199310c38ce7bc49d5d6389f",
     "0010-retain-native-proc-task-metadata-without-bsd-userland.patch": "74cfbcc9e6eb302f60521bd8a9c85c20cc2d19d202063a4bf1beddf94cc571c5",
-    "0011-bound-task-process-callbacks-by-selected-features.patch": "2d480812db9babf782bc4658e30295a35fc80e432a54009eeda939e841c770b5"
+    "0011-bound-task-process-callbacks-by-selected-features.patch": "2d480812db9babf782bc4658e30295a35fc80e432a54009eeda939e841c770b5",
+    "0012-match-resident-and-processor-features-to-laboratory-target.patch": "e55c2355481f5b6282414af42b850364c7d93b4d57155ad192e201e0fefc805c"
   },
   "canonical_lf_files": [
     {
@@ -105,6 +106,16 @@
       "path": "osfmk/kern/task.c",
       "preimage_sha256": "f5ea4822b15aca636c4d940679e878904729b88acf312821d2ebacbf69312f71",
       "postimage_sha256": "18b19054765710b7151fe84e61f83bd775580b6e5a8d4b121a3907cd14009f09"
+    },
+    {
+      "path": "osfmk/vm/vm_resident.c",
+      "preimage_sha256": "a0e7a97fe17fd5d5d9ac7148355ede1b56040d1a425ca2235c97886b3f2d4d59",
+      "postimage_sha256": "6efbeb002f99c8446acbf157d37fc41f4597fbaed93e6f43c81548ec8265364a"
+    },
+    {
+      "path": "osfmk/kern/processor.c",
+      "preimage_sha256": "d107268d6fbe37cf5825535341a52674b42818bed94501f907c2ecac8e3765ef",
+      "postimage_sha256": "b995f8b129d5edc84059d028a010088f5ab2e3d3a1edfd9385d71a0e35dfd516"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

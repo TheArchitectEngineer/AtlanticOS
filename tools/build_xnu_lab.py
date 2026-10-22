@@ -33,7 +33,7 @@ UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
          'osfmk/arm64/machine_routines.c': '_machine_startup',
          'osfmk/ipc/ipc_init.c': '_ipc_init'}
 # IPC registers a genuine static initializer in STARTUP(MACH_IPC, ...).
-SYMBOL_TYPES = {'osfmk/ipc/ipc_init.c': 't'}
+SYMBOL_TYPES = {'osfmk/ipc/ipc_init.c': 't', 'osfmk/kern/sched_dualq.c': 't'}
 EXTRA_SYMBOLS = {'osfmk/arm64/cswitch.s': ['_machine_load_context', '_Call_continuation'],
                  'osfmk/arm64/start.s': ['__start', '_LowResetVectorBase'],
                  'osfmk/arm64/locore.s': ['_fleh_synchronous', '_fleh_irq'],
@@ -49,6 +49,13 @@ EXTRA_SYMBOLS.update({
     'osfmk/kern/task_ref.c': ['_task_ref_count_init', '_task_ref_count_fini'],
     'osfmk/kern/atlantic_task_metadata.c': ['_proc_ro_ref_task', '_proc_ro_erase_task',
         '_task_ref_hold_proc_task_struct', '_task_release_proc_task_struct', '_proc_require', '_kernproc']})
+EXTRA_SYMBOLS.update({
+    'osfmk/vm/vm_object.c': ['_vm_object_allocate', '_vm_object_deallocate'],
+    'osfmk/vm/vm_fault.c': ['_vm_fault_page', '_vm_fault_enter', '_vm_fault_wire'],
+    'osfmk/vm/vm_resident.c': ['_vm_page_grab_options', '_vm_page_release', '_pmap_steal_memory'],
+    'osfmk/kern/sched_dualq.c': ['_sched_dualq_dispatch', '_sched_dualq_choose_thread'],
+    'osfmk/kern/processor.c': ['_processor_init', '_processor_boot'],
+    'libkern/os/refcnt.c': ['_os_ref_retain_internal', '_os_ref_release_barrier_internal']})
 EXPERIMENTAL_UNITS = {'osfmk/kern/thread.c': '_thread_init',
                       'osfmk/kern/kalloc.c': '_kalloc_type_impl_internal',
                       'osfmk/kern/zalloc.c': '_zinit',
@@ -57,8 +64,27 @@ EXPERIMENTAL_UNITS = {'osfmk/kern/thread.c': '_thread_init',
                       'osfmk/kern/task.c': '_task_init',
                       'osfmk/kern/task_ref.c': '_task_ref_init',
                       'osfmk/kern/atlantic_task_metadata.c': '_proc_ro_alloc',
-                      'osfmk/kern/atlantic_task_process.c': '_get_bsdtask_info'}
-PROBES = ['osfmk/vm/vm_object.c', 'osfmk/vm/vm_fault.c']
+                      'osfmk/kern/atlantic_task_process.c': '_get_bsdtask_info',
+                      'osfmk/vm/vm_object.c': '_vm_object_bootstrap',
+                      'osfmk/vm/vm_fault.c': '_vm_fault_init',
+                      'osfmk/vm/vm_resident.c': '_vm_page_bootstrap',
+                      'osfmk/kern/locks.c': '_hw_lock_bit',
+                      'osfmk/kern/ledger.c': '_ledger_instantiate',
+                      'osfmk/kern/stack.c': '_stack_alloc',
+                      'osfmk/kern/smr.c': '_smr_synchronize',
+                      'osfmk/kern/waitq.c': '_waitq_assert_wait64',
+                      'osfmk/kern/turnstile.c': '_turnstiles_init',
+                      'osfmk/kern/thread_call.c': '_thread_call_enter',
+                      'osfmk/kern/timer.c': '_timer_init',
+                      'osfmk/kern/sched_dualq.c': '_sched_dualq_init',
+                      'osfmk/kern/thread_act.c': '_thread_abort',
+                      'osfmk/kern/processor.c': '_processor_bootstrap',
+                      'libkern/os/refcnt.c': '_os_ref_init_count_internal',
+                      'osfmk/ipc/ipc_space.c': '_ipc_space_create',
+                      'osfmk/ipc/ipc_entry.c': '_ipc_entry_alloc'}
+PROBES = ['osfmk/vm/vm_pageout.c', 'osfmk/kern/ipc_kobject.c',
+          *['osfmk/ipc/'+name+'.c' for name in
+            ['ipc_object', 'ipc_port', 'ipc_kmsg', 'ipc_mqueue', 'ipc_right']]]
 
 
 def digest(path):
@@ -80,9 +106,9 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--windows-git', action='store_true')
     ap.add_argument('--probe-remaining', action='store_true',
-                    help='Try remaining task/thread, allocator, VM and pmap units; failures return nonzero')
+                    help='Try remaining pageout and IPC units; failures return nonzero')
     ap.add_argument('--layout-compiler', type=Path,
-                    help='Explicit experimental compiler; also builds thread, allocators and vm_map')
+                    help='Explicit experimental compiler; also builds selected Mach, VM and IPC core units')
     ap.add_argument('--layout-proof', type=Path,
                     help='Successful tools/test_atlantic_clang.py report for this compiler')
     args = ap.parse_args()
@@ -331,7 +357,7 @@ def main():
         obj = out/(Path(rel).stem+'.o')
         # This flag is mandated for VM sources by upstream Makefile.template.
         per_file = ['-DVM_UNSAFE_TYPES'] if rel.startswith('osfmk/vm/') else []
-        if rel == 'osfmk/kern/atlantic_task_metadata.c':
+        if rel in {'osfmk/kern/atlantic_task_metadata.c', 'libkern/os/refcnt.c'}:
             # Match the real BSD-private header context, without BSD userland.
             per_file += ['-UMACH_KERNEL_PRIVATE', '-DBSD_KERNEL_PRIVATE=1']
         if rel.endswith('.s'):
