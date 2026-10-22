@@ -1,0 +1,32 @@
+{
+  "upstream_commit": "cd708029e0b2869e80abe31ddb175f7c35361f90",
+  "archive_sha256": "05e6d7fe6d188dd4d33b812ab5cce7654b886b7c9ce405aa1d942c866bbe959f",
+  "patch_sha256": "afc75987817429d5f8b1ac9b3fd4d4ca2a7547a3f32ac81723c3f46ed83d7534",
+  "files": [
+    {
+      "path": "lld/MachO/Config.h",
+      "preimage_sha256": "0e73e32883dc3f05006290ca8da7ed99dfd47a63eb0f9f0c73763ad5c1053a96",
+      "postimage_sha256": "706a396c76b3b524367657896de076eb38c45edf97799df9927e64e6f5c83b7a"
+    },
+    {
+      "path": "lld/MachO/Driver.cpp",
+      "preimage_sha256": "9358c38519590e73b439e03145c4c81efe7efd5fddae4e53faf07377dbd83c03",
+      "postimage_sha256": "b015668f7d6fc1e772310561fd0ceacaf6d74062e712ce0ac1e4fbf6c5a728d2"
+    },
+    {
+      "path": "lld/MachO/Options.td",
+      "preimage_sha256": "b3bb502fbbf09952a6db87b7fb85619d0eb945438c88688c12d36298d817c27b",
+      "postimage_sha256": "c24e1783a2d7bae8e56ac5457e459302e334483f7c3106da16476199916a3133"
+    },
+    {
+      "path": "lld/MachO/SyntheticSections.cpp",
+      "preimage_sha256": "6b781950d2bdbf0be4389943c22ed217442bd5662e28a03a70f4933328cdcaeb",
+      "postimage_sha256": "a7b84674c37f8616d2eff376436b0c3e5b400d20cc5acf70203ac534611ffb05"
+    },
+    {
+      "path": "lld/MachO/Writer.cpp",
+      "preimage_sha256": "9533d27409551d35c24b36532b50ca46d09747546534be643e256da17852d75d",
+      "postimage_sha256": "b39f2f99cc53128edd6a4fe1f40c13a5a1fb6a529b54c6fc04ce44c2d468565b"
+    }
+  ]
+}

@@ -60,3 +60,8 @@ acredita entrega de mensajes, ejecución XNU, arranque físico o handoff EDK2.
 La [integración de los C RPC](XNU_RPC_BUILD.md) conserva 42 unidades generadas
 por MIG en cada carril y verifica los 17 descriptores requeridos por kobject.
 La imagen sigue sin enlazarse; no cambia la exigencia de XNU físico y handoff.
+
+El [modo estático ARM64 de LLD](LLD_STATIC_ARM64.md) comprueba tres fixtures
+enlazados y conserva el rechazo real de los helpers weak de Blocks de XNU.
+Esto mejora la herramienta host; todavía faltan el cierre nativo, la imagen,
+el bootstrap real y todas las comprobaciones físicas del objetivo.

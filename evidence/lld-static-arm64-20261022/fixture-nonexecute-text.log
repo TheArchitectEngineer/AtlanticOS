@@ -1,0 +1,1 @@
+ld64.lld: error: Atlantic static instruction section lacks execute permission: __text

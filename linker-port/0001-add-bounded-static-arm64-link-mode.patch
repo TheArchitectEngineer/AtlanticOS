@@ -1,0 +1,304 @@
+diff --git a/lld/MachO/Config.h b/lld/MachO/Config.h
+index e79812b..c49e448 100644
+--- a/lld/MachO/Config.h
++++ b/lld/MachO/Config.h
+@@ -120,6 +120,9 @@ struct Configuration {
+   bool forceLoadObjC = false;
+   bool forceLoadSwift = false; // Only applies to LC_LINKER_OPTIONs.
+   bool staticLink = false;
++  // Deliberately bounded AtlanticOS laboratory mode, not general ld64 -static.
++  bool atlanticStaticArm64 = false;
++  uint64_t atlanticImageBase = 0;
+   bool implicitDylibs = false;
+   bool isPic = false;
+   bool headerPadMaxInstallNames = false;
+diff --git a/lld/MachO/Driver.cpp b/lld/MachO/Driver.cpp
+index 1883acc..8049f52 100644
+--- a/lld/MachO/Driver.cpp
++++ b/lld/MachO/Driver.cpp
+@@ -1524,6 +1524,52 @@ bool link(ArrayRef<const char *> argsArr, llvm::raw_ostream &stdoutOS,
+   symtab = std::make_unique<SymbolTable>();
+   config->outputType = getOutputType(args);
+   target = createTargetInfo(args);
++  config->atlanticStaticArm64 = args.hasArg(OPT_atlantic_static_arm64_eq);
++  if (config->atlanticStaticArm64) {
++    // Common getHex parses int64_t and rejects genuine high kernel addresses.
++    StringRef baseArg = args.getLastArgValue(OPT_atlantic_static_arm64_eq);
++    baseArg.consume_front("0x");
++    if (baseArg.empty() || baseArg.getAsInteger(16, config->atlanticImageBase))
++      error("Atlantic static base must be an unsigned 64-bit hexadecimal value");
++    if (config->arch() != AK_arm64 || config->outputType != MH_EXECUTE)
++      error("Atlantic static mode requires arm64 MH_EXECUTE");
++    uint64_t base = config->atlanticImageBase;
++    if (!base || (base & 0x3fff) ||
++        (base > 0x0000ffffffffffffULL && base < 0xffff000000000000ULL) ||
++        base > UINT64_MAX - 0x10000000ULL)
++      error("Atlantic static base must be nonzero, 16 KiB aligned, canonical "
++            "and leave 256 MiB of address space");
++    // A positive allowlist prevents an unimplemented or dynamic option from
++    // silently weakening this first fixed-load contract.
++    for (const Arg *arg : args) {
++      switch (arg->getOption().getID()) {
++      case OPT_atlantic_static_arm64_eq:
++      case OPT_INPUT:
++      case OPT_arch:
++      case OPT_platform_version:
++      case OPT_e:
++      case OPT_o:
++      case OPT_fatal_warnings:
++      case OPT_error_limit_eq:
++      case OPT_undefined:
++      case OPT_no_uuid:
++      case OPT_map:
++      case OPT_segprot:
++      case OPT_sectalign:
++      case OPT_rename_section:
++        break;
++      default:
++        error("option not supported in Atlantic static mode: " + arg->getSpelling());
++      }
++    }
++    if (args.getLastArgValue(OPT_undefined, "error") != "error")
++      error("Atlantic static mode requires -undefined error");
++    if (!args.hasArg(OPT_e))
++      error("Atlantic static mode requires an explicit -e entry symbol");
++    config->staticLink = true;
++    ctx->e.fatalWarnings = true;
++    target->pageZeroSize = 0;
++  }
+   depTracker = std::make_unique<DependencyTracker>(
+       args.getLastArgValue(OPT_dependency_info));
+ 
+@@ -1586,8 +1632,8 @@ bool link(ArrayRef<const char *> argsArr, llvm::raw_ostream &stdoutOS,
+     }
+   }
+ 
+-  bool pie = args.hasFlag(OPT_pie, OPT_no_pie, true);
+-  if (!supportsNoPie() && !pie) {
++  bool pie = !config->atlanticStaticArm64 && args.hasFlag(OPT_pie, OPT_no_pie, true);
++  if (!config->atlanticStaticArm64 && !supportsNoPie() && !pie) {
+     warn("-no_pie ignored for arm64");
+     pie = true;
+   }
+@@ -1951,7 +1997,23 @@ bool link(ArrayRef<const char *> argsArr, llvm::raw_ostream &stdoutOS,
+     TimeTraceScope timeScope("ExecuteLinker");
+ 
+     initLLVM(); // must be run before any call to addFile()
++    if (config->atlanticStaticArm64) {
++      config->adhocCodesign = false;
++      config->emitFunctionStarts = false;
++      config->emitDataInCodeInfo = false;
++      config->emitRelativeMethodLists = false;
++    }
++    if (errorCount())
++      return false;
+     createFiles(args);
++    if (config->atlanticStaticArm64) {
++      for (const InputFile *file : inputFiles)
++        if (!isa<ObjFile>(file) && !isa<ArchiveFile>(file))
++          error("Atlantic static mode requires native Mach-O objects: " +
++                file->getName());
++      if (errorCount())
++        return false;
++    }
+ 
+     // Now that all dylibs have been loaded, search for those that should be
+     // re-exported.
+diff --git a/lld/MachO/Options.td b/lld/MachO/Options.td
+index bbd8bf7..6ede494 100644
+--- a/lld/MachO/Options.td
++++ b/lld/MachO/Options.td
+@@ -10,6 +10,10 @@ multiclass BB<string name, string help1, string help2> {
+ // they don't collide with the ld64 compat options.
+ def grp_lld : OptionGroup<"kind">, HelpText<"LLD-SPECIFIC">;
+ 
++def atlantic_static_arm64_eq : Joined<["--"], "atlantic-static-arm64=">,
++    HelpText<"AtlanticOS experimental fixed-address ARM64 executable (hex base); no dyld, TLS, weak symbols or LTO">,
++    Group<grp_lld>;
++
+ def help : Flag<["-", "--"], "help">,
+     Group<grp_lld>;
+ def help_hidden : Flag<["--"], "help-hidden">,
+diff --git a/lld/MachO/SyntheticSections.cpp b/lld/MachO/SyntheticSections.cpp
+index 3d77835..777d2bf 100644
+--- a/lld/MachO/SyntheticSections.cpp
++++ b/lld/MachO/SyntheticSections.cpp
+@@ -123,9 +123,9 @@ void MachHeaderSection::writeTo(uint8_t *buf) const {
+   hdr->filetype = config->outputType;
+   hdr->ncmds = loadCommands.size();
+   hdr->sizeofcmds = sizeOfCmds;
+-  hdr->flags = MH_DYLDLINK;
++  hdr->flags = config->atlanticStaticArm64 ? MH_NOUNDEFS : MH_DYLDLINK;
+ 
+-  if (config->namespaceKind == NamespaceKind::twolevel)
++  if (!config->atlanticStaticArm64 && config->namespaceKind == NamespaceKind::twolevel)
+     hdr->flags |= MH_NOUNDEFS | MH_TWOLEVEL;
+ 
+   if (config->outputType == MH_DYLIB && !config->hasReexports)
+@@ -1044,6 +1044,8 @@ ExportSection::ExportSection()
+     : LinkEditSection(segment_names::linkEdit, section_names::export_) {}
+ 
+ void ExportSection::finalizeContents() {
++  if (config->atlanticStaticArm64)
++    return;
+   trieBuilder.setImageBase(in.header->addr);
+   for (const Symbol *sym : symtab->getSymbols()) {
+     if (const auto *defined = dyn_cast<Defined>(sym)) {
+@@ -2237,7 +2239,7 @@ void macho::createSyntheticSymbols() {
+     // If linking PIE, __mh_execute_header is a defined symbol in
+     //  __TEXT, __text)
+     // Otherwise, it's an absolute symbol.
+-    if (config->isPic)
++    if (config->isPic || config->atlanticStaticArm64)
+       symtab->addSynthetic("__mh_execute_header", in.header->isec, /*value=*/0,
+                            /*isPrivateExtern=*/false, /*includeInSymtab=*/true,
+                            /*referencedDynamically=*/true);
+diff --git a/lld/MachO/Writer.cpp b/lld/MachO/Writer.cpp
+index 0eb8092..710f7a2 100644
+--- a/lld/MachO/Writer.cpp
++++ b/lld/MachO/Writer.cpp
+@@ -37,6 +37,7 @@
+ using namespace llvm;
+ using namespace llvm::MachO;
+ using namespace llvm::sys;
++using namespace llvm::support::endian;
+ using namespace lld;
+ using namespace lld::macho;
+ 
+@@ -272,6 +273,24 @@ private:
+   OutputSegment *seg;
+ };
+ 
++// Fixed-load ARM64 entry metadata. The future firmware loader must establish
++// its own stack, mappings, exception level and boot arguments; this record does
++// not perform any of those operations.
++class LCAtlanticUnixThread final : public LoadCommand {
++public:
++  uint32_t getSize() const override {
++    return 4 * sizeof(uint32_t) + sizeof(arm_thread_state64_t);
++  }
++  void writeTo(uint8_t *buf) const override {
++    write32le(buf, LC_UNIXTHREAD);
++    write32le(buf + 4, getSize());
++    write32le(buf + 8, ARM_THREAD_STATE64);
++    write32le(buf + 12, ARM_THREAD_STATE64_COUNT);
++    memset(buf + 16, 0, sizeof(arm_thread_state64_t));
++    write64le(buf + 16 + offsetof(arm_thread_state64_t, pc), config->entry->getVA());
++  }
++};
++
+ class LCMain final : public LoadCommand {
+   uint32_t getSize() const override {
+     return sizeof(structs::entry_point_command);
+@@ -800,7 +819,7 @@ template <class LP> void Writer::createLoadCommands() {
+   if (config->emitChainedFixups) {
+     in.header->addLoadCommand(make<LCChainedFixups>(in.chainedFixups));
+     in.header->addLoadCommand(make<LCExportsTrie>(in.exports));
+-  } else {
++  } else if (!config->atlanticStaticArm64) {
+     in.header->addLoadCommand(make<LCDyldInfo>(
+         in.rebase, in.binding, in.weakBinding, in.lazyBinding, in.exports));
+   }
+@@ -816,7 +835,8 @@ template <class LP> void Writer::createLoadCommands() {
+ 
+   switch (config->outputType) {
+   case MH_EXECUTE:
+-    in.header->addLoadCommand(make<LCLoadDylinker>());
++    if (!config->atlanticStaticArm64)
++      in.header->addLoadCommand(make<LCLoadDylinker>());
+     break;
+   case MH_DYLIB:
+     in.header->addLoadCommand(make<LCDylib>(LC_ID_DYLIB, config->installName,
+@@ -845,8 +865,12 @@ template <class LP> void Writer::createLoadCommands() {
+   }
+ 
+   // This is down here to match ld64's load command order.
+-  if (config->outputType == MH_EXECUTE)
+-    in.header->addLoadCommand(make<LCMain>());
++  if (config->outputType == MH_EXECUTE) {
++    if (config->atlanticStaticArm64)
++      in.header->addLoadCommand(make<LCAtlanticUnixThread>());
++    else
++      in.header->addLoadCommand(make<LCMain>());
++  }
+ 
+   // See ld64's OutputFile::buildDylibOrdinalMapping for the corresponding
+   // library ordinal computation code in ld64.
+@@ -1149,6 +1173,10 @@ void Writer::assignAddresses(OutputSegment *seg) {
+     osec->finalize();
+     osec->assignAddressesToStartEndSymbols();
+ 
++    if (config->atlanticStaticArm64 &&
++        (osec->getSize() > 0x10000000ULL ||
++         addr - config->atlanticImageBase > 0x10000000ULL - osec->getSize()))
++      fatal("Atlantic static image exceeds the bounded 256 MiB virtual span");
+     addr += osec->getSize();
+     fileOff += osec->getFileSize();
+   }
+@@ -1286,6 +1314,27 @@ void Writer::writeOutputFile() {
+ }
+ 
+ template <class LP> void Writer::run() {
++  if (config->atlanticStaticArm64) {
++    addr = config->atlanticImageBase;
++    for (const InputFile *file : inputFiles)
++      if ((!isa<ObjFile>(file) && !isa<ArchiveFile>(file)) || !file->objCImageInfo.empty())
++        error("non-native or Objective-C input in Atlantic static mode: " + file->getName());
++    for (const Symbol *sym : symtab->getSymbols())
++      if (isa<DylibSymbol>(sym) || sym->isWeakDef())
++        error("dynamic or weak symbol in Atlantic static mode: " + sym->getName());
++    for (const InputSection *isec : inputSections) {
++      for (const Reloc &r : isec->relocs)
++        if (target->hasAttr(r.type, RelocAttrBits::TLV))
++          error("TLV relocation is unsupported in Atlantic static mode");
++      uint32_t type = sectionType(isec->getFlags());
++      if ((type >= S_THREAD_LOCAL_REGULAR && type <= S_THREAD_LOCAL_INIT_FUNCTION_POINTERS) ||
++          type == S_MOD_INIT_FUNC_POINTERS || type == S_MOD_TERM_FUNC_POINTERS ||
++          isec->getName().starts_with("__objc") || isec->getName().starts_with("__swift"))
++        error("unsupported runtime section in Atlantic static mode: " + isec->getName());
++    }
++    if (errorCount())
++      return;
++  }
+   treatSpecialUndefineds();
+   if (config->entry && needsBinding(config->entry))
+     in.stubs->addEntry(config->entry);
+@@ -1305,6 +1354,10 @@ template <class LP> void Writer::run() {
+   // Do not proceed if there were undefined or duplicate symbols.
+   reportPendingUndefinedSymbols();
+   reportPendingDuplicateSymbols();
++  if (config->atlanticStaticArm64)
++    for (const Symbol *sym : symtab->getSymbols())
++      if (isa<Undefined>(sym) || isa<DylibSymbol>(sym))
++        error("unresolved or dynamic symbol in Atlantic static mode: " + sym->getName());
+   if (errorCount())
+     return;
+ 
+@@ -1324,6 +1377,27 @@ template <class LP> void Writer::run() {
+   // The thunks are created as InputSections interspersed among
+   // the ordinary __TEXT,_text InputSections.
+   sortSegmentsAndSections();
++  if (config->atlanticStaticArm64) {
++    for (const OutputSegment *seg : outputSegments) {
++      uint32_t prot = seg->initProt | seg->maxProt;
++      if (!(seg->initProt & VM_PROT_READ) ||
++          (prot & VM_PROT_WRITE && prot & VM_PROT_EXECUTE))
++        error("Atlantic static mode forbids unreadable or writable executable segments: " + seg->name);
++      for (const OutputSection *osec : seg->getSections())
++        if ((osec->flags & (S_ATTR_PURE_INSTRUCTIONS | S_ATTR_SOME_INSTRUCTIONS)) &&
++            !(seg->initProt & VM_PROT_EXECUTE))
++          error("Atlantic static instruction section lacks execute permission: " + osec->name);
++    }
++    auto *entry = dyn_cast_or_null<Defined>(config->entry);
++    if (!entry || entry->isAbsolute() || !isCodeSection(entry->isec()) ||
++        entry->value >= entry->isec()->getSize() || (entry->value & 3))
++      error("Atlantic static entry must be a defined instruction symbol");
++    if (in.rebase->isNeeded() || in.binding->isNeeded() || in.weakBinding->isNeeded() ||
++        in.lazyBinding->isNeeded() || in.stubs->isNeeded() || in.tlvPointers->isNeeded())
++      error("dyld fixups or stubs are forbidden in Atlantic static mode");
++    if (errorCount())
++      return;
++  }
+   createLoadCommands<LP>();
+   finalizeAddresses();
+ 

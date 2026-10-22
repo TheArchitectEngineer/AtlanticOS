@@ -46,6 +46,9 @@ mensajes, derechos, kobject y getters RO nativos, con 50 headers MIG reales.
 El [código RPC generado](docs/XNU_RPC_BUILD.md) suministra los descriptores que
 referencia kobject y comprueba su ABI; sigue sin enlazarse ni ejecutarse XNU.
 Esos objetos no forman todavía un kernel ejecutable.
+El [modo estático ARM64 de LLD](docs/LLD_STATIC_ARM64.md) enlaza y audita tres
+programas de prueba a direcciones fijas. Sigue siendo experimental: rechaza los
+helpers weak de Blocks del conjunto XNU actual, que todavía no produce imagen.
 
 ## Reproducir
 

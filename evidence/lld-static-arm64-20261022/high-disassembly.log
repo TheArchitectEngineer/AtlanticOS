@@ -1,0 +1,16 @@
+<ROOT>/work/lld-static-repro-final-tests/high.macho:
+(__TEXT,__text) section
+__start:
+fffffff007004498:	0a 00 00 94	bl	_helper
+fffffff00700449c:	40 00 00 90	adrp	x0, 8 ; 0xfffffff00700c000
+fffffff0070044a0:	00 00 00 91	add	x0, x0, #0x0
+fffffff0070044a4:	41 00 00 90	adrp	x1, 8 ; 0xfffffff00700c000
+fffffff0070044a8:	21 c0 00 91	add	x1, x1, #0x30
+fffffff0070044ac:	02 00 40 f9	ldr	x2, [x0]
+fffffff0070044b0:	22 00 00 f9	str	x2, [x1]
+fffffff0070044b4:	24 00 00 90	adrp	x4, 4 ; 0xfffffff007008000
+fffffff0070044b8:	84 00 40 f9	ldr	x4, [x4]
+fffffff0070044bc:	c0 03 5f d6	ret
+_helper:
+fffffff0070044c0:	83 46 82 d2	mov	x3, #0x1234
+fffffff0070044c4:	c0 03 5f d6	ret

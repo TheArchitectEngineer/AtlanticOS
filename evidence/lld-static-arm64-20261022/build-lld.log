@@ -1,0 +1,129 @@
+ninja: Entering directory `<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build'
+[1/127] Building Options.inc...
+[2/127] Building Options.inc...
+[3/127] Building Options.inc...
+[4/127] Building Options.inc...
+[5/127] Building Options.inc...
+[6/127] Generating VCSVersion.inc
+[7/127] Building CXX object Common/CMakeFiles/lldCommon.dir/CommonLinkerContext.cpp.o
+[8/127] Building CXX object Common/CMakeFiles/lldCommon.dir/Args.cpp.o
+[9/127] Building CXX object Common/CMakeFiles/lldCommon.dir/DriverDispatcher.cpp.o
+[10/127] Building CXX object Common/CMakeFiles/lldCommon.dir/DWARF.cpp.o
+[11/127] Building CXX object Common/CMakeFiles/lldCommon.dir/Memory.cpp.o
+[12/127] Building CXX object Common/CMakeFiles/lldCommon.dir/Filesystem.cpp.o
+[13/127] Building CXX object Common/CMakeFiles/lldCommon.dir/Reproduce.cpp.o
+[14/127] Building CXX object Common/CMakeFiles/lldCommon.dir/TargetOptionsCommandFlags.cpp.o
+[15/127] Building CXX object Common/CMakeFiles/lldCommon.dir/Version.cpp.o
+[16/127] Building CXX object Common/CMakeFiles/lldCommon.dir/Strings.cpp.o
+[17/127] Building CXX object Common/CMakeFiles/lldCommon.dir/Timer.cpp.o
+[18/127] Building CXX object Common/CMakeFiles/lldCommon.dir/ErrorHandler.cpp.o
+[19/127] Linking CXX static library lib/liblldCommon.a
+[20/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/CallGraphSort.cpp.o
+[21/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/COFFLinkerContext.cpp.o
+[22/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/Chunks.cpp.o
+[23/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/DebugTypes.cpp.o
+[24/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/DLL.cpp.o
+[25/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/DriverUtils.cpp.o
+[26/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/ICF.cpp.o
+[27/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/LLDMapFile.cpp.o
+[28/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/MapFile.cpp.o
+[29/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/Driver.cpp.o
+[30/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/MarkLive.cpp.o
+[31/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/MinGW.cpp.o
+[32/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/InputFiles.cpp.o
+[33/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/LTO.cpp.o
+[34/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/Symbols.cpp.o
+[35/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/PDB.cpp.o
+[36/127] Building CXX object ELF/CMakeFiles/lldELF.dir/AArch64ErrataFix.cpp.o
+[37/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/Writer.cpp.o
+[38/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/AArch64.cpp.o
+[39/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/AMDGPU.cpp.o
+[40/127] Building CXX object COFF/CMakeFiles/lldCOFF.dir/SymbolTable.cpp.o
+[41/127] Linking CXX static library lib/liblldCOFF.a
+[42/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/AVR.cpp.o
+[43/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/Hexagon.cpp.o
+[44/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/ARM.cpp.o
+[45/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/LoongArch.cpp.o
+[46/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/MSP430.cpp.o
+[47/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/Mips.cpp.o
+[48/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/MipsArchTree.cpp.o
+[49/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/PPC.cpp.o
+[50/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/SPARCV9.cpp.o
+[51/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/PPC64.cpp.o
+[52/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/RISCV.cpp.o
+[53/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/SystemZ.cpp.o
+[54/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/X86.cpp.o
+[55/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Arch/X86_64.cpp.o
+[56/127] Building CXX object ELF/CMakeFiles/lldELF.dir/CallGraphSort.cpp.o
+[57/127] Building CXX object ELF/CMakeFiles/lldELF.dir/ARMErrataFix.cpp.o
+[58/127] Building CXX object ELF/CMakeFiles/lldELF.dir/DriverUtils.cpp.o
+[59/127] Building CXX object ELF/CMakeFiles/lldELF.dir/DWARF.cpp.o
+[60/127] Building CXX object ELF/CMakeFiles/lldELF.dir/EhFrame.cpp.o
+[61/127] Building CXX object ELF/CMakeFiles/lldELF.dir/ICF.cpp.o
+[62/127] Building CXX object ELF/CMakeFiles/lldELF.dir/InputSection.cpp.o
+[63/127] Building CXX object ELF/CMakeFiles/lldELF.dir/LTO.cpp.o
+[64/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Driver.cpp.o
+[65/127] Building CXX object ELF/CMakeFiles/lldELF.dir/LinkerScript.cpp.o
+[66/127] Building CXX object ELF/CMakeFiles/lldELF.dir/InputFiles.cpp.o
+[67/127] Building CXX object ELF/CMakeFiles/lldELF.dir/MapFile.cpp.o
+[68/127] Building CXX object ELF/CMakeFiles/lldELF.dir/MarkLive.cpp.o
+[69/127] Building CXX object ELF/CMakeFiles/lldELF.dir/ScriptLexer.cpp.o
+[70/127] Building CXX object ELF/CMakeFiles/lldELF.dir/OutputSections.cpp.o
+[71/127] Building CXX object ELF/CMakeFiles/lldELF.dir/SymbolTable.cpp.o
+[72/127] Building CXX object ELF/CMakeFiles/lldELF.dir/ScriptParser.cpp.o
+[73/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Symbols.cpp.o
+[74/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Relocations.cpp.o
+[75/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Target.cpp.o
+[76/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Thunks.cpp.o
+[77/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/Arch/ARM64.cpp.o
+[78/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/Arch/ARM64Common.cpp.o
+[79/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/Arch/ARM64_32.cpp.o
+[80/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/Arch/X86_64.cpp.o
+[81/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/ConcatOutputSection.cpp.o
+[82/127] Building CXX object ELF/CMakeFiles/lldELF.dir/Writer.cpp.o
+[83/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/Dwarf.cpp.o
+[84/127] Building CXX object ELF/CMakeFiles/lldELF.dir/SyntheticSections.cpp.o
+[85/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/EhFrame.cpp.o
+[86/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/ExportTrie.cpp.o
+[87/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/ICF.cpp.o
+[88/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/DriverUtils.cpp.o
+[89/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/Driver.cpp.o
+[90/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/InputSection.cpp.o
+[91/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/MapFile.cpp.o
+[92/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/MarkLive.cpp.o
+[93/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/OutputSection.cpp.o
+[94/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/ObjC.cpp.o
+[95/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/LTO.cpp.o
+[96/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/InputFiles.cpp.o
+[97/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/Relocations.cpp.o
+[98/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/OutputSegment.cpp.o
+[99/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/SectionPriorities.cpp.o
+[100/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/Symbols.cpp.o
+[101/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/SymbolTable.cpp.o
+[102/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/Target.cpp.o
+[103/127] Building CXX object MinGW/CMakeFiles/lldMinGW.dir/Driver.cpp.o
+[104/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/UnwindInfoSection.cpp.o
+[105/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/SyntheticSections.cpp.o
+[106/127] Building CXX object MachO/CMakeFiles/lldMachO.dir/Writer.cpp.o
+[107/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/InputChunks.cpp.o
+[108/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/Driver.cpp.o
+[109/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/LTO.cpp.o
+[110/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/InputFiles.cpp.o
+[111/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/MapFile.cpp.o
+[112/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/MarkLive.cpp.o
+[113/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/OutputSegment.cpp.o
+[114/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/OutputSections.cpp.o
+[115/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/Relocations.cpp.o
+[116/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/SymbolTable.cpp.o
+[117/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/Symbols.cpp.o
+[118/127] Building CXX object tools/lld/CMakeFiles/lld.dir/lld.cpp.o
+[119/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/WriterUtils.cpp.o
+[120/127] Linking CXX static library lib/liblldELF.a
+[121/127] Linking CXX static library lib/liblldMachO.a
+[122/127] Linking CXX static library lib/liblldMinGW.a
+[123/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/SyntheticSections.cpp.o
+[124/127] Building CXX object tools/lld/CMakeFiles/lld.dir/lld-driver.cpp.o
+[125/127] Building CXX object wasm/CMakeFiles/lldWasm.dir/Writer.cpp.o
+[126/127] Linking CXX static library lib/liblldWasm.a
+[127/127] Linking CXX executable bin/lld
+clang++-19: warning: '-fuse-ld=' taking a path is deprecated; use '--ld-path=' instead [-Wfuse-ld-path]

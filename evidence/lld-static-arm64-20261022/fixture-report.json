@@ -1,0 +1,1181 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "STATIC_ARM64_LINK_FIXTURES_ONLY_NOT_XNU_KERNEL_OR_EXECUTION",
+  "linker_sha256": "5e1679ca9c624e450c46a1b3ae870d9fe152675ab8f2dc160e7a5a2091dda506",
+  "compiler_sha256": "0a3c55936ac43954fbe4914e6e73b577ca9e35e75d89ef13d3e28c187f41ca1a",
+  "archive_tool_sha256": "e15ccf58a2db49c1d9589a515bebc191abee12db35c809f092a70ed8e1ea2f8e",
+  "linker_version": "AtlanticOS-static-arm64-v1 LLD 19.1.7",
+  "inputs": {
+    "tools/test_atlantic_lld.py": "2eda38c80add5b19eb32cbf25fefd3684d73b5ace301f2141cf21b397fe19287",
+    "tests/lld_static/entry.s": "319940297694d92d79518da91a8296040c70faceced7a4a19f44195b3e8a73a4",
+    "tests/lld_static/data.s": "c3d2153463b6789ade371a7c4c21a745babbe383f521a412192a7395495e37ed",
+    "linker-port/0001-add-bounded-static-arm64-link-mode.patch": "afc75987817429d5f8b1ac9b3fd4d4ca2a7547a3f32ac81723c3f46ed83d7534",
+    "linker-port/patches.lock.json": "d60a06d706f75b27708780d0769afd02074256935f998b1da35db24c858f5a91"
+  },
+  "outcomes": [
+    {
+      "name": "compile-entry",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "compile-data",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-low",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-high",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "unaligned-base",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "16 KiB aligned"
+    },
+    {
+      "name": "zero-base",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "16 KiB aligned"
+    },
+    {
+      "name": "noncanonical-base",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "canonical"
+    },
+    {
+      "name": "overflow-base",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "256 MiB"
+    },
+    {
+      "name": "invalid-base",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "unsigned 64-bit"
+    },
+    {
+      "name": "base-too-wide",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "unsigned 64-bit"
+    },
+    {
+      "name": "wrong-architecture",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "requires arm64"
+    },
+    {
+      "name": "pie-option",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "option not supported"
+    },
+    {
+      "name": "legacy-static-option",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "option not supported"
+    },
+    {
+      "name": "dynamic-lookup",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "-undefined error"
+    },
+    {
+      "name": "writable-executable",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "writable executable"
+    },
+    {
+      "name": "nonexecute-text",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "lacks execute permission"
+    },
+    {
+      "name": "data-entry",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "instruction symbol"
+    },
+    {
+      "name": "compile-undefined",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-undefined",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "undefined symbol: _missing"
+    },
+    {
+      "name": "compile-weak",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-weak",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "dynamic or weak symbol"
+    },
+    {
+      "name": "compile-tls",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-tls",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "unsupported runtime section"
+    },
+    {
+      "name": "compile-unreferenced-undefined",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-unreferenced-undefined",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "unresolved or dynamic symbol"
+    },
+    {
+      "name": "compile-constructor",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-constructor",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "unsupported runtime section"
+    },
+    {
+      "name": "compile-bitcode",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-bitcode",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "requires native Mach-O objects"
+    },
+    {
+      "name": "archive-native-object",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-native-archive",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "normal-dynamic-link",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    }
+  ],
+  "commands": [
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/tests/lld_static/entry.s",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/tests/lld_static/data.s",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/low.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0xfffffff007004000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/high.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000001",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/unaligned-base.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/zero-base.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=1111000040000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/noncanonical-base.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=ffffffffffffc000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/overflow-base.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=not-hex",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/invalid-base.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=10000000000000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/base-too-wide.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-arch",
+      "x86_64",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/wrong-architecture.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-pie",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/pie-option.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-static",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/legacy-static-option.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-undefined",
+      "dynamic_lookup",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/dynamic-lookup.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-segprot",
+      "__TEXT",
+      "rwx",
+      "rwx",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/writable-executable.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-segprot",
+      "__TEXT",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/nonexecute-text.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-e",
+      "_value",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/data-entry.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/work/lld-static-repro-final-tests/undefined.s",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/undefined.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/undefined.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/undefined.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/work/lld-static-repro-final-tests/weak.s",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/weak.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/weak.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/weak.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/work/lld-static-repro-final-tests/tls.s",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/tls.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/tls.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/tls.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/work/lld-static-repro-final-tests/unreferenced-undefined.s",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/unreferenced-undefined.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/unreferenced-undefined.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/unreferenced-undefined.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/work/lld-static-repro-final-tests/constructor.s",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/constructor.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/constructor.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/constructor.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "-emit-llvm",
+      "-x",
+      "c",
+      "-",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/bitcode.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/bitcode.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/bitcode.o"
+    ],
+    [
+      "/usr/bin/llvm-ar-19",
+      "rcs",
+      "<ROOT>/work/lld-static-repro-final-tests/data.a",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/archive.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.a"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-repro-final-v1/build/bin/ld64.lld",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-repro-final-tests/normal.macho",
+      "<ROOT>/work/lld-static-repro-final-tests/entry.o",
+      "<ROOT>/work/lld-static-repro-final-tests/data.o"
+    ]
+  ],
+  "images": [
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x40000498",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x40000498",
+              "size": 48,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 8,
+              "flags": "0x6"
+            },
+            {
+              "name": "__const",
+              "address": "0x40004008",
+              "size": 8,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 32768,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 44,
+              "flags": "0x0"
+            },
+            {
+              "name": "__bss",
+              "address": "0x40008030",
+              "size": 20480,
+              "flags": "0x1"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073807360,
+          "virtual_size": 304,
+          "file_offset": 49152,
+          "file_size": 304,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 11,
+      "relocations_checked": [
+        "BRANCH26",
+        "PAGE21",
+        "PAGEOFF12",
+        "GOT_LOAD_PAGE21",
+        "GOT_LOAD_PAGEOFF12",
+        "POINTER_TO_GOT",
+        "UNSIGNED64",
+        "SUBTRACTOR64"
+      ],
+      "file_sha256": "d861a1d1d0f50147aebeca76ebc9b482d7c7c578f9d3ae9ad52dfcceff002c59"
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0xfffffff007004498",
+      "base": "0xfffffff007004000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 18446744005107531776,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0xfffffff007004498",
+              "size": 48,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 18446744005107548160,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0xfffffff007008000",
+              "size": 8,
+              "flags": "0x6"
+            },
+            {
+              "name": "__const",
+              "address": "0xfffffff007008008",
+              "size": 8,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 18446744005107564544,
+          "virtual_size": 32768,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0xfffffff00700c000",
+              "size": 44,
+              "flags": "0x0"
+            },
+            {
+              "name": "__bss",
+              "address": "0xfffffff00700c030",
+              "size": 20480,
+              "flags": "0x1"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 18446744005107597312,
+          "virtual_size": 304,
+          "file_offset": 49152,
+          "file_size": 304,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 11,
+      "relocations_checked": [
+        "BRANCH26",
+        "PAGE21",
+        "PAGEOFF12",
+        "GOT_LOAD_PAGE21",
+        "GOT_LOAD_PAGEOFF12",
+        "POINTER_TO_GOT",
+        "UNSIGNED64",
+        "SUBTRACTOR64"
+      ],
+      "file_sha256": "06b3bb2ca32f77cc38873726923b4dc9587c3afe0f82472d2ea9abf95c979f13"
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x40000498",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x40000498",
+              "size": 48,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 8,
+              "flags": "0x6"
+            },
+            {
+              "name": "__const",
+              "address": "0x40004008",
+              "size": 8,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 32768,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 44,
+              "flags": "0x0"
+            },
+            {
+              "name": "__bss",
+              "address": "0x40008030",
+              "size": 20480,
+              "flags": "0x1"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073807360,
+          "virtual_size": 304,
+          "file_offset": 49152,
+          "file_size": 304,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 11,
+      "relocations_checked": [
+        "BRANCH26",
+        "PAGE21",
+        "PAGEOFF12",
+        "GOT_LOAD_PAGE21",
+        "GOT_LOAD_PAGEOFF12",
+        "POINTER_TO_GOT",
+        "UNSIGNED64",
+        "SUBTRACTOR64"
+      ],
+      "file_sha256": "f63cb73b9bc813b26d0b4510dea343e94c347c92da569480c9aab8db4babaf3c"
+    }
+  ],
+  "xnu_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false
+}

@@ -23,6 +23,8 @@ def main():
     ap.add_argument('--build', type=Path, required=True)
     ap.add_argument('--rpc', type=Path, help='Successful tools/build_xnu_rpc.py report for this exact base build')
     ap.add_argument('--linker', type=Path)
+    ap.add_argument('--atlantic-static-proof', type=Path,
+                    help='Successful current fixture report for the explicitly supplied experimental linker')
     ap.add_argument('--output', type=Path, default=ROOT/'work/xnu-link-diagnostics')
     args = ap.parse_args()
     out = args.output.resolve()
@@ -34,6 +36,21 @@ def main():
     if not linker:
         ap.error('A real ld64.lld executable is required')
     linker = Path(linker).absolute()  # Retain its driver name when invoking a symlink.
+    static_proof = None
+    if args.atlantic_static_proof:
+        if not args.linker:
+            ap.error('Experimental static mode requires an explicit --linker')
+        proof = json.loads(args.atlantic_static_proof.read_text())
+        if (proof.get('scope') != 'STATIC_ARM64_LINK_FIXTURES_ONLY_NOT_XNU_KERNEL_OR_EXECUTION' or
+            proof['linker_sha256'] != digest(linker) or len(proof['outcomes']) < 32 or
+            not all(c['passed'] for c in proof['outcomes']) or len(proof['images']) < 3):
+            ap.error('Static linker fixture proof is incomplete or from another binary')
+        for rel, expected in proof['inputs'].items():
+            if digest(ROOT/rel) != expected:
+                ap.error('Changed static linker fixture input: '+rel)
+        static_proof = {'report_sha256':digest(args.atlantic_static_proof),
+                        'fixture_checks_passed':len(proof['outcomes']),
+                        'fixture_image_audits':len(proof['images'])}
     build = json.loads(args.build.read_text())
     lock = json.loads((ROOT/'xnu-port/patches.lock.json').read_text())
     if build['port_id'] != lock['port_id'] or build['failed_units']:
@@ -73,9 +90,11 @@ def main():
         rpc_record = {'report_sha256':digest(args.rpc),'object_count':len(rpc['objects'])}
     out.mkdir(parents=True)
     image = out/'unvalidated.macho'
-    cmd = [str(linker), '-arch', 'arm64', '-static', '-no_pie',
+    static_flags = (['--atlantic-static-arm64='+build['virtual_link_address']]
+                    if static_proof else ['-static','-no_pie','-image_base',build['virtual_link_address']])
+    cmd = [str(linker), '-arch', 'arm64', *static_flags,
            '-platform_version', 'macos', '11.0', '11.0',
-           '-e', '__start', '-image_base', build['virtual_link_address'],
+           '-e', '__start',
            '-fatal_warnings', '-undefined', 'error', '--error-limit=0',
            '-o', str(image), *objects]
     r = subprocess.run(cmd, text=True, capture_output=True, timeout=120)
@@ -94,6 +113,8 @@ def main():
             if 'not yet implemented' in s or 'ignored for arm64' in s],
         'undefined_symbol_error_count':r.stderr.count('error: undefined symbol:'),
         'object_count':len(objects), 'warnings_are_errors':True,
+        'static_link_mode':'ATLANTIC_BOUNDED_EXPERIMENTAL' if static_proof else 'UPSTREAM_LD64_STATIC_OPTIONS',
+        'static_fixture_proof':static_proof,
         'rpc_build':rpc_record,
         'undefined_symbols_must_error':True, 'dead_stripping_requested':False,
         'output_exists':image.exists(), 'output_sha256':digest(image) if image.exists() else None,

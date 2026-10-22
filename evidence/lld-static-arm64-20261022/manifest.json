@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-22",
+  "label": "HOST_TESTED",
+  "scope": "PINNED_LLD_STATIC_ARM64_FIXTURE_LINKS_AND_ACTUAL_XNU_REJECTION_NO_EXECUTION",
+  "upstream_llvm_commit": "cd708029e0b2869e80abe31ddb175f7c35361f90",
+  "patch_sha256": "afc75987817429d5f8b1ac9b3fd4d4ca2a7547a3f32ac81723c3f46ed83d7534",
+  "linker_sha256": "5e1679ca9c624e450c46a1b3ae870d9fe152675ab8f2dc160e7a5a2091dda506",
+  "fixture_checks_passed": 32,
+  "fixture_images_audited": 3,
+  "xnu_object_count": 89,
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "ffa15867e717fe785fb9ebd047b6aa19a93611213441e511a8fa51df05b64a21"
+    },
+    {
+      "path": "build-lld.log",
+      "sha256": "fb8ec83173cbac780359602f57950144de19483e9019ec0eebcdec70cc49a041"
+    },
+    {
+      "path": "build-report.json",
+      "sha256": "8ed39b6611a8fff301b250fb510782ad7d4b5ef629784674faa270dea655d4c7"
+    },
+    {
+      "path": "configure.log",
+      "sha256": "7263eee9a2988645e403711454d91a3e4dc7b9da01399701bbcfdb68ce6e7b3f"
+    },
+    {
+      "path": "data-relocations.log",
+      "sha256": "0de3ce9f19b980db5cbf6cfecdc7bcafdda98b100056150a60bcb46f905bd737"
+    },
+    {
+      "path": "entry-relocations.log",
+      "sha256": "f176d34560485fdc57a79038e5ebf8d58a8fe9fc9806dfa465f63236d6017358"
+    },
+    {
+      "path": "fixture-archive-native-object.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-base-too-wide.log",
+      "sha256": "73d9f2a7923f70b0f2174df4450a54d5baf0388e9e6991fab69c5c21b673a203"
+    },
+    {
+      "path": "fixture-compile-bitcode.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-compile-constructor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-compile-data.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-compile-entry.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-compile-tls.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-compile-undefined.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-compile-unreferenced-undefined.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-compile-weak.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-data-entry.log",
+      "sha256": "491f075f3e52bc61975302e8f9c74b0feb9a0b26602b324711e37659f3c620e5"
+    },
+    {
+      "path": "fixture-dynamic-lookup.log",
+      "sha256": "aba921589a85cde3704f82b61401d57225230184b0c94a927acbb1336bb4dd67"
+    },
+    {
+      "path": "fixture-invalid-base.log",
+      "sha256": "73d9f2a7923f70b0f2174df4450a54d5baf0388e9e6991fab69c5c21b673a203"
+    },
+    {
+      "path": "fixture-legacy-static-option.log",
+      "sha256": "c97982aeef159cf336a96c61ede394aef23511915c87df9083dd8025a07b3d6f"
+    },
+    {
+      "path": "fixture-link-high.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-link-low.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-link-native-archive.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-noncanonical-base.log",
+      "sha256": "d9bc14e77ace97b46974cfe88eded15cdf3488cd485153a9ca0cb590238197a3"
+    },
+    {
+      "path": "fixture-nonexecute-text.log",
+      "sha256": "15e46c2ed1ce463c1fd2e019e08b4f4337862611345bc86a99bb5c09b6653fe2"
+    },
+    {
+      "path": "fixture-normal-dynamic-link.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "fixture-overflow-base.log",
+      "sha256": "d9bc14e77ace97b46974cfe88eded15cdf3488cd485153a9ca0cb590238197a3"
+    },
+    {
+      "path": "fixture-pie-option.log",
+      "sha256": "dc3052c1657a3f25525088d98eda1a95df96f88f9958fcf9d104a987e70b94c0"
+    },
+    {
+      "path": "fixture-reject-bitcode.log",
+      "sha256": "19e4fc1ae87e90c77c711fe0d4dc0f89b0f86a961e242096b4112f392dd43b93"
+    },
+    {
+      "path": "fixture-reject-constructor.log",
+      "sha256": "205742cfc5e1118146f870811dc23712c83076c268d44da9bf557cee8d46a3cb"
+    },
+    {
+      "path": "fixture-reject-tls.log",
+      "sha256": "146b77cd7d9dc3df21c526eb9a69d2d1fafa7885d5d0c8533b5b7291dca08632"
+    },
+    {
+      "path": "fixture-reject-undefined.log",
+      "sha256": "2e52e95de5dd64be0ba7f0a6f2616f9b8debc86d326021489666621557a984ad"
+    },
+    {
+      "path": "fixture-reject-unreferenced-undefined.log",
+      "sha256": "c0e4e6e64c3dc064a661ff1b07bc4345798356f929af5a8559bdab795438695d"
+    },
+    {
+      "path": "fixture-reject-weak.log",
+      "sha256": "d536a744f7e6201ce121550ed3bc56495d96356ee382554d5baa2197d066fda7"
+    },
+    {
+      "path": "fixture-report.json",
+      "sha256": "443e1731db1346bbc71822df32e3a2a6566050ad1549421d004db0ce86a12146"
+    },
+    {
+      "path": "fixture-unaligned-base.log",
+      "sha256": "d9bc14e77ace97b46974cfe88eded15cdf3488cd485153a9ca0cb590238197a3"
+    },
+    {
+      "path": "fixture-writable-executable.log",
+      "sha256": "4772539141ef4983517ba97f30851c2525bd2249966d4a10863530147aa1ec99"
+    },
+    {
+      "path": "fixture-wrong-architecture.log",
+      "sha256": "44101d5e5be675cc384263c60b7b0606b52649c55e8a582e03b5ede45c6b8a35"
+    },
+    {
+      "path": "fixture-zero-base.log",
+      "sha256": "d9bc14e77ace97b46974cfe88eded15cdf3488cd485153a9ca0cb590238197a3"
+    },
+    {
+      "path": "high-disassembly.log",
+      "sha256": "6a7ccd90436fed9e3c4863afd804904dc59d794d78cbdf714150deeaeb9bea3c"
+    },
+    {
+      "path": "high-private-headers.log",
+      "sha256": "9fecd5e4e51332d708cd8c7c7fb4a0b2dbe0b19d0cf48a4ef0d9917a3b36a667"
+    },
+    {
+      "path": "runtime-dependencies.log",
+      "sha256": "2eb3cb139b0d52700a14082253eaafe557d66c6beaacd381000b107f0d2589e7"
+    },
+    {
+      "path": "xnu-rejected-link-report.json",
+      "sha256": "d5d2cd98c21ef3e4291aed8b648e42f47c234dfcd154185d93a04ff6464c236f"
+    },
+    {
+      "path": "xnu-rejected-link.log",
+      "sha256": "10b922676924fe74c0f6ac0cca3926afa55f55bc4a0fa953bc9b36e7d307974d"
+    }
+  ]
+}

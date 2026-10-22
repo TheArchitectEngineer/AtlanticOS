@@ -1,0 +1,1 @@
+ld64.lld: error: dynamic or weak symbol in Atlantic static mode: __start

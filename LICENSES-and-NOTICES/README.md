@@ -5,6 +5,12 @@ salvo avisos específicos por archivo. La extensión original de Clang bajo
 compiler-port/ usa Apache-2.0 WITH LLVM-exception. No es una relicencia de XNU,
 LLVM, EDK2, Linux/Motorola o el port UEFI G20.
 
+El patch original en linker-port/ también usa Apache-2.0 WITH LLVM-exception
+y modifica cinco archivos oficiales LLD 19.1.7. Conserva su licencia upstream;
+LLVM-LICENSE.txt cubre sus avisos. El modo de enlace no procede de un port de
+kernel o firmware ajeno. Las bibliotecas LLVM host se registran como dependencias
+externas y no se incluyen como binarios en el repositorio.
+
 XNU oficial fijado en dependencies.lock.json: fuente externa intacta, checkout
 ignorado, no incorporado en el paquete fuente AtlanticOS. Se conserva su
 APPLE_LICENSE íntegra junto a este archivo; los avisos por archivo siguen en

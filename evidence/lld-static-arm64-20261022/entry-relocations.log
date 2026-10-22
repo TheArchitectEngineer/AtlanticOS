@@ -1,0 +1,10 @@
+<ROOT>/work/lld-static-repro-final-tests/entry.o:
+Relocation information (__TEXT,__text) 7 entries
+address  pcrel length extern type    scattered symbolnum/value
+00000020 False long   True   GOTLDPOFFalse     _value
+0000001c True  long   True   GOTLDP  False     _value
+00000010 False long   True   PAGOF12 False     _zero
+0000000c True  long   True   PAGE21  False     _zero
+00000008 False long   True   PAGOF12 False     _value
+00000004 True  long   True   PAGE21  False     _value
+00000000 True  long   True   BR26    False     _helper

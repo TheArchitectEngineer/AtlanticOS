@@ -19,6 +19,7 @@
 | Herramienta oficial MIG | HOST_TESTED | MIG_HOST_BUILD.md: binario host genuino, ABI de metadata y 20 archivos de interfaces generados; sin compilar esos C ni enlazar kernel |
 | Port XNU incremental de laboratorio | BUILT_ARM64 | Trece objetos estándar; cuarenta y siete con compilador experimental explícito. IPC, importancia y metadata RO nativos; headers ampliados a 57 en XNU_RPC_BUILD.md; sin enlace ni ejecución |
 | Código RPC MIG de XNU | BUILT_ARM64 | 42 archivos generados y compilados por carril, 57 headers; ABI de 21 descriptores y proveedores de 17 tablas kobject comprobados en experimental; sin RPC ejecutado |
+| Enlazador ARM64 estático experimental | HOST_TESTED / fixtures enlazados | LLD_STATIC_ARM64.md: 32 checks, tres imágenes y ocho tipos de reubicación; XNU se rechaza por dos helpers weak, sin imagen kernel |
 | 2: ABI C BSP | BUILT_ARM64 si build_abi termina | objeto sin drivers y sin kernel, hash propio |
 | 3: energía y fallback Android | UNIMPLEMENTED | método de reset/PMIC y vía OEM por demostrar |
 | 4: handoff EDK2 y almacenamiento | UNIMPLEMENTED | contrato propuesto; sin driver AtlanticOS |

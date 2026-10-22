@@ -1,0 +1,1 @@
+ld64.lld: error: Atlantic static entry must be a defined instruction symbol

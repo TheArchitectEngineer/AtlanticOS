@@ -4,4 +4,5 @@
 evidence/** -text -whitespace
 xnu-port/*.patch -whitespace
 compiler-port/*.patch -whitespace
+linker-port/*.patch -whitespace
 LICENSES-and-NOTICES/LLVM-LICENSE.txt -text -whitespace

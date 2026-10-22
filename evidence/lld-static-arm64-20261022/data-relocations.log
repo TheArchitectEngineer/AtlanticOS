@@ -1,0 +1,9 @@
+<ROOT>/work/lld-static-repro-final-tests/data.o:
+Relocation information (__DATA,__data) 6 entries
+address  pcrel length extern type    scattered symbolnum/value
+00000028 True  long   True   PTRTGOT False     _value
+00000020 False ?( 3)  True   UNSIGND False     __mh_execute_header
+00000018 False ?( 3)  True   SUB     False     _value
+00000018 False ?( 3)  True   UNSIGND False     _zero
+00000010 False ?( 3)  True   UNSIGND False     __start
+00000008 False ?( 3)  True   UNSIGND False     _value

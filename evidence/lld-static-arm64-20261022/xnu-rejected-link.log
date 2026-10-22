@@ -1,0 +1,2 @@
+ld64.lld: error: dynamic or weak symbol in Atlantic static mode: ___copy_helper_block_8_32r
+ld64.lld: error: dynamic or weak symbol in Atlantic static mode: ___destroy_helper_block_8_32r
