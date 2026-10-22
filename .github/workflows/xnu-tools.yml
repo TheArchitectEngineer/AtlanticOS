@@ -12,6 +12,9 @@ on:
       - 'tools/test_pmap_firmware.py'
       - 'tools/test_task_metadata.py'
       - 'tools/test_ipc_mig_abi.py'
+      - 'tools/build_xnu_rpc.py'
+      - 'tools/test_xnu_rpc.py'
+      - 'tools/diagnose_xnu_link.py'
       - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
       - 'tests/xnu_port/**'
@@ -30,6 +33,9 @@ on:
       - 'tools/test_pmap_firmware.py'
       - 'tools/test_task_metadata.py'
       - 'tools/test_ipc_mig_abi.py'
+      - 'tools/build_xnu_rpc.py'
+      - 'tools/test_xnu_rpc.py'
+      - 'tools/diagnose_xnu_link.py'
       - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
       - 'tests/xnu_port/**'
@@ -47,7 +53,7 @@ jobs:
       - name: Install host compiler and parser generators
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends clang-19 llvm-19 libclang-rt-19-dev bison flex git tcsh unifdef perl
+          sudo apt-get install -y --no-install-recommends clang-19 lld-19 llvm-19 libclang-rt-19-dev bison flex git tcsh unifdef perl
           echo "/usr/lib/llvm-19/bin" >> "$GITHUB_PATH"
       - name: Fetch pinned official Apple sources
         run: |
@@ -72,6 +78,12 @@ jobs:
         run: python3 tools/test_task_metadata.py --build work/xnu-lab-builds/*/report.json
       - name: Verify genuine generated RPC declarations and negative ABI cases
         run: python3 tools/test_ipc_mig_abi.py --build work/xnu-lab-builds/*/report.json
+      - name: Generate and compile forty-two native kernel RPC source files
+        run: python3 tools/build_xnu_rpc.py --build work/xnu-lab-builds/*/report.json
+      - name: Verify generated descriptor ABI without claiming kobject execution
+        run: python3 tools/test_xnu_rpc.py --build work/xnu-lab-builds/*/report.json --rpc work/xnu-rpc-builds/*/report.json
+      - name: Retain strict static link rejection with native RPC objects
+        run: python3 tools/diagnose_xnu_link.py --build work/xnu-lab-builds/*/report.json --rpc work/xnu-rpc-builds/*/report.json
       - name: Retain metadata and unit diagnostics on success or failure
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -107,3 +119,10 @@ jobs:
             work/task-metadata-tests/*.ll
             work/ipc-mig-abi-tests/report.json
             work/ipc-mig-abi-tests/*.log
+            work/xnu-rpc-builds/*/report.json
+            work/xnu-rpc-builds/*/*.log
+            work/xnu-rpc-tests/report.json
+            work/xnu-rpc-tests/*.log
+            work/xnu-rpc-tests/descriptor_abi.c
+            work/xnu-link-diagnostics/report.json
+            work/xnu-link-diagnostics/link.log

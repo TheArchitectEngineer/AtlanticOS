@@ -1,5 +1,9 @@
 # IPC, MIG y metadata RO nativos — 2026-10-21
 
+Este documento conserva el estado inicial de 47 objetos y 50 headers. La
+[integración RPC posterior](XNU_RPC_BUILD.md) añade los C generados y amplía
+los headers coherentes a 57, con una selección IDL corregida para firmware.
+
 El build experimental termina con 47 objetos XNU ARM64; el estándar mantiene
 13. Se incorporan ipc_importance, ipc_object, ipc_port, ipc_kmsg, ipc_mqueue,
 ipc_right, ipc_kobject y una unidad de accessors RO originales del hilo.

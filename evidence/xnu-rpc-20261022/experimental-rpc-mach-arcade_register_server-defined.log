@@ -1,0 +1,5 @@
+0000000000000010 T _arcade_register_server
+0000000000000000 T _arcade_register_server_routine
+0000000000000058 S _arcade_register_subsystem
+0000000000000000 t ltmp0
+0000000000000058 s ltmp1

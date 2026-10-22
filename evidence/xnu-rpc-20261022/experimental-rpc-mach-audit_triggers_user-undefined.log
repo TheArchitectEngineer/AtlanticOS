@@ -1,0 +1,6 @@
+_NDR_record
+_mach_msg_send_from_kernel
+_mig_strncpy
+_mig_strncpy_zerofill
+_mig_user_allocate
+_mig_user_deallocate

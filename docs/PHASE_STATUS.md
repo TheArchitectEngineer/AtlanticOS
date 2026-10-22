@@ -1,4 +1,4 @@
-# Puertas de entrega — actualizado 2026-10-21
+# Puertas de entrega — actualizado 2026-10-22
 
 | Fase / requisito | Estado exacto | Evidencia / siguiente puerta |
 |---|---|---|
@@ -17,7 +17,8 @@
 | 2: entry ARM64 de laboratorio | EMULATED / BUILT_ARM64 | preflight original, EL1/EL2→EL1h, stack, FDT, contador y BRK; XNU_NOT_LINKED |
 | 2: entry G20 y ejecución bootstrap XNU real | UNIMPLEMENTED | objetos compilados no acreditan arranque; enlace/pmap/Platform Expert pendientes |
 | Herramienta oficial MIG | HOST_TESTED | MIG_HOST_BUILD.md: binario host genuino, ABI de metadata y 20 archivos de interfaces generados; sin compilar esos C ni enlazar kernel |
-| Port XNU incremental de laboratorio | BUILT_ARM64 | Trece objetos estándar; cuarenta y siete con compilador experimental explícito. XNU_IPC_BUILD.md: IPC, importancia y metadata RO nativos, 50 headers MIG; sin enlace ni ejecución |
+| Port XNU incremental de laboratorio | BUILT_ARM64 | Trece objetos estándar; cuarenta y siete con compilador experimental explícito. IPC, importancia y metadata RO nativos; headers ampliados a 57 en XNU_RPC_BUILD.md; sin enlace ni ejecución |
+| Código RPC MIG de XNU | BUILT_ARM64 | 42 archivos generados y compilados por carril, 57 headers; ABI de 21 descriptores y proveedores de 17 tablas kobject comprobados en experimental; sin RPC ejecutado |
 | 2: ABI C BSP | BUILT_ARM64 si build_abi termina | objeto sin drivers y sin kernel, hash propio |
 | 3: energía y fallback Android | UNIMPLEMENTED | método de reset/PMIC y vía OEM por demostrar |
 | 4: handoff EDK2 y almacenamiento | UNIMPLEMENTED | contrato propuesto; sin driver AtlanticOS |

@@ -92,6 +92,10 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 14. `0014`: conserva siete accessors RO originales de bsd_kern.c, incluida
     validación de zona/propietario y el TASK_NULL temprano. Las 18 funciones
     conservadas se cotejan por hash/posición con XNU antes de compilar.
+15. `0015`: selecciona KernelUser real de MIG en vm_map para firmware y limita
+    las interfaces Arcade a su proveedor seleccionado. Cinco comparaciones de
+    generación conservan salida byte a byte fuera de firmware o con Arcade
+    activado. No se declara mach_msg ni un conversor falso para hacer compilar.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
@@ -125,3 +129,5 @@ Compilar estos objetos es un avance de implementación, no su aceptación.
 Receta y alcance: [XNU_LAB_BUILD](../docs/XNU_LAB_BUILD.md).
 El [cierre core](../docs/XNU_CORE_CLOSURE.md) registra los probes que siguen
 fallando y la limitación comprobada de -static en LLD 19.1.7.
+La [integración RPC](../docs/XNU_RPC_BUILD.md) agrega los C y descriptores
+generados de sus recetas nativas, sin convertirlos en servicios ejecutados.

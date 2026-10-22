@@ -1,0 +1,5 @@
+In file included from <ROOT>/tests/xnu_port/pmap_cs_scope.c:12:
+<ROOT>/work/xnu-lab-sources/cfb4e1aae9f6bdfe/osfmk/vm/pmap_cs.h:79:10: fatal error: 'TrustCache/API.h' file not found
+   79 | #include <TrustCache/API.h>
+      |          ^~~~~~~~~~~~~~~~~~
+1 error generated.

@@ -205,6 +205,9 @@ añade task.c, task_ref.c y dos unidades de helpers conservados: veintidós obje
 El [cierre core](XNU_CORE_CLOSURE.md) amplía el conjunto a treinta y nueve.
 La [integración IPC](XNU_IPC_BUILD.md) llega a cuarenta y siete y 50 headers
 generados, con roles kernel-sender/kernel-server y precedencia nativos.
+La [compilación RPC](XNU_RPC_BUILD.md) amplía los headers a 57 al cubrir los
+efectos de MIG_KUSRC y compila sus 42 C en un builder separado ligado al reporte
+base. No suma esos emisores/descriptores como servicios ejecutados.
 El proveedor solo se activa con --layout-compiler y su
 --layout-proof correspondiente. El modo estándar de trece unidades también se
 verificó. Los resultados no acreditan allocator o hilos en ejecución.

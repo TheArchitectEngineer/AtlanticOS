@@ -1,0 +1,48 @@
+AtlanticOS: select genuine MIG KernelUser transport for firmware VM calls.
+Expose Arcade RPCs only when their provider is selected in firmware.
+Non-firmware generation and enabled Arcade retain upstream byte output.
+
+diff --git a/osfmk/mach/vm_map.defs b/osfmk/mach/vm_map.defs
+--- a/osfmk/mach/vm_map.defs
++++ b/osfmk/mach/vm_map.defs
+@@ -65,6 +65,9 @@
+ #if	KERNEL_SERVER || KOBJECT_SERVER
+ 	KernelServer
+ #endif	/* KERNEL_SERVER || KOBJECT_SERVER */
++#if CONFIG_ATLANTIC_FIRMWARE && KERNEL_USER
++	KernelUser
++#endif
+ 	  vm_map 3800;
+ 
+ #if KERNEL_SERVER
+diff --git a/osfmk/mach/arcade_register.defs b/osfmk/mach/arcade_register.defs
+--- a/osfmk/mach/arcade_register.defs
++++ b/osfmk/mach/arcade_register.defs
+@@ -39,7 +39,9 @@
+ #include <mach/std_types.defs>
+ #include <mach/mach_types.defs>
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || CONFIG_ARCADE
+ routine arcade_register_new_upcall(
+ 			  arcade_register	: arcade_register_t;
+ 			  arcade_upcall     : mach_port_t);
++#endif
+ 
+diff --git a/osfmk/mach/arcade_upcall.defs b/osfmk/mach/arcade_upcall.defs
+--- a/osfmk/mach/arcade_upcall.defs
++++ b/osfmk/mach/arcade_upcall.defs
+@@ -40,11 +40,13 @@
+ #include <mach/std_types.defs>
+ #include <mach/mach_types.defs>
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || CONFIG_ARCADE
+ routine arcade_upcall(
+ 	          arcade_upcall     : mach_port_t;
+ 	          path              : pointer_t;
+ 	          offset            : uint64_t;
+-	out       should_kill       : boolean_t); 
++	out       should_kill       : boolean_t);
++#endif 
+ 
+ /* vim: set ft=c : */
+ 

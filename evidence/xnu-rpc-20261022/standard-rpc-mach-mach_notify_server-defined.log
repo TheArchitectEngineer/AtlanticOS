@@ -1,0 +1,10 @@
+00000000000001e0 t __Xmach_notify_dead_name
+0000000000000120 t __Xmach_notify_no_senders
+0000000000000030 t __Xmach_notify_port_deleted
+0000000000000090 t __Xmach_notify_port_destroyed
+0000000000000180 t __Xmach_notify_send_once
+00000000000002c8 S _do_notify_subsystem
+0000000000000240 T _notify_server
+0000000000000000 T _notify_server_routine
+0000000000000000 t ltmp0
+00000000000002c8 s ltmp1

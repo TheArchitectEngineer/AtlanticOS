@@ -1,0 +1,7 @@
+0000000000000040 t __Xtask_restartable_ranges_register
+0000000000000100 t __Xtask_restartable_ranges_synchronize
+0000000000000180 T _task_restartable_server
+0000000000000000 T _task_restartable_server_routine
+0000000000000210 S _task_restartable_subsystem
+0000000000000000 t ltmp0
+0000000000000210 s ltmp1

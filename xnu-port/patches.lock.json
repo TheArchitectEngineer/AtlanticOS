@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "503358332c174380c8e92e3d1de77452b65fbf196a1b2eccce46a38aec823ff3",
+  "port_id": "cfb4e1aae9f6bdfe01deb68c6867aa5daebb13481cf43130e8133a3b139b0485",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -16,7 +16,8 @@
     "0011-bound-task-process-callbacks-by-selected-features.patch": "2d480812db9babf782bc4658e30295a35fc80e432a54009eeda939e841c770b5",
     "0012-match-resident-and-processor-features-to-laboratory-target.patch": "e55c2355481f5b6282414af42b850364c7d93b4d57155ad192e201e0fefc805c",
     "0013-scope-kobject-process-context-to-macf-and-preserve-trace-index.patch": "077e8aed27506637eb6c6f13c6d4c16bd88613a51583c3add2fbdc3163f68226",
-    "0014-retain-native-thread-ro-metadata-accessors.patch": "851e856ac9c3a11954a2a55add72d8e9b3977bb41c79769763c717909fb45bdf"
+    "0014-retain-native-thread-ro-metadata-accessors.patch": "851e856ac9c3a11954a2a55add72d8e9b3977bb41c79769763c717909fb45bdf",
+    "0015-select-native-kernel-rpc-transport-and-arcade-feature-contract.patch": "46d0813239589f310909890ac1a1a427b0be54a6cb822ac783e0240f40b50528"
   },
   "canonical_lf_files": [
     {
@@ -128,6 +129,21 @@
       "path": "osfmk/kern/atlantic_thread_metadata.c",
       "preimage_sha256": null,
       "postimage_sha256": "2f79d75e323c9645be08163d4acc9176d62590fcadfa2a88decd6a01bc5846bb"
+    },
+    {
+      "path": "osfmk/mach/vm_map.defs",
+      "preimage_sha256": "26c00af574aa05dfa5d1b42332305a260f8e3b4e8d255646b0e6edecfd610d39",
+      "postimage_sha256": "9040e28bf57a973ef0cc477c9d995ff60e537d0c4ef9b9f12f741237beaf26a7"
+    },
+    {
+      "path": "osfmk/mach/arcade_register.defs",
+      "preimage_sha256": "191a73029a592b14886042c8cc69d250979b21e9bb83bcfc29ecaadab09e5897",
+      "postimage_sha256": "9381c15511f24926f3d6b7e3a42a555eff0dea8f855b09a045ea2dd9bbdbdd3c"
+    },
+    {
+      "path": "osfmk/mach/arcade_upcall.defs",
+      "preimage_sha256": "2e3ce22243e560cd82cf978c472f63dfa1222dc7053d295686ba17b07b6c228d",
+      "postimage_sha256": "95c338f42bfcbedf4697249496985a91375c2bc9b2e0e53056af7674b54057c4"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

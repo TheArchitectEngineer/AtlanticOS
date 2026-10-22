@@ -1,0 +1,5 @@
+_NDR_record
+_mach_memory_entry_access_tracking
+_mach_memory_entry_get_page_counts
+_mach_memory_entry_ownership_from_user
+_mach_memory_entry_purgable_control

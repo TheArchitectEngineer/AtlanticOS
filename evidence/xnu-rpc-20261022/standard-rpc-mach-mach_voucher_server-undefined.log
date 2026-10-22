@@ -1,0 +1,10 @@
+_NDR_record
+_convert_port_to_space_read
+_convert_port_to_voucher
+_ipc_voucher_release
+_mach_voucher_attr_command
+_mach_voucher_debug_info
+_mach_voucher_extract_all_attr_recipes
+_mach_voucher_extract_attr_content
+_mach_voucher_extract_attr_recipe
+_space_read_deallocate

@@ -32,8 +32,12 @@ jobs:
         run: python3 tools/test_task_metadata.py --build work/xnu-lab-builds/*/report.json
       - name: Verify genuine MIG roles and reject kernel port and server ABI mismatches
         run: python3 tools/test_ipc_mig_abi.py --build work/xnu-lab-builds/*/report.json
+      - name: Generate and compile forty-two native RPC files and check selected IDL scopes
+        run: python3 tools/build_xnu_rpc.py --build work/xnu-lab-builds/*/report.json
+      - name: Check actual kobject table providers and generated descriptor ABI
+        run: python3 tools/test_xnu_rpc.py --build work/xnu-lab-builds/*/report.json --rpc work/xnu-rpc-builds/*/report.json
       - name: Record strict static linker rejection without accepting an image
-        run: python3 tools/diagnose_xnu_link.py --build work/xnu-lab-builds/*/report.json
+        run: python3 tools/diagnose_xnu_link.py --build work/xnu-lab-builds/*/report.json --rpc work/xnu-rpc-builds/*/report.json
       - name: Retain commands, checks and diagnostics, including partial failures
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -58,5 +62,10 @@ jobs:
             work/task-metadata-tests/*.ll
             work/ipc-mig-abi-tests/report.json
             work/ipc-mig-abi-tests/*.log
+            work/xnu-rpc-builds/*/report.json
+            work/xnu-rpc-builds/*/*.log
+            work/xnu-rpc-tests/report.json
+            work/xnu-rpc-tests/*.log
+            work/xnu-rpc-tests/descriptor_abi.c
             work/xnu-link-diagnostics/report.json
             work/xnu-link-diagnostics/link.log

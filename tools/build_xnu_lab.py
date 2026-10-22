@@ -290,7 +290,12 @@ def main():
     mk = (source/'osfmk/mach/Makefile').read_text()
     generated = []
     generated_roles = {}
-    kernel_senders = make_list(mk, 'MIG_KUHDRS')
+    declared_kernel_senders = make_list(mk, 'MIG_KUHDRS')
+    # Internal sender headers are also emitted as side effects of MIG_KUSRC.
+    # Generate every native variant before compiling callers against them.
+    kernel_senders = [name.removesuffix('_user.c')+'.h' for name in make_list(mk, 'MIG_KUSRC')]
+    if not set(declared_kernel_senders).issubset(kernel_senders):
+        raise RuntimeError('Native kernel sender header/source lists disagree')
     groups = [('MIG_UUHDRS', 'sender'), ('MIG_KSHDRS', 'kernel-server')]
     for variable, role in groups:
         for header in make_list(mk, variable):

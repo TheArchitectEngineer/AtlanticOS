@@ -12,3 +12,4 @@
 0012-match-resident-and-processor-features-to-laboratory-target.patch
 0013-scope-kobject-process-context-to-macf-and-preserve-trace-index.patch
 0014-retain-native-thread-ro-metadata-accessors.patch
+0015-select-native-kernel-rpc-transport-and-arcade-feature-contract.patch

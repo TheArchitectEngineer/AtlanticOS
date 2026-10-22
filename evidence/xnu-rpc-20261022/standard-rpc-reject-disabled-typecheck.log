@@ -1,0 +1,7 @@
+<ROOT>/tests/xnu_port/mig_rpc_config.c:4:16: error: static assertion failed due to requirement '0 == 1': MIG runtime type checks must remain enabled
+    4 | _Static_assert(__MigTypeCheck == 1, "MIG runtime type checks must remain enabled");
+      |                ^~~~~~~~~~~~~~~~~~~
+<command line>:55:24: note: expanded from macro '__MigTypeCheck'
+   55 | #define __MigTypeCheck 0
+      |                        ^
+1 error generated.

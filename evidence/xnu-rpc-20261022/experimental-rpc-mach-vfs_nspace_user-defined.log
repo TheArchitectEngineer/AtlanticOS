@@ -1,0 +1,9 @@
+0000000000000000 T _send_nspace_handle
+0000000000000190 T _send_nspace_resolve_cancel
+00000000000002b0 T _send_nspace_resolve_path
+00000000000005e0 T _send_vfs_resolve_dir
+0000000000000910 T _send_vfs_resolve_dir_with_audit_token
+0000000000000450 T _send_vfs_resolve_file
+0000000000000780 T _send_vfs_resolve_file_with_audit_token
+0000000000000ac0 T _send_vfs_resolve_reparent_with_audit_token
+0000000000000000 t ltmp0

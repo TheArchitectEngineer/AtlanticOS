@@ -1,0 +1,6 @@
+_NDR_record
+_do_mach_notify_dead_name
+_do_mach_notify_no_senders
+_do_mach_notify_port_deleted
+_do_mach_notify_port_destroyed
+_do_mach_notify_send_once

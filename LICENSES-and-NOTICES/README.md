@@ -24,6 +24,12 @@ de bsd_kern.c, con su aviso Apple/APSL. El mismo lock fija ahora 18 cuerpos
 nativos en total. Thread.c sigue siendo el propietario de la zona THREAD_RO;
 los helpers conservados no sustituyen su allocator o validación de propietario.
 
+Los C RPC se generan con MIG oficial a partir de las definiciones XNU fijadas.
+No son implementaciones originales de los servicios. Los C/headers completos y
+objetos permanecen privados en work/; se publica receta, hashes y diagnósticos.
+Patch 0015 conserva los avisos APSL/Carnegie Mellon de vm_map.defs y los avisos
+Apple/APSL de las dos interfaces Arcade. No se relicencian bajo MIT.
+
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias
 BSD-2-Clause-Patent y por componente. No se distribuyen sus binarios o wrappers.

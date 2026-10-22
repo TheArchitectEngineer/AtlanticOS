@@ -1,0 +1,12 @@
+In file included from /mnt/g/AtlanticOS/work/xnu-lab-sources/cfb4e1aae9f6bdfe/osfmk/kern/task.c:112:
+In file included from /mnt/g/AtlanticOS/work/xnu-lab-sources/cfb4e1aae9f6bdfe/osfmk/kern/task.h:133:
+/mnt/g/AtlanticOS/work/xnu-lab-sources/cfb4e1aae9f6bdfe/osfmk/kern/thread.h:1641:49: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1641 | extern void             uthread_cred_ref(struct ucred *);
+      |                                                 ^
+/mnt/g/AtlanticOS/work/xnu-lab-sources/cfb4e1aae9f6bdfe/osfmk/kern/thread.h:1642:50: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1642 | extern void             uthread_cred_free(struct ucred *);
+      |                                                  ^
+/mnt/g/AtlanticOS/work/xnu-lab-sources/cfb4e1aae9f6bdfe/osfmk/kern/task.c:8625:61: warning: cast to smaller integer type 'int' from 'const void *' [-Wvoid-pointer-to-int-cast]
+ 8625 |                 SENDING_NOTIFICATION__THIS_PROCESS_IS_CAUSING_TOO_MUCH_IO((int)param0);
+      |                                                                           ^~~~~~~~~~~
+3 warnings generated.

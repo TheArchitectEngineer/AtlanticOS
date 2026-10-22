@@ -56,3 +56,7 @@ La [integración de IPC](XNU_IPC_BUILD.md) amplía el build experimental a 47
 unidades y conserva los accessors RO de hilo y la herencia de importancia
 nativos. Los 50 headers MIG se generan con sus roles reales. Esto tampoco
 acredita entrega de mensajes, ejecución XNU, arranque físico o handoff EDK2.
+
+La [integración de los C RPC](XNU_RPC_BUILD.md) conserva 42 unidades generadas
+por MIG en cada carril y verifica los 17 descriptores requeridos por kobject.
+La imagen sigue sin enlazarse; no cambia la exigencia de XNU físico y handoff.

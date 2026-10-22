@@ -1,0 +1,11 @@
+0000000000000030 t __Xmach_exception_raise
+00000000000004f0 t __Xmach_exception_raise_backtrace
+0000000000000410 t __Xmach_exception_raise_identity_protected
+0000000000000120 t __Xmach_exception_raise_state
+0000000000000270 t __Xmach_exception_raise_state_identity
+00000000000005c0 t __Xmach_exception_raise_state_identity_protected
+00000000000007d8 S _catch_mach_exc_subsystem
+0000000000000750 T _mach_exc_server
+0000000000000000 T _mach_exc_server_routine
+0000000000000000 t ltmp0
+00000000000007d8 s ltmp1

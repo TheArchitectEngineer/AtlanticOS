@@ -33,13 +33,13 @@ def main():
         if digest(ROOT/rel) != expected:
             ap.error('Changed build input: '+rel)
     headers = build['generated_headers']
-    if len(headers) != 50 or len({h['path'] for h in headers}) != 50:
-        ap.error('Pinned recipes require 50 unique selected headers')
+    if len(headers) != 57 or len({h['path'] for h in headers}) != 57:
+        ap.error('Pinned recipes require 57 unique selected headers, including native source side effects')
     roles = Counter(h['role'] for h in headers)
-    if dict(roles) != {'sender':15, 'kernel-server':22, 'kernel-sender':13}:
+    if dict(roles) != {'sender':14, 'kernel-server':22, 'kernel-sender':21}:
         ap.error('Unexpected MIG role counts')
     selected = {h['path']:h['role'] for h in headers}
-    for name in ['mach_notify', 'task_access', 'upl', 'vm_map', 'ktrace_background']:
+    for name in ['mach_notify', 'task_access', 'upl', 'vm_map', 'ktrace_background', 'vfs_nspace']:
         if selected.get('include/mach/'+name+'.h') != 'kernel-sender':
             ap.error('Kernel sender precedence lost: '+name)
     if selected.get('include/device/device_server.h') != 'kernel-server':

@@ -21,6 +21,7 @@ def digest(path):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--build', type=Path, required=True)
+    ap.add_argument('--rpc', type=Path, help='Successful tools/build_xnu_rpc.py report for this exact base build')
     ap.add_argument('--linker', type=Path)
     ap.add_argument('--output', type=Path, default=ROOT/'work/xnu-link-diagnostics')
     args = ap.parse_args()
@@ -49,6 +50,27 @@ def main():
             digest(source/item['source']) != item['source_sha256']):
             ap.error('Changed or escaping XNU source/object: '+item['source'])
         objects.append(str(obj))
+    rpc_record = None
+    if args.rpc:
+        rpc = json.loads(args.rpc.read_text())
+        if (rpc['base_build_report_sha256'] != digest(args.build) or
+            rpc['port_id'] != build['port_id'] or rpc['failed_units'] or rpc['generation_failures'] or
+            not all(c['passed'] for c in rpc['config_cases']+rpc['idl_scope_cases'])):
+            ap.error('RPC report is incomplete, failed, or from another base build')
+        for rel, expected in rpc['inputs'].items():
+            if digest(ROOT/rel) != expected:
+                ap.error('Changed RPC build input: '+rel)
+        for item in rpc['objects']:
+            obj = (args.rpc.parent/item['object']).resolve()
+            generated = (args.rpc.parent/item['source']).resolve()
+            header = (args.rpc.parent/item['header']).resolve()
+            if (not all(p.is_relative_to(args.rpc.parent.resolve()) for p in [obj,generated,header]) or
+                digest(obj) != item['object_sha256'] or digest(generated) != item['source_sha256'] or
+                digest(header) != item['header_sha256'] or
+                digest(source/item['definition']) != item['definition_sha256']):
+                ap.error('Changed or escaping generated RPC object/source/header: '+item['module'])
+            objects.append(str(obj))
+        rpc_record = {'report_sha256':digest(args.rpc),'object_count':len(rpc['objects'])}
     out.mkdir(parents=True)
     image = out/'unvalidated.macho'
     cmd = [str(linker), '-arch', 'arm64', '-static', '-no_pie',
@@ -72,6 +94,7 @@ def main():
             if 'not yet implemented' in s or 'ignored for arm64' in s],
         'undefined_symbol_error_count':r.stderr.count('error: undefined symbol:'),
         'object_count':len(objects), 'warnings_are_errors':True,
+        'rpc_build':rpc_record,
         'undefined_symbols_must_error':True, 'dead_stripping_requested':False,
         'output_exists':image.exists(), 'output_sha256':digest(image) if image.exists() else None,
         'kernel_linked':False, 'xnu_executed':False, 'phone_accessed':False}
