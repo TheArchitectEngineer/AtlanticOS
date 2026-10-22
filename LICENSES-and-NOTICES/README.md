@@ -19,6 +19,11 @@ líneas y SHA-256 en xnu-port/task-metadata-native.lock.json y se cotejan contra
 el commit XNU antes de compilar. Esas funciones son código XNU conservado y
 adaptado, no código original MIT AtlanticOS.
 
+El patch 0014 conserva otros siete helpers de metadata RO del hilo procedentes
+de bsd_kern.c, con su aviso Apple/APSL. El mismo lock fija ahora 18 cuerpos
+nativos en total. Thread.c sigue siendo el propietario de la zona THREAD_RO;
+los helpers conservados no sustituyen su allocator o validación de propietario.
+
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias
 BSD-2-Clause-Patent y por componente. No se distribuyen sus binarios o wrappers.

@@ -51,3 +51,8 @@ La ampliación de [dependencias core](XNU_CORE_CLOSURE.md) llega a 39 objetos
 experimentales con el compilador original explícito. Pageout, parte de IPC,
 enlazador estático, Platform Expert y BSP siguen pendientes. La evidencia
 compilada conserva ese alcance; el objetivo físico y el handoff no cambian.
+
+La [integración de IPC](XNU_IPC_BUILD.md) amplía el build experimental a 47
+unidades y conserva los accessors RO de hilo y la herencia de importancia
+nativos. Los 50 headers MIG se generan con sus roles reales. Esto tampoco
+acredita entrega de mensajes, ejecución XNU, arranque físico o handoff EDK2.

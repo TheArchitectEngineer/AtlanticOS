@@ -10,3 +10,5 @@
 0010-retain-native-proc-task-metadata-without-bsd-userland.patch
 0011-bound-task-process-callbacks-by-selected-features.patch
 0012-match-resident-and-processor-features-to-laboratory-target.patch
+0013-scope-kobject-process-context-to-macf-and-preserve-trace-index.patch
+0014-retain-native-thread-ro-metadata-accessors.patch

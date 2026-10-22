@@ -21,7 +21,7 @@ jobs:
           python3 tools/fetch_xnu.py
           python3 tools/fetch_mig.py
           python3 tools/build_mig.py
-      - name: Compile thirty-nine genuine XNU units with explicit provider (no execution)
+      - name: Compile forty-seven genuine XNU units with explicit provider (no execution)
         run: |
           python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
       - name: Verify pmap API rejection, object symbols and actual header dependencies
@@ -30,6 +30,8 @@ jobs:
           python3 tools/test_pmap_cs_scope.py --build work/xnu-lab-builds/*/report.json
       - name: Compare real Mach and BSD metadata layouts and reject corrupted owner offsets
         run: python3 tools/test_task_metadata.py --build work/xnu-lab-builds/*/report.json
+      - name: Verify genuine MIG roles and reject kernel port and server ABI mismatches
+        run: python3 tools/test_ipc_mig_abi.py --build work/xnu-lab-builds/*/report.json
       - name: Record strict static linker rejection without accepting an image
         run: python3 tools/diagnose_xnu_link.py --build work/xnu-lab-builds/*/report.json
       - name: Retain commands, checks and diagnostics, including partial failures
@@ -54,5 +56,7 @@ jobs:
             work/task-metadata-tests/report.json
             work/task-metadata-tests/*.log
             work/task-metadata-tests/*.ll
+            work/ipc-mig-abi-tests/report.json
+            work/ipc-mig-abi-tests/*.log
             work/xnu-link-diagnostics/report.json
             work/xnu-link-diagnostics/link.log

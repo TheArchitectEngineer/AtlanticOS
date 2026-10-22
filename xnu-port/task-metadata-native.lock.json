@@ -79,6 +79,55 @@
       "last_line": 97,
       "sha256": "1fae25ccefe6f7065e70acf1dc14add119b52308cef842a337a7edebc02016d3",
       "destination": "osfmk/kern/atlantic_task_process.c"
+    },
+    {
+      "source": "osfmk/kern/bsd_kern.c",
+      "first_line": 133,
+      "last_line": 138,
+      "sha256": "d934b7e2ce4a4ad1b6455100074696ad7aed1ee12324e41d8972fafbd2920794",
+      "destination": "osfmk/kern/atlantic_thread_metadata.c"
+    },
+    {
+      "source": "osfmk/kern/bsd_kern.c",
+      "first_line": 140,
+      "last_line": 145,
+      "sha256": "18f026c97dcf4365f8565242ef19a068405f9d9f1e05ec35f9fc0fc19fa03b8d",
+      "destination": "osfmk/kern/atlantic_thread_metadata.c"
+    },
+    {
+      "source": "osfmk/kern/bsd_kern.c",
+      "first_line": 147,
+      "last_line": 157,
+      "sha256": "7c71eae075965630fbeb6f6d44dffcbdfcd044b5110cadda8afacb1cb1b9af4f",
+      "destination": "osfmk/kern/atlantic_thread_metadata.c"
+    },
+    {
+      "source": "osfmk/kern/bsd_kern.c",
+      "first_line": 159,
+      "last_line": 164,
+      "sha256": "9c1d9b544499917d22722d55ff528ee47699843ab054c123d3c5ce985246fa7c",
+      "destination": "osfmk/kern/atlantic_thread_metadata.c"
+    },
+    {
+      "source": "osfmk/kern/bsd_kern.c",
+      "first_line": 166,
+      "last_line": 170,
+      "sha256": "d25b8ed717385e258b4596611a439ec46e0bf8aba1c1723c6004549eedf46e18",
+      "destination": "osfmk/kern/atlantic_thread_metadata.c"
+    },
+    {
+      "source": "osfmk/kern/bsd_kern.c",
+      "first_line": 852,
+      "last_line": 856,
+      "sha256": "2bc4aa3c0d2b26b200742e99b07e709efcdf4a753f9891277c17819de3041861",
+      "destination": "osfmk/kern/atlantic_thread_metadata.c"
+    },
+    {
+      "source": "osfmk/kern/bsd_kern.c",
+      "first_line": 858,
+      "last_line": 867,
+      "sha256": "71411f99d1465982f6d6243da88e86d7155c6712dfe9cfbfe3e8f0f98acf85b5",
+      "destination": "osfmk/kern/atlantic_thread_metadata.c"
     }
   ]
 }

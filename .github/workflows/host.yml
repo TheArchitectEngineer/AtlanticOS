@@ -50,3 +50,4 @@ jobs:
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-task-metadata-20261021/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-core-closure-20261021/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/clang-layout-ci17-20261021/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/xnu-ipc-20261021/manifest.json

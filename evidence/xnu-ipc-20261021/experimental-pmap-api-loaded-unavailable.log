@@ -1,0 +1,7 @@
+<ROOT>/tests/xnu_port/pmap_firmware.c:17:12: error: 'pmap_lookup_in_loaded_trust_caches' is unavailable: AtlanticOS firmware has no Apple trust-cache provider
+   17 |     return pmap_lookup_in_loaded_trust_caches(hash);
+      |            ^
+<ROOT>/work/xnu-lab-sources/503358332c174380/osfmk/vm/pmap.h:892:13: note: 'pmap_lookup_in_loaded_trust_caches' has been explicitly marked unavailable here
+  892 | extern bool pmap_lookup_in_loaded_trust_caches(const uint8_t cdhash[CS_CDHASH_LEN])
+      |             ^
+1 error generated.

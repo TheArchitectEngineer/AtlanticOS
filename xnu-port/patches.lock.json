@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "30d8e4ad13bace51ebbd1392e54bcf63540b059d073795d955420b0cf84b153c",
+  "port_id": "503358332c174380c8e92e3d1de77452b65fbf196a1b2eccce46a38aec823ff3",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -14,7 +14,9 @@
     "0009-separate-laboratory-pmap-from-apple-monitor-services.patch": "292aa407b3419c71067397d46333f9fcbfc92829199310c38ce7bc49d5d6389f",
     "0010-retain-native-proc-task-metadata-without-bsd-userland.patch": "74cfbcc9e6eb302f60521bd8a9c85c20cc2d19d202063a4bf1beddf94cc571c5",
     "0011-bound-task-process-callbacks-by-selected-features.patch": "2d480812db9babf782bc4658e30295a35fc80e432a54009eeda939e841c770b5",
-    "0012-match-resident-and-processor-features-to-laboratory-target.patch": "e55c2355481f5b6282414af42b850364c7d93b4d57155ad192e201e0fefc805c"
+    "0012-match-resident-and-processor-features-to-laboratory-target.patch": "e55c2355481f5b6282414af42b850364c7d93b4d57155ad192e201e0fefc805c",
+    "0013-scope-kobject-process-context-to-macf-and-preserve-trace-index.patch": "077e8aed27506637eb6c6f13c6d4c16bd88613a51583c3add2fbdc3163f68226",
+    "0014-retain-native-thread-ro-metadata-accessors.patch": "851e856ac9c3a11954a2a55add72d8e9b3977bb41c79769763c717909fb45bdf"
   },
   "canonical_lf_files": [
     {
@@ -116,6 +118,16 @@
       "path": "osfmk/kern/processor.c",
       "preimage_sha256": "d107268d6fbe37cf5825535341a52674b42818bed94501f907c2ecac8e3765ef",
       "postimage_sha256": "b995f8b129d5edc84059d028a010088f5ab2e3d3a1edfd9385d71a0e35dfd516"
+    },
+    {
+      "path": "osfmk/kern/ipc_kobject.c",
+      "preimage_sha256": "edee0e72fa21a8891c231f561fc84eb917e5fe87af13fc0f24a294a509016488",
+      "postimage_sha256": "8a2895e479af6ff4654929d0e92d7c7a64d15fc1321368f901f4989cbf491ac5"
+    },
+    {
+      "path": "osfmk/kern/atlantic_thread_metadata.c",
+      "preimage_sha256": null,
+      "postimage_sha256": "2f79d75e323c9645be08163d4acc9176d62590fcadfa2a88decd6a01bc5846bb"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

@@ -5,8 +5,8 @@ de XNU. Primera placa: Motorola Moto G20 / Unisoc T700 (UMS512).
 
 **Estado 2026-10-21: auditoría Fase 0, prototipo host Fase 1 y port XNU
 incremental. Trece unidades reales de XNU compilan a objetos ARM64 con Clang
-estándar; treinta y nueve con el proveedor experimental explícito, incluidos
-VM residente/faults/objetos, hilos, tareas, locks, ledgers, SMR y parte de IPC. Todavía
+estándar; cuarenta y siete con el proveedor experimental explícito, incluidos
+VM residente/faults/objetos, hilos, tareas, locks, ledgers, SMR e IPC/importance. Todavía
 no hay kernel enlazado, ejecución XNU ni drivers G20 funcionales. No hay firmware
 AtlanticOS ejecutado en teléfono, ni medición de su RAM residente.**
 
@@ -38,7 +38,9 @@ con servicios Apple no soportados señalados explícitamente. La [integración d
 tareas](docs/XNU_TASK_LIFETIME.md) conserva los helpers nativos de metadata y
 comprueba el ABI compartido, con userland BSD desactivado.
 El [cierre incremental de dependencias core](docs/XNU_CORE_CLOSURE.md) conserva
-los bloqueos restantes de pageout, IPC y el enlazador estático.
+los bloqueos observados de pageout, IPC y el enlazador estático en aquella revisión.
+La [ampliación de IPC](docs/XNU_IPC_BUILD.md) incorpora los puertos, colas,
+mensajes, derechos, kobject y getters RO nativos, con 50 headers MIG reales.
 Esos objetos no forman todavía un kernel ejecutable.
 
 ## Reproducir

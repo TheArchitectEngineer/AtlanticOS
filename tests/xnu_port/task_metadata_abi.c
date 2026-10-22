@@ -32,6 +32,15 @@ VALUE(task_bytes, sizeof(struct task));
 VALUE(task_align, _Alignof(struct task));
 VALUE(task_ro_pointer_offset, offsetof(struct task, bsd_info_ro));
 _Static_assert(sizeof(((struct task *)0)->bsd_info_ro) == 8, "real metadata pointer");
+VALUE(thread_ro_bytes, sizeof(struct thread_ro));
+VALUE(thread_ro_align, _Alignof(struct thread_ro));
+VALUE(thread_owner_offset, offsetof(struct thread_ro, tro_owner));
+VALUE(thread_task_offset, offsetof(struct thread_ro, tro_task));
+VALUE(thread_ro_pointer_offset, offsetof(struct thread, t_tro));
+#ifdef ATL_TEST_WRONG_THREAD_OWNER_OFFSET
+_Static_assert(offsetof(struct thread_ro, tro_owner) == ATL_TEST_WRONG_THREAD_OWNER_OFFSET,
+    "AtlanticOS thread metadata owner offset mismatch");
+#endif
 #else
 VALUE(proc_bytes, sizeof(struct proc));
 VALUE(proc_align, _Alignof(struct proc));

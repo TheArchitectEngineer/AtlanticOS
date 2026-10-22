@@ -1,0 +1,27 @@
+AtlanticOS: access the process field only where MACF consumes it.
+Preserve the native thread RO access and MIG dispatch. Keep the actual
+policy index available to the unchanged trace hooks.
+
+diff --git a/osfmk/kern/ipc_kobject.c b/osfmk/kern/ipc_kobject.c
+--- a/osfmk/kern/ipc_kobject.c
++++ b/osfmk/kern/ipc_kobject.c
+@@ -470,7 +470,9 @@
+ 
+ 	thread_ro_t tro = current_thread_ro();
+ 	task_t curtask = tro->tro_task;
++#if CONFIG_MACF
+ 	struct proc *curproc = tro->tro_proc;
++#endif
+ 
+ 	req_hdr = ikm_header(request);
+ 	req_data = ikm_udata_from_header(request);
+@@ -558,8 +560,8 @@
+ 	ipc_kobject_init_reply(reply, request, KERN_SUCCESS);
+ 
+ 	/* Check if the kobject call should be filtered */
++	int idx = ptr->kobjidx;
+ #if CONFIG_MACF
+-	int idx = ptr->kobjidx;
+ 	uint8_t *filter_mask = task_get_mach_kobj_filter_mask(curtask);
+ 
+ 	/* Check kobject mig filter mask, if exists. */

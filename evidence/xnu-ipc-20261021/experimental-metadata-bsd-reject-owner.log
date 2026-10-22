@@ -1,0 +1,10 @@
+<ROOT>/tests/xnu_port/task_metadata_abi.c:51:16: error: static assertion failed due to requirement '__builtin_offsetof(struct proc_ro, pr_task) == 9': AtlanticOS metadata owner offset mismatch
+   51 | _Static_assert(offsetof(struct proc_ro, pr_task) == ATL_TEST_WRONG_OWNER_OFFSET,
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/503358332c174380/EXTERNAL_HEADERS/stddef.h:67:24: note: expanded from macro 'offsetof'
+   67 | #define offsetof(t, d) __builtin_offsetof(t, d)
+      |                        ^
+<ROOT>/tests/xnu_port/task_metadata_abi.c:51:50: note: expression evaluates to '8 == 9'
+   51 | _Static_assert(offsetof(struct proc_ro, pr_task) == ATL_TEST_WRONG_OWNER_OFFSET,
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.

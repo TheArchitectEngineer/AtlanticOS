@@ -11,6 +11,7 @@ on:
       - 'tools/test_pmap_cs_scope.py'
       - 'tools/test_pmap_firmware.py'
       - 'tools/test_task_metadata.py'
+      - 'tools/test_ipc_mig_abi.py'
       - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
       - 'tests/xnu_port/**'
@@ -28,6 +29,7 @@ on:
       - 'tools/test_pmap_cs_scope.py'
       - 'tools/test_pmap_firmware.py'
       - 'tools/test_task_metadata.py'
+      - 'tools/test_ipc_mig_abi.py'
       - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
       - 'tests/xnu_port/**'
@@ -68,6 +70,8 @@ jobs:
         run: python3 tools/test_pmap_firmware.py --build work/xnu-lab-builds/*/report.json
       - name: Compare genuine metadata layouts without claiming task object compilation
         run: python3 tools/test_task_metadata.py --build work/xnu-lab-builds/*/report.json
+      - name: Verify genuine generated RPC declarations and negative ABI cases
+        run: python3 tools/test_ipc_mig_abi.py --build work/xnu-lab-builds/*/report.json
       - name: Retain metadata and unit diagnostics on success or failure
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -101,3 +105,5 @@ jobs:
             work/task-metadata-tests/report.json
             work/task-metadata-tests/*.log
             work/task-metadata-tests/*.ll
+            work/ipc-mig-abi-tests/report.json
+            work/ipc-mig-abi-tests/*.log

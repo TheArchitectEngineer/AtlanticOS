@@ -33,7 +33,12 @@ UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
          'osfmk/arm64/machine_routines.c': '_machine_startup',
          'osfmk/ipc/ipc_init.c': '_ipc_init'}
 # IPC registers a genuine static initializer in STARTUP(MACH_IPC, ...).
-SYMBOL_TYPES = {'osfmk/ipc/ipc_init.c': 't', 'osfmk/kern/sched_dualq.c': 't'}
+SYMBOL_TYPES = {'osfmk/ipc/ipc_init.c': 't', 'osfmk/kern/sched_dualq.c': 't',
+                'osfmk/ipc/ipc_importance.c': 't'}
+STARTUP_SYMBOL_PREFIXES = {
+    'osfmk/ipc/ipc_init.c': '___startup_MACH_IPC_entry_ipc_init_',
+    'osfmk/ipc/ipc_importance.c': '___startup_MACH_IPC_entry_ipc_importance_init_',
+    'osfmk/kern/ipc_kobject.c': '___startup_MACH_IPC_entry_mig_init_'}
 EXTRA_SYMBOLS = {'osfmk/arm64/cswitch.s': ['_machine_load_context', '_Call_continuation'],
                  'osfmk/arm64/start.s': ['__start', '_LowResetVectorBase'],
                  'osfmk/arm64/locore.s': ['_fleh_synchronous', '_fleh_irq'],
@@ -56,6 +61,15 @@ EXTRA_SYMBOLS.update({
     'osfmk/kern/sched_dualq.c': ['_sched_dualq_dispatch', '_sched_dualq_choose_thread'],
     'osfmk/kern/processor.c': ['_processor_init', '_processor_boot'],
     'libkern/os/refcnt.c': ['_os_ref_retain_internal', '_os_ref_release_barrier_internal']})
+EXTRA_SYMBOLS.update({
+    'osfmk/ipc/ipc_importance.c': ['_ipc_importance_send', '_ipc_importance_receive'],
+    'osfmk/ipc/ipc_object.c': ['_ipc_object_copyout'],
+    'osfmk/ipc/ipc_port.c': ['_ipc_port_destroy', '_ipc_port_adjust_special_reply_port'],
+    'osfmk/ipc/ipc_kmsg.c': ['_ipc_kmsg_copyin_from_kernel', '_ipc_kmsg_destroy'],
+    'osfmk/ipc/ipc_mqueue.c': ['_ipc_mqueue_receive', '_ipc_mqueue_send_locked'],
+    'osfmk/ipc/ipc_right.c': ['_ipc_right_copyout_any_send'],
+    'osfmk/kern/ipc_kobject.c': ['_ipc_kobject_alloc_port', '_mig_init'],
+    'osfmk/kern/atlantic_thread_metadata.c': ['_current_thread_ro', '_get_threadtask', '_get_threadtask_early']})
 EXPERIMENTAL_UNITS = {'osfmk/kern/thread.c': '_thread_init',
                       'osfmk/kern/kalloc.c': '_kalloc_type_impl_internal',
                       'osfmk/kern/zalloc.c': '_zinit',
@@ -81,10 +95,16 @@ EXPERIMENTAL_UNITS = {'osfmk/kern/thread.c': '_thread_init',
                       'osfmk/kern/processor.c': '_processor_bootstrap',
                       'libkern/os/refcnt.c': '_os_ref_init_count_internal',
                       'osfmk/ipc/ipc_space.c': '_ipc_space_create',
-                      'osfmk/ipc/ipc_entry.c': '_ipc_entry_alloc'}
-PROBES = ['osfmk/vm/vm_pageout.c', 'osfmk/kern/ipc_kobject.c',
-          *['osfmk/ipc/'+name+'.c' for name in
-            ['ipc_object', 'ipc_port', 'ipc_kmsg', 'ipc_mqueue', 'ipc_right']]]
+                      'osfmk/ipc/ipc_entry.c': '_ipc_entry_alloc',
+                      'osfmk/ipc/ipc_importance.c': '_ipc_importance_init',
+                      'osfmk/ipc/ipc_object.c': '_ipc_object_copyin',
+                      'osfmk/ipc/ipc_port.c': '_ipc_port_alloc',
+                      'osfmk/ipc/ipc_kmsg.c': '_ipc_kmsg_alloc',
+                      'osfmk/ipc/ipc_mqueue.c': '_ipc_mqueue_init',
+                      'osfmk/ipc/ipc_right.c': '_ipc_right_copyin',
+                      'osfmk/kern/ipc_kobject.c': '_ipc_kobject_server',
+                      'osfmk/kern/atlantic_thread_metadata.c': '_get_thread_ro'}
+PROBES = ['osfmk/vm/vm_pageout.c']
 
 
 def digest(path):
@@ -106,7 +126,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--windows-git', action='store_true')
     ap.add_argument('--probe-remaining', action='store_true',
-                    help='Try remaining pageout and IPC units; failures return nonzero')
+                    help='Try the remaining pageout unit; failures return nonzero')
     ap.add_argument('--layout-compiler', type=Path,
                     help='Explicit experimental compiler; also builds selected Mach, VM and IPC core units')
     ap.add_argument('--layout-proof', type=Path,
@@ -269,9 +289,15 @@ def main():
     base += ['-I'+str(source/p) for p in ['osfmk','bsd','EXTERNAL_HEADERS']]
     mk = (source/'osfmk/mach/Makefile').read_text()
     generated = []
+    generated_roles = {}
+    kernel_senders = make_list(mk, 'MIG_KUHDRS')
     groups = [('MIG_UUHDRS', 'sender'), ('MIG_KSHDRS', 'kernel-server')]
     for variable, role in groups:
         for header in make_list(mk, variable):
+            # Native kernel-user output takes precedence over public sender
+            # headers with the same name, as explained in mach/Makefile.
+            if role == 'sender' and header in kernel_senders:
+                continue
             module = header.removesuffix('_server.h') if role == 'kernel-server' else header.removesuffix('.h')
             flags = ['-DKERNEL_SERVER=1'] if role == 'kernel-server' else []
             cpp = run([*base, *flags, str(source/('osfmk/mach/'+module+'.defs'))], name='cpp-'+header)
@@ -281,16 +307,31 @@ def main():
                  '-sheader', str(destination) if role=='kernel-server' else '/dev/null', '-server', '/dev/null', '-user', '/dev/null'],
                 cwd=out, data=cpp.stdout, name='mig-'+header)
             generated.append(destination)
-    # These are kernel senders, with roles declared separately from MIG_UUHDRS.
-    for module in ['resource_notify', 'mach_test_upcall']:
-        header = module+'.h'
-        if header not in make_list(mk, 'MIG_KUHDRS'):
-            raise RuntimeError('Upstream kernel-sender role changed: '+header)
+            generated_roles[destination] = role
+    # Kernel sender roles follow the complete literal upstream list.
+    for header in kernel_senders:
+        module = header.removesuffix('.h')
         cpp = run([*base, '-DKERNEL_USER=1', str(source/('osfmk/mach/'+module+'.defs'))], name='cpp-'+module)
         resource = inc/'mach'/header
         run([str(mig_dir/'migcom'), '-novouchers', '-maxonstack', '1024', '-header', str(resource), '-server', '/dev/null', '-user', '/dev/null'],
             cwd=out, data=cpp.stdout, name='mig-'+module)
         generated.append(resource)
+        generated_roles[resource] = 'kernel-sender'
+    # IPC references the native device kernel-server declarations even when
+    # IOKIT is absent. Generate the actual selected interface, never a stub.
+    device_mk = (source/'osfmk/device/Makefile').read_text()
+    if make_list(device_mk, 'DEVICE_FILES') != ['device_server.h', 'device_server.c']:
+        raise RuntimeError('Native device server recipe changed')
+    (inc/'device').mkdir(exist_ok=True)
+    device_header = inc/'device/device_server.h'
+    cpp = run([*base, '-DKERNEL_SERVER=1', str(source/'osfmk/device/device.defs')], name='cpp-device-server')
+    run([str(mig_dir/'migcom'), '-novouchers', '-mach_msg2', '-header', '/dev/null',
+         '-sheader', str(device_header), '-server', '/dev/null', '-user', '/dev/null'],
+        cwd=out, data=cpp.stdout, name='mig-device-server')
+    generated.append(device_header)
+    generated_roles[device_header] = 'kernel-server'
+    if len(generated) != len(set(generated)):
+        raise RuntimeError('Duplicate generated header destinations')
     # Use upstream's real version template/generator with explicit build metadata.
     version = inc/'libkern/version.h';version.parent.mkdir(exist_ok=True)
     shutil.copyfile(source/'libkern/libkern/version.h.template', version)
@@ -383,9 +424,9 @@ def main():
         for symbol in required_symbols:
             if not any(line.split()[-1:]==[symbol] for line in nm.splitlines()):
                 raise RuntimeError('Missing real XNU function: '+symbol)
-        if rel == 'osfmk/ipc/ipc_init.c' and not any(
-            line.split()[-1].startswith('___startup_MACH_IPC_entry_ipc_init_') for line in nm.splitlines() if line.split()):
-            raise RuntimeError('Genuine static IPC initializer lost its startup registration')
+        if rel in STARTUP_SYMBOL_PREFIXES and not any(
+            line.split()[-1].startswith(STARTUP_SYMBOL_PREFIXES[rel]) for line in nm.splitlines() if line.split()):
+            raise RuntimeError('Genuine static IPC initializer lost its startup registration: '+rel)
         if rel == 'osfmk/arm/pmap/pmap.c' and any('trust_cache' in line or '_amfi' in line or '_sart_' in line
             for line in nm.splitlines()):
             raise RuntimeError('Unexpected Apple monitor/trust-cache provider in firmware pmap')
@@ -420,7 +461,8 @@ def main():
               'virtual_link_address':'0xfffffff007004000','physical_link_or_load_address':None,
               'selected_object_symbol_inventory':{'scope':'NAME_INVENTORY_ONLY_NOT_A_LINK_OR_RELOCATION_CHECK',
                   'defined_external_count':len(selected_definitions),'unprovided_symbols':missing_symbols},
-              'generated_headers':[{'path':p.relative_to(out).as_posix(),'sha256':digest(p)} for p in generated],
+              'generated_headers':[{'path':p.relative_to(out).as_posix(),'sha256':digest(p),
+                                    'role':generated_roles[p]} for p in generated],
               'objects':objects,'failed_units':failures}
     (out/'report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'label':report['label'],'compiler':report['compiler'],'compiled_units':len(objects),'failed_units':len(failures),

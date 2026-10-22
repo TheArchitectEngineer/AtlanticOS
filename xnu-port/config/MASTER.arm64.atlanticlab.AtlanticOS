@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 # Original AtlanticOS configuration experiment for QEMU ARM64 bring-up.
 # This does not imply that the resulting kernel links, boots, or meets RAM goals.
-# ATLANTIC = [ arm64 mach mach_assert development no_kextd config_blocks config_coalitions config_sched_timeshare_core config_sched_deferred_ast nos_arm_asm nos_arm_pmap config_pmap_ppl xsmall msgb_small config_embedded ]
+# ATLANTIC = [ arm64 mach mach_assert development no_kextd config_blocks config_coalitions importance_inheritance config_sched_timeshare_core config_sched_deferred_ast nos_arm_asm nos_arm_pmap config_pmap_ppl xsmall msgb_small config_embedded ]
 machine "arm64"
 options CONFIG_ATLANTIC_FIRMWARE
 makeoptions OSFMK_MACHINE = "arm64"

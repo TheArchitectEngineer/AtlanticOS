@@ -1,5 +1,9 @@
 # Tarea Mach y metadata nativa conjunta — 2026-10-21
 
+Este documento conserva la verificación inicial de 22 objetos y cuatro casos
+ABI. La [ampliación IPC](XNU_IPC_BUILD.md) añade los getters RO de hilo y un
+quinto caso negativo; sus reportes actuales se conservan por separado.
+
 Estado: 22 objetos XNU ARM64 compilados con el proveedor experimental explícito,
 incluidos task.c, task_ref.c y dos unidades que conservan helpers originales.
 Cuatro comprobaciones de ABI aprueban: dos contextos ARM64 y dos rechazos de

@@ -1,5 +1,8 @@
 # Cierre incremental Mach / VM / IPC — 2026-10-21
 
+Este documento conserva el estado histórico de 39 objetos. La
+[ampliación IPC](XNU_IPC_BUILD.md) documenta el conjunto posterior de 47.
+
 El carril experimental compila 39 unidades genuinas XNU ARM64; el estándar
 mantiene 13. No existe todavía kernel enlazado o ejecutado. Las unidades añadidas
 cierran proveedores reales de páginas, referencias, espera y scheduler, pero

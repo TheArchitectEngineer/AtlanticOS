@@ -13,7 +13,9 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 COMMON = {'ro_bytes', 'ro_align', 'owner_offset', 'proc_offset', 'tokens_offset',
           'flags_offset', 'ports_offset', 'payload_offset', 'payload_bytes'}
-CONTEXT_FIELDS = {'mach': {'task_bytes', 'task_align', 'task_ro_pointer_offset'},
+CONTEXT_FIELDS = {'mach': {'task_bytes', 'task_align', 'task_ro_pointer_offset',
+                  'thread_ro_bytes', 'thread_ro_align', 'thread_owner_offset',
+                  'thread_task_offset', 'thread_ro_pointer_offset'},
                   'bsd': {'proc_bytes', 'proc_align', 'refcount_offset'}}
 REQUIRED = {
     'osfmk/kern/task.c': ['_task_init', '_task_create_internal', '_task_get_ro', '_task_info'],
@@ -21,7 +23,9 @@ REQUIRED = {
     'osfmk/kern/atlantic_task_metadata.c': ['_proc_ro_alloc', '_proc_ro_ref_task',
         '_proc_ro_erase_task', '_proc_require', '_task_ref_hold_proc_task_struct',
         '_task_release_proc_task_struct'],
-    'osfmk/kern/atlantic_task_process.c': ['_get_bsdtask_info']}
+    'osfmk/kern/atlantic_task_process.c': ['_get_bsdtask_info'],
+    'osfmk/kern/atlantic_thread_metadata.c': ['_get_thread_ro', '_current_thread_ro',
+        '_get_threadtask', '_get_threadtask_early']}
 
 
 def digest(path):
@@ -92,6 +96,14 @@ def main():
         outcomes.append({'name':context+'-reject-owner', 'exit_code':r.returncode, 'expected':1,
             'passed':r.returncode == 1 and 'AtlanticOS metadata owner offset mismatch' in r.stderr,
             'command':[s.replace(str(ROOT), '<ROOT>') for s in cmd]})
+        if context == 'mach':
+            cmd = [*base, '-DATL_TEST_WRONG_THREAD_OWNER_OFFSET='+str(values['thread_owner_offset']+1),
+                   '-fsyntax-only', str(fixture)]
+            r = subprocess.run(cmd, text=True, capture_output=True, timeout=60)
+            (out/'mach-reject-thread-owner.log').write_text((r.stdout+r.stderr).replace(str(ROOT), '<ROOT>'), encoding='utf-8', newline='\n')
+            outcomes.append({'name':'mach-reject-thread-owner', 'exit_code':r.returncode, 'expected':1,
+                'passed':r.returncode == 1 and 'AtlanticOS thread metadata owner offset mismatch' in r.stderr,
+                'command':[s.replace(str(ROOT), '<ROOT>') for s in cmd]})
     same = len(layouts) == 2 and all(layouts['mach'][k] == layouts['bsd'][k] for k in COMMON)
     object_checks = []
     for item in build['objects']:
@@ -124,7 +136,7 @@ def main():
     print(json.dumps({'passed':sum(c['passed'] for c in outcomes), 'cases':len(outcomes),
                      'shared_fields_match':same, 'task_objects_checked':len(object_checks),
                      'report':str(out/'report.json')}))
-    return 0 if same and len(outcomes) == 4 and all(c['passed'] for c in outcomes) else 1
+    return 0 if same and len(outcomes) == 5 and all(c['passed'] for c in outcomes) else 1
 
 
 if __name__ == '__main__':

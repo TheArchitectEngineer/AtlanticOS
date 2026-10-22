@@ -30,6 +30,8 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 | Locks / ledgers / stack / waitq / turnstiles / SMR | Objetos genuinos y referencias originales | Sin concurrencia ejecutada |
 | Dualq / processor / thread_act / thread_call / timer / refcnt | Cuerpos nativos y tabla de despacho original | Sin contexto/hilo/timer ejecutados |
 | ipc_space / ipc_entry | Objetos genuinos | Otros componentes IPC siguen pendientes |
+| ipc_importance / ipc_object / ipc_port / ipc_kmsg / ipc_mqueue / ipc_right | Objetos genuinos con importancia nativa y headers MIG correctos | Sin mensajes, colas o donación de prioridad ejecutados |
+| ipc_kobject / getters RO de hilo | Dispatch nativo y siete helpers conservados con zonas/backrefs | Sin RPC o validación RO ejecutados |
 | Entry XNU, pmap y contexto integrados | Sin construir/enlazar como conjunto | UNIMPLEMENTED |
 | Platform Expert y BSP G20 | Sin drivers AtlanticOS funcionales | UNIMPLEMENTED |
 | Handoff EDK2 y RAM física | Sin prueba | UNIMPLEMENTED / UNMEASURED |
@@ -84,6 +86,12 @@ no contiene BootShim ni código de plataforma de ports ajenos.
     ya selecciona la placa sin PAC. Conserva el include en otras placas. El
     running-timer KPERF de processor.c usa el mismo guard que el enum original;
     el static_assert que verifica tamaño de la tabla sigue activo.
+13. `0013`: limita el campo de proceso de kobject al bloque MACF que lo usa y
+    conserva fuera el acceso RO del hilo. El índice real de política sigue
+    disponible para los hooks de trazado aunque MACF no esté seleccionado.
+14. `0014`: conserva siete accessors RO originales de bsd_kern.c, incluida
+    validación de zona/propietario y el TASK_NULL temprano. Las 18 funciones
+    conservadas se cotejan por hash/posición con XNU antes de compilar.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
@@ -109,7 +117,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y treinta y nueve experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y cuarenta y siete experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.

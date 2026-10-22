@@ -2,13 +2,13 @@
 
 Estado: compilador completo construido y 18 comprobaciones aprobadas: fixture
 positivo, LLVM IR y 16 rechazos por diagnóstico previsto. No está activado en
-el build XNU normal de trece unidades. El [modo explícito experimental](../docs/XNU_CORE_CLOSURE.md)
-compila treinta y nueve unidades reales, incluidos hilos, VM, pmap, allocators y tareas. No prueba
+el build XNU normal de trece unidades. El [modo explícito experimental](../docs/XNU_IPC_BUILD.md)
+compila cuarenta y siete unidades reales, incluidos hilos, VM, pmap, allocators, tareas e IPC. No prueba
 un kernel ni compatibilidad del teléfono.
 
 La [reproducción limpia de 17 unidades en CI](../evidence/clang-layout-ci17-20261021/manifest.json)
 reconstruyó LLVM y MIG desde fuentes fijadas y pasó los 18 checks de la API.
-Reproduce aquella revisión histórica; no acredita el conjunto actual de 39.
+Reproduce aquella revisión histórica; no acredita el conjunto actual de 47.
 
 El XNU fijado usa metadata de tipos en su allocator. Su código público describe
 encodings por granulos de ocho bytes y el resumen de sus bits bajos, pero los

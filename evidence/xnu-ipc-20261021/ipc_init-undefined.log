@@ -1,0 +1,10 @@
+_ipc_host_init
+_ipc_space_create_special
+_ipc_space_kernel
+_ipc_space_reply
+_kernel_map
+_kmem_range_startup_init
+_kmem_suballoc
+_lck_attr_startup_init
+_lck_grp_startup_init
+_ux_handler_init
