@@ -12,6 +12,13 @@ upstream. Los parches originales están en xnu-port/ y conservan la licencia de
 los archivos modificados. Antes de distribuir componentes derivados,
 mantener procedencia y avisos, revisar cada licencia y adjuntar fuentes aplicables.
 
+El patch 0010 incorpora helpers derivados de kern_proc.c y bsd_kern.c en dos
+unidades de metadata. Conserva los avisos Apple/APSL y los demás avisos de sus
+archivos de origen, incluidos NeXT, Berkeley y SPARTA. Sus cuerpos se fijan por
+líneas y SHA-256 en xnu-port/task-metadata-native.lock.json y se cotejan contra
+el commit XNU antes de compilar. Esas funciones son código XNU conservado y
+adaptado, no código original MIT AtlanticOS.
+
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias
 BSD-2-Clause-Patent y por componente. No se distribuyen sus binarios o wrappers.

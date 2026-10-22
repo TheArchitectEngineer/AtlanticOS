@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "7cdda7f4114ff2f14eefd33322cba40f3d5dbe06405f7bc013a66d40db0c2b9a",
+  "port_id": "e7556095aa5919d6fde77ae5cb69dd80921aad0908bc6e3a908f1efbc707dd04",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -11,7 +11,9 @@
     "0006-guard-bsd-process-and-workqueue-thread-paths.patch": "907cb456f5c5c601bc13e0905cb2127deabd79285566a9b9e028242b2064ba1e",
     "0007-scope-trustcache-types-to-selected-monitor.patch": "13cc2c11718d7207dde3f02eb95ce0aed47fd4e6421b4eab55bc069c9c26f2e4",
     "0008-use-consistent-zone-logging-feature-name.patch": "f3ed5bec208de0720e3ce749e281c8ce72ee28bd5db96197d434ac7ee22991b8",
-    "0009-separate-laboratory-pmap-from-apple-monitor-services.patch": "292aa407b3419c71067397d46333f9fcbfc92829199310c38ce7bc49d5d6389f"
+    "0009-separate-laboratory-pmap-from-apple-monitor-services.patch": "292aa407b3419c71067397d46333f9fcbfc92829199310c38ce7bc49d5d6389f",
+    "0010-retain-native-proc-task-metadata-without-bsd-userland.patch": "74cfbcc9e6eb302f60521bd8a9c85c20cc2d19d202063a4bf1beddf94cc571c5",
+    "0011-bound-task-process-callbacks-by-selected-features.patch": "2d480812db9babf782bc4658e30295a35fc80e432a54009eeda939e841c770b5"
   },
   "canonical_lf_files": [
     {
@@ -83,6 +85,26 @@
       "path": "osfmk/vm/pmap.h",
       "preimage_sha256": "3350ba270c74eb1420b38e0a9b4b6e62bac82f97afc0a81cf0c849d671977acf",
       "postimage_sha256": "9f2655414f51f4776e4c3224dd4b7faeaaa7a6744ac9930e218bfe4fa082ee88"
+    },
+    {
+      "path": "osfmk/kern/task.h",
+      "preimage_sha256": "6791720e2e7c4d1ed276c46d4413aa8279359c70d9b4d3443e879fe8266a516e",
+      "postimage_sha256": "a58d0338442dfce107e5de314963cde73d197810316f92138f2644ae8b39a56a"
+    },
+    {
+      "path": "osfmk/kern/atlantic_task_metadata.c",
+      "preimage_sha256": null,
+      "postimage_sha256": "65a9f8f1d4b60f0812cb0dedd2e26fab5b30a674ec4e3722e9a8db56a4c42a37"
+    },
+    {
+      "path": "osfmk/kern/atlantic_task_process.c",
+      "preimage_sha256": null,
+      "postimage_sha256": "23f1197a52ee39657af04804a14fe461be9fa6bbac51094b1bf1c9c0d89265e5"
+    },
+    {
+      "path": "osfmk/kern/task.c",
+      "preimage_sha256": "f5ea4822b15aca636c4d940679e878904729b88acf312821d2ebacbf69312f71",
+      "postimage_sha256": "18b19054765710b7151fe84e61f83bd775580b6e5a8d4b121a3907cd14009f09"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

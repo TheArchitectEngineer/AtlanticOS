@@ -1,0 +1,276 @@
+AtlanticOS: preserve Mach task lifecycle and VM information while gating optional BSD callbacks.
+No AMFI opt-out is granted without MACF. No init-process identity is fabricated.
+Watchport, deferred-reclaim and memorystatus code follows its actual feature selection.
+
+diff --git a/osfmk/kern/task.c b/osfmk/kern/task.c
+--- a/osfmk/kern/task.c
++++ b/osfmk/kern/task.c
+@@ -204,6 +204,10 @@
+ #if KPERF
+ extern int kpc_force_all_ctrs(task_t, int);
+ #endif
++
++/* Native metadata provider owns the actual combined proc/task allocation. */
++extern struct proc *kernproc;
++extern int proc_check_footprint_priv(void);
+ 
+ SECURITY_READ_ONLY_LATE(task_t) kernel_task;
+ 
+@@ -921,7 +925,10 @@
+ 	thread_t       thread)
+ {
+ 	ipc_space_policy_t pol = ipc_policy_for_task(task);
+-	bool movable_allowed = mac_task_check_get_movable_control_port() == 0;
++	bool movable_allowed = false;
++#if CONFIG_MACF
++	movable_allowed = mac_task_check_get_movable_control_port() == 0;
++#endif
+ 	bool is_simulated = pol & IPC_SPACE_POLICY_SIMULATED;
+ 	bool is_translated = false;
+ 
+@@ -1039,7 +1046,13 @@
+ bool
+ task_is_initproc(task_t task)
+ {
++#ifdef MACH_BSD
+ 	return get_bsdtask_info(task) == initproc;
++#else
++	/* No init process exists in the firmware profile; grant no init privilege. */
++	(void)task;
++	return false;
++#endif
+ }
+ 
+ boolean_t
+@@ -2879,6 +2892,7 @@
+  *	Copy active threads from source task to destination task.
+  *	Source task would be suspended during the copy.
+  */
++#if MACH_BSD
+ kern_return_t
+ task_duplicate_map_and_threads(
+ 	task_t task,
+@@ -3067,6 +3081,8 @@
+ 
+ 	return kr;
+ }
++#endif
++
+ 
+ #if CONFIG_SECLUDED_MEMORY
+ extern void task_set_can_use_secluded_mem_locked(
+@@ -3230,7 +3246,11 @@
+ 	/*
+ 	 *	Clear the watchport boost on the task.
+ 	 */
++#if IMPORTANCE_INHERITANCE
+ 	task_remove_turnstile_watchports(task);
++#else
++	assert(task->watchports == NULL);
++#endif
+ 
+ 	/* let iokit know 1 */
+ 	iokit_task_terminate(task, 1);
+@@ -3463,7 +3483,11 @@
+ 	}
+ #endif /* CONFIG_EXCLAVES */
+ 
++#ifdef MACH_BSD
+ 	dispatchqueue_offset = get_dispatchqueue_offset_from_proc(get_bsdtask_info(task));
++#else
++	dispatchqueue_offset = get_task_dispatchqueue_offset(task);
++#endif
+ 	/*
+ 	 * Terminate all the other threads in the task.
+ 	 */
+@@ -3760,9 +3784,11 @@
+ 	KDBG_RELEASE(MACHDBG_CODE(DBG_MACH_SUSPENSION, MACH_TASK_SUSPEND),
+ 	    task_pid(task), task->user_stop_count, task->pidsuspended);
+ 
++#ifdef MACH_BSD
+ 	if (bsd_info) {
+ 		workq_proc_suspended(bsd_info);
+ 	}
++#endif
+ 
+ 	/*
+ 	 *	Iterate through all the threads and hold them.
+@@ -3895,9 +3921,11 @@
+ 		return;
+ 	}
+ 
++#ifdef MACH_BSD
+ 	if (bsd_info) {
+ 		workq_proc_resumed(bsd_info);
+ 	}
++#endif
+ 
+ 	queue_iterate(&task->threads, thread, thread_t, task_threads) {
+ 		thread_mtx_lock(thread);
+@@ -4290,11 +4318,15 @@
+ 		kr = KERN_SUCCESS;
+ 	}
+ 	if (kr != KERN_SUCCESS) {
++#ifdef MACH_BSD
+ 		printf("warning: %s(%d) failed to copyout suspension "
+ 		    "token for pid %d with error: %d\n",
+ 		    proc_name_address(get_bsdtask_info(current_task())),
+ 		    proc_pid(get_bsdtask_info(current_task())),
+ 		    task_pid(task), kr);
++#else
++		printf("warning: task %p failed to copyout suspension token: %d\n", task, kr);
++#endif
+ 	}
+ 
+ 	return kr;
+@@ -4346,9 +4378,13 @@
+ 		itk_unlock(task);
+ 		is_write_unlock(space);
+ 		if (kr == KERN_SUCCESS) {
++#ifdef MACH_BSD
+ 			printf("warning: %s(%d) performed out-of-band resume on pid %d\n",
+ 			    proc_name_address(get_bsdtask_info(current_task())), proc_pid(get_bsdtask_info(current_task())),
+ 			    task_pid(task));
++#else
++			printf("warning: task %p performed out-of-band resume\n", task);
++#endif
+ 		}
+ 	}
+ 
+@@ -4563,7 +4599,9 @@
+ 
+ 	if ((KERN_SUCCESS == kr) && task->message_app_suspended) {
+ 		iokit_task_app_suspended_changed(task);
++#if CONFIG_DEFERRED_RECLAIM
+ 		vm_deferred_reclamation_task_suspend(task);
++#endif
+ 	}
+ 
+ 	return kr;
+@@ -4624,6 +4662,7 @@
+ 	return kr;
+ }
+ 
++#if IMPORTANCE_INHERITANCE
+ os_refgrp_decl(static, task_watchports_refgrp, "task_watchports", NULL);
+ 
+ /*
+@@ -5039,6 +5078,8 @@
+ 		task_watchports_deallocate(watchports);
+ 	}
+ }
++
++#endif
+ 
+ /*
+  *	task_has_watchports:
+@@ -5626,9 +5667,12 @@
+ 		info = (task_extmod_info_t)task_info_out;
+ 
+ 		p = get_bsdtask_info(task);
++#ifdef MACH_BSD
+ 		if (p) {
+ 			proc_getexecutableuuid(p, info->task_uuid, sizeof(info->task_uuid));
+-		} else {
++		} else
++#endif
++		{
+ 			bzero(info->task_uuid, sizeof(info->task_uuid));
+ 		}
+ 		info->extmod_statistics = task->extmod_statistics;
+@@ -5882,10 +5926,11 @@
+ 		vm_map_t                map;
+ 		ledger_amount_t         tmp_amount;
+ 
++		vmlp_api_start(TASK_INFO); /* also required without BSD compatibility fixups */
++#if MACH_BSD
+ 		struct proc *p;
+ 		uint32_t platform, sdk;
+ 
+-		vmlp_api_start(TASK_INFO); /* this is the only case that is relevant to the lock */
+ 
+ 		p = current_proc();
+ 		platform = proc_platform(p);
+@@ -6005,6 +6050,8 @@
+ #endif /* DEVELOPMENT || DEBUG */
+ 		}
+ #endif /* __arm64__ */
++
++#endif
+ 
+ 		if (*task_info_count < TASK_VM_INFO_REV0_COUNT) {
+ 			error = KERN_INVALID_ARGUMENT;
+@@ -6209,10 +6256,13 @@
+ 			*task_info_count = TASK_VM_INFO_REV3_COUNT;
+ 		}
+ 		if (original_task_info_count >= TASK_VM_INFO_REV4_COUNT) {
++#ifdef MACH_BSD
+ 			if (get_bsdtask_info(task)) {
+ 				vm_info->limit_bytes_remaining =
+ 				    memorystatus_available_memory_internal(get_bsdtask_info(task));
+-			} else {
++			} else
++#endif
++			{
+ 				vm_info->limit_bytes_remaining = 0;
+ 			}
+ 			*task_info_count = TASK_VM_INFO_REV4_COUNT;
+@@ -7185,9 +7235,13 @@
+ 
+ 	/* (See jetsam-related comments below) */
+ 
++#ifdef MACH_BSD
+ 	proc_memstat_skip(bsd_info, TRUE);
++#endif
+ 	kr = task_enqueue_exception_with_corpse(task, EXC_GUARD, codes, 2, reason, backtrace_only);
++#ifdef MACH_BSD
+ 	proc_memstat_skip(bsd_info, FALSE);
++#endif
+ 	return kr;
+ }
+ 
+@@ -8689,18 +8743,27 @@
+ 	__unused mach_port_t task_fatal_port = MACH_PORT_NULL;
+ 	mach_exception_data_type_t      code[EXCEPTION_CODE_MAX];
+ 
++#ifdef MACH_BSD
+ 	pid = proc_selfpid();
+ 	if (get_bsdtask_info(task) != NULL) {
+ 		procname = proc_name_address(get_bsdtask_info(task));
+ 	}
++#else
++	if (task == kernel_task) {
++		return;
++	}
++	pid = task_pid(task);
++#endif
+ 
+ 	/*
+ 	 * Only kernel_task and launchd may be allowed to
+ 	 * have really large ipc space.
+ 	 */
++#ifdef MACH_BSD
+ 	if (pid == 0 || pid == 1) {
+ 		return;
+ 	}
++#endif
+ 
+ 	os_log(OS_LOG_DEFAULT, "process %s[%d] caught allocating too many mach ports. \
+ 	    Num of ports allocated %u; \n", procname, pid, current_size);
+@@ -10385,6 +10448,7 @@
+  * limit. If they are same, race conditions may arise, so we have to prevent
+  * it to happen.
+  */
++#if CONFIG_MEMORYSTATUS
+ static diagthreshold_check_return
+ task_check_memorythreshold_is_valid(task_t task, uint64_t new_limit, bool is_diagnostics_value)
+ {
+@@ -10419,6 +10483,8 @@
+ 		return THRESHOLD_IS_NOT_SAME_AS_LIMIT_FLAG_ENABLED;
+ 	}
+ }
++#endif
++
+ #endif
+ 
+ #if CONFIG_EXCLAVES

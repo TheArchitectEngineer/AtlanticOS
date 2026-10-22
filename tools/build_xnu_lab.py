@@ -44,12 +44,21 @@ EXTRA_SYMBOLS = {'osfmk/arm64/cswitch.s': ['_machine_load_context', '_Call_conti
                  'osfmk/kern/kalloc.c': ['_kalloc_type_impl_external', '_kfree_type_impl_external'],
                  'osfmk/kern/zalloc.c': ['_zone_create_ext', '_zalloc_ext', '_zfree_ext'],
                  'osfmk/arm/pmap/pmap.c': ['_pmap_enter_options', '_pmap_page_protect', '_pmap_ro_zone_memcpy', '_cpu_ttep']}
+EXTRA_SYMBOLS.update({
+    'osfmk/kern/task.c': ['_task_create_internal', '_task_get_ro', '_task_info'],
+    'osfmk/kern/task_ref.c': ['_task_ref_count_init', '_task_ref_count_fini'],
+    'osfmk/kern/atlantic_task_metadata.c': ['_proc_ro_ref_task', '_proc_ro_erase_task',
+        '_task_ref_hold_proc_task_struct', '_task_release_proc_task_struct', '_proc_require', '_kernproc']})
 EXPERIMENTAL_UNITS = {'osfmk/kern/thread.c': '_thread_init',
                       'osfmk/kern/kalloc.c': '_kalloc_type_impl_internal',
                       'osfmk/kern/zalloc.c': '_zinit',
                       'osfmk/vm/vm_map.c': '_vm_map_enter',
-                      'osfmk/arm/pmap/pmap.c': '_pmap_bootstrap'}
-PROBES = [*EXPERIMENTAL_UNITS, 'osfmk/kern/task.c']
+                      'osfmk/arm/pmap/pmap.c': '_pmap_bootstrap',
+                      'osfmk/kern/task.c': '_task_init',
+                      'osfmk/kern/task_ref.c': '_task_ref_init',
+                      'osfmk/kern/atlantic_task_metadata.c': '_proc_ro_alloc',
+                      'osfmk/kern/atlantic_task_process.c': '_get_bsdtask_info'}
+PROBES = ['osfmk/vm/vm_object.c', 'osfmk/vm/vm_fault.c']
 
 
 def digest(path):
@@ -157,6 +166,16 @@ def main():
             ap.error('Patched file differs from recorded postimage: '+item['path'])
         if item['preimage_sha256'] is not None and hashlib.sha256(scm(source, 'show', 'HEAD:'+item['path'])).hexdigest() != item['preimage_sha256']:
             ap.error('Upstream preimage mismatch: '+item['path'])
+    native_lock_path = ROOT/'xnu-port/task-metadata-native.lock.json'
+    native_lock = json.loads(native_lock_path.read_text())
+    if native_lock['upstream_commit'] != lock['xnu']['commit'] or not native_lock['functions']:
+        ap.error('Native metadata provenance must match pinned XNU')
+    for item in native_lock['functions']:
+        lines = scm(source, 'show', 'HEAD:'+item['source']).decode().splitlines(True)
+        body = ''.join(lines[item['first_line']-1:item['last_line']]).rstrip('\n')+'\n\n'
+        if (hashlib.sha256(body.encode()).hexdigest() != item['sha256'] or
+            (source/item['destination']).read_text().count(body) != 1):
+            ap.error('Native metadata body changed: '+item['destination'])
     mig_dir = ROOT/'work/mig-host'
     mig_report = json.loads((mig_dir/'report.json').read_text())
     if mig_report['bootstrap_commit'] != lock['mig_host_tool']['commit'] or digest(mig_dir/'migcom') != mig_report['migcom_sha256']:
@@ -167,6 +186,7 @@ def main():
     build_inputs = {'tools/build_xnu_lab.py': digest(__file__),
                     'tools/xnu_assym.py': digest(ROOT/'tools/xnu_assym.py'),
                     'xnu-port/patches.lock.json': digest(ROOT/'xnu-port/patches.lock.json'),
+                    'xnu-port/task-metadata-native.lock.json': digest(native_lock_path),
                     'xnu-port/config/'+PROFILE.name: digest(PROFILE),
                     'tests/xnu_port/boot_abi.c': digest(ROOT/'tests/xnu_port/boot_abi.c'),
                     'tests/xnu_port/assym_abi.c': digest(ROOT/'tests/xnu_port/assym_abi.c')}
@@ -311,6 +331,9 @@ def main():
         obj = out/(Path(rel).stem+'.o')
         # This flag is mandated for VM sources by upstream Makefile.template.
         per_file = ['-DVM_UNSAFE_TYPES'] if rel.startswith('osfmk/vm/') else []
+        if rel == 'osfmk/kern/atlantic_task_metadata.c':
+            # Match the real BSD-private header context, without BSD userland.
+            per_file += ['-UMACH_KERNEL_PRIVATE', '-DBSD_KERNEL_PRIVATE=1']
         if rel.endswith('.s'):
             # Match upstream SFLAGS_GEN, including the non-Clang ASSEMBLER guard.
             per_file += ['-DASSEMBLER', '-D__ASSEMBLER__', '-x', 'assembler-with-cpp']

@@ -25,8 +25,8 @@ flowchart TD
 | Capa | Responsabilidad | Implementación actual |
 |---|---|---|
 | atlantic-entry | capturar estado OEM, validar memoria, adaptador XNU | preflight propio QEMU EL1/EL2; adaptador XNU/G20 pendiente |
-| xnu-upstream | fuente auténtica fijada, Mach/VM/scheduler | checkout oficial intacto, sin build |
-| xnu-port | parches revisables, Platform Expert, build portable | series vacía y notas |
+| xnu-upstream | fuente auténtica fijada, Mach/VM/scheduler | checkout oficial intacto; build en copia preparada |
+| xnu-port | parches revisables, Platform Expert, build portable | once parches; 13 objetos estándar / 22 experimentales, sin enlace; Platform Expert pendiente |
 | atlantic_core | máquina de estados/eventos/config/validación | Python host original |
 | atlantic-core | implementación freestanding C de servicios comunes | parser FDT acotado; política C futura; Python no se enlaza a firmware |
 | include/atlantic + platforms | ABI v1, capacidad y estado de evidencia | header y BSP G20 que devuelve UNSUPPORTED |
@@ -47,6 +47,13 @@ aún requiere identificar un canal viable. No asumir UART accesible al usuario.
 El BSP consulta capacidades versionadas, no direcciones comunes a todos los SoC.
 Los futuros Qualcomm/MediaTek implementarán la misma ABI con módulos separados.
 Añadir otra carpeta no equivale a soportar otro teléfono.
+
+El perfil de kernel conserva el subconjunto nativo BSD que XNU necesita para
+metadata y vida útil conjunta de proc/task. Los tokens y backrefs permanecen en
+la zona RO original; el ABI ARM64 se compara entre headers privados Mach y BSD.
+MACH_BSD e IOKIT permanecen desactivados: no hay inicialización BSD ni userland.
+Esto es integración compilada, todavía sin asignaciones o protección RO ejecutadas.
+Véase [tareas y límites de la comprobación](XNU_TASK_LIFETIME.md).
 
 En V1 XNU deja de ejecutarse al ceder a EDK2. Se cierran sesiones, se detiene DMA,
 se invalidan callbacks y se transfiere propiedad de RAM. Los Runtime Services de

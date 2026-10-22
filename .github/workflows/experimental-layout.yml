@@ -21,13 +21,15 @@ jobs:
           python3 tools/fetch_xnu.py
           python3 tools/fetch_mig.py
           python3 tools/build_mig.py
-      - name: Compile eighteen genuine XNU units with explicit provider (no link or execution)
+      - name: Compile twenty-two genuine XNU units with explicit provider (no link or execution)
         run: |
           python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
       - name: Verify pmap API rejection, object symbols and actual header dependencies
         run: |
           python3 tools/test_pmap_firmware.py --build work/xnu-lab-builds/*/report.json
           python3 tools/test_pmap_cs_scope.py --build work/xnu-lab-builds/*/report.json
+      - name: Compare real Mach and BSD metadata layouts and reject corrupted owner offsets
+        run: python3 tools/test_task_metadata.py --build work/xnu-lab-builds/*/report.json
       - name: Retain commands, checks and diagnostics, including partial failures
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -47,3 +49,6 @@ jobs:
             work/pmap-firmware-tests/*.log
             work/pmap-cs-scope-tests/report.json
             work/pmap-cs-scope-tests/*.log
+            work/task-metadata-tests/report.json
+            work/task-metadata-tests/*.log
+            work/task-metadata-tests/*.ll

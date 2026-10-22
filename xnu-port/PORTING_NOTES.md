@@ -24,7 +24,8 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 | vm_map.c, kalloc.c, zalloc.c | Objetos reales con proveedor experimental y patches 0007/0008 | Sin enlazar ni ejecutar |
 | machine_routines.c / ipc_init.c | Objetos reales, inicializador IPC estático registrado | Sin ejecutar |
 | pmap.c | Objeto real con patch 0009; cpu_ttep definido por upstream | Sin enlace, MMU o DMA ejecutados |
-| task.c | Dependencias BSD/MAC y vida útil conjunta proc/task | Pendiente |
+| task.c / task_ref.c | Objetos genuinos; vida útil y referencias nativas conservadas | Sin ejecutar |
+| Metadata proc/task y get_bsdtask_info | Helpers XNU conservados, contextos privados separados y ABI cotejado | Sin asignación o protección RO ejecutada |
 | Entry XNU, pmap y contexto integrados | Sin construir/enlazar como conjunto | UNIMPLEMENTED |
 | Platform Expert y BSP G20 | Sin drivers AtlanticOS funcionales | UNIMPLEMENTED |
 | Handoff EDK2 y RAM física | Sin prueba | UNIMPLEMENTED / UNMEASURED |
@@ -67,6 +68,14 @@ no contiene BootShim ni código de plataforma de ports ajenos.
    SART/UAT solo en laboratorio, preserva RO no PPL y el panic IOMMU. Agrega la
    declaración adelantada del protector RO existente. No implementa IOMMU ni
    verificación alternativa. Véase [XNU_PMAP_BUILD](../docs/XNU_PMAP_BUILD.md).
+10. `0010`: conserva el puntero RO de task y el subconjunto nativo de helpers
+    proc/task. Retiene los allocators, flags de referencia, tokens, credenciales
+    y validación de zonas originales, sin habilitar MACH_BSD o su userland.
+    Once cuerpos de funciones se cotejan con el commit upstream por hash.
+11. `0011`: condiciona callbacks de proceso/AMFI/watchport/deferred reclaim y
+    memorystatus a sus features reales. Mantiene la lógica Mach/VM, no concede
+    opt-out AMFI ni identidad init cuando faltan sus proveedores. No implementa
+    los callbacks de IOKit que aún quedan sin resolver.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
@@ -87,11 +96,12 @@ no activa el selector y todavía necesita proveedor para las operaciones Apple.
 No se han silenciado declaraciones implícitas ni los chequeos de tipos.
 Vm_map.c compila tras acotar ese include al monitor seleccionado. Todavía tiene
 dependencias de protección sin proveedor en el conjunto; no se inventa una
-política de ejecución ni se sustituye por respuestas de éxito. Task.c requiere
-separar BSD/MAC y resolver su vida útil conjunta con proceso. Pmap compila tras
+política de ejecución ni se sustituye por respuestas de éxito. Task.c compila
+con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
+Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y dieciocho experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y veintidós experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.

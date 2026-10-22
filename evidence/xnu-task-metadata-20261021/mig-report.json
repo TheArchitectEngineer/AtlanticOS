@@ -1,0 +1,324 @@
+{
+  "label": "HOST_TESTED",
+  "scope": "OFFICIAL_MIG_HOST_TOOL_AND_ARM64_INTERFACE_GENERATION_ONLY",
+  "bootstrap_commit": "c71d2d72f48995baaea76148f61002e5299841de",
+  "xnu_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+  "host_bridge_not_a_target_sdk": true,
+  "kernel_compiled_or_linked": false,
+  "git_integrity_checker": "git.exe",
+  "generated_c_compiled_or_executed": false,
+  "phone_accessed": false,
+  "source_sha256": {
+    "tools/build_mig.py": "2ca9464dacaa5414fee03f927a1b82c189723b721e85b6672b007be486936706",
+    "tests/mig/abi.c": "c5366b94b006a15b4615dd57c845797b6cf25b66d47e4a708b04922c08b7d623",
+    "tests/mig/probe.defs": "e79c3dd113cb5b6aa6861b531ca641562ec02be90b1152502329cca85b4adeea",
+    "tools/mig-host/include/atl_mig_host_guard.h": "29ed786bca6fd3a52448de1ea533588c3e0ecbbde7b584d2d140d661bba3fd03",
+    "tools/mig-host/include/i386/_types.h": "a2419258371950e9cd433794e9b50551c33e0e8d6aee2f228526a8320643883b",
+    "tools/mig-host/include/machine/limits.h": "7aae2197f7aabc835a3049e200adcf0ab8297ebc340ebc86e0d84a1fdde09ef9",
+    "tools/mig-host/include/machine/types.h": "c2c5506f20a49ee5131ce861458a6006f73603c558b378e5d3eac5c8757eeee1",
+    "tools/mig-host/include/sys/_types.h": "698cc30bdc462e91b7fdba2e19045eaab1b5c0fc7490a6a32bc8c99e3be33bb3",
+    "tools/mig-host/include/sys/cdefs.h": "ca0ce7286f877ca01d6edb4411a3576122db75ebf91fd048928872c3f2fdb550"
+  },
+  "tool_versions": {
+    "clang": "Debian clang version 19.1.7 (3+b1)",
+    "bison": "bison (GNU Bison) 3.8.2",
+    "flex": "flex 2.6.4"
+  },
+  "commands": [
+    [
+      "bison",
+      "-y",
+      "-d",
+      "-o",
+      "<ROOT>/work/mig-host/y.tab.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/parser.y"
+    ],
+    [
+      "flex",
+      "-o",
+      "<ROOT>/work/mig-host/lex.yy.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/lexxer.l"
+    ],
+    [
+      "clang",
+      "-std=gnu11",
+      "-DATL_MIG_HOST_TOOL=1",
+      "-Ulinux",
+      "-D__private_extern__=",
+      "-ffile-prefix-map=<ROOT>=.",
+      "-Itools/mig-host/include",
+      "-Ixnu-upstream/osfmk",
+      "-Ixnu-upstream/EXTERNAL_HEADERS",
+      "-Ixnu-upstream/libkern",
+      "-idirafter",
+      "xnu-upstream/bsd",
+      "tests/mig/abi.c",
+      "-o",
+      "<ROOT>/work/mig-host/abi-check"
+    ],
+    [
+      "<ROOT>/work/mig-host/abi-check"
+    ],
+    [
+      "clang",
+      "-DATL_MIG_HOST_TOOL=1",
+      "-DKERNEL=1",
+      "-Itools/mig-host/include",
+      "-E",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "clang",
+      "-std=gnu11",
+      "-DATL_MIG_HOST_TOOL=1",
+      "-Ulinux",
+      "-D__private_extern__=",
+      "-ffile-prefix-map=<ROOT>=.",
+      "-Itools/mig-host/include",
+      "-Ixnu-upstream/osfmk",
+      "-Ixnu-upstream/EXTERNAL_HEADERS",
+      "-Ixnu-upstream/libkern",
+      "-idirafter",
+      "xnu-upstream/bsd",
+      "-DMIG_VERSION=\"bootstrap_cmds-138 AtlanticOS Linux host adapter\"",
+      "-I<ROOT>/work/references/bootstrap_cmds/migcom.tproj",
+      "-I<ROOT>/work/mig-host",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/error.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/global.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/header.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/mig.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/routine.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/server.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/statement.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/string.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/type.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/user.c",
+      "<ROOT>/work/references/bootstrap_cmds/migcom.tproj/utils.c",
+      "<ROOT>/work/mig-host/y.tab.c",
+      "<ROOT>/work/mig-host/lex.yy.c",
+      "-o",
+      "<ROOT>/work/mig-host/migcom"
+    ],
+    [
+      "<ROOT>/work/mig-host/migcom",
+      "-version"
+    ],
+    [
+      "clang",
+      "--target=arm64-apple-darwin",
+      "-E",
+      "-x",
+      "c",
+      "-D__MIG__",
+      "tests/mig/probe.defs"
+    ],
+    [
+      "<ROOT>/work/mig-host/migcom",
+      "-header",
+      "<ROOT>/work/mig-host/probe.h",
+      "-sheader",
+      "<ROOT>/work/mig-host/probeServer.h",
+      "-dheader",
+      "<ROOT>/work/mig-host/probeIds.h",
+      "-user",
+      "<ROOT>/work/mig-host/probeUser.c",
+      "-server",
+      "<ROOT>/work/mig-host/probeServer.c"
+    ],
+    [
+      "<ROOT>/work/mig-host/migcom"
+    ],
+    [
+      "clang",
+      "--target=arm64-apple-darwin",
+      "-E",
+      "-x",
+      "c",
+      "-D__MIG__",
+      "-DKERNEL_SERVER=1",
+      "-DMACH_KERNEL_PRIVATE=1",
+      "-Ixnu-upstream/osfmk",
+      "-Ixnu-upstream/bsd",
+      "-Ixnu-upstream/EXTERNAL_HEADERS",
+      "xnu-upstream/osfmk/mach/clock.defs"
+    ],
+    [
+      "<ROOT>/work/mig-host/migcom",
+      "-novouchers",
+      "-mach_msg2",
+      "-header",
+      "<ROOT>/work/mig-host/clock.h",
+      "-sheader",
+      "<ROOT>/work/mig-host/clockServer.h",
+      "-dheader",
+      "<ROOT>/work/mig-host/clockIds.h",
+      "-user",
+      "<ROOT>/work/mig-host/clockUser.c",
+      "-server",
+      "<ROOT>/work/mig-host/clockServer.c"
+    ],
+    [
+      "clang",
+      "--target=arm64-apple-darwin",
+      "-E",
+      "-x",
+      "c",
+      "-D__MIG__",
+      "-DKERNEL_SERVER=1",
+      "-DMACH_KERNEL_PRIVATE=1",
+      "-Ixnu-upstream/osfmk",
+      "-Ixnu-upstream/bsd",
+      "-Ixnu-upstream/EXTERNAL_HEADERS",
+      "xnu-upstream/osfmk/mach/mach_host.defs"
+    ],
+    [
+      "<ROOT>/work/mig-host/migcom",
+      "-novouchers",
+      "-mach_msg2",
+      "-header",
+      "<ROOT>/work/mig-host/mach_host.h",
+      "-sheader",
+      "<ROOT>/work/mig-host/mach_hostServer.h",
+      "-dheader",
+      "<ROOT>/work/mig-host/mach_hostIds.h",
+      "-user",
+      "<ROOT>/work/mig-host/mach_hostUser.c",
+      "-server",
+      "<ROOT>/work/mig-host/mach_hostServer.c"
+    ],
+    [
+      "clang",
+      "--target=arm64-apple-darwin",
+      "-E",
+      "-x",
+      "c",
+      "-D__MIG__",
+      "-DKERNEL_SERVER=1",
+      "-DMACH_KERNEL_PRIVATE=1",
+      "-Ixnu-upstream/osfmk",
+      "-Ixnu-upstream/bsd",
+      "-Ixnu-upstream/EXTERNAL_HEADERS",
+      "xnu-upstream/osfmk/mach/mach_port.defs"
+    ],
+    [
+      "<ROOT>/work/mig-host/migcom",
+      "-novouchers",
+      "-mach_msg2",
+      "-header",
+      "<ROOT>/work/mig-host/mach_port.h",
+      "-sheader",
+      "<ROOT>/work/mig-host/mach_portServer.h",
+      "-dheader",
+      "<ROOT>/work/mig-host/mach_portIds.h",
+      "-user",
+      "<ROOT>/work/mig-host/mach_portUser.c",
+      "-server",
+      "<ROOT>/work/mig-host/mach_portServer.c"
+    ]
+  ],
+  "migcom_sha256": "56232caefb36e4f73b320bd283bb92a6fbfeaa9105cb66ac13401e869d7a2a17",
+  "generated": [
+    {
+      "path": "probe.h",
+      "bytes": 5034,
+      "sha256": "7a1e689b8a664532b160c92f8b7e34168efb84aaa05494f1f9eb23284d379c83"
+    },
+    {
+      "path": "probeServer.h",
+      "bytes": 5244,
+      "sha256": "a7e8fdbb4010665d37f6e3cff6bce303b2d0bd6449debab92bebcbcd45d8fa25"
+    },
+    {
+      "path": "probeIds.h",
+      "bytes": 994,
+      "sha256": "c00976baebc96ae52cfd6506cbe84af780da12bb5d16d64cd2442057ea806882"
+    },
+    {
+      "path": "probeUser.c",
+      "bytes": 6806,
+      "sha256": "bf545238f7ac8288b1d09bb9d3a517008719647fccff30b12ccd7cc626259499"
+    },
+    {
+      "path": "probeServer.c",
+      "bytes": 6262,
+      "sha256": "8a37f28183c841adf36a8e5ea60b71fa99637afd269bab7d463994eaf1b13b8a"
+    },
+    {
+      "path": "clock.h",
+      "bytes": 10043,
+      "sha256": "a34d4b0e78580bd5dbe7f41a4db5bbd522effb4860ea0b1d8a17c0f34c3e0ca3"
+    },
+    {
+      "path": "clockServer.h",
+      "bytes": 10742,
+      "sha256": "9e3b9247945dd84158daba3804963e7d3aed365e275015ed8b5bfe9013fa4974"
+    },
+    {
+      "path": "clockIds.h",
+      "bytes": 1236,
+      "sha256": "5c7a5ef88db93dedf4267348d2a7e17740a8a243d51ba1a717bb3421dc075fb1"
+    },
+    {
+      "path": "clockUser.c",
+      "bytes": 16353,
+      "sha256": "928ce31a830e29ae8ac5fb7f8cdbfc76208c0a327d897d66bb234c838cad0289"
+    },
+    {
+      "path": "clockServer.c",
+      "bytes": 15186,
+      "sha256": "267e176ac12ea5e6a347809534adf28d09b4dc3d199aa578bc8ee450164ced46"
+    },
+    {
+      "path": "mach_host.h",
+      "bytes": 52845,
+      "sha256": "e97cd0729067c1bca1098d83798e4a125f895f891a4ea581b7de2cc5c3ba2d76"
+    },
+    {
+      "path": "mach_hostServer.h",
+      "bytes": 53865,
+      "sha256": "18dd79a60ecdf4808438a9d1a562b7ebeedf919b3234082bb1bb8a506d4a229e"
+    },
+    {
+      "path": "mach_hostIds.h",
+      "bytes": 4979,
+      "sha256": "46fb0ed274c11703f97f2cba3b1e41067055cddf6db4e28b3ea04ce13b567d66"
+    },
+    {
+      "path": "mach_hostUser.c",
+      "bytes": 101090,
+      "sha256": "f2131bfe770700ea9775d197401e2c58f09c799aa15d9056ad9ec3149da41cca"
+    },
+    {
+      "path": "mach_hostServer.c",
+      "bytes": 104314,
+      "sha256": "83e907ef850dd8a651e18ccc7e7597c89dfb84b3a3fb512c4d0bb5ac577ba655"
+    },
+    {
+      "path": "mach_port.h",
+      "bytes": 99829,
+      "sha256": "2313ea37898c25e7b122c9ced51290e2f67f5cc8f52be5e5daf4decb664d552c"
+    },
+    {
+      "path": "mach_portServer.h",
+      "bytes": 99754,
+      "sha256": "27d4de37aa7353f4fcf189b2484e2f0cab5d3db537bf3b7512beacce8d16e1c7"
+    },
+    {
+      "path": "mach_portIds.h",
+      "bytes": 9282,
+      "sha256": "fef862e88dc79922259b6747bf83e27a8a0bf6ef0f38945c43514f9816711cff"
+    },
+    {
+      "path": "mach_portUser.c",
+      "bytes": 175297,
+      "sha256": "6e9f6e7a6bdf218ea110fb33d0db7a6bd9b5ebd2d87ed07939e39672c5040d0f"
+    },
+    {
+      "path": "mach_portServer.c",
+      "bytes": 174719,
+      "sha256": "71d05a792ce1f2fc69de1947a2eef25d5cd76d84cce7d89316eebc8ff80c70b9"
+    }
+  ]
+}

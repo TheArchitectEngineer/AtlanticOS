@@ -172,10 +172,10 @@ Para intentar además las unidades restantes:
 python3 tools/build_xnu_lab.py --probe-remaining
 ```
 
-Este modo intenta las unidades experimentales, task.c y pmap, y devuelve exit 1
-si alguna falla, conservando resultados parciales. No es un build completo aprobado.
+Este modo añade probes de vm_object.c y vm_fault.c y devuelve exit 1 si alguno
+falla, conservando resultados parciales. No es un build completo aprobado.
 El modo estándar carece de las operaciones privadas de tipos requeridas;
-el experimental compila hilos/allocators/vm_map y conserva fallos de task/pmap.
+el experimental incorpora ahora hilos/allocators/vm_map/pmap y tareas.
 Se consultó el builtin con target ARM64 Darwin
 en Clang 19.1.7 Linux y 22.1.4 MSYS2 y ambos informaron que no estaba disponible.
 Eso no demuestra que ningún otro toolchain o adaptación correcta lo resuelva.
@@ -200,6 +200,8 @@ La [integración inicial de doce unidades](XNU_THREAD_BUILD.md) añadió thread.
 con LLVM modificado por AtlanticOS y guards MACH_BSD. La
 [ampliación de VM y allocators](XNU_VM_ALLOCATOR_BUILD.md) llega a diecisiete,
 con parches 0007/0008. La [incorporación de pmap](XNU_PMAP_BUILD.md) llega a
-dieciocho con patch 0009. El proveedor solo se activa con --layout-compiler y su
+dieciocho con patch 0009. La [metadata nativa de tareas](XNU_TASK_LIFETIME.md)
+añade task.c, task_ref.c y dos unidades de helpers conservados: veintidós objetos.
+El proveedor solo se activa con --layout-compiler y su
 --layout-proof correspondiente. El modo estándar de trece unidades también se
 verificó. Los resultados no acreditan allocator o hilos en ejecución.

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+  "scope": "VERBATIM_XNU_FUNCTION_BODIES_ONLY_NOT_RUNTIME_PROOF",
+  "functions": [
+    {
+      "source": "bsd/kern/kern_proc.c",
+      "first_line": 1865,
+      "last_line": 1869,
+      "sha256": "8f35fca8bd0f1d1df3e2b4eae4238b392851865e53cab1fead3610578046131d",
+      "destination": "osfmk/kern/atlantic_task_metadata.c"
+    },
+    {
+      "source": "bsd/kern/kern_proc.c",
+      "first_line": 1871,
+      "last_line": 1875,
+      "sha256": "c1716b67cbf125e56c1b5ee02b725f04777d3a18deac0f88e0d731170be38990",
+      "destination": "osfmk/kern/atlantic_task_metadata.c"
+    },
+    {
+      "source": "bsd/kern/kern_proc.c",
+      "first_line": 1290,
+      "last_line": 1298,
+      "sha256": "0cb17715bb73a91da3311d1664e5092ec13c6bffa9bc74c7c212ca8393b2f399",
+      "destination": "osfmk/kern/atlantic_task_metadata.c"
+    },
+    {
+      "source": "bsd/kern/kern_proc.c",
+      "first_line": 1141,
+      "last_line": 1154,
+      "sha256": "1d79b2c690d92fef5ea3653809b04a448c0c84d921a9de5cbc13f4db72b23f46",
+      "destination": "osfmk/kern/atlantic_task_metadata.c"
+    },
+    {
+      "source": "bsd/kern/kern_proc.c",
+      "first_line": 1165,
+      "last_line": 1170,
+      "sha256": "c28b923c73cb00428d60d171c64dafe6244212efd59073efd6a7cefb8a384952",
+      "destination": "osfmk/kern/atlantic_task_metadata.c"
+    },
+    {
+      "source": "bsd/kern/kern_proc.c",
+      "first_line": 1172,
+      "last_line": 1181,
+      "sha256": "22736ac7955e2dfd89857f1437e4273487af9c32cc887552ed9b4b4b66cd29d8",
+      "destination": "osfmk/kern/atlantic_task_metadata.c"
+    },
+    {
+      "source": "bsd/kern/kern_proc.c",
+      "first_line": 5397,
+      "last_line": 5420,
+      "sha256": "6edaabbc30a48ba535d2f05d2d464ce85c7dba635338e563bba52168bbc6d721",
+      "destination": "osfmk/kern/atlantic_task_metadata.c"
+    },
+    {
+      "source": "bsd/kern/kern_proc.c",
+      "first_line": 5422,
+      "last_line": 5438,
+      "sha256": "a7e887a9b58e63ddb505f43404a1441f96778955adba83f40687ac5094743e82",
+      "destination": "osfmk/kern/atlantic_task_metadata.c"
+    },
+    {
+      "source": "bsd/kern/kern_proc.c",
+      "first_line": 5440,
+      "last_line": 5445,
+      "sha256": "1375d342ce397bc4c406d02545c670c672ad8e56cda8e8e724044bb5f0b6f5d2",
+      "destination": "osfmk/kern/atlantic_task_metadata.c"
+    },
+    {
+      "source": "bsd/kern/kern_proc.c",
+      "first_line": 5481,
+      "last_line": 5485,
+      "sha256": "8162404b1f2fc10e3927186b80e5b125a248511656067af57de8b654dc532666",
+      "destination": "osfmk/kern/atlantic_task_metadata.c"
+    },
+    {
+      "source": "osfmk/kern/bsd_kern.c",
+      "first_line": 91,
+      "last_line": 97,
+      "sha256": "1fae25ccefe6f7065e70acf1dc14add119b52308cef842a337a7edebc02016d3",
+      "destination": "osfmk/kern/atlantic_task_process.c"
+    }
+  ]
+}
