@@ -7,7 +7,7 @@ en osfmk/kern/kalloc.h del commit f6217f891ac0bb64f3d375211650a4c1ff8ca1ea.
 
 | Operación | Semántica observada en la fuente primaria | Estado |
 |---|---|---|
-| __builtin_clzg / __builtin_ctzg | Operaciones genéricas de bits usadas en kern/bits.h | Clang 19 compila once unidades estándar; Clang 18.1.3 falla. El driver exige capacidades del target, sin fallback |
+| __builtin_clzg / __builtin_ctzg | Operaciones genéricas de bits usadas en kern/bits.h | Clang 19 compila trece unidades estándar; Clang 18.1.3 falla. El driver exige capacidades del target, sin fallback |
 | __builtin_xnu_types_compatible | Tipos iguales o compatibles por firma XNU; kalloc trata void como wildcard | API Apple sin proveedor probado; alternativa explícita C experimental |
 | __builtin_xnu_type_summary | Resumen del layout: presencia de encodings de granulos, incluidos solapamientos | API Apple sin proveedor probado; alternativa explícita C experimental |
 | __builtin_xnu_type_signature | Firma por granulos de ocho bytes; distingue padding, punteros, datos y PAC | API Apple sin proveedor probado; alternativa explícita C sin PAC |
@@ -52,15 +52,17 @@ El compilador completo se construyó y pasó 18 comprobaciones preparadas. No
 declara implementar los builtins privados Apple. El selector explícito de kalloc
 y los guards BSD permiten compilar thread.c como duodécimo objeto real. Los
 checks de macros kalloc y rechazo de punteros incompatibles pasaron. El build
-normal de once unidades no lo activa; el enlace y runtime siguen pendientes.
-Véase [XNU_THREAD_BUILD](XNU_THREAD_BUILD.md).
+normal no lo activa; el enlace y runtime siguen pendientes. La ampliación
+posterior compila diecisiete objetos con VM/allocators. Véanse
+[XNU_THREAD_BUILD](XNU_THREAD_BUILD.md) y [XNU_VM_ALLOCATOR_BUILD](XNU_VM_ALLOCATOR_BUILD.md).
 
-Otro límite independiente es vm_map.c: sys/code_signing.h alcanza pmap_cs.h y
-TrustCache/API.h ausente. Recortar solo ese include no resuelve las llamadas ni
-la política de ejecución. El perfil sin userland necesita una separación
-coherente de VM y firma Apple; carga dinámica/payloads sigue denegada mientras
-su verificación propia no esté implementada. No añadir TrustCache vacío ni
-funciones de seguridad que retornen éxito.
+El include de TrustCache se condicionó al monitor que utiliza sus tipos en el
+perfil de firmware; los targets upstream conservan el include. Vm_map.c compila
+sin modificar sus verificadores o protecciones, cuyas dependencias siguen sin
+cerrar. Las pruebas de selección exigen la API real para PPL y ruta upstream.
+Pmap todavía alcanza CoreEntitlements/V2/API.h y task.c requiere separar BSD/MAC.
+La carga dinámica/payloads sigue denegada mientras su verificación propia no esté
+implementada. No añadir headers vacíos ni funciones de seguridad que retornen éxito.
 
 Los diagnósticos conservados están en [XNU_LAB_BUILD](XNU_LAB_BUILD.md). El
 próximo éxito requerido sigue siendo código genuino compilable y enlazable,

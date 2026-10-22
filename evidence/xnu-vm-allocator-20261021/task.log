@@ -1,0 +1,80 @@
+In file included from <ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:112:
+In file included from <ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.h:133:
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/thread.h:1641:49: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1641 | extern void             uthread_cred_ref(struct ucred *);
+      |                                                 ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/thread.h:1642:50: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1642 | extern void             uthread_cred_free(struct ucred *);
+      |                                                  ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:924:25: error: call to undeclared function 'mac_task_check_get_movable_control_port'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  924 |         bool movable_allowed = mac_task_check_get_movable_control_port() == 0;
+      |                                ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:1042:35: error: use of undeclared identifier 'initproc'
+ 1042 |         return get_bsdtask_info(task) == initproc;
+      |                                          ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:1182:2: error: use of undeclared identifier 'kernproc'
+ 1182 |         kernproc = (struct proc *)zalloc_flags(proc_task_zone, Z_WAITOK | Z_ZERO);
+      |         ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:1183:34: error: use of undeclared identifier 'kernproc'
+ 1183 |         kernel_task = proc_get_task_raw(kernproc);
+      |                                         ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:1774:13: error: no member named 'bsd_info_ro' in 'struct task'
+ 1774 |                 new_task->bsd_info_ro = proc_ro_ref_task(proc_ro, new_task, &task_ro_data);
+      |                 ~~~~~~~~  ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:1776:13: error: no member named 'bsd_info_ro' in 'struct task'
+ 1776 |                 new_task->bsd_info_ro = proc_ro_alloc(NULL, NULL, new_task, &task_ro_data);
+      |                 ~~~~~~~~  ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:2308:27: error: no member named 'bsd_info_ro' in 'struct task'
+ 2308 |         proc_ro_erase_task(task->bsd_info_ro);
+      |                            ~~~~  ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:2309:44: error: no member named 'bsd_info_ro' in 'struct task'
+ 2309 |         task_release_proc_task_struct(task, task->bsd_info_ro);
+      |                                             ~~~~  ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:2926:3: error: call to undeclared function 'memorystatus_abort_vm_map_fork'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2926 |                 memorystatus_abort_vm_map_fork(task);
+      |                 ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:2935:6: error: call to undeclared function 'memorystatus_allowed_vm_map_fork'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2935 |         if (memorystatus_allowed_vm_map_fork(task, &is_large)) {
+      |             ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:2968:4: error: call to undeclared function 'memorystatus_abort_vm_map_fork'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2968 |                         memorystatus_abort_vm_map_fork(task);
+      |                         ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:2975:3: error: call to undeclared function 'memorystatus_abort_vm_map_fork'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2975 |                 memorystatus_abort_vm_map_fork(task);
+      |                 ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:3466:25: error: call to undeclared function 'get_dispatchqueue_offset_from_proc'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 3466 |         dispatchqueue_offset = get_dispatchqueue_offset_from_proc(get_bsdtask_info(task));
+      |                                ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:3764:3: error: call to undeclared function 'workq_proc_suspended'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 3764 |                 workq_proc_suspended(bsd_info);
+      |                 ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:3899:3: error: call to undeclared function 'workq_proc_resumed'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 3899 |                 workq_proc_resumed(bsd_info);
+      |                 ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:4295:7: error: call to undeclared function 'proc_name_address'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 4295 |                     proc_name_address(get_bsdtask_info(current_task())),
+      |                     ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:4295:7: warning: format specifies type 'char *' but the argument has type 'int' [-Wformat]
+ 4293 |                 printf("warning: %s(%d) failed to copyout suspension "
+      |                                  ~~
+      |                                  %d
+ 4294 |                     "token for pid %d with error: %d\n",
+ 4295 |                     proc_name_address(get_bsdtask_info(current_task())),
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:4350:8: error: call to undeclared function 'proc_name_address'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 4350 |                             proc_name_address(get_bsdtask_info(current_task())), proc_pid(get_bsdtask_info(current_task())),
+      |                             ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:4350:8: warning: format specifies type 'char *' but the argument has type 'int' [-Wformat]
+ 4349 |                         printf("warning: %s(%d) performed out-of-band resume on pid %d\n",
+      |                                          ~~
+      |                                          %d
+ 4350 |                             proc_name_address(get_bsdtask_info(current_task())), proc_pid(get_bsdtask_info(current_task())),
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:4566:3: error: call to undeclared function 'vm_deferred_reclamation_task_suspend'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 4566 |                 vm_deferred_reclamation_task_suspend(task);
+      |                 ^
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/kern/task.c:4803:7: error: call to undeclared function 'ipc_port_replace_watchport_elem_conditional_locked'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 4803 |                 if (ipc_port_replace_watchport_elem_conditional_locked(port,
+      |                     ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+4 warnings and 20 errors generated.

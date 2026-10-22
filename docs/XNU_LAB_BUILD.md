@@ -1,8 +1,8 @@
 # Build incremental XNU ARM64 — 2026-10-21
 
-El perfil original atlanticlab compila once unidades reales del XNU fijado:
+El perfil original atlanticlab compila trece unidades reales del XNU fijado:
 bootstrap, scheduler, reloj, inicialización de VM, allocator, entrada ARM64 y
-cambio de contexto, vectores, rutinas de máquina, arm_init y arm_vm_init. Produce
+cambio de contexto, vectores, rutinas de máquina, arm_init, arm_vm_init e IPC. Produce
 objetos AArch64 Mach-O sin enlazar. No genera una imagen de teléfono ni ejecuta
 XNU. El arranque físico y el handoff continúan pendientes.
 
@@ -105,6 +105,8 @@ aserciones de layout ni se desactivaron errores de tipos.
 | osfmk/arm64/machine_routines_asm.s | set_mmu_ttb, set_mmu_ttb_alternate |
 | osfmk/arm/arm_init.c | arm_init, arm_init_cpu, arm_init_idle_cpu; const_boot_args real |
 | osfmk/arm64/arm_vm_init.c | arm_vm_init; bootstrap_pagetables real |
+| osfmk/arm64/machine_routines.c | machine_startup |
+| osfmk/ipc/ipc_init.c | ipc_init local; registro STARTUP(MACH_IPC) real |
 
 Se comprueban magic/tipo/arquitectura Mach-O, fuentes y objetos hasheados,
 símbolos definidos y pendientes. Bootstrap debe referenciar vm_mem_bootstrap,
@@ -113,10 +115,11 @@ task_init, thread_init y sched_init: no se cuentan prototipos sin cuerpo.
 Work/xnu-lab-builds/<build-id>/report.json contiene comandos, versiones,
 opciones, headers generados, hashes y resultados. Los .o y fuentes completos
 permanecen privados; se publica metadata y el patchset correspondiente.
-Un exit 0 del driver solo acredita esas once compilaciones y los checks
+Un exit 0 del driver estándar solo acredita esas trece compilaciones y los checks
 descritos. El inventario agregado resta símbolos externos definidos por los
 objetos a los requeridos; no es una prueba de enlace, relocaciones o reachability.
-Cada símbolo principal debe estar definido como texto externo (T); los buffers
+Los símbolos principales son texto externo (T), salvo ipc_init: es un
+inicializador estático real (t), con su registro STARTUP exigido. Los buffers
 de arranque exigidos deben tener su definición real. Cpu_ttep sigue sin proveedor
 en este subconjunto: no se le agrega una definición arbitraria para cerrar el grafo.
 
@@ -169,10 +172,11 @@ Para intentar además las unidades restantes:
 python3 tools/build_xnu_lab.py --probe-remaining
 ```
 
-Este modo también compila thread.c y vm_map.c y devuelve exit 1 si alguna
-falla, conservando resultados parciales. No es un build completo aprobado.
-En el modo estándar thread.c falla por las operaciones privadas de tipos;
-vm_map.c por TrustCache/API.h. Se consultó ese builtin con target ARM64 Darwin
+Este modo intenta las unidades experimentales, task.c y pmap, y devuelve exit 1
+si alguna falla, conservando resultados parciales. No es un build completo aprobado.
+El modo estándar carece de las operaciones privadas de tipos requeridas;
+el experimental compila hilos/allocators/vm_map y conserva fallos de task/pmap.
+Se consultó el builtin con target ARM64 Darwin
 en Clang 19.1.7 Linux y 22.1.4 MSYS2 y ambos informaron que no estaba disponible.
 Eso no demuestra que ningún otro toolchain o adaptación correcta lo resuelva.
 
@@ -192,8 +196,9 @@ Ampliación a once y bootstrap ARM64: [xnu-bootstrap-20261021](../evidence/xnu-b
 
 ## Proveedor experimental explícito
 
-El [build de doce unidades](XNU_THREAD_BUILD.md) añade thread.c con un compilador
-LLVM modificado por AtlanticOS y guards MACH_BSD. Los parches 0005/0006 están
-incluidos en la serie; el proveedor solo se activa con --layout-compiler y su
---layout-proof correspondiente. El modo estándar de once unidades también se
-volvió a verificar. Los resultados no acreditan allocator o hilos en ejecución.
+La [integración inicial de doce unidades](XNU_THREAD_BUILD.md) añadió thread.c
+con LLVM modificado por AtlanticOS y guards MACH_BSD. La
+[ampliación de VM y allocators](XNU_VM_ALLOCATOR_BUILD.md) llega a diecisiete,
+con parches 0007/0008. El proveedor solo se activa con --layout-compiler y su
+--layout-proof correspondiente. El modo estándar de trece unidades también se
+verificó. Los resultados no acreditan allocator o hilos en ejecución.

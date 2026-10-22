@@ -1,14 +1,16 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "d43c2f38e38f2999f38b049bd7778fd42fb57bfab75004c9c0338e5e866fe537",
+  "port_id": "80a906b3c4ae00e643c0fc88dc7606ba0eb37fcbdea92503400042ef72815668",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
     "0003-separate-firmware-bootstrap-from-apple-userland.patch": "fb9c0de2be8b1db499463d1b5a304d71e4d0fe5902157c133379758d517e8b94",
     "0004-isolate-apple-soc-tunables-from-laboratory-entry.patch": "4de1aeeb429ea629f000adeca10f4c8154afe84c6b901b2fd15cafa9a71ef0f9",
     "0005-select-explicit-atlantic-c-layout-provider.patch": "772f135d5cdd777bddc87d40959c6ece13d19cff015911f0ebfe0c217b321bbd",
-    "0006-guard-bsd-process-and-workqueue-thread-paths.patch": "907cb456f5c5c601bc13e0905cb2127deabd79285566a9b9e028242b2064ba1e"
+    "0006-guard-bsd-process-and-workqueue-thread-paths.patch": "907cb456f5c5c601bc13e0905cb2127deabd79285566a9b9e028242b2064ba1e",
+    "0007-scope-trustcache-types-to-selected-monitor.patch": "13cc2c11718d7207dde3f02eb95ce0aed47fd4e6421b4eab55bc069c9c26f2e4",
+    "0008-use-consistent-zone-logging-feature-name.patch": "f3ed5bec208de0720e3ce749e281c8ce72ee28bd5db96197d434ac7ee22991b8"
   },
   "canonical_lf_files": [
     {
@@ -55,6 +57,21 @@
       "path": "osfmk/kern/thread.c",
       "preimage_sha256": "8a4d00524913a5082c8d157b33e9ed52c0899c82de371e1188b6f5c3143426e2",
       "postimage_sha256": "c65602911849b1f5f200e74051a0d2fce4b88add47f3b9637f98f4e72ce99731"
+    },
+    {
+      "path": "osfmk/vm/pmap_cs.h",
+      "preimage_sha256": "8f6a0e3b0f4d9da2337333c8410c14031b9abc2967a51f96bd424c5b48b9c6f6",
+      "postimage_sha256": "c566d94df7f7103134d2b56bc265eca9a9a275c5db6be3454439d58406891b92"
+    },
+    {
+      "path": "osfmk/kern/zalloc_internal.h",
+      "preimage_sha256": "98a1339a75d5f61ecd293b71eeb0e88aa9b51ec5075ac31c4a102d7652fe1eba",
+      "postimage_sha256": "0b85ef7c5a28260ddfcb9a1ac8738a392d24ef07d770fc97d0603cc1cf1626b9"
+    },
+    {
+      "path": "osfmk/kern/zalloc.c",
+      "preimage_sha256": "cbeb1bbcae28695a2532966a8efa00f6c479d43661f70d2f45ceb4a91ccea3aa",
+      "postimage_sha256": "c50d7df1fe1d849e548408ff39706b609d2d74890e89cb337f2384c775328855"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

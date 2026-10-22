@@ -44,3 +44,5 @@ jobs:
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-bootstrap-20261021/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/clang-layout-20261021/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-thread-20261021/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/clang-layout-ci-20261021/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/xnu-vm-allocator-20261021/manifest.json

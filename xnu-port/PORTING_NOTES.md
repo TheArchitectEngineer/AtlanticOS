@@ -21,7 +21,9 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 | arm_init.c | Bootstrap C y const_boot_args compilados | No ejecutado |
 | arm_vm_init.c | Inicialización VM y bootstrap_pagetables compilados | Sin mapa VM operativo |
 | thread.c | Objeto real con proveedor experimental explícito y guardas BSD | Sin enlazar ni ejecutar |
-| vm_map.c | Probe fallido por TrustCache/API.h | Pendiente |
+| vm_map.c, kalloc.c, zalloc.c | Objetos reales con proveedor experimental y patches 0007/0008 | Sin enlazar ni ejecutar |
+| machine_routines.c / ipc_init.c | Objetos reales, inicializador IPC estático registrado | Sin ejecutar |
+| task.c / pmap.c | Probes fallidos por dependencias BSD/MAC y CoreEntitlements | Pendientes |
 | Entry XNU, pmap y contexto integrados | Sin construir/enlazar como conjunto | UNIMPLEMENTED |
 | Platform Expert y BSP G20 | Sin drivers AtlanticOS funcionales | UNIMPLEMENTED |
 | Handoff EDK2 y RAM física | Sin prueba | UNIMPLEMENTED / UNMEASURED |
@@ -53,6 +55,12 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 6. `0006`: guards MACH_BSD para salidas de proceso, nombres y workqueues
    cooperativas en thread.c. Conserva la implementación Mach; no sustituye
    funciones con stubs. Permanecen dependencias BSD sin enlazar.
+7. `0007`: condiciona TrustCache/API.h cuando firmware no selecciona su monitor
+   PPL. Los usos de sus tipos ya están dentro de ese guard. Mantiene el include
+   de los demás targets y todas las declaraciones y llamadas de protección.
+8. `0008`: usa ZALLOC_ENABLE_LOGGING, ya definido, en los guards que tenían el
+   nombre ZONE_ENABLE_LOGGING sin definición en este snapshot. Conserva los
+   campos y funciones de logging del perfil DEVELOPMENT.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
@@ -71,11 +79,12 @@ Thread.c compila con el selector experimental y el compilador original probado,
 como documenta [XNU_THREAD_BUILD](../docs/XNU_THREAD_BUILD.md). El modo estándar
 no activa el selector y todavía necesita proveedor para las operaciones Apple.
 No se han silenciado declaraciones implícitas ni los chequeos de tipos.
-vm_map.c aún alcanza TrustCache/API.h mediante headers de code signing.
-Se debe completar ese límite de funcionalidades y preservar una política de
-ejecución explícita, sin sustituirla por respuestas de éxito.
+Vm_map.c compila tras acotar ese include al monitor seleccionado. Todavía tiene
+dependencias de protección sin proveedor en el conjunto; no se inventa una
+política de ejecución ni se sustituye por respuestas de éxito. Task.c requiere
+separar BSD/MAC y pmap alcanza CoreEntitlements/V2/API.h mediante AMFI.
 
-Los once objetos estándar y doce experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y diecisiete experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.

@@ -1,5 +1,8 @@
 # Objeto genuino de hilos y proveedor explícito de layouts — 2026-10-21
 
+Esta entrega registra la integración inicial de doce unidades. La ampliación
+posterior de [VM y allocators](XNU_VM_ALLOCATOR_BUILD.md) compila diecisiete.
+
 El build experimental compila doce unidades XNU ARM64: las once del perfil
 estándar más osfmk/kern/thread.c. Comprueba thread_init como texto externo y las
 definiciones reales de kernel_thread_start y thread_terminate_self. No hay enlace
@@ -25,7 +28,11 @@ procedencia local no es una certificación criptográfica del compilador.
 La [CI manual](../.github/workflows/experimental-layout.yml) reconstruye LLVM
 desde su archivo fijado y repite API, MIG y las doce unidades. El workflow normal
 no construye LLVM ni activa CONFIG_ATLANTIC_C_LAYOUT. Un workflow preparado no
-acredita su ejecución: los resultados se documentan por run concreto.
+acredita su ejecución: los resultados se documentan por run concreto. La
+[CI 39626520147](https://github.com/h0nda1337/AtlanticOS/actions/runs/39626520147)
+reconstruyó LLVM y aprobó las doce unidades de esta entrega; sus inputs y 137
+constantes coinciden con los locales. La evidencia está en
+[clang-layout-ci-20261021](../evidence/clang-layout-ci-20261021/manifest.json).
 
 ## Cambios sobre XNU
 

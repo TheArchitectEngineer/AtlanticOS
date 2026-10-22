@@ -4,8 +4,9 @@ Firmware de prearranque ARM64 propuesto, basado en un port auténtico y reducido
 de XNU. Primera placa: Motorola Moto G20 / Unisoc T700 (UMS512).
 
 **Estado 2026-10-21: auditoría Fase 0, prototipo host Fase 1 y port XNU
-incremental. Once unidades reales de XNU compilan a objetos ARM64 con Clang
-estándar; doce con el proveedor experimental explícito, incluido thread.c. Todavía
+incremental. Trece unidades reales de XNU compilan a objetos ARM64 con Clang
+estándar; diecisiete con el proveedor experimental explícito, incluidos hilos,
+allocators y vm_map. Todavía
 no hay kernel enlazado, ejecución XNU ni drivers G20 funcionales. No hay firmware
 AtlanticOS ejecutado en teléfono, ni medición de su RAM residente.**
 
@@ -31,7 +32,8 @@ produce interfaces ARM64 de XNU. El [build incremental](docs/XNU_LAB_BUILD.md)
 compila bootstrap, scheduler, reloj, VM, allocator, entrada, contexto, vectores
 y rutinas de máquina con un perfil original. La [integración experimental de
 hilos](docs/XNU_THREAD_BUILD.md) añade un compilador original de metadata C y
-guardas BSD verificadas. Vm_map.c sigue fallando por TrustCache/API.h ausente.
+guardas BSD verificadas. La [ampliación de VM y allocators](docs/XNU_VM_ALLOCATOR_BUILD.md)
+conserva su lógica real; task.c y pmap todavía fallan en los probes.
 Esos objetos no forman todavía un kernel ejecutable.
 
 ## Reproducir

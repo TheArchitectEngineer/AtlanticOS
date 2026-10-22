@@ -1,0 +1,5 @@
+In file included from <ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/osfmk/arm/pmap/pmap.c:65:
+<ROOT>/work/xnu-lab-sources/80a906b3c4ae00e6/libkern/libkern/amfi/amfi.h:35:10: fatal error: 'CoreEntitlements/V2/API.h' file not found
+   35 | #include <CoreEntitlements/V2/API.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.

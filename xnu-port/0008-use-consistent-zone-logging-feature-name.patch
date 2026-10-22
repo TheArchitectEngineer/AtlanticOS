@@ -1,0 +1,27 @@
+AtlanticOS: use the existing ZALLOC_ENABLE_LOGGING definition consistently.
+Preserve selected logging fields and implementations, including development builds.
+
+--- a/osfmk/kern/zalloc_internal.h
++++ b/osfmk/kern/zalloc_internal.h
+@@ -385,7 +385,7 @@
+ 	spl_t               z_kasan_spl;
+ #endif
+ 
+-#if ZONE_ENABLE_LOGGING || CONFIG_ZLEAKS || KASAN_TBI
++#if ZALLOC_ENABLE_LOGGING || CONFIG_ZLEAKS || KASAN_TBI
+ 	/*
+ 	 * the allocation logs are used when:
+ 	 *
+--- a/osfmk/kern/zalloc.c
++++ b/osfmk/kern/zalloc.c
+@@ -3487,8 +3487,8 @@
+ }
+ #endif /* CONFIG_ZLEAKS */
+ 
+-#endif /* ZONE_ENABLE_LOGGING || CONFIG_ZLEAKS */
+-#if ZONE_ENABLE_LOGGING || CONFIG_ZLEAKS || KASAN_TBI
++#endif /* ZALLOC_ENABLE_LOGGING || CONFIG_ZLEAKS */
++#if ZALLOC_ENABLE_LOGGING || CONFIG_ZLEAKS || KASAN_TBI
+ 
+ #if !KASAN_TBI
+ __cold

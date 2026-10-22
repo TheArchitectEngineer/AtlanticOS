@@ -4,3 +4,5 @@
 0004-isolate-apple-soc-tunables-from-laboratory-entry.patch
 0005-select-explicit-atlantic-c-layout-provider.patch
 0006-guard-bsd-process-and-workqueue-thread-paths.patch
+0007-scope-trustcache-types-to-selected-monitor.patch
+0008-use-consistent-zone-logging-feature-name.patch

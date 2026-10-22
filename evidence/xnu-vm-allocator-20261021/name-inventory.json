@@ -1,0 +1,11 @@
+{
+  "scope": "NAME_INVENTORY_ONLY_NOT_A_LINK_OR_RELOCATION_CHECK",
+  "input_report_sha256": "0ef3854bd48852306cc2ce6e686dbeb689a5c32dc5984b743aa4966bc7e649f0",
+  "objects": 17,
+  "defined_external_names": 1175,
+  "unprovided_names": 855,
+  "duplicate_external_names": {},
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false
+}

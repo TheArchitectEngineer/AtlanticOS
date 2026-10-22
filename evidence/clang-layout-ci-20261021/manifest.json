@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-21",
+  "label": "BUILT_ARM64",
+  "scope": "INDEPENDENT_CI_BUILD_OF_ORIGINAL_LAYOUT_COMPILER_AND_TWELVE_XNU_OBJECTS_NO_LINK_OR_EXECUTION",
+  "artifacts": [
+    {
+      "path": "comparison.json",
+      "sha256": "54310dc9da205f1d8171a7c2e6fc2608a68b0c01efb9682920668912d0239ad2"
+    },
+    {
+      "path": "compiler-api.json",
+      "sha256": "bd8bb7048d2ea7a51c7aed77991c30d33d047faf7084230541dff3c875188439"
+    },
+    {
+      "path": "compiler-build.json",
+      "sha256": "93941ce620d92e9ab6ccea7bd34b539f657fa99d316d3d5fbc54ba4fd77f3334"
+    },
+    {
+      "path": "local-public-preparation.json",
+      "sha256": "a60d718b361c1916fc98e216a11746c5de494dc413500cff0e9b174641047560"
+    },
+    {
+      "path": "README.md",
+      "sha256": "6a799f5a737e06772fc82874fee25a4a8ae62d96aed0132675e9e716303a899b"
+    },
+    {
+      "path": "workflow-run.json",
+      "sha256": "31f46a5659bca66231781b41867f29022a867f72ec2590a71a8e075246207f61"
+    },
+    {
+      "path": "xnu-twelve-objects.json",
+      "sha256": "cec84e39b59fbc03a5d3e3d885b1f4508c8f7f1789c3a8b4289a597d4d2c1990"
+    }
+  ]
+}

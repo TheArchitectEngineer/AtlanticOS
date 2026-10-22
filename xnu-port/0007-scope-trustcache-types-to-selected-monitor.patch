@@ -1,0 +1,25 @@
+AtlanticOS: import TrustCache types only when the firmware selects their PPL monitor.
+Keep every code-signing declaration and check; other targets retain the original include.
+
+--- a/osfmk/vm/pmap_cs.h
++++ b/osfmk/vm/pmap_cs.h
+@@ -60,7 +60,6 @@
+ #include <vm/pmap.h>
+ #include <kern/lock_rw.h>
+ #include <libkern/image4/dlxk.h>
+-#include <TrustCache/API.h>
+ 
+ 
+ #if PMAP_CS
+@@ -73,6 +72,11 @@
+ #define PMAP_CS_PPL_MONITOR 1
+ #else
+ #define PMAP_CS_PPL_MONITOR 0
++#endif
++
++/* AtlanticOS has no PPL monitor; its TrustCache types below are not selected. */
++#if !CONFIG_ATLANTIC_FIRMWARE || PMAP_CS_PPL_MONITOR
++#include <TrustCache/API.h>
+ #endif
+ 
+ #if PMAP_CS_PPL_MONITOR

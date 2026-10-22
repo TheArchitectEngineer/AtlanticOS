@@ -1,0 +1,15 @@
+_arm_debug_set
+_ast_taken_kernel
+_ast_taken_user
+_commpage_is_in_pfz64
+_panic
+_panic_unimplemented
+_panic_with_thread_kernel_state
+_recount_enter_user
+_recount_leave_user
+_sleh_fiq
+_sleh_invalid_stack
+_sleh_irq
+_sleh_serror
+_sleh_synchronous
+_sleh_synchronous_sp1

@@ -29,15 +29,25 @@ UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
          'osfmk/arm64/locore.s': '_ExceptionVectorsBase',
          'osfmk/arm64/machine_routines_asm.s': '_set_mmu_ttb',
          'osfmk/arm/arm_init.c': '_arm_init',
-         'osfmk/arm64/arm_vm_init.c': '_arm_vm_init'}
+         'osfmk/arm64/arm_vm_init.c': '_arm_vm_init',
+         'osfmk/arm64/machine_routines.c': '_machine_startup',
+         'osfmk/ipc/ipc_init.c': '_ipc_init'}
+# IPC registers a genuine static initializer in STARTUP(MACH_IPC, ...).
+SYMBOL_TYPES = {'osfmk/ipc/ipc_init.c': 't'}
 EXTRA_SYMBOLS = {'osfmk/arm64/cswitch.s': ['_machine_load_context', '_Call_continuation'],
                  'osfmk/arm64/start.s': ['__start', '_LowResetVectorBase'],
                  'osfmk/arm64/locore.s': ['_fleh_synchronous', '_fleh_irq'],
                  'osfmk/arm64/machine_routines_asm.s': ['_set_mmu_ttb_alternate'],
                  'osfmk/arm/arm_init.c': ['_arm_init_cpu', '_arm_init_idle_cpu', '_const_boot_args'],
                  'osfmk/arm64/arm_vm_init.c': ['_bootstrap_pagetables'],
-                 'osfmk/kern/thread.c': ['_kernel_thread_start', '_thread_terminate_self']}
-PROBES = ['osfmk/kern/thread.c', 'osfmk/vm/vm_map.c']
+                 'osfmk/kern/thread.c': ['_kernel_thread_start', '_thread_terminate_self'],
+                 'osfmk/kern/kalloc.c': ['_kalloc_type_impl_external', '_kfree_type_impl_external'],
+                 'osfmk/kern/zalloc.c': ['_zone_create_ext', '_zalloc_ext', '_zfree_ext']}
+EXPERIMENTAL_UNITS = {'osfmk/kern/thread.c': '_thread_init',
+                      'osfmk/kern/kalloc.c': '_kalloc_type_impl_internal',
+                      'osfmk/kern/zalloc.c': '_zinit',
+                      'osfmk/vm/vm_map.c': '_vm_map_enter'}
+PROBES = [*EXPERIMENTAL_UNITS, 'osfmk/kern/task.c', 'osfmk/arm/pmap/pmap.c']
 
 
 def digest(path):
@@ -59,9 +69,9 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--windows-git', action='store_true')
     ap.add_argument('--probe-remaining', action='store_true',
-                    help='Also compile thread.c and vm_map.c; any failure returns nonzero')
+                    help='Try remaining task/thread, allocator, VM and pmap units; failures return nonzero')
     ap.add_argument('--layout-compiler', type=Path,
-                    help='Explicit experimental compiler; also builds genuine thread.c')
+                    help='Explicit experimental compiler; also builds thread, allocators and vm_map')
     ap.add_argument('--layout-proof', type=Path,
                     help='Successful tools/test_atlantic_clang.py report for this compiler')
     args = ap.parse_args()
@@ -223,14 +233,16 @@ def main():
                  '-sheader', str(destination) if role=='kernel-server' else '/dev/null', '-server', '/dev/null', '-user', '/dev/null'],
                 cwd=out, data=cpp.stdout, name='mig-'+header)
             generated.append(destination)
-    # resource_notify is a kernel sender header, not one of MIG_UUHDRS.
-    if 'resource_notify.h' not in make_list(mk, 'MIG_KUHDRS'):
-        raise RuntimeError('Upstream resource_notify role changed')
-    cpp = run([*base, '-DKERNEL_USER=1', str(source/'osfmk/mach/resource_notify.defs')], name='cpp-resource-notify')
-    resource = inc/'mach/resource_notify.h'
-    run([str(mig_dir/'migcom'), '-novouchers', '-maxonstack', '1024', '-header', str(resource), '-server', '/dev/null', '-user', '/dev/null'],
-        cwd=out, data=cpp.stdout, name='mig-resource-notify')
-    generated.append(resource)
+    # These are kernel senders, with roles declared separately from MIG_UUHDRS.
+    for module in ['resource_notify', 'mach_test_upcall']:
+        header = module+'.h'
+        if header not in make_list(mk, 'MIG_KUHDRS'):
+            raise RuntimeError('Upstream kernel-sender role changed: '+header)
+        cpp = run([*base, '-DKERNEL_USER=1', str(source/('osfmk/mach/'+module+'.defs'))], name='cpp-'+module)
+        resource = inc/'mach'/header
+        run([str(mig_dir/'migcom'), '-novouchers', '-maxonstack', '1024', '-header', str(resource), '-server', '/dev/null', '-user', '/dev/null'],
+            cwd=out, data=cpp.stdout, name='mig-'+module)
+        generated.append(resource)
     # Use upstream's real version template/generator with explicit build metadata.
     version = inc/'libkern/version.h';version.parent.mkdir(exist_ok=True)
     shutil.copyfile(source/'libkern/libkern/version.h.template', version)
@@ -291,7 +303,7 @@ def main():
     objects, failures = [], []
     selected_units = dict(UNITS)
     if provider:
-        selected_units['osfmk/kern/thread.c'] = '_thread_init'
+        selected_units.update(EXPERIMENTAL_UNITS)
     units = list(selected_units) + ([p for p in PROBES if p not in selected_units] if args.probe_remaining else [])
     for rel in units:
         obj = out/(Path(rel).stem+'.o')
@@ -314,11 +326,15 @@ def main():
             raise RuntimeError('Expected AArch64 Mach-O object, not a kernel image')
         nm = run(['llvm-nm','--defined-only',str(obj)],name=obj.stem+'-defined').stdout
         required_symbols = ([selected_units[rel]]+EXTRA_SYMBOLS.get(rel, [])) if rel in selected_units else []
-        if rel in selected_units and not any(line.split()[-2:]==['T', selected_units[rel]] for line in nm.splitlines()):
-            raise RuntimeError('Expected real external text symbol: '+selected_units[rel])
+        binding = SYMBOL_TYPES.get(rel, 'T')
+        if rel in selected_units and not any(line.split()[-2:]==[binding, selected_units[rel]] for line in nm.splitlines()):
+            raise RuntimeError('Expected real text symbol and binding: '+selected_units[rel])
         for symbol in required_symbols:
             if not any(line.split()[-1:]==[symbol] for line in nm.splitlines()):
                 raise RuntimeError('Missing real XNU function: '+symbol)
+        if rel == 'osfmk/ipc/ipc_init.c' and not any(
+            line.split()[-1].startswith('___startup_MACH_IPC_entry_ipc_init_') for line in nm.splitlines() if line.split()):
+            raise RuntimeError('Genuine static IPC initializer lost its startup registration')
         undefined = run(['llvm-nm','--undefined-only',str(obj)],name=obj.stem+'-undefined').stdout.splitlines()
         exported = run(['llvm-nm','--extern-only','--defined-only','--format=posix',str(obj)],
                        name=obj.stem+'-exports').stdout.splitlines()
@@ -328,7 +344,8 @@ def main():
         if rel.endswith('/startup.c') and any('trust_cache' in s or 'code_signing_init' in s for s in undefined):
             raise RuntimeError('Unexpected Apple userland trust-cache dependency in firmware bootstrap')
         objects.append({'source':rel,'source_sha256':digest(source/rel),'object':obj.name,'object_sha256':digest(obj),
-                        'object_file_bytes':len(raw),'required_symbol':selected_units.get(rel),'required_symbols':required_symbols,
+                        'object_file_bytes':len(raw),'required_symbol':selected_units.get(rel),'required_symbol_type':binding,
+                        'required_symbols':required_symbols,
                         'defined_external_symbols':exported,'undefined_symbols':undefined})
     selected_definitions = {s for item in objects for s in item['defined_external_symbols']}
     missing_symbols = sorted({s for item in objects for s in item['undefined_symbols']} - selected_definitions)

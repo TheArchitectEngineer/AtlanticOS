@@ -1,0 +1,14 @@
+{
+  "scope": "PINNED_COMPILER_SOURCE_PREPARATION_ONLY_NOT_COMPILER_BUILD",
+  "upstream_commit": "cd708029e0b2869e80abe31ddb175f7c35361f90",
+  "archive_sha256": "05e6d7fe6d188dd4d33b812ab5cce7654b886b7c9ce405aa1d942c866bbe959f",
+  "patch_sha256": "1b8302103cddb733ebf995df4b63aaa0d5b382052bcf8bfa62400b70b2ba5f4c",
+  "inputs": {
+    "tools/build_atlantic_clang.py": "eb3ad0f192fba6269d4c4607bcf0674e8070fae6b128a759776938f8e8c29832",
+    "compiler-port/patches.lock.json": "aeea695bf5f6de90a1918772b87b897e2c89b6b3da6da77fa500cde08869e4f3",
+    "compiler-port/ParseAtlanticLayout.inc": "023cd35a7d6699b72e31fc2fd59325c46db43f4568df236d6a091271bd8400ab",
+    "compiler-port/SemaAtlanticLayout.cpp": "954c6f709ce95ef15635630b31f926e516e99004b6ce1f476f501b74ea3fd380"
+  },
+  "source_files_verified": 11996,
+  "xnu_executed": false
+}

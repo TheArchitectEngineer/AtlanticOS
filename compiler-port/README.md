@@ -2,8 +2,8 @@
 
 Estado: compilador completo construido y 18 comprobaciones aprobadas: fixture
 positivo, LLVM IR y 16 rechazos por diagnóstico previsto. No está activado en
-el build XNU normal de once unidades. El [modo explícito experimental](../docs/XNU_THREAD_BUILD.md)
-compila doce unidades reales, incluido thread.c con guards BSD. No prueba
+el build XNU normal de trece unidades. El [modo explícito experimental](../docs/XNU_VM_ALLOCATOR_BUILD.md)
+compila diecisiete unidades reales, incluidos hilos, VM y allocators. No prueba
 un kernel ni compatibilidad del teléfono.
 
 El XNU fijado usa metadata de tipos en su allocator. Su código público describe
@@ -77,6 +77,9 @@ de kalloc. El éxito de estos fixtures y objetos no demuestra que hilos, VM o
 allocator XNU funcionan.
 
 Evidencia: [clang-layout-20261021](../evidence/clang-layout-20261021/manifest.json).
+La [CI 39626520147](https://github.com/h0nda1337/AtlanticOS/actions/runs/39626520147)
+reconstruyó la receta pública completa y aprobó API y doce objetos XNU del
+commit 7c9eaf2; [reportes](../evidence/clang-layout-ci-20261021/manifest.json).
 
 Clang conserva su licencia Apache-2.0 WITH LLVM-exception; véase
 [LLVM-LICENSE](../LICENSES-and-NOTICES/LLVM-LICENSE.txt).

@@ -62,3 +62,14 @@ experimental compila doce, incluido thread.c, con 137 offsets y comprobaciones
 de kalloc/ABI. Se rechazaron pruebas de compilador incompletas o de otro binario.
 Vm_map.c continúa fallando por TrustCache/API.h. No hay enlace ni ejecución.
 Receta, advertencias y límites: [XNU_THREAD_BUILD](XNU_THREAD_BUILD.md).
+
+La CI 39626520147 reconstruyó el compilador mediante la receta pública y aprobó
+sus 18 checks y doce unidades XNU. Los inputs y 137 constantes coinciden con el
+reporte local. La preparación pública local verificó 11.996 archivos fuente.
+
+La ampliación siguiente añade 0007/0008: include TrustCache condicionado por el
+monitor seleccionado y nombre consistente del guard de logging. Compilan trece
+unidades estándar y diecisiete experimentales, incluidos vm_map, kalloc y zalloc.
+Tres checks de dependencia exigen TrustCache real para PPL y targets upstream.
+El probe extendido retorna 1 por task.c y pmap; conserva ambos fallos.
+Receta y alcance: [XNU_VM_ALLOCATOR_BUILD](XNU_VM_ALLOCATOR_BUILD.md).

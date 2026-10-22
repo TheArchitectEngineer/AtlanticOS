@@ -1,0 +1,13 @@
+_ExceptionVectorsBase
+_SleepToken
+__mh_execute_header
+_arm_init
+_arm_init_cpu
+_arm_init_idle_cpu
+_bootstrap_pagetables
+_const_boot_args
+_cpu_ttep
+_excepstack_top
+_intstack_top
+_phystokv
+_set_mmu_ttb

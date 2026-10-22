@@ -1,0 +1,7 @@
+_NDR_record D b4 0
+_ipc_kernel_copy_map S 280 0
+_ipc_kernel_map S 278 0
+_ipc_kmsg_max_vm_space S c0 0
+_ipc_lck_attr S 270 0
+_ipc_lck_grp S d0 0
+_msg_ool_size_small S c8 0

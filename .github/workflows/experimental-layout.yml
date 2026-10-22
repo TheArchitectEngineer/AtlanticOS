@@ -21,7 +21,7 @@ jobs:
           python3 tools/fetch_xnu.py
           python3 tools/fetch_mig.py
           python3 tools/build_mig.py
-      - name: Compile twelve genuine XNU units with explicit provider (no link or execution)
+      - name: Compile seventeen genuine XNU units with explicit provider (no link or execution)
         run: |
           python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
       - name: Retain commands, checks and diagnostics, including partial failures

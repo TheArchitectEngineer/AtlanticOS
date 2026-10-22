@@ -1,0 +1,19 @@
+{
+  "scope": "CI_AND_LOCAL_BUILD_PROVENANCE_AND_LAYOUT_COMPARISON_ONLY",
+  "ci_run": 39626520147,
+  "local_build_id": "985317cc8c7a00d4acc9dfc0d7a196bc7c9880233bf82b49c05c4fce05051800",
+  "ci_build_id": "6e0946f6f1b7feed8031e18fb4e42501f1f716e31c73c588e7480da486e753d9",
+  "same_port_id": true,
+  "same_inputs": true,
+  "same_137_constants": true,
+  "compiled_units": 12,
+  "failed_units": 0,
+  "api_checks": 18,
+  "all_api_checks_passed": true,
+  "ci_compiler_and_proof_match": true,
+  "source_files_verified": 11996,
+  "object_byte_identity_claimed": false,
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false
+}

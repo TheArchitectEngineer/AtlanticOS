@@ -8,6 +8,7 @@ on:
       - 'tools/fetch_xnu.py'
       - 'tools/build_xnu_lab.py'
       - 'tools/xnu_assym.py'
+      - 'tools/test_pmap_cs_scope.py'
       - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
       - 'tests/xnu_port/**'
@@ -22,6 +23,7 @@ on:
       - 'tools/fetch_xnu.py'
       - 'tools/build_xnu_lab.py'
       - 'tools/xnu_assym.py'
+      - 'tools/test_pmap_cs_scope.py'
       - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
       - 'tests/xnu_port/**'
@@ -54,8 +56,10 @@ jobs:
         run: python3 tools/build_mig.py
       - name: Test strict target-layout extraction
         run: python3 -m unittest discover -s tests -p test_xnu_assym.py -v
-      - name: Compile eleven real XNU ARM64 units and verify target layouts (no link)
+      - name: Compile thirteen real XNU ARM64 units and verify target layouts (no link)
         run: python3 tools/build_xnu_lab.py
+      - name: Verify actual TrustCache dependency selection, including negative paths
+        run: python3 tools/test_pmap_cs_scope.py --build work/xnu-lab-builds/*/report.json
       - name: Retain metadata and unit diagnostics on success or failure
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -80,3 +84,7 @@ jobs:
             work/xnu-lab-builds/*/machine_routines_asm.log
             work/xnu-lab-builds/*/arm_init.log
             work/xnu-lab-builds/*/arm_vm_init.log
+            work/xnu-lab-builds/*/machine_routines.log
+            work/xnu-lab-builds/*/ipc_init.log
+            work/pmap-cs-scope-tests/report.json
+            work/pmap-cs-scope-tests/*.log
