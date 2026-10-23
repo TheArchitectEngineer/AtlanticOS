@@ -1,0 +1,7 @@
+<ROOT>/tests/xnu_port/ipc_mig_abi.c:35:37: error: incompatible integer to pointer conversion passing 'mach_port_name_t' (aka 'unsigned int') to parameter of type 'mach_port_t' (aka 'struct ipc_port *') [-Wint-conversion]
+   35 |     return mach_notify_port_deleted((mach_port_name_t)1, 1);
+      |                                     ^~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-builds/2a02b0690a637b3b/include/mach/mach_notify.h:81:14: note: passing argument to parameter 'notify' here
+   81 |         mach_port_t notify,
+      |                     ^
+1 error generated.

@@ -1,0 +1,11 @@
+00000000000000f8 s ___startup_MACH_IPC_entry_ipc_kobject_register_startup_50
+0000000000000050 T _convert_clock_to_port
+0000000000000030 T _convert_port_to_clock
+0000000000000000 T _ipc_clock_init
+00000000000000d8 s _ipc_kobject_ops_IKOT_CLOCK
+0000000000000060 T _port_name_to_clock
+00000000000000cc s l_.str
+0000000000000000 t ltmp0
+00000000000000cc s ltmp1
+00000000000000d8 s ltmp2
+00000000000000f8 s ltmp3

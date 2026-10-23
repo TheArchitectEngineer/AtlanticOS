@@ -5,9 +5,10 @@ de XNU. Primera placa: Motorola Moto G20 / Unisoc T700 (UMS512).
 
 **Estado 2026-10-22: auditoría Fase 0, prototipo host Fase 1 y port XNU
 incremental. Trece unidades reales de XNU compilan a objetos ARM64 con Clang
-estándar; cuarenta y siete con el proveedor experimental explícito, incluidos
+estándar; sesenta y dos con el proveedor experimental explícito, incluidos
 VM residente/faults/objetos, hilos, tareas, locks, ledgers, SMR e IPC/importance.
-Se compilan además 42 archivos RPC generados por MIG, con 57 headers coherentes.
+Se compilan además 42 archivos RPC generados por MIG como probes, con 57 headers
+coherentes; el configurador oficial selecciona 26 para el enlace de este perfil.
 Tres interfaces no contienen métodos; esos objetos no acreditan servicios.
 Todavía no hay kernel enlazado, ejecución XNU ni drivers G20 funcionales. No hay firmware
 AtlanticOS ejecutado en teléfono, ni medición de su RAM residente.**
@@ -46,9 +47,12 @@ mensajes, derechos, kobject y getters RO nativos, con 50 headers MIG reales.
 El [código RPC generado](docs/XNU_RPC_BUILD.md) suministra los descriptores que
 referencia kobject y comprueba su ABI; sigue sin enlazarse ni ejecutarse XNU.
 Esos objetos no forman todavía un kernel ejecutable.
-El [modo estático ARM64 de LLD](docs/LLD_STATIC_ARM64.md) enlaza y audita tres
-programas de prueba a direcciones fijas. Sigue siendo experimental: rechaza los
-helpers weak de Blocks del conjunto XNU actual, que todavía no produce imagen.
+El [modo estático ARM64 de LLD](docs/LLD_STATIC_ARM64.md) enlaza y audita 15
+imágenes de prueba a direcciones fijas. Sigue siendo experimental: rechaza los
+imports sin proveedor y admite selección estática weak/strong. El conjunto XNU
+actual todavía no produce imagen. La [integración de proveedores nativos](docs/XNU_RPC_PROVIDERS.md)
+añade transporte Mach, conversores de puertos, semáforos, vouchers y operaciones
+de memoria; compilar esos cuerpos no acredita ejecución de los servicios.
 
 ## Reproducir
 

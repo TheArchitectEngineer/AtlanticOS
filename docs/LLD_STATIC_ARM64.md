@@ -9,7 +9,7 @@ La opción upstream `-static` continúa sin implementarse. Este experimento usa
 `--atlantic-static-arm64=<base hexadecimal>` y conserva ese rechazo upstream;
 no elimina advertencias para hacer pasar el comando anterior.
 
-## Contrato del primer modo
+## Contrato del modo v2
 
 - Solo ARM64 sin PAC, objetos Mach-O nativos y archivos de objetos estáticos.
   Base virtual fija de 64 bits, distinta de cero y alineada a 16 KiB. Se aceptan
@@ -29,7 +29,7 @@ no elimina advertencias para hacer pasar el comando anterior.
   bytes. No se admiten segmentos ilegibles ni escribibles y ejecutables a la vez;
   una sección de instrucciones debe tener permiso de ejecución.
 - Allowlist positiva de opciones; undefined error y warnings fatales. Se rechazan
-  dylibs, bitcode/LTO, TLS/TLV, símbolos weak, Objective-C/Swift y constructores o
+  dylibs, bitcode/LTO, TLS/TLV, imports weak sin proveedor, Objective-C/Swift y constructores o
   destructores automáticos. No hay KASLR, rebase en el cargador ni soporte general
   de todos los perfiles Mach-O/XNU.
 
@@ -38,9 +38,10 @@ Mach-O del compilador; no implican servicios Darwin o macOS presentes en firmwar
 
 ## Pruebas
 
-tools/test_atlantic_lld.py ejecuta 32 comandos comprobados y audita tres imágenes:
+tools/test_atlantic_lld.py ejecuta 54 comandos comprobados y audita 15 imágenes:
 una a 0x40000000, otra a 0xfffffff007004000 y otra con un objeto extraído de un
-archivo estático. Inspecciona directamente los bytes del Mach-O, sin depender
+archivo estático, más 12 variantes de selección de símbolos weak/strong.
+Inspecciona directamente los bytes del Mach-O, sin depender
 del texto de llvm-objdump para aceptar el resultado.
 
 Las comprobaciones cubren PC, símbolo/puntero de cabecera, ausencia de dyld,
@@ -53,7 +54,8 @@ dirección efectiva y también una entrada GOT real mediante POINTER_TO_GOT.
 
 Los casos negativos rechazan bases inválidas/overflow, arquitectura incorrecta,
 PIE/opción static anterior, dynamic lookup, W+X, texto no ejecutable, entrada en
-datos, undefined referenciado o sin referencias, weak, TLS, constructor y LTO.
+datos, undefined referenciado o sin referencias, import weak sin proveedor,
+dos definiciones fuertes, TLS, constructor y LTO.
 Ninguno debe producir archivo. Un enlace dinámico normal conserva LC_MAIN,
 LC_LOAD_DYLINKER y MH_DYLDLINK; esa prueba limita el alcance del patch.
 
@@ -62,19 +64,37 @@ El test de puntero fijado a la base comprueba la corrección. Otro rechazo detec
 que el helper getHex de LLD usa int64_t y no admite el valor alto completo de
 XNU. El modo ahora parsea uint64_t y mantiene tests para overflow y valores altos.
 
-## Comprobación con los objetos reales XNU
+## Selección estática weak/strong
 
-El diagnóstico usa los mismos 89 objetos comprobados: 47 unidades XNU y 42 C
-MIG. Con el modo nuevo y su prueba de fixtures ligada al hash del binario, el
-linker sale con código 1, no genera imagen y rechaza dos definiciones weak:
-___copy_helper_block_8_32r y ___destroy_helper_block_8_32r. Son helpers legítimos
-de Blocks; necesitan semántica de coalescing estático correcta. No se eliminan
-sus atributos ni se reemplazan sus cuerpos.
+La revisión v1 rechazó los helpers legítimos ___copy_helper_block_8_32r y
+___destroy_helper_block_8_32r antes del recorrido completo de reubicaciones.
+Se conserva esa evidencia en lld-static-arm64-20261022. La revisión v2 usa la
+selección original de SymbolTable::addDefined, sin modificarla: la primera
+definición débil prevalece entre débiles y una fuerte prevalece entre las
+definiciones cargadas. No se extrae un miembro de archivo únicamente para
+sustituir un símbolo débil que ya tiene proveedor; se conserva la extracción
+lazy nativa de LLD.
 
-Ese rechazo ocurre antes del recorrido completo de reubicaciones. Por tanto,
-no significa que hayan desaparecido las 1.245 referencias indefinidas del
-[intento upstream anterior](XNU_RPC_BUILD.md). El cierre de proveedores nativos,
-el layout de segmentos de XNU y el BSP siguen pendientes.
+Después de esa selección, needsBinding no solicita dyld para una definición
+resuelta en modo estático y addNonLazyBindingEntries no añade operaciones de
+coalescing/rebase runtime para ella. Las reubicaciones siguen usando getVA y
+los backends originales. Los casos globales y private external se prueban con
+cuerpos y datos distintos, dos órdenes de weak, tres posiciones de strong,
+dirección alta y archivos estáticos. Cada referencia BL, absoluta, PAGE y GOT
+debe alcanzar el cuerpo/dato seleccionado. La tabla conserva la metadata weak
+que emite LLD para su visibilidad; no se editan atributos en el código XNU.
+
+Un import weak que no se resuelve falla; no se transforma en cero. Dos
+definiciones fuertes también fallan. No se generan stubs o bindings dinámicos.
+
+Con los 89 objetos anteriores (47 XNU + 42 probes MIG), v2 ya supera los helpers y
+registra las 1.245 referencias indefinidas nativas pendientes. El linker sale
+con código 1 y no produce imagen. Esto conserva el límite del
+[intento upstream anterior](XNU_RPC_BUILD.md); el cierre de proveedores,
+el layout de segmentos y el BSP todavía requieren trabajo.
+Ese intento aún contenía toda la lista de generación RPC; la
+[integración de proveedores](XNU_RPC_PROVIDERS.md) corrige la selección mediante
+CFILES y documenta el enlace actual con 62 unidades base y 26 RPC seleccionadas.
 
 ## Reproducir en Linux / WSL x86_64
 
@@ -96,12 +116,13 @@ python3 tools/diagnose_xnu_link.py --build work/xnu-lab-builds/<base-id>/report.
 ```
 
 Cada intento de tests o enlace exige una carpeta de salida nueva. La receta de
-build comprueba 3.901 fuentes preparadas contra sus hashes, incluidos los cinco
+build comprueba 3.901 fuentes preparadas contra sus hashes, incluidos los seis
 archivos modificados, y rechaza archivos imprevistos. No monta ni formatea discos.
 Un cache en almacenamiento Linux nativo acelera la compilación, sin ser requisito
 del formato. El Clang experimental anterior permanece sin cambios.
 
-La evidencia final se publica en evidence/lld-static-arm64-20261022. Su alcance
+La evidencia v1 se conserva en evidence/lld-static-arm64-20261022 y la v2 en
+evidence/xnu-static-providers-20261022. Su alcance
 es host y fixtures compilados, sin emulación de estos programas, arranque XNU,
 acceso al teléfono o medición de RAM residente.
 
@@ -111,4 +132,4 @@ Los dos workflows ordinarios del commit anterior 5906836 pasaron en GitHub:
 La [construcción limpia experimental de 47 unidades](https://github.com/h0nda1337/AtlanticOS/actions/runs/39730078469)
 también pasó en 79b9e79. Son revisiones anteriores al patch LLD; no acreditan
 que GitHub Actions haya recompilado este nuevo linker. Su build limpio y las
-32 comprobaciones publicadas se ejecutaron localmente en Linux/WSL.
+54 comprobaciones actuales se ejecutaron localmente en Linux/WSL.

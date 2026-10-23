@@ -1,7 +1,7 @@
 {
   "upstream_commit": "cd708029e0b2869e80abe31ddb175f7c35361f90",
   "archive_sha256": "05e6d7fe6d188dd4d33b812ab5cce7654b886b7c9ce405aa1d942c866bbe959f",
-  "patch_sha256": "afc75987817429d5f8b1ac9b3fd4d4ca2a7547a3f32ac81723c3f46ed83d7534",
+  "patch_sha256": "0b7ff37bab7c8bcc27267990b47b7068896f552dc9e07f28649dfec6d749222f",
   "files": [
     {
       "path": "lld/MachO/Config.h",
@@ -16,17 +16,22 @@
     {
       "path": "lld/MachO/Options.td",
       "preimage_sha256": "b3bb502fbbf09952a6db87b7fb85619d0eb945438c88688c12d36298d817c27b",
-      "postimage_sha256": "c24e1783a2d7bae8e56ac5457e459302e334483f7c3106da16476199916a3133"
+      "postimage_sha256": "a96d60c72622b335d764eed037383f104ddff30dd297fbf41ce77cf0a37722fb"
     },
     {
       "path": "lld/MachO/SyntheticSections.cpp",
       "preimage_sha256": "6b781950d2bdbf0be4389943c22ed217442bd5662e28a03a70f4933328cdcaeb",
-      "postimage_sha256": "a7b84674c37f8616d2eff376436b0c3e5b400d20cc5acf70203ac534611ffb05"
+      "postimage_sha256": "f6456e074525f0d47c21fd9f8cc0f27e2daa2c4eee579eff7ff5a2224b0cc678"
     },
     {
       "path": "lld/MachO/Writer.cpp",
       "preimage_sha256": "9533d27409551d35c24b36532b50ca46d09747546534be643e256da17852d75d",
-      "postimage_sha256": "b39f2f99cc53128edd6a4fe1f40c13a5a1fb6a529b54c6fc04ce44c2d468565b"
+      "postimage_sha256": "40db4d0d289541a878d2d4cef39d5f01dbe6b81931d2afa204725b1d273239da"
+    },
+    {
+      "path": "lld/MachO/Symbols.h",
+      "preimage_sha256": "a389c862f6ac34178bd6b81ed7c6c8d255c50ee1dc29a67c972a98d3a93a26ab",
+      "postimage_sha256": "96c33f056f60e498f14e2cf91f2b2b98e8f6e0b7dab58870e8943e35f6b12441"
     }
   ]
 }

@@ -7,6 +7,7 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+from xnu_selection import generated_cfiles
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -35,6 +36,13 @@ def main():
         if digest(ROOT/rel) != expected:
             ap.error('Changed input: '+rel)
     source = ROOT/'work/xnu-lab-sources'/lock['port_id'][:16]
+    makefile = args.build.parent/'config/Makefile'
+    if (digest(makefile) != base.get('config_makefile_sha256') or
+        digest(makefile) != rpc['native_link_selection']['config_makefile_sha256']):
+        ap.error('Changed native generated-source selection')
+    native_sources = generated_cfiles(makefile.read_text())
+    if native_sources != rpc['native_link_selection']['sources']:
+        ap.error('RPC selection differs from the official config output')
     exports = set()
     for item in rpc['objects']:
         obj = (args.rpc.parent/item['object']).resolve()
@@ -49,7 +57,11 @@ def main():
         actual = {s.split()[0] for s in lines if s.split()}
         if actual != set(item['defined_external_symbols']):
             ap.error('RPC symbol inventory differs: '+item['module'])
-        exports.update(actual)
+        selected = item['source'].removeprefix('generated/') in native_sources
+        if item['kernel_link_selected'] != selected:
+            ap.error('RPC object selection differs: '+item['module'])
+        if selected:
+            exports.update(actual)
     kobject = next((o for o in base['objects'] if o['source']=='osfmk/kern/ipc_kobject.c'),None)
     required = []
     if kobject:
@@ -103,6 +115,7 @@ _Static_assert(offsetof(struct mig_kern_subsystem, kroutine) ==
         'port_id':lock['port_id'],'base_report_sha256':digest(args.build),'rpc_report_sha256':digest(args.rpc),
         'tool_sha256':digest(__file__),'fixture_sha256':digest(fixture),'outcomes':outcomes,
         'descriptor_count':sum(i['role']=='kernel-server' for i in rpc['objects']),
+        'kernel_selected_rpc_objects':sum(i['kernel_link_selected'] for i in rpc['objects']),
         'kobject_table_checked':bool(kobject),'required_subsystem_symbols':required,
         'all_required_subsystems_have_native_generated_providers':bool(kobject),
         'kernel_linked':False,'xnu_executed':False,'phone_accessed':False}

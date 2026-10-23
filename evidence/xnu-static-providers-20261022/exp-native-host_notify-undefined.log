@@ -1,0 +1,15 @@
+_ipc_object_unlock
+_ipc_port_lock
+_ipc_port_release_sonce
+_ipc_port_request_cancel
+_ipc_port_request_grow
+_ipc_port_request_hnotify_alloc
+_kalloc_type_impl_internal
+_kfree_type_impl_internal
+_lck_grp_startup_init
+_lck_mtx_lock
+_lck_mtx_startup_init
+_lck_mtx_unlock
+_mach_assert_jump_key
+_mach_msg_send_from_kernel
+_waitq_held

@@ -1,0 +1,1 @@
+ld64.lld: error: Atlantic static mode forbids unreadable or writable executable segments: __TEXT

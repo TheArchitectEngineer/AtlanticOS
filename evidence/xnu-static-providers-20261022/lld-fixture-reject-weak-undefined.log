@@ -1,0 +1,4 @@
+ld64.lld: error: undefined symbol: _missing
+>>> referenced by <ROOT>/work/lld-static-weak-clean-tests-v2/weak-undefined.o:(symbol __start+0x0)
+
+ld64.lld: error: unresolved or dynamic symbol in Atlantic static mode: _missing

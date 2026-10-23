@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "cfb4e1aae9f6bdfe01deb68c6867aa5daebb13481cf43130e8133a3b139b0485",
+  "port_id": "75008045f73424469a538d7a021c2e0f0a259cac330efe9a18d177a51e0b4cba",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -17,7 +17,9 @@
     "0012-match-resident-and-processor-features-to-laboratory-target.patch": "e55c2355481f5b6282414af42b850364c7d93b4d57155ad192e201e0fefc805c",
     "0013-scope-kobject-process-context-to-macf-and-preserve-trace-index.patch": "077e8aed27506637eb6c6f13c6d4c16bd88613a51583c3add2fbdc3163f68226",
     "0014-retain-native-thread-ro-metadata-accessors.patch": "851e856ac9c3a11954a2a55add72d8e9b3977bb41c79769763c717909fb45bdf",
-    "0015-select-native-kernel-rpc-transport-and-arcade-feature-contract.patch": "46d0813239589f310909890ac1a1a427b0be54a6cb822ac783e0240f40b50528"
+    "0015-select-native-kernel-rpc-transport-and-arcade-feature-contract.patch": "46d0813239589f310909890ac1a1a427b0be54a6cb822ac783e0240f40b50528",
+    "0016-reference-current-parameters-in-disabled-deferred-reclaim.patch": "37882d4752be3db94901c77a727a76a7fc7ec7ec86e207277e7a7d3aa98dfd71",
+    "0017-match-firmware-mig-table-to-native-selected-providers.patch": "67d966d2857f45dd6c8599724a57d536018395eab426b27bccc1875f5e29184c"
   },
   "canonical_lf_files": [
     {
@@ -123,7 +125,7 @@
     {
       "path": "osfmk/kern/ipc_kobject.c",
       "preimage_sha256": "edee0e72fa21a8891c231f561fc84eb917e5fe87af13fc0f24a294a509016488",
-      "postimage_sha256": "8a2895e479af6ff4654929d0e92d7c7a64d15fc1321368f901f4989cbf491ac5"
+      "postimage_sha256": "35dda020e6315163f75a00be267c8bee39051ad7ea932651cfdccb9ce05a145f"
     },
     {
       "path": "osfmk/kern/atlantic_thread_metadata.c",
@@ -144,6 +146,11 @@
       "path": "osfmk/mach/arcade_upcall.defs",
       "preimage_sha256": "2e3ce22243e560cd82cf978c472f63dfa1222dc7053d295686ba17b07b6c228d",
       "postimage_sha256": "95c338f42bfcbedf4697249496985a91375c2bc9b2e0e53056af7674b54057c4"
+    },
+    {
+      "path": "osfmk/vm/vm_user.c",
+      "preimage_sha256": "7fbaad4de220bc78bee3881a0696fd94ec6d9a81dec0e4fe68878fb8c41ff01c",
+      "postimage_sha256": "32f4039c37e8804c93a1b6c9574dc9a9d82fbfa12591379bcffd0f7c5f96ebb2"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

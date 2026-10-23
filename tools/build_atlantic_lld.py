@@ -135,7 +135,7 @@ def main():
         '-DCMAKE_C_FLAGS_RELEASE=-O1 -DNDEBUG','-DCMAKE_CXX_FLAGS_RELEASE=-O1 -DNDEBUG',
         '-DLLVM_INCLUDE_TESTS=OFF','-DLLVM_INCLUDE_DOCS=OFF','-DLLVM_ENABLE_ASSERTIONS=ON',
         '-DLLVM_LINK_LLVM_DYLIB=ON','-DLLVM_USE_LINKER='+shutil.which('ld.lld-19'),
-        '-DLLD_VENDOR=AtlanticOS-static-arm64-v1'])
+        '-DLLD_VENDOR=AtlanticOS-static-arm64-v2'])
     run('build-lld', ['ninja','-C',str(build),'-j',str(args.jobs),'lld'])
     linker = build/'bin/ld64.lld'
     if not linker.exists():

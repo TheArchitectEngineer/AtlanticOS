@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+from xnu_selection import generated_cfiles
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -42,15 +43,17 @@ def main():
             ap.error('Experimental static mode requires an explicit --linker')
         proof = json.loads(args.atlantic_static_proof.read_text())
         if (proof.get('scope') != 'STATIC_ARM64_LINK_FIXTURES_ONLY_NOT_XNU_KERNEL_OR_EXECUTION' or
-            proof['linker_sha256'] != digest(linker) or len(proof['outcomes']) < 32 or
-            not all(c['passed'] for c in proof['outcomes']) or len(proof['images']) < 3):
+            proof['linker_sha256'] != digest(linker) or len(proof['outcomes']) < 54 or
+            not all(c['passed'] for c in proof['outcomes']) or len(proof['images']) < 15 or
+            proof.get('weak_definition_image_audits',0) < 12):
             ap.error('Static linker fixture proof is incomplete or from another binary')
         for rel, expected in proof['inputs'].items():
             if digest(ROOT/rel) != expected:
                 ap.error('Changed static linker fixture input: '+rel)
         static_proof = {'report_sha256':digest(args.atlantic_static_proof),
                         'fixture_checks_passed':len(proof['outcomes']),
-                        'fixture_image_audits':len(proof['images'])}
+                        'fixture_image_audits':len(proof['images']),
+                        'weak_definition_image_audits':proof['weak_definition_image_audits']}
     build = json.loads(args.build.read_text())
     lock = json.loads((ROOT/'xnu-port/patches.lock.json').read_text())
     if build['port_id'] != lock['port_id'] or build['failed_units']:
@@ -77,6 +80,14 @@ def main():
         for rel, expected in rpc['inputs'].items():
             if digest(ROOT/rel) != expected:
                 ap.error('Changed RPC build input: '+rel)
+        makefile = args.build.parent/'config/Makefile'
+        if (digest(makefile) != build.get('config_makefile_sha256') or
+            digest(makefile) != rpc['native_link_selection']['config_makefile_sha256']):
+            ap.error('Changed native generated-source selection')
+        native_sources = generated_cfiles(makefile.read_text())
+        if rpc['native_link_selection']['sources'] != native_sources:
+            ap.error('RPC selection differs from the official config output')
+        rpc_selected = 0
         for item in rpc['objects']:
             obj = (args.rpc.parent/item['object']).resolve()
             generated = (args.rpc.parent/item['source']).resolve()
@@ -86,8 +97,15 @@ def main():
                 digest(header) != item['header_sha256'] or
                 digest(source/item['definition']) != item['definition_sha256']):
                 ap.error('Changed or escaping generated RPC object/source/header: '+item['module'])
-            objects.append(str(obj))
-        rpc_record = {'report_sha256':digest(args.rpc),'object_count':len(rpc['objects'])}
+            selected = item['source'].removeprefix('generated/') in native_sources
+            if item['kernel_link_selected'] != selected:
+                ap.error('RPC object selection differs: '+item['module'])
+            if selected:
+                objects.append(str(obj))
+                rpc_selected += 1
+        rpc_record = {'report_sha256':digest(args.rpc),'object_count':rpc_selected,
+                      'compiled_probe_object_count':len(rpc['objects']),
+                      'excluded_probe_object_count':len(rpc['objects'])-rpc_selected}
     out.mkdir(parents=True)
     image = out/'unvalidated.macho'
     static_flags = (['--atlantic-static-arm64='+build['virtual_link_address']]
@@ -112,6 +130,7 @@ def main():
         'rejected_option_diagnostics':[s for s in r.stderr.splitlines()
             if 'not yet implemented' in s or 'ignored for arm64' in s],
         'undefined_symbol_error_count':r.stderr.count('error: undefined symbol:'),
+        'duplicate_symbol_error_count':r.stderr.count('error: duplicate symbol:'),
         'object_count':len(objects), 'warnings_are_errors':True,
         'static_link_mode':'ATLANTIC_BOUNDED_EXPERIMENTAL' if static_proof else 'UPSTREAM_LD64_STATIC_OPTIONS',
         'static_fixture_proof':static_proof,

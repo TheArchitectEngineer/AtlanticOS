@@ -21,7 +21,7 @@ jobs:
           python3 tools/fetch_xnu.py
           python3 tools/fetch_mig.py
           python3 tools/build_mig.py
-      - name: Compile forty-seven genuine XNU units with explicit provider (no execution)
+      - name: Compile sixty-two genuine XNU units with explicit provider (no execution)
         run: |
           python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
       - name: Verify pmap API rejection, object symbols and actual header dependencies
@@ -32,6 +32,8 @@ jobs:
         run: python3 tools/test_task_metadata.py --build work/xnu-lab-builds/*/report.json
       - name: Verify genuine MIG roles and reject kernel port and server ABI mismatches
         run: python3 tools/test_ipc_mig_abi.py --build work/xnu-lab-builds/*/report.json
+      - name: Check native dispatch feature scope and unchanged upstream contexts
+        run: python3 tools/test_xnu_kobject_scope.py --build work/xnu-lab-builds/*/report.json --output work/kobject-scope-tests
       - name: Generate and compile forty-two native RPC files and check selected IDL scopes
         run: python3 tools/build_xnu_rpc.py --build work/xnu-lab-builds/*/report.json
       - name: Check actual kobject table providers and generated descriptor ABI
@@ -52,6 +54,7 @@ jobs:
             work/clang-layout-ci/tests/positive.ll
             work/mig-host/report.json
             work/xnu-lab-builds/*/report.json
+            work/xnu-lab-builds/*/config/Makefile
             work/xnu-lab-builds/*/*.log
             work/pmap-firmware-tests/report.json
             work/pmap-firmware-tests/*.log
@@ -67,5 +70,6 @@ jobs:
             work/xnu-rpc-tests/report.json
             work/xnu-rpc-tests/*.log
             work/xnu-rpc-tests/descriptor_abi.c
+            work/kobject-scope-tests/*
             work/xnu-link-diagnostics/report.json
             work/xnu-link-diagnostics/link.log

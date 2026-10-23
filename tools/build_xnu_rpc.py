@@ -16,6 +16,7 @@ import struct
 import subprocess
 
 from build_xnu_lab import make_list
+from xnu_selection import generated_cfiles
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -64,6 +65,10 @@ def main():
             ap.error('Changed or escaping base header: '+item['path'])
     if digest(build_path.parent/'include/libkern/version.h') != base['version_header_sha256']:
         ap.error('Changed generated version header')
+    config_makefile = build_path.parent/'config/Makefile'
+    if digest(config_makefile) != base.get('config_makefile_sha256'):
+        ap.error('Changed or unrecorded native config Makefile')
+    native_sources = generated_cfiles(config_makefile.read_text())
     mig_dir = ROOT/'work/mig-host'
     mig = mig_dir/'migcom'
     mig_report = json.loads((mig_dir/'report.json').read_text())
@@ -101,6 +106,7 @@ def main():
     units += [('device','device','kernel-server')]
     inputs = {'tools/build_xnu_rpc.py':digest(__file__),
               'tools/build_xnu_lab.py':digest(ROOT/'tools/build_xnu_lab.py'),
+              'tools/xnu_selection.py':digest(ROOT/'tools/xnu_selection.py'),
               'tests/xnu_port/mig_rpc_config.c':digest(ROOT/'tests/xnu_port/mig_rpc_config.c')}
     build_id = hashlib.sha256(json.dumps({'base':digest(build_path),'inputs':inputs,
         'compiler_sha256':compiler_hash,'mig_sha256':digest(mig)},sort_keys=True).encode()).hexdigest()
@@ -253,9 +259,14 @@ def main():
     objects = [c for c in results if c['exit_code']==0]
     failures = [c for c in results if c['exit_code']!=0]
     definitions = {s for item in objects for s in item['defined_external_symbols']}
+    for item in objects:
+        item['kernel_link_selected'] = item['source'].removeprefix('generated/') in native_sources
+    selected_objects = [item for item in objects if item['kernel_link_selected']]
+    if not failures and set(native_sources) != {i['source'].removeprefix('generated/') for i in selected_objects}:
+        ap.error('Native config selected a generated source outside the compiled recipes')
     base_definitions = {s for item in base['objects'] for s in item['defined_external_symbols']}
-    all_definitions = base_definitions | definitions
-    missing = sorted({s for item in [*base['objects'],*objects] for s in item['undefined_symbols']} - all_definitions)
+    all_definitions = base_definitions | {s for i in selected_objects for s in i['defined_external_symbols']}
+    missing = sorted({s for item in [*base['objects'],*selected_objects] for s in item['undefined_symbols']} - all_definitions)
     report = {'schema_version':1,'label':'BUILT_ARM64',
         'scope':'GENUINE_GENERATED_XNU_KERNEL_RPC_OBJECTS_ONLY_NOT_LINKED_OR_EXECUTED',
         'upstream_commit':lock['xnu']['commit'],'port_id':base['port_id'],'build_id':build_id,
@@ -266,6 +277,9 @@ def main():
         'recipe_sha256':{p: digest(source/p) for p in ['osfmk/mach/Makefile','osfmk/device/Makefile']},
         'config_cases':config_cases,'idl_scope_cases':idl_scope_cases,'commands':commands,'generated':generated,
         'objects':objects,'failed_units':failures,'generation_failures':generation_failures,
+        'native_link_selection':{'scope':'MACH_AND_DEVICE_CFILES_FROM_OFFICIAL_CONFIG_NOT_COMP_FILES',
+            'config_makefile_sha256':digest(config_makefile),'sources':native_sources,
+            'selected_object_count':len(selected_objects),'excluded_probe_object_count':len(objects)-len(selected_objects)},
         'combined_symbol_inventory':{'scope':'NAME_INVENTORY_ONLY_NOT_A_LINK_OR_RELOCATION_CHECK',
             'defined_external_count':len(all_definitions),'unprovided_symbols':missing},
         'empty_interfaces':[{'module':c['module'],'role':c['role']} for c in generated if not c['message_count']],

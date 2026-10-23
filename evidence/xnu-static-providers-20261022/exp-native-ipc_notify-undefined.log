@@ -1,0 +1,16 @@
+_ipc_kobject_notify_send_once_and_unlock
+_ipc_object_reference
+_ipc_object_release
+_ipc_object_unlock
+_ipc_policy_array
+_ipc_port_release_sonce
+_ipc_port_release_sonce_and_unlock
+_ipc_space_kernel
+_mach_assert_jump_key
+_mach_notify_dead_name
+_mach_notify_no_senders
+_mach_notify_port_deleted
+_mach_notify_port_destroyed
+_mach_notify_send_once
+_mach_notify_send_possible
+_waitq_held

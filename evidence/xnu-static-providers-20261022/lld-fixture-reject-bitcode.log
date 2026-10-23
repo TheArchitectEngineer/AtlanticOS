@@ -1,0 +1,1 @@
+ld64.lld: error: Atlantic static mode requires native Mach-O objects: <ROOT>/work/lld-static-weak-clean-tests-v2/bitcode.o

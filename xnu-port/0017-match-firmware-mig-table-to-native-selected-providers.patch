@@ -1,0 +1,28 @@
+Match firmware MIG dispatch tables to native config providers.
+IOKit and BSD exception receivers are absent when their providers are off;
+native Mach exception senders and non-firmware tables remain unchanged.
+
+diff --git a/osfmk/kern/ipc_kobject.c b/osfmk/kern/ipc_kobject.c
+--- a/osfmk/kern/ipc_kobject.c
++++ b/osfmk/kern/ipc_kobject.c
+@@ -177,7 +177,9 @@
+ 	(const struct mig_kern_subsystem *)&clock_subsystem,
+ 	(const struct mig_kern_subsystem *)&processor_subsystem,
+ 	(const struct mig_kern_subsystem *)&processor_set_subsystem,
++#if !CONFIG_ATLANTIC_FIRMWARE || IOKIT
+ 	(const struct mig_kern_subsystem *)&is_iokit_subsystem,
++#endif
+ 	(const struct mig_kern_subsystem *)&task_subsystem,
+ 	(const struct mig_kern_subsystem *)&thread_act_subsystem,
+ #ifdef VM32_SUPPORT
+@@ -189,8 +191,10 @@
+ 	(const struct mig_kern_subsystem *)&mach_voucher_subsystem,
+ 	(const struct mig_kern_subsystem *)&memory_entry_subsystem,
+ 	(const struct mig_kern_subsystem *)&task_restartable_subsystem,
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ 	(const struct mig_kern_subsystem *)&catch_exc_subsystem,
+ 	(const struct mig_kern_subsystem *)&catch_mach_exc_subsystem,
++#endif
+ #if CONFIG_ARCADE
+ 	(const struct mig_kern_subsystem *)&arcade_register_subsystem,
+ #endif

@@ -1,0 +1,1 @@
+ld64.lld: error: unsupported runtime section in Atlantic static mode: __mod_init_func

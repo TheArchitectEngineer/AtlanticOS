@@ -1,5 +1,11 @@
 # Código RPC generado de XNU — 2026-10-22
 
+Este documento conserva la prueba inicial de 47 + 42 objetos. La
+[integración posterior de proveedores](XNU_RPC_PROVIDERS.md) distingue los 42 C
+generados/compilados de los 26 seleccionados para el kernel por CFILES. La
+receta inicial de diagnóstico había enlazado toda la lista de generación;
+ese alcance histórico no describe la selección correcta del kernel actual.
+
 El build conserva 47 unidades nativas con el proveedor experimental y 13 con
 Clang estándar. Cada carril genera y compila además los 42 archivos C RPC de las
 recetas upstream: 21 emisores kernel-user, 20 servidores Mach y el servidor

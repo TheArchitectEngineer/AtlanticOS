@@ -7,10 +7,11 @@ cd708029e0b2869e80abe31ddb175f7c35361f90. Los archivos modificados conservan
 Apache-2.0 WITH LLVM-exception; el texto completo está en
 [LLVM-LICENSE.txt](../LICENSES-and-NOTICES/LLVM-LICENSE.txt).
 
-El lock fija archive, patch y los cinco pre/postimages. El modo explícito
+El lock fija archive, patch y los seis pre/postimages. El modo explícito
 `--atlantic-static-arm64=<base hexadecimal>` tiene alcance acotado de laboratorio.
-No implementa toda la opción ld64 `-static` y todavía rechaza los helpers weak
-de Blocks que usa el conjunto actual de XNU. No altera las fuentes XNU, el
+No implementa toda la opción ld64 `-static`. La revisión v2 conserva la selección
+nativa de definiciones weak/strong durante el enlace y aplica sus referencias
+sin dyld. No altera las fuentes XNU, el
 compilador experimental ya comprobado ni el comportamiento dinámico por defecto
 de LLD.
 

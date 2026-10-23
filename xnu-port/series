@@ -13,3 +13,5 @@
 0013-scope-kobject-process-context-to-macf-and-preserve-trace-index.patch
 0014-retain-native-thread-ro-metadata-accessors.patch
 0015-select-native-kernel-rpc-transport-and-arcade-feature-contract.patch
+0016-reference-current-parameters-in-disabled-deferred-reclaim.patch
+0017-match-firmware-mig-table-to-native-selected-providers.patch

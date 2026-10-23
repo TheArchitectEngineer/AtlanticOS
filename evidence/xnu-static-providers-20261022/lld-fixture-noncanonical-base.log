@@ -1,0 +1,1 @@
+ld64.lld: error: Atlantic static base must be nonzero, 16 KiB aligned, canonical and leave 256 MiB of address space

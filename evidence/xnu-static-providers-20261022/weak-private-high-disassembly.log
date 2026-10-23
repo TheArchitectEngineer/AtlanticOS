@@ -1,0 +1,13 @@
+/mnt/g/AtlanticOS/work/lld-static-weak-clean-tests-v2/weak-private-ba.macho:
+(__TEXT,__text) section
+__start:
+fffffff0070043f8:	07 00 00 94	bl	_selected
+fffffff0070043fc:	24 00 00 90	adrp	x4, 4 ; 0xfffffff007008000
+fffffff007004400:	84 00 40 f9	ldr	x4, [x4]
+fffffff007004404:	80 00 3f d6	blr	x4
+fffffff007004408:	41 00 00 90	adrp	x1, 8 ; 0xfffffff00700c000
+fffffff00700440c:	21 60 00 91	add	x1, x1, #0x18
+fffffff007004410:	c0 03 5f d6	ret
+_selected:
+fffffff007004414:	c0 0c 80 d2	mov	x0, #0x66
+fffffff007004418:	c0 03 5f d6	ret

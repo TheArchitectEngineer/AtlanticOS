@@ -96,6 +96,13 @@ no contiene BootShim ni código de plataforma de ports ajenos.
     las interfaces Arcade a su proveedor seleccionado. Cinco comparaciones de
     generación conservan salida byte a byte fuera de firmware o con Arcade
     activado. No se declara mach_msg ni un conversor falso para hacer compilar.
+16. `0016`: corrige dos casts a un parámetro size inexistente en las ramas
+    nativas de reclamación diferida desactivada de vm_user.c. Usa los parámetros
+    actuales, conserva KERN_NOT_SUPPORTED y deja intacto el proveedor habilitado.
+17. `0017`: en firmware registra los receptores BSD e IOKit solo si sus proveedores
+    están seleccionados. Conserva la tabla original fuera de firmware y cuando
+    ambos proveedores están activos; los emisores de excepciones Mach siguen
+    seleccionados por el configurador nativo. No habilita BSD o IOKit ficticios.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
@@ -121,7 +128,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y cuarenta y siete experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y sesenta y dos experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.
@@ -131,3 +138,5 @@ El [cierre core](../docs/XNU_CORE_CLOSURE.md) registra los probes que siguen
 fallando y la limitación comprobada de -static en LLD 19.1.7.
 La [integración RPC](../docs/XNU_RPC_BUILD.md) agrega los C y descriptores
 generados de sus recetas nativas, sin convertirlos en servicios ejecutados.
+La [integración de proveedores](../docs/XNU_RPC_PROVIDERS.md) agrega quince
+unidades nativas, incluida vm_user tras corregir los casts; pageout sigue pendiente.

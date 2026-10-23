@@ -61,7 +61,10 @@ La [integración de los C RPC](XNU_RPC_BUILD.md) conserva 42 unidades generadas
 por MIG en cada carril y verifica los 17 descriptores requeridos por kobject.
 La imagen sigue sin enlazarse; no cambia la exigencia de XNU físico y handoff.
 
-El [modo estático ARM64 de LLD](LLD_STATIC_ARM64.md) comprueba tres fixtures
-enlazados y conserva el rechazo real de los helpers weak de Blocks de XNU.
-Esto mejora la herramienta host; todavía faltan el cierre nativo, la imagen,
-el bootstrap real y todas las comprobaciones físicas del objetivo.
+El [modo estático ARM64 de LLD](LLD_STATIC_ARM64.md) v2 comprueba 15 imágenes
+fixture con 54 comandos, incluida selección weak/strong. La
+[integración de proveedores nativos](XNU_RPC_PROVIDERS.md) compila 62 unidades
+base y 42 probes RPC; CFILES selecciona 26 RPC para el enlace. La tabla real
+requiere 14 subsistemas del perfil sin BSD/IOKit. El intento de 88 objetos
+conserva 1.094 referencias indefinidas, cero duplicados y ninguna imagen.
+Todavía faltan el cierre nativo, el bootstrap real y la evidencia física completa.

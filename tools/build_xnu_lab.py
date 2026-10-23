@@ -34,11 +34,12 @@ UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
          'osfmk/ipc/ipc_init.c': '_ipc_init'}
 # IPC registers a genuine static initializer in STARTUP(MACH_IPC, ...).
 SYMBOL_TYPES = {'osfmk/ipc/ipc_init.c': 't', 'osfmk/kern/sched_dualq.c': 't',
-                'osfmk/ipc/ipc_importance.c': 't'}
+                'osfmk/ipc/ipc_importance.c': 't', 'osfmk/ipc/ipc_voucher.c': 't'}
 STARTUP_SYMBOL_PREFIXES = {
     'osfmk/ipc/ipc_init.c': '___startup_MACH_IPC_entry_ipc_init_',
     'osfmk/ipc/ipc_importance.c': '___startup_MACH_IPC_entry_ipc_importance_init_',
-    'osfmk/kern/ipc_kobject.c': '___startup_MACH_IPC_entry_mig_init_'}
+    'osfmk/kern/ipc_kobject.c': '___startup_MACH_IPC_entry_mig_init_',
+    'osfmk/ipc/ipc_voucher.c': '___startup_MACH_IPC_entry_ipc_voucher_init_'}
 EXTRA_SYMBOLS = {'osfmk/arm64/cswitch.s': ['_machine_load_context', '_Call_continuation'],
                  'osfmk/arm64/start.s': ['__start', '_LowResetVectorBase'],
                  'osfmk/arm64/locore.s': ['_fleh_synchronous', '_fleh_irq'],
@@ -103,7 +104,29 @@ EXPERIMENTAL_UNITS = {'osfmk/kern/thread.c': '_thread_init',
                       'osfmk/ipc/ipc_mqueue.c': '_ipc_mqueue_init',
                       'osfmk/ipc/ipc_right.c': '_ipc_right_copyin',
                       'osfmk/kern/ipc_kobject.c': '_ipc_kobject_server',
-                      'osfmk/kern/atlantic_thread_metadata.c': '_get_thread_ro'}
+                      'osfmk/kern/atlantic_thread_metadata.c': '_get_thread_ro',
+                      'osfmk/ipc/mach_msg.c': '_mach_msg2_trap',
+                      'osfmk/ipc/ipc_notify.c': '_ipc_notify_dead_name',
+                      'osfmk/ipc/ipc_pset.c': '_ipc_pset_alloc',
+                      'osfmk/ipc/ipc_eventlink.c': '_mach_eventlink_create',
+                      'osfmk/ipc/ipc_voucher.c': '_ipc_voucher_init',
+                      'osfmk/kern/ipc_mig.c': '_kernel_mach_msg_rpc',
+                      'osfmk/kern/ipc_tt.c': '_ipc_task_init',
+                      'osfmk/kern/ipc_host.c': '_ipc_host_init',
+                      'osfmk/kern/ipc_clock.c': '_ipc_clock_init',
+                      'osfmk/kern/host.c': '_host_info',
+                      'osfmk/kern/host_notify.c': '_host_notify_calendar_change',
+                      'osfmk/kern/sync_sema.c': '_semaphore_create',
+                      'osfmk/vm/vm_memory_entry.c': '_mach_make_memory_entry_64',
+                      'osfmk/vm/vm_upl.c': '_upl_commit_range',
+                      'osfmk/vm/vm_user.c': '_mach_vm_allocate_external'}
+EXTRA_SYMBOLS.update({
+    'osfmk/kern/ipc_mig.c': ['_kernel_mach_msg_send'],
+    'osfmk/kern/ipc_tt.c': ['_ipc_task_enable', '_ipc_task_terminate', '_convert_port_to_map'],
+    'osfmk/kern/sync_sema.c': ['_semaphore_wait', '_semaphore_signal'],
+    'osfmk/vm/vm_memory_entry.c': ['_mach_memory_entry_purgable_control'],
+    'osfmk/vm/vm_upl.c': ['_upl_abort_range'],
+    'osfmk/vm/vm_user.c': ['_mach_vm_deallocate', '_mach_vm_read', '_mach_vm_write']})
 PROBES = ['osfmk/vm/vm_pageout.c']
 
 
@@ -451,7 +474,8 @@ def main():
     missing_symbols = sorted({s for item in objects for s in item['undefined_symbols']} - selected_definitions)
     report = {'schema_version':1,'label':'BUILT_ARM64','scope':'REAL_XNU_CORE_OBJECTS_ONLY_NOT_LINKED_OR_EXECUTED',
               'upstream_commit':lock['xnu']['commit'],'patches':patches,'port_id':port_id,'build_id':build_id,
-              'inputs':build_inputs,'profile':'atlanticlab','kernel_linked':False,'xnu_executed':False,'phone_accessed':False,
+              'inputs':build_inputs,'profile':'atlanticlab','config_makefile_sha256':digest(config/'Makefile'),
+              'kernel_linked':False,'xnu_executed':False,'phone_accessed':False,
               'object_sizes_are_not_runtime_ram':True,'host_generator_sanitizers':['address','undefined'],
               'host_generator_leak_check':False,'selected_defines':defines,'commands':commands,'steps':steps,
               'compiler':subprocess.check_output([target_compiler,'--version'],text=True).splitlines()[0],

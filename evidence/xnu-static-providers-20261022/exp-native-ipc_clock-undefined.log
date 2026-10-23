@@ -1,0 +1,7 @@
+_current_task
+_ipc_kobject_alloc_port
+_ipc_kobject_get_stable
+_ipc_kobject_make_send
+_ipc_kobject_register_startup
+_ipc_object_unlock
+_ipc_port_translate_send

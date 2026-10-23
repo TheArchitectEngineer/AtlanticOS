@@ -105,7 +105,7 @@ index 1883acc..8049f52 100644
      // Now that all dylibs have been loaded, search for those that should be
      // re-exported.
 diff --git a/lld/MachO/Options.td b/lld/MachO/Options.td
-index bbd8bf7..6ede494 100644
+index bbd8bf7..b46a11f 100644
 --- a/lld/MachO/Options.td
 +++ b/lld/MachO/Options.td
 @@ -10,6 +10,10 @@ multiclass BB<string name, string help1, string help2> {
@@ -113,14 +113,30 @@ index bbd8bf7..6ede494 100644
  def grp_lld : OptionGroup<"kind">, HelpText<"LLD-SPECIFIC">;
  
 +def atlantic_static_arm64_eq : Joined<["--"], "atlantic-static-arm64=">,
-+    HelpText<"AtlanticOS experimental fixed-address ARM64 executable (hex base); no dyld, TLS, weak symbols or LTO">,
++    HelpText<"AtlanticOS experimental fixed-address ARM64 executable (hex base); no dyld, TLS, unresolved symbols or LTO">,
 +    Group<grp_lld>;
 +
  def help : Flag<["-", "--"], "help">,
      Group<grp_lld>;
  def help_hidden : Flag<["--"], "help-hidden">,
+diff --git a/lld/MachO/Symbols.h b/lld/MachO/Symbols.h
+index be5d135..f1d21aa 100644
+--- a/lld/MachO/Symbols.h
++++ b/lld/MachO/Symbols.h
+@@ -384,7 +384,10 @@ inline bool needsBinding(const Symbol *sym) {
+   if (isa<DylibSymbol>(sym))
+     return true;
+   if (const auto *defined = dyn_cast<Defined>(sym))
+-    return defined->isExternalWeakDef() || defined->interposable;
++    // The native symbol table has already selected the prevailing definition.
++    // Fixed-load Atlantic images have no runtime interposition or coalescing.
++    return !config->atlanticStaticArm64 &&
++           (defined->isExternalWeakDef() || defined->interposable);
+   return false;
+ }
+ 
 diff --git a/lld/MachO/SyntheticSections.cpp b/lld/MachO/SyntheticSections.cpp
-index 3d77835..777d2bf 100644
+index 3d77835..d6f0d23 100644
 --- a/lld/MachO/SyntheticSections.cpp
 +++ b/lld/MachO/SyntheticSections.cpp
 @@ -123,9 +123,9 @@ void MachHeaderSection::writeTo(uint8_t *buf) const {
@@ -135,7 +151,18 @@ index 3d77835..777d2bf 100644
      hdr->flags |= MH_NOUNDEFS | MH_TWOLEVEL;
  
    if (config->outputType == MH_DYLIB && !config->hasReexports)
-@@ -1044,6 +1044,8 @@ ExportSection::ExportSection()
+@@ -323,6 +323,10 @@ void macho::addNonLazyBindingEntries(const Symbol *sym,
+     if (dysym->isWeakDef())
+       in.weakBinding->addEntry(sym, isec, offset, addend);
+   } else if (const auto *defined = dyn_cast<Defined>(sym)) {
++    // Keep native link-time coalescing, including weak-to-strong replacement.
++    // All static references are relocated directly; dyld must not fix them up.
++    if (config->atlanticStaticArm64)
++      return;
+     in.rebase->addEntry(isec, offset);
+     if (defined->isExternalWeakDef())
+       in.weakBinding->addEntry(sym, isec, offset, addend);
+@@ -1044,6 +1048,8 @@ ExportSection::ExportSection()
      : LinkEditSection(segment_names::linkEdit, section_names::export_) {}
  
  void ExportSection::finalizeContents() {
@@ -144,7 +171,7 @@ index 3d77835..777d2bf 100644
    trieBuilder.setImageBase(in.header->addr);
    for (const Symbol *sym : symtab->getSymbols()) {
      if (const auto *defined = dyn_cast<Defined>(sym)) {
-@@ -2237,7 +2239,7 @@ void macho::createSyntheticSymbols() {
+@@ -2237,7 +2243,7 @@ void macho::createSyntheticSymbols() {
      // If linking PIE, __mh_execute_header is a defined symbol in
      //  __TEXT, __text)
      // Otherwise, it's an absolute symbol.
@@ -154,7 +181,7 @@ index 3d77835..777d2bf 100644
                             /*isPrivateExtern=*/false, /*includeInSymtab=*/true,
                             /*referencedDynamically=*/true);
 diff --git a/lld/MachO/Writer.cpp b/lld/MachO/Writer.cpp
-index 0eb8092..710f7a2 100644
+index 0eb8092..2c651f2 100644
 --- a/lld/MachO/Writer.cpp
 +++ b/lld/MachO/Writer.cpp
 @@ -37,6 +37,7 @@
@@ -245,8 +272,8 @@ index 0eb8092..710f7a2 100644
 +      if ((!isa<ObjFile>(file) && !isa<ArchiveFile>(file)) || !file->objCImageInfo.empty())
 +        error("non-native or Objective-C input in Atlantic static mode: " + file->getName());
 +    for (const Symbol *sym : symtab->getSymbols())
-+      if (isa<DylibSymbol>(sym) || sym->isWeakDef())
-+        error("dynamic or weak symbol in Atlantic static mode: " + sym->getName());
++      if (isa<DylibSymbol>(sym))
++        error("dynamic symbol in Atlantic static mode: " + sym->getName());
 +    for (const InputSection *isec : inputSections) {
 +      for (const Reloc &r : isec->relocs)
 +        if (target->hasAttr(r.type, RelocAttrBits::TLV))

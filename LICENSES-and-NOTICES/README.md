@@ -6,7 +6,7 @@ compiler-port/ usa Apache-2.0 WITH LLVM-exception. No es una relicencia de XNU,
 LLVM, EDK2, Linux/Motorola o el port UEFI G20.
 
 El patch original en linker-port/ también usa Apache-2.0 WITH LLVM-exception
-y modifica cinco archivos oficiales LLD 19.1.7. Conserva su licencia upstream;
+y modifica seis archivos oficiales LLD 19.1.7. Conserva su licencia upstream;
 LLVM-LICENSE.txt cubre sus avisos. El modo de enlace no procede de un port de
 kernel o firmware ajeno. Las bibliotecas LLVM host se registran como dependencias
 externas y no se incluyen como binarios en el repositorio.
@@ -35,6 +35,10 @@ No son implementaciones originales de los servicios. Los C/headers completos y
 objetos permanecen privados en work/; se publica receta, hashes y diagnósticos.
 Patch 0015 conserva los avisos APSL/Carnegie Mellon de vm_map.defs y los avisos
 Apple/APSL de las dos interfaces Arcade. No se relicencian bajo MIT.
+Patch 0016 conserva los avisos Apple/APSL y Carnegie Mellon de vm_user.c;
+solo corrige los nombres de parámetros en sus ramas de función desactivada.
+Patch 0017 conserva los avisos Apple/APSL de ipc_kobject.c. Solo condiciona tres
+entradas de dispatch a los proveedores BSD/IOKit seleccionados en firmware.
 
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias

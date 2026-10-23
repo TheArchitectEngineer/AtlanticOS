@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "EXPERIMENTAL_LLD_TOOL_ONLY_NOT_KERNEL_OR_RUNTIME_VALIDATION",
+  "upstream_commit": "cd708029e0b2869e80abe31ddb175f7c35361f90",
+  "archive_sha256": "05e6d7fe6d188dd4d33b812ab5cce7654b886b7c9ce405aa1d942c866bbe959f",
+  "patch_sha256": "0b7ff37bab7c8bcc27267990b47b7068896f552dc9e07f28649dfec6d749222f",
+  "inputs": {
+    "tools/build_atlantic_lld.py": "143693c8fce025c4becc2a598559db50280a5767ebf455ea0fd3f2856556f69d",
+    "linker-port/0001-add-bounded-static-arm64-link-mode.patch": "0b7ff37bab7c8bcc27267990b47b7068896f552dc9e07f28649dfec6d749222f",
+    "linker-port/patches.lock.json": "26617f3e078c7e7554dbc7e6b78e4162cc34d302a4845c2b404f6a5d015e5cba"
+  },
+  "source_files_verified": 3901,
+  "llvm_development_version": "19.1.7",
+  "llvm_config_sha256": "0ad6303a9d04d2dd21a7f7dc0aec2a2c0bbaf35b04ac5b43dc7ab48688929772",
+  "llvm_cmake_config_sha256": "6ac118f707a0fcb8c12138220deeadcee4460443e865540212cf42d379240980",
+  "xnu_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "commands": [
+    [
+      "cmake",
+      "-G",
+      "Ninja",
+      "-S",
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/source/lld",
+      "-B",
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build",
+      "-DLLVM_DIR=/usr/lib/llvm-19/lib/cmake/llvm",
+      "-DCMAKE_MODULE_PATH=",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_C_COMPILER=/usr/bin/clang-19",
+      "-DCMAKE_CXX_COMPILER=/usr/bin/clang++-19",
+      "-DCMAKE_C_FLAGS_RELEASE=-O1 -DNDEBUG",
+      "-DCMAKE_CXX_FLAGS_RELEASE=-O1 -DNDEBUG",
+      "-DLLVM_INCLUDE_TESTS=OFF",
+      "-DLLVM_INCLUDE_DOCS=OFF",
+      "-DLLVM_ENABLE_ASSERTIONS=ON",
+      "-DLLVM_LINK_LLVM_DYLIB=ON",
+      "-DLLVM_USE_LINKER=/usr/bin/ld.lld-19",
+      "-DLLD_VENDOR=AtlanticOS-static-arm64-v2"
+    ],
+    [
+      "ninja",
+      "-C",
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build",
+      "-j",
+      "4",
+      "lld"
+    ]
+  ],
+  "linker_sha256": "0366272978de83b5da6c47d37f458b9e0feaa58f9ac5dd14e831a23420f06133",
+  "linker_version": "AtlanticOS-static-arm64-v2 LLD 19.1.7",
+  "runtime_dependencies": {
+    "/lib/x86_64-linux-gnu/libz.so.1": "85590dd58edf5445e18bc7193e5ebc01ac5841f1ae187e97705a662e90c6421e",
+    "/lib/x86_64-linux-gnu/libzstd.so.1": "27f07c9a49c2c956bcfb64cd4712976586a66facbf15fc7f09bc37413b5f2b21",
+    "/usr/lib/llvm-19/lib/libLLVM.so.19.1": "3523f50f635d2a1ea47518a392451f2854b92823ceaf1345fb806099dd1a3b8a",
+    "/lib/x86_64-linux-gnu/libstdc++.so.6": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00",
+    "/lib/x86_64-linux-gnu/libm.so.6": "6d567d53e895273ca14a1f9dc164fc6c8d39aed2f60aa46a733c2784228915f3",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1": "30c61ab012a4241bed033725a09b61f5fdd3bb7df95ee852d0b096520524c7af",
+    "/lib/x86_64-linux-gnu/libc.so.6": "9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92",
+    "/lib64/ld-linux-x86-64.so.2": "c8438e4fde1934e61c88311633f00949ff645d5c04cdb8671fa3d78164d2f307",
+    "/lib/x86_64-linux-gnu/libffi.so.8": "922024ec5a23f7de1095b1cff2f6cbfb377b5d58cd51fd0ec2e8fe35427653e2",
+    "/lib/x86_64-linux-gnu/libedit.so.2": "4cde661dc336a1a835e605532086c629f6279a312374c91795215b8489ad4bcf",
+    "/lib/x86_64-linux-gnu/libz3.so.4": "7accc397d4ac387468b09489bdaff9d82bfac4ca6a7e339b8fbb2167edf9c1c0",
+    "/lib/x86_64-linux-gnu/libxml2.so.2": "8f2643af68a9eba917929046806dabd1848867068d0eee0f6799288a8e886963",
+    "/lib/x86_64-linux-gnu/libtinfo.so.6": "4013e7651ac68f547d8333517def25b2366c97eec7de7f06e105dbf3444ffebf",
+    "/lib/x86_64-linux-gnu/libbsd.so.0": "167e3fa2b6320ce61534a48002e6d0921f61d61eae88a669c117e23ed3de9f37",
+    "/lib/x86_64-linux-gnu/liblzma.so.5": "01e05a4b5268805a10a2414a8904fb1fb45c60626dce53b5ea19c1d491049b99",
+    "/lib/x86_64-linux-gnu/libmd.so.0": "1c8c51474c0eb67dabd9f1605097eb58195cdabef64427ae17cfcd2053c37479"
+  },
+  "host_compilers": {
+    "clang-19": {
+      "sha256": "0a3c55936ac43954fbe4914e6e73b577ca9e35e75d89ef13d3e28c187f41ca1a",
+      "version": "Debian clang version 19.1.7 (3+b1)"
+    },
+    "clang++-19": {
+      "sha256": "0a3c55936ac43954fbe4914e6e73b577ca9e35e75d89ef13d3e28c187f41ca1a",
+      "version": "Debian clang version 19.1.7 (3+b1)"
+    }
+  }
+}

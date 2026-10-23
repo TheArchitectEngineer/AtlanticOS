@@ -1,0 +1,7 @@
+ld64.lld: error: duplicate symbol: _selected
+>>> defined in <ROOT>/work/lld-static-weak-clean-tests-v2/strong-c.o
+>>> defined in <ROOT>/work/lld-static-weak-clean-tests-v2/strong-d.o
+
+ld64.lld: error: duplicate symbol: _selected_value
+>>> defined in <ROOT>/work/lld-static-weak-clean-tests-v2/strong-c.o
+>>> defined in <ROOT>/work/lld-static-weak-clean-tests-v2/strong-d.o
