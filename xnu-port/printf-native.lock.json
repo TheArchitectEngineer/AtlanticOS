@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+  "scope": "FOUR_VERBATIM_NATIVE_XNU_FORMATTING_FRAGMENTS_NO_TTY_OR_BSD_USERLAND_NOT_RUNTIME_PROOF",
+  "fragments": [
+    {
+      "name": "snprintf_arg",
+      "source": "bsd/kern/subr_prf.c",
+      "first_line": 106,
+      "last_line": 109,
+      "sha256": "66b93b3d7d7c6b549285eec202e43987a9eb5057e415f754c142b6cd2ed1a858",
+      "destination": "osfmk/kern/atlantic_printf.c"
+    },
+    {
+      "name": "snprintf_func",
+      "source": "bsd/kern/subr_prf.c",
+      "first_line": 556,
+      "last_line": 566,
+      "sha256": "2256fc2e3edbc094c8baea88f865e5f22d507746f271e8855b0275f2d30e60b1",
+      "destination": "osfmk/kern/atlantic_printf.c"
+    },
+    {
+      "name": "vsnprintf",
+      "source": "bsd/kern/subr_prf.c",
+      "first_line": 499,
+      "last_line": 513,
+      "sha256": "e938c3e54df8df79143171d9fa50dae59075adea43a327315e54d2cf431fcfb8",
+      "destination": "osfmk/kern/atlantic_printf.c"
+    },
+    {
+      "name": "snprintf",
+      "source": "bsd/kern/subr_prf.c",
+      "first_line": 472,
+      "last_line": 482,
+      "sha256": "9c51ebb4019eacc224f2c69abd7b3d23d705198075461a4c767fad7205307218",
+      "destination": "osfmk/kern/atlantic_printf.c"
+    }
+  ]
+}

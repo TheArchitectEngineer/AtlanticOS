@@ -1,0 +1,10 @@
+__enable_preemption
+_cpu_number
+_current_percpu_base
+_hw_spin_compute_timeout
+_hw_spin_should_keep_spinning
+_lock_panic_timeout
+_mach_assert_jump_key
+_other_percpu_base
+_panic
+_percpu_slot_lck_mcs

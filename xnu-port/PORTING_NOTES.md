@@ -103,6 +103,13 @@ no contiene BootShim ni código de plataforma de ports ajenos.
     están seleccionados. Conserva la tabla original fuera de firmware y cuando
     ambos proveedores están activos; los emisores de excepciones Mach siguen
     seleccionados por el configurador nativo. No habilita BSD o IOKit ficticios.
+18. `0018`: excluye un header de MPIDR Apple no utilizado por el perfil genérico
+    de laboratorio en pcb.c y machine_routines_common.c. El reset de kperf_ast
+    usa el mismo guard CONFIG_KPERF que su campo. Panic conserva sus validaciones
+    Mach y devuelve contexto proc NULL solo en firmware sin MACH_BSD. Cuatro
+    fragmentos de snprintf/vsnprintf se conservan con licencia y hashes nativos;
+    llaman a __doprnt de XNU y sus declaraciones se verifican contra el archivo
+    BSD original completo. No se declara un panic o formatter ejecutado.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
@@ -128,7 +135,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y sesenta y dos experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y noventa y nueve experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.

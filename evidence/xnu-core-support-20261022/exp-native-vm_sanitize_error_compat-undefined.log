@@ -1,0 +1,7 @@
+_lck_rw_done
+_lck_rw_lock_exclusive
+_mach_assert_jump_key
+_vm_map_is_sealed
+_vm_map_lookup_entry
+_vm_map_round_page_mask
+_vm_map_trunc_page_mask

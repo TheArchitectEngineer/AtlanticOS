@@ -1,0 +1,14 @@
+<ROOT>/work/core99-rpc-exp/descriptor_abi.c:25:16: error: static assertion failed due to requirement '__builtin_offsetof(struct mig_kern_subsystem, kroutine) == __builtin_offsetof(struct mig_kern_subsystem, kroutine) + 1': AtlanticOS MIG descriptor prefix mismatch
+   25 | _Static_assert(offsetof(struct mig_kern_subsystem, kroutine) ==
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   26 |     offsetof(struct mig_kern_subsystem, kroutine) + 1,
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/EXTERNAL_HEADERS/stddef.h:67:24: note: expanded from macro 'offsetof'
+   67 | #define offsetof(t, d) __builtin_offsetof(t, d)
+      |                        ^
+<ROOT>/work/core99-rpc-exp/descriptor_abi.c:25:62: note: expression evaluates to '32 == 33'
+   25 | _Static_assert(offsetof(struct mig_kern_subsystem, kroutine) ==
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+   26 |     offsetof(struct mig_kern_subsystem, kroutine) + 1,
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.

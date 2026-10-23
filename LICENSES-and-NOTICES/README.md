@@ -40,6 +40,14 @@ solo corrige los nombres de parámetros en sus ramas de función desactivada.
 Patch 0017 conserva los avisos Apple/APSL de ipc_kobject.c. Solo condiciona tres
 entradas de dispatch a los proveedores BSD/IOKit seleccionados en firmware.
 
+Patch 0018 conserva cuatro fragmentos de bsd/kern/subr_prf.c para snprintf y
+vsnprintf, con sus avisos Apple/APSL, NeXT, Berkeley y USL íntegros. El lock
+xnu-port/printf-native.lock.json fija sus líneas y hashes. Los cuerpos llaman
+al formateador __doprnt de XNU; no son código MIT AtlanticOS. La declaración
+aislada del header sí es original AtlanticOS. Se conserva el reconocimiento:
+This product includes software developed by the University of California,
+Berkeley and its contributors.
+
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias
 BSD-2-Clause-Patent y por componente. No se distribuyen sus binarios o wrappers.

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "75008045f73424469a538d7a021c2e0f0a259cac330efe9a18d177a51e0b4cba",
+  "port_id": "fe7847bb0483b26bf34ec6aba0345f2c02f4b5b9fb51594237ebe60f1c0ca7eb",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -19,7 +19,8 @@
     "0014-retain-native-thread-ro-metadata-accessors.patch": "851e856ac9c3a11954a2a55add72d8e9b3977bb41c79769763c717909fb45bdf",
     "0015-select-native-kernel-rpc-transport-and-arcade-feature-contract.patch": "46d0813239589f310909890ac1a1a427b0be54a6cb822ac783e0240f40b50528",
     "0016-reference-current-parameters-in-disabled-deferred-reclaim.patch": "37882d4752be3db94901c77a727a76a7fc7ec7ec86e207277e7a7d3aa98dfd71",
-    "0017-match-firmware-mig-table-to-native-selected-providers.patch": "67d966d2857f45dd6c8599724a57d536018395eab426b27bccc1875f5e29184c"
+    "0017-match-firmware-mig-table-to-native-selected-providers.patch": "67d966d2857f45dd6c8599724a57d536018395eab426b27bccc1875f5e29184c",
+    "0018-retain-native-arm64-support-and-panic-formatting.patch": "2ab160463080bc9a32557c836a963c9c1e44e46a72370b178a4905bfece2840f"
   },
   "canonical_lf_files": [
     {
@@ -151,6 +152,36 @@
       "path": "osfmk/vm/vm_user.c",
       "preimage_sha256": "7fbaad4de220bc78bee3881a0696fd94ec6d9a81dec0e4fe68878fb8c41ff01c",
       "postimage_sha256": "32f4039c37e8804c93a1b6c9574dc9a9d82fbfa12591379bcffd0f7c5f96ebb2"
+    },
+    {
+      "path": "osfmk/arm64/pcb.c",
+      "preimage_sha256": "b6544872f9a260fc20ab9d6216972fae923e2b617281d221180e90a85d0da1c5",
+      "postimage_sha256": "f45538a14b4e93097fe59bade5f8ae0e94a4047b2c55c988c1218c194db49334"
+    },
+    {
+      "path": "osfmk/arm/machine_routines_common.c",
+      "preimage_sha256": "c11b6c93e585305574180eac58996cc1c0c8f0d0e8b785fe2da4ff91c53903bc",
+      "postimage_sha256": "2a9edea3562f043b9b2f9a23962eef872002be105bc6fbf115cb575d5cad90e2"
+    },
+    {
+      "path": "osfmk/kern/ast.c",
+      "preimage_sha256": "68a621b8e4e501caa2144fda098028a5e4cb3d85c4e536a09831de2466bda0e2",
+      "postimage_sha256": "06cbaebb29e2351276bf03c3e3f8d950af71bafae9fe380f417d07244c65710f"
+    },
+    {
+      "path": "osfmk/kern/debug.c",
+      "preimage_sha256": "88854943e4ae6535d7d857e6123ff0f87aeee1caa0bbce1a7ef7e35462932ffb",
+      "postimage_sha256": "e386e316b7304069ee67ed0dc49272d3d08458e8dbf36ad5026d69fa893dc8bf"
+    },
+    {
+      "path": "osfmk/kern/atlantic_printf.c",
+      "preimage_sha256": null,
+      "postimage_sha256": "df61f531d5c6eabdda508c0f076f4079c0efa08abf5af34ad850c8f55c4a0d56"
+    },
+    {
+      "path": "osfmk/kern/atlantic_printf.h",
+      "preimage_sha256": null,
+      "postimage_sha256": "24da8369943c872f2fdb8597279f55f4e1bc7607a17e0c2312aedc1d9fcb3f38"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

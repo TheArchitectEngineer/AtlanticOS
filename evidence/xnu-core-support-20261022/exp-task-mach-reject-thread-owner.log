@@ -1,0 +1,18 @@
+In file included from <ROOT>/tests/xnu_port/task_metadata_abi.c:4:
+In file included from <ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/task.h:133:
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/thread.h:1641:49: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1641 | extern void             uthread_cred_ref(struct ucred *);
+      |                                                 ^
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/thread.h:1642:50: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1642 | extern void             uthread_cred_free(struct ucred *);
+      |                                                  ^
+<ROOT>/tests/xnu_port/task_metadata_abi.c:41:16: error: static assertion failed due to requirement '__builtin_offsetof(struct thread_ro, tro_owner) == 1': AtlanticOS thread metadata owner offset mismatch
+   41 | _Static_assert(offsetof(struct thread_ro, tro_owner) == ATL_TEST_WRONG_THREAD_OWNER_OFFSET,
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/EXTERNAL_HEADERS/stddef.h:67:24: note: expanded from macro 'offsetof'
+   67 | #define offsetof(t, d) __builtin_offsetof(t, d)
+      |                        ^
+<ROOT>/tests/xnu_port/task_metadata_abi.c:41:54: note: expression evaluates to '0 == 1'
+   41 | _Static_assert(offsetof(struct thread_ro, tro_owner) == ATL_TEST_WRONG_THREAD_OWNER_OFFSET,
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2 warnings and 1 error generated.

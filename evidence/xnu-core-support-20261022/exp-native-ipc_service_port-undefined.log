@@ -1,0 +1,9 @@
+_current_task
+_ipc_port_translate_send
+_mach_assert_jump_key
+_mach_msg_filter_callbacks
+_waitq_held
+_waitq_unlock
+_zalloc
+_zfree
+_zone_create_startup

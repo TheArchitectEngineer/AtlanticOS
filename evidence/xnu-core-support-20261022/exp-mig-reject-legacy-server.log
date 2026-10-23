@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/ipc_mig_abi.c:40:13: error: incompatible function pointer types initializing 'boolean_t (*)(mach_msg_header_t *, mach_msg_header_t *)' (aka 'int (*)(mach_msg_header_t *, mach_msg_header_t *)') with an expression of type 'boolean_t (mach_msg_header_t *, void *, mach_msg_max_trailer_t *, mach_msg_header_t *, void *)' (aka 'int (mach_msg_header_t *, void *, mach_msg_mac_trailer_t *, mach_msg_header_t *, void *)') [-Wincompatible-function-pointer-types]
+   40 | boolean_t (*atlantic_bad_server)(mach_msg_header_t *, mach_msg_header_t *) = iokit_server;
+      |             ^                                                                ~~~~~~~~~~~~
+1 error generated.

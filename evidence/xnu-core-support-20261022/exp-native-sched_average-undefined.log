@@ -1,0 +1,15 @@
+_compute_averunnable
+_compute_pageout_gc_throttle
+_compute_pmap_gc_throttle
+_compute_stack_target
+_compute_zone_working_set_size
+_kdebug_enable
+_kernel_debug
+_mach_absolute_time
+_mach_assert_jump_key
+_processor_avail_count
+_sched_fixed_shift
+_sched_load_shifts
+_sched_one_second_interval
+_sched_pri_shifts
+_sched_run_buckets

@@ -1,0 +1,7 @@
+/mnt/g/AtlanticOS/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/lock_mtx.c:444:11: warning: comparison of different enumeration types ('lck_ilk_mode_t' and 'lck_mtx_mode_t') [-Wenum-compare]
+  444 |         if (mode != LCK_MTX_MODE_SPIN) {
+      |             ~~~~ ^  ~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/lock_mtx.c:507:11: warning: comparison of different enumeration types ('lck_ilk_mode_t' and 'lck_mtx_mode_t') [-Wenum-compare]
+  507 |         if (mode != LCK_MTX_MODE_SPIN) {
+      |             ~~~~ ^  ~~~~~~~~~~~~~~~~~
+2 warnings generated.

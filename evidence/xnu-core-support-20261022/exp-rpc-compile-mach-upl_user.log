@@ -1,0 +1,13 @@
+<ROOT>/work/xnu-rpc-builds/9d250373b681aa28/generated/mach/upl_user.c:231:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'upl_t' (aka 'struct upl *') [-Wincompatible-pointer-types]
+  231 |         InP->Head.msgh_request_port = upl_object;
+      |                                     ^ ~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9d250373b681aa28/generated/mach/upl_user.c:395:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'upl_t' (aka 'struct upl *') [-Wincompatible-pointer-types]
+  395 |         InP->Head.msgh_request_port = upl_object;
+      |                                     ^ ~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9d250373b681aa28/generated/mach/upl_user.c:552:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'upl_t' (aka 'struct upl *') [-Wincompatible-pointer-types]
+  552 |         InP->Head.msgh_request_port = upl_object;
+      |                                     ^ ~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9d250373b681aa28/generated/mach/upl_user.c:729:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'upl_t' (aka 'struct upl *') [-Wincompatible-pointer-types]
+  729 |         InP->Head.msgh_request_port = upl_object;
+      |                                     ^ ~~~~~~~~~~
+4 warnings generated.

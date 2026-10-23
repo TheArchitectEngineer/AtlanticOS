@@ -1,0 +1,14 @@
+_TLockTimeOut
+__enable_preemption
+_current_percpu_base
+_hw_lck_ticket_reserve_orig_allow_invalid
+_hw_spin_compute_timeout
+_hw_spin_in_ppl
+_hw_spin_should_keep_spinning
+_lck_spinlock_timeout_hit
+_lck_spinlock_timeout_set_orig_ctid
+_mach_assert_jump_key
+_not_in_kdp
+_panic
+_percpu_slot_lck_spinlock_to_info
+_pmap_in_ppl

@@ -1,0 +1,15 @@
+In file included from <ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/bsd/kern/subr_prf.c:96:
+In file included from <ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/bsd/sys/systm.h:113:
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/bsd/libkern/libkern.h:216:17: error: conflicting types for 'vsnprintf'
+  216 | extern int      vsnprintf(char *, size_t, const char *, va_list) __printflike(3, 0);
+      |                 ^
+<ROOT>/work/core99-core-scope-exp/wrong-printf.h:8:13: note: previous declaration is here
+    8 | extern long vsnprintf(char *, size_t, const char *, va_list) __attribute__((format(printf, 3, 0)));
+      |             ^
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/bsd/kern/subr_prf.c:500:1: error: conflicting types for 'vsnprintf'
+  500 | vsnprintf(char *str, size_t size, const char *format, va_list ap)
+      | ^
+<ROOT>/work/core99-core-scope-exp/wrong-printf.h:8:13: note: previous declaration is here
+    8 | extern long vsnprintf(char *, size_t, const char *, va_list) __attribute__((format(printf, 3, 0)));
+      |             ^
+2 errors generated.

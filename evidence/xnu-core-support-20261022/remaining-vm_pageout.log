@@ -1,0 +1,53 @@
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/vm/vm_pageout.c:5592:8: error: static assertion failed due to requirement '(((6U & (65535)) & ~(((1UL << (KT_GRANULE_PADDING)) | (1UL << (KT_GRANULE_DATA))))) == 0) || !(((4U & (65535)) & ~(((1UL << (KT_GRANULE_PADDING)) | (1UL << (KT_GRANULE_DATA))))) == 0)': cannot allocate data-only array of struct upl_page_info contiguously to struct upl
+ 5592 |         upl = kalloc_type(struct upl, struct upl_page_info,
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 5593 |             (type & UPL_CREATE_INTERNAL) ? pages : 0, Z_WAITOK | Z_ZERO);
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:671:27: note: expanded from macro 'kalloc_type'
+  671 | #define kalloc_type(...)  KALLOC_DISPATCH(kalloc_type, ##__VA_ARGS__)
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note: (skipping 5 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:1581:18: note: expanded from macro 'KALLOC_TYPE_TRAILING_DATA_CHECK'
+ 1581 |         _Static_assert((KALLOC_TYPE_IS_DATA_ONLY(hdr_ty) ||  \
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1582 |             !KALLOC_TYPE_IS_DATA_ONLY(elem_ty)),             \
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:845:2: note: expanded from macro 'KALLOC_TYPE_IS_DATA_ONLY'
+  845 |         KALLOC_TYPE_SIG_CHECK(KT_SUMMARY_MASK_DATA, type)
+      |         ^
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:834:2: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |         ^
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/vm/vm_pageout.c:5720:2: error: static assertion failed due to requirement '(((6U & (65535)) & ~(((1UL << (KT_GRANULE_PADDING)) | (1UL << (KT_GRANULE_DATA))))) == 0) || !(((4U & (65535)) & ~(((1UL << (KT_GRANULE_PADDING)) | (1UL << (KT_GRANULE_DATA))))) == 0)': cannot allocate data-only array of struct upl_page_info contiguously to struct upl
+ 5720 |         kfree_type(struct upl, struct upl_page_info,
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 5721 |             (upl->flags & UPL_INTERNAL) ? pages : 0, upl);
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note: (skipping 4 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:1581:18: note: expanded from macro 'KALLOC_TYPE_TRAILING_DATA_CHECK'
+ 1581 |         _Static_assert((KALLOC_TYPE_IS_DATA_ONLY(hdr_ty) ||  \
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1582 |             !KALLOC_TYPE_IS_DATA_ONLY(elem_ty)),             \
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:845:2: note: expanded from macro 'KALLOC_TYPE_IS_DATA_ONLY'
+  845 |         KALLOC_TYPE_SIG_CHECK(KT_SUMMARY_MASK_DATA, type)
+      |         ^
+<ROOT>/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/kalloc.h:834:2: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |         ^
+2 errors generated.

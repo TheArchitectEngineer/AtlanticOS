@@ -1,0 +1,9 @@
+In file included from /mnt/g/AtlanticOS/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/ipc/ipc_service_port.c:32:
+In file included from /mnt/g/AtlanticOS/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/task.h:133:
+/mnt/g/AtlanticOS/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/thread.h:1641:49: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1641 | extern void             uthread_cred_ref(struct ucred *);
+      |                                                 ^
+/mnt/g/AtlanticOS/work/xnu-lab-sources/fe7847bb0483b26b/osfmk/kern/thread.h:1642:50: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1642 | extern void             uthread_cred_free(struct ucred *);
+      |                                                  ^
+2 warnings generated.

@@ -68,3 +68,11 @@ base y 42 probes RPC; CFILES selecciona 26 RPC para el enlace. La tabla real
 requiere 14 subsistemas del perfil sin BSD/IOKit. El intento de 88 objetos
 conserva 1.094 referencias indefinidas, cero duplicados y ninguna imagen.
 Todavía faltan el cierre nativo, el bootstrap real y la evidencia física completa.
+
+La [ampliación de soporte ARM64 y diagnóstico](XNU_CORE_SUPPORT.md) llega a
+99 unidades experimentales; 13 estándar. Con 26 RPC seleccionados, el intento
+estático de 125 objetos conserva 805 diagnósticos indefinidos, cero duplicados
+y ninguna imagen. Se verifican nueve casos nuevos de dependencias/scopes/ABI
+por carril. Panic compilado no acredita un panic ejecutado. Cuatro probes nativos
+siguen fallando: ipc_policy, mach_debug, sleh y pageout; sus logs se publican.
+No hay cambio en el criterio físico de aceptación ni acceso al teléfono.

@@ -1,0 +1,17 @@
+__bcopyin
+__bcopyinstr
+__bcopyout
+__copyin_atomic32
+__copyin_atomic32_wait_if_equals
+__copyin_atomic64
+__copyout_atomic32
+__copyout_atomic64
+__disable_preemption
+__enable_preemption
+_current_thread
+_kernel_pmap
+_memmove
+_panic
+_physmap_base
+_physmap_end
+_zone_element_bounds_check

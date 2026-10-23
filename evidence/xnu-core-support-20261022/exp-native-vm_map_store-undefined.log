@@ -1,0 +1,17 @@
+_PAGE_SHIFT_CONST
+_first_free_is_valid
+_first_free_is_valid_ll
+_mach_assert_jump_key
+_panic
+_update_first_free_ll
+_update_first_free_rb
+_vm_map_lookup_entry
+_vm_map_store_copy_reset_ll
+_vm_map_store_copy_reset_rb
+_vm_map_store_entry_link_ll
+_vm_map_store_entry_link_rb
+_vm_map_store_entry_unlink_ll
+_vm_map_store_entry_unlink_rb
+_vm_map_store_init_ll
+_vm_map_store_init_rb
+_vm_map_store_lookup_entry_rb

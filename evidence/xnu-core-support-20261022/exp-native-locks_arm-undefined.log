@@ -1,0 +1,14 @@
+_hw_lock_init
+_hw_lock_lock
+_hw_lock_lock_nopreempt
+_hw_lock_try
+_hw_lock_try_nopreempt
+_hw_lock_unlock
+_hw_lock_unlock_nopreempt
+_kalloc_type_impl_internal
+_kfree_type_impl_internal
+_lck_grp_deallocate
+_lck_grp_reference
+_machine_timeout_init
+_not_in_kdp
+_panic

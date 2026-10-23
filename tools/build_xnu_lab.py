@@ -34,7 +34,8 @@ UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
          'osfmk/ipc/ipc_init.c': '_ipc_init'}
 # IPC registers a genuine static initializer in STARTUP(MACH_IPC, ...).
 SYMBOL_TYPES = {'osfmk/ipc/ipc_init.c': 't', 'osfmk/kern/sched_dualq.c': 't',
-                'osfmk/ipc/ipc_importance.c': 't', 'osfmk/ipc/ipc_voucher.c': 't'}
+                'osfmk/ipc/ipc_importance.c': 't', 'osfmk/ipc/ipc_voucher.c': 't',
+                'osfmk/vm/vm_sanitize_error_compat.c': 'S'}
 STARTUP_SYMBOL_PREFIXES = {
     'osfmk/ipc/ipc_init.c': '___startup_MACH_IPC_entry_ipc_init_',
     'osfmk/ipc/ipc_importance.c': '___startup_MACH_IPC_entry_ipc_importance_init_',
@@ -120,6 +121,55 @@ EXPERIMENTAL_UNITS = {'osfmk/kern/thread.c': '_thread_init',
                       'osfmk/vm/vm_memory_entry.c': '_mach_make_memory_entry_64',
                       'osfmk/vm/vm_upl.c': '_upl_commit_range',
                       'osfmk/vm/vm_user.c': '_mach_vm_allocate_external'}
+EXPERIMENTAL_UNITS.update({
+    'osfmk/ipc/mach_kernelrpc.c': '__kernelrpc_mach_vm_allocate_trap',
+    'osfmk/ipc/ipc_hash.c': '_ipc_hash_lookup',
+    'osfmk/ipc/ipc_service_port.c': '_ipc_service_port_label_alloc',
+    'osfmk/ipc/mach_port.c': '_mach_port_allocate',
+    'osfmk/kern/priority.c': '_sched_compute_timeshare_priority',
+    'osfmk/kern/sched_average.c': '_compute_averages',
+    'osfmk/kern/timer_call.c': '_timer_call_enter',
+    'osfmk/kern/exception.c': '_exception_triage',
+    'osfmk/kern/static_if_common.c': '_static_if_init',
+    'osfmk/arm/locks_arm.c': '_arm_usimple_lock_init',
+    'osfmk/arm64/copyio.c': '_copyin',
+    'osfmk/arm/pmap/pmap_data.c': '_mapping_adjust',
+    'osfmk/arm64/static_if.c': '_ml_static_if_entry_patch',
+    'osfmk/vm/vm32_user.c': '_vm32_vm_allocate',
+    'osfmk/vm/vm_sanitize.c': '_vm_sanitize_addr',
+    'osfmk/vm/vm_sanitize_error_compat.c': '_VM_SANITIZE_CALLER_MACH_MAKE_MEMORY_ENTRY',
+    'osfmk/vm/vm_map_store.c': '_vm_map_store_entry_link',
+    'osfmk/vm/vm_map_store_rb.c': '_rb_head_RB_FIND',
+    'osfmk/vm/vm_purgeable.c': '_vm_purgeable_object_purge_one',
+    'osfmk/arm64/bcopy.s': '_memcpy',
+    'osfmk/arm64/bzero.s': '_bzero',
+    'osfmk/arm64/strnlen.s': '_strnlen',
+    'osfmk/arm64/strncmp.s': '_strncmp',
+    'osfmk/arm64/memcmp_zero.s': '_memcmp_zero_ptr_aligned',
+    'osfmk/arm64/pcb.c': '_machine_thread_create',
+    'osfmk/arm/machine_routines_common.c': '_machine_init',
+    'osfmk/kern/ast.c': '_ast_taken_kernel',
+    'osfmk/arm64/cpu.c': '_cpu_bootstrap',
+    'osfmk/arm/cpu_common.c': '_cpu_broadcast_xcall',
+    'osfmk/kern/lock_rw.c': '_lck_rw_lock_shared',
+    'osfmk/kern/lock_mtx.c': '_lck_mtx_lock',
+    'osfmk/kern/lock_ticket.c': '_hw_lck_ticket_init',
+    'osfmk/kern/lock_ptr.c': '_hw_lck_ptr_init',
+    'osfmk/kern/lock_group.c': '_lck_attr_alloc_init',
+    'osfmk/kern/printf.c': '___doprnt',
+    'osfmk/kern/debug.c': '_panic',
+    'osfmk/kern/atlantic_printf.c': '_vsnprintf'})
+EXTRA_SYMBOLS.update({
+    'osfmk/kern/debug.c': ['_panic_get_thread_proc_task', '_mach_assert_jump_key'],
+    'osfmk/kern/atlantic_printf.c': ['_snprintf'],
+    'osfmk/kern/lock_rw.c': ['_lck_rw_lock_exclusive', '_lck_rw_done', '_lck_rw_assert_jump_key'],
+    'osfmk/arm/pmap/pmap_data.c': ['_pv_head_table', '_pp_attr_table'],
+    'osfmk/arm/machine_routines_common.c': ['_ml_set_interrupts_enabled'],
+    'osfmk/arm64/bcopy.s': ['_bcopy', '_memmove'],
+    'osfmk/arm64/bzero.s': ['_memset'],
+    'osfmk/arm64/strnlen.s': ['_strlen'],
+    'osfmk/vm/vm32_user.c': ['_vm32_vm_read', '_vm32_vm_write'],
+    'osfmk/arm64/static_if.c': ['_ml_static_if_flush_icache']})
 EXTRA_SYMBOLS.update({
     'osfmk/kern/ipc_mig.c': ['_kernel_mach_msg_send'],
     'osfmk/kern/ipc_tt.c': ['_ipc_task_enable', '_ipc_task_terminate', '_convert_port_to_map'],
@@ -245,6 +295,16 @@ def main():
         if (hashlib.sha256(body.encode()).hexdigest() != item['sha256'] or
             (source/item['destination']).read_text().count(body) != 1):
             ap.error('Native metadata body changed: '+item['destination'])
+    printf_lock_path = ROOT/'xnu-port/printf-native.lock.json'
+    printf_lock = json.loads(printf_lock_path.read_text())
+    if printf_lock['upstream_commit'] != lock['xnu']['commit'] or len(printf_lock['fragments']) != 4:
+        ap.error('Native formatting provenance must match pinned XNU')
+    for item in printf_lock['fragments']:
+        lines = scm(source, 'show', 'HEAD:'+item['source']).decode().splitlines(True)
+        body = ''.join(lines[item['first_line']-1:item['last_line']]).rstrip('\n')+'\n\n'
+        if (hashlib.sha256(body.encode()).hexdigest() != item['sha256'] or
+            (source/item['destination']).read_text().count(body) != 1):
+            ap.error('Native formatting fragment changed: '+item['name'])
     mig_dir = ROOT/'work/mig-host'
     mig_report = json.loads((mig_dir/'report.json').read_text())
     if mig_report['bootstrap_commit'] != lock['mig_host_tool']['commit'] or digest(mig_dir/'migcom') != mig_report['migcom_sha256']:
@@ -256,6 +316,7 @@ def main():
                     'tools/xnu_assym.py': digest(ROOT/'tools/xnu_assym.py'),
                     'xnu-port/patches.lock.json': digest(ROOT/'xnu-port/patches.lock.json'),
                     'xnu-port/task-metadata-native.lock.json': digest(native_lock_path),
+                    'xnu-port/printf-native.lock.json': digest(printf_lock_path),
                     'xnu-port/config/'+PROFILE.name: digest(PROFILE),
                     'tests/xnu_port/boot_abi.c': digest(ROOT/'tests/xnu_port/boot_abi.c'),
                     'tests/xnu_port/assym_abi.c': digest(ROOT/'tests/xnu_port/assym_abi.c')}

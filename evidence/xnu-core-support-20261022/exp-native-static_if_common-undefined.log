@@ -1,0 +1,8 @@
+_ml_static_if_entry_patch
+_ml_static_if_flush_icache
+_panic
+_startup_phase
+section$end$__BOOTDATA$__static_if
+section$end$__BOOTDATA$__static_ifinit
+section$start$__BOOTDATA$__static_if
+section$start$__BOOTDATA$__static_ifinit

@@ -1,0 +1,10 @@
+_PAGE_SHIFT_CONST
+_current_proc
+_kernel_startup_tunable_init
+_mach_assert_jump_key
+_printf
+_proc_best_name
+_vm_map_page_mask
+_vm_map_round_page_mask
+_vm_map_trunc_page_mask
+_vm_sanitize_send_telemetry

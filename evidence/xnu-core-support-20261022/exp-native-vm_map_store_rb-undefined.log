@@ -1,0 +1,5 @@
+_PAGE_SHIFT_CONST
+_mach_assert_jump_key
+_panic
+_zalloc_id
+_zfree_id
