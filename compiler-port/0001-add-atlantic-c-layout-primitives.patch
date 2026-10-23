@@ -1,3 +1,4 @@
+diff --git a/clang/include/clang/Basic/TokenKinds.def b/clang/include/clang/Basic/TokenKinds.def
 --- a/clang/include/clang/Basic/TokenKinds.def
 +++ b/clang/include/clang/Basic/TokenKinds.def
 @@ -467,6 +467,9 @@
@@ -10,6 +11,7 @@
  KEYWORD(__builtin_va_arg            , KEYALL)
  KEYWORD(__extension__               , KEYALL)
  KEYWORD(__float128                  , KEYALL)
+diff --git a/clang/include/clang/Parse/Parser.h b/clang/include/clang/Parse/Parser.h
 --- a/clang/include/clang/Parse/Parser.h
 +++ b/clang/include/clang/Parse/Parser.h
 @@ -1918,6 +1918,7 @@
@@ -20,6 +22,7 @@
    ExprResult ParseSYCLUniqueStableNameExpression();
  
    ExprResult ParseExprAfterUnaryExprOrTypeTrait(const Token &OpTok,
+diff --git a/clang/lib/Parse/ParseExpr.cpp b/clang/lib/Parse/ParseExpr.cpp
 --- a/clang/lib/Parse/ParseExpr.cpp
 +++ b/clang/lib/Parse/ParseExpr.cpp
 @@ -1390,6 +1390,11 @@
@@ -72,6 +75,7 @@
  ExprResult Parser::ParseBuiltinPrimaryExpression() {
    ExprResult Res;
    const IdentifierInfo *BuiltinII = Tok.getIdentifierInfo();
+diff --git a/clang/include/clang/Sema/Sema.h b/clang/include/clang/Sema/Sema.h
 --- a/clang/include/clang/Sema/Sema.h
 +++ b/clang/include/clang/Sema/Sema.h
 @@ -6793,6 +6793,8 @@
@@ -83,6 +87,7 @@
  
    bool CheckLoopHintExpr(Expr *E, SourceLocation Loc, bool AllowZero);
  
+diff --git a/clang/lib/Sema/CMakeLists.txt b/clang/lib/Sema/CMakeLists.txt
 --- a/clang/lib/Sema/CMakeLists.txt
 +++ b/clang/lib/Sema/CMakeLists.txt
 @@ -51,6 +51,7 @@
@@ -93,32 +98,27 @@
    SemaExprCXX.cpp
    SemaExprMember.cpp
    SemaExprObjC.cpp
+diff --git a/clang/lib/Frontend/InitPreprocessor.cpp b/clang/lib/Frontend/InitPreprocessor.cpp
 --- a/clang/lib/Frontend/InitPreprocessor.cpp
 +++ b/clang/lib/Frontend/InitPreprocessor.cpp
-@@ -500,7 +500,7 @@
-                         Twine(TI.getNewAlign() / TI.getCharWidth()) +
-                             TI.getTypeConstantSuffix(TI.getSizeType()));
- 
--    //   -- __STDCPP_­THREADS__
-+    //   -- __STDCPP_Ã‚Â­THREADS__
-     //      Defined, and has the value integer literal 1, if and only if a
-     //      program can have more than one thread of execution.
-     if (LangOpts.getThreadModel() == LangOptions::ThreadModelKind::POSIX)
 @@ -856,6 +856,7 @@
    // Compiler version introspection macros.
    Builder.defineMacro("__llvm__");  // LLVM Backend
    Builder.defineMacro("__clang__"); // Clang Frontend
-+  Builder.defineMacro("__ATLANTIC_XNU_LAYOUT__", "1");
++  Builder.defineMacro("__ATLANTIC_XNU_LAYOUT__", "2");
  #define TOSTR2(X) #X
  #define TOSTR(X) TOSTR2(X)
    Builder.defineMacro("__clang_major__", TOSTR(CLANG_VERSION_MAJOR));
+diff --git a/clang/lib/Sema/SemaAtlanticLayout.cpp b/clang/lib/Sema/SemaAtlanticLayout.cpp
+new file mode 100644
 --- /dev/null
 +++ b/clang/lib/Sema/SemaAtlanticLayout.cpp
-@@ -0,0 +1,191 @@
+@@ -0,0 +1,260 @@
 +// SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 +// Original AtlanticOS compiler extension, not an Apple builtin implementation.
 +// The API emits the documented low-bit layout model needed by the C-only port.
 +#include "clang/AST/ASTContext.h"
++#include "clang/AST/Attr.h"
 +#include "clang/AST/Decl.h"
 +#include "clang/AST/DeclCXX.h"
 +#include "clang/AST/Expr.h"
@@ -153,12 +153,64 @@
 +    return true;
 +  }
 +
-+  bool visit(QualType Type, uint64_t Offset, unsigned Depth) {
++  // The native port maps its usage macros to standard Clang declaration
++  // annotations. Inspect typedef sugar before canonicalization: ppnum_t and
++  // vm_offset_t are C integers with pointer usage in the kernel.
++  bool usage(const Decl *D, uint8_t &Kind) {
++    Kind = 0;
++    for (const auto *A : D->specific_attrs<AnnotateAttr>()) {
++      llvm::StringRef Name = A->getAnnotation();
++      if (!Name.consume_front("atlantic.layout."))
++        continue;
++      uint8_t Value = 0;
++      if (Name == "pointer")
++        Value = 1;
++      else if (Name == "data")
++        Value = 2;
++      else if (Name == "dual")
++        Value = 3;
++      else
++        return fail("unknown usage annotation");
++      if (A->args_size())
++        return fail("usage annotation takes no extra arguments");
++      if (Kind && Kind != Value)
++        return fail("conflicting usage annotations");
++      Kind = Value;
++    }
++    return true;
++  }
++
++  bool typeUsage(QualType Type, uint8_t &Kind) {
++    Kind = 0;
++    for (unsigned Depth = 0; Depth <= 128; ++Depth) {
++      if (const auto *Alias = dyn_cast<TypedefType>(Type.getTypePtr())) {
++        uint8_t Local = 0;
++        if (!usage(Alias->getDecl(), Local))
++          return false;
++        // The outer typedef overrides its underlying alias, just as a field
++        // annotation overrides a typedef. Still validate inner annotations.
++        if (!Kind)
++          Kind = Local;
++      }
++      QualType Next = Type.getSingleStepDesugaredType(Context);
++      if (Next == Type)
++        return true;
++      Type = Next;
++    }
++    return fail("type alias nesting exceeds the supported limit");
++  }
++
++  bool visit(QualType Type, uint64_t Offset, unsigned Depth,
++             uint8_t Override = 0) {
 +    if (Depth > 128)
 +      return fail("type nesting exceeds the supported limit");
-+    Type = Context.getCanonicalType(Type);
-+    if (Type.getQualifiers().hasPointerAuth())
++    if (Context.getCanonicalType(Type).getQualifiers().hasPointerAuth())
 +      return fail("authenticated pointer qualifiers are unsupported");
++    uint8_t TypeKind = 0;
++    if (!typeUsage(Type, TypeKind))
++      return false;
++    if (!Override)
++      Override = TypeKind;
 +    if (Type->isDependentType() || Type->isVariablyModifiedType() ||
 +        Type->isIncompleteType() || Type->isSizelessType() ||
 +        Type->isFunctionType() || Type->isVoidType())
@@ -166,11 +218,8 @@
 +    uint64_t Width = Context.getTypeSize(Type);
 +    if (Offset > TotalBits || Width > TotalBits - Offset)
 +      return fail("nested object exceeds its target representation");
-+    if (Type->isPointerType() || Type->isBlockPointerType() ||
-+        Type->isNullPtrType())
-+      return mark(Offset, Width, 1);
 +    if (const auto *Atomic = Type->getAs<AtomicType>())
-+      return visit(Atomic->getValueType(), Offset, Depth + 1);
++      return visit(Atomic->getValueType(), Offset, Depth + 1, Override);
 +    if (const auto *Array = Context.getAsConstantArrayType(Type)) {
 +      if (Array->getSize().getActiveBits() > 64)
 +        return fail("array bound exceeds the supported range");
@@ -182,14 +231,27 @@
 +      if (Count > Width / ElementBits)
 +        return fail("array bound disagrees with target layout");
 +      for (uint64_t I = 0; I < Count; ++I)
-+        if (!visit(Element, Offset + I * ElementBits, Depth + 1))
++        if (!visit(Element, Offset + I * ElementBits, Depth + 1, Override))
 +          return false;
 +      return true;
 +    }
++    if (Override) {
++      if (!Type->isScalarType())
++        return fail("usage annotations require scalars or fixed arrays of scalars");
++      return mark(Offset, Width, Override);
++    }
++    if (Type->isPointerType() || Type->isBlockPointerType() ||
++        Type->isNullPtrType())
++      return mark(Offset, Width, 1);
 +    if (const auto *Record = Type->getAs<RecordType>()) {
 +      const RecordDecl *Decl = Record->getDecl()->getDefinition();
 +      if (!Decl || isa<CXXRecordDecl>(Decl))
 +        return fail("only complete C records are supported");
++      uint8_t RecordKind = 0;
++      if (!usage(Decl, RecordKind))
++        return false;
++      if (RecordKind)
++        return fail("usage annotations require scalars or fixed arrays of scalars");
 +      const ASTRecordLayout &Layout = Context.getASTRecordLayout(Decl);
 +      const FieldDecl *Last = nullptr;
 +      for (const FieldDecl *Field : Decl->fields())
@@ -197,14 +259,21 @@
 +      unsigned Index = 0;
 +      for (const FieldDecl *Field : Decl->fields()) {
 +        uint64_t FieldOffset = Offset + Layout.getFieldOffset(Index++);
++        uint8_t FieldKind = 0;
++        if (!usage(Field, FieldKind))
++          return false;
 +        if (Field->isBitField()) {
-+          if (!mark(FieldOffset, Field->getBitWidthValue(Context), 2))
++          uint8_t BitKind = 0;
++          if (!typeUsage(Field->getType(), BitKind))
++            return false;
++          if (!mark(FieldOffset, Field->getBitWidthValue(Context),
++                    FieldKind ? FieldKind : (BitKind ? BitKind : 2)))
 +            return false;
 +        } else if (Field == Last && Decl->hasFlexibleArrayMember() &&
 +                   Field->getType()->isIncompleteArrayType()) {
 +          // A flexible member contributes no storage to sizeof(header).
 +          continue;
-+        } else if (!visit(Field->getType(), FieldOffset, Depth + 1)) {
++        } else if (!visit(Field->getType(), FieldOffset, Depth + 1, FieldKind)) {
 +          return false;
 +        }
 +      }
@@ -227,7 +296,6 @@
 +  explicit AtlanticLayout(ASTContext &Context) : Context(Context) {}
 +
 +  bool compute(QualType Type) {
-+    Type = Context.getCanonicalType(Type);
 +    if (Type->isDependentType() || Type->isVariablyModifiedType() ||
 +        Type->isIncompleteType() || Type->isSizelessType() ||
 +        Type->isFunctionType() || Type->isVoidType())
@@ -279,11 +347,11 @@
 +  QualType Left = GetTypeFromParser(First);
 +  if (Operation == tok::kw___atlantic_layout_compatible) {
 +    QualType Right = GetTypeFromParser(Second);
-+    if (Context.hasSameUnqualifiedType(Left, Right))
-+      return ActOnIntegerConstant(Loc, 1);
 +    // void is not a layout wildcard. XNU's pointer macro tests void==void.
 +    if (Left->isVoidType() || Right->isVoidType())
-+      return ActOnIntegerConstant(Loc, 0);
++      return ActOnIntegerConstant(Loc, Left->isVoidType() && Right->isVoidType());
++    // C type identity discards declaration annotations. Always compare the
++    // computed layouts, including for annotated aliases of the same C type.
 +    AtlanticLayout A(Context), B(Context);
 +    if (!A.compute(Left))
 +      return Error(A.error());

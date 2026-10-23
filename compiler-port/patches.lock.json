@@ -1,7 +1,7 @@
 {
   "upstream_commit": "cd708029e0b2869e80abe31ddb175f7c35361f90",
   "archive_sha256": "05e6d7fe6d188dd4d33b812ab5cce7654b886b7c9ce405aa1d942c866bbe959f",
-  "patch_sha256": "1b8302103cddb733ebf995df4b63aaa0d5b382052bcf8bfa62400b70b2ba5f4c",
+  "patch_sha256": "d804bbec559fd07128c0817c624810ad87d7ee1262802ec44285c1cb9263771d",
   "files": [
     {
       "path": "clang/include/clang/Basic/TokenKinds.def",
@@ -31,12 +31,12 @@
     {
       "path": "clang/lib/Frontend/InitPreprocessor.cpp",
       "preimage_sha256": "b2174f7989dc8a15d6e48099d6c1fcc6e129d4d2183cfab4b414c73e53bf7c73",
-      "postimage_sha256": "e255c2d9f0cbe03480a54f2ce6a32f55e961e8ac37d9f7968f7291a6f0adcc85"
+      "postimage_sha256": "772925bfd5f8f5855ec020fbcd7517ff6043ff862fbcb572552beddc58ccaa88"
     },
     {
       "path": "clang/lib/Sema/SemaAtlanticLayout.cpp",
       "preimage_sha256": null,
-      "postimage_sha256": "954c6f709ce95ef15635630b31f926e516e99004b6ce1f476f501b74ea3fd380"
+      "postimage_sha256": "5c5d7959e411aa21ab40a01c2dd536e16fec3af0da3609e5d8fa5e58d680bab6"
     }
   ]
 }

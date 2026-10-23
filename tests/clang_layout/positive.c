@@ -1,5 +1,5 @@
 /* SPDX-License-Identifier: MIT - hand-checked target layout fixtures. */
-#if __ATLANTIC_XNU_LAYOUT__ != 1
+#if __ATLANTIC_XNU_LAYOUT__ != 2
 #error AtlanticOS layout compiler extension is required
 #endif
 #define SIG(T) __atlantic_layout_signature(T)
@@ -76,3 +76,45 @@ SIGNATURE(double3_t, "2220");
 /* These are compiler-generated static metadata, with no runtime implementation. */
 const char *atlantic_fixture_signature = SIG(struct pointer_data);
 unsigned atlantic_fixture_summary = SUM(union mixed);
+
+/* Usage is a declaration annotation, independent of C type compatibility. */
+#define PTR_USE __attribute__((annotate("atlantic.layout.pointer")))
+#define DATA_USE __attribute__((annotate("atlantic.layout.data")))
+#define DUAL_USE __attribute__((annotate("atlantic.layout.dual")))
+typedef u64 pointer_usage_t PTR_USE;
+typedef pointer_usage_t pointer_alias_t;
+typedef pointer_usage_t data_override_t DATA_USE;
+typedef u64 dual_usage_t DUAL_USE;
+typedef unsigned int page_number_t PTR_USE;
+typedef unsigned int pointer_array_usage_t[3] PTR_USE;
+SIGNATURE(pointer_usage_t, "1");
+SIGNATURE(const pointer_alias_t, "1");
+SUMMARY(pointer_alias_t, 2);
+SIGNATURE(data_override_t, "2");
+SIGNATURE(dual_usage_t, "3");
+SUMMARY(dual_usage_t, 8);
+SIGNATURE(pointer_array_usage_t, "11");
+SIGNATURE(_Atomic(pointer_alias_t), "1");
+_Static_assert(!COMPAT(pointer_usage_t, u64), "C identity must not erase usage");
+_Static_assert(!COMPAT(u64, pointer_usage_t), "usage compatibility is symmetric");
+_Static_assert(COMPAT(pointer_usage_t, void *), "pointer usage layout");
+_Static_assert(COMPAT(data_override_t, u64), "outer typedef usage overrides inner alias");
+struct page_info_usage { page_number_t number; unsigned int flags; };
+SIGNATURE(struct page_info_usage, "3");
+SUMMARY(struct page_info_usage, 8);
+struct field_usage {
+  pointer_alias_t address DATA_USE;
+  void *user_address DATA_USE;
+  u64 encoded_address PTR_USE;
+  pointer_alias_t opaque[2] DATA_USE;
+};
+SIGNATURE(struct field_usage, "22122");
+struct bit_usage { unsigned int address : 16 PTR_USE; unsigned int flags : 16; };
+SIGNATURE(struct bit_usage, "3");
+struct bit_alias_usage { page_number_t address : 16; unsigned int flags : 16; };
+SIGNATURE(struct bit_alias_usage, "3");
+struct typedef_array_usage { pointer_alias_t values[2]; };
+SIGNATURE(struct typedef_array_usage, "11");
+typedef u64 unrelated_t __attribute__((annotate("some.other.annotation")));
+SIGNATURE(unrelated_t, "2");
+const char *atlantic_usage_fixture_signature = SIG(struct page_info_usage);

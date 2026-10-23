@@ -1,0 +1,67 @@
+In file included from <ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:57:
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/pexpert/pexpert/arm64/apple_arm64_cpu.h:40:11: error: use of undeclared identifier 'MPIDR_CORETYPE_ACC_E'
+   40 |         E_CORE = MPIDR_CORETYPE_ACC_E,
+      |                  ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/pexpert/pexpert/arm64/apple_arm64_cpu.h:41:11: error: use of undeclared identifier 'MPIDR_CORETYPE_ACC_P'
+   41 |         P_CORE = MPIDR_CORETYPE_ACC_P,
+      |                  ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/pexpert/pexpert/arm64/apple_arm64_cpu.h:52:66: error: use of undeclared identifier 'MPIDR_CORETYPE_SHIFT'
+   52 |         return (arm64_core_type_t)((__builtin_arm_rsr64("MPIDR_EL1") >> MPIDR_CORETYPE_SHIFT) & MPIDR_CORETYPE_MASK);
+      |                                                                         ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/pexpert/pexpert/arm64/apple_arm64_cpu.h:52:90: error: use of undeclared identifier 'MPIDR_CORETYPE_MASK'
+   52 |         return (arm64_core_type_t)((__builtin_arm_rsr64("MPIDR_EL1") >> MPIDR_CORETYPE_SHIFT) & MPIDR_CORETYPE_MASK);
+      |                                                                                                 ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1250:17: error: use of undeclared identifier 'CLANG_SOFT_TRAP_BOUND_CHK'
+ 1250 |         if (comment == CLANG_SOFT_TRAP_BOUND_CHK) {
+      |                        ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1264:7: error: use of undeclared identifier 'XNU_HARD_TRAP_SAFE_UNLINK'
+ 1264 |         case XNU_HARD_TRAP_SAFE_UNLINK:
+      |              ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1270:7: error: use of undeclared identifier 'XNU_HARD_TRAP_STRING_CHK'
+ 1270 |         case XNU_HARD_TRAP_STRING_CHK:
+      |              ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1273:7: error: use of undeclared identifier 'XNU_HARD_TRAP_ASSERT_FAILURE'
+ 1273 |         case XNU_HARD_TRAP_ASSERT_FAILURE:
+      |              ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1300:5: error: expected identifier
+ 1300 |     .type                = TRAP_TELEMETRY_TYPE_KERNEL_BRK_CLANG,
+      |     ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1299:1: error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+ 1299 | KERNEL_BRK_DESCRIPTOR_DEFINE(clang_desc,
+      | ^
+      | int
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1307:5: error: expected identifier
+ 1307 |     .type                = TRAP_TELEMETRY_TYPE_KERNEL_BRK_LIBCXX,
+      |     ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1306:1: error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+ 1306 | KERNEL_BRK_DESCRIPTOR_DEFINE(libcxx_desc,
+      | ^
+      | int
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1315:5: error: expected identifier
+ 1315 |     .type                = TRAP_TELEMETRY_TYPE_KERNEL_BRK_TELEMETRY,
+      |     ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1314:1: error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+ 1314 | KERNEL_BRK_DESCRIPTOR_DEFINE(xnu_soft_traps_desc,
+      | ^
+      | int
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1324:5: error: expected identifier
+ 1324 |     .type                = TRAP_TELEMETRY_TYPE_KERNEL_BRK_XNU,
+      |     ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1323:1: error: type specifier missing, defaults to 'int'; ISO C99 and later do not support implicit int [-Wimplicit-int]
+ 1323 | KERNEL_BRK_DESCRIPTOR_DEFINE(xnu_hard_traps_desc,
+      | ^
+      | int
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1340:9: error: call to undeclared function 'find_kernel_brk_descriptor_by_comment'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1340 |         desc = find_kernel_brk_descriptor_by_comment(comment);
+      |                ^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1340:7: error: incompatible integer to pointer conversion assigning to 'const struct kernel_brk_descriptor *' from 'int' [-Wint-conversion]
+ 1340 |         desc = find_kernel_brk_descriptor_by_comment(comment);
+      |              ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1347:10: error: incomplete definition of type 'const struct kernel_brk_descriptor'
+ 1347 |         if (desc->options.enable_trap_telemetry) {
+      |             ~~~~^
+<ROOT>/work/xnu-lab-sources/112786a12d0a359b/osfmk/arm64/sleh.c:1337:15: note: forward declaration of 'struct kernel_brk_descriptor'
+ 1337 |         const struct kernel_brk_descriptor *desc;
+      |                      ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.

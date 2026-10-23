@@ -1,0 +1,4 @@
+<stdin>:1:95: error: AtlanticOS layout: usage annotation takes no extra arguments
+    1 | typedef unsigned long T __attribute__((annotate("atlantic.layout.pointer", 1))); unsigned x = __atlantic_layout_summary(T);
+      |                                                                                               ^
+1 error generated.

@@ -14,5 +14,13 @@
   {"name":"arm64e_rejected", "flags":["--target=arm64e-apple-macos11"], "code":"unsigned x = __atlantic_layout_summary(int);", "diagnostic":"requires C and little-endian"},
   {"name":"cplusplus_rejected", "flags":["-x","c++","-std=gnu++17"], "code":"unsigned x = __atlantic_layout_summary(int);", "diagnostic":"requires C and little-endian"},
   {"name":"missing_second_type", "code":"unsigned x = __atlantic_layout_compatible(int);", "diagnostic":"expected ','"},
-  {"name":"extra_argument", "code":"unsigned x = __atlantic_layout_summary(int, long);", "diagnostic":"expected ')'"}
+  {"name":"extra_argument", "code":"unsigned x = __atlantic_layout_summary(int, long);", "diagnostic":"expected ')'"},
+  {"name":"usage_unknown", "code":"typedef unsigned long T __attribute__((annotate(\"atlantic.layout.typo\"))); unsigned x = __atlantic_layout_summary(T);", "diagnostic":"unknown usage annotation"},
+  {"name":"usage_conflict", "code":"typedef unsigned long T __attribute__((annotate(\"atlantic.layout.pointer\"), annotate(\"atlantic.layout.data\"))); unsigned x = __atlantic_layout_summary(T);", "diagnostic":"conflicting usage annotations"},
+  {"name":"usage_arguments", "code":"typedef unsigned long T __attribute__((annotate(\"atlantic.layout.pointer\", 1))); unsigned x = __atlantic_layout_summary(T);", "diagnostic":"takes no extra arguments"},
+  {"name":"usage_record", "code":"struct R { long x; }; typedef struct R T __attribute__((annotate(\"atlantic.layout.data\"))); unsigned x = __atlantic_layout_summary(T);", "diagnostic":"require scalars or fixed arrays"},
+  {"name":"usage_record_declaration", "code":"struct __attribute__((annotate(\"atlantic.layout.data\"))) R { long x; }; unsigned x = __atlantic_layout_summary(struct R);", "diagnostic":"require scalars or fixed arrays"},
+  {"name":"usage_field_conflict", "code":"struct R { long x __attribute__((annotate(\"atlantic.layout.pointer\"), annotate(\"atlantic.layout.data\"))); }; unsigned x = __atlantic_layout_summary(struct R);", "diagnostic":"conflicting usage annotations"},
+  {"name":"usage_identity_not_bypass", "code":"typedef unsigned long T __attribute__((annotate(\"atlantic.layout.typo\"))); unsigned x = __atlantic_layout_compatible(T,T);", "diagnostic":"unknown usage annotation"},
+  {"name":"usage_data_must_not_match_pointer", "code":"typedef unsigned long T __attribute__((annotate(\"atlantic.layout.pointer\"))); _Static_assert(__atlantic_layout_compatible(T, unsigned long), \"annotated pointer must not match data\");", "diagnostic":"annotated pointer must not match data"}
 ]

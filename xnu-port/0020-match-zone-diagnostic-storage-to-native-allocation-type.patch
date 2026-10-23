@@ -1,0 +1,17 @@
+Match zone_leaks storage declarations to its existing vm_offset_t allocation/free.
+The C ABI is unchanged; native usage metadata must remain pointer-like.
+
+diff --git a/osfmk/kern/zalloc.c b/osfmk/kern/zalloc.c
+--- a/osfmk/kern/zalloc.c
++++ b/osfmk/kern/zalloc.c
+@@ -10098,8 +10098,8 @@
+ zone_leaks(const char * zoneName, uint32_t nameLen, leak_site_proc proc)
+ {
+ 	zone_t        zone = NULL;
+-	uintptr_t *   array;
+-	uintptr_t *   next;
++	vm_offset_t * array;
++	vm_offset_t * next;
+ 	uintptr_t     element;
+ 	uint32_t      idx, count, found;
+ 	uint32_t      nobtcount;

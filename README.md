@@ -5,7 +5,7 @@ de XNU. Primera placa: Motorola Moto G20 / Unisoc T700 (UMS512).
 
 **Estado 2026-10-22: auditoría Fase 0, prototipo host Fase 1 y port XNU
 incremental. Trece unidades reales de XNU compilan a objetos ARM64 con Clang
-estándar; noventa y nueve con el proveedor experimental explícito, incluidos
+estándar; cien con el proveedor experimental explícito, incluidos
 VM residente/faults/objetos, hilos, tareas, locks, ledgers, SMR e IPC/importance.
 Se compilan además 42 archivos RPC generados por MIG como probes, con 57 headers
 coherentes; el configurador oficial selecciona 26 para el enlace de este perfil.
@@ -55,6 +55,10 @@ añade transporte Mach, conversores de puertos, semáforos, vouchers y operacion
 de memoria; compilar esos cuerpos no acredita ejecución de los servicios.
 El [soporte core ARM64 y diagnóstico](docs/XNU_CORE_SUPPORT.md) incorpora rutinas
 de memoria, locks, PCB, CPU, AST y panic nativos, con formateo conservado de XNU.
+La [semántica nativa de tipos](docs/XNU_USAGE_SEMANTICS.md) conserva las
+anotaciones de uso de XNU mediante la API original v2 del compilador. Permite
+compilar vm_pageout.c sin modificar sus tipos o allocators; el enlace de 126
+objetos sigue fallando con 778 diagnósticos indefinidos y cero duplicados.
 
 ## Reproducir
 

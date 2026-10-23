@@ -1,0 +1,4 @@
+<stdin>:1:126: error: AtlanticOS layout: conflicting usage annotations
+    1 | typedef unsigned long T __attribute__((annotate("atlantic.layout.pointer"), annotate("atlantic.layout.data"))); unsigned x = __atlantic_layout_summary(T);
+      |                                                                                                                              ^
+1 error generated.

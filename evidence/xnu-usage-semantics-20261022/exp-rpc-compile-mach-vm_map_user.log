@@ -1,0 +1,94 @@
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:286:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+  286 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:463:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+  463 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:613:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+  613 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:769:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+  769 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:921:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+  921 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:1101:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 1101 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:1265:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 1265 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:1446:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 1446 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:1598:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 1598 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:1762:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 1762 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:1916:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 1916 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:2068:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 2068 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:2280:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 2280 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:2449:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 2449 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:2636:21: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 2636 |         InP->src_task.name = src_task;
+      |                            ^ ~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:2661:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 2661 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:2811:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 2811 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:3015:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 3015 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:3177:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 3177 |         InP->Head.msgh_request_port = target_map;
+      |                                     ^ ~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:3360:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 3360 |         InP->Head.msgh_request_port = task;
+      |                                     ^ ~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:3534:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 3534 |         InP->Head.msgh_request_port = task;
+      |                                     ^ ~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:3722:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 3722 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:3922:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 3922 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:4116:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 4116 |         InP->Head.msgh_request_port = task;
+      |                                     ^ ~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:4320:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 4320 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:4538:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 4538 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:4753:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 4753 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:4918:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 4918 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:5057:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 5057 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:5244:21: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_read_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 5244 |         InP->src_task.name = src_task;
+      |                            ^ ~~~~~~~~
+<ROOT>/work/xnu-rpc-builds/9e1c3029ee647359/generated/mach/vm_map_user.c:5273:30: warning: incompatible pointer types assigning to 'mach_port_t' (aka 'struct ipc_port *') from 'vm_map_t' (aka 'struct _vm_map *') [-Wincompatible-pointer-types]
+ 5273 |         InP->Head.msgh_request_port = target_task;
+      |                                     ^ ~~~~~~~~~~~
+31 warnings generated.

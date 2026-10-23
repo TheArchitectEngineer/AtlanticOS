@@ -16,3 +16,5 @@
 0016-reference-current-parameters-in-disabled-deferred-reclaim.patch
 0017-match-firmware-mig-table-to-native-selected-providers.patch
 0018-retain-native-arm64-support-and-panic-formatting.patch
+0019-preserve-native-allocator-usage-annotations.patch
+0020-match-zone-diagnostic-storage-to-native-allocation-type.patch

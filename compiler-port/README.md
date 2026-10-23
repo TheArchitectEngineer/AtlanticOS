@@ -1,14 +1,19 @@
 # Extensión experimental del compilador para layouts C
 
-Estado: compilador completo construido y 18 comprobaciones aprobadas: fixture
-positivo, LLVM IR y 16 rechazos por diagnóstico previsto. No está activado en
-el build XNU normal de trece unidades. El [modo explícito experimental](../docs/XNU_IPC_BUILD.md)
-compila cuarenta y siete unidades reales, incluidos hilos, VM, pmap, allocators, tareas e IPC. No prueba
-un kernel ni compatibilidad del teléfono.
+V2: compilador completo reconstruido desde cero y 26 comprobaciones aprobadas,
+con anotaciones de uso de typedefs/campos conservadas y ocho rechazos nuevos.
+Se verificaron 11.996 archivos fuente del archive fijado y su patch. La v1 histórica aprobó 18 checks
+de representación C pero perdía esas anotaciones nativas. Véase
+[semántica de tipos XNU](../docs/XNU_USAGE_SEMANTICS.md). El proveedor no está
+activado en el build estándar de trece unidades. No prueba un kernel ni
+compatibilidad del teléfono.
+
+La [evidencia v2](../evidence/xnu-usage-semantics-20261022/manifest.json) registra
+el build limpio y la integración actual de 100 objetos XNU, sin enlace kernel.
 
 La [reproducción limpia de 17 unidades en CI](../evidence/clang-layout-ci17-20261021/manifest.json)
 reconstruyó LLVM y MIG desde fuentes fijadas y pasó los 18 checks de la API.
-Reproduce aquella revisión histórica; no acredita el conjunto actual de 47.
+Reproduce aquella revisión histórica; no acredita la v2 o el conjunto actual.
 
 El XNU fijado usa metadata de tipos en su allocator. Su código público describe
 encodings por granulos de ocho bytes y el resumen de sus bits bajos, pero los
@@ -23,13 +28,13 @@ Las fuentes upstream y binarios permanecen en work/. La implementación y el
 fragmento del parser se publican también por separado para facilitar revisión;
 el builder exige que coincidan con lo aplicado al source.
 
-## Contrato v1 propuesto
+## Contrato v2
 
 | Operación original | Resultado |
 |---|---|
 | __atlantic_layout_signature(T) | Literal C: un dígito hexadecimal por granulo de ocho bytes |
 | __atlantic_layout_summary(T) | Bits de presencia: 1<<encoding para cada granulo |
-| __atlantic_layout_compatible(A,B) | Identidad C sin qualifiers superiores, o igual secuencia de encodings |
+| __atlantic_layout_compatible(A,B) | Igual secuencia de encodings de uso; void solo es idéntico a void |
 
 El modelo utiliza el ASTRecordLayout y los tamaños del target, nunca offsets
 host: padding=0, puntero=1, escalar no puntero=2. Dentro de un granulo se combina
@@ -38,6 +43,18 @@ stride real, los bitfields sus rangos de bits y los records sus offsets reales.
 Los miembros flexibles no añaden bytes a sizeof(header); el tipo del payload
 variable debe analizarse por separado. Se conservan granulos de padding final.
 Atomic recorre la representación de su valor y conserva el padding externo.
+
+V2 consume annotate("atlantic.layout.pointer"), annotate("atlantic.layout.data")
+y annotate("atlantic.layout.dual") en typedefs y campos. Sus encodings son 1,
+2 y 3; el campo puede anular al typedef, y el alias exterior al interior. No se
+elimina la información de typedef antes de analizarla. La identidad C no permite
+omitir una comparación de layouts que tengan anotaciones distintas. El macro
+__ATLANTIC_XNU_LAYOUT__ vale 2 y la selección XNU exige esa versión.
+
+Los overrides se limitan a escalares o arrays de escalares de tamaño fijo.
+Anotaciones desconocidas, contradictorias, con argumentos extra o aplicadas a
+aggregates producen error. No se declara compatibilidad con el atributo privado
+xnu_usage_semantics; el puente XNU utiliza el atributo estándar annotate.
 
 El resumen solo define los bits bajos del modelo: no inventa significados de
 los bits reservados Apple. Estos literals son metadata de memoria, no firmas

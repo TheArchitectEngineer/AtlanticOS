@@ -1,0 +1,4 @@
+<stdin>:1:31: error: AtlanticOS layout: object size is zero or exceeds the 1 MiB metadata limit
+    1 | struct Empty {}; unsigned x = __atlantic_layout_summary(struct Empty);
+      |                               ^
+1 error generated.

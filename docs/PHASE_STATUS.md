@@ -17,7 +17,7 @@
 | 2: entry ARM64 de laboratorio | EMULATED / BUILT_ARM64 | preflight original, EL1/EL2→EL1h, stack, FDT, contador y BRK; XNU_NOT_LINKED |
 | 2: entry G20 y ejecución bootstrap XNU real | UNIMPLEMENTED | objetos compilados no acreditan arranque; enlace/pmap/Platform Expert pendientes |
 | Herramienta oficial MIG | HOST_TESTED | Binario host genuino y ABI de metadata en MIG_HOST_BUILD.md; las pruebas posteriores de C generados se detallan en las filas RPC |
-| Port XNU incremental de laboratorio | BUILT_ARM64 | Trece objetos estándar; noventa y nueve con compilador experimental explícito. Soporte ARM64, locks, CPU, AST y panic nativos; 57 headers MIG. Enlace de 125 objetos falla con 805 diagnósticos indefinidos y cero duplicados; sin imagen ni ejecución. XNU_CORE_SUPPORT.md |
+| Port XNU incremental de laboratorio | BUILT_ARM64 | Trece objetos estándar; cien con compilador experimental v2 limpio. Semántica nativa de tipos conservada y pageout upstream compilado; 57 headers MIG. Enlace de 126 objetos falla con 778 diagnósticos indefinidos y cero duplicados; sin imagen ni ejecución. XNU_USAGE_SEMANTICS.md |
 | Código RPC MIG de XNU | BUILT_ARM64 | 42 probes compilados por carril; CFILES selecciona 26 para enlace. ABI de 21 descriptores; 14 tablas kobject del perfil sin BSD/IOKit. Sin RPC ejecutado; XNU_RPC_PROVIDERS.md |
 | Enlazador ARM64 estático experimental | HOST_TESTED / fixtures enlazados | LLD_STATIC_ARM64.md: v2, 54 checks y 15 imágenes, incluida selección weak/strong; XNU mantiene referencias indefinidas, sin imagen kernel |
 | 2: ABI C BSP | BUILT_ARM64 si build_abi termina | objeto sin drivers y sin kernel, hash propio |

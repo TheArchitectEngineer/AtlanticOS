@@ -1,0 +1,38 @@
+AtlanticOS: preserve native pointer/data usage for the original layout API v2.
+No allocator checks, UPL representation or native allocation calls are removed.
+
+diff --git a/bsd/sys/cdefs.h b/bsd/sys/cdefs.h
+--- a/bsd/sys/cdefs.h
++++ b/bsd/sys/cdefs.h
+@@ -1338,7 +1338,16 @@
+ #endif
+ #endif /* XNU_KERNEL_PRIVATE */
+ 
+-#if defined(KERNEL) && __has_attribute(xnu_usage_semantics)
++#if defined(KERNEL) && CONFIG_ATLANTIC_C_LAYOUT
++/* Preserve the native usage declarations through the original layout API. */
++#if !defined(__ATLANTIC_XNU_LAYOUT__) || __ATLANTIC_XNU_LAYOUT__ != 2 || !__has_attribute(annotate)
++#error Atlantic C layout requires the tested AtlanticOS compiler API v2
++#endif
++#define __kernel_ptr_semantics __attribute__((annotate("atlantic.layout.pointer")))
++#define __kernel_data_semantics __attribute__((annotate("atlantic.layout.data")))
++#define __kernel_dual_semantics __attribute__((annotate("atlantic.layout.dual")))
++
++#elif defined(KERNEL) && __has_attribute(xnu_usage_semantics)
+ /*
+  * These macros can be used to annotate type definitions or scalar structure
+  * fields to inform the compiler about which semantic they have with regards
+diff --git a/osfmk/kern/kalloc.h b/osfmk/kern/kalloc.h
+--- a/osfmk/kern/kalloc.h
++++ b/osfmk/kern/kalloc.h
+@@ -806,8 +806,8 @@
+ #if !CONFIG_ATLANTIC_FIRMWARE || !ATLANTIC_ARM64_LAB
+ #error Atlantic C layout requires the AtlanticOS firmware laboratory profile
+ #endif
+-#if !defined(__ATLANTIC_XNU_LAYOUT__) || __ATLANTIC_XNU_LAYOUT__ != 1
+-#error Atlantic C layout requires the tested AtlanticOS compiler API v1
++#if !defined(__ATLANTIC_XNU_LAYOUT__) || __ATLANTIC_XNU_LAYOUT__ != 2
++#error Atlantic C layout requires the tested AtlanticOS compiler API v2
+ #endif
+ #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+ #define KALLOC_LAYOUT_SIGNATURE(type) __atlantic_layout_signature(type)

@@ -1,0 +1,25 @@
+/mnt/g/AtlanticOS/tests/xnu_port/kalloc_layout.c:49:1: error: static assertion failed due to requirement '(((2U & (65535)) & ~(((1UL << (KT_GRANULE_PADDING)) | (1UL << (KT_GRANULE_DATA))))) == 0) || !(((4U & (65535)) & ~(((1UL << (KT_GRANULE_PADDING)) | (1UL << (KT_GRANULE_DATA))))) == 0)': cannot allocate data-only array of struct atl_data contiguously to struct atl_ptr
+   49 | KALLOC_TYPE_VAR_DEFINE(atlantic_bad_trailer, struct atl_ptr, struct atl_data, KT_SHARED_ACCT);
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/work/xnu-lab-sources/112786a12d0a359b/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/work/xnu-lab-sources/112786a12d0a359b/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/work/xnu-lab-sources/112786a12d0a359b/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note: (skipping 3 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+/mnt/g/AtlanticOS/work/xnu-lab-sources/112786a12d0a359b/osfmk/kern/kalloc.h:1581:18: note: expanded from macro 'KALLOC_TYPE_TRAILING_DATA_CHECK'
+ 1581 |         _Static_assert((KALLOC_TYPE_IS_DATA_ONLY(hdr_ty) ||  \
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 1582 |             !KALLOC_TYPE_IS_DATA_ONLY(elem_ty)),             \
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/work/xnu-lab-sources/112786a12d0a359b/osfmk/kern/kalloc.h:845:2: note: expanded from macro 'KALLOC_TYPE_IS_DATA_ONLY'
+  845 |         KALLOC_TYPE_SIG_CHECK(KT_SUMMARY_MASK_DATA, type)
+      |         ^
+/mnt/g/AtlanticOS/work/xnu-lab-sources/112786a12d0a359b/osfmk/kern/kalloc.h:834:2: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |         ^
+1 error generated.

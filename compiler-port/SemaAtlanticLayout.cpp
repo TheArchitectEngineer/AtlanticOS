@@ -2,6 +2,7 @@
 // Original AtlanticOS compiler extension, not an Apple builtin implementation.
 // The API emits the documented low-bit layout model needed by the C-only port.
 #include "clang/AST/ASTContext.h"
+#include "clang/AST/Attr.h"
 #include "clang/AST/Decl.h"
 #include "clang/AST/DeclCXX.h"
 #include "clang/AST/Expr.h"
@@ -36,12 +37,64 @@ class AtlanticLayout {
     return true;
   }
 
-  bool visit(QualType Type, uint64_t Offset, unsigned Depth) {
+  // The native port maps its usage macros to standard Clang declaration
+  // annotations. Inspect typedef sugar before canonicalization: ppnum_t and
+  // vm_offset_t are C integers with pointer usage in the kernel.
+  bool usage(const Decl *D, uint8_t &Kind) {
+    Kind = 0;
+    for (const auto *A : D->specific_attrs<AnnotateAttr>()) {
+      llvm::StringRef Name = A->getAnnotation();
+      if (!Name.consume_front("atlantic.layout."))
+        continue;
+      uint8_t Value = 0;
+      if (Name == "pointer")
+        Value = 1;
+      else if (Name == "data")
+        Value = 2;
+      else if (Name == "dual")
+        Value = 3;
+      else
+        return fail("unknown usage annotation");
+      if (A->args_size())
+        return fail("usage annotation takes no extra arguments");
+      if (Kind && Kind != Value)
+        return fail("conflicting usage annotations");
+      Kind = Value;
+    }
+    return true;
+  }
+
+  bool typeUsage(QualType Type, uint8_t &Kind) {
+    Kind = 0;
+    for (unsigned Depth = 0; Depth <= 128; ++Depth) {
+      if (const auto *Alias = dyn_cast<TypedefType>(Type.getTypePtr())) {
+        uint8_t Local = 0;
+        if (!usage(Alias->getDecl(), Local))
+          return false;
+        // The outer typedef overrides its underlying alias, just as a field
+        // annotation overrides a typedef. Still validate inner annotations.
+        if (!Kind)
+          Kind = Local;
+      }
+      QualType Next = Type.getSingleStepDesugaredType(Context);
+      if (Next == Type)
+        return true;
+      Type = Next;
+    }
+    return fail("type alias nesting exceeds the supported limit");
+  }
+
+  bool visit(QualType Type, uint64_t Offset, unsigned Depth,
+             uint8_t Override = 0) {
     if (Depth > 128)
       return fail("type nesting exceeds the supported limit");
-    Type = Context.getCanonicalType(Type);
-    if (Type.getQualifiers().hasPointerAuth())
+    if (Context.getCanonicalType(Type).getQualifiers().hasPointerAuth())
       return fail("authenticated pointer qualifiers are unsupported");
+    uint8_t TypeKind = 0;
+    if (!typeUsage(Type, TypeKind))
+      return false;
+    if (!Override)
+      Override = TypeKind;
     if (Type->isDependentType() || Type->isVariablyModifiedType() ||
         Type->isIncompleteType() || Type->isSizelessType() ||
         Type->isFunctionType() || Type->isVoidType())
@@ -49,11 +102,8 @@ class AtlanticLayout {
     uint64_t Width = Context.getTypeSize(Type);
     if (Offset > TotalBits || Width > TotalBits - Offset)
       return fail("nested object exceeds its target representation");
-    if (Type->isPointerType() || Type->isBlockPointerType() ||
-        Type->isNullPtrType())
-      return mark(Offset, Width, 1);
     if (const auto *Atomic = Type->getAs<AtomicType>())
-      return visit(Atomic->getValueType(), Offset, Depth + 1);
+      return visit(Atomic->getValueType(), Offset, Depth + 1, Override);
     if (const auto *Array = Context.getAsConstantArrayType(Type)) {
       if (Array->getSize().getActiveBits() > 64)
         return fail("array bound exceeds the supported range");
@@ -65,14 +115,27 @@ class AtlanticLayout {
       if (Count > Width / ElementBits)
         return fail("array bound disagrees with target layout");
       for (uint64_t I = 0; I < Count; ++I)
-        if (!visit(Element, Offset + I * ElementBits, Depth + 1))
+        if (!visit(Element, Offset + I * ElementBits, Depth + 1, Override))
           return false;
       return true;
     }
+    if (Override) {
+      if (!Type->isScalarType())
+        return fail("usage annotations require scalars or fixed arrays of scalars");
+      return mark(Offset, Width, Override);
+    }
+    if (Type->isPointerType() || Type->isBlockPointerType() ||
+        Type->isNullPtrType())
+      return mark(Offset, Width, 1);
     if (const auto *Record = Type->getAs<RecordType>()) {
       const RecordDecl *Decl = Record->getDecl()->getDefinition();
       if (!Decl || isa<CXXRecordDecl>(Decl))
         return fail("only complete C records are supported");
+      uint8_t RecordKind = 0;
+      if (!usage(Decl, RecordKind))
+        return false;
+      if (RecordKind)
+        return fail("usage annotations require scalars or fixed arrays of scalars");
       const ASTRecordLayout &Layout = Context.getASTRecordLayout(Decl);
       const FieldDecl *Last = nullptr;
       for (const FieldDecl *Field : Decl->fields())
@@ -80,14 +143,21 @@ class AtlanticLayout {
       unsigned Index = 0;
       for (const FieldDecl *Field : Decl->fields()) {
         uint64_t FieldOffset = Offset + Layout.getFieldOffset(Index++);
+        uint8_t FieldKind = 0;
+        if (!usage(Field, FieldKind))
+          return false;
         if (Field->isBitField()) {
-          if (!mark(FieldOffset, Field->getBitWidthValue(Context), 2))
+          uint8_t BitKind = 0;
+          if (!typeUsage(Field->getType(), BitKind))
+            return false;
+          if (!mark(FieldOffset, Field->getBitWidthValue(Context),
+                    FieldKind ? FieldKind : (BitKind ? BitKind : 2)))
             return false;
         } else if (Field == Last && Decl->hasFlexibleArrayMember() &&
                    Field->getType()->isIncompleteArrayType()) {
           // A flexible member contributes no storage to sizeof(header).
           continue;
-        } else if (!visit(Field->getType(), FieldOffset, Depth + 1)) {
+        } else if (!visit(Field->getType(), FieldOffset, Depth + 1, FieldKind)) {
           return false;
         }
       }
@@ -110,7 +180,6 @@ public:
   explicit AtlanticLayout(ASTContext &Context) : Context(Context) {}
 
   bool compute(QualType Type) {
-    Type = Context.getCanonicalType(Type);
     if (Type->isDependentType() || Type->isVariablyModifiedType() ||
         Type->isIncompleteType() || Type->isSizelessType() ||
         Type->isFunctionType() || Type->isVoidType())
@@ -162,11 +231,11 @@ ExprResult Sema::ActOnAtlanticLayout(SourceLocation Loc, unsigned Operation,
   QualType Left = GetTypeFromParser(First);
   if (Operation == tok::kw___atlantic_layout_compatible) {
     QualType Right = GetTypeFromParser(Second);
-    if (Context.hasSameUnqualifiedType(Left, Right))
-      return ActOnIntegerConstant(Loc, 1);
     // void is not a layout wildcard. XNU's pointer macro tests void==void.
     if (Left->isVoidType() || Right->isVoidType())
-      return ActOnIntegerConstant(Loc, 0);
+      return ActOnIntegerConstant(Loc, Left->isVoidType() && Right->isVoidType());
+    // C type identity discards declaration annotations. Always compare the
+    // computed layouts, including for annotated aliases of the same C type.
     AtlanticLayout A(Context), B(Context);
     if (!A.compute(Left))
       return Error(A.error());

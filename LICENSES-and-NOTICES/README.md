@@ -48,6 +48,13 @@ aislada del header sí es original AtlanticOS. Se conserva el reconocimiento:
 This product includes software developed by the University of California,
 Berkeley and its contributors.
 
+Patch 0019 conserva los avisos de bsd/sys/cdefs.h y kern/kalloc.h. El puente de
+declaraciones es una adaptación de XNU; la interpretación original de sus tags
+está en SemaAtlanticLayout.cpp bajo Apache-2.0 WITH LLVM-exception. No incorpora
+la implementación privada Apple de xnu_usage_semantics o sus builtins.
+Patch 0020 conserva los avisos upstream de zalloc.c y cambia dos declaraciones
+de almacenamiento para que coincidan con el tipo de allocation ya existente.
+
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias
 BSD-2-Clause-Patent y por componente. No se distribuyen sus binarios o wrappers.

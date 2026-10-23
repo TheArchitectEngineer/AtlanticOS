@@ -1,0 +1,4 @@
+<stdin>:1:94: error: static assertion failed: annotated pointer must not match data
+    1 | typedef unsigned long T __attribute__((annotate("atlantic.layout.pointer"))); _Static_assert(__atlantic_layout_compatible(T, unsigned long), "annotated pointer must not match data");
+      |                                                                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.

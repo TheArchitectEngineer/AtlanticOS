@@ -110,6 +110,16 @@ no contiene BootShim ni código de plataforma de ports ajenos.
     fragmentos de snprintf/vsnprintf se conservan con licencia y hashes nativos;
     llaman a __doprnt de XNU y sus declaraciones se verifican contra el archivo
     BSD original completo. No se declara un panic o formatter ejecutado.
+19. `0019`: conserva __kernel_ptr/data/dual_semantics mediante anotaciones
+    estándar consumidas por la API original v2, solo con el selector explícito.
+    Mantiene las declaraciones nativas y exige versión 2 del compilador. No
+    altera los tipos UPL, sus allocations ni la assertion de cola data-only.
+    El control sin selector conserva los macros upstream; su ABI se compara
+    con el del contexto anotado. Véase XNU_USAGE_SEMANTICS.md.
+20. `0020`: declara los dos punteros de almacenamiento de zone_leaks como
+    vm_offset_t *, el mismo tipo usado por su allocation/free existentes. Su
+    identidad C/ABI con uintptr_t no sustituye la metadata de uso. No cambia el
+    algoritmo de diagnóstico ni silencia la assertion que detectó la diferencia.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
@@ -135,7 +145,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y noventa y nueve experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y cien experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.

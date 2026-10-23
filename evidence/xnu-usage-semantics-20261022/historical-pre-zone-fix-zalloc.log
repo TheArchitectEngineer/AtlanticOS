@@ -1,0 +1,25 @@
+/mnt/g/AtlanticOS/work/xnu-lab-sources/afe4a154376b10b6/osfmk/kern/zalloc.c:10173:2: error: static assertion failed due to requirement '0 || 0': Pointer type is not compatible with specified type
+ 10173 |         kfree_type(vm_offset_t, maxElems, array);
+       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/work/xnu-lab-sources/afe4a154376b10b6/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/work/xnu-lab-sources/afe4a154376b10b6/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/work/xnu-lab-sources/afe4a154376b10b6/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note: (skipping 3 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+/mnt/g/AtlanticOS/work/xnu-lab-sources/afe4a154376b10b6/osfmk/kern/kalloc.h:888:17: note: expanded from macro 'KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER'
+  888 |         _Static_assert(KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type), \
+      |                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/work/xnu-lab-sources/afe4a154376b10b6/osfmk/kern/kalloc.h:884:3: note: expanded from macro 'KALLOC_TYPE_IS_COMPATIBLE_PTR'
+  884 |         (KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), type) ||   \
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  885 |             KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), void))  \
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/work/xnu-lab-sources/afe4a154376b10b6/osfmk/kern/kalloc.h:814:40: note: expanded from macro 'KALLOC_LAYOUT_COMPATIBLE'
+  814 | #define KALLOC_LAYOUT_COMPATIBLE(a, b) __atlantic_layout_compatible(a, b)
+      |                                        ^
+1 error generated.

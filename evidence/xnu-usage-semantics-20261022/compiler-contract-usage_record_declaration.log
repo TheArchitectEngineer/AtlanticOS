@@ -1,0 +1,4 @@
+<stdin>:1:86: error: AtlanticOS layout: usage annotations require scalars or fixed arrays of scalars
+    1 | struct __attribute__((annotate("atlantic.layout.data"))) R { long x; }; unsigned x = __atlantic_layout_summary(struct R);
+      |                                                                                      ^
+1 error generated.

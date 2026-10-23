@@ -1,0 +1,4 @@
+<stdin>:1:16: error: static assertion failed: pointer and data must differ
+    1 | _Static_assert(__atlantic_layout_compatible(void *, unsigned long), "pointer and data must differ");
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.

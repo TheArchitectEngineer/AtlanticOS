@@ -1,5 +1,10 @@
 # Soporte ARM64 y diagnóstico core — 2026-10-22
 
+Esta entrega conserva el alcance de f815e7a: 99 unidades con la API v1.
+La revisión posterior de [semántica nativa](XNU_USAGE_SEMANTICS.md) llega a 100
+con v2 y resuelve el bloqueo de pageout. Los números y fallos de esta entrega
+se mantienen como evidencia histórica de aquella revisión.
+
 El perfil experimental compila **99 unidades derivadas de XNU** con el proveedor
 de layout original explícito y probado; el estándar conserva 13. Esta ampliación
 agrega 36 archivos upstream completos, con cambios acotados donde se indican,

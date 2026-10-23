@@ -1,0 +1,4 @@
+<stdin>:1:123: error: AtlanticOS layout: conflicting usage annotations
+    1 | struct R { long x __attribute__((annotate("atlantic.layout.pointer"), annotate("atlantic.layout.data"))); }; unsigned x = __atlantic_layout_summary(struct R);
+      |                                                                                                                           ^
+1 error generated.

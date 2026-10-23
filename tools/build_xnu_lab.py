@@ -158,7 +158,8 @@ EXPERIMENTAL_UNITS.update({
     'osfmk/kern/lock_group.c': '_lck_attr_alloc_init',
     'osfmk/kern/printf.c': '___doprnt',
     'osfmk/kern/debug.c': '_panic',
-    'osfmk/kern/atlantic_printf.c': '_vsnprintf'})
+    'osfmk/kern/atlantic_printf.c': '_vsnprintf',
+    'osfmk/vm/vm_pageout.c': '_vm_pageout'})
 EXTRA_SYMBOLS.update({
     'osfmk/kern/debug.c': ['_panic_get_thread_proc_task', '_mach_assert_jump_key'],
     'osfmk/kern/atlantic_printf.c': ['_snprintf'],
@@ -169,7 +170,9 @@ EXTRA_SYMBOLS.update({
     'osfmk/arm64/bzero.s': ['_memset'],
     'osfmk/arm64/strnlen.s': ['_strlen'],
     'osfmk/vm/vm32_user.c': ['_vm32_vm_read', '_vm32_vm_write'],
-    'osfmk/arm64/static_if.c': ['_ml_static_if_flush_icache']})
+    'osfmk/arm64/static_if.c': ['_ml_static_if_flush_icache'],
+    'osfmk/vm/vm_pageout.c': ['_upl_deallocate', '_upl_get_internal_page_list',
+                            '_vm_object_upl_request', '_vm_object_iopl_request']})
 EXTRA_SYMBOLS.update({
     'osfmk/kern/ipc_mig.c': ['_kernel_mach_msg_send'],
     'osfmk/kern/ipc_tt.c': ['_ipc_task_enable', '_ipc_task_terminate', '_convert_port_to_map'],
@@ -232,7 +235,7 @@ def main():
         compiler_patch = ROOT/'compiler-port/0001-add-atlantic-c-layout-primitives.patch'
         if digest(compiler_patch) != compiler_lock['patch_sha256']:
             ap.error('Compiler patch differs from the tested provenance lock')
-        provider = {'api': 'ATLANTIC_C_LAYOUT_V1_EXPERIMENTAL', 'compiler_sha256': digest(target_compiler),
+        provider = {'api': 'ATLANTIC_C_LAYOUT_USAGE_V2_EXPERIMENTAL', 'compiler_sha256': digest(target_compiler),
                     'proof_sha256': digest(args.layout_proof), 'proof_inputs': inputs,
                     'compiler_patch_sha256': digest(compiler_patch), 'api_checks_passed': len(outcomes)}
     git = 'git.exe' if args.windows_git else 'git'
@@ -446,10 +449,18 @@ def main():
                         expected=1, name='reject-kalloc-layout-pointer')
         if 'Pointer type is not compatible with specified type' not in rejection.stderr:
             raise RuntimeError('Wrong incompatible-pointer rejection reason')
+        rejection = run([*target, '-DATL_TEST_BAD_TRAILING_DATA=1', '-fsyntax-only', layout_fixture],
+                        expected=1, name='reject-kalloc-data-trailer')
+        if 'cannot allocate data-only array' not in rejection.stderr:
+            raise RuntimeError('Wrong data-only trailer rejection reason')
+        rejection = run([*target, '-DATL_TEST_BAD_ADDRESS_USAGE=1', '-fsyntax-only', layout_fixture],
+                        expected=1, name='reject-kalloc-address-usage')
+        if 'Pointer type is not compatible with specified type' not in rejection.stderr:
+            raise RuntimeError('Wrong address-usage rejection reason')
     # A stock compiler must not silently accept the opt-in metadata provider.
     rejection = run(['clang', *target[1:], '-DCONFIG_ATLANTIC_C_LAYOUT=1', '-E', '-x', 'c', '-'],
                     data='#include <kern/kalloc.h>\n', expected=1, name='reject-untested-layout-provider')
-    if 'requires the tested AtlanticOS compiler API v1' not in rejection.stderr:
+    if 'requires the tested AtlanticOS compiler API v2' not in rejection.stderr:
         raise RuntimeError('Wrong compiler-provider rejection reason')
     abi = run([*target, '-c', str(ROOT/'tests/xnu_port/boot_abi.c'), '-o', str(out/'boot-abi.o')], name='boot-abi')
     # Generate assembler offsets with the target compiler, never a host ABI.

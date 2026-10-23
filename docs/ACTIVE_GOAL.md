@@ -76,3 +76,11 @@ y ninguna imagen. Se verifican nueve casos nuevos de dependencias/scopes/ABI
 por carril. Panic compilado no acredita un panic ejecutado. Cuatro probes nativos
 siguen fallando: ipc_policy, mach_debug, sleh y pageout; sus logs se publican.
 No hay cambio en el criterio físico de aceptación ni acceso al teléfono.
+
+La [semántica nativa de uso](XNU_USAGE_SEMANTICS.md) se conserva mediante el
+compilador original v2 reconstruido desde cero: 11.996 fuentes y 26 checks.
+Compilan 100 unidades experimentales, incluido pageout upstream, y 13 estándar.
+Pasan 36/30 checks de alcance/ABI y 13 constantes sin cambio entre contextos.
+El enlace de 126 objetos sigue fallando con 778 diagnósticos indefinidos y cero
+duplicados; sin imagen. SLEH tiene un preview compilado que aún no se integra.
+No hay arranque físico XNU, handoff EDK2 o medición de RAM firmware.
