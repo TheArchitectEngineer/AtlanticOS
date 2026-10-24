@@ -186,6 +186,13 @@ Detalles, límites de IO coherente y pruebas físicas pendientes en
 Seis fuentes quedan intactas; el patch 0024 solo excluye en firmware el fallback
 vacío de kdp_register_callout de loose_ends.c, conservando el registro real de
 debug.c. No hay símbolos weak ni permiso de duplicados para resolver la colisión.
-El enlace actual de 158 objetos conserva 609 diagnósticos indefinidos y cero
+El enlace de esa ampliación de 158 objetos conserva 609 diagnósticos indefinidos y cero
 duplicados; no produce imagen. Pasan 89/57 checks de alcance/ABI/objetos, sin
 ejecución del kernel o los proveedores de memoria.
+
+El patch 0025 condiciona cuatro llamadas de startup.c a sus componentes BSD/IOKit
+en firmware. No aporta implementaciones de esas APIs ni elimina la inicialización
+Mach. El [alcance de bootstrap](../docs/XNU_BOOTSTRAP_SCOPE.md) se comprueba en
+fuente y startup.o real: 97/65 checks totales. El enlace actual conserva 605
+diagnósticos indefinidos, cero duplicados y ninguna imagen, con las mismas 132
+unidades experimentales. No hay ejecución del bootstrap o del kernel.

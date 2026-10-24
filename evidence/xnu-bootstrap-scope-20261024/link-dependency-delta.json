@@ -1,0 +1,21 @@
+{
+  "scope": "STRICT_LINK_DIAGNOSTIC_NAME_COMPARISON_NOT_EXECUTION",
+  "previous_link_sha256": "2dd7674d5e3a33965f69338d06129ab1ecb08e6ac433e7ff33439967d04ae960",
+  "current_link_sha256": "5f5cf557fa36775a1ddc6fcb4ef3f89b7e42a11c7f761862d873d50ecf64b298",
+  "previous_undefined": 609,
+  "current_undefined": 605,
+  "previous_symbols_no_longer_referenced": [
+    "_OSKextRemoveKextBootstrap",
+    "_bsd_scale_setup",
+    "_device_service_create",
+    "_workq_init"
+  ],
+  "new_unresolved_dependencies": [],
+  "reason": "EXCLUDE_ONLY_UNSELECTED_BSD_AND_IOKIT_BOOTSTRAP_COMPONENTS_NO_PROVIDERS_ADDED",
+  "changed_native_sources": [
+    {
+      "source": "osfmk/kern/startup.c",
+      "source_sha256": "76a310854d6f1a1c8e8c40de11aea79fcdf62bbbc32076d58c72cfcc5b0036ec"
+    }
+  ]
+}

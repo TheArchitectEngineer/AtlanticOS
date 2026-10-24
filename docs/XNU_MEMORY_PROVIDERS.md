@@ -109,3 +109,7 @@ atómicos, pmap, pager, PE, SecureDT, IRQ, Mach o XNU. Los recorridos QEMU anter
 solo corresponden al preflight original y no se reasignan a estos proveedores.
 Siguen pendientes la imagen XNU, productor boot_args, BSP/MMU y vía temporal,
 el arranque físico, el handoff EDK2 y la medición de RAM firmware.
+
+La [revisión posterior del bootstrap](XNU_BOOTSTRAP_SCOPE.md) conserva estas
+unidades y acota cuatro llamadas a componentes no seleccionados. Los 609 nombres
+anteriores corresponden a esta ampliación de memoria y su evidencia inmutable.

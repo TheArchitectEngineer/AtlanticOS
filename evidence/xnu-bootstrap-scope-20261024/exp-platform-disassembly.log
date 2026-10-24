@@ -1,0 +1,474 @@
+<ROOT>/work/xnu-lab-builds/c780eff3a5128b15/pe_platform.o:
+(__TEXT,__text) section
+_PE_init_platform:
+       0:	ff c3 01 d1	sub	sp, sp, #0x70
+       4:	f6 57 04 a9	stp	x22, x21, [sp, #0x40]
+       8:	f4 4f 05 a9	stp	x20, x19, [sp, #0x50]
+       c:	fd 7b 06 a9	stp	x29, x30, [sp, #0x60]
+      10:	fd 83 01 91	add	x29, sp, #0x60
+      14:	09 00 00 90	adrp	x9, _atlantic_pe_platform@GOTPAGE
+      18:	29 01 40 f9	ldr	x9, [x9, _atlantic_pe_platform@GOTPAGEOFF]
+      1c:	28 01 40 b9	ldr	w8, [x9]
+      20:	1f 05 00 71	cmp	w8, #0x1
+      24:	21 23 00 54	b.ne	0x488
+      28:	2a 05 40 b9	ldr	w10, [x9, #0x4]
+      2c:	5f 81 00 71	cmp	w10, #0x20
+      30:	28 d1 40 a9	ldp	x8, x20, [x9, #0x8]
+      34:	29 0d 40 f9	ldr	x9, [x9, #0x18]
+      38:	04 09 40 fa	ccmp	x8, #0x0, #0x4, eq
+      3c:	84 1a 40 fa	ccmp	x20, #0x0, #0x4, ne
+      40:	24 19 40 fa	ccmp	x9, #0x0, #0x4, ne
+      44:	20 22 00 54	b.eq	0x488
+      48:	0a 00 00 90	adrp	x10, _PE_state@PAGE
+      4c:	f3 03 01 aa	mov	x19, x1
+      50:	4a 01 40 b9	ldr	w10, [x10, _PE_state@PAGEOFF]
+      54:	80 01 00 34	cbz	w0, 0x84
+      58:	aa 24 00 34	cbz	w10, 0x4ec
+      5c:	e0 03 13 aa	mov	x0, x19
+      60:	20 01 3f d6	blr	x9
+      64:	20 1c 00 34	cbz	w0, 0x3e8
+      68:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+      6c:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+      70:	c9 0c 80 52	mov	w9, #0x66
+      74:	00 00 00 90	adrp	x0, l_.str.2@PAGE
+      78:	00 00 00 91	add	x0, x0, l_.str.2@PAGEOFF
+      7c:	e8 27 00 a9	stp	x8, x9, [sp]
+      80:	00 00 00 94	bl	_panic
+      84:	2a 24 00 35	cbnz	w10, 0x508
+      88:	b3 1b 00 b4	cbz	x19, 0x3fc
+      8c:	69 06 40 79	ldrh	w9, [x19, #0x2]
+      90:	3f 09 00 71	cmp	w9, #0x2
+      94:	41 1b 00 54	b.ne	0x3fc
+      98:	69 02 40 79	ldrh	w9, [x19]
+      9c:	3f 09 00 71	cmp	w9, #0x2
+      a0:	e1 1a 00 54	b.ne	0x3fc
+      a4:	69 5a 40 b9	ldr	w9, [x19, #0x58]
+      a8:	2a 86 89 52	mov	w10, #0x4c31
+      ac:	8a 2a a8 72	movk	w10, #0x4154, lsl #16
+      b0:	3f 01 0a 6b	cmp	w9, w10
+      b4:	41 1a 00 54	b.ne	0x3fc
+      b8:	69 0e 40 f9	ldr	x9, [x19, #0x18]
+      bc:	09 1a 00 b4	cbz	x9, 0x3fc
+      c0:	6a 3e 42 f9	ldr	x10, [x19, #0x478]
+      c4:	3f 01 0a eb	cmp	x9, x10
+      c8:	a8 19 00 54	b.hi	0x3fc
+      cc:	6a 0a 40 f9	ldr	x10, [x19, #0x10]
+      d0:	5f 2d 40 f2	tst	x10, #0xfff
+      d4:	41 19 00 54	b.ne	0x3fc
+      d8:	6b 06 40 f9	ldr	x11, [x19, #0x8]
+      dc:	5f 01 09 ab	cmn	x10, x9
+      e0:	ec 37 9f 1a	cset	w12, hs
+      e4:	7f 01 09 ab	cmn	x11, x9
+      e8:	a2 18 00 54	b.hs	0x3fc
+      ec:	8c 18 00 37	tbnz	w12, #0x0, 0x3fc
+      f0:	6b 2d 40 92	and	x11, x11, #0xfff
+      f4:	4b 18 00 b5	cbnz	x11, 0x3fc
+      f8:	6b 12 40 f9	ldr	x11, [x19, #0x20]
+      fc:	7f 01 0a eb	cmp	x11, x10
+     100:	e3 17 00 54	b.lo	0x3fc
+     104:	49 01 09 8b	add	x9, x10, x9
+     108:	7f 01 09 eb	cmp	x11, x9
+     10c:	88 17 00 54	b.hi	0x3fc
+     110:	e9 03 1f aa	mov	x9, xzr
+     114:	6a 02 09 8b	add	x10, x19, x9
+     118:	4a b1 41 39	ldrb	w10, [x10, #0x6c]
+     11c:	8a 00 00 34	cbz	w10, 0x12c
+     120:	29 05 00 91	add	x9, x9, #0x1
+     124:	3f 01 10 f1	cmp	x9, #0x400
+     128:	61 ff ff 54	b.ne	0x114
+     12c:	3f 01 10 71	cmp	w9, #0x400
+     130:	a0 1f 00 54	b.eq	0x524
+     134:	69 16 40 f9	ldr	x9, [x19, #0x28]
+     138:	09 17 00 b5	cbnz	x9, 0x418
+     13c:	69 1a 40 f9	ldr	x9, [x19, #0x30]
+     140:	c9 16 00 b5	cbnz	x9, 0x418
+     144:	69 1e 40 f9	ldr	x9, [x19, #0x38]
+     148:	89 16 00 b5	cbnz	x9, 0x418
+     14c:	69 22 40 f9	ldr	x9, [x19, #0x40]
+     150:	49 16 00 b5	cbnz	x9, 0x418
+     154:	69 26 40 f9	ldr	x9, [x19, #0x48]
+     158:	09 16 00 b5	cbnz	x9, 0x418
+     15c:	69 2a 40 f9	ldr	x9, [x19, #0x50]
+     160:	c9 15 00 b5	cbnz	x9, 0x418
+     164:	e0 03 13 aa	mov	x0, x19
+     168:	00 01 3f d6	blr	x8
+     16c:	a0 1e 00 35	cbnz	w0, 0x540
+     170:	60 32 40 f9	ldr	x0, [x19, #0x60]
+     174:	c0 17 00 b4	cbz	x0, 0x46c
+     178:	61 6a 40 b9	ldr	w1, [x19, #0x68]
+     17c:	1f 00 01 ab	cmn	x0, x1
+     180:	62 17 00 54	b.hs	0x46c
+     184:	08 08 40 92	and	x8, x0, #0x7
+     188:	28 17 00 b5	cbnz	x8, 0x46c
+     18c:	08 00 88 92	mov	x8, #-0x4001
+     190:	09 ff 87 92	mov	x9, #-0x3ff9
+     194:	28 00 08 8b	add	x8, x1, x8
+     198:	1f 01 09 eb	cmp	x8, x9
+     19c:	83 16 00 54	b.lo	0x46c
+     1a0:	80 02 3f d6	blr	x20
+     1a4:	40 16 00 35	cbnz	w0, 0x46c
+     1a8:	60 32 40 f9	ldr	x0, [x19, #0x60]
+     1ac:	61 6a 40 b9	ldr	w1, [x19, #0x68]
+     1b0:	00 00 00 94	bl	_SecureDTInit
+     1b4:	01 00 00 90	adrp	x1, l_.str.4@PAGE
+     1b8:	21 00 00 91	add	x1, x1, l_.str.4@PAGEOFF
+     1bc:	e2 83 00 91	add	x2, sp, #0x20
+     1c0:	e0 03 1f aa	mov	x0, xzr
+     1c4:	00 00 00 94	bl	_SecureDTLookupEntry
+     1c8:	1f 04 00 71	cmp	w0, #0x1
+     1cc:	c1 16 00 54	b.ne	0x4a4
+     1d0:	01 00 00 90	adrp	x1, l_.str.5@PAGE
+     1d4:	21 00 00 91	add	x1, x1, l_.str.5@PAGEOFF
+     1d8:	e2 63 00 91	add	x2, sp, #0x18
+     1dc:	e0 03 1f aa	mov	x0, xzr
+     1e0:	00 00 00 94	bl	_SecureDTLookupEntry
+     1e4:	1f 04 00 71	cmp	w0, #0x1
+     1e8:	e1 15 00 54	b.ne	0x4a4
+     1ec:	e0 13 40 f9	ldr	x0, [sp, #0x20]
+     1f0:	14 00 00 90	adrp	x20, l_.str.7@PAGE
+     1f4:	94 02 00 91	add	x20, x20, l_.str.7@PAGEOFF
+     1f8:	a2 a3 00 d1	sub	x2, x29, #0x28
+     1fc:	a3 b3 00 d1	sub	x3, x29, #0x2c
+     200:	ff 17 00 f9	str	xzr, [sp, #0x28]
+     204:	e1 03 14 aa	mov	x1, x20
+     208:	00 00 00 94	bl	_SecureDTGetProperty
+     20c:	1f 04 00 71	cmp	w0, #0x1
+     210:	81 15 00 54	b.ne	0x4c0
+     214:	a2 43 5d b8	ldur	w2, [x29, #-0x2c]
+     218:	5f 20 00 71	cmp	w2, #0x8
+     21c:	21 15 00 54	b.ne	0x4c0
+     220:	a1 83 5d f8	ldur	x1, [x29, #-0x28]
+     224:	e0 a3 00 91	add	x0, sp, #0x28
+     228:	00 00 00 94	bl	_memcpy
+     22c:	e0 57 42 a9	ldp	x0, x21, [sp, #0x20]
+     230:	14 00 00 90	adrp	x20, l_.str.8@PAGE
+     234:	94 02 00 91	add	x20, x20, l_.str.8@PAGEOFF
+     238:	a2 a3 00 d1	sub	x2, x29, #0x28
+     23c:	a3 b3 00 d1	sub	x3, x29, #0x2c
+     240:	e1 03 14 aa	mov	x1, x20
+     244:	ff 17 00 f9	str	xzr, [sp, #0x28]
+     248:	00 00 00 94	bl	_SecureDTGetProperty
+     24c:	1f 04 00 71	cmp	w0, #0x1
+     250:	a1 13 00 54	b.ne	0x4c4
+     254:	a2 43 5d b8	ldur	w2, [x29, #-0x2c]
+     258:	5f 20 00 71	cmp	w2, #0x8
+     25c:	41 13 00 54	b.ne	0x4c4
+     260:	a1 83 5d f8	ldur	x1, [x29, #-0x28]
+     264:	e0 a3 00 91	add	x0, sp, #0x28
+     268:	00 00 00 94	bl	_memcpy
+     26c:	e8 17 40 f9	ldr	x8, [sp, #0x28]
+     270:	e9 03 08 cb	neg	x9, x8
+     274:	bf 02 09 eb	cmp	x21, x9
+     278:	e2 0d 00 54	b.hs	0x434
+     27c:	69 3e 42 f9	ldr	x9, [x19, #0x478]
+     280:	1f 01 09 eb	cmp	x8, x9
+     284:	81 0d 00 54	b.ne	0x434
+     288:	69 0a 40 f9	ldr	x9, [x19, #0x10]
+     28c:	29 01 15 eb	subs	x9, x9, x21
+     290:	23 0d 00 54	b.lo	0x434
+     294:	08 01 09 eb	subs	x8, x8, x9
+     298:	e3 0c 00 54	b.lo	0x434
+     29c:	69 0e 40 f9	ldr	x9, [x19, #0x18]
+     2a0:	3f 01 08 eb	cmp	x9, x8
+     2a4:	88 0c 00 54	b.hi	0x434
+     2a8:	b6 00 38 d5	mrs	x22, MPIDR_EL1
+     2ac:	15 e0 3b d5	mrs	x21, CNTFRQ_EL0
+     2b0:	c8 9e 60 d3	ubfx	x8, x22, #32, #8
+     2b4:	e8 0c 00 b5	cbnz	x8, 0x450
+     2b8:	e8 7f 60 b2	mov	x8, #-0x100000000
+     2bc:	e9 83 60 b2	mov	x9, #-0xffffffff
+     2c0:	a8 02 08 8b	add	x8, x21, x8
+     2c4:	1f 01 09 eb	cmp	x8, x9
+     2c8:	43 0c 00 54	b.lo	0x450
+     2cc:	e0 0f 40 f9	ldr	x0, [sp, #0x18]
+     2d0:	14 00 00 90	adrp	x20, l_.str.10@PAGE
+     2d4:	94 02 00 91	add	x20, x20, l_.str.10@PAGEOFF
+     2d8:	a2 a3 00 d1	sub	x2, x29, #0x28
+     2dc:	a3 b3 00 d1	sub	x3, x29, #0x2c
+     2e0:	ff 17 00 f9	str	xzr, [sp, #0x28]
+     2e4:	e1 03 14 aa	mov	x1, x20
+     2e8:	00 00 00 94	bl	_SecureDTGetProperty
+     2ec:	1f 04 00 71	cmp	w0, #0x1
+     2f0:	c1 0e 00 54	b.ne	0x4c8
+     2f4:	a2 43 5d b8	ldur	w2, [x29, #-0x2c]
+     2f8:	5f 10 00 71	cmp	w2, #0x4
+     2fc:	61 0e 00 54	b.ne	0x4c8
+     300:	a1 83 5d f8	ldur	x1, [x29, #-0x28]
+     304:	c8 9e 40 92	and	x8, x22, #0xffffffffff
+     308:	e0 a3 00 91	add	x0, sp, #0x28
+     30c:	14 dd 60 92	and	x20, x8, #0xffffffff00ffffff
+     310:	00 00 00 94	bl	_memcpy
+     314:	e8 17 40 f9	ldr	x8, [sp, #0x28]
+     318:	1f 01 14 eb	cmp	x8, x20
+     31c:	a1 09 00 54	b.ne	0x450
+     320:	e0 0f 40 f9	ldr	x0, [sp, #0x18]
+     324:	14 00 00 90	adrp	x20, l_.str.11@PAGE
+     328:	94 02 00 91	add	x20, x20, l_.str.11@PAGEOFF
+     32c:	a2 a3 00 d1	sub	x2, x29, #0x28
+     330:	a3 b3 00 d1	sub	x3, x29, #0x2c
+     334:	ff 17 00 f9	str	xzr, [sp, #0x28]
+     338:	e1 03 14 aa	mov	x1, x20
+     33c:	00 00 00 94	bl	_SecureDTGetProperty
+     340:	1f 04 00 71	cmp	w0, #0x1
+     344:	41 0c 00 54	b.ne	0x4cc
+     348:	a2 43 5d b8	ldur	w2, [x29, #-0x2c]
+     34c:	5f 10 00 71	cmp	w2, #0x4
+     350:	e1 0b 00 54	b.ne	0x4cc
+     354:	a1 83 5d f8	ldur	x1, [x29, #-0x28]
+     358:	e0 a3 00 91	add	x0, sp, #0x28
+     35c:	00 00 00 94	bl	_memcpy
+     360:	e8 17 40 f9	ldr	x8, [sp, #0x28]
+     364:	1f 01 15 eb	cmp	x8, x21
+     368:	41 07 00 54	b.ne	0x450
+     36c:	e0 0f 40 f9	ldr	x0, [sp, #0x18]
+     370:	01 00 00 90	adrp	x1, l_.str.12@PAGE
+     374:	21 00 00 91	add	x1, x1, l_.str.12@PAGEOFF
+     378:	a2 a3 00 d1	sub	x2, x29, #0x28
+     37c:	e3 a3 00 91	add	x3, sp, #0x28
+     380:	00 00 00 94	bl	_SecureDTGetProperty
+     384:	1f 04 00 71	cmp	w0, #0x1
+     388:	41 06 00 54	b.ne	0x450
+     38c:	e8 2b 40 b9	ldr	w8, [sp, #0x28]
+     390:	1f 21 00 71	cmp	w8, #0x8
+     394:	e1 05 00 54	b.ne	0x450
+     398:	a0 83 5d f8	ldur	x0, [x29, #-0x28]
+     39c:	01 00 00 90	adrp	x1, l_.str.13@PAGE
+     3a0:	21 00 00 91	add	x1, x1, l_.str.13@PAGEOFF
+     3a4:	02 01 80 52	mov	w2, #0x8
+     3a8:	00 00 00 94	bl	_memcmp
+     3ac:	20 05 00 35	cbnz	w0, 0x450
+     3b0:	08 00 00 90	adrp	x8, 35 ; 0x0
+     3b4:	08 01 00 91	add	x8, x8, #0x0
+     3b8:	15 01 00 f9	str	x21, [x8]
+     3bc:	29 00 80 52	mov	w9, #0x1
+     3c0:	15 d5 03 a9	stp	x21, x21, [x8, #0x38]
+     3c4:	09 25 00 f9	str	x9, [x8, #0x48]
+     3c8:	08 00 00 90	adrp	x8, _PE_state@PAGE
+     3cc:	08 01 00 91	add	x8, x8, _PE_state@PAGEOFF
+     3d0:	13 51 00 f9	str	x19, [x8, #0xa0]
+     3d4:	6a 32 40 f9	ldr	x10, [x19, #0x60]
+     3d8:	09 01 00 b9	str	w9, [x8]
+     3dc:	0a 4d 00 f9	str	x10, [x8, #0x98]
+     3e0:	6a 6a 40 b9	ldr	w10, [x19, #0x68]
+     3e4:	0a 55 00 f9	str	x10, [x8, #0xa8]
+     3e8:	fd 7b 46 a9	ldp	x29, x30, [sp, #0x60]
+     3ec:	f4 4f 45 a9	ldp	x20, x19, [sp, #0x50]
+     3f0:	f6 57 44 a9	ldp	x22, x21, [sp, #0x40]
+     3f4:	ff c3 01 91	add	sp, sp, #0x70
+     3f8:	c0 03 5f d6	ret
+     3fc:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     400:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     404:	29 09 80 52	mov	w9, #0x49
+     408:	00 00 00 90	adrp	x0, l_.str.18@PAGE
+     40c:	00 00 00 91	add	x0, x0, l_.str.18@PAGEOFF
+     410:	e8 27 00 a9	stp	x8, x9, [sp]
+     414:	00 00 00 94	bl	_panic
+     418:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     41c:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     420:	89 0a 80 52	mov	w9, #0x54
+     424:	00 00 00 90	adrp	x0, l_.str.20@PAGE
+     428:	00 00 00 91	add	x0, x0, l_.str.20@PAGEOFF
+     42c:	e8 27 00 a9	stp	x8, x9, [sp]
+     430:	00 00 00 94	bl	_panic
+     434:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     438:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     43c:	89 0f 80 52	mov	w9, #0x7c
+     440:	00 00 00 90	adrp	x0, l_.str.9@PAGE
+     444:	00 00 00 91	add	x0, x0, l_.str.9@PAGEOFF
+     448:	e8 27 00 a9	stp	x8, x9, [sp]
+     44c:	00 00 00 94	bl	_panic
+     450:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     454:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     458:	e9 10 80 52	mov	w9, #0x87
+     45c:	00 00 00 90	adrp	x0, l_.str.14@PAGE
+     460:	00 00 00 91	add	x0, x0, l_.str.14@PAGEOFF
+     464:	e8 27 00 a9	stp	x8, x9, [sp]
+     468:	00 00 00 94	bl	_panic
+     46c:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     470:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     474:	69 05 80 52	mov	w9, #0x2b
+     478:	00 00 00 90	adrp	x0, l_.str.22@PAGE
+     47c:	00 00 00 91	add	x0, x0, l_.str.22@PAGEOFF
+     480:	e8 27 00 a9	stp	x8, x9, [sp]
+     484:	00 00 00 94	bl	_panic
+     488:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     48c:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     490:	09 04 80 52	mov	w9, #0x20
+     494:	00 00 00 90	adrp	x0, l_.str.17@PAGE
+     498:	00 00 00 91	add	x0, x0, l_.str.17@PAGEOFF
+     49c:	e8 27 00 a9	stp	x8, x9, [sp]
+     4a0:	00 00 00 94	bl	_panic
+     4a4:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     4a8:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     4ac:	89 0e 80 52	mov	w9, #0x74
+     4b0:	00 00 00 90	adrp	x0, l_.str.6@PAGE
+     4b4:	00 00 00 91	add	x0, x0, l_.str.6@PAGEOFF
+     4b8:	e8 27 00 a9	stp	x8, x9, [sp]
+     4bc:	00 00 00 94	bl	_panic
+     4c0:	03 00 00 14	b	0x4cc
+     4c4:	02 00 00 14	b	0x4cc
+     4c8:	01 00 00 14	b	0x4cc
+     4cc:	c8 06 80 52	mov	w8, #0x36
+     4d0:	09 00 00 90	adrp	x9, l_.str.1@PAGE
+     4d4:	29 01 00 91	add	x9, x9, l_.str.1@PAGEOFF
+     4d8:	00 00 00 90	adrp	x0, l_.str.23@PAGE
+     4dc:	00 00 00 91	add	x0, x0, l_.str.23@PAGEOFF
+     4e0:	f4 03 00 f9	str	x20, [sp]
+     4e4:	e9 a3 00 a9	stp	x9, x8, [sp, #0x8]
+     4e8:	00 00 00 94	bl	_panic
+     4ec:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     4f0:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     4f4:	29 0c 80 52	mov	w9, #0x61
+     4f8:	00 00 00 90	adrp	x0, l_.str@PAGE
+     4fc:	00 00 00 91	add	x0, x0, l_.str@PAGEOFF
+     500:	e8 27 00 a9	stp	x8, x9, [sp]
+     504:	00 00 00 94	bl	_panic
+     508:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     50c:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     510:	69 0d 80 52	mov	w9, #0x6b
+     514:	00 00 00 90	adrp	x0, l_.str.3@PAGE
+     518:	00 00 00 91	add	x0, x0, l_.str.3@PAGEOFF
+     51c:	e8 27 00 a9	stp	x8, x9, [sp]
+     520:	00 00 00 94	bl	_panic
+     524:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     528:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     52c:	c9 09 80 52	mov	w9, #0x4e
+     530:	00 00 00 90	adrp	x0, l_.str.19@PAGE
+     534:	00 00 00 91	add	x0, x0, l_.str.19@PAGEOFF
+     538:	e8 27 00 a9	stp	x8, x9, [sp]
+     53c:	00 00 00 94	bl	_panic
+     540:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     544:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     548:	e9 0a 80 52	mov	w9, #0x57
+     54c:	00 00 00 90	adrp	x0, l_.str.21@PAGE
+     550:	00 00 00 91	add	x0, x0, l_.str.21@PAGEOFF
+     554:	e8 27 00 a9	stp	x8, x9, [sp]
+     558:	00 00 00 94	bl	_panic
+     55c:	1f 20 03 d5	nop
+_PE_slide_devicetree:
+     560:	ff c3 00 d1	sub	sp, sp, #0x30
+     564:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+     568:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+     56c:	fd 83 00 91	add	x29, sp, #0x20
+     570:	09 00 00 90	adrp	x9, _atlantic_pe_platform@GOTPAGE
+     574:	29 01 40 f9	ldr	x9, [x9, _atlantic_pe_platform@GOTPAGEOFF]
+     578:	28 01 40 b9	ldr	w8, [x9]
+     57c:	1f 05 00 71	cmp	w8, #0x1
+     580:	a1 05 00 54	b.ne	0x634
+     584:	2a 05 40 b9	ldr	w10, [x9, #0x4]
+     588:	5f 81 00 71	cmp	w10, #0x20
+     58c:	2b a1 40 a9	ldp	x11, x8, [x9, #0x8]
+     590:	29 0d 40 f9	ldr	x9, [x9, #0x18]
+     594:	64 09 40 fa	ccmp	x11, #0x0, #0x4, eq
+     598:	04 19 40 fa	ccmp	x8, #0x0, #0x4, ne
+     59c:	24 19 40 fa	ccmp	x9, #0x0, #0x4, ne
+     5a0:	a0 04 00 54	b.eq	0x634
+     5a4:	09 00 00 90	adrp	x9, _PE_state@PAGE
+     5a8:	29 01 40 b9	ldr	w9, [x9, _PE_state@PAGEOFF]
+     5ac:	29 05 00 34	cbz	w9, 0x650
+     5b0:	14 00 00 90	adrp	x20, 34 ; 0x0
+     5b4:	94 02 00 91	add	x20, x20, #0x0
+     5b8:	89 02 40 f9	ldr	x9, [x20]
+     5bc:	33 01 00 ab	adds	x19, x9, x0
+     5c0:	c0 02 00 54	b.eq	0x618
+     5c4:	81 0a 40 f9	ldr	x1, [x20, #0x10]
+     5c8:	7f 02 01 ab	cmn	x19, x1
+     5cc:	62 02 00 54	b.hs	0x618
+     5d0:	09 00 88 92	mov	x9, #-0x4001
+     5d4:	0a ff 87 92	mov	x10, #-0x3ff9
+     5d8:	29 00 09 8b	add	x9, x1, x9
+     5dc:	3f 01 0a eb	cmp	x9, x10
+     5e0:	c3 01 00 54	b.lo	0x618
+     5e4:	69 0a 40 92	and	x9, x19, #0x7
+     5e8:	89 01 00 b5	cbnz	x9, 0x618
+     5ec:	e0 03 13 aa	mov	x0, x19
+     5f0:	00 01 3f d6	blr	x8
+     5f4:	20 01 00 35	cbnz	w0, 0x618
+     5f8:	81 0a 40 f9	ldr	x1, [x20, #0x10]
+     5fc:	e0 03 13 aa	mov	x0, x19
+     600:	00 00 00 94	bl	_SecureDTInit
+     604:	93 02 00 f9	str	x19, [x20]
+     608:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+     60c:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+     610:	ff c3 00 91	add	sp, sp, #0x30
+     614:	c0 03 5f d6	ret
+     618:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     61c:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     620:	69 05 80 52	mov	w9, #0x2b
+     624:	00 00 00 90	adrp	x0, l_.str.22@PAGE
+     628:	00 00 00 91	add	x0, x0, l_.str.22@PAGEOFF
+     62c:	e8 27 00 a9	stp	x8, x9, [sp]
+     630:	00 00 00 94	bl	_panic
+     634:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     638:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     63c:	09 04 80 52	mov	w9, #0x20
+     640:	00 00 00 90	adrp	x0, l_.str.17@PAGE
+     644:	00 00 00 91	add	x0, x0, l_.str.17@PAGEOFF
+     648:	e8 27 00 a9	stp	x8, x9, [sp]
+     64c:	00 00 00 94	bl	_panic
+     650:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     654:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     658:	29 13 80 52	mov	w9, #0x99
+     65c:	00 00 00 90	adrp	x0, l_.str.15@PAGE
+     660:	00 00 00 91	add	x0, x0, l_.str.15@PAGEOFF
+     664:	e8 27 00 a9	stp	x8, x9, [sp]
+     668:	00 00 00 94	bl	_panic
+     66c:	1f 20 03 d5	nop
+_PE_call_timebase_callback:
+     670:	ff c3 00 d1	sub	sp, sp, #0x30
+     674:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+     678:	fd 83 00 91	add	x29, sp, #0x20
+     67c:	08 00 00 90	adrp	x8, _PE_state@PAGE
+     680:	09 01 40 b9	ldr	w9, [x8, _PE_state@PAGEOFF]
+     684:	08 00 00 90	adrp	x8, 35 ; 0x0
+     688:	08 01 40 f9	ldr	x8, [x8]
+     68c:	3f 01 00 71	cmp	w9, #0x0
+     690:	04 19 40 fa	ccmp	x8, #0x0, #0x4, ne
+     694:	60 01 00 54	b.eq	0x6c0
+     698:	29 00 80 52	mov	w9, #0x1
+     69c:	e8 27 01 a9	stp	x8, x9, [sp, #0x10]
+     6a0:	08 00 00 90	adrp	x8, _timebase_callback@PAGE
+     6a4:	08 01 40 f9	ldr	x8, [x8, _timebase_callback@PAGEOFF]
+     6a8:	68 00 00 b4	cbz	x8, 0x6b4
+     6ac:	e0 43 00 91	add	x0, sp, #0x10
+     6b0:	00 01 3f d6	blr	x8
+     6b4:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+     6b8:	ff c3 00 91	add	sp, sp, #0x30
+     6bc:	c0 03 5f d6	ret
+     6c0:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     6c4:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     6c8:	e9 14 80 52	mov	w9, #0xa7
+     6cc:	00 00 00 90	adrp	x0, l_.str.16@PAGE
+     6d0:	00 00 00 91	add	x0, x0, l_.str.16@PAGEOFF
+     6d4:	e8 27 00 a9	stp	x8, x9, [sp]
+     6d8:	00 00 00 94	bl	_panic
+     6dc:	1f 20 03 d5	nop
+_PE_register_timebase_callback:
+     6e0:	ff c3 00 d1	sub	sp, sp, #0x30
+     6e4:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+     6e8:	fd 83 00 91	add	x29, sp, #0x20
+     6ec:	09 00 00 90	adrp	x9, _timebase_callback@PAGE
+     6f0:	20 01 00 f9	str	x0, [x9, _timebase_callback@PAGEOFF]
+     6f4:	09 00 00 90	adrp	x9, _PE_state@PAGE
+     6f8:	2a 01 40 b9	ldr	w10, [x9, _PE_state@PAGEOFF]
+     6fc:	09 00 00 90	adrp	x9, 35 ; 0x0
+     700:	29 01 40 f9	ldr	x9, [x9]
+     704:	5f 01 00 71	cmp	w10, #0x0
+     708:	24 19 40 fa	ccmp	x9, #0x0, #0x4, ne
+     70c:	40 01 00 54	b.eq	0x734
+     710:	e8 03 00 aa	mov	x8, x0
+     714:	2a 00 80 52	mov	w10, #0x1
+     718:	e9 2b 01 a9	stp	x9, x10, [sp, #0x10]
+     71c:	60 00 00 b4	cbz	x0, 0x728
+     720:	e0 43 00 91	add	x0, sp, #0x10
+     724:	00 01 3f d6	blr	x8
+     728:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+     72c:	ff c3 00 91	add	sp, sp, #0x30
+     730:	c0 03 5f d6	ret
+     734:	08 00 00 90	adrp	x8, l_.str.1@PAGE
+     738:	08 01 00 91	add	x8, x8, l_.str.1@PAGEOFF
+     73c:	e9 14 80 52	mov	w9, #0xa7
+     740:	00 00 00 90	adrp	x0, l_.str.16@PAGE
+     744:	00 00 00 91	add	x0, x0, l_.str.16@PAGEOFF
+     748:	e8 27 00 a9	stp	x8, x9, [sp]
+     74c:	00 00 00 94	bl	_panic

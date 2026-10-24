@@ -122,3 +122,10 @@ Pasan 89/57 checks, sin ejecutar esos proveedores. El enlace estricto de 158
 objetos registra 609 símbolos sin resolver y cero duplicados, sin imagen. Faltan
 BSP, productor boot_args, VM/hilo/IRQ operativos y carga temporal; la aceptación
 sigue exigiendo XNU y handoff EDK2 físicos, con recuperación y RAM medidas.
+
+Las [guardas de bootstrap](XNU_BOOTSTRAP_SCOPE.md) conservan las 132 unidades y
+excluyen cuatro llamadas de componentes BSD/IOKit no seleccionados, sin crear
+proveedores ficticios. Las rutas nativas de VM, scheduler, tareas, hilos y carga
+de contexto permanecen. Pasan 97/65 checks. El enlace de 158 objetos conserva
+605 símbolos indefinidos y cero duplicados; no genera imagen ni acredita Mach
+ejecutado. El objetivo físico, recuperación, medición RAM y handoff no cambian.

@@ -78,8 +78,11 @@ cero duplicados y ninguna imagen.
 La [ampliación de memoria física, caché y atómicos](docs/XNU_MEMORY_PROVIDERS.md)
 incorpora seis fuentes upstream intactas, una guarda que conserva el registro
 real de callbacks y un adaptador original hacia el mantenimiento nativo de caché.
-El enlace actual de 158 objetos falla con **609 diagnósticos indefinidos y cero
-duplicados**, sin imagen. Pasan 89/57 checks de alcance/ABI/objetos. boot_args
+Aquella ampliación registra 609 diagnósticos indefinidos y cero duplicados.
+Las [guardas del bootstrap](docs/XNU_BOOTSTRAP_SCOPE.md) excluyen cuatro llamadas
+a componentes BSD/IOKit no seleccionados y conservan la inicialización Mach real.
+El enlace actual de 158 objetos falla con **605 diagnósticos indefinidos y cero
+duplicados**, sin imagen. Pasan 97/65 checks de alcance/ABI/objetos. boot_args
 completo, backend BSP y ejecución de PE/SecureDT/XNU siguen pendientes.
 
 ## Reproducir

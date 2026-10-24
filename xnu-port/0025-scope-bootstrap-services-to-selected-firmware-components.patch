@@ -1,0 +1,48 @@
+Original AtlanticOS selection guards for native bootstrap services.
+BSD workqueues/scaling and IOKit device/kext startup remain in their selected scopes.
+Mach VM, scheduler, tasks, threads, IPC, timers and context loading remain substantive.
+No replacement providers or success stubs are introduced.
+
+--- a/osfmk/kern/startup.c
++++ b/osfmk/kern/startup.c
+@@ -635,8 +635,10 @@
+ 	kernel_bootstrap_log("restartable_init");
+ 	restartable_init();
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ 	kernel_bootstrap_log("workq_init");
+ 	workq_init();
++#endif /* !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD */
+ 
+ 	kernel_bootstrap_log("turnstiles_init");
+ 	turnstiles_init();
+@@ -752,7 +754,9 @@
+ 	/*
+ 	 *	Create the device service.
+ 	 */
++#if !CONFIG_ATLANTIC_FIRMWARE || IOKIT
+ 	device_service_create();
++#endif /* !CONFIG_ATLANTIC_FIRMWARE || IOKIT */
+ 
+ 	phys_carveout_init();
+ 
+@@ -869,8 +873,10 @@
+ 	 * Must be done prior to lockdown so that we can free (and possibly relocate)
+ 	 * the static KVA mappings used for the jettisoned bootstrap segments.
+ 	 */
++#if !CONFIG_ATLANTIC_FIRMWARE || IOKIT
+ 	kernel_bootstrap_log("OSKextRemoveKextBootstrap");
+ 	OSKextRemoveKextBootstrap();
++#endif /* !CONFIG_ATLANTIC_FIRMWARE || IOKIT */
+ 
+ #if SOCKETS
+ 	/*
+@@ -1129,5 +1135,7 @@
+ 
+ #endif
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ 	bsd_scale_setup(scale);
+-}
++#endif /* !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD */
++}

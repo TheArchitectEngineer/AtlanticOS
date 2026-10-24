@@ -77,6 +77,11 @@ intactas; en loose_ends.c el patch 0024 solo acota la guarda del fallback vacío
 Todas conservan sus avisos/licencias upstream; sus
 cuerpos, funciones vacías e instrucciones no se atribuyen a AtlanticOS.
 
+El patch 0025 conserva los avisos de startup.c y solo condiciona cuatro llamadas
+a componentes BSD/IOKit no seleccionados por el perfil de firmware. No incorpora
+implementaciones de esos servicios. La herramienta original que audita alcance,
+orden Mach y objetos es MIT; los cuerpos nativos conservan sus licencias.
+
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias
 BSD-2-Clause-Patent y por componente. No se distribuyen sus binarios o wrappers.

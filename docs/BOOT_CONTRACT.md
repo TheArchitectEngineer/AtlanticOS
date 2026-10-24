@@ -79,8 +79,9 @@ como boot_args. Ninguna de estas condiciones determina el contenedor OEM G20.
 
 El adaptador fijará PAGE_SIZE/pmap según CPU, reservas y configuración XNU.
 No heredar PAC, Apple CPU, KTRR/SPTM o páginas 16 KiB de VMAPPLE sin soporte
-comprobado. Las llamadas al Platform Expert y al scheduler siguen siendo rutas
-reales de upstream, instrumentadas y enlazadas. El Python host no participa.
+comprobado. Las llamadas al Platform Expert y al scheduler deben usar las rutas
+reales de XNU y el PE propio, con símbolos resueltos e instrumentación verificable.
+Todavía no hay imagen XNU enlazada. El Python host no participa en ese arranque.
 
 ## ABI BSP en ejecución
 

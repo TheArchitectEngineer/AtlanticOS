@@ -190,3 +190,32 @@ XNU auditada, BSP/MMU reales, canal de salida y dos hilos Mach funcionales.
 Conservar capturas físicas, mapa y hashes exactos, resultados y fallos, liberar
 solo las páginas propias y comprobar el retorno stock con T01. Estas pruebas no
 acreditan un pager backend, acceso a almacenamiento, RAM firmware ni handoff EDK2.
+
+## Subprueba pendiente de T08: bootstrap Mach sin BSD/IOKit
+
+Estado: PENDING_HARDWARE. Los checks de [XNU_BOOTSTRAP_SCOPE](XNU_BOOTSTRAP_SCOPE.md)
+son de fuentes y objetos. Requieren primero T01/T04/T05, una imagen XNU enlazada
+y auditada, boot_args/contexto BSP válidos y un canal de salida propio fiable.
+Usar únicamente la vía temporal acordada, sin slots ni escrituras de particiones.
+
+1. Vincular binario, mapa y configuración exactos a la captura física. Auditar
+   la ausencia de imports a workq_init, bsd_scale_setup, device_service_create y
+   OSKextRemoveKextBootstrap; no deducir esa ausencia de un log silencioso.
+2. Capturar PCs simbolizados de vm_mem_bootstrap, sched_init, task_init,
+   thread_init y kernel_thread_create. Registrar la identidad del hilo Mach,
+   su stack propio, traducción/permisos y estado runnable. Un retorno KERN_SUCCESS
+   o una cadena impresa sin estado nativo válido no pasa la prueba.
+3. Capturar la transición load_context → machine_load_context y la llegada real
+   a kernel_bootstrap_thread mediante el contexto/continuación de XNU. Registrar
+   SP, PC y puntero del hilo/CPU, todos dentro de rangos auditados. Seguir idle,
+   scheduler, thread_daemon_init y el reloj nativos; completar después la prueba
+   separada de timer/IRQ y servicio Mach de T08.
+4. Comprobar que el bootstrap alcanza lockdown y pageout sin intentar crear
+   servicios de componentes excluidos. No añadir funciones vacías para conseguir
+   ese recorrido. Inventariar stacks, daemons y segmentos retenidos para T09:
+   excluir el gestor kext no demuestra liberar memoria o cumplir el límite RAM.
+
+El resultado solo pasa con evidencia física del camino Mach y retorno Android
+por T01. Una parada sin registro fiable es INDETERMINATE. Los contextos BSD/IOKit
+del test de preprocesado no son configuraciones hardware habilitadas, y este
+ensayo tampoco acredita drivers, framebuffer, VNC o transferencia EDK2.

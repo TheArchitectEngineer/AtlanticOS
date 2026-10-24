@@ -1,0 +1,19 @@
+/mnt/g/AtlanticOS/tests/xnu_port/assym_abi.c:10:1: error: static assertion failed due to requirement '265 == (__builtin_offsetof(struct thread, machine.kstackptr))': TH_KSTACKPTR target layout
+   10 | CHECK(TH_KSTACKPTR, offsetof(struct thread, machine.kstackptr));
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/tests/xnu_port/assym_abi.c:9:48: note: expanded from macro 'CHECK'
+    9 | #define CHECK(name, expression) _Static_assert(ATL_ASSYM_##name == (expression), #name " target layout")
+      |                                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<scratch space>:137:1: note: expanded from here
+  137 | ATL_ASSYM_TH_KSTACKPTR
+      | ^
+/mnt/g/AtlanticOS/work/xnu-lab-builds/c780eff3a5128b15/invalid-assym/assym-check.h:6:32: note: expanded from macro 'ATL_ASSYM_TH_KSTACKPTR'
+    6 | #define ATL_ASSYM_TH_KSTACKPTR 265
+      |                                ^
+/mnt/g/AtlanticOS/tests/xnu_port/assym_abi.c:10:1: note: expression evaluates to '265 == 264'
+   10 | CHECK(TH_KSTACKPTR, offsetof(struct thread, machine.kstackptr));
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/mnt/g/AtlanticOS/tests/xnu_port/assym_abi.c:9:65: note: expanded from macro 'CHECK'
+    9 | #define CHECK(name, expression) _Static_assert(ATL_ASSYM_##name == (expression), #name " target layout")
+      |                                                ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+1 error generated.

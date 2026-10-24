@@ -26,6 +26,8 @@ jobs:
           python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
       - name: Audit original PE native ABI and required BSP import without executing it
         run: python3 tools/test_xnu_platform.py --build work/xnu-lab-builds/*/report.json --output work/pe-platform-tests
+      - name: Audit selected bootstrap components and retained native Mach initialization
+        run: python3 tools/test_xnu_startup_scope.py --build work/xnu-lab-builds/*/report.json --output work/startup-scope-tests
       - name: Audit native memory providers and original cache branch without executing them
         run: python3 tools/test_xnu_memory_providers.py --build work/xnu-lab-builds/*/report.json --output work/memory-provider-tests
       - name: Compare boot-data wire layout with native XNU using the experimental target
@@ -90,6 +92,8 @@ jobs:
             work/boot-tree-tests/report.json
             work/pe-platform-tests/report.json
             work/pe-platform-tests/*.log
+            work/startup-scope-tests/report.json
+            work/startup-scope-tests/*.log
             work/memory-provider-tests/report.json
             work/memory-provider-tests/*.log
             work/boot-tree-tests/*.log

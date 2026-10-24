@@ -1,0 +1,186 @@
+kernel_bootstrap(void)
+{
+ kern_return_t result;
+ thread_t thread;
+ char namep[16];
+ code_signing_config_t cs_config;
+ printf("%s\n", version);
+ scale_setup();
+ kernel_bootstrap_log("vm_mem_bootstrap");
+ vm_mem_bootstrap();
+ machine_info.memory_size = (uint32_t)mem_size;
+ machine_info.max_mem = max_mem;
+ machine_info.major_version = version_major;
+ machine_info.minor_version = version_minor;
+ kernel_startup_initialize_upto(STARTUP_SUB_OSLOG);
+ if (PE_i_can_has_debugger(NULL)) {
+  if (PE_parse_boot_argn("-show_pointers", &namep, sizeof(namep))) {
+   doprnt_hide_pointers = FALSE;
+  }
+  if (PE_parse_boot_argn("-no_slto_panic", &namep, sizeof(namep))) {
+   extern boolean_t spinlock_timeout_panic;
+   spinlock_timeout_panic = FALSE;
+  }
+ }
+ kernel_bootstrap_log("console_init");
+ console_init();
+ kernel_bootstrap_log("stackshot_init");
+ stackshot_init();
+ kernel_bootstrap_log("sched_init");
+ sched_init();
+ kernel_startup_initialize_upto(STARTUP_SUB_MACH_IPC);
+ kernel_bootstrap_log("PMAP_ACTIVATE_KERNEL");
+ PMAP_ACTIVATE_KERNEL(master_cpu);
+ kernel_bootstrap_log("mapping_free_prime");
+ mapping_free_prime();
+ kernel_bootstrap_log("machine_init");
+ machine_init();
+ kernel_bootstrap_log("thread_machine_init_template");
+ thread_machine_init_template();
+ kernel_bootstrap_log("clock_init");
+ clock_init();
+ kernel_bootstrap_log("code_signing_init");
+ code_signing_init();
+ code_signing_configuration(NULL, &cs_config);
+ kernel_bootstrap_log("task_init");
+ task_init();
+ kernel_bootstrap_log("thread_init");
+ thread_init();
+ kernel_bootstrap_log("restartable_init");
+ restartable_init();
+ kernel_bootstrap_log("workq_init");
+ workq_init();
+ kernel_bootstrap_log("turnstiles_init");
+ turnstiles_init();
+ kernel_bootstrap_log("mach_init_activity_id");
+ mach_init_activity_id();
+ host_statistics_init();
+ kernel_bootstrap_log("exception_init");
+ exception_init();
+ kernel_bootstrap_log("kernel_thread_create");
+ result = kernel_thread_create((thread_continue_t)kernel_bootstrap_thread, NULL, MAXPRI_KERNEL, &thread);
+ if (result != KERN_SUCCESS) {
+  panic("kernel_bootstrap: result = %08X", result);
+ }
+ thread->state = TH_RUN;
+ thread->last_made_runnable_time = mach_absolute_time();
+ thread_set_thread_name(thread, "kernel_bootstrap_thread");
+ thread_deallocate(thread);
+ kernel_bootstrap_log("load_context - done");
+ load_context(thread);
+}
+kernel_bootstrap_thread(void)
+{
+ processor_t processor = current_processor();
+ kernel_bootstrap_thread_log("idle_thread_create");
+ idle_thread_create(processor, idle_thread);
+ kernel_bootstrap_thread_log("sched_startup");
+ sched_startup();
+ kernel_bootstrap_thread_log("thread_daemon_init");
+ thread_daemon_init();
+ kernel_startup_initialize_upto(STARTUP_SUB_THREAD_CALL);
+ kernel_bootstrap_thread_log("thread_bind");
+ suspend_cluster_powerdown();
+ thread_bind(processor);
+ kernel_bootstrap_thread_log("mapping_adjust");
+ mapping_adjust();
+ kernel_bootstrap_thread_log("clock_service_create");
+ clock_service_create();
+ device_service_create();
+ phys_carveout_init();
+ kernel_startup_initialize_upto(STARTUP_SUB_SYSCTL);
+ vm_kernel_addrperm = (vm_offset_t)(early_random() | 1);
+ buf_kernel_addrperm = (vm_offset_t)(early_random() | 1);
+ vm_kernel_addrperm_ext = (vm_offset_t)(early_random() | 1);
+ vm_kernel_addrhash_salt = early_random();
+ vm_kernel_addrhash_salt_ext = early_random();
+ kernel_bootstrap_log("PE_init_iokit");
+ PE_init_iokit();
+ assert(ml_get_interrupts_enabled() == FALSE);
+ kernel_startup_initialize_upto(STARTUP_SUB_EARLY_BOOT);
+ (void) spllo();
+ initialize_screen(NULL, kPEAcquireScreen);
+ vm_commpage_init();
+ vm_commpage_text_init();
+ kernel_bootstrap_log("trust_cache_init");
+ trust_cache_runtime_init();
+ load_static_trust_cache();
+ kernel_startup_initialize_upto(STARTUP_SUB_LOCKDOWN);
+ kernel_bootstrap_log("OSKextRemoveKextBootstrap");
+ OSKextRemoveKextBootstrap();
+ kernel_bootstrap_log("machine_lockdown");
+ machine_lockdown();
+ kernel_bootstrap_log("PE_lockdown_iokit");
+ PE_lockdown_iokit();
+ vm_set_restrictions(machine_info.max_cpus);
+ kdebug_free_early_buf();
+ serial_keyboard_init();
+ vm_page_init_local_q(machine_info.max_cpus);
+ thread_bind(PROCESSOR_NULL);
+ resume_cluster_powerdown();
+ vm_pages_array_finalize();
+ vm_pageout();
+}
+scale_setup(void)
+{
+ boolean_t pe_serverperfmode = FALSE;
+ int scale = 0;
+ pe_serverperfmode = PE_get_default("kern.serverperfmode",
+     &pe_serverperfmode, sizeof(pe_serverperfmode));
+ if (pe_serverperfmode) {
+  serverperfmode = (pe_serverperfmode != 0);
+ }
+ typeof(task_max) task_max_base = task_max;
+ if (serverperfmode && ((uint64_t)max_mem_actual >= (uint64_t)(16 * 1024 * 1024 * 1024ULL))) {
+  scale = (int)((uint64_t)sane_size / (uint64_t)(8 * 1024 * 1024 * 1024ULL));
+  if (scale > 16) {
+   scale = 16;
+  }
+  task_max_base = 2500;
+ } else if ((uint64_t)max_mem_actual >= (uint64_t)(3 * 1024 * 1024 * 1024ULL)) {
+  if ((uint64_t)max_mem_actual < (uint64_t)(8 * 1024 * 1024 * 1024ULL)) {
+   scale = 2;
+  } else {
+   scale = MIN(16, (int)((uint64_t)max_mem_actual / (uint64_t)(4 * 1024 * 1024 * 1024ULL)));
+  }
+ }
+ task_max = MAX(task_max, task_max_base * scale);
+ if (scale != 0) {
+  task_threadmax = task_max;
+  thread_max = task_max * 5;
+ }
+ bsd_scale_setup(scale);
+}
+load_context(
+ thread_t thread)
+{
+ processor_t processor = current_processor();
+                                                     ;
+ machine_set_current_thread(thread);
+                                       ;
+ PMAP_ACTIVATE_KERNEL(processor->cpu_id);
+                                                     ;
+ if (!thread->kernel_stack) {
+                                           ;
+  if (!stack_alloc_try(thread)) {
+   panic("load_context");
+  }
+ }
+ if (!(thread->state & TH_IDLE)) {
+  SCHED(run_count_incr)(thread);
+ }
+ processor->active_thread = thread;
+ processor_state_update_from_thread(processor, thread, false);
+ processor->starting_pri = thread->sched_pri;
+ processor->deadline = UINT64_MAX;
+ thread->last_processor = processor;
+ processor_up(processor);
+ struct recount_snap snap = { 0 };
+ recount_snapshot(&snap);
+ processor->last_dispatch = snap.rsn_time_mach;
+ recount_processor_online(processor, &snap);
+ smr_cpu_join(processor, processor->last_dispatch);
+ PMAP_ACTIVATE_USER(thread, processor->cpu_id);
+                                               ;
+ machine_load_context(thread);
+}
