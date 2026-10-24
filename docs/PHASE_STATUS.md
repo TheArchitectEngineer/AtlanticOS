@@ -15,6 +15,7 @@
 | 1: configuración | HOST_TESTED parcial | validación versionada y logs en sesión; prioridad/destino/timeout/red bloqueados en defaults seguros |
 | 1: RAM | HOST_TESTED solo proceso host | informe RSS/tracemalloc; objetivo firmware sin medir |
 | 2: entry ARM64 de laboratorio | EMULATED / BUILT_ARM64 | preflight original, EL1/EL2→EL1h, stack, FDT, contador y BRK; XNU_NOT_LINKED |
+| 2: datos originales FDT → árbol de bootstrap XNU | HOST_TESTED / EMULATED / ABI target | BOOT_DATA_BRIDGE.md: inventario con exclusiones, árbol de 504 bytes, ASan/UBSan, ABI con headers XNU y cuatro recorridos QEMU. Sin boot_args, PE_state o ejecución de SecureDT/XNU |
 | 2: entry G20 y ejecución bootstrap XNU real | UNIMPLEMENTED | objetos compilados no acreditan arranque; enlace/pmap/Platform Expert pendientes |
 | Herramienta oficial MIG | HOST_TESTED | Binario host genuino y ABI de metadata en MIG_HOST_BUILD.md; las pruebas posteriores de C generados se detallan en las filas RPC |
 | Port XNU incremental de laboratorio | BUILT_ARM64 | Trece objetos estándar; 123 experimentales. Dieciséis fuentes upstream adicionales sin modificar, incluidos PE/SecureDT, scheduler RT, preempción y estado de hilo. Pasan 51/45 checks. Enlace de 149 objetos falla con 672 diagnósticos indefinidos y cero duplicados; sin imagen ni ejecución. XNU_BOOT_PROVIDERS.md |

@@ -112,3 +112,38 @@ int atl_fdt_validate_structure(const struct AtlanticFdtView *v) {
     }
     return ATL_FDT_FORMAT;
 }
+
+int atl_fdt_walk(const struct AtlanticFdtView *v, AtlanticFdtVisitor visit, void *context) {
+    uint32_t at = 0, depth = 0;
+    int status;
+    if (!visit) return ATL_FDT_BOUNDS;
+    status = atl_fdt_validate_structure(v);
+    if (status) return status;
+    const uint8_t *p = v->blob + v->struct_offset;
+    while (at < v->struct_bytes) {
+        struct AtlanticFdtEvent e = {0};
+        uint32_t token = be32(p + at);
+        at += 4;
+        if (token == 1) {
+            e.kind = ATL_FDT_NODE_BEGIN; e.depth = depth++;
+            e.name = (const char *)(p + at);
+            while (p[at]) ++at;
+            at = (at + 4) & ~3u;
+        } else if (token == 2) {
+            e.kind = ATL_FDT_NODE_END; e.depth = --depth;
+        } else if (token == 3) {
+            e.kind = ATL_FDT_PROPERTY; e.depth = depth - 1;
+            e.bytes = be32(p + at);
+            e.name = (const char *)(v->blob + v->strings_offset + be32(p + at + 4));
+            e.value = p + at + 8;
+            at = (at + 8 + e.bytes + 3) & ~3u;
+        } else if (token == 9) {
+            return ATL_FDT_OK;
+        } else { /* validated NOP */
+            continue;
+        }
+        status = visit(context, &e);
+        if (status) return status;
+    }
+    return ATL_FDT_FORMAT; /* unreachable for an immutable validated blob */
+}

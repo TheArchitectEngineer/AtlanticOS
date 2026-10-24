@@ -95,3 +95,30 @@ payload debe ser temporal; no modificar slots, particiones ni Android.
 
 Estas pruebas tampoco cierran por sí solas T09 o T12. No hay aún una imagen
 XNU ejecutable para realizarlas y no se solicita provocar un fallo en el teléfono.
+
+## Subprueba pendiente de T05/T08: datos de arranque
+
+Estado: PENDING_HARDWARE. El puente de BOOT_DATA_BRIDGE.md se probó con el FDT
+generado por QEMU y con un candidato stock offline, sin comprobar este G20.
+Tras cerrar T01/T04 y disponer de canal de salida y payload temporal auditado:
+
+1. Capturar x0/EL/MPIDR/CNTFRQ y acotar el DTB recibido con el mapa de RAM ya
+   establecido para el BSP. Guardar copia privada/hash del árbol efectivo antes
+   de liberar recursos del loader. Inventariar bancos y memreserve/reserved-memory;
+   comparar con los overlays realmente aplicados y las reservas del payload,
+   framebuffer, stack y DMA. El mapa base del PAC no reemplaza esta observación.
+2. Verificar que la afinidad primaria observada aparece una vez y que la
+   frecuencia usada procede del contador medido. Si faltan celdas, hay overflow,
+   ambigüedad, reserva dinámica o huecos no representables, registrar rechazo
+   y usar únicamente la ruta de retorno OEM ya validada. No inventar un mapa.
+3. Cuando exista XNU enlazado con Platform Expert propio, inicializar SecureDT
+   real sobre memoria propia y conservada. Capturar PCs/símbolos de sus llamadas
+   para consultar /chosen/DRAM y /cpus/CPU primaria, junto con los bytes/valores
+   devueltos y sus hashes. Deben coincidir exactamente con el inventario y los
+   registros físicos; comprobar que el árbol y FDT no se alteran inesperadamente.
+   Lectura propia, cadenas impresas o un fixture ABI no sustituyen al consumidor.
+
+La asignación y la apertura física deben excluir los carveouts no-map y respetar
+la propiedad de cada rango; añadir una exclusión no demuestra que sea seguro
+cargar una imagen allí. Esta subprueba tampoco acredita el bootstrap Mach de T08,
+handoff EDK2 ni RAM firmware. No hay imagen XNU disponible para ejecutarla ahora.

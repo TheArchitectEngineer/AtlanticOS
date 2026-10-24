@@ -67,8 +67,11 @@ del commit 49bbae4 se conserva como reproducción de aquella revisión.
 La [ampliación de proveedores de arranque](docs/XNU_BOOT_PROVIDERS.md) incorpora
 16 fuentes upstream sin modificar, incluidos parsers PE/SecureDT y scheduler RT.
 El enlace actual de 149 objetos falla con **672 diagnósticos indefinidos y cero
-duplicados**, sin imagen. Pasan 51/45 checks de alcance/ABI. El adaptador de FDT,
-Platform Expert original y la ejecución física siguen pendientes.
+duplicados**, sin imagen. Pasan 51/45 checks de alcance/ABI.
+El [puente original de datos de arranque](docs/BOOT_DATA_BRIDGE.md) inventaría
+RAM/reservas/CPU del FDT y construye el árbol nativo de bootstrap. Pasó sanitizadores,
+ABI contra headers XNU y cuatro recorridos de entry en QEMU. El Platform Expert,
+boot_args completo, ejecución del consumidor SecureDT y arranque XNU siguen pendientes.
 
 ## Reproducir
 

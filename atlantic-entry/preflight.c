@@ -1,10 +1,13 @@
 /* SPDX-License-Identifier: MIT - diagnostics, not XNU bootstrap. */
 #include <atlantic/entry.h>
 #include <atlantic/fdt.h>
+#include <atlantic/boot_tree.h>
 #ifndef ATL_BUILD_ID
 #define ATL_BUILD_ID "UNIDENTIFIED"
 #endif
 struct AtlanticEntryCapture atlantic_entry_capture;
+static struct AtlanticBootInventory boot_inventory;
+static _Alignas(8) uint8_t xnu_boot_tree[ATL_XNU_TREE_MAX_BYTES];
 extern uint8_t __image_start[], __image_memory_end[];
 extern uint8_t __stack_bottom[], __stack_top[], atl_entry_vectors[];
 
@@ -52,6 +55,20 @@ void atl_entry_main(const struct AtlanticEntryCapture *c) {
     hex("DTB_BYTES=",dt.total_bytes);
     hex("DTB_RESERVATIONS=",dt.reservation_count);
     if (!c->cntfrq) { line("FAIL:TIMER_FREQUENCY\n"); finish(1); }
+    int data_status=atl_boot_inventory(&dt,&boot_inventory);
+    if (!data_status) data_status=atl_boot_exclude(&boot_inventory,dtb,dt.total_bytes);
+    if (!data_status) data_status=atl_boot_exclude(&boot_inventory,
+        (uint64_t)(uintptr_t)__image_start,
+        (uint64_t)(uintptr_t)__image_memory_end-(uint64_t)(uintptr_t)__image_start);
+    size_t tree_bytes=0;
+    if (!data_status) data_status=atl_xnu_boot_tree(&boot_inventory,c->mpidr,c->cntfrq,
+        xnu_boot_tree,sizeof(xnu_boot_tree),&tree_bytes);
+    if (data_status) { hex("BOOT_DATA_ERROR=",(uint64_t)(int64_t)data_status);line("FAIL:BOOT_DATA\n");finish(1); }
+    hex("BOOT_RAM_BANKS=",boot_inventory.ram_count);
+    hex("BOOT_RESERVED_RANGES=",boot_inventory.reserved_count);
+    hex("BOOT_DECLARED_CPUS=",boot_inventory.cpu_count);
+    hex("XNU_TREE_BYTES=",tree_bytes);
+    line("PASS:BOOT_DATA_DECLARATIONS_XNU_TREE_ONLY\n");
     if (atl_entry_prepare_el1()!=1) { line("FAIL:EL1_TRANSITION\n"); finish(1); }
     uint64_t el, sctlr, daif, stack, vectors, freq, first, last;
     __asm__ volatile("mrs %0, CurrentEL" : "=r"(el));

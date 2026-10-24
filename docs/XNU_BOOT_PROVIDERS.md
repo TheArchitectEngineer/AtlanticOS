@@ -53,11 +53,11 @@ Los parsers nuevos dejan estas obligaciones abiertas:
    valor alineado a cuatro bytes. Los enteros de esa estructura son nativos
    del target; no se interpreta un DTB Linux con un cast. Los valores de las
    propiedades tienen además esquemas específicos de cada consumidor.
-3. **Conversión.** Un adaptador original debe validar primero el FDT, límites,
-   reservas y tamaños; construir el árbol separado y convertir explícitamente
-   los campos numéricos big endian que use XNU. Copiar valores reg/clocks sin
-   interpretar #address-cells, #size-cells y el binding no establece compatibilidad.
-   Las reservas y carveouts físicos deben mantenerse fuera del allocator.
+3. **Conversión.** El [puente original posterior](BOOT_DATA_BRIDGE.md) valida e
+   inventaría el FDT y produce un árbol separado para DRAM y CPU primaria. Las
+   exclusiones permanecen aparte y todavía deben integrarse con el allocator/MMU.
+   Faltan bindings de periféricos y ejecución del consumidor real; copiar valores
+   reg/clocks sin interpretar sus celdas y esquema no establece compatibilidad.
 4. **Defaults.** PE_get_default conserva primero la búsqueda nativa de /defaults
    y solo cae a IODTGetDefault cuando no encuentra ese nodo. El enlace aún exige
    ese proveedor. Hay que acotar el fallback al IOKit seleccionado y documentar

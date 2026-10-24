@@ -8,7 +8,7 @@
 | P0 | Toolchain XNU y librerías no resueltas | Headers/assym/MIG; grafo de símbolos; clasificar -lcc_kext y seguridad |
 | P0 | Builtins Apple de tipos y dependencia TrustCache en VM | [Requisitos de compilador](XNU_COMPILER_REQUIREMENTS.md); preservar firmas/segregación de allocator y definir límites sin userland; no generar éxitos ficticios |
 | P0 | Proveedores core y límites de features | ipc_policy requiere metadata/política y mach_debug sus límites IOKit. SLEH/pageout ya compilan y se seleccionan. XNU_BOOT_PROVIDERS.md registra 672 diagnósticos en el enlace actual, incluidos defaults IOKit y otros proveedores nuevos |
-| P0 | Platform Expert original y adaptación FDT | PE/SecureDT nativos compilan; faltan PE_state/boot_args válidos, árbol XNU convertido por esquema, reservas y callbacks reales. No reutilizar pe_init Apple como BSP G20 ni convertir FDT mediante cast |
+| P0 | Integrar datos con Platform Expert original | BOOT_DATA_BRIDGE.md implementa inventario FDT y árbol de bootstrap con exclusiones separadas. Faltan PE_state/boot_args válidos, allocator/MMU, bindings de periféricos y consumidor SecureDT ejecutado. No usar el mapa offline como RAM verificada |
 | P0 | EL inicial / transición EL2→EL1, DT y carveouts | T05; registros capturados con entry original y rangos validados |
 | P1 | Logging temprano y fallback sin framebuffer | Canal real identificado, trazas verificables sin MMIO especulativo |
 | P1 | Timer, GIC, grupos seguros y CPU features | T06; CNTFRQ y IRQ real, no flags VMAPPLE heredados |

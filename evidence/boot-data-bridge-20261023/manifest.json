@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-23",
+  "label": "EMULATED",
+  "scope": "ORIGINAL_BOOT_DATA_BRIDGE_AND_ENTRY_ONLY_XNU_NOT_LINKED_NO_PHONE_ACCESS",
+  "qemu_runs": 4,
+  "native_tree_bytes": 504,
+  "entry_image_memory_bytes": 96912,
+  "insufficient_output_buffer_cases": 504,
+  "new_fdt_mutation_cases": 5000,
+  "prior_fdt_mutation_cases": 10000,
+  "python_tests_passed": 78,
+  "native_abi_lanes": [
+    "standard",
+    "experimental"
+  ],
+  "offline_fdt_sha256": "0f2d1d69744410c3fc6b852514522c6df17e25f6ba312d3f3c61a1e5b5536d75",
+  "offline_fdt_is_physical_evidence": false,
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "44622bb34f3f250d3fbcb7552994efad64c965baabb0db9d46ca2906921af419"
+    },
+    {
+      "path": "exp-boot_tree-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-fdt-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-file-harness-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-host-tests.log",
+      "sha256": "f6b09884ac1b59a30b3252480c9f3928dbdebcd69a19abc815b5c9d254e1d563"
+    },
+    {
+      "path": "exp-native-xnu-tree-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-report.json",
+      "sha256": "1da5cd5ec29eb4c7e4133d897e46084816e949307082a84585812b92e59abf03"
+    },
+    {
+      "path": "exp-sample-0.log",
+      "sha256": "0bc3c58dce4c676122c179187bd3779a12d88750c10cb8a95936e0cb47451dd0"
+    },
+    {
+      "path": "host-regression.log",
+      "sha256": "e684cc7eb0c99ff1862fc1da21350c8676bc194676e91dec12735de91be0625f"
+    },
+    {
+      "path": "normal-build.json",
+      "sha256": "12aec180ca35d3b4f6865d69aa0444a4d970b9b38746984c491b71de99dc6c9a"
+    },
+    {
+      "path": "normal-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "normal-emulation.json",
+      "sha256": "809cf197139237674fdb003adda0aa06af3731945081b45871a46b9a646e02ac"
+    },
+    {
+      "path": "normal-entry-map.txt",
+      "sha256": "bea8813d679e19987b917cf35ba0e9327e26e3ce12a3c2dd37020204acf63268"
+    },
+    {
+      "path": "normal-qemu-el1.log",
+      "sha256": "9c94170e4f105169e3c1f1e8bb63d826e559fc2223b5e58d69bd0dc2fa58e0bf"
+    },
+    {
+      "path": "normal-qemu-el2.log",
+      "sha256": "2241150da215b472aeb2b5268397b15e21f38e801031feee09e9170d3add6496"
+    },
+    {
+      "path": "prior-parser-regression.json",
+      "sha256": "c5824db244115fbaa36709eb40b70810b5adf3fc41e43ae0a948fc9fe06df1aa"
+    },
+    {
+      "path": "prior-parser-regression.log",
+      "sha256": "996e68cca7fea1b07e81eb8887a99d5c1b0a800315925e00b8059f56123e4aad"
+    },
+    {
+      "path": "std-boot_tree-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-fdt-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-file-harness-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-host-tests.log",
+      "sha256": "f6b09884ac1b59a30b3252480c9f3928dbdebcd69a19abc815b5c9d254e1d563"
+    },
+    {
+      "path": "std-native-xnu-tree-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-report.json",
+      "sha256": "4fa0509bcab7d1db4d2d8d885bc26482aa0c6bb9c58ab5bc28d3b193d1ed0946"
+    },
+    {
+      "path": "trap-build.json",
+      "sha256": "0da46db9d42ea861bc1e9afe7b8990042e4be71e51176b1a623d6d0969ebfe14"
+    },
+    {
+      "path": "trap-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "trap-emulation.json",
+      "sha256": "2f2f53af7cbe5d962a9878e74408f3447e8af042bd553579c260d5ba364668c9"
+    },
+    {
+      "path": "trap-entry-map.txt",
+      "sha256": "00a17b892627dc84928de6ef3d5513f17b3b2ac0e34c840260ece12b324bbc0d"
+    },
+    {
+      "path": "trap-qemu-el1.log",
+      "sha256": "9c75215ebbd4b650fa02125e7db1d696e1ab6ec17512972b4b9e557a212ee2bb"
+    },
+    {
+      "path": "trap-qemu-el2.log",
+      "sha256": "9cf6852c59f44f6ec0cbf6eeae4c07b7299e1497780aa509bc356360bfe7df8b"
+    }
+  ]
+}

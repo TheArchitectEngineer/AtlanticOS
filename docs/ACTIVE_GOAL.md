@@ -100,3 +100,10 @@ Pasan 51/45 checks. El enlace estricto de 149 objetos falla con 672 diagnóstico
 indefinidos y cero duplicados, sin imagen. Se resuelven 109 nombres anteriores
 y aparecen 16 dependencias nuevas. Faltan Platform Expert original, adaptación
 de FDT, cierre del núcleo y BSP físico; no hay ejecución XNU ni handoff EDK2.
+
+El [puente original de datos](BOOT_DATA_BRIDGE.md) ahora valida e inventaría FDT
+y serializa el árbol de bootstrap nativo. Conserva exclusiones, rechaza reservas
+dinámicas sin resolver y huecos al solicitar DRAM contigua. Pasan sanitizadores,
+ABI contra headers XNU y cuatro recorridos QEMU del entry original. El kernel
+no cambió: aún falta conectar PE_state/boot_args, allocator/MMU y SecureDT real;
+el preflight sigue marcando XNU_NOT_LINKED. Ningún acceso al teléfono en esta entrega.

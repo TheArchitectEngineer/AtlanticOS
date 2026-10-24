@@ -20,4 +20,17 @@ int atl_fdt_open(const void *blob, size_t capacity, struct AtlanticFdtView *out)
 int atl_fdt_validate_structure(const struct AtlanticFdtView *view);
 int atl_fdt_reservation(const struct AtlanticFdtView *view, uint32_t index,
                         uint64_t *start, uint64_t *bytes);
+enum AtlanticFdtEventKind { ATL_FDT_NODE_BEGIN, ATL_FDT_PROPERTY, ATL_FDT_NODE_END };
+struct AtlanticFdtEvent {
+    enum AtlanticFdtEventKind kind;
+    uint32_t depth; /* root is zero, including NODE_END */
+    const char *name; /* borrowed, validated NUL-terminated name; NULL at END */
+    const uint8_t *value; /* only PROPERTY */
+    uint32_t bytes; /* value bytes, excluding structural padding */
+};
+typedef int (*AtlanticFdtVisitor)(void *context, const struct AtlanticFdtEvent *event);
+/* Validate the entire immutable blob before delivering any event. Callback zero
+ * continues; any other result stops traversal and is returned verbatim. The
+ * caller owns the blob throughout traversal; callbacks must not modify it. */
+int atl_fdt_walk(const struct AtlanticFdtView *view, AtlanticFdtVisitor visit, void *context);
 #endif

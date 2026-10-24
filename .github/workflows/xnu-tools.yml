@@ -17,6 +17,11 @@ on:
       - 'tools/test_xnu_kobject_scope.py'
       - 'tools/test_xnu_core_scope.py'
       - 'tools/test_xnu_brk_scope.py'
+      - 'tools/test_boot_tree.py'
+      - 'tools/boot_tree_check.c'
+      - 'atlantic-core/**'
+      - 'include/atlantic/**'
+      - 'tests/c/test_boot_tree.c'
       - 'tools/diagnose_xnu_link.py'
       - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
@@ -41,6 +46,11 @@ on:
       - 'tools/test_xnu_kobject_scope.py'
       - 'tools/test_xnu_core_scope.py'
       - 'tools/test_xnu_brk_scope.py'
+      - 'tools/test_boot_tree.py'
+      - 'tools/boot_tree_check.c'
+      - 'atlantic-core/**'
+      - 'include/atlantic/**'
+      - 'tests/c/test_boot_tree.c'
       - 'tools/diagnose_xnu_link.py'
       - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
@@ -76,6 +86,8 @@ jobs:
         run: python3 -m unittest discover -s tests -p test_xnu_assym.py -v
       - name: Compile thirteen real XNU ARM64 units and verify target layouts (no link)
         run: python3 tools/build_xnu_lab.py
+      - name: Compare original boot-data wire layout with native XNU ARM64 headers
+        run: python3 tools/test_boot_tree.py --sanitize --xnu-build work/xnu-lab-builds/*/report.json --output work/boot-tree-tests
       - name: Verify actual TrustCache dependency selection, including negative paths
         run: python3 tools/test_pmap_cs_scope.py --build work/xnu-lab-builds/*/report.json
       - name: Reject unsupported Apple trust-cache APIs in firmware headers
@@ -140,6 +152,8 @@ jobs:
             work/kobject-scope-tests/*
             work/core-scope-tests/*
             work/brk-scope-tests/report.json
+            work/boot-tree-tests/report.json
+            work/boot-tree-tests/*.log
             work/brk-scope-tests/*.log
             work/brk-scope-tests/brk.ll
             work/xnu-link-diagnostics/report.json

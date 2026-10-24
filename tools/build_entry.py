@@ -14,7 +14,8 @@ ROOT=Path(__file__).resolve().parents[1]
 SOURCES=['atlantic-entry/entry.S','atlantic-entry/preflight.c','atlantic-entry/link.ld',
          'atlantic-core/fdt.c','include/atlantic/entry.h','include/atlantic/fdt.h',
          'platforms/qemu-virt/early.c','platforms/qemu-virt/board.json',
-         'platforms/qemu-virt/el1.S']
+         'platforms/qemu-virt/el1.S','atlantic-core/boot_tree.c','include/atlantic/boot_tree.h',
+         'tools/build_entry.py','tools/emulate_entry.py']
 
 
 def main():
@@ -48,7 +49,7 @@ def main():
             print(r.stdout+r.stderr)
             raise SystemExit(r.returncode)
     objects=[]
-    for source in [SOURCES[0],SOURCES[1],SOURCES[3],SOURCES[6],SOURCES[8]]:
+    for source in [SOURCES[0],SOURCES[1],SOURCES[3],SOURCES[6],SOURCES[8],SOURCES[9]]:
         obj=out/(Path(source).stem+'.o')
         run([cc,*flags,'-c',source,'-o',str(obj)])
         objects.append(str(obj))

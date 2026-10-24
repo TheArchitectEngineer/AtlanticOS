@@ -22,6 +22,9 @@ def main():
     meta=json.loads((folder/'build.json').read_text())
     if hashlib.sha256(binary.read_bytes()).hexdigest()!=meta['image_sha256']:
         raise SystemExit('Image differs from build report')
+    for rel,expected in meta['sources'].items():
+        if hashlib.sha256((ROOT/rel).read_bytes()).hexdigest()!=expected:
+            raise SystemExit('Build input changed: '+rel)
     qemu=shutil.which('qemu-system-aarch64')
     if not qemu:
         raise SystemExit('QEMU AArch64 not found')
@@ -46,13 +49,16 @@ def main():
         is_trap=meta.get('probe')=='el1-trap'
         expected_exit=1 if is_trap else 0
         esr=re.search(r'ESR=0x([0-9A-F]+)',log)
+        tree=re.search(r'XNU_TREE_BYTES=0x([0-9A-F]+)',log)
+        data_ok=bool(tree and int(tree[1],16)==504 and 'PASS:BOOT_DATA_DECLARATIONS_XNU_TREE_ONLY' in log)
         result_ok = (esr and int(esr[1],16)==0xf2000a71 and 'TEST:EL1_BRK_EXPECTED' in log
                      and 'ATLANTIC_ENTRY_EXCEPTION' in log) if is_trap else 'PASS:ENTRY_CAPTURE_DTB_TIMER' in log
         if (r.returncode!=expected_exit or not observed or int(observed[1],16)!=el or not execution or int(execution[1],16)!=1
-            or 'PASS:EL1_STACK_VECTORS_COUNTER' not in log or not result_ok or 'FAIL:' in log or 'XNU_NOT_LINKED' not in log):
+            or 'PASS:EL1_STACK_VECTORS_COUNTER' not in log or not result_ok or not data_ok or 'FAIL:' in log or 'XNU_NOT_LINKED' not in log):
             raise SystemExit(f'EL{el} preflight failed (exit={r.returncode})')
         records.append({'expected_el':el,'observed_el':int(observed[1],16),'execution_el':int(execution[1],16),
                         'expected_exit_code':expected_exit,'exit_code':r.returncode,'probe':meta.get('probe'),
+                        'boot_data_checked':True,'native_tree_bytes':int(tree[1],16),
                         'log_sha256':hashlib.sha256((folder/f'qemu-el{el}.log').read_bytes()).hexdigest(),
                         'command':[Path(command[0]).name,*[s.replace(str(ROOT),'<ROOT>') for s in command[1:]]]})
     report={'schema_version':1,'label':'EMULATED','scope':'ORIGINAL_ARM64_ENTRY_ONLY_NOT_XNU_NOT_G20',

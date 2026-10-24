@@ -24,6 +24,8 @@ jobs:
       - name: Compile 123 genuine XNU-derived units with explicit provider (no execution)
         run: |
           python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
+      - name: Compare boot-data wire layout with native XNU using the experimental target
+        run: python3 tools/test_boot_tree.py --sanitize --xnu-build work/xnu-lab-builds/*/report.json --output work/boot-tree-tests
       - name: Verify pmap API rejection, object symbols and actual header dependencies
         run: |
           python3 tools/test_pmap_firmware.py --build work/xnu-lab-builds/*/report.json
@@ -81,6 +83,8 @@ jobs:
             work/kobject-scope-tests/*
             work/core-scope-tests/*
             work/brk-scope-tests/report.json
+            work/boot-tree-tests/report.json
+            work/boot-tree-tests/*.log
             work/brk-scope-tests/*.log
             work/brk-scope-tests/brk.ll
             work/usage-semantics-tests/report.json
