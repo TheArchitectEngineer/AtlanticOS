@@ -67,9 +67,15 @@ adaptador o acceso original a FDT desde Platform Expert; nunca un cast.
 Los [parsers nativos ya compilados](XNU_BOOT_PROVIDERS.md) se complementan con
 el [puente de datos original](BOOT_DATA_BRIDGE.md): inventario de declaraciones
 FDT y serializador de /chosen, /defaults y CPU primaria, probado en QEMU sin XNU.
-Faltan PE_state inicializado, boot_args completo y bindings de periféricos de
-cada BSP. Los rangos de reserva se conservan fuera del árbol de bootstrap y
+El [PE original](XNU_PLATFORM_EXPERT.md) implementa la recepción nativa en dos
+fases, todavía sin ejecutarse. Faltan boot_args completo y su proveedor BSP
+original de ownership e interrupciones. Los rangos de reserva se conservan fuera del árbol de bootstrap y
 deben alimentar la política real de asignación y traducción antes de entrar a XNU.
+
+El productor deberá emitir versión/revisión 2 y machineType ATL1 del contrato
+propio. XNU copia solo sizeof(boot_args); una cola añadida informalmente se pierde.
+PE_init_platform(TRUE, args) recibe contexto de CPU y no puede reinterpretarse
+como boot_args. Ninguna de estas condiciones determina el contenedor OEM G20.
 
 El adaptador fijará PAGE_SIZE/pmap según CPU, reservas y configuración XNU.
 No heredar PAC, Apple CPU, KTRR/SPTM o páginas 16 KiB de VMAPPLE sin soporte

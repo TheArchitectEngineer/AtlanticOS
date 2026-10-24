@@ -19,6 +19,8 @@ from xnu_assym import parse_assym, render_assym
 
 ROOT = Path(__file__).resolve().parents[1]
 PROFILE = ROOT/'xnu-port/config/MASTER.arm64.atlanticlab.AtlanticOS'
+PLATFORM_SOURCES = {'xnu-port/platform/atlantic.h': 'pexpert/pexpert/atlantic.h',
+                    'xnu-port/platform/pe_platform.c': 'pexpert/atlantic/pe_platform.c'}
 UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
          'osfmk/kern/sched_prim.c': '_sched_init',
          'osfmk/kern/clock.c': '_clock_init',
@@ -187,6 +189,10 @@ EXPERIMENTAL_UNITS.update({
     'osfmk/kern/lock_mtx.c': '_lck_mtx_lock',
     'osfmk/arm/machine_cpuid.c': '_machine_read_midr',
     'bsd/kern/qsort.c': '_qsort'})
+EXPERIMENTAL_UNITS['pexpert/atlantic/pe_platform.c'] = '_PE_init_platform'
+EXTRA_SYMBOLS['pexpert/atlantic/pe_platform.c'] = [
+    '_PE_state', '_gPEClockFrequencyInfo', '_PE_slide_devicetree',
+    '_PE_register_timebase_callback', '_PE_call_timebase_callback']
 EXTRA_SYMBOLS.update({
     'pexpert/gen/bootargs.c': ['_PE_parse_boot_arg_str', '_PE_get_default'],
     'pexpert/gen/device_tree.c': ['_SecureDTLookupEntry', '_SecureDTGetProperty',
@@ -343,6 +349,9 @@ def main():
             ap.error('Patched file differs from recorded postimage: '+item['path'])
         if item['preimage_sha256'] is not None and hashlib.sha256(scm(source, 'show', 'HEAD:'+item['path'])).hexdigest() != item['preimage_sha256']:
             ap.error('Upstream preimage mismatch: '+item['path'])
+    for rel,destination in PLATFORM_SOURCES.items():
+        if digest(ROOT/rel) != digest(source/destination):
+            ap.error('Original platform source differs from its locked patch: '+rel)
     native_lock_path = ROOT/'xnu-port/task-metadata-native.lock.json'
     native_lock = json.loads(native_lock_path.read_text())
     if native_lock['upstream_commit'] != lock['xnu']['commit'] or not native_lock['functions']:
@@ -380,6 +389,7 @@ def main():
                     'tests/xnu_port/assym_abi.c': digest(ROOT/'tests/xnu_port/assym_abi.c')}
     if provider:
         build_inputs['tests/xnu_port/kalloc_layout.c'] = digest(ROOT/'tests/xnu_port/kalloc_layout.c')
+    build_inputs.update({rel: digest(ROOT/rel) for rel in PLATFORM_SOURCES})
     build_id = hashlib.sha256(json.dumps({'port_id': port_id, 'inputs': build_inputs,
         'layout_provider': provider, 'probe_remaining': args.probe_remaining}, sort_keys=True).encode()).hexdigest()
     out = ROOT/'work/xnu-lab-builds'/build_id[:16]

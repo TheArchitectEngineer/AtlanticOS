@@ -107,3 +107,10 @@ dinámicas sin resolver y huecos al solicitar DRAM contigua. Pasan sanitizadores
 ABI contra headers XNU y cuatro recorridos QEMU del entry original. El kernel
 no cambió: aún falta conectar PE_state/boot_args, allocator/MMU y SecureDT real;
 el preflight sigue marcando XNU_NOT_LINKED. Ningún acceso al teléfono en esta entrega.
+
+El [núcleo original PE](XNU_PLATFORM_EXPERT.md) se integra en 124 unidades
+experimentales. Se preservan las dos fases de la API nativa, la copia real de
+boot_args y las dependencias SecureDT/panic. Su BSP es un import fuerte sin
+proveedor; no se añade un mock. Pasan 62/57 checks. El enlace de 150 objetos
+falla con 669 diagnósticos indefinidos y cero duplicados, sin imagen. PE y el
+consumidor nativo todavía no se ejecutan; el objetivo físico no cambia.

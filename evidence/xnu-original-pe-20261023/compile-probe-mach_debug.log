@@ -1,0 +1,76 @@
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:573:4: error: unknown type name 'io_kobject_t'; did you mean 'ipc_kobject_t'?
+  573 |                         io_kobject_t io_kobject = (io_kobject_t)kaddr;
+      |                         ^~~~~~~~~~~~
+      |                         ipc_kobject_t
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/kern/kern_types.h:60:41: note: 'ipc_kobject_t' declared here
+   60 | typedef void *                          ipc_kobject_t;
+      |                                         ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:573:31: error: use of undeclared identifier 'io_kobject_t'
+  573 |                         io_kobject_t io_kobject = (io_kobject_t)kaddr;
+      |                                                    ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:575:5: error: call to undeclared function 'iokit_kobject_retain'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  575 |                                 iokit_kobject_retain(io_kobject);
+      |                                 ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:579:16: error: expected ';' after expression
+  579 |                                 io_object_t io_object = iokit_copy_object_for_consumed_kobject(io_kobject);
+      |                                            ^
+      |                                            ;
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:579:5: error: use of undeclared identifier 'io_object_t'; did you mean 'io_kobject'?
+  579 |                                 io_object_t io_object = iokit_copy_object_for_consumed_kobject(io_kobject);
+      |                                 ^~~~~~~~~~~
+      |                                 io_kobject
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:573:17: note: 'io_kobject' declared here
+  573 |                         io_kobject_t io_kobject = (io_kobject_t)kaddr;
+      |                                      ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:579:17: error: use of undeclared identifier 'io_object'; did you mean 'io_kobject'?
+  579 |                                 io_object_t io_object = iokit_copy_object_for_consumed_kobject(io_kobject);
+      |                                             ^~~~~~~~~
+      |                                             io_kobject
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:573:17: note: 'io_kobject' declared here
+  573 |                         io_kobject_t io_kobject = (io_kobject_t)kaddr;
+      |                                      ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:579:29: error: call to undeclared function 'iokit_copy_object_for_consumed_kobject'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  579 |                                 io_object_t io_object = iokit_copy_object_for_consumed_kobject(io_kobject);
+      |                                                         ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:579:27: error: incompatible integer to pointer conversion assigning to 'ipc_kobject_t' (aka 'void *') from 'int' [-Wint-conversion]
+  579 |                                 io_object_t io_object = iokit_copy_object_for_consumed_kobject(io_kobject);
+      |                                                       ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:581:9: error: use of undeclared identifier 'io_object'; did you mean 'io_kobject'?
+  581 |                                 if (io_object) {
+      |                                     ^~~~~~~~~
+      |                                     io_kobject
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:573:17: note: 'io_kobject' declared here
+  573 |                         io_kobject_t io_kobject = (io_kobject_t)kaddr;
+      |                                      ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:582:6: error: call to undeclared function 'iokit_port_object_description'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  582 |                                         iokit_port_object_description(io_object, desc);
+      |                                         ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:582:6: note: did you mean 'mach_port_kobject_description'?
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:531:1: note: 'mach_port_kobject_description' declared here
+  531 | mach_port_kobject_description(
+      | ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:582:36: error: use of undeclared identifier 'io_object'; did you mean 'io_kobject'?
+  582 |                                         iokit_port_object_description(io_object, desc);
+      |                                                                       ^~~~~~~~~
+      |                                                                       io_kobject
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:573:17: note: 'io_kobject' declared here
+  573 |                         io_kobject_t io_kobject = (io_kobject_t)kaddr;
+      |                                      ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:583:6: error: call to undeclared function 'iokit_remove_reference'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+  583 |                                         iokit_remove_reference(io_object);
+      |                                         ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:583:29: error: use of undeclared identifier 'io_object'; did you mean 'io_kobject'?
+  583 |                                         iokit_remove_reference(io_object);
+      |                                                                ^~~~~~~~~
+      |                                                                io_kobject
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:573:17: note: 'io_kobject' declared here
+  573 |                         io_kobject_t io_kobject = (io_kobject_t)kaddr;
+      |                                      ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:584:6: error: use of undeclared identifier 'io_object'; did you mean 'io_kobject'?
+  584 |                                         io_object = NULL;
+      |                                         ^~~~~~~~~
+      |                                         io_kobject
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/mach_debug.c:573:17: note: 'io_kobject' declared here
+  573 |                         io_kobject_t io_kobject = (io_kobject_t)kaddr;
+      |                                      ^
+14 errors generated.

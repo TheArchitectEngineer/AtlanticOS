@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "NATIVE_KOBJECT_TABLE_PREPROCESSOR_SELECTION_ONLY_NOT_DISPATCH_OR_EXECUTION",
+  "port_id": "4332e8f0f4cc346631de5be75efc5a92affd0b6acbed839c6da3e0c780d2ad27",
+  "build_report_sha256": "e673e16e109765ffe25fc8ca0f4a20b64e88e88fd33645050640784a574c2063",
+  "tool_sha256": "27ebbd6dfd6057fbdcc1744a05008c63f7ddeda687dbef01ffbe52e5eef96611",
+  "upstream_source_sha256": "edee0e72fa21a8891c231f561fc84eb917e5fe87af13fc0f24a294a509016488",
+  "adapted_source_sha256": "35dda020e6315163f75a00be267c8bee39051ad7ea932651cfdccb9ce05a145f",
+  "cases": [
+    {
+      "name": "outside-firmware",
+      "passed": true,
+      "descriptor_count": 17,
+      "descriptors": [
+        "mach_vm_subsystem",
+        "mach_port_subsystem",
+        "mach_host_subsystem",
+        "host_priv_subsystem",
+        "clock_subsystem",
+        "processor_subsystem",
+        "processor_set_subsystem",
+        "is_iokit_subsystem",
+        "task_subsystem",
+        "thread_act_subsystem",
+        "vm32_map_subsystem",
+        "mach_voucher_subsystem",
+        "memory_entry_subsystem",
+        "task_restartable_subsystem",
+        "catch_exc_subsystem",
+        "catch_mach_exc_subsystem",
+        "mach_eventlink_subsystem"
+      ],
+      "upstream_byte_identical_required": true,
+      "upstream_sha256": "4e2a4a4c511f6c7eb08b6c6096fd917c1c67ca33de40006286dbe614230cf7ad",
+      "adapted_sha256": "4e2a4a4c511f6c7eb08b6c6096fd917c1c67ca33de40006286dbe614230cf7ad"
+    },
+    {
+      "name": "firmware-all-providers",
+      "passed": true,
+      "descriptor_count": 17,
+      "descriptors": [
+        "mach_vm_subsystem",
+        "mach_port_subsystem",
+        "mach_host_subsystem",
+        "host_priv_subsystem",
+        "clock_subsystem",
+        "processor_subsystem",
+        "processor_set_subsystem",
+        "is_iokit_subsystem",
+        "task_subsystem",
+        "thread_act_subsystem",
+        "vm32_map_subsystem",
+        "mach_voucher_subsystem",
+        "memory_entry_subsystem",
+        "task_restartable_subsystem",
+        "catch_exc_subsystem",
+        "catch_mach_exc_subsystem",
+        "mach_eventlink_subsystem"
+      ],
+      "upstream_byte_identical_required": true,
+      "upstream_sha256": "4e2a4a4c511f6c7eb08b6c6096fd917c1c67ca33de40006286dbe614230cf7ad",
+      "adapted_sha256": "4e2a4a4c511f6c7eb08b6c6096fd917c1c67ca33de40006286dbe614230cf7ad"
+    },
+    {
+      "name": "firmware-minimal",
+      "passed": true,
+      "descriptor_count": 14,
+      "descriptors": [
+        "mach_vm_subsystem",
+        "mach_port_subsystem",
+        "mach_host_subsystem",
+        "host_priv_subsystem",
+        "clock_subsystem",
+        "processor_subsystem",
+        "processor_set_subsystem",
+        "task_subsystem",
+        "thread_act_subsystem",
+        "vm32_map_subsystem",
+        "mach_voucher_subsystem",
+        "memory_entry_subsystem",
+        "task_restartable_subsystem",
+        "mach_eventlink_subsystem"
+      ],
+      "upstream_byte_identical_required": false,
+      "upstream_sha256": "4e2a4a4c511f6c7eb08b6c6096fd917c1c67ca33de40006286dbe614230cf7ad",
+      "adapted_sha256": "2ada180d4ba8af8083aa3cf4cba295e2a9cb3d23c8ebc41218011489981d2c24"
+    },
+    {
+      "name": "firmware-bsd",
+      "passed": true,
+      "descriptor_count": 16,
+      "descriptors": [
+        "mach_vm_subsystem",
+        "mach_port_subsystem",
+        "mach_host_subsystem",
+        "host_priv_subsystem",
+        "clock_subsystem",
+        "processor_subsystem",
+        "processor_set_subsystem",
+        "task_subsystem",
+        "thread_act_subsystem",
+        "vm32_map_subsystem",
+        "mach_voucher_subsystem",
+        "memory_entry_subsystem",
+        "task_restartable_subsystem",
+        "catch_exc_subsystem",
+        "catch_mach_exc_subsystem",
+        "mach_eventlink_subsystem"
+      ],
+      "upstream_byte_identical_required": false,
+      "upstream_sha256": "4e2a4a4c511f6c7eb08b6c6096fd917c1c67ca33de40006286dbe614230cf7ad",
+      "adapted_sha256": "9da41237c4d356de285aeae0a5451c64a5025aaab05495cc350430c764583946"
+    },
+    {
+      "name": "firmware-iokit",
+      "passed": true,
+      "descriptor_count": 15,
+      "descriptors": [
+        "mach_vm_subsystem",
+        "mach_port_subsystem",
+        "mach_host_subsystem",
+        "host_priv_subsystem",
+        "clock_subsystem",
+        "processor_subsystem",
+        "processor_set_subsystem",
+        "is_iokit_subsystem",
+        "task_subsystem",
+        "thread_act_subsystem",
+        "vm32_map_subsystem",
+        "mach_voucher_subsystem",
+        "memory_entry_subsystem",
+        "task_restartable_subsystem",
+        "mach_eventlink_subsystem"
+      ],
+      "upstream_byte_identical_required": false,
+      "upstream_sha256": "4e2a4a4c511f6c7eb08b6c6096fd917c1c67ca33de40006286dbe614230cf7ad",
+      "adapted_sha256": "b3a1fffc83a80fdd3b5481248017cc7c267d4983c189eca3ca2a402fdbd17b9f"
+    }
+  ],
+  "commands": [
+    [
+      "/mnt/g/AtlanticOS/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "/mnt/g/AtlanticOS/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "/mnt/g/AtlanticOS/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "/mnt/g/AtlanticOS/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "/mnt/g/AtlanticOS/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "/mnt/g/AtlanticOS/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "/mnt/g/AtlanticOS/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "/mnt/g/AtlanticOS/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "/mnt/g/AtlanticOS/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "/mnt/g/AtlanticOS/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ]
+  ],
+  "xnu_executed": false,
+  "phone_accessed": false
+}

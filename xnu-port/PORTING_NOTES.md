@@ -150,7 +150,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y 123 experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y 124 experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.
@@ -170,3 +170,9 @@ el Platform Expert original de AtlanticOS. El enlace estricto de 149 objetos
 falla con 672 diagnósticos indefinidos, cero duplicados y ninguna imagen.
 La situación de pageout y SLEH en revisiones anteriores se conserva como historia;
 ambos ya están seleccionados en el build experimental actual.
+
+El patch 0022 añade dos archivos originales MIT, cotejados con sus fuentes en
+xnu-port/platform/. El [núcleo PE](../docs/XNU_PLATFORM_EXPERT.md) usa tipos XNU
+auténticos, SecureDT y panic nativos; todavía no se ejecuta ni aporta el BSP.
+El enlace actual de 150 objetos falla con 669 diagnósticos indefinidos, cero
+duplicados y ningún archivo. atlantic_pe_platform sigue como import fuerte.

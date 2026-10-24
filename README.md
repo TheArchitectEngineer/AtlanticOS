@@ -5,7 +5,7 @@ de XNU. Primera placa: Motorola Moto G20 / Unisoc T700 (UMS512).
 
 **Estado 2026-10-23: auditoría Fase 0, prototipo host Fase 1 y port XNU
 incremental. Trece unidades reales de XNU compilan a objetos ARM64 con Clang
-estándar; 123 con el proveedor experimental explícito, incluidos
+estándar; 124 con el proveedor experimental explícito, incluidos
 VM residente/faults/objetos, hilos, tareas, locks, ledgers, SMR e IPC/importance.
 Se compilan además 42 archivos RPC generados por MIG como probes, con 57 headers
 coherentes; el configurador oficial selecciona 26 para el enlace de este perfil.
@@ -66,12 +66,16 @@ registros de assertions; su enlace de 133 objetos registró
 del commit 49bbae4 se conserva como reproducción de aquella revisión.
 La [ampliación de proveedores de arranque](docs/XNU_BOOT_PROVIDERS.md) incorpora
 16 fuentes upstream sin modificar, incluidos parsers PE/SecureDT y scheduler RT.
-El enlace actual de 149 objetos falla con **672 diagnósticos indefinidos y cero
-duplicados**, sin imagen. Pasan 51/45 checks de alcance/ABI.
+Aquella revisión registra un enlace de 149 objetos con 672 diagnósticos y cero
+duplicados, sin imagen.
 El [puente original de datos de arranque](docs/BOOT_DATA_BRIDGE.md) inventaría
 RAM/reservas/CPU del FDT y construye el árbol nativo de bootstrap. Pasó sanitizadores,
-ABI contra headers XNU y cuatro recorridos de entry en QEMU. El Platform Expert,
-boot_args completo, ejecución del consumidor SecureDT y arranque XNU siguen pendientes.
+ABI contra headers XNU y cuatro recorridos de entry en QEMU.
+El [núcleo original de Platform Expert](docs/XNU_PLATFORM_EXPERT.md) ya compila
+y referencia a los consumidores nativos; su BSP sigue sin proveedor.
+El enlace actual de 150 objetos falla con **669 diagnósticos indefinidos y cero
+duplicados**, sin imagen. Pasan 62/57 checks de alcance/ABI/objetos. boot_args
+completo, backend BSP y ejecución de PE/SecureDT/XNU siguen pendientes.
 
 ## Reproducir
 

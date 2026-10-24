@@ -97,8 +97,9 @@ identidad del CPU primario siguen dependiendo de T05 en hardware.
 
 ## Pendiente antes de llamar a XNU
 
-Faltan el Platform Expert original con PE_state y callbacks válidos, boot_args
-completo, copia/propiedad del FDT, allocator que excluya todos los carveouts,
+El [núcleo original PE posterior](XNU_PLATFORM_EXPERT.md) ya compila y define
+PE_state, pero sigue sin backend BSP ni ejecución. Faltan boot_args completo,
+copia/propiedad del FDT, allocator que excluya todos los carveouts,
 mapas y reservas de la imagen Mach-O, MMU/pmap y validación del consumidor real.
 Añadir una exclusión declara propiedad; no autoriza a colocar una imagen sobre
 un carveout existente. Esa comprobación debe ocurrir antes de cargar el payload,
@@ -107,9 +108,9 @@ El árbol de bootstrap no proporciona por sí solo esos servicios ni bindings G2
 de interrupciones, almacenamiento o energía. La recuperación independiente y la
 vía temporal siguen siendo puertas físicas de DEVICE_TEST_PLAN.
 
-El conjunto XNU sigue en 123 unidades experimentales; el último enlace de
-149 objetos conserva 672 diagnósticos indefinidos y ninguna imagen. Esta entrega
-avanza los datos del cargador, sin presentar su preflight como kernel XNU.
+Esta entrega de datos conservó 123 unidades y un enlace de 149 objetos con 672
+diagnósticos, sin imagen. El PE posterior alcanza 124/150 y 669 diagnósticos;
+no ejecuta este preflight como un kernel XNU.
 
 ## Reproducir
 

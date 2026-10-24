@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "b1325e485ebde9963306d7d2b6c4c26f3644b6b4bf8317e0fc62037cb6effbf8",
+  "port_id": "4332e8f0f4cc346631de5be75efc5a92affd0b6acbed839c6da3e0c780d2ad27",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -23,7 +23,8 @@
     "0018-retain-native-arm64-support-and-panic-formatting.patch": "2ab160463080bc9a32557c836a963c9c1e44e46a72370b178a4905bfece2840f",
     "0019-preserve-native-allocator-usage-annotations.patch": "d273fb71dcfc71a7ec63aac25b3ce1635c41f02b25ba20aa51033544d30c3a33",
     "0020-match-zone-diagnostic-storage-to-native-allocation-type.patch": "82a6336387c391c636579b08974974b87eb6933a587c6dd99f0f7eeff1151d20",
-    "0021-retain-native-arm64-exceptions-with-selected-telemetry.patch": "6175568e926f782a906ea6a68187b030de39e398067fce96c2919cf1e58ded28"
+    "0021-retain-native-arm64-exceptions-with-selected-telemetry.patch": "6175568e926f782a906ea6a68187b030de39e398067fce96c2919cf1e58ded28",
+    "0022-add-original-atlantic-platform-expert-core.patch": "d5559e4e51bedcee40d38e6dee98dd56ae51e7cc5b4c94c9bb22106c551b170c"
   },
   "canonical_lf_files": [
     {
@@ -195,6 +196,16 @@
       "path": "osfmk/arm64/sleh.c",
       "preimage_sha256": "93d0e76b996a091584f4b021658a7b128147e05fa1c7ccc1a929bbee6db67f75",
       "postimage_sha256": "377e507fd661ef0282ef0155ce5b217d66eebad7b7fa95070c014a59d8d77bda"
+    },
+    {
+      "path": "pexpert/pexpert/atlantic.h",
+      "preimage_sha256": null,
+      "postimage_sha256": "d99110e59abfba3094fb972a6bee3d53368075d00d52c8e81ff2815c9f115648"
+    },
+    {
+      "path": "pexpert/atlantic/pe_platform.c",
+      "preimage_sha256": null,
+      "postimage_sha256": "ae02912e03b405a813a577c4064300488931d915afaa2a71ffa7b272b3ec545e"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

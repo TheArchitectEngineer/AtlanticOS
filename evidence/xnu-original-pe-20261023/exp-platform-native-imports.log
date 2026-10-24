@@ -1,0 +1,7 @@
+_SecureDTGetProperty
+_SecureDTInit
+_SecureDTLookupEntry
+_atlantic_pe_platform
+_memcmp
+_memcpy
+_panic

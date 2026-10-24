@@ -122,3 +122,39 @@ La asignación y la apertura física deben excluir los carveouts no-map y respet
 la propiedad de cada rango; añadir una exclusión no demuestra que sea seguro
 cargar una imagen allí. Esta subprueba tampoco acredita el bootstrap Mach de T08,
 handoff EDK2 ni RAM firmware. No hay imagen XNU disponible para ejecutarla ahora.
+
+## Subprueba pendiente de T08: Platform Expert original
+
+Estado: PENDING_HARDWARE. Las comprobaciones de ABI y objetos de
+[XNU_PLATFORM_EXPERT](XNU_PLATFORM_EXPERT.md) no ejecutaron este código. Antes
+del ensayo hacen falta T01/T04/T05, una imagen XNU enlazada y auditada, el
+productor boot_args y un BSP original con validaciones e IRQ reales.
+
+1. Registrar hash de imagen, mapa de símbolos, boot_args nativo de versión y
+   revisión 2 y contexto retenido del BSP. Capturar los PCs de la copia nativa
+   a const_boot_args y de PE_init_platform(FALSE, args). Comparar los 1152 bytes
+   copiados con el productor; ninguna cola informal puede aportar el contexto.
+   No publicar datos personales de la línea de arranque.
+2. Registrar los rangos mapeados y su propiedad antes de consultar el árbol.
+   Las validaciones BSP deben cerrar todos sus rangos, exclusiones y permisos
+   con PE_state todavía sin publicar. Capturar PCs de SecureDT real y los
+   valores devueltos para DRAM, afinidad primaria, estado y frecuencia. Comparar
+   con el mapa efectivo y MPIDR_EL1/CNTFRQ_EL0 observados en este teléfono.
+   Solo entonces debe cambiar PE_state.initialized a TRUE.
+3. Registrar PE_init_platform(TRUE, &BootCpuData) y el backend de IRQ del BSP;
+   ese puntero es contexto de CPU, nunca boot_args. El backend debe demostrar
+   configuración real por CPU y permitir la prueba de IRQ/timer de T06/T08.
+   Si se habilitan CPUs secundarias, capturar también su llamada con NULL y el
+   contexto real que obtiene el BSP. Un retorno de éxito sin IRQ no pasa.
+4. Capturar el delta modular usado por arm_vm_init y los rangos antes/después
+   de PE_slide_devicetree. Demostrar que el destino completo sigue siendo
+   memoria propia, normal y legible, que SecureDT usa la nueva dirección y que
+   el boot_args copiado conserva el comportamiento nativo. Verificar después
+   la razón Hz/1 entregada al callback nativo del reloj contra CNTFRQ observado.
+
+Una build temporal separada puede inyectar un registro inválido para confirmar
+el rechazo, solo con recuperación independiente y canal panic ya probados.
+Un BSP ausente debe fallar en el enlace y nunca reemplazarse con callbacks que
+devuelvan éxito. Una parada sin PC/log fiable es INDETERMINATE. Guardar evidencia
+física y verificar retorno a Android con T01 al terminar; estas subpruebas no
+acreditan por sí solas un hilo Mach operativo, RAM firmware ni handoff EDK2.

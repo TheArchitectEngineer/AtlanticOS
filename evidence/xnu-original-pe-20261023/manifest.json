@@ -1,0 +1,338 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-23",
+  "label": "BUILT_ARM64",
+  "scope": "ORIGINAL_PE_AND_NATIVE_XNU_OBJECT_ABI_AND_LINK_DIAGNOSTIC_ONLY_NO_RUNTIME_OR_PHONE_EXECUTION",
+  "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+  "port_id": "4332e8f0f4cc346631de5be75efc5a92affd0b6acbed839c6da3e0c780d2ad27",
+  "experimental_base_objects": 124,
+  "standard_base_objects": 13,
+  "new_original_pe_units": 1,
+  "rpc_compiled_per_lane": 42,
+  "rpc_kernel_selected_per_lane": 26,
+  "experimental_link_objects": 150,
+  "experimental_link_undefined_diagnostics": 669,
+  "experimental_link_duplicate_diagnostics": 0,
+  "former_unresolved_names_now_provided": 4,
+  "new_unresolved_dependencies": 1,
+  "experimental_scope_abi_checks": 62,
+  "standard_scope_abi_checks": 57,
+  "pe_object_integrated_experimental_only": true,
+  "bsp_provider_linked": false,
+  "pe_executed": false,
+  "compiler_proof_reused_sha256": "079ad84cf93e1d9c428b64d7f7681c439e5071d85bdba8c741c142ddb0d348a4",
+  "lld_proof_reused_sha256": "5dfd83df8cd779447b234556f457f8715b312268a3d91dc29e08f0982bebd0da",
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "97cdc1d45338ba746eff4b38f0693100c1f5ffd840419583074e43329b3a16d2"
+    },
+    {
+      "path": "compile-probe-ipc_policy.log",
+      "sha256": "0ccdfa5de80b355d4a3e73b54344844d0f0a57eaf39a87f0ad3b970ddd1b9f56"
+    },
+    {
+      "path": "compile-probe-mach_debug.log",
+      "sha256": "a17183d29f254f6308173104afdecc8258a5c7136e6c4fc63666da6f5f6f4acb"
+    },
+    {
+      "path": "compile-probe-sleh.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compile-probe-vm_pageout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compile-probes-report.json",
+      "sha256": "883e053227ac595373409cae2e3d41a637b4c6d42cca20c5e16f98a298a75025"
+    },
+    {
+      "path": "exp-assym-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-base-report.json",
+      "sha256": "e673e16e109765ffe25fc8ca0f4a20b64e88e88fd33645050640784a574c2063"
+    },
+    {
+      "path": "exp-boot-data-boot_tree-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-boot-data-fdt-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-boot-data-file-harness-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-boot-data-host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-boot-data-host-tests.log",
+      "sha256": "f6b09884ac1b59a30b3252480c9f3928dbdebcd69a19abc815b5c9d254e1d563"
+    },
+    {
+      "path": "exp-boot-data-native-xnu-tree-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-boot-data-report.json",
+      "sha256": "4fff0d0594e676c107160011a4b464c3952daa162cf8916f9030a92d7ca02526"
+    },
+    {
+      "path": "exp-brk-report.json",
+      "sha256": "8ea3eb55d909d5a897abb8e84d0a0a30038ad32c4acb9aa688ab6cbe416cbb61"
+    },
+    {
+      "path": "exp-core-report.json",
+      "sha256": "122076dfe069c1fdab4be710967c270f5fcd758194797876d9e223379263d178"
+    },
+    {
+      "path": "exp-genassym.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-kobject-report.json",
+      "sha256": "c3772167cfa6ce253cb6248845624a7602aa9aabf940789c7d3440f450e3f97b"
+    },
+    {
+      "path": "exp-link-link.log",
+      "sha256": "12d6684a7da7a66ffa6ce7e2428e3eaef073f3de69bad8d3314305a4df51c695"
+    },
+    {
+      "path": "exp-link-report.json",
+      "sha256": "8f86b108313e38c46867db6b624606afbbaa39e2ffcf2b6242a15c93707c6a9e"
+    },
+    {
+      "path": "exp-mig-report.json",
+      "sha256": "3d0c5cc4cfc14517210d1d7e057fbad7c084f7df331114f68685d5cd9cd25a60"
+    },
+    {
+      "path": "exp-native-config.Makefile",
+      "sha256": "f9deaaad6037f2bc9ac8a2fc47eb67ed4c9f59a2e3326176387b154635a63679"
+    },
+    {
+      "path": "exp-platform-disassembly.log",
+      "sha256": "1830b6d462a77cd6b346fd70665a93870d7a5aea9d8d87e97e4f01cba5921c1e"
+    },
+    {
+      "path": "exp-platform-native-and-original-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-platform-native-imports.log",
+      "sha256": "b992afa5c0df3974a51738c20fe3d2f25d83c4aff6dbe106b7e2f5e282903575"
+    },
+    {
+      "path": "exp-platform-reject-bsd-backend.log",
+      "sha256": "dbf4e09f3e786330a06d0253254eeb86f4477bcdef437e8e6abb6b44ad322ae7"
+    },
+    {
+      "path": "exp-platform-reject-iokit-backend.log",
+      "sha256": "e843703ce9472041e2b9f94b48240030f8c55c764ba926e4b8451744900b9219"
+    },
+    {
+      "path": "exp-platform-reject-irq-callback-abi.log",
+      "sha256": "795cc6abbc63bb879a5606e86e13ef8fbbc6f12b61c7ae0b72fe0c144e9b3670"
+    },
+    {
+      "path": "exp-platform-reject-mapping-callback-abi.log",
+      "sha256": "52f002696657279da25f7a675e14514952538f25c7329b070d673d10c21ef312"
+    },
+    {
+      "path": "exp-platform-reject-outside-firmware.log",
+      "sha256": "25d6e0bc1e9013da2b6511ea28949c99fc9887016956d38dd7756298a94f4a60"
+    },
+    {
+      "path": "exp-platform-report.json",
+      "sha256": "5ab710f20aa9bca7576036f37aaaeb5b8f1760b373b09e4d5444c7ae4c5bf0c6"
+    },
+    {
+      "path": "exp-pmap-report.json",
+      "sha256": "cae3663e959092e909f2ec15b1a209ae924a2d30831c14fbbe18a96c54e732cf"
+    },
+    {
+      "path": "exp-pmap-scope-report.json",
+      "sha256": "c88b0e35f0d417c1447bef121366241ff15371cb33957199e32128942b829029"
+    },
+    {
+      "path": "exp-reject-assym-offset.log",
+      "sha256": "25e7f31801b969866ba58d228f946f8b310688c356e09f0d1e633849aae71fc7"
+    },
+    {
+      "path": "exp-rpc-report.json",
+      "sha256": "d5fa5117d89a718951aca539726ef62da14e5447211df564ca128bc48247567c"
+    },
+    {
+      "path": "exp-task-report.json",
+      "sha256": "d2fd091638486d627b97d56d244203de9145f53751d0494638d0871a06154016"
+    },
+    {
+      "path": "exp-usage-report.json",
+      "sha256": "7106049bcaed009ab7ca4288f104d5ac803212bf723bbe74e831ecd872e39b9a"
+    },
+    {
+      "path": "host-tests.log",
+      "sha256": "eac902438574e6c501422eb4a2ebb36bab2c33dbbd3e876527de055af192f6df"
+    },
+    {
+      "path": "link-dependency-delta.json",
+      "sha256": "033666ff18d7c01a9057fa1efae35bac859e0895341630879a978f3bdbe9b9c8"
+    },
+    {
+      "path": "native-pe_platform-defined.log",
+      "sha256": "8121f5cae72043c37c5e8c0b8487405763d6ae631e65852c7fb06cd6ffbaa42b"
+    },
+    {
+      "path": "native-pe_platform-undefined.log",
+      "sha256": "b992afa5c0df3974a51738c20fe3d2f25d83c4aff6dbe106b7e2f5e282903575"
+    },
+    {
+      "path": "native-pe_platform.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reused-compiler-api-report.json",
+      "sha256": "079ad84cf93e1d9c428b64d7f7681c439e5071d85bdba8c741c142ddb0d348a4"
+    },
+    {
+      "path": "reused-lld-proof-report.json",
+      "sha256": "5dfd83df8cd779447b234556f457f8715b312268a3d91dc29e08f0982bebd0da"
+    },
+    {
+      "path": "std-assym-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-base-report.json",
+      "sha256": "a9dc44698724aaac7beb3ce466e5d991dbe82fc154d3b65aaf3dd3331bf51e56"
+    },
+    {
+      "path": "std-boot-data-boot_tree-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-boot-data-fdt-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-boot-data-file-harness-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-boot-data-host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-boot-data-host-tests.log",
+      "sha256": "f6b09884ac1b59a30b3252480c9f3928dbdebcd69a19abc815b5c9d254e1d563"
+    },
+    {
+      "path": "std-boot-data-native-xnu-tree-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-boot-data-report.json",
+      "sha256": "8b74efdaa8ad135f85f5f18918171dc0e28fe6fcdebb6caf8e4a4d041c513d9b"
+    },
+    {
+      "path": "std-brk-report.json",
+      "sha256": "0ce284fbf018b5d98501f9ecd7a47a66b8524d7dee15cb0094deae14dc97f996"
+    },
+    {
+      "path": "std-core-report.json",
+      "sha256": "0cb65fcc22936140719c0c06de381aa20f570fcef33226271def603691d45f7f"
+    },
+    {
+      "path": "std-genassym.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-kobject-report.json",
+      "sha256": "64a4e5fedf41642540103a36707737f9640414bd538df016885538a31c5c0b9f"
+    },
+    {
+      "path": "std-link-link.log",
+      "sha256": "232a74366a0ead285c4e25f459ff3ec04ecdfce830209a6e0b877e0911ad1c6d"
+    },
+    {
+      "path": "std-link-report.json",
+      "sha256": "6ec616bb7811497a912fa2c6501d963f25013d22252a6d161e39da76d2721e59"
+    },
+    {
+      "path": "std-mig-report.json",
+      "sha256": "43ba7dcbada44e5d08a14093e0b6cab4a0ae4cf7f831bb153657d4a058166f11"
+    },
+    {
+      "path": "std-native-config.Makefile",
+      "sha256": "f9deaaad6037f2bc9ac8a2fc47eb67ed4c9f59a2e3326176387b154635a63679"
+    },
+    {
+      "path": "std-platform-disassembly.log",
+      "sha256": "1c09c1ffe49ae705e3571c1befe4eaeb4c84903167a2fe557a225b4b2d12395e"
+    },
+    {
+      "path": "std-platform-native-and-original-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-platform-native-imports.log",
+      "sha256": "b992afa5c0df3974a51738c20fe3d2f25d83c4aff6dbe106b7e2f5e282903575"
+    },
+    {
+      "path": "std-platform-reject-bsd-backend.log",
+      "sha256": "1bec40337f28a7a9874c4bf2c2007e8678161c3ed175005ef30b90321ed39ab2"
+    },
+    {
+      "path": "std-platform-reject-iokit-backend.log",
+      "sha256": "19d0e97a57df698c59212e1745ae969eb0fabbd1de3d4d05f935e7b7f2cc4af3"
+    },
+    {
+      "path": "std-platform-reject-irq-callback-abi.log",
+      "sha256": "795cc6abbc63bb879a5606e86e13ef8fbbc6f12b61c7ae0b72fe0c144e9b3670"
+    },
+    {
+      "path": "std-platform-reject-mapping-callback-abi.log",
+      "sha256": "52f002696657279da25f7a675e14514952538f25c7329b070d673d10c21ef312"
+    },
+    {
+      "path": "std-platform-reject-outside-firmware.log",
+      "sha256": "8d0da672ac67eef86463d26393b16e1262ee9bd97862c511899ae7e490342950"
+    },
+    {
+      "path": "std-platform-report.json",
+      "sha256": "f883b45201fec432b12d56ee7e63bf14214826814f0aed266f087c8680c965a4"
+    },
+    {
+      "path": "std-platform-standard-pe-compile-probe.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-pmap-report.json",
+      "sha256": "2ed289dfe412066f5e303ac0c1d2648db4b3773637262a39f2dcb0600c27f991"
+    },
+    {
+      "path": "std-pmap-scope-report.json",
+      "sha256": "24767dd23ac1a3c6452e45e8f9630eec7094c4ab4c32aa480e8b6f7b0df446a9"
+    },
+    {
+      "path": "std-reject-assym-offset.log",
+      "sha256": "72476ded129fe33196a199a2671b113b63852e2754f4d38dbfcee725e2061883"
+    },
+    {
+      "path": "std-rpc-report.json",
+      "sha256": "50fb37708c100dd55b2c72a4160c8d3216395b3d7d4ce4f9fde175fd9cd24b0a"
+    },
+    {
+      "path": "std-task-report.json",
+      "sha256": "3bfb9293fcb7bc9c7017983fdeda0a79d50e9c931f001e68b8c5a3a20e8cdecb"
+    }
+  ]
+}

@@ -65,6 +65,12 @@ Berkeley según cada archivo. bsd/kern/qsort.c incluye el aviso Berkeley de
 cuatro cláusulas; el reconocimiento a Berkeley anterior también corresponde
 a este componente. No se atribuyen esos cuerpos a la licencia MIT del proyecto.
 
+Los archivos de xnu-port/platform/ son código original AtlanticOS bajo MIT. El
+patch 0022 añade sus copias exactas al árbol XNU; el builder verifica esa igualdad
+y las preimágenes nulas de archivos nuevos. Los tipos y proveedores XNU que
+incluyen o llaman conservan sus licencias upstream. No se incorpora pe_init.c
+de Apple ni un BSP de un port UEFI como implementación de la plataforma.
+
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias
 BSD-2-Clause-Patent y por componente. No se distribuyen sus binarios o wrappers.

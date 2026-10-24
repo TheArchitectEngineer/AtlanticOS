@@ -1,0 +1,22 @@
+{
+  "scope": "STRICT_LINK_DIAGNOSTIC_NAME_COMPARISON_NOT_EXECUTION",
+  "previous_link_sha256": "be74c62df080901590ca7cd5dbfee4b89df0b965f9078468ba7c73ca48711b0c",
+  "current_link_sha256": "8f86b108313e38c46867db6b624606afbbaa39e2ffcf2b6242a15c93707c6a9e",
+  "previous_undefined": 672,
+  "current_undefined": 669,
+  "previous_symbols_now_resolved": [
+    "_PE_init_platform",
+    "_PE_register_timebase_callback",
+    "_PE_state",
+    "_gPEClockFrequencyInfo"
+  ],
+  "new_unresolved_dependencies": [
+    "_atlantic_pe_platform"
+  ],
+  "new_original_platform_units": [
+    {
+      "source": "pexpert/atlantic/pe_platform.c",
+      "source_sha256": "ae02912e03b405a813a577c4064300488931d915afaa2a71ffa7b272b3ec545e"
+    }
+  ]
+}

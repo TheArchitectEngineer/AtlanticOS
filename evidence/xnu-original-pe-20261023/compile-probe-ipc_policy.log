@@ -1,0 +1,15 @@
+In file included from <ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/ipc_policy.c:40:
+In file included from <ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/kern/task.h:133:
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/kern/thread.h:1641:49: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1641 | extern void             uthread_cred_ref(struct ucred *);
+      |                                                 ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/kern/thread.h:1642:50: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1642 | extern void             uthread_cred_free(struct ucred *);
+      |                                                  ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/ipc_policy.c:568:46: error: no member named 'tro_proc_ro' in 'struct thread_ro'
+  568 |                 struct proc_ro *pro = current_thread_ro()->tro_proc_ro;
+      |                                       ~~~~~~~~~~~~~~~~~~~  ^
+<ROOT>/work/xnu-lab-sources/4332e8f0f4cc3466/osfmk/ipc/ipc_policy.c:804:45: error: no member named 'tro_proc_ro' in 'struct thread_ro'
+  804 |         struct proc_ro *pro = current_thread_ro()->tro_proc_ro;
+      |                               ~~~~~~~~~~~~~~~~~~~  ^
+2 warnings and 2 errors generated.
