@@ -1,5 +1,9 @@
 # Excepciones ARM64 y ruta del reloj — 2026-10-23
 
+Este documento conserva los resultados de la revisión de 107 unidades. La
+[ampliación posterior de proveedores](XNU_BOOT_PROVIDERS.md) alcanza 123 y
+registra el estado de enlace más reciente; no modifica el patch 0021.
+
 El conjunto experimental compila **107 unidades reales derivadas de XNU** con
 el compilador original v2 ya probado. El estándar conserva 13. Esta ampliación
 integra sleh.c y seis unidades upstream sin modificar: arm/rtclock.c,

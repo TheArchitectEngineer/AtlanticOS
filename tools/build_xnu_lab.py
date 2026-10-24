@@ -167,6 +167,46 @@ EXPERIMENTAL_UNITS.update({
     'osfmk/arm/arm_timer.c': '_timer_intr',
     'osfmk/arm/data.s': '_RTClockData',
     'osfmk/arm/commpage/commpage.c': '_commpage_set_timestamp'})
+EXPERIMENTAL_UNITS.update({
+    'pexpert/gen/bootargs.c': '_PE_parse_boot_argn',
+    'pexpert/arm/pe_bootargs.c': '_PE_boot_args',
+    'pexpert/gen/device_tree.c': '_SecureDTInit',
+    'osfmk/kern/sched_rt.c': '_sched_realtime_timebase_init',
+    'osfmk/arm/preemption_disable.c': '__disable_preemption',
+    'osfmk/kern/compact_id.c': '_compact_id_table_init',
+    'osfmk/kern/mpsc_queue.c': '_thread_deallocate_daemon_init',
+    'osfmk/kern/thread_group.c': '_thread_group_init',
+    'osfmk/kern/restartable.c': '_restartable_init',
+    'osfmk/kern/machine.c': '_processor_up',
+    'osfmk/arm/cpu_common.c': '_cpu_machine_init',
+    'osfmk/arm64/cpu.c': '_cpu_bootstrap',
+    'osfmk/arm64/status.c': '_machine_thread_set_state',
+    'osfmk/arm64/lowmem_vectors.c': '_patch_low_glo',
+    'osfmk/kern/backtrace.c': '_backtrace',
+    'osfmk/kern/btlog.c': '_btlog_create',
+    'osfmk/kern/lock_mtx.c': '_lck_mtx_lock',
+    'osfmk/arm/machine_cpuid.c': '_machine_read_midr',
+    'bsd/kern/qsort.c': '_qsort'})
+EXTRA_SYMBOLS.update({
+    'pexpert/gen/bootargs.c': ['_PE_parse_boot_arg_str', '_PE_get_default'],
+    'pexpert/gen/device_tree.c': ['_SecureDTLookupEntry', '_SecureDTGetProperty',
+                                '_SecureDTInitEntryIterator', '_SecureDTIterateEntries'],
+    'osfmk/kern/sched_rt.c': ['_sched_rt_choose_thread', '_rt_runq_insert', '_rt_runq_remove'],
+    'osfmk/arm/preemption_disable.c': ['__enable_preemption', '_get_preemption_level'],
+    'osfmk/kern/compact_id.c': ['_compact_id_get', '_compact_id_put', '_compact_id_resolve'],
+    'osfmk/kern/mpsc_queue.c': ['_mpsc_daemon_enqueue', '_mpsc_daemon_queue_init_with_thread',
+                             '_thread_deallocate_daemon_register_queue'],
+    'osfmk/kern/thread_group.c': ['_thread_group_init_thread', '_thread_group_get'],
+    'osfmk/kern/machine.c': ['_machine_info', '_processor_cpu_reinit'],
+    'osfmk/arm/cpu_common.c': ['_CpuDataEntries', '_cpu_data_alloc', '_cpu_signal_handler'],
+    'osfmk/arm64/cpu.c': ['_cpu_data_init', '_cpu_stack_alloc', '_cpu_timebase_init'],
+    'osfmk/arm64/status.c': ['_machine_thread_get_state', '_machine_thread_reset_pc'],
+    'osfmk/arm64/lowmem_vectors.c': ['_patch_low_glo_static_region'],
+    'osfmk/kern/backtrace.c': ['_backtrace_packed', '_backtrace_unpack'],
+    'osfmk/kern/btlog.c': ['_btref_get', '_btref_put', '_btlog_record'],
+    'osfmk/kern/lock_mtx.c': ['_lck_mtx_init', '_lck_mtx_unlock'],
+    'osfmk/arm/machine_cpuid.c': ['_machine_read_clidr', '_machine_read_ccsidr'],
+    'bsd/kern/qsort.c': ['_kx_qsort']})
 EXTRA_SYMBOLS.update({
     'osfmk/kern/debug.c': ['_panic_get_thread_proc_task', '_mach_assert_jump_key'],
     'osfmk/kern/atlantic_printf.c': ['_snprintf'],
@@ -515,6 +555,13 @@ def main():
         per_file = ['-DVM_UNSAFE_TYPES'] if rel.startswith('osfmk/vm/') else []
         if rel in {'osfmk/kern/atlantic_task_metadata.c', 'libkern/os/refcnt.c'}:
             # Match the real BSD-private header context, without BSD userland.
+            per_file += ['-UMACH_KERNEL_PRIVATE', '-DBSD_KERNEL_PRIVATE=1']
+        if rel.startswith('pexpert/'):
+            # pexpert/conf/Makefile.template selects this component's private
+            # context. Mach-private clock_t/libsa types conflict with BSD types.
+            per_file += ['-UMACH_KERNEL_PRIVATE', '-DPEXPERT_KERNEL_PRIVATE=1']
+        if rel.startswith('bsd/'):
+            # A native BSD library helper does not enable MACH_BSD userland.
             per_file += ['-UMACH_KERNEL_PRIVATE', '-DBSD_KERNEL_PRIVATE=1']
         if rel.endswith('.s'):
             # Match upstream SFLAGS_GEN, including the non-Clang ASSEMBLER guard.

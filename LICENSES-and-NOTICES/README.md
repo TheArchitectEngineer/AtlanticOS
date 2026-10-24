@@ -59,6 +59,12 @@ reloj, timer, contabilidad, commpage y datos ARM se compilan desde upstream sin
 modificar sus cuerpos. El código XNU no pasa a estar bajo la licencia MIT de
 las herramientas de auditoría y fixtures originales.
 
+La ampliación de proveedores de arranque y planificación selecciona otros 16
+archivos nativos sin modificar. Conservan sus avisos Apple/APSL, CMU, NeXT y
+Berkeley según cada archivo. bsd/kern/qsort.c incluye el aviso Berkeley de
+cuatro cláusulas; el reconocimiento a Berkeley anterior también corresponde
+a este componente. No se atribuyen esos cuerpos a la licencia MIT del proyecto.
+
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias
 BSD-2-Clause-Patent y por componente. No se distribuyen sus binarios o wrappers.

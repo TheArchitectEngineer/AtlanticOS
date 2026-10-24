@@ -1,0 +1,4 @@
+/mnt/g/AtlanticOS/work/xnu-lab-sources/b1325e485ebde996/osfmk/kern/btlog.c:1749:22: warning: variable length array folded to constant array as an extension [-Wgnu-folding-constant]
+ 1749 |         struct btlog_record recs[RECS] = {0};
+      |                             ^
+1 warning generated.

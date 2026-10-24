@@ -7,7 +7,8 @@
 | P0 | Vía temporal aceptada por OEM, header/compresión | T03/T04; formato y mecanismo demostrados; BLOCKED si no existe |
 | P0 | Toolchain XNU y librerías no resueltas | Headers/assym/MIG; grafo de símbolos; clasificar -lcc_kext y seguridad |
 | P0 | Builtins Apple de tipos y dependencia TrustCache en VM | [Requisitos de compilador](XNU_COMPILER_REQUIREMENTS.md); preservar firmas/segregación de allocator y definir límites sin userland; no generar éxitos ficticios |
-| P0 | Probes core con fallos actuales | ipc_policy requiere metadata/política y mach_debug sus límites IOKit. SLEH/pageout ya compilan y se seleccionan; otros muchos proveedores siguen sin resolver. XNU_ARM64_EXCEPTIONS.md registra 765 diagnósticos en el enlace actual |
+| P0 | Proveedores core y límites de features | ipc_policy requiere metadata/política y mach_debug sus límites IOKit. SLEH/pageout ya compilan y se seleccionan. XNU_BOOT_PROVIDERS.md registra 672 diagnósticos en el enlace actual, incluidos defaults IOKit y otros proveedores nuevos |
+| P0 | Platform Expert original y adaptación FDT | PE/SecureDT nativos compilan; faltan PE_state/boot_args válidos, árbol XNU convertido por esquema, reservas y callbacks reales. No reutilizar pe_init Apple como BSP G20 ni convertir FDT mediante cast |
 | P0 | EL inicial / transición EL2→EL1, DT y carveouts | T05; registros capturados con entry original y rangos validados |
 | P1 | Logging temprano y fallback sin framebuffer | Canal real identificado, trazas verificables sin MMIO especulativo |
 | P1 | Timer, GIC, grupos seguros y CPU features | T06; CNTFRQ y IRQ real, no flags VMAPPLE heredados |

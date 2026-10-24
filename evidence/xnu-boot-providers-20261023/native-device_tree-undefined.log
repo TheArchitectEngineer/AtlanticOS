@@ -1,0 +1,7 @@
+_kalloc_type_impl_internal
+_kfree_type_impl_internal
+_memcmp
+_panic
+_strcmp
+_strlen
+_strncmp

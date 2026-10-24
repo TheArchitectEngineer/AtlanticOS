@@ -5,7 +5,7 @@ de XNU. Primera placa: Motorola Moto G20 / Unisoc T700 (UMS512).
 
 **Estado 2026-10-23: auditoría Fase 0, prototipo host Fase 1 y port XNU
 incremental. Trece unidades reales de XNU compilan a objetos ARM64 con Clang
-estándar; 107 con el proveedor experimental explícito, incluidos
+estándar; 123 con el proveedor experimental explícito, incluidos
 VM residente/faults/objetos, hilos, tareas, locks, ledgers, SMR e IPC/importance.
 Se compilan además 42 archivos RPC generados por MIG como probes, con 57 headers
 coherentes; el configurador oficial selecciona 26 para el enlace de este perfil.
@@ -57,13 +57,18 @@ El [soporte core ARM64 y diagnóstico](docs/XNU_CORE_SUPPORT.md) incorpora rutin
 de memoria, locks, PCB, CPU, AST y panic nativos, con formateo conservado de XNU.
 La [semántica nativa de tipos](docs/XNU_USAGE_SEMANTICS.md) conserva las
 anotaciones de uso de XNU mediante la API original v2 del compilador. Permite
-compilar vm_pageout.c sin modificar sus tipos o allocators; el enlace de 126
-objetos sigue fallando con 778 diagnósticos indefinidos y cero duplicados.
+compilar vm_pageout.c sin modificar sus tipos o allocators; aquella entrega
+registró 778 diagnósticos indefinidos y cero duplicados en su enlace de 126 objetos.
 La [integración de excepciones y reloj](docs/XNU_ARM64_EXCEPTIONS.md) incorpora
 SLEH y seis proveedores nativos. Se auditan sus descriptores BRK, callback y
-registros de assertions; el enlace actual de 133 objetos sigue fallando con
+registros de assertions; su enlace de 133 objetos registró
 765 diagnósticos indefinidos y cero duplicados. La CI limpia de 100 unidades
 del commit 49bbae4 se conserva como reproducción de aquella revisión.
+La [ampliación de proveedores de arranque](docs/XNU_BOOT_PROVIDERS.md) incorpora
+16 fuentes upstream sin modificar, incluidos parsers PE/SecureDT y scheduler RT.
+El enlace actual de 149 objetos falla con **672 diagnósticos indefinidos y cero
+duplicados**, sin imagen. Pasan 51/45 checks de alcance/ABI. El adaptador de FDT,
+Platform Expert original y la ejecución física siguen pendientes.
 
 ## Reproducir
 

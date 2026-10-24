@@ -1,0 +1,17 @@
+_copyin
+_current_thread
+_get_task_map_reference
+_get_threadtask
+_get_user_regs
+_kernel_stack_size
+_mach_assert_jump_key
+_memmove
+_ml_addr_in_non_xnu_stack
+_ml_at_interrupt_context
+_ml_get_backtrace_pc
+_ml_get_interrupts_enabled
+_panic
+_vm_kernel_stext
+_vm_map_deallocate
+_vm_map_switch_back
+_vm_map_switch_with_sec_override

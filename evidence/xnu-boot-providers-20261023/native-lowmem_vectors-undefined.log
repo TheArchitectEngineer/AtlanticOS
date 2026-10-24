@@ -1,0 +1,16 @@
+_PAGE_SHIFT_CONST
+_c_buffers
+_c_buffers_size
+_io_attr_table
+_kmod
+_mach_assert_jump_key
+_num_io_rgns
+_osversion
+_panic
+_physmap_base
+_physmap_end
+_pmap_object_store
+_version
+_vm_first_phys
+_vm_kernel_stext
+_vm_last_phys

@@ -150,7 +150,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y 107 experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y 123 experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.
@@ -162,3 +162,11 @@ La [integración RPC](../docs/XNU_RPC_BUILD.md) agrega los C y descriptores
 generados de sus recetas nativas, sin convertirlos en servicios ejecutados.
 La [integración de proveedores](../docs/XNU_RPC_PROVIDERS.md) agrega quince
 unidades nativas, incluida vm_user tras corregir los casts; pageout sigue pendiente.
+
+La [ampliación de proveedores de arranque](../docs/XNU_BOOT_PROVIDERS.md) añade
+16 fuentes upstream sin modificar, con el mismo patchset 0021. Los parsers PE
+y SecureDT compilan en su contexto PEXPERT_KERNEL_PRIVATE; no constituyen aún
+el Platform Expert original de AtlanticOS. El enlace estricto de 149 objetos
+falla con 672 diagnósticos indefinidos, cero duplicados y ninguna imagen.
+La situación de pageout y SLEH en revisiones anteriores se conserva como historia;
+ambos ya están seleccionados en el build experimental actual.

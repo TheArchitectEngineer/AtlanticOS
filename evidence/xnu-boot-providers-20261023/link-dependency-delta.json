@@ -1,0 +1,202 @@
+{
+  "scope": "STRICT_LINK_DIAGNOSTIC_NAME_COMPARISON_NOT_EXECUTION",
+  "previous_link_sha256": "ec533ac31f6454d7fd0c5401724413188d404cea0d36a02a93962091eba8ebf5",
+  "current_link_sha256": "be74c62df080901590ca7cd5dbfee4b89df0b965f9078468ba7c73ca48711b0c",
+  "previous_undefined": 765,
+  "current_undefined": 672,
+  "previous_symbols_now_resolved": [
+    "_PE_boot_args",
+    "_PE_get_default",
+    "_PE_parse_boot_arg_str",
+    "_PE_parse_boot_argn",
+    "_SecureDTGetProperty",
+    "_SecureDTInitEntryIterator",
+    "_SecureDTIsLockedDown",
+    "_SecureDTIterateEntries",
+    "_SecureDTLookupEntry",
+    "__MachineStateCount",
+    "__disable_preemption",
+    "__disable_preemption_without_measurements",
+    "__enable_preemption",
+    "_backtrace",
+    "_backtrace_user",
+    "_backtrace_user_copy_error",
+    "_btlog_copy_backtraces_for_elements",
+    "_btlog_create",
+    "_btlog_destroy",
+    "_btlog_erase",
+    "_btlog_get_records",
+    "_btlog_get_type",
+    "_btlog_record",
+    "_btlog_sample",
+    "_btref_get",
+    "_btref_put",
+    "_btref_retain",
+    "_compact_id_for_each",
+    "_compact_id_get",
+    "_compact_id_get_locked",
+    "_compact_id_put",
+    "_compact_id_resolve",
+    "_compact_id_slab_valid",
+    "_compact_id_table_init",
+    "_compact_id_table_lock",
+    "_compact_id_table_unlock",
+    "_cpu_event_register_callback",
+    "_get_preemption_level",
+    "_get_preemption_level_for_thread",
+    "_get_user_regs",
+    "_host_get_boot_info",
+    "_host_reboot",
+    "_lowGlo",
+    "_machine_info",
+    "_machine_read_midr",
+    "_machine_thread_dup",
+    "_machine_thread_get_state",
+    "_machine_thread_set_state",
+    "_machine_thread_state_convert_from_user",
+    "_machine_thread_state_convert_to_user",
+    "_machine_thread_state_initialize",
+    "_machine_thread_switch_addrmode",
+    "_machine_timeout_init",
+    "_ml_broadcast_cpu_event",
+    "_mpsc_daemon_enqueue",
+    "_mpsc_daemon_queue_init_with_thread",
+    "_mpsc_queue_batch_next",
+    "_mpsc_queue_dequeue_batch",
+    "_patch_low_glo",
+    "_patch_low_glo_static_region",
+    "_patch_low_glo_vm_page_info",
+    "_processor_assign",
+    "_processor_cpu_reinit",
+    "_processor_doshutdown",
+    "_processor_up",
+    "_qsort",
+    "_restartable_init",
+    "_restartable_ranges_release",
+    "_rt_choose_next_processor_for_followup_IPI",
+    "_rt_clear_pending_spill",
+    "_rt_constraint_threshold",
+    "_rt_deadline_add",
+    "_rt_deadline_epsilon",
+    "_rt_pset_needs_a_followup_IPI",
+    "_rt_runq_count",
+    "_rt_runq_earliest_deadline",
+    "_rt_runq_first",
+    "_rt_runq_insert",
+    "_rt_runq_priority",
+    "_rt_runq_remove",
+    "_sched_realtime_timebase_init",
+    "_sched_rt_choose_processor",
+    "_sched_rt_choose_thread",
+    "_sched_rt_init_completed",
+    "_sched_rt_init_pset",
+    "_sched_rt_queue_shutdown",
+    "_sched_rt_runq_count_sum",
+    "_sched_rt_runq_scan",
+    "_sched_rt_runq_strict_priority",
+    "_task_restartable_ranges_register",
+    "_task_restartable_ranges_synchronize",
+    "_thread_deallocate_daemon_init",
+    "_thread_deallocate_daemon_register_queue",
+    "_thread_group_get",
+    "_thread_group_get_flags",
+    "_thread_group_get_id",
+    "_thread_group_get_machine_data",
+    "_thread_group_init",
+    "_thread_group_init_thread",
+    "_thread_group_machine_data_size",
+    "_thread_group_resync",
+    "_thread_group_set_bank",
+    "_thread_group_uses_immediate_ipi",
+    "_thread_group_vm_add",
+    "_thread_reset_pcs_ack_IPI",
+    "_thread_reset_pcs_ast",
+    "_thread_reset_pcs_done_faulting",
+    "_thread_reset_pcs_in_range",
+    "_thread_reset_pcs_will_fault"
+  ],
+  "new_unresolved_dependencies": [
+    "_IODTGetDefault",
+    "_IODelay",
+    "_c_buffers",
+    "_c_buffers_size",
+    "_gEnforcePlatformActionSafety",
+    "_get_task_map_reference",
+    "_kern_timeout_end",
+    "_kern_timeout_start",
+    "_kern_timeout_try_panic",
+    "_kmod",
+    "_osversion",
+    "_saved_state_to_thread_state32",
+    "_strlcat",
+    "_task_coalition_get_thread_group",
+    "_thread_state32_to_saved_state",
+    "_wait_while_mp_kdp_trap"
+  ],
+  "new_native_units": [
+    {
+      "source": "pexpert/gen/bootargs.c",
+      "source_sha256": "d1e3aba9f4e36ae257b1c034be43aa7b0f5d132be9b10ea615c59b25fde47abf"
+    },
+    {
+      "source": "pexpert/arm/pe_bootargs.c",
+      "source_sha256": "2631e83be9a7b655ecc7bcaffc2912bc0388eb30925fedee98991546a8bb92d7"
+    },
+    {
+      "source": "pexpert/gen/device_tree.c",
+      "source_sha256": "8dccf6192ddaf4c77e504912a44883447a2eae23e3c7f149e0b0997042903614"
+    },
+    {
+      "source": "osfmk/kern/sched_rt.c",
+      "source_sha256": "247f27e123857c5155152fe148f92b0b3b350ae1b1f443d8895a5b32b25282d1"
+    },
+    {
+      "source": "osfmk/arm/preemption_disable.c",
+      "source_sha256": "ce030f1eefdc089de25f78eeb5c7f6febe927a35d94ac1f86e47424754c5e581"
+    },
+    {
+      "source": "osfmk/kern/compact_id.c",
+      "source_sha256": "efb8c06189e09909e192c9f159a68e99bf5aaedb60ffbdab62afdedb6360368b"
+    },
+    {
+      "source": "osfmk/kern/mpsc_queue.c",
+      "source_sha256": "709b50369938fb373b8486478108aabb23b1623600de67677ef01680e8219fd3"
+    },
+    {
+      "source": "osfmk/kern/thread_group.c",
+      "source_sha256": "f89c34a773a4c0858959f2e4e7d79e59004bca088dcdcd59d2ae3cde75edae33"
+    },
+    {
+      "source": "osfmk/kern/restartable.c",
+      "source_sha256": "9e75a6714a1b781c0bcd50acc33d21a71190866039b0e72554a39e2d9f46de4c"
+    },
+    {
+      "source": "osfmk/kern/machine.c",
+      "source_sha256": "217d6ac38046983c2c4489955adddc024c27d1d860ffc3ba406c2f95e9de4157"
+    },
+    {
+      "source": "osfmk/arm64/status.c",
+      "source_sha256": "d30a69dbec694123ab4e676783e729485d3f8a3dc41b4e150569dc73a42d4c59"
+    },
+    {
+      "source": "osfmk/arm64/lowmem_vectors.c",
+      "source_sha256": "5a437aba43cee50ab26c54ce80d83e2ddce59389f95270ca19b31b4ce5fc426c"
+    },
+    {
+      "source": "osfmk/kern/backtrace.c",
+      "source_sha256": "77c7850eae8afc53d5be498e74dfc00032aa3946720cdd19c51de650d37aa169"
+    },
+    {
+      "source": "osfmk/kern/btlog.c",
+      "source_sha256": "2ecc69e74e1c8d5d867045109b2624c29a6c953553a8b1c4e144726e166074fd"
+    },
+    {
+      "source": "osfmk/arm/machine_cpuid.c",
+      "source_sha256": "304bdfb8e426d1e49605f18ff9633c99a7a3a3f432209fedd080e2411419ef0c"
+    },
+    {
+      "source": "bsd/kern/qsort.c",
+      "source_sha256": "5b9840984557c5454b10e7ca6c6e14fea11b6c0f2a9412d0f68b8895eb93c8dd"
+    }
+  ]
+}

@@ -64,6 +64,10 @@ topOfKernelData, vídeo, árbol y otros campos. XNU consulta SecureDT ([X12](SOU
 el FDT de Linux no es automáticamente su representación compatible. Diseñar
 adaptador o acceso original a FDT desde Platform Expert; nunca un cast.
 
+Los [parsers nativos ya compilados](XNU_BOOT_PROVIDERS.md) no aportan aún ese
+adaptador, PE_state inicializado o una traducción de los bindings de cada BSP.
+Los nombres y valores del árbol deben seguir el esquema de sus consumidores XNU.
+
 El adaptador fijará PAGE_SIZE/pmap según CPU, reservas y configuración XNU.
 No heredar PAC, Apple CPU, KTRR/SPTM o páginas 16 KiB de VMAPPLE sin soporte
 comprobado. Las llamadas al Platform Expert y al scheduler siguen siendo rutas

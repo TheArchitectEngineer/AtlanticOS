@@ -1,0 +1,10 @@
+_current_thread
+_lck_grp_startup_init
+_lck_mtx_init
+_lck_mtx_lock
+_lck_mtx_sleep_with_inheritor
+_lck_mtx_unlock
+_mach_assert_jump_key
+_panic
+_wakeup_all_with_inheritor
+_zalloc_permanent_tag

@@ -1,0 +1,7 @@
+_IODTGetDefault
+_PE_boot_args
+_SecureDTGetProperty
+_SecureDTLookupEntry
+_memmove
+_strlen
+_strncmp

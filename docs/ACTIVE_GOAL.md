@@ -92,3 +92,11 @@ del descriptor fatal apunta al handler nativo mediante relocation auditada.
 El enlace de 133 objetos conserva 765 diagnósticos indefinidos, cero duplicados
 y ninguna imagen. La CI de 100 unidades de 49bbae4 también se conserva separada
 con success, sin atribuirle la revisión posterior. No cambia el objetivo físico.
+
+La [ampliación de proveedores de arranque](XNU_BOOT_PROVIDERS.md) selecciona 16
+archivos upstream adicionales sin modificar: 123 unidades experimentales, con
+parsers PE/SecureDT, scheduler RT, preempción, colas y estado de hilo nativos.
+Pasan 51/45 checks. El enlace estricto de 149 objetos falla con 672 diagnósticos
+indefinidos y cero duplicados, sin imagen. Se resuelven 109 nombres anteriores
+y aparecen 16 dependencias nuevas. Faltan Platform Expert original, adaptación
+de FDT, cierre del núcleo y BSP físico; no hay ejecución XNU ni handoff EDK2.
