@@ -18,3 +18,4 @@
 0018-retain-native-arm64-support-and-panic-formatting.patch
 0019-preserve-native-allocator-usage-annotations.patch
 0020-match-zone-diagnostic-storage-to-native-allocation-type.patch
+0021-retain-native-arm64-exceptions-with-selected-telemetry.patch

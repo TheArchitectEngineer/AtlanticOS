@@ -1,0 +1,18 @@
+In file included from <ROOT>/tests/xnu_port/task_metadata_abi.c:4:
+In file included from <ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/kern/task.h:133:
+<ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/kern/thread.h:1641:49: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1641 | extern void             uthread_cred_ref(struct ucred *);
+      |                                                 ^
+<ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/kern/thread.h:1642:50: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1642 | extern void             uthread_cred_free(struct ucred *);
+      |                                                  ^
+<ROOT>/tests/xnu_port/task_metadata_abi.c:51:16: error: static assertion failed due to requirement '__builtin_offsetof(struct proc_ro, pr_task) == 9': AtlanticOS metadata owner offset mismatch
+   51 | _Static_assert(offsetof(struct proc_ro, pr_task) == ATL_TEST_WRONG_OWNER_OFFSET,
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/b1325e485ebde996/EXTERNAL_HEADERS/stddef.h:67:24: note: expanded from macro 'offsetof'
+   67 | #define offsetof(t, d) __builtin_offsetof(t, d)
+      |                        ^
+<ROOT>/tests/xnu_port/task_metadata_abi.c:51:50: note: expression evaluates to '8 == 9'
+   51 | _Static_assert(offsetof(struct proc_ro, pr_task) == ATL_TEST_WRONG_OWNER_OFFSET,
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2 warnings and 1 error generated.

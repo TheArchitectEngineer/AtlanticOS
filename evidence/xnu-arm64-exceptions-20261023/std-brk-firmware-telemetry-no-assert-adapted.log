@@ -1,0 +1,64 @@
+KERNEL_BRK_DESCRIPTOR_DEFINE(clang_desc,
+    .type = TRAP_TELEMETRY_TYPE_KERNEL_BRK_CLANG,
+    .base = CLANG_ARM_TRAP_START,
+    .max = CLANG_ARM_TRAP_END,
+    .options = BRK_TELEMETRY_OPTIONS_FATAL_DEFAULT,
+    .handle_breakpoint = NULL);
+KERNEL_BRK_DESCRIPTOR_DEFINE(libcxx_desc,
+    .type = TRAP_TELEMETRY_TYPE_KERNEL_BRK_LIBCXX,
+    .base = LIBCXX_TRAP_START,
+    .max = LIBCXX_TRAP_END,
+    .options = BRK_TELEMETRY_OPTIONS_FATAL_DEFAULT,
+    .handle_breakpoint = NULL);
+KERNEL_BRK_DESCRIPTOR_DEFINE(xnu_soft_traps_desc,
+    .type = TRAP_TELEMETRY_TYPE_KERNEL_BRK_TELEMETRY,
+    .base = XNU_SOFT_TRAP_START,
+    .max = XNU_SOFT_TRAP_END,
+    .options = BRK_TELEMETRY_OPTIONS_RECOVERABLE_DEFAULT(
+                            true),
+    .handle_breakpoint = xnu_soft_trap_handle_breakpoint);
+KERNEL_BRK_DESCRIPTOR_DEFINE(xnu_hard_traps_desc,
+    .type = TRAP_TELEMETRY_TYPE_KERNEL_BRK_XNU,
+    .base = XNU_HARD_TRAP_START,
+    .max = XNU_HARD_TRAP_END,
+    .options = BRK_TELEMETRY_OPTIONS_FATAL_DEFAULT,
+    .handle_breakpoint = xnu_hard_trap_handle_breakpoint);
+handle_kernel_breakpoint(arm_saved_state_t *state, uint64_t esr)
+{
+ uint16_t comment = ISS_BRK_COMMENT(esr);
+ const struct kernel_brk_descriptor *desc;
+ const char *msg = NULL;
+ desc = find_kernel_brk_descriptor_by_comment(comment);
+ if (!desc) {
+  goto brk_out;
+ }
+ if (desc->options.enable_trap_telemetry) {
+  trap_telemetry_report_exception(
+                     desc->type,
+                     comment,
+                     desc->options.telemetry_options,
+                     (void *)state);
+ }
+ if (desc->handle_breakpoint) {
+  msg = desc->handle_breakpoint(state, comment);
+ }
+ if (desc->options.recoverable) {
+  add_saved_state_pc(state, 4);
+  return;
+ }
+brk_out:
+ if (msg == NULL) {
+  kernel_panic_reason_t pr = PERCPU_GET(panic_reason);
+  if (comment == CLANG_ARM_TRAP_BOUND_CHK) {
+   msg = tsnprintf(pr->buf, sizeof(pr->buf),
+       "Bounds safety trap");
+  } else {
+   msg = tsnprintf(pr->buf, sizeof(pr->buf),
+       "Break 0x%04X instruction exception from kernel. "
+       "Panic (by design)",
+       comment);
+  }
+ }
+ panic_with_thread_kernel_state(msg, state);
+ __builtin_unreachable();
+}

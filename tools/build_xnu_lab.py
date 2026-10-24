@@ -35,7 +35,7 @@ UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
 # IPC registers a genuine static initializer in STARTUP(MACH_IPC, ...).
 SYMBOL_TYPES = {'osfmk/ipc/ipc_init.c': 't', 'osfmk/kern/sched_dualq.c': 't',
                 'osfmk/ipc/ipc_importance.c': 't', 'osfmk/ipc/ipc_voucher.c': 't',
-                'osfmk/vm/vm_sanitize_error_compat.c': 'S'}
+                'osfmk/vm/vm_sanitize_error_compat.c': 'S', 'osfmk/arm/data.s': 'D'}
 STARTUP_SYMBOL_PREFIXES = {
     'osfmk/ipc/ipc_init.c': '___startup_MACH_IPC_entry_ipc_init_',
     'osfmk/ipc/ipc_importance.c': '___startup_MACH_IPC_entry_ipc_importance_init_',
@@ -159,7 +159,14 @@ EXPERIMENTAL_UNITS.update({
     'osfmk/kern/printf.c': '___doprnt',
     'osfmk/kern/debug.c': '_panic',
     'osfmk/kern/atlantic_printf.c': '_vsnprintf',
-    'osfmk/vm/vm_pageout.c': '_vm_pageout'})
+    'osfmk/vm/vm_pageout.c': '_vm_pageout',
+    'osfmk/arm64/sleh.c': '_sleh_synchronous',
+    'osfmk/arm/rtclock.c': '_rtclock_intr',
+    'osfmk/kern/recount.c': '_recount_enter_interrupt',
+    'osfmk/kern/clock_oldops.c': '_clock_get_time',
+    'osfmk/arm/arm_timer.c': '_timer_intr',
+    'osfmk/arm/data.s': '_RTClockData',
+    'osfmk/arm/commpage/commpage.c': '_commpage_set_timestamp'})
 EXTRA_SYMBOLS.update({
     'osfmk/kern/debug.c': ['_panic_get_thread_proc_task', '_mach_assert_jump_key'],
     'osfmk/kern/atlantic_printf.c': ['_snprintf'],
@@ -172,7 +179,15 @@ EXTRA_SYMBOLS.update({
     'osfmk/vm/vm32_user.c': ['_vm32_vm_read', '_vm32_vm_write'],
     'osfmk/arm64/static_if.c': ['_ml_static_if_flush_icache'],
     'osfmk/vm/vm_pageout.c': ['_upl_deallocate', '_upl_get_internal_page_list',
-                            '_vm_object_upl_request', '_vm_object_iopl_request']})
+                            '_vm_object_upl_request', '_vm_object_iopl_request'],
+    'osfmk/arm64/sleh.c': ['_sleh_synchronous_sp1', '_sleh_irq', '_sleh_fiq', '_sleh_serror',
+                         '_panic_with_thread_kernel_state', '_thread_exception_return'],
+    'osfmk/arm/rtclock.c': ['_mach_absolute_time', '_rtclock_init', '_rtclock_early_init', '_clock_timebase_info'],
+    'osfmk/kern/recount.c': ['_recount_leave_interrupt', '_recount_thread_init', '_recount_task_init', '_recount_processor_init'],
+    'osfmk/kern/clock_oldops.c': ['_clock_oldconfig', '_clock_oldinit', '_clock_alarm', '_clock_sleep_trap'],
+    'osfmk/arm/arm_timer.c': ['_timer_resync_deadlines', '_timer_set_deadline'],
+    'osfmk/arm/data.s': ['_intstack', '_excepstack', '_kd_early_buffer'],
+    'osfmk/arm/commpage/commpage.c': ['_commpage_populate', '_commpage_update_active_cpus']})
 EXTRA_SYMBOLS.update({
     'osfmk/kern/ipc_mig.c': ['_kernel_mach_msg_send'],
     'osfmk/kern/ipc_tt.c': ['_ipc_task_enable', '_ipc_task_terminate', '_convert_port_to_map'],
@@ -520,10 +535,10 @@ def main():
         required_symbols = ([selected_units[rel]]+EXTRA_SYMBOLS.get(rel, [])) if rel in selected_units else []
         binding = SYMBOL_TYPES.get(rel, 'T')
         if rel in selected_units and not any(line.split()[-2:]==[binding, selected_units[rel]] for line in nm.splitlines()):
-            raise RuntimeError('Expected real text symbol and binding: '+selected_units[rel])
+            raise RuntimeError('Expected native symbol and binding: '+selected_units[rel])
         for symbol in required_symbols:
             if not any(line.split()[-1:]==[symbol] for line in nm.splitlines()):
-                raise RuntimeError('Missing real XNU function: '+symbol)
+                raise RuntimeError('Missing native XNU definition: '+symbol)
         if rel in STARTUP_SYMBOL_PREFIXES and not any(
             line.split()[-1].startswith(STARTUP_SYMBOL_PREFIXES[rel]) for line in nm.splitlines() if line.split()):
             raise RuntimeError('Genuine static IPC initializer lost its startup registration: '+rel)

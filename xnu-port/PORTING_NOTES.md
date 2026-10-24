@@ -120,6 +120,11 @@ no contiene BootShim ni código de plataforma de ports ajenos.
     vm_offset_t *, el mismo tipo usado por su allocation/free existentes. Su
     identidad C/ABI con uintptr_t no sustituye la metadata de uso. No cambia el
     algoritmo de diagnóstico ni silencia la assertion que detectó la diferencia.
+21. `0021`: incluye las definiciones nativas BRK aunque no se seleccione la
+    colección de telemetría. Excluye el helper MPIDR Apple solo en laboratorio.
+    En firmware, las rutas recuperables y su prueba requieren el proveedor real;
+    las rutas fatales, assertions y cuerpo de handler hard se conservan.
+    Se auditan selección, registros, instrucciones y relocation del callback.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
@@ -145,7 +150,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y cien experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y 107 experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.

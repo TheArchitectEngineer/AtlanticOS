@@ -1,5 +1,11 @@
 # Semántica nativa de tipos y allocator — 2026-10-22
 
+Esta entrega registra las 100 unidades del commit 49bbae4. La CI de esa revisión
+ya se [reprodujo y conservó](../evidence/clang-layout-ci100-20261023/manifest.json).
+La ampliación posterior de [excepciones y reloj](XNU_ARM64_EXCEPTIONS.md) integra
+el preview SLEH y llega a 107 unidades; aquí se mantienen los números y logs
+históricos de la integración del allocator.
+
 El proveedor de layout v1 conservaba la representación C de punteros, escalares,
 records y arrays, pero perdía las anotaciones de uso de XNU. Es una limitación
 de aquella implementación experimental: ppnum_t es uint32_t en C y lleva

@@ -1,0 +1,4 @@
+<stdin>:1:34: error: AtlanticOS layout: requires a complete, fixed-size object type
+    1 | struct A; struct B; unsigned x = __atlantic_layout_compatible(struct A, struct B);
+      |                                  ^
+1 error generated.

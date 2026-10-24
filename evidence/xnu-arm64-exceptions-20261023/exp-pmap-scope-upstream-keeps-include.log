@@ -1,0 +1,17 @@
+In file included from <ROOT>/tests/xnu_port/pmap_cs_scope.c:12:
+In file included from <ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/vm/pmap_cs.h:60:
+In file included from <ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/vm/pmap.h:157:
+In file included from <ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/machine/pmap.h:34:
+In file included from <ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/arm/pmap.h:46:
+In file included from <ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/arm/pmap/pmap.h:227:
+In file included from <ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/kern/thread.h:117:
+In file included from <ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/kern/sched.h:77:
+In file included from <ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/kern/bits.h:36:
+<ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/kern/kalloc.h:807:2: error: Atlantic C layout requires the AtlanticOS firmware laboratory profile
+  807 | #error Atlantic C layout requires the AtlanticOS firmware laboratory profile
+      |  ^
+In file included from <ROOT>/tests/xnu_port/pmap_cs_scope.c:12:
+<ROOT>/work/xnu-lab-sources/b1325e485ebde996/osfmk/vm/pmap_cs.h:79:10: fatal error: 'TrustCache/API.h' file not found
+   79 | #include <TrustCache/API.h>
+      |          ^~~~~~~~~~~~~~~~~~
+2 errors generated.

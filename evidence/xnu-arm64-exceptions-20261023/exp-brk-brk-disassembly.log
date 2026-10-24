@@ -1,0 +1,23 @@
+<ROOT>/work/sleH-final-brk-exp/brk.o:
+(__TEXT,__text) section
+_atl_builtin_trap:
+       0:	20 00 20 d4	brk	#0x1
+       4:	1f 20 03 d5	nop
+       8:	1f 20 03 d5	nop
+       c:	1f 20 03 d5	nop
+_atl_debug_trap:
+      10:	00 00 3e d4	brk	#0xf000
+      14:	c0 03 5f d6	ret
+      18:	1f 20 03 d5	nop
+      1c:	1f 20 03 d5	nop
+_atl_native_assert:
+      20:	08 00 00 90	adrp	x8, _atl_native_assert.__desc@PAGE
+      24:	08 01 00 91	add	x8, x8, _atl_native_assert.__desc@PAGEOFF
+      28:	80 ff 37 d4	brk	#0xbffc
+      2c:	1f 20 03 d5	nop
+_atl_native_assert_values:
+      30:	08 00 00 90	adrp	x8, _atl_native_assert_values.__desc_3U@PAGE
+      34:	08 01 00 91	add	x8, x8, _atl_native_assert_values.__desc_3U@PAGEOFF
+      38:	f0 03 00 aa	mov	x16, x0
+      3c:	f1 03 01 aa	mov	x17, x1
+      40:	80 ff 37 d4	brk	#0xbffc

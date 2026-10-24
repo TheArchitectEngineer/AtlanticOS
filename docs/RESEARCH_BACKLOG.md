@@ -7,7 +7,7 @@
 | P0 | Vía temporal aceptada por OEM, header/compresión | T03/T04; formato y mecanismo demostrados; BLOCKED si no existe |
 | P0 | Toolchain XNU y librerías no resueltas | Headers/assym/MIG; grafo de símbolos; clasificar -lcc_kext y seguridad |
 | P0 | Builtins Apple de tipos y dependencia TrustCache en VM | [Requisitos de compilador](XNU_COMPILER_REQUIREMENTS.md); preservar firmas/segregación de allocator y definir límites sin userland; no generar éxitos ficticios |
-| P0 | Tres fuentes core aún sin integrar | [Semántica nativa](XNU_USAGE_SEMANTICS.md): ipc_policy requiere metadata/política, mach_debug sus guards IOKit y sleh guards coherentes de CPU/telemetría/BRK. Pageout ya compila con los tipos y allocators originales; el preview sleh aún no forma parte del enlace |
+| P0 | Probes core con fallos actuales | ipc_policy requiere metadata/política y mach_debug sus límites IOKit. SLEH/pageout ya compilan y se seleccionan; otros muchos proveedores siguen sin resolver. XNU_ARM64_EXCEPTIONS.md registra 765 diagnósticos en el enlace actual |
 | P0 | EL inicial / transición EL2→EL1, DT y carveouts | T05; registros capturados con entry original y rangos validados |
 | P1 | Logging temprano y fallback sin framebuffer | Canal real identificado, trazas verificables sin MMIO especulativo |
 | P1 | Timer, GIC, grupos seguros y CPU features | T06; CNTFRQ y IRQ real, no flags VMAPPLE heredados |

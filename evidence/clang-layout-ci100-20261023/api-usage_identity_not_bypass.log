@@ -1,0 +1,4 @@
+<stdin>:1:89: error: AtlanticOS layout: unknown usage annotation
+    1 | typedef unsigned long T __attribute__((annotate("atlantic.layout.typo"))); unsigned x = __atlantic_layout_compatible(T,T);
+      |                                                                                         ^
+1 error generated.

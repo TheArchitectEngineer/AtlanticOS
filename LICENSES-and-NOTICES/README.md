@@ -54,6 +54,10 @@ está en SemaAtlanticLayout.cpp bajo Apache-2.0 WITH LLVM-exception. No incorpor
 la implementación privada Apple de xnu_usage_semantics o sus builtins.
 Patch 0020 conserva los avisos upstream de zalloc.c y cambia dos declaraciones
 de almacenamiento para que coincidan con el tipo de allocation ya existente.
+Patch 0021 conserva los avisos Apple/APSL de sleh.c. Los seis proveedores de
+reloj, timer, contabilidad, commpage y datos ARM se compilan desde upstream sin
+modificar sus cuerpos. El código XNU no pasa a estar bajo la licencia MIT de
+las herramientas de auditoría y fixtures originales.
 
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias

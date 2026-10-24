@@ -104,3 +104,8 @@ commit 7c9eaf2; [reportes](../evidence/clang-layout-ci-20261021/manifest.json).
 
 Clang conserva su licencia Apache-2.0 WITH LLVM-exception; véase
 [LLVM-LICENSE](../LICENSES-and-NOTICES/LLVM-LICENSE.txt).
+
+La [CI limpia de v2 y 100 unidades](../evidence/clang-layout-ci100-20261023/manifest.json)
+del commit 49bbae4 aprobó 26 checks y reprodujo fuente/defines/137 constantes
+target. No declara igualdad binaria entre hosts, ejecución XNU o la revisión
+posterior con SLEH y reloj.

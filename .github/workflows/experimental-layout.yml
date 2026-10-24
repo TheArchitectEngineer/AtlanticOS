@@ -21,7 +21,7 @@ jobs:
           python3 tools/fetch_xnu.py
           python3 tools/fetch_mig.py
           python3 tools/build_mig.py
-      - name: Compile one hundred genuine XNU units with explicit provider (no execution)
+      - name: Compile 107 genuine XNU units with explicit provider (no execution)
         run: |
           python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
       - name: Verify pmap API rejection, object symbols and actual header dependencies
@@ -36,6 +36,8 @@ jobs:
         run: python3 tools/test_xnu_kobject_scope.py --build work/xnu-lab-builds/*/report.json --output work/kobject-scope-tests
       - name: Check native panic scope and retained formatting ABI against original definitions
         run: python3 tools/test_xnu_core_scope.py --build work/xnu-lab-builds/*/report.json --output work/core-scope-tests
+      - name: Audit native fatal descriptors and emitted ARM64 BRK/register encodings
+        run: python3 tools/test_xnu_brk_scope.py --build work/xnu-lab-builds/*/report.json --output work/brk-scope-tests
       - name: Compare native usage metadata and unchanged ARM64 type ABI
         run: python3 tools/test_xnu_usage_semantics.py --build work/xnu-lab-builds/*/report.json --output work/usage-semantics-tests
       - name: Retain unresolved native compilation probes as diagnostics
@@ -78,6 +80,9 @@ jobs:
             work/xnu-rpc-tests/descriptor_abi.c
             work/kobject-scope-tests/*
             work/core-scope-tests/*
+            work/brk-scope-tests/report.json
+            work/brk-scope-tests/*.log
+            work/brk-scope-tests/brk.ll
             work/usage-semantics-tests/report.json
             work/usage-semantics-tests/*.log
             work/usage-semantics-tests/*.ll

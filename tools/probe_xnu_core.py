@@ -1,7 +1,7 @@
 """Record compilation of unresolved native core candidates without adding stubs.
 
-Diagnostic probes only. A successful individual file is not integrated, linked,
-or executed. Failing compilation is retained as evidence, not a passing test.
+Diagnostic probes only. Compilation alone does not integrate, link or execute
+a file. Selection in the base build is reported separately. Failures are evidence.
 """
 import argparse
 import hashlib
@@ -58,9 +58,10 @@ def main():
         log.write_text((result.stdout+result.stderr).replace(str(ROOT),'<ROOT>'),encoding='utf-8',newline='\n')
         units.append({'source':rel,'source_sha256':digest(source/rel),'exit_code':result.returncode,
             'log':log.name,'log_sha256':digest(log),'object_sha256':digest(obj) if obj.is_file() else None,
+            'selected_in_base_build':any(o['source']==rel for o in base['objects']),
             'command':[s.replace(str(ROOT),'<ROOT>') for s in cmd],
             'diagnostics':[s.replace(str(ROOT),'<ROOT>') for s in result.stderr.splitlines() if 'error:' in s]})
-    report = {'schema_version':1,'scope':'NATIVE_CORE_COMPILE_PROBES_ONLY_NOT_INTEGRATED_LINKED_OR_EXECUTED',
+    report = {'schema_version':1,'scope':'NATIVE_CORE_COMPILE_PROBES_ONLY_NOT_A_KERNEL_LINK_OR_EXECUTION',
         'port_id':base['port_id'],'base_report_sha256':digest(args.build),'tool_sha256':digest(__file__),
         'units':units,'compiled_units':sum(u['exit_code']==0 for u in units),
         'failed_units':sum(u['exit_code']!=0 for u in units),'xnu_executed':False,'phone_accessed':False}

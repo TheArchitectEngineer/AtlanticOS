@@ -84,3 +84,11 @@ Pasan 36/30 checks de alcance/ABI y 13 constantes sin cambio entre contextos.
 El enlace de 126 objetos sigue fallando con 778 diagnósticos indefinidos y cero
 duplicados; sin imagen. SLEH tiene un preview compilado que aún no se integra.
 No hay arranque físico XNU, handoff EDK2 o medición de RAM firmware.
+
+La [integración de excepciones y reloj](XNU_ARM64_EXCEPTIONS.md) alcanza 107
+unidades experimentales. Se conservan SLEH y seis proveedores upstream de timer,
+contabilidad, commpage y datos ARM. Pasan 15 checks BRK por carril; el callback
+del descriptor fatal apunta al handler nativo mediante relocation auditada.
+El enlace de 133 objetos conserva 765 diagnósticos indefinidos, cero duplicados
+y ninguna imagen. La CI de 100 unidades de 49bbae4 también se conserva separada
+con success, sin atribuirle la revisión posterior. No cambia el objetivo físico.

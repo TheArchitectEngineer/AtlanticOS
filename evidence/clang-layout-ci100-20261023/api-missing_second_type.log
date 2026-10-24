@@ -1,0 +1,5 @@
+<stdin>:1:46: error: expected ','
+    1 | unsigned x = __atlantic_layout_compatible(int);
+      |                                              ^
+      |                                              ,
+1 error generated.

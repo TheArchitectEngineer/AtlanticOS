@@ -1,0 +1,11 @@
+000000000000005c t ___thread_ro_circularity_panic
+00000000000000b0 T _current_thread_ro
+0000000000000090 T _current_thread_ro_unchecked
+0000000000000010 T _get_thread_ro
+0000000000000000 T _get_thread_ro_unchecked
+0000000000000100 T _get_threadtask
+0000000000000150 T _get_threadtask_early
+00000000000001c0 s l_.str
+00000000000001ee s l_.str.1
+0000000000000000 t ltmp0
+00000000000001c0 s ltmp1

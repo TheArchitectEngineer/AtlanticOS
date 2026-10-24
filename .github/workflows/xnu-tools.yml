@@ -16,6 +16,7 @@ on:
       - 'tools/test_xnu_rpc.py'
       - 'tools/test_xnu_kobject_scope.py'
       - 'tools/test_xnu_core_scope.py'
+      - 'tools/test_xnu_brk_scope.py'
       - 'tools/diagnose_xnu_link.py'
       - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
@@ -39,6 +40,7 @@ on:
       - 'tools/test_xnu_rpc.py'
       - 'tools/test_xnu_kobject_scope.py'
       - 'tools/test_xnu_core_scope.py'
+      - 'tools/test_xnu_brk_scope.py'
       - 'tools/diagnose_xnu_link.py'
       - 'tests/test_xnu_assym.py'
       - 'xnu-port/**'
@@ -86,6 +88,8 @@ jobs:
         run: python3 tools/test_xnu_kobject_scope.py --build work/xnu-lab-builds/*/report.json --output work/kobject-scope-tests
       - name: Check native panic preprocessing and complete original printf definitions
         run: python3 tools/test_xnu_core_scope.py --build work/xnu-lab-builds/*/report.json --output work/core-scope-tests
+      - name: Check BRK/register encodings without claiming a compiled native SLEH object
+        run: python3 tools/test_xnu_brk_scope.py --build work/xnu-lab-builds/*/report.json --output work/brk-scope-tests
       - name: Generate and compile forty-two RPC probes and select native kernel sources
         run: python3 tools/build_xnu_rpc.py --build work/xnu-lab-builds/*/report.json
       - name: Verify generated descriptor ABI without claiming kobject execution
@@ -135,5 +139,8 @@ jobs:
             work/xnu-rpc-tests/descriptor_abi.c
             work/kobject-scope-tests/*
             work/core-scope-tests/*
+            work/brk-scope-tests/report.json
+            work/brk-scope-tests/*.log
+            work/brk-scope-tests/brk.ll
             work/xnu-link-diagnostics/report.json
             work/xnu-link-diagnostics/link.log

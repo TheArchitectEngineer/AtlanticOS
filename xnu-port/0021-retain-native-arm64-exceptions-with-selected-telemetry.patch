@@ -1,0 +1,45 @@
+Retain native ARM64 fatal exception/BRK support in the firmware profile.
+Use the real trap definitions independently of telemetry collection.
+Recoverable traps and their test require the selected firmware provider.
+
+diff --git a/osfmk/arm64/sleh.c b/osfmk/arm64/sleh.c
+--- a/osfmk/arm64/sleh.c
++++ b/osfmk/arm64/sleh.c
+@@ -54,7 +54,9 @@
+ #include <machine/limits.h>
+ 
+ #include <pexpert/arm/protos.h>
++#if !defined(ARM64_BOARD_CONFIG_ATLANTIC_LAB)
+ #include <pexpert/arm64/apple_arm64_cpu.h>
++#endif
+ #include <pexpert/arm64/apple_arm64_regs.h>
+ #include <pexpert/arm64/board_config.h>
+ 
+@@ -73,8 +75,8 @@
+ #include <kern/policy_internal.h>
+ #if CONFIG_TELEMETRY
+ #include <kern/telemetry.h>
++#endif
+ #include <kern/trap_telemetry.h>
+-#endif
+ 
+ #include <prng/entropy.h>
+ 
+@@ -97,7 +99,7 @@
+ #error Should only be compiling for arm64.
+ #endif
+ 
+-#if DEBUG || DEVELOPMENT
++#if (DEBUG || DEVELOPMENT) && (!CONFIG_ATLANTIC_FIRMWARE || CONFIG_TELEMETRY)
+ #define HAS_TELEMETRY_KERNEL_BRK 1
+ #endif
+ 
+@@ -2802,7 +2804,7 @@
+ }
+ 
+ 
+-#if MACH_ASSERT
++#if MACH_ASSERT && (!CONFIG_ATLANTIC_FIRMWARE || HAS_TELEMETRY_KERNEL_BRK)
+ static int trap_handled;
+ static const char *
+ handle_recoverable_kernel_trap(

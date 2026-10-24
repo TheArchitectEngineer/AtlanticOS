@@ -1,0 +1,17 @@
+_clock_absolutetime_interval_to_deadline
+_cpu_datap
+_cpu_signal
+_current_thread
+_kdebug_enable
+_kernel_debug
+_mach_absolute_time
+_mach_assert_jump_key
+_master_cpu
+_ml_is_quiescing
+_ml_set_interrupts_enabled
+_percpu_slot_cpu_data
+_percpu_slot_processor
+_running_timers_deadline
+_running_timers_expire
+_setPop
+_timer_queue_expire

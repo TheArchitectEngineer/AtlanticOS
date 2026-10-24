@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "112786a12d0a359b54f4f4fa953b8c68fce1894dfaa5821c6ee597cda826fb7f",
+  "port_id": "b1325e485ebde9963306d7d2b6c4c26f3644b6b4bf8317e0fc62037cb6effbf8",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -22,7 +22,8 @@
     "0017-match-firmware-mig-table-to-native-selected-providers.patch": "67d966d2857f45dd6c8599724a57d536018395eab426b27bccc1875f5e29184c",
     "0018-retain-native-arm64-support-and-panic-formatting.patch": "2ab160463080bc9a32557c836a963c9c1e44e46a72370b178a4905bfece2840f",
     "0019-preserve-native-allocator-usage-annotations.patch": "d273fb71dcfc71a7ec63aac25b3ce1635c41f02b25ba20aa51033544d30c3a33",
-    "0020-match-zone-diagnostic-storage-to-native-allocation-type.patch": "82a6336387c391c636579b08974974b87eb6933a587c6dd99f0f7eeff1151d20"
+    "0020-match-zone-diagnostic-storage-to-native-allocation-type.patch": "82a6336387c391c636579b08974974b87eb6933a587c6dd99f0f7eeff1151d20",
+    "0021-retain-native-arm64-exceptions-with-selected-telemetry.patch": "6175568e926f782a906ea6a68187b030de39e398067fce96c2919cf1e58ded28"
   },
   "canonical_lf_files": [
     {
@@ -189,6 +190,11 @@
       "path": "bsd/sys/cdefs.h",
       "preimage_sha256": "6bab328310e9d4f9ff47f763f1fa8cf0000e25ce6be04a9743bf176ccdf94682",
       "postimage_sha256": "c2c260291d47ebad33a3982b7d64b18450eea5f601391df0f86ea56fb9860a91"
+    },
+    {
+      "path": "osfmk/arm64/sleh.c",
+      "preimage_sha256": "93d0e76b996a091584f4b021658a7b128147e05fa1c7ccc1a929bbee6db67f75",
+      "postimage_sha256": "377e507fd661ef0282ef0155ce5b217d66eebad7b7fa95070c014a59d8d77bda"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

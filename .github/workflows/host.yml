@@ -56,3 +56,5 @@ jobs:
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-static-providers-20261022/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-core-support-20261022/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-usage-semantics-20261022/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/clang-layout-ci100-20261023/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/xnu-arm64-exceptions-20261023/manifest.json

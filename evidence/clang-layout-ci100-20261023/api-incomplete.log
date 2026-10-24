@@ -1,0 +1,4 @@
+<stdin>:1:30: error: AtlanticOS layout: requires a complete, fixed-size object type
+    1 | struct Forward; unsigned x = __atlantic_layout_summary(struct Forward);
+      |                              ^
+1 error generated.

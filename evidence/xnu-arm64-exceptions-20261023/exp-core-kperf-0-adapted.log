@@ -1,0 +1,5 @@
+ if (reasons & AST_KPERF) {
+  thread_ast_clear(thread, AST_KPERF);
+  kpc_thread_ast_handler(thread);
+  kperf_thread_ast_handler(thread);
+ }
