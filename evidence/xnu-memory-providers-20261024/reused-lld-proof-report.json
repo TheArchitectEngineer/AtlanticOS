@@ -1,0 +1,2713 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "STATIC_ARM64_LINK_FIXTURES_ONLY_NOT_XNU_KERNEL_OR_EXECUTION",
+  "linker_sha256": "0366272978de83b5da6c47d37f458b9e0feaa58f9ac5dd14e831a23420f06133",
+  "compiler_sha256": "0a3c55936ac43954fbe4914e6e73b577ca9e35e75d89ef13d3e28c187f41ca1a",
+  "archive_tool_sha256": "e15ccf58a2db49c1d9589a515bebc191abee12db35c809f092a70ed8e1ea2f8e",
+  "linker_version": "AtlanticOS-static-arm64-v2 LLD 19.1.7",
+  "inputs": {
+    "tools/test_atlantic_lld.py": "62ecefcb67930d85576b7053d95a56d0c033f37f2a5c020720fa731e5c20d8a6",
+    "tests/lld_static/entry.s": "319940297694d92d79518da91a8296040c70faceced7a4a19f44195b3e8a73a4",
+    "tests/lld_static/data.s": "c3d2153463b6789ade371a7c4c21a745babbe383f521a412192a7395495e37ed",
+    "tests/lld_static/weak-entry.s": "98b9d21f5e4388721333540f38efb1892b119be96fb6bffb9942cea471ba81b7",
+    "tests/lld_static/weak-definition.S": "fd1ca9b4776618fabb219f752b70b423c8d5777191ead31e9336710e8fe4f6bd",
+    "linker-port/0001-add-bounded-static-arm64-link-mode.patch": "0b7ff37bab7c8bcc27267990b47b7068896f552dc9e07f28649dfec6d749222f",
+    "linker-port/patches.lock.json": "26617f3e078c7e7554dbc7e6b78e4162cc34d302a4845c2b404f6a5d015e5cba"
+  },
+  "outcomes": [
+    {
+      "name": "compile-entry",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "compile-data",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-low",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-high",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "unaligned-base",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "16 KiB aligned"
+    },
+    {
+      "name": "zero-base",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "16 KiB aligned"
+    },
+    {
+      "name": "noncanonical-base",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "canonical"
+    },
+    {
+      "name": "overflow-base",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "256 MiB"
+    },
+    {
+      "name": "invalid-base",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "unsigned 64-bit"
+    },
+    {
+      "name": "base-too-wide",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "unsigned 64-bit"
+    },
+    {
+      "name": "wrong-architecture",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "requires arm64"
+    },
+    {
+      "name": "pie-option",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "option not supported"
+    },
+    {
+      "name": "legacy-static-option",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "option not supported"
+    },
+    {
+      "name": "dynamic-lookup",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "-undefined error"
+    },
+    {
+      "name": "writable-executable",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "writable executable"
+    },
+    {
+      "name": "nonexecute-text",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "lacks execute permission"
+    },
+    {
+      "name": "data-entry",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "instruction symbol"
+    },
+    {
+      "name": "compile-undefined",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-undefined",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "undefined symbol: _missing"
+    },
+    {
+      "name": "compile-weak-undefined",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-weak-undefined",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "undefined symbol: _missing"
+    },
+    {
+      "name": "compile-tls",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-tls",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "unsupported runtime section"
+    },
+    {
+      "name": "compile-unreferenced-undefined",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-unreferenced-undefined",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "unresolved or dynamic symbol"
+    },
+    {
+      "name": "compile-constructor",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-constructor",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "unsupported runtime section"
+    },
+    {
+      "name": "compile-bitcode",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-bitcode",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "requires native Mach-O objects"
+    },
+    {
+      "name": "archive-native-object",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-native-archive",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "compile-weak-entry",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "compile-weak-a",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "compile-weak-b",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "compile-strong-c",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "compile-strong-d",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "compile-weak-private-a",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "compile-weak-private-b",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "archive-weak-a",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "archive-strong-c",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-weak-a",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-weak-ab",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-weak-ba",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-weak-then-strong",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-strong-then-weak",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-weak-strong-weak",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-high-weak",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-archive-weak",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-archive-weak-then-strong",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-weak-then-strong-archive",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-weak-private-ab",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "link-weak-private-ba",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    },
+    {
+      "name": "reject-duplicate-strong",
+      "exit_code": 1,
+      "passed": true,
+      "required_diagnostic": "duplicate symbol"
+    },
+    {
+      "name": "normal-dynamic-link",
+      "exit_code": 0,
+      "passed": true,
+      "required_diagnostic": null
+    }
+  ],
+  "commands": [
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/tests/lld_static/entry.s",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/tests/lld_static/data.s",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/low.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0xfffffff007004000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/high.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000001",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/unaligned-base.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/zero-base.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=1111000040000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/noncanonical-base.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=ffffffffffffc000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/overflow-base.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=not-hex",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/invalid-base.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=10000000000000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/base-too-wide.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-arch",
+      "x86_64",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/wrong-architecture.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-pie",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/pie-option.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-static",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/legacy-static-option.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-undefined",
+      "dynamic_lookup",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/dynamic-lookup.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-segprot",
+      "__TEXT",
+      "rwx",
+      "rwx",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/writable-executable.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-segprot",
+      "__TEXT",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/nonexecute-text.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-e",
+      "_value",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data-entry.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/undefined.s",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/undefined.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/undefined.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/undefined.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-undefined.s",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-undefined.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-undefined.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-undefined.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/tls.s",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/tls.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/tls.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/tls.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/unreferenced-undefined.s",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/unreferenced-undefined.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/unreferenced-undefined.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/unreferenced-undefined.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/constructor.s",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/constructor.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/constructor.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/constructor.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "-emit-llvm",
+      "-x",
+      "c",
+      "-",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/bitcode.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/bitcode.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/bitcode.o"
+    ],
+    [
+      "/usr/bin/llvm-ar-19",
+      "rcs",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.a",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/archive.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.a"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "<ROOT>/tests/lld_static/weak-entry.s",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "-DSELECTED_RETURN=17",
+      "-DSELECTED_DATA=0x1111",
+      "<ROOT>/tests/lld_static/weak-definition.S",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "-DSELECTED_RETURN=34",
+      "-DSELECTED_DATA=0x2222",
+      "<ROOT>/tests/lld_static/weak-definition.S",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-b.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "-DSELECTED_RETURN=51",
+      "-DSELECTED_DATA=0x3333",
+      "-DSTRONG_DEFINITION=1",
+      "<ROOT>/tests/lld_static/weak-definition.S",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-c.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "-DSELECTED_RETURN=68",
+      "-DSELECTED_DATA=0x4444",
+      "-DSTRONG_DEFINITION=1",
+      "<ROOT>/tests/lld_static/weak-definition.S",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-d.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "-DSELECTED_RETURN=85",
+      "-DSELECTED_DATA=0x5555",
+      "-DPRIVATE_DEFINITION=1",
+      "<ROOT>/tests/lld_static/weak-definition.S",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-private-a.o"
+    ],
+    [
+      "/usr/bin/clang-19",
+      "--target=arm64-apple-macos11",
+      "-mcpu=cortex-a57",
+      "-ffreestanding",
+      "-c",
+      "-DSELECTED_RETURN=102",
+      "-DSELECTED_DATA=0x6666",
+      "-DPRIVATE_DEFINITION=1",
+      "<ROOT>/tests/lld_static/weak-definition.S",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-private-b.o"
+    ],
+    [
+      "/usr/bin/llvm-ar-19",
+      "rcs",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.a",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.o"
+    ],
+    [
+      "/usr/bin/llvm-ar-19",
+      "rcs",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-c.a",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-c.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-ab.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-b.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-ba.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-b.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-then-strong.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-b.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-c.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-then-weak.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-c.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-b.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-strong-weak.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-c.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-b.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0xfffffff007004000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/high-weak.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-b.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/archive-weak.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.a"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/archive-weak-then-strong.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.a",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-c.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-then-strong-archive.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-c.a"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0x40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-private-ab.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-private-a.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-private-b.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=0xfffffff007004000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-private-ba.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-private-b.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-private-a.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "--atlantic-static-arm64=40000000",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/duplicate-strong.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-c.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-d.o"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/lld-static-weak-clean-v2/build/bin/ld64.lld",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "macos",
+      "11.0",
+      "11.0",
+      "-e",
+      "__start",
+      "-fatal_warnings",
+      "-undefined",
+      "error",
+      "--error-limit=0",
+      "-no_uuid",
+      "-segprot",
+      "__DATA_CONST",
+      "r--",
+      "r--",
+      "-o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/normal.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/entry.o",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/data.o"
+    ]
+  ],
+  "images": [
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x40000498",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x40000498",
+              "size": 48,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 8,
+              "flags": "0x6"
+            },
+            {
+              "name": "__const",
+              "address": "0x40004008",
+              "size": 8,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 32768,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 44,
+              "flags": "0x0"
+            },
+            {
+              "name": "__bss",
+              "address": "0x40008030",
+              "size": 20480,
+              "flags": "0x1"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073807360,
+          "virtual_size": 304,
+          "file_offset": 49152,
+          "file_size": 304,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 11,
+      "file_sha256": "d861a1d1d0f50147aebeca76ebc9b482d7c7c578f9d3ae9ad52dfcceff002c59",
+      "relocations_checked": [
+        "BRANCH26",
+        "PAGE21",
+        "PAGEOFF12",
+        "GOT_LOAD_PAGE21",
+        "GOT_LOAD_PAGEOFF12",
+        "POINTER_TO_GOT",
+        "UNSIGNED64",
+        "SUBTRACTOR64"
+      ]
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0xfffffff007004498",
+      "base": "0xfffffff007004000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 18446744005107531776,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0xfffffff007004498",
+              "size": 48,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 18446744005107548160,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0xfffffff007008000",
+              "size": 8,
+              "flags": "0x6"
+            },
+            {
+              "name": "__const",
+              "address": "0xfffffff007008008",
+              "size": 8,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 18446744005107564544,
+          "virtual_size": 32768,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0xfffffff00700c000",
+              "size": 44,
+              "flags": "0x0"
+            },
+            {
+              "name": "__bss",
+              "address": "0xfffffff00700c030",
+              "size": 20480,
+              "flags": "0x1"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 18446744005107597312,
+          "virtual_size": 304,
+          "file_offset": 49152,
+          "file_size": 304,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 11,
+      "file_sha256": "06b3bb2ca32f77cc38873726923b4dc9587c3afe0f82472d2ea9abf95c979f13",
+      "relocations_checked": [
+        "BRANCH26",
+        "PAGE21",
+        "PAGEOFF12",
+        "GOT_LOAD_PAGE21",
+        "GOT_LOAD_PAGEOFF12",
+        "POINTER_TO_GOT",
+        "UNSIGNED64",
+        "SUBTRACTOR64"
+      ]
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x40000498",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x40000498",
+              "size": 48,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 8,
+              "flags": "0x6"
+            },
+            {
+              "name": "__const",
+              "address": "0x40004008",
+              "size": 8,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 32768,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 44,
+              "flags": "0x0"
+            },
+            {
+              "name": "__bss",
+              "address": "0x40008030",
+              "size": 20480,
+              "flags": "0x1"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073807360,
+          "virtual_size": 304,
+          "file_offset": 49152,
+          "file_size": 304,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 11,
+      "file_sha256": "f63cb73b9bc813b26d0b4510dea343e94c347c92da569480c9aab8db4babaf3c",
+      "relocations_checked": [
+        "BRANCH26",
+        "PAGE21",
+        "PAGEOFF12",
+        "GOT_LOAD_PAGE21",
+        "GOT_LOAD_PAGEOFF12",
+        "POINTER_TO_GOT",
+        "UNSIGNED64",
+        "SUBTRACTOR64"
+      ]
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x400003f8",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x400003f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073790976,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 17,
+      "selected_data": "0x1111",
+      "selected_definition_is_weak": true,
+      "selected_definition_is_private_external": false
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x400003f8",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x400003f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073790976,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 17,
+      "selected_data": "0x1111",
+      "selected_definition_is_weak": true,
+      "selected_definition_is_private_external": false
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x400003f8",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x400003f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073790976,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "c109c047cbfc9b2d0f87247876735cc5cd88aeeca4073e660b64f7c8564a228a",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 34,
+      "selected_data": "0x2222",
+      "selected_definition_is_weak": true,
+      "selected_definition_is_private_external": false
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x400003f8",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x400003f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073790976,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 51,
+      "selected_data": "0x3333",
+      "selected_definition_is_weak": false,
+      "selected_definition_is_private_external": false
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x400003f8",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x400003f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073790976,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 51,
+      "selected_data": "0x3333",
+      "selected_definition_is_weak": false,
+      "selected_definition_is_private_external": false
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x400003f8",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x400003f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073790976,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 51,
+      "selected_data": "0x3333",
+      "selected_definition_is_weak": false,
+      "selected_definition_is_private_external": false
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0xfffffff0070043f8",
+      "base": "0xfffffff007004000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 18446744005107531776,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0xfffffff0070043f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 18446744005107548160,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0xfffffff007008000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 18446744005107564544,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0xfffffff00700c000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 18446744005107580928,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "84e34d78ecd418c284e8bbf9f515470360e9f06d1a867ce198aec3d015ada3cd",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 34,
+      "selected_data": "0x2222",
+      "selected_definition_is_weak": true,
+      "selected_definition_is_private_external": false
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x400003f8",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x400003f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073790976,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 17,
+      "selected_data": "0x1111",
+      "selected_definition_is_weak": true,
+      "selected_definition_is_private_external": false
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x400003f8",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x400003f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073790976,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 51,
+      "selected_data": "0x3333",
+      "selected_definition_is_weak": false,
+      "selected_definition_is_private_external": false
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x400003f8",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x400003f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073790976,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 17,
+      "selected_data": "0x1111",
+      "selected_definition_is_weak": true,
+      "selected_definition_is_private_external": false
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0x400003f8",
+      "base": "0x40000000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 1073741824,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0x400003f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 1073758208,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0x40004000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 1073774592,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0x40008000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 1073790976,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "0fa3ca6e81923dc6daff3da88b426253b51b9b029dbf4b024b9960ae63fa2475",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 85,
+      "selected_data": "0x5555",
+      "selected_definition_is_weak": true,
+      "selected_definition_is_private_external": true
+    },
+    {
+      "commands": [
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x19",
+        "0x2",
+        "0xb",
+        "0x32",
+        "0x5"
+      ],
+      "entry": "0xfffffff0070043f8",
+      "base": "0xfffffff007004000",
+      "segments": [
+        {
+          "name": "__TEXT",
+          "address": 18446744005107531776,
+          "virtual_size": 16384,
+          "file_offset": 0,
+          "file_size": 16384,
+          "protection": 5,
+          "sections": [
+            {
+              "name": "__text",
+              "address": "0xfffffff0070043f8",
+              "size": 36,
+              "flags": "0x80000400"
+            }
+          ]
+        },
+        {
+          "name": "__DATA_CONST",
+          "address": 18446744005107548160,
+          "virtual_size": 16384,
+          "file_offset": 16384,
+          "file_size": 16384,
+          "protection": 1,
+          "sections": [
+            {
+              "name": "__got",
+              "address": "0xfffffff007008000",
+              "size": 16,
+              "flags": "0x6"
+            }
+          ]
+        },
+        {
+          "name": "__DATA",
+          "address": 18446744005107564544,
+          "virtual_size": 16384,
+          "file_offset": 32768,
+          "file_size": 16384,
+          "protection": 3,
+          "sections": [
+            {
+              "name": "__data",
+              "address": "0xfffffff00700c000",
+              "size": 32,
+              "flags": "0x0"
+            }
+          ]
+        },
+        {
+          "name": "__LINKEDIT",
+          "address": 18446744005107580928,
+          "virtual_size": 272,
+          "file_offset": 49152,
+          "file_size": 272,
+          "protection": 1,
+          "sections": []
+        }
+      ],
+      "symbol_count": 8,
+      "file_sha256": "6a585ddc6afe20c6599c929be3895412fba6da2e726ec258165d1c025de7f741",
+      "scope": "WEAK_DEFINITION_SELECTION_AND_STATIC_RELOCATIONS_ONLY",
+      "selected_return": 102,
+      "selected_data": "0x6666",
+      "selected_definition_is_weak": true,
+      "selected_definition_is_private_external": true
+    }
+  ],
+  "weak_definition_image_audits": 12,
+  "xnu_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false
+}

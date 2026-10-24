@@ -1,0 +1,507 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-24",
+  "label": "BUILT_ARM64",
+  "scope": "NATIVE_MEMORY_AND_ORIGINAL_CACHE_ADAPTER_OBJECT_ABI_AND_LINK_DIAGNOSTIC_ONLY_NO_RUNTIME_OR_PHONE_EXECUTION",
+  "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+  "port_id": "7f9dd58d8e7928f51e2cf323e71e9ddc8befbc107e1cf9667682a02a9e375323",
+  "experimental_base_objects": 132,
+  "standard_base_objects": 13,
+  "new_original_cache_adapter_units": 1,
+  "new_unchanged_native_units": 6,
+  "new_guarded_native_units": 1,
+  "rpc_compiled_per_lane": 42,
+  "rpc_kernel_selected_per_lane": 26,
+  "experimental_link_objects": 158,
+  "experimental_link_undefined_diagnostics": 609,
+  "experimental_link_duplicate_diagnostics": 0,
+  "former_unresolved_names_now_provided": 60,
+  "new_unresolved_dependencies": 0,
+  "experimental_scope_abi_checks": 89,
+  "standard_scope_abi_checks": 57,
+  "cache_executed": false,
+  "physical_copy_executed": false,
+  "atomics_executed": false,
+  "pager_executed": false,
+  "bsp_provider_linked": false,
+  "pe_executed": false,
+  "compiler_proof_reused_sha256": "079ad84cf93e1d9c428b64d7f7681c439e5071d85bdba8c741c142ddb0d348a4",
+  "lld_proof_reused_sha256": "5dfd83df8cd779447b234556f457f8715b312268a3d91dc29e08f0982bebd0da",
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "d3fb91743b66c14b951ffc516253bb439f58df3ea4b5fa9d8ceeac8cdfda6243"
+    },
+    {
+      "path": "compile-probe-ipc_policy.log",
+      "sha256": "c697ded27259b540e481c603c4219ddd7a5087f3d9788c3d129394f8c993d12a"
+    },
+    {
+      "path": "compile-probe-mach_debug.log",
+      "sha256": "8beae7cde07ed7333e2bd36c8852a8da84d50af51f3383eb733f9bce701e1a06"
+    },
+    {
+      "path": "compile-probe-sleh.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compile-probe-vm_pageout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compile-probes-report.json",
+      "sha256": "b88a43b06b2aca28b45003039b13a250dd7f3c8639418540a254b7a8ac53ad4c"
+    },
+    {
+      "path": "exp-assym-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-base-report.json",
+      "sha256": "554d4cd2e6af60499336bba7ef326bdd9a8257da768ef7bf9bb7a3a444076157"
+    },
+    {
+      "path": "exp-boot-data-boot_tree-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-boot-data-fdt-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-boot-data-file-harness-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-boot-data-host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-boot-data-host-tests.log",
+      "sha256": "f6b09884ac1b59a30b3252480c9f3928dbdebcd69a19abc815b5c9d254e1d563"
+    },
+    {
+      "path": "exp-boot-data-native-xnu-tree-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-boot-data-report.json",
+      "sha256": "f1913772f4e25b60c67af46b1c4557c14183f5e0a2e9c5d84f2646ae1b72dcaf"
+    },
+    {
+      "path": "exp-brk-report.json",
+      "sha256": "e8939cddfd4afabd778f5e65aeb129997eb29a3379a0d4886574ae432d646590"
+    },
+    {
+      "path": "exp-core-report.json",
+      "sha256": "5bd6cc0e30ea92f950f60624d500fb20a7c4c18144b6dcb641aec37d53525d81"
+    },
+    {
+      "path": "exp-genassym.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-kobject-report.json",
+      "sha256": "da84b71461aaf2ad2e2a23a3efcef503967e3265dc504d16cc21ba24bc1cf3ea"
+    },
+    {
+      "path": "exp-link-link.log",
+      "sha256": "76950de991ed0f7eea7839cdf5c1631fdd24da1f9f08f28ac7341e9988964e41"
+    },
+    {
+      "path": "exp-link-report.json",
+      "sha256": "2dd7674d5e3a33965f69338d06129ab1ecb08e6ac433e7ff33439967d04ae960"
+    },
+    {
+      "path": "exp-memory-disassembly-OSAtomicOperations.log",
+      "sha256": "322482004a8425d9d0552022b49fb7f4581c7368c44db809d1c6c1203a3e3e10"
+    },
+    {
+      "path": "exp-memory-disassembly-caches_asm.log",
+      "sha256": "6dff5374b3393c4fe9b5e7bb542a1ebd21c2a57976224fd2123bd88d6a53804d"
+    },
+    {
+      "path": "exp-memory-disassembly-memory_object.log",
+      "sha256": "88d53b196c6c413cfcf339498dd510d076e0bbaa52361ae8c0a1692f16524e30"
+    },
+    {
+      "path": "exp-memory-firmware-kdp-adapted.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "exp-memory-firmware-kdp-upstream.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "exp-memory-firmware-no-kdp-adapted.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "exp-memory-firmware-no-kdp-upstream.log",
+      "sha256": "2e72aa905c5d277dd1400afc32dfe40e7a4a42eac069abc291bb1f99bbec06ab"
+    },
+    {
+      "path": "exp-memory-native-call-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-memory-outside-firmware-kdp-adapted.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "exp-memory-outside-firmware-kdp-upstream.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "exp-memory-outside-firmware-no-kdp-adapted.log",
+      "sha256": "2e72aa905c5d277dd1400afc32dfe40e7a4a42eac069abc291bb1f99bbec06ab"
+    },
+    {
+      "path": "exp-memory-outside-firmware-no-kdp-upstream.log",
+      "sha256": "2e72aa905c5d277dd1400afc32dfe40e7a4a42eac069abc291bb1f99bbec06ab"
+    },
+    {
+      "path": "exp-memory-reject-apple-provider.log",
+      "sha256": "e11d173b1e7f9a11cbb7d95bed6e9bf5f233eff5563aa55a7aec84cbe1f12d82"
+    },
+    {
+      "path": "exp-memory-reject-outside-firmware.log",
+      "sha256": "d779d43c47437fa001ff9118780315157dc9b1252519e3b409c04d70ca616557"
+    },
+    {
+      "path": "exp-memory-reject-truncated-native-range.log",
+      "sha256": "21644cc70335546034912a553e5349fd774e1368e8b38dec6ff63d9dec1ca513"
+    },
+    {
+      "path": "exp-memory-reject-vmapple-provider.log",
+      "sha256": "e11d173b1e7f9a11cbb7d95bed6e9bf5f233eff5563aa55a7aec84cbe1f12d82"
+    },
+    {
+      "path": "exp-memory-report.json",
+      "sha256": "009f4c0ff0ba22afdcd7a75b3ee2aee20b4aaacada375a932829ccc7db2c5c8e"
+    },
+    {
+      "path": "exp-mig-report.json",
+      "sha256": "bb99bdda9f106d704bf75097b63f18b062dfb485a96003551f8fb03c34f0a3be"
+    },
+    {
+      "path": "exp-native-config.Makefile",
+      "sha256": "c342093ee9e1052e9daed9ac25675ac54d47e32619f87edbfe3e2c809d76feab"
+    },
+    {
+      "path": "exp-platform-disassembly.log",
+      "sha256": "394baabd7282e84fa0396c1a7fdc4132cb244c8021c25a0c5904bb12207af2be"
+    },
+    {
+      "path": "exp-platform-native-and-original-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-platform-native-imports.log",
+      "sha256": "b992afa5c0df3974a51738c20fe3d2f25d83c4aff6dbe106b7e2f5e282903575"
+    },
+    {
+      "path": "exp-platform-reject-bsd-backend.log",
+      "sha256": "6d057fa89f29cf63d0e58d26c01aa27e472b8edb94568b10fdcc7a2636591184"
+    },
+    {
+      "path": "exp-platform-reject-iokit-backend.log",
+      "sha256": "bba3af3cd0671216c12826b3a810105f8b77cdd7b3d0cbceed5275bc71ef35c7"
+    },
+    {
+      "path": "exp-platform-reject-irq-callback-abi.log",
+      "sha256": "795cc6abbc63bb879a5606e86e13ef8fbbc6f12b61c7ae0b72fe0c144e9b3670"
+    },
+    {
+      "path": "exp-platform-reject-mapping-callback-abi.log",
+      "sha256": "52f002696657279da25f7a675e14514952538f25c7329b070d673d10c21ef312"
+    },
+    {
+      "path": "exp-platform-reject-outside-firmware.log",
+      "sha256": "2c0ca41488dca05a960f7af9517fa4d9218160fa8d2b37c9fd5aca4fc94efab8"
+    },
+    {
+      "path": "exp-platform-report.json",
+      "sha256": "17f040c01ed5fb0bbbf1cc4cfb6ad02acee5a11c20a3817af8a2cb88c72875ef"
+    },
+    {
+      "path": "exp-pmap-report.json",
+      "sha256": "9c56a8fe3e10ce32b37eacf6282dd60d1dc4bbe46c5d66cb79ccb28517cfdb33"
+    },
+    {
+      "path": "exp-pmap-scope-report.json",
+      "sha256": "be194469f35dab95765924cb9d236daaf0a9549498bdb5e924febd5900f7e145"
+    },
+    {
+      "path": "exp-reject-assym-offset.log",
+      "sha256": "13b0b59e72106d643067c642b67ca0b589eae68d466d8812a9da3f702c2b6562"
+    },
+    {
+      "path": "exp-rpc-report.json",
+      "sha256": "6a646ecdd4d6c569de9864001e3ae28ea70d953b3fd2479eaae2af3ac4bd8b22"
+    },
+    {
+      "path": "exp-task-report.json",
+      "sha256": "20e17517b46902c3534e3664c557271728fe94608320b9c7093faf3392d9e0fa"
+    },
+    {
+      "path": "exp-usage-report.json",
+      "sha256": "ae0070ce5e834a90756f4e4fd13ee7b0c3c4284036df490911a574de26535025"
+    },
+    {
+      "path": "host-tests.log",
+      "sha256": "063b6fea022a24079529799a381d3883432f9524f6294d1e096791ab5a6773ac"
+    },
+    {
+      "path": "initial-duplicate-base-report.json",
+      "sha256": "b0c75ddada6dbf57ce688ffad5ec781aaba972bccbe356925ef5ebe97b7e6547"
+    },
+    {
+      "path": "initial-duplicate-link-report.json",
+      "sha256": "0ca0008b8c7298c60280e4b12fc686401d3682878828add041fccd91510a919a"
+    },
+    {
+      "path": "initial-duplicate-link.log",
+      "sha256": "82b682375fb34394f2cfd2a81650161f29e4b7fb8d2174a3152a3976968b8f39"
+    },
+    {
+      "path": "link-dependency-delta.json",
+      "sha256": "bce161b98c7009bb0f5a83d2eaeaacd3fef7ccdec33909f3509ba878435ed596"
+    },
+    {
+      "path": "native-OSAtomicOperations-defined.log",
+      "sha256": "d7ad8f19f350eb8f02c6241a5a28f1c980e376f0f4bf0138db3909a2b7fe8545"
+    },
+    {
+      "path": "native-OSAtomicOperations-undefined.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-OSAtomicOperations.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-atlantic_cache_asm-defined.log",
+      "sha256": "cbb0d1433551c232a021bb4ad6178952d8ff9ba445df2c62bae4d926aeb942bd"
+    },
+    {
+      "path": "native-atlantic_cache_asm-undefined.log",
+      "sha256": "3b3eff5377a7d9520f64e58750c713880c73f627d8c4f0bdb9e010d772bf8123"
+    },
+    {
+      "path": "native-atlantic_cache_asm.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-caches-defined.log",
+      "sha256": "a058c7a0cc8c8cc5af6ebb8ec5172c877b969e9643ab584e024840ce5aec6b85"
+    },
+    {
+      "path": "native-caches-undefined.log",
+      "sha256": "f382060ede2fb69fc366e9f287372d29920217d65730a7e0a0a0706840a35618"
+    },
+    {
+      "path": "native-caches.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-caches_asm-defined.log",
+      "sha256": "6f8cf0133ad84e679e095279b3c1add672a82d6b577f63d4a852ddf1a4f9ae64"
+    },
+    {
+      "path": "native-caches_asm-undefined.log",
+      "sha256": "dc1ed5ab608008bed3059cd2f3e196242ff21e33014c892c10aa17df86082c98"
+    },
+    {
+      "path": "native-caches_asm.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-loose_ends-defined.log",
+      "sha256": "7dfd4ce3f6605034e6a76e5af6d4dd4099dd0cb22b387ea1c3b01b1f7af69273"
+    },
+    {
+      "path": "native-loose_ends-undefined.log",
+      "sha256": "496d2ce618ddbfa422f85f21067f8fd8221be9f4de2bf3c6b107004aa885b6f3"
+    },
+    {
+      "path": "native-loose_ends.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-machine_task-defined.log",
+      "sha256": "df25de6299e2fac33f54f169b869a34870228d25dc6f1d21a4fed8c4d60ce71b"
+    },
+    {
+      "path": "native-machine_task-undefined.log",
+      "sha256": "6918dd47b1b4aa86b43e710c4ee087ddc478427d98b6a7544ee61b9bf9ea809f"
+    },
+    {
+      "path": "native-machine_task.log",
+      "sha256": "5ec79dc24bf8a6640d5214d8195bdf1a175be0e1b5f52f40056eac0a273bc14b"
+    },
+    {
+      "path": "native-memory_object-defined.log",
+      "sha256": "b0df092e6443d755dbd8e07954eccb5c5b7dbcc5cf891deee275579121fc9867"
+    },
+    {
+      "path": "native-memory_object-undefined.log",
+      "sha256": "3d37ac828b8c5f1ebfef8edb1a43081bc948c3ecba9f18d7a38a37dd8013fe5a"
+    },
+    {
+      "path": "native-memory_object.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "native-pmap_ppl_interface-defined.log",
+      "sha256": "f5cc5495df9dc61b47b251e5b07d3aba6349f95d02245233f681036041882467"
+    },
+    {
+      "path": "native-pmap_ppl_interface-undefined.log",
+      "sha256": "0380907c9f8cc6327d682288dcfb0102ea16a11b123e4f6bd25e8fa15ba0d220"
+    },
+    {
+      "path": "native-pmap_ppl_interface.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reused-compiler-api-report.json",
+      "sha256": "079ad84cf93e1d9c428b64d7f7681c439e5071d85bdba8c741c142ddb0d348a4"
+    },
+    {
+      "path": "reused-lld-proof-report.json",
+      "sha256": "5dfd83df8cd779447b234556f457f8715b312268a3d91dc29e08f0982bebd0da"
+    },
+    {
+      "path": "std-assym-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-base-report.json",
+      "sha256": "d7caeb4e1f3e31152ce7d40861267a6de81fb69e267a4325883f6855bd402aa7"
+    },
+    {
+      "path": "std-boot-data-boot_tree-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-boot-data-fdt-arm64.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-boot-data-file-harness-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-boot-data-host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-boot-data-host-tests.log",
+      "sha256": "f6b09884ac1b59a30b3252480c9f3928dbdebcd69a19abc815b5c9d254e1d563"
+    },
+    {
+      "path": "std-boot-data-native-xnu-tree-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-boot-data-report.json",
+      "sha256": "bab5c3ff443cff12a636a68117464b1b1daa36b95c8f6503c27affdbbbf4242a"
+    },
+    {
+      "path": "std-brk-report.json",
+      "sha256": "0d6cc361dd84877f1eca51a3d91c6da7a41c0c61e324dd9dfcc1946a8d98f898"
+    },
+    {
+      "path": "std-core-report.json",
+      "sha256": "5ee21592683f69ed1bad00b388db8ef82540108a1fb91b9876e5c199b6c0b254"
+    },
+    {
+      "path": "std-genassym.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-kobject-report.json",
+      "sha256": "e216722f2421adce25df08ac0494bb609ec84fe1b4c9868fea90a67efeb32263"
+    },
+    {
+      "path": "std-link-link.log",
+      "sha256": "9b34b68ca3bfd37d43a2c1fdcc187438599e1568acd55a9b9d009bdaff8df413"
+    },
+    {
+      "path": "std-link-report.json",
+      "sha256": "0a2ddd99bc090cc0fdde1dd6dfbdbabd1656a5e55affa709b0173acb90e042c1"
+    },
+    {
+      "path": "std-mig-report.json",
+      "sha256": "39831b8f0dbc9c6ad12dc37e74c7bd5efb545ccd885f61e925cefd9e5da1c3c7"
+    },
+    {
+      "path": "std-native-config.Makefile",
+      "sha256": "c342093ee9e1052e9daed9ac25675ac54d47e32619f87edbfe3e2c809d76feab"
+    },
+    {
+      "path": "std-platform-disassembly.log",
+      "sha256": "8a0f7fe1a46cc1b2739bfe3bf410da5538a63751e8a3f29af2603da7a965bcaf"
+    },
+    {
+      "path": "std-platform-native-and-original-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-platform-native-imports.log",
+      "sha256": "b992afa5c0df3974a51738c20fe3d2f25d83c4aff6dbe106b7e2f5e282903575"
+    },
+    {
+      "path": "std-platform-reject-bsd-backend.log",
+      "sha256": "ae55da2f74883e911e0f7ea59651da89ab36ec3c5873c995bfc19c64b0c66fc2"
+    },
+    {
+      "path": "std-platform-reject-iokit-backend.log",
+      "sha256": "d64185bd743f9da2463be52beab28f558c773f5d305f3359a8bd47337a3de655"
+    },
+    {
+      "path": "std-platform-reject-irq-callback-abi.log",
+      "sha256": "795cc6abbc63bb879a5606e86e13ef8fbbc6f12b61c7ae0b72fe0c144e9b3670"
+    },
+    {
+      "path": "std-platform-reject-mapping-callback-abi.log",
+      "sha256": "52f002696657279da25f7a675e14514952538f25c7329b070d673d10c21ef312"
+    },
+    {
+      "path": "std-platform-reject-outside-firmware.log",
+      "sha256": "2c87e716133fb122ac6374622ebf54e9f74cb99dd9de4e2ebadfddd406911c2f"
+    },
+    {
+      "path": "std-platform-report.json",
+      "sha256": "7b0e9a9af2a6fe310255a97804df724975fc42e7264ce67a583b576b21b36b9c"
+    },
+    {
+      "path": "std-platform-standard-pe-compile-probe.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std-pmap-report.json",
+      "sha256": "f2c0ff7279eb32c5d23cb2323554d0b1ed20a289d77e504b0bb18fcca377471c"
+    },
+    {
+      "path": "std-pmap-scope-report.json",
+      "sha256": "fbea1cd80a2d03b88cc1ae3ea729ea4d55f74603d62a92cf3aa24e16072477b9"
+    },
+    {
+      "path": "std-reject-assym-offset.log",
+      "sha256": "7e7b6e0922b26dd7f54a2e66d338a18732dd2ba8b8e69fc468771489815781ca"
+    },
+    {
+      "path": "std-rpc-report.json",
+      "sha256": "a612d4c8f945e80a31829b8d59078dc69028c8f4b4433046fc2d18f67f7031bc"
+    },
+    {
+      "path": "std-task-report.json",
+      "sha256": "a57ed236ec4e9a52527687bc76824f9846d735891d41db59cb2da9ad416c56b0"
+    }
+  ]
+}

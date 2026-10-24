@@ -1,0 +1,5 @@
+_InvalidatePoU_IcacheRegion
+_PAGE_SHIFT_CONST
+_gPhysBase
+_gPhysSize
+_phystokv

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "4332e8f0f4cc346631de5be75efc5a92affd0b6acbed839c6da3e0c780d2ad27",
+  "port_id": "7f9dd58d8e7928f51e2cf323e71e9ddc8befbc107e1cf9667682a02a9e375323",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -24,7 +24,9 @@
     "0019-preserve-native-allocator-usage-annotations.patch": "d273fb71dcfc71a7ec63aac25b3ce1635c41f02b25ba20aa51033544d30c3a33",
     "0020-match-zone-diagnostic-storage-to-native-allocation-type.patch": "82a6336387c391c636579b08974974b87eb6933a587c6dd99f0f7eeff1151d20",
     "0021-retain-native-arm64-exceptions-with-selected-telemetry.patch": "6175568e926f782a906ea6a68187b030de39e398067fce96c2919cf1e58ded28",
-    "0022-add-original-atlantic-platform-expert-core.patch": "d5559e4e51bedcee40d38e6dee98dd56ae51e7cc5b4c94c9bb22106c551b170c"
+    "0022-add-original-atlantic-platform-expert-core.patch": "d5559e4e51bedcee40d38e6dee98dd56ae51e7cc5b4c94c9bb22106c551b170c",
+    "0023-add-generic-arm64-cache-force-entry-points.patch": "72df142a8818059185dd4529c46a01d26efdb4d52bdcd18645bf077d832f7c4a",
+    "0024-retain-real-debug-callout-registry-in-firmware.patch": "ae14ccaecb485bf60ad7b7a53e19a13151e95917b943b6fdb5c5093251c24f2f"
   },
   "canonical_lf_files": [
     {
@@ -206,6 +208,16 @@
       "path": "pexpert/atlantic/pe_platform.c",
       "preimage_sha256": null,
       "postimage_sha256": "ae02912e03b405a813a577c4064300488931d915afaa2a71ffa7b272b3ec545e"
+    },
+    {
+      "path": "osfmk/arm64/atlantic_cache_asm.s",
+      "preimage_sha256": null,
+      "postimage_sha256": "468c6c8b62015fc759e660c7a584393119f038056885507e09bd27e070f54596"
+    },
+    {
+      "path": "osfmk/arm64/loose_ends.c",
+      "preimage_sha256": "492a99509ab8cdfd67602587db7d30591858ce7780bf81c88cb5c1c152f11158",
+      "postimage_sha256": "40378504c253e278f36369256c9eb559f411c4840919c838ec0ac81cbe3288ff"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

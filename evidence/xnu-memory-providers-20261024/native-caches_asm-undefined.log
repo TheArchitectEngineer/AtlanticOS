@@ -1,0 +1,5 @@
+_clean_dcache
+_clean_mmu_dcache
+_flush_dcache
+_gPhysBase
+_gVirtBase

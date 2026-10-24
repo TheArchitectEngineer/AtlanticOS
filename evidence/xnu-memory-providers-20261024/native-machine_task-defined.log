@@ -1,0 +1,16 @@
+0000000000000190 T _machine_task_get_state
+0000000000000300 T _machine_task_init
+0000000000000310 T _machine_task_process_signature
+0000000000000468 s _machine_task_process_signature.__desc
+0000000000000000 T _machine_task_set_state
+0000000000000290 T _machine_task_terminate
+00000000000002c0 T _machine_thread_inherit_taskwide
+0000000000000450 T _ml_task_uses_1ghz_timebase
+000000000000047c s l_.str
+000000000000048b s l_.str.1
+000000000000049d s l_.str.2
+00000000000004be s l_.str.3
+0000000000000000 t ltmp0
+0000000000000458 s ltmp1
+0000000000000468 s ltmp2
+000000000000047c s ltmp3

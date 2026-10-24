@@ -1,0 +1,5 @@
+_cpu_number
+_mach_assert_jump_key
+_mapping_free_prime_internal
+_panic
+_pmap_cpu_data_init_internal

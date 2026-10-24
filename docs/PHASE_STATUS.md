@@ -1,4 +1,4 @@
-# Puertas de entrega — actualizado 2026-10-23
+# Puertas de entrega — actualizado 2026-10-24
 
 | Fase / requisito | Estado exacto | Evidencia / siguiente puerta |
 |---|---|---|
@@ -15,11 +15,12 @@
 | 1: configuración | HOST_TESTED parcial | validación versionada y logs en sesión; prioridad/destino/timeout/red bloqueados en defaults seguros |
 | 1: RAM | HOST_TESTED solo proceso host | informe RSS/tracemalloc; objetivo firmware sin medir |
 | 2: entry ARM64 de laboratorio | EMULATED / BUILT_ARM64 | preflight original, EL1/EL2→EL1h, stack, FDT, contador y BRK; XNU_NOT_LINKED |
-| 2: datos originales FDT → árbol de bootstrap XNU | HOST_TESTED / EMULATED / ABI target | BOOT_DATA_BRIDGE.md: inventario con exclusiones, árbol de 504 bytes, ASan/UBSan, ABI con headers XNU y cuatro recorridos QEMU. Sin boot_args, PE_state o ejecución de SecureDT/XNU |
-| 2: entry G20 y ejecución bootstrap XNU real | UNIMPLEMENTED | objetos compilados no acreditan arranque; enlace/pmap/Platform Expert pendientes |
+| 2: datos originales FDT → árbol de bootstrap XNU | HOST_TESTED / EMULATED / ABI target | BOOT_DATA_BRIDGE.md: inventario con exclusiones, árbol de 504 bytes, ASan/UBSan, ABI con headers XNU y cuatro recorridos QEMU. Sin boot_args completo ni ejecución de SecureDT/XNU |
+| 2: entry G20 y ejecución bootstrap XNU real | UNIMPLEMENTED | objetos compilados no acreditan arranque; enlace, MMU/BSP y PE físico pendientes |
 | Herramienta oficial MIG | HOST_TESTED | Binario host genuino y ABI de metadata en MIG_HOST_BUILD.md; las pruebas posteriores de C generados se detallan en las filas RPC |
-| Port XNU incremental de laboratorio | BUILT_ARM64 | Trece objetos estándar; 124 experimentales, incluido PE original. Pasan 62/57 checks. Enlace de 150 objetos falla con 669 diagnósticos indefinidos y cero duplicados; sin imagen ni ejecución. XNU_PLATFORM_EXPERT.md |
+| Port XNU incremental de laboratorio | BUILT_ARM64 | Trece objetos estándar; 132 experimentales, incluidos PE y adaptador de caché originales. Pasan 89/57 checks. Enlace de 158 objetos falla con 609 diagnósticos indefinidos y cero duplicados; sin imagen ni ejecución. XNU_MEMORY_PROVIDERS.md |
 | 2: núcleo original PE y contrato BSP | BUILT_ARM64 / ABI target | Dos fases nativas, SecureDT real como dependencia y lecturas de timebase emitidas; BSP permanece como import fuerte no resuelto. No hay ejecución de PE ni IRQ comprobada |
+| 2: memoria física, caché y atómicos nativos | BUILT_ARM64 / ABI y objetos | Seis fuentes intactas, una guarda del fallback vacío y un adaptador original. DC/IC, barreras, CAS y despacho de pager inspeccionados; no ejecutados. Los wrappers de IO coherente no prueban DMA |
 | Reproducción remota de API v2 y 100 unidades | CI success / BUILT_ARM64 | Run 39891229141 de 49bbae4: 26 checks, fuentes/defines y 137 constantes coincidentes. evidencia/clang-layout-ci100-20261023; no prueba la ampliación posterior o hardware |
 | Código RPC MIG de XNU | BUILT_ARM64 | 42 probes compilados por carril; CFILES selecciona 26 para enlace. ABI de 21 descriptores; 14 tablas kobject del perfil sin BSD/IOKit. Sin RPC ejecutado; XNU_RPC_PROVIDERS.md |
 | Enlazador ARM64 estático experimental | HOST_TESTED / fixtures enlazados | LLD_STATIC_ARM64.md: v2, 54 checks y 15 imágenes, incluida selección weak/strong; XNU mantiene referencias indefinidas, sin imagen kernel |

@@ -1,0 +1,112 @@
+{
+  "scope": "STRICT_LINK_DIAGNOSTIC_NAME_COMPARISON_NOT_EXECUTION",
+  "previous_link_sha256": "8f86b108313e38c46867db6b624606afbbaa39e2ffcf2b6242a15c93707c6a9e",
+  "current_link_sha256": "2dd7674d5e3a33965f69338d06129ab1ecb08e6ac433e7ff33439967d04ae960",
+  "previous_undefined": 669,
+  "current_undefined": 609,
+  "previous_symbols_now_resolved": [
+    "_CleanPoC_Dcache",
+    "_CleanPoC_DcacheRegion_Force",
+    "_CleanPoC_DcacheRegion_Force_nopreempt_nohid",
+    "_CleanPoU_Dcache",
+    "_CleanPoU_DcacheRegion",
+    "_InvalidatePoU_IcacheRegion",
+    "_OSAddAtomic",
+    "_OSAddAtomic16",
+    "_OSAddAtomic64",
+    "_OSBitAndAtomic",
+    "_OSBitOrAtomic",
+    "_OSCompareAndSwap",
+    "_OSCompareAndSwap16",
+    "_OSCompareAndSwap64",
+    "_OSCompareAndSwapPtr",
+    "_OSDecrementAtomic",
+    "_OSIncrementAtomic",
+    "_bcopy_phys",
+    "_bcopy_phys_with_options",
+    "_bzero_phys",
+    "_bzero_phys_with_options",
+    "_cache_sync_page",
+    "_clean_dcache",
+    "_clrbit",
+    "_convert_port_to_memory_object",
+    "_fls",
+    "_flsll",
+    "_flush_dcache",
+    "_host_default_memory_manager",
+    "_machine_task_get_state",
+    "_machine_task_init",
+    "_machine_task_set_state",
+    "_machine_task_terminate",
+    "_machine_thread_inherit_taskwide",
+    "_mapping_free_prime",
+    "_memory_object_control_allocate",
+    "_memory_object_control_collapse",
+    "_memory_object_control_disable",
+    "_memory_object_control_to_vm_object",
+    "_memory_object_data_initialize",
+    "_memory_object_data_request",
+    "_memory_object_data_return",
+    "_memory_object_deallocate",
+    "_memory_object_init",
+    "_memory_object_last_unmap",
+    "_memory_object_map",
+    "_memory_object_reference",
+    "_memory_object_terminate",
+    "_memory_object_to_vm_object",
+    "_panic_unimplemented",
+    "_platform_cache_idle_enter",
+    "_platform_cache_init",
+    "_pmap_cpu_data_init",
+    "_pmap_ledger_alloc",
+    "_pmap_ledger_free",
+    "_pmap_ledger_verify_size",
+    "_setbit",
+    "_testbit",
+    "_vm_object_sync",
+    "_vm_object_update"
+  ],
+  "new_unresolved_dependencies": [],
+  "new_units": [
+    {
+      "source": "osfmk/arm/caches.c",
+      "source_sha256": "1f60ebd42161f2e4d064100f008e84a7f2133272601602cd5c67fe1be2c2a41f",
+      "unchanged_upstream": true
+    },
+    {
+      "source": "osfmk/arm64/caches_asm.s",
+      "source_sha256": "1ee90140c81655f6e5eced4049f0887e3f75f6d8e77a491c8a36531e3db6d328",
+      "unchanged_upstream": true
+    },
+    {
+      "source": "osfmk/arm64/loose_ends.c",
+      "source_sha256": "40378504c253e278f36369256c9eb559f411c4840919c838ec0ac81cbe3288ff",
+      "unchanged_upstream": false
+    },
+    {
+      "source": "osfmk/arm/pmap/pmap_ppl_interface.c",
+      "source_sha256": "c159a27f7027b6f850e2208f6ed3ced28d641c23905d60ae8f86f6b3859cf48a",
+      "unchanged_upstream": true
+    },
+    {
+      "source": "osfmk/arm64/machine_task.c",
+      "source_sha256": "75050c7bf041605b7c259d94f0da3e2d9cb4ee2996be05b38f56e29804536e5f",
+      "unchanged_upstream": true
+    },
+    {
+      "source": "libkern/gen/OSAtomicOperations.c",
+      "source_sha256": "3a56507cf71071fe683daee8499f161757655bb2a13d8848a72fd0e7d1ed419f",
+      "unchanged_upstream": true
+    },
+    {
+      "source": "osfmk/vm/memory_object.c",
+      "source_sha256": "a30fa0256a51a7ec85c6a12f4d261cd9285602631265dc4fc016a4bc2503dbc4",
+      "unchanged_upstream": true
+    },
+    {
+      "source": "osfmk/arm64/atlantic_cache_asm.s",
+      "source_sha256": "468c6c8b62015fc759e660c7a584393119f038056885507e09bd27e070f54596",
+      "unchanged_upstream": false
+    }
+  ]
+}

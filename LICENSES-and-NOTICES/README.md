@@ -66,10 +66,16 @@ cuatro cláusulas; el reconocimiento a Berkeley anterior también corresponde
 a este componente. No se atribuyen esos cuerpos a la licencia MIT del proyecto.
 
 Los archivos de xnu-port/platform/ son código original AtlanticOS bajo MIT. El
-patch 0022 añade sus copias exactas al árbol XNU; el builder verifica esa igualdad
+patchset 0022/0023 añade sus copias exactas al árbol XNU; el builder verifica esa igualdad
 y las preimágenes nulas de archivos nuevos. Los tipos y proveedores XNU que
 incluyen o llaman conservan sus licencias upstream. No se incorpora pe_init.c
 de Apple ni un BSP de un port UEFI como implementación de la plataforma.
+
+El adaptador cache_asm.s es original MIT y transfiere la llamada a la rutina de
+caché genérica genuina. Seis fuentes nativas de la ampliación de memoria permanecen
+intactas; en loose_ends.c el patch 0024 solo acota la guarda del fallback vacío.
+Todas conservan sus avisos/licencias upstream; sus
+cuerpos, funciones vacías e instrucciones no se atribuyen a AtlanticOS.
 
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias

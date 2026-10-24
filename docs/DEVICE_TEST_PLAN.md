@@ -158,3 +158,35 @@ Un BSP ausente debe fallar en el enlace y nunca reemplazarse con callbacks que
 devuelvan éxito. Una parada sin PC/log fiable es INDETERMINATE. Guardar evidencia
 física y verificar retorno a Android con T01 al terminar; estas subpruebas no
 acreditan por sí solas un hilo Mach operativo, RAM firmware ni handoff EDK2.
+
+## Subpruebas pendientes de T08: memoria física, caché y atómicos
+
+Estado: PENDING_HARDWARE. Los checks de [XNU_MEMORY_PROVIDERS](XNU_MEMORY_PROVIDERS.md)
+solo inspeccionan fuentes, ABI y objetos. Exigen primero T01/T04/T05, una imagen
+XNU auditada, BSP/MMU reales, canal de salida y dos hilos Mach funcionales.
+
+1. Reservar mediante el allocator real páginas scratch propias, mapeadas y
+   fuera de toda exclusión. Registrar VA/PA, permisos, traducción, tamaños,
+   canarios y hashes iniciales. Invocar bcopy_phys y bzero_phys nativos sobre
+   rangos no solapados, incluidos fragmentos que crucen un límite de página.
+   Comprobar bytes esperados y canarios antes/después, con PCs simbolizados de
+   la ruta directa o de ventanas pmap realmente tomada. No ensayar direcciones
+   arbitrarias, carveouts, MMIO o memoria del loader como si fueran scratch.
+2. Registrar CTR/CLIDR/CCSIDR y validar granulación/líneas del perfil del G20.
+   Para un rango scratch de longitud no nula, registrar la ruta desde
+   CleanPoC_DcacheRegion_Force_nopreempt_nohid hasta el bucle DC CVAC y ambos DSB.
+   Confirmar que preemption no cambia y que no se accede a HID Apple. Después,
+   con una página de código scratch y transiciones RW/RX hechas por pmap,
+   ejecutar un fragmento auditado con resultado conocido, cambiarlo y comprobar
+   el resultado nuevo mediante la ruta nativa de sincronización D/I-cache.
+   PCs o contadores solos no demuestran coherencia DMA; esta exige un dispositivo
+   y buffer propios verificados por separado. QEMU tampoco mide la caché física.
+3. Desde dos hilos Mach reales, comprobar CAS exitoso/fallido y los valores
+   anteriores devueltos por OSAddAtomic64. Ejecutar incrementos concurrentes con
+   un total conocido y verificar el resultado final, capturando PCs del bucle
+   exclusivo, IDs de CPU e intercalados. Con una sola CPU solo se acredita esa
+   configuración; SMP exige CPUs secundarias y BSP ya verificados.
+
+Conservar capturas físicas, mapa y hashes exactos, resultados y fallos, liberar
+solo las páginas propias y comprobar el retorno stock con T01. Estas pruebas no
+acreditan un pager backend, acceso a almacenamiento, RAM firmware ni handoff EDK2.

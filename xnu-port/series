@@ -20,3 +20,5 @@
 0020-match-zone-diagnostic-storage-to-native-allocation-type.patch
 0021-retain-native-arm64-exceptions-with-selected-telemetry.patch
 0022-add-original-atlantic-platform-expert-core.patch
+0023-add-generic-arm64-cache-force-entry-points.patch
+0024-retain-real-debug-callout-registry-in-firmware.patch

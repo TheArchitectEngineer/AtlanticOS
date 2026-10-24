@@ -21,11 +21,13 @@ jobs:
           python3 tools/fetch_xnu.py
           python3 tools/fetch_mig.py
           python3 tools/build_mig.py
-      - name: Compile 124 XNU-derived and original platform units (no execution)
+      - name: Compile 132 XNU-derived and original platform units (no execution)
         run: |
           python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
       - name: Audit original PE native ABI and required BSP import without executing it
         run: python3 tools/test_xnu_platform.py --build work/xnu-lab-builds/*/report.json --output work/pe-platform-tests
+      - name: Audit native memory providers and original cache branch without executing them
+        run: python3 tools/test_xnu_memory_providers.py --build work/xnu-lab-builds/*/report.json --output work/memory-provider-tests
       - name: Compare boot-data wire layout with native XNU using the experimental target
         run: python3 tools/test_boot_tree.py --sanitize --xnu-build work/xnu-lab-builds/*/report.json --output work/boot-tree-tests
       - name: Verify pmap API rejection, object symbols and actual header dependencies
@@ -88,6 +90,8 @@ jobs:
             work/boot-tree-tests/report.json
             work/pe-platform-tests/report.json
             work/pe-platform-tests/*.log
+            work/memory-provider-tests/report.json
+            work/memory-provider-tests/*.log
             work/boot-tree-tests/*.log
             work/brk-scope-tests/*.log
             work/brk-scope-tests/brk.ll

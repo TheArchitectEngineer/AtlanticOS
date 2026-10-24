@@ -1,0 +1,16 @@
+<ROOT>/work/xnu-lab-builds/e78141c5c7f0d7d5/caches_asm.o:
+(__TEXT,__text) section
+_CleanPoC_DcacheRegion_internal:
+     220:	9f 3f 03 d5	dsb	sy
+     224:	e9 07 80 d2	mov	x9, #0x3f
+     228:	02 00 09 8a	and	x2, x0, x9
+     22c:	00 00 29 8a	bic	x0, x0, x9
+     230:	21 00 02 8b	add	x1, x1, x2
+     234:	21 04 00 d1	sub	x1, x1, #0x1
+     238:	21 fc 46 d3	lsr	x1, x1, #6
+     23c:	20 7a 0b d5	dc	cvac, x0
+     240:	00 00 01 91	add	x0, x0, #0x40
+     244:	21 04 00 f1	subs	x1, x1, #0x1
+     248:	a5 ff ff 54	b.pl	0x23c
+     24c:	9f 3f 03 d5	dsb	sy
+     250:	c0 03 5f d6	ret

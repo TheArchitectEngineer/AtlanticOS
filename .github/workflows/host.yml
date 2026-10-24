@@ -63,3 +63,4 @@ jobs:
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-boot-providers-20261023/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/boot-data-bridge-20261023/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-original-pe-20261023/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/xnu-memory-providers-20261024/manifest.json

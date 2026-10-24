@@ -150,7 +150,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y 124 experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y 132 experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.
@@ -174,5 +174,18 @@ ambos ya están seleccionados en el build experimental actual.
 El patch 0022 añade dos archivos originales MIT, cotejados con sus fuentes en
 xnu-port/platform/. El [núcleo PE](../docs/XNU_PLATFORM_EXPERT.md) usa tipos XNU
 auténticos, SecureDT y panic nativos; todavía no se ejecuta ni aporta el BSP.
-El enlace actual de 150 objetos falla con 669 diagnósticos indefinidos, cero
+El enlace de aquella revisión de 150 objetos falla con 669 diagnósticos indefinidos, cero
 duplicados y ningún archivo. atlantic_pe_platform sigue como import fuerte.
+
+El patch 0023 añade el adaptador original de caché genérica. El builder verifica
+su mirror y selecciona además siete fuentes upstream de memoria física,
+caché, atómicos, estado de tareas y memory_object. Su auditoría comprueba el salto
+al proveedor nativo, las instrucciones y el ABI; no ejecuta esas operaciones.
+Detalles, límites de IO coherente y pruebas físicas pendientes en
+[XNU_MEMORY_PROVIDERS](../docs/XNU_MEMORY_PROVIDERS.md).
+Seis fuentes quedan intactas; el patch 0024 solo excluye en firmware el fallback
+vacío de kdp_register_callout de loose_ends.c, conservando el registro real de
+debug.c. No hay símbolos weak ni permiso de duplicados para resolver la colisión.
+El enlace actual de 158 objetos conserva 609 diagnósticos indefinidos y cero
+duplicados; no produce imagen. Pasan 89/57 checks de alcance/ABI/objetos, sin
+ejecución del kernel o los proveedores de memoria.

@@ -1,0 +1,15 @@
+Retain the actual native debug.c callout registry in the firmware profile.
+Exclude only the empty ARM64 fallback; keep physical-memory code intact.
+Outside firmware and with MACH_KDP selected, native selection is unchanged.
+
+--- a/osfmk/arm64/loose_ends.c
++++ b/osfmk/arm64/loose_ends.c
+@@ -966,7 +966,7 @@
+ }
+ 
+ 
+-#if !MACH_KDP
++#if !MACH_KDP && !CONFIG_ATLANTIC_FIRMWARE
+ void
+ kdp_register_callout(kdp_callout_fn_t fn, void *arg)
+ {

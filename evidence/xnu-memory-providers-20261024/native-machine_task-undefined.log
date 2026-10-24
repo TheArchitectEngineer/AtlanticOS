@@ -1,0 +1,13 @@
+_IOTaskHasEntitlement
+_ads_zone
+_bzero
+_copy_debug_state32
+_copy_debug_state64
+_copy_legacy_debug_state
+_debug_legacy_state_is_valid
+_debug_state_is_valid32
+_debug_state_is_valid64
+_mach_assert_jump_key
+_machine_thread_set_state
+_zalloc_flags
+_zfree

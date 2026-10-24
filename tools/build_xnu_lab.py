@@ -20,7 +20,8 @@ from xnu_assym import parse_assym, render_assym
 ROOT = Path(__file__).resolve().parents[1]
 PROFILE = ROOT/'xnu-port/config/MASTER.arm64.atlanticlab.AtlanticOS'
 PLATFORM_SOURCES = {'xnu-port/platform/atlantic.h': 'pexpert/pexpert/atlantic.h',
-                    'xnu-port/platform/pe_platform.c': 'pexpert/atlantic/pe_platform.c'}
+                    'xnu-port/platform/pe_platform.c': 'pexpert/atlantic/pe_platform.c',
+                    'xnu-port/platform/cache_asm.s': 'osfmk/arm64/atlantic_cache_asm.s'}
 UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
          'osfmk/kern/sched_prim.c': '_sched_init',
          'osfmk/kern/clock.c': '_clock_init',
@@ -190,6 +191,29 @@ EXPERIMENTAL_UNITS.update({
     'osfmk/arm/machine_cpuid.c': '_machine_read_midr',
     'bsd/kern/qsort.c': '_qsort'})
 EXPERIMENTAL_UNITS['pexpert/atlantic/pe_platform.c'] = '_PE_init_platform'
+EXPERIMENTAL_UNITS.update({
+    'osfmk/arm/caches.c': '_cache_sync_page',
+    'osfmk/arm64/caches_asm.s': '_CleanPoC_DcacheRegion_Force',
+    'osfmk/arm64/loose_ends.c': '_bcopy_phys',
+    'osfmk/arm/pmap/pmap_ppl_interface.c': '_mapping_free_prime',
+    'osfmk/arm64/machine_task.c': '_machine_task_get_state',
+    'libkern/gen/OSAtomicOperations.c': '_OSCompareAndSwap64',
+    'osfmk/vm/memory_object.c': '_memory_object_lock_request',
+    'osfmk/arm64/atlantic_cache_asm.s': '_CleanPoC_DcacheRegion_Force_nopreempt_nohid'})
+EXTRA_SYMBOLS.update({
+    'osfmk/arm/caches.c': ['_flush_dcache', '_clean_dcache'],
+    'osfmk/arm64/caches_asm.s': ['_CleanPoC_DcacheRegion', '_InvalidatePoU_IcacheRegion',
+                              '_FlushPoC_Dcache', '_CleanPoU_DcacheRegion'],
+    'osfmk/arm64/loose_ends.c': ['_bcopy_phys_with_options', '_bzero_phys',
+                              '_bzero_phys_with_options', '_setbit', '_clrbit', '_flsll'],
+    'osfmk/arm/pmap/pmap_ppl_interface.c': ['_pmap_cpu_data_init', '_pmap_ledger_alloc', '_pmap_ledger_free'],
+    'osfmk/arm64/machine_task.c': ['_machine_task_set_state', '_machine_task_terminate',
+                                '_machine_thread_inherit_taskwide'],
+    'libkern/gen/OSAtomicOperations.c': ['_OSCompareAndSwap', '_OSCompareAndSwap16',
+                                      '_OSAddAtomic', '_OSAddAtomic64', '_OSIncrementAtomic'],
+    'osfmk/vm/memory_object.c': ['_vm_object_update', '_memory_object_control_to_vm_object',
+                              '_memory_object_data_request', '_memory_object_init'],
+    'osfmk/arm64/atlantic_cache_asm.s': ['_CleanPoC_DcacheRegion_Force_nopreempt']})
 EXTRA_SYMBOLS['pexpert/atlantic/pe_platform.c'] = [
     '_PE_state', '_gPEClockFrequencyInfo', '_PE_slide_devicetree',
     '_PE_register_timebase_callback', '_PE_call_timebase_callback']

@@ -114,3 +114,11 @@ boot_args y las dependencias SecureDT/panic. Su BSP es un import fuerte sin
 proveedor; no se añade un mock. Pasan 62/57 checks. El enlace de 150 objetos
 falla con 669 diagnósticos indefinidos y cero duplicados, sin imagen. PE y el
 consumidor nativo todavía no se ejecutan; el objetivo físico no cambia.
+
+La [ampliación de memoria física](XNU_MEMORY_PROVIDERS.md) alcanza 132 unidades
+experimentales: seis fuentes upstream intactas, una guarda que elimina un fallback
+vacío duplicado y un adaptador original hacia el proveedor nativo de caché.
+Pasan 89/57 checks, sin ejecutar esos proveedores. El enlace estricto de 158
+objetos registra 609 símbolos sin resolver y cero duplicados, sin imagen. Faltan
+BSP, productor boot_args, VM/hilo/IRQ operativos y carga temporal; la aceptación
+sigue exigiendo XNU y handoff EDK2 físicos, con recuperación y RAM medidas.

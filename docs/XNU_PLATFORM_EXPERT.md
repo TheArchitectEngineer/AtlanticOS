@@ -133,3 +133,7 @@ debe ser nuevo; no sobrescribir evidencias previas. Omitir las opciones layout
 del primer comando obtiene el conjunto estándar de 13 unidades y permite
 comprobar el probe PE aislado. El diagnóstico de enlace conserva el fallo
 estricto; no produce una imagen para arrancar.
+
+La [ampliación posterior de memoria](XNU_MEMORY_PROVIDERS.md), con las series
+0023/0024, lleva el conjunto actual a 132 unidades. Los números de 124 y 150
+objetos anteriores describen esta entrega PE del 2026-10-23 y su evidencia.
