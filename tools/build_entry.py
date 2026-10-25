@@ -15,14 +15,18 @@ SOURCES=['atlantic-entry/entry.S','atlantic-entry/preflight.c','atlantic-entry/l
          'atlantic-core/fdt.c','include/atlantic/entry.h','include/atlantic/fdt.h',
          'platforms/qemu-virt/early.c','platforms/qemu-virt/board.json',
          'platforms/qemu-virt/el1.S','atlantic-core/boot_tree.c','include/atlantic/boot_tree.h',
-         'tools/build_entry.py','tools/emulate_entry.py']
+         'tools/build_entry.py','tools/emulate_entry.py',
+         'include/atlantic/boot_prepare.h','atlantic-core/boot_prepare.c',
+         'include/atlantic/macho.h','atlantic-core/macho.c',
+         'platforms/qemu-virt/boot_probe.c','tests/entry/boot_image.S',
+         'evidence/static-image-plan-20261025/lld-fixtures/high.macho']
 
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--board',choices=['qemu-virt'],default='qemu-virt')
     parser.add_argument('--output',type=Path,default=ROOT/'work/entry-qemu')
-    parser.add_argument('--probe',choices=['normal','el1-trap'],default='normal')
+    parser.add_argument('--probe',choices=['normal','el1-trap','boot-args'],default='normal')
     args=parser.parse_args()
     cc,ld,objcopy=(shutil.which(x) for x in ['clang','ld.lld','llvm-objcopy'])
     if not all((cc,ld,objcopy)):
@@ -33,11 +37,12 @@ def main():
     out.mkdir(parents=True,exist_ok=True)
     hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in SOURCES}
     build_id=hashlib.sha256(json.dumps({'sources':hashes,'probe':args.probe},sort_keys=True,separators=(',',':')).encode()).hexdigest()
-    flags=['--target=aarch64-none-elf','-mcpu=cortex-a57','-mgeneral-regs-only',
+    flags=['--target=aarch64-none-elf','-mcpu=cortex-a57','-mgeneral-regs-only','-mstrict-align',
            '-std=c11','-ffreestanding','-fno-builtin','-fno-stack-protector',
            '-fno-unwind-tables','-fno-asynchronous-unwind-tables','-O2','-g',
            '-Wall','-Wextra','-Werror','-Iinclude',f'-DATL_BUILD_ID="{build_id}"',
-           '-ffile-prefix-map='+str(ROOT)+'=.', '-DATL_TEST_EL1_TRAP='+str(int(args.probe=='el1-trap'))]
+           '-ffile-prefix-map='+str(ROOT)+'=.', '-DATL_TEST_EL1_TRAP='+str(int(args.probe=='el1-trap')),
+           '-DATL_TEST_BOOT_ARGS='+str(int(args.probe=='boot-args'))]
     commands=[]
     logs=[]
     def run(command):
@@ -49,7 +54,11 @@ def main():
             print(r.stdout+r.stderr)
             raise SystemExit(r.returncode)
     objects=[]
-    for source in [SOURCES[0],SOURCES[1],SOURCES[3],SOURCES[6],SOURCES[8],SOURCES[9]]:
+    compile_sources=[SOURCES[0],SOURCES[1],SOURCES[3],SOURCES[6],SOURCES[8],SOURCES[9]]
+    if args.probe=='boot-args':
+        compile_sources+=['atlantic-core/macho.c','atlantic-core/boot_prepare.c',
+                          'platforms/qemu-virt/boot_probe.c','tests/entry/boot_image.S']
+    for source in compile_sources:
         obj=out/(Path(source).stem+'.o')
         run([cc,*flags,'-c',source,'-o',str(obj)])
         objects.append(str(obj))

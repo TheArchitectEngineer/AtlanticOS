@@ -89,6 +89,13 @@ autentica, mapea, construye boot_args ni entra a XNU. Sus rangos virtuales no so
 direcciones físicas ni acreditan ownership; solo el productor BSP futuro podrá
 probar la carga real y conservar ese contexto para los callbacks PE.
 
+La [preparación original de boot_args](BOOT_PREPARATION.md) ya emite un candidato
+wire compatible con los tipos nativos, versión/revisión 2 y vídeo cero. Contrasta
+el alcance por bloques del perfil compilado y coloca el contexto propuesto
+después de la imagen. Se prueba en host y QEMU; todavía no coloca/copía el payload
+ni construye/ancla el contexto retenido real. El BSP debe demostrar ownership,
+granulación soportada, traducciones y cobertura de asignaciones nativas tempranas.
+
 ## ABI BSP en ejecución
 
 `include/atlantic/platform.h`: ABI v1 con struct_bytes, ID y lista de capacidades.

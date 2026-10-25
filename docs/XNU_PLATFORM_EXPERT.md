@@ -83,6 +83,13 @@ explícita el contrato y su prueba de ownership. **El productor completo de esto
 boot_args todavía no existe.** El árbol de 504 bytes de BOOT_DATA_BRIDGE.md solo
 resuelve parte de los datos y no convierte un ELF de prueba en un kernel XNU.
 
+La [preparación posterior](BOOT_PREPARATION.md) ya serializa el candidato completo
+de 1 152 bytes y lo coteja con inicializadores nativos de ambas toolchains.
+En nuestro contrato ATL1, deviceTreeP contiene la futura KVA que este PE leerá.
+El productor se ejecuta en QEMU sin XNU, sin colocar la imagen/árbol o construir
+el contexto retenido; no existe aún un proveedor de callbacks que pruebe
+ownership y configure interrupciones. El resultado no habilita PE_init_platform.
+
 ## Verificación y estado
 
 Pasan 62 comprobaciones de alcance/ABI/objetos experimentales y 57 estándar:

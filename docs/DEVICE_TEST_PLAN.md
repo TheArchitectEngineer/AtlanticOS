@@ -117,6 +117,15 @@ Tras cerrar T01/T04 y disponer de canal de salida y payload temporal auditado:
    devueltos y sus hashes. Deben coincidir exactamente con el inventario y los
    registros físicos; comprobar que el árbol y FDT no se alteran inesperadamente.
    Lectura propia, cadenas impresas o un fixture ABI no sustituyen al consumidor.
+4. Para integrar [BOOT_PREPARATION](BOOT_PREPARATION.md), registrar la geometría
+   compilada y los registros de capacidad observados del CPU antes de escoger
+   granulación. Capturar virtBase/physBase/memSize, segmentos realmente colocados,
+   alcance completo de bloques y todas las reservas que lo rodean. Verificar el
+   árbol en la KVA del contrato ATL1 y el contexto retenido después de la imagen;
+   nada retenido puede depender del prefijo que VM nativo libera. Comprobar copy,
+   zero-fill y traducciones por readback, y trazar asignaciones tempranas para que
+   ninguna alcance páginas aún sin mapping. Capturar SCTLR y PCs de cualquier
+   excepción de alineación; la corrección QEMU no acredita la ejecución XNU.
 
 La asignación y la apertura física deben excluir los carveouts no-map y respetar
 la propiedad de cada rango; añadir una exclusión no demuestra que sea seguro

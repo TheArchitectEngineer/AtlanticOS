@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "ORIGINAL_CANDIDATE_BOOT_ARGS_AND_BLOCK_REACH_ONLY_NO_OWNERSHIP_OR_LOADING_OR_XNU_EXECUTION",
+  "inputs": {
+    "include/atlantic/boot_prepare.h": "beffc303558bdbed0d4a63fab4defde01cb96c491a82e3db9221180d2fc6b27e",
+    "atlantic-core/boot_prepare.c": "282132fe1dcdd141ae48e3c2bb21d9b927768aea0cf0a8c3f2ab889a8e1e243f",
+    "include/atlantic/boot_tree.h": "b7e09b6ff1b8e85606b5239115222e32e784e0d6bb67933f82e20dd745312a5e",
+    "include/atlantic/macho.h": "6b9c78d2908b06accaec84f3eef8aa2d5daa6b091ea9e7911445029744d64ed3",
+    "atlantic-core/macho.c": "4121a066fb9127070b70af7095d04ca7c10a73c0e3327ea88a086a69cded391c",
+    "tests/c/test_boot_prepare.c": "8373984b5ad810a156ff4a080225ddeded86e6a8e34371c89f55697d5f8afa32",
+    "tests/xnu_port/boot_prepare_abi.c": "5ea6e393dc1c75e3bf488322026beeaaee2c76afdf9bce02703a5d288e5aee53",
+    "tools/test_boot_prepare.py": "50a46881e31a5b0d85e583b94ea2554f5a465a2dc819b5f036ff013131c00def",
+    "tools/test_xnu_brk_scope.py": "1a6e6f113f75696727166f46d3a65024cd4d6484928b926b49c087c209ee678a"
+  },
+  "fixture_sha256": {
+    "high.macho": "06b3bb2ca32f77cc38873726923b4dc9587c3afe0f82472d2ea9abf95c979f13",
+    "low.macho": "d861a1d1d0f50147aebeca76ebc9b482d7c7c578f9d3ae9ad52dfcceff002c59"
+  },
+  "commands": [
+    [
+      "/usr/bin/clang",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I<ROOT>/include",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "<ROOT>/atlantic-core/macho.c",
+      "<ROOT>/atlantic-core/boot_prepare.c",
+      "<ROOT>/tests/c/test_boot_prepare.c",
+      "-o",
+      "<ROOT>/work/boot-prepare-host-verified-20261025/host-tests"
+    ],
+    [
+      "<ROOT>/work/boot-prepare-host-verified-20261025/host-tests",
+      "<ROOT>/evidence/static-image-plan-20261025/lld-fixtures/high.macho",
+      "<ROOT>/work/boot-prepare-host-verified-20261025/candidate-boot-args.bin",
+      "<ROOT>/evidence/static-image-plan-20261025/lld-fixtures/low.macho"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=aarch64-none-elf",
+      "-mstrict-align",
+      "-std=c11",
+      "-O2",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I<ROOT>/include",
+      "-c",
+      "<ROOT>/atlantic-core/boot_prepare.c",
+      "-o",
+      "<ROOT>/work/boot-prepare-host-verified-20261025/boot-prepare-arm64.o"
+    ],
+    [
+      "llvm-nm",
+      "--undefined-only",
+      "<ROOT>/work/boot-prepare-host-verified-20261025/boot-prepare-arm64.o"
+    ]
+  ],
+  "sanitizers": true,
+  "host_contracts": {
+    "cases": 10038,
+    "directed_rejections": 30,
+    "mutations": 10000,
+    "record_bytes": 1152
+  },
+  "native_abi": null,
+  "record_sha256": "8971c60b7399ceaf65a735ffa4b59af9c0e921b3fd632690da538b5f2e2dcbcd",
+  "arm64_object_sha256": "d7449e81a9b4367bf15d47baadc0fec7cb65c9da3f3b3cd9b830cd7edfc86bfe",
+  "record_is_candidate": true,
+  "retained_context_constructed": false,
+  "image_loaded": false,
+  "memory_owned": false,
+  "mmu_enabled": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "physical_memory_measured": false
+}

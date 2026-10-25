@@ -8,6 +8,10 @@
 struct AtlanticEntryCapture atlantic_entry_capture;
 static struct AtlanticBootInventory boot_inventory;
 static _Alignas(8) uint8_t xnu_boot_tree[ATL_XNU_TREE_MAX_BYTES];
+#if ATL_TEST_BOOT_ARGS
+#include <atlantic/boot_prepare.h>
+static struct AtlanticBootPreparation boot_candidate;
+#endif
 extern uint8_t __image_start[], __image_memory_end[];
 extern uint8_t __stack_bottom[], __stack_top[], atl_entry_vectors[];
 
@@ -69,6 +73,27 @@ void atl_entry_main(const struct AtlanticEntryCapture *c) {
     hex("BOOT_DECLARED_CPUS=",boot_inventory.cpu_count);
     hex("XNU_TREE_BYTES=",tree_bytes);
     line("PASS:BOOT_DATA_DECLARATIONS_XNU_TREE_ONLY\n");
+#if ATL_TEST_BOOT_ARGS
+    int prepare_status=atl_laboratory_boot_candidate(&boot_inventory,(uint32_t)tree_bytes,&boot_candidate);
+    if (prepare_status) {
+        hex("BOOT_PREPARE_ERROR=",(uint64_t)(int64_t)prepare_status);
+        line("FAIL:BOOT_PREPARE_CANDIDATE\n"); finish(1);
+    }
+    hex("CANDIDATE_IMAGE_PA=",boot_candidate.image_pa);
+    hex("CANDIDATE_BOOTSTRAP_BYTES=",boot_candidate.bootstrap_bytes);
+    hex("CANDIDATE_TOP_OF_DATA=",boot_candidate.top_of_data);
+    line("CANDIDATE_BOOT_ARGS_HEX=");
+    for (unsigned offset=0;offset<sizeof(boot_candidate.boot_args);offset+=64) {
+        static const char digits[]="0123456789abcdef";
+        char chunk[129];
+        for (unsigned j=0;j<64;++j) {
+            uint8_t b=boot_candidate.boot_args[offset+j];
+            chunk[2*j]=digits[b>>4]; chunk[2*j+1]=digits[b&15];
+        }
+        chunk[128]=0; line(chunk);
+    }
+    line("\nPASS:BOOT_ARGS_CANDIDATE_ONLY\nCANDIDATE_NOT_PLACED_OR_MAPPED\n");
+#endif
     if (atl_entry_prepare_el1()!=1) { line("FAIL:EL1_TRANSITION\n"); finish(1); }
     uint64_t el, sctlr, daif, stack, vectors, freq, first, last;
     __asm__ volatile("mrs %0, CurrentEL" : "=r"(el));

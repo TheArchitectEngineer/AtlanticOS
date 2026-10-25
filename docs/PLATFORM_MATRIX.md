@@ -9,6 +9,7 @@ capacidad BSP, fallback o XNU. La recuperación independiente sigue pendiente.
 |---|---|---|---|
 | Entry propio + XNU real | No es el objeto de ese proyecto | UNIMPLEMENTED | No ejecuta XNU |
 | Plan de imagen estática ARM64 | Cargador ajeno no reutilizado | HOST_TESTED portable; integración BSP pendiente | 45 099 casos / 15 fixtures LLD, sin carga ni ejecución |
+| Candidato boot_args y alcance por bloques | Sin código de referencia reutilizado | HOST_TESTED / EMULATED solo en BSP QEMU | 10 038 casos; candidato 1 152 bytes, sin colocar imagen o entrar a XNU |
 | Framebuffer | Físico reportado; BGRX 720x1600 | UNIMPLEMENTED | HOST_TESTED RGB lógico |
 | Consola textual | Shell observada; teclado USB no funcional | UNIMPLEMENTED | HOST_TESTED vista textual |
 | Volume Up/Down / Power | Sin driver físico demostrado en auditoría | UNKNOWN | HOST_TESTED eventos mock |

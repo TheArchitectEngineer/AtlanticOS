@@ -1,0 +1,8 @@
+{
+  "accepted_success": false,
+  "esr": "0x96000061",
+  "elr": "0x40083d70",
+  "far": "0x400a57c5",
+  "diagnosis": "unaligned halfword store emitted without -mstrict-align",
+  "scope": "ORIGINAL_QEMU_PREFLIGHT_FAILURE_NOT_XNU_OR_PHONE"
+}

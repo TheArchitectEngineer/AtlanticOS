@@ -16,6 +16,11 @@ constantes/layouts con headers oficiales XNU; no se copia un loader Apple o del
 port UEFI G20. Los fixtures de evidencia proceden de nuestras fuentes assembler
 MIT enlazadas por LLD; no contienen un kernel XNU o firmware OEM.
 
+boot_prepare.c, su API, probe QEMU y harness también son originales MIT. Los
+inicializadores del fixture usan los tipos reales XNU para comprobar layout;
+no son proveedores del kernel ni reemplazos de su bootstrap. La prueba ARM
+solo incorpora nuestra imagen assembler de LLD anterior, sin ejecutarla.
+
 XNU oficial fijado en dependencies.lock.json: fuente externa intacta, checkout
 ignorado, no incorporado en el paquete fuente AtlanticOS. Se conserva su
 APPLE_LICENSE íntegra junto a este archivo; los avisos por archivo siguen en

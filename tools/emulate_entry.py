@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 import re
 import shutil
+import struct
 import subprocess
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -51,6 +52,21 @@ def main():
         esr=re.search(r'ESR=0x([0-9A-F]+)',log)
         tree=re.search(r'XNU_TREE_BYTES=0x([0-9A-F]+)',log)
         data_ok=bool(tree and int(tree[1],16)==504 and 'PASS:BOOT_DATA_DECLARATIONS_XNU_TREE_ONLY' in log)
+        candidate=None
+        if meta.get('probe')=='boot-args':
+            wire=re.search(r'^CANDIDATE_BOOT_ARGS_HEX=([0-9a-f]{2304})$',log,re.M)
+            expected=bytearray(1152)
+            struct.pack_into('<HH',expected,0,2,2)
+            struct.pack_into('<4Q',expected,8,0xfffffff007000000,0x42000000,0x2000000,0x42024000)
+            struct.pack_into('<I',expected,88,0x41544c31)
+            struct.pack_into('<QI',expected,96,0xfffffff00701c000,504)
+            expected[108:110]=b'-v';struct.pack_into('<Q',expected,1144,0x8000000)
+            if (not wire or bytes.fromhex(wire[1])!=expected or
+                'PASS:BOOT_ARGS_CANDIDATE_ONLY' not in log or 'CANDIDATE_NOT_PLACED_OR_MAPPED' not in log or
+                'PASS:BOOT_ARGS_RESERVED_WINDOW_REJECTED' not in log or
+                'CANDIDATE_BOOTSTRAP_BYTES=0x0000000001E00000' not in log):
+                raise SystemExit('Candidate record/block reach differs from independent expected bytes')
+            candidate=hashlib.sha256(expected).hexdigest()
         result_ok = (esr and int(esr[1],16)==0xf2000a71 and 'TEST:EL1_BRK_EXPECTED' in log
                      and 'ATLANTIC_ENTRY_EXCEPTION' in log) if is_trap else 'PASS:ENTRY_CAPTURE_DTB_TIMER' in log
         if (r.returncode!=expected_exit or not observed or int(observed[1],16)!=el or not execution or int(execution[1],16)!=1
@@ -59,6 +75,7 @@ def main():
         records.append({'expected_el':el,'observed_el':int(observed[1],16),'execution_el':int(execution[1],16),
                         'expected_exit_code':expected_exit,'exit_code':r.returncode,'probe':meta.get('probe'),
                         'boot_data_checked':True,'native_tree_bytes':int(tree[1],16),
+                        'candidate_boot_args_sha256':candidate,
                         'log_sha256':hashlib.sha256((folder/f'qemu-el{el}.log').read_bytes()).hexdigest(),
                         'command':[Path(command[0]).name,*[s.replace(str(ROOT),'<ROOT>') for s in command[1:]]]})
     report={'schema_version':1,'label':'EMULATED','scope':'ORIGINAL_ARM64_ENTRY_ONLY_NOT_XNU_NOT_G20',

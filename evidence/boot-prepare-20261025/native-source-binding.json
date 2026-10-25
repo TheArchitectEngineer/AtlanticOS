@@ -1,0 +1,14 @@
+{
+  "osfmk/arm64/start.s": {
+    "source_sha256": "0874939da938724be4539f3b167c2be33573e2a096e772cc995ad528555e506c",
+    "object_sha256": "6b2e1368001ed27786d1a2a57a905f3700e707c557942ab4a703c4e6075c7ce1"
+  },
+  "osfmk/arm/arm_init.c": {
+    "source_sha256": "a000dc4ca2d508f1498e1bb267e66e48a56817d098d48ac9c9c96095f0fc5f03",
+    "object_sha256": "f3ce7f9c4e746423202132fe1405810f83dc1dffc9ece6a2bf247405caf39025"
+  },
+  "osfmk/arm64/arm_vm_init.c": {
+    "source_sha256": "75b485656c3e9cc587443ebdcefcafd3561079c32ab704192223710433a5bede",
+    "object_sha256": "8f513528d3467fe5af18271a38686bd5abf4b3a1fc04f0f036957b168fcab5cd"
+  }
+}

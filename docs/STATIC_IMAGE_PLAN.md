@@ -82,6 +82,11 @@ real, validada, propia y mapeada; este nuevo parser cubre solamente la validaci�
 de formato previa. No define un _mh_execute_header ficticio ni añade stubs al
 enlace pendiente de 153 unidades base + 26 RPC / 476 indefinidos.
 
+La [preparación posterior de boot_args](BOOT_PREPARATION.md) ya resuelve su
+serialización candidata y la comprobación de alcance nativo. La carga real,
+contexto retenido, ownership y traducciones del productor completo siguen
+pendientes; el parser de esta página conserva su función de validación previa.
+
 ## Evidencia y reproducción
 
 Las pruebas ejecutan exclusivamente el parser original en host con ASan/UBSan:

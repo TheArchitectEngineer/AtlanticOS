@@ -21,5 +21,12 @@ void atl_entry_main(const struct AtlanticEntryCapture *capture);
 void atl_entry_exception(uint64_t esr, uint64_t elr, uint64_t far);
 /* Laboratory BSP provider only; hardware BSPs must establish their own contract. */
 unsigned atl_entry_prepare_el1(void);
+#if ATL_TEST_BOOT_ARGS
+struct AtlanticBootInventory;
+struct AtlanticBootPreparation;
+/* Test-only BSP probe. Produces a candidate, never places or runs a payload. */
+int atl_laboratory_boot_candidate(const struct AtlanticBootInventory *, uint32_t tree_bytes,
+                                  struct AtlanticBootPreparation *);
+#endif
 _Static_assert(sizeof(struct AtlanticEntryCapture) == 112, "assembly capture ABI");
 #endif

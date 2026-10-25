@@ -27,6 +27,8 @@ jobs:
         run: python3 tools/test_string_support.py --sanitize --output work/string-support-tests
       - name: Validate original static Mach-O plans without loading or executing images
         run: python3 tools/test_macho.py --sanitize --output work/macho-plan-tests
+      - name: Prepare original candidate boot_args without loading XNU or claiming memory ownership
+        run: python3 tools/test_boot_prepare.py --sanitize --output work/boot-prepare-tests
       - name: Build original ARM64 entry preflight (no XNU)
         run: python3 tools/build_entry.py
       - name: Execute original entry under QEMU EL1 and EL2 (no XNU)
@@ -35,6 +37,10 @@ jobs:
         run: |
           python3 tools/build_entry.py --probe el1-trap --output work/entry-qemu-trap
           python3 tools/emulate_entry.py --build work/entry-qemu-trap
+      - name: Execute candidate boot_args producer and reject reserved RAM under QEMU (no XNU)
+        run: |
+          python3 tools/build_entry.py --probe boot-args --output work/entry-qemu-boot-args
+          python3 tools/emulate_entry.py --build work/entry-qemu-boot-args
       - name: Validate checked-in evidence hashes
         run: |
           python3 tools/evidence-validator/validate_evidence.py evidence/host/manifest.json
@@ -74,3 +80,4 @@ jobs:
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-scheduler-timers-20261024/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-coalition-bank-20261024/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/static-image-plan-20261025/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/boot-prepare-20261025/manifest.json

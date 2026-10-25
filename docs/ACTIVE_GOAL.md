@@ -177,3 +177,12 @@ asignación propia, copy/zero-fill, MMU, autenticación, boot_args y contexto BS
 No cambia el enlace de 179 objetos / 476 indefinidos ni acredita arranque.
 La [CI limpia de 153 unidades y headers MIG](https://github.com/h0nda1337/AtlanticOS/actions/runs/40155055535)
 terminó success en c8fc3cd. Ese run es anterior a este nuevo parser y no lo prueba.
+
+La [preparación original](BOOT_PREPARATION.md) emite un boot_args candidato de
+1 152 bytes, con 10 038 casos por lane, correspondencia completa con los tipos
+nativos y siete fragmentos de bootstrap conservados. El productor se ejecuta
+en QEMU EL1 y EL2; se comprueba el rechazo de una ventana que cruza el DTB real.
+Se corrige una excepción de alineación con -mstrict-align y pasan seis recorridos
+originales, incluidos normal/BRK. No se coloca el payload ni se construye el
+contexto retenido real. Siguen pendientes cierre de enlace, asignación/ownership,
+traducción e IRQ/BSP, carga temporal, XNU físico y handoff EDK2; la meta no cambia.

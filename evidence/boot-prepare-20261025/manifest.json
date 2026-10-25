@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-25",
+  "label": "EMULATED",
+  "scope": "ORIGINAL_ARM64_PREFLIGHT_AND_CANDIDATE_BOOT_ARGS_ONLY_NOT_XNU_NOT_PHONE_OR_PAYLOAD_LOAD",
+  "host_cases_per_lane": 10038,
+  "host_mutations": 10000,
+  "directed_rejections": 30,
+  "native_record_bytes": 1152,
+  "native_algorithm_fragments_unchanged": 7,
+  "successful_qemu_runs": 6,
+  "preserved_failed_alignment_observations": 1,
+  "candidate_record_sha256": "8971c60b7399ceaf65a735ffa4b59af9c0e921b3fd632690da538b5f2e2dcbcd",
+  "image_loaded": false,
+  "memory_owned": false,
+  "retained_context_constructed": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "physical_memory_measured": false,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "ef48bcfa0248e1faa65012836246237278c6c093e18736f540ee6c8e706fe077"
+    },
+    {
+      "path": "exp/arm64-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp/arm64-imports.log",
+      "sha256": "947a80ea60db5855d76182a6acd769e8106565525b6d85eaa2161c560ceb2dcc"
+    },
+    {
+      "path": "exp/boot-prepare-arm64.o",
+      "sha256": "d7449e81a9b4367bf15d47baadc0fec7cb65c9da3f3b3cd9b830cd7edfc86bfe"
+    },
+    {
+      "path": "exp/candidate-boot-args.bin",
+      "sha256": "8971c60b7399ceaf65a735ffa4b59af9c0e921b3fd632690da538b5f2e2dcbcd"
+    },
+    {
+      "path": "exp/host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp/host-tests.log",
+      "sha256": "1c4f6d2369f43231e0174ae6e37ba2cff7d125399563b105c94d26ae391d635b"
+    },
+    {
+      "path": "exp/native-boot-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp/native-boot-abi.o",
+      "sha256": "83edc0a9eefe1d3cc84e1a77b768e78190f8d4db3a57ea164d08a97cedafd51c"
+    },
+    {
+      "path": "exp/report.json",
+      "sha256": "bcefac857f4e87f345c131dcdfa21bf83055301768c1359a1774cf97ab3693e1"
+    },
+    {
+      "path": "failed-before-strict-align/build.json",
+      "sha256": "f99fe9c284789fbf8c6b289222b2deb0ae3e3fff6fe8e6186ba1a9598ab1aa6e"
+    },
+    {
+      "path": "failed-before-strict-align/entry.bin",
+      "sha256": "9911e4dd41c2106c7478cf2418b2562e7b195b31597b33ed1a7e4d466d65d089"
+    },
+    {
+      "path": "failed-before-strict-align/entry.elf",
+      "sha256": "14944f5fb9b6b837f9dc9cadb02b62d4912276d3b31ea039b200b5807127cbe7"
+    },
+    {
+      "path": "failed-before-strict-align/entry.map",
+      "sha256": "fb23d747ec011eddfc23532b2b3d2fbcc524d1a7de5483861c659106a48d730f"
+    },
+    {
+      "path": "failed-before-strict-align/fault-disassembly.log",
+      "sha256": "8f18994521c3b607340a08c33ebe874380d5a997b42aaf17aea8c4b04e1b9bc7"
+    },
+    {
+      "path": "failed-before-strict-align/fault-symbol.log",
+      "sha256": "b01395a6ae4fdbf0d025fe311f455f6b8be481eb5126462daba97b7418dc7329"
+    },
+    {
+      "path": "failed-before-strict-align/observation.json",
+      "sha256": "2e2db651f921431e94acb89b58a651811d3ddeb8bf5aa8d6f172d761d60c45cd"
+    },
+    {
+      "path": "failed-before-strict-align/qemu-el1.log",
+      "sha256": "115465c5165104979f75b29cb7f897c0cbf54f54e968dabe9c8037635ad8083a"
+    },
+    {
+      "path": "host/arm64-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "host/arm64-imports.log",
+      "sha256": "947a80ea60db5855d76182a6acd769e8106565525b6d85eaa2161c560ceb2dcc"
+    },
+    {
+      "path": "host/boot-prepare-arm64.o",
+      "sha256": "d7449e81a9b4367bf15d47baadc0fec7cb65c9da3f3b3cd9b830cd7edfc86bfe"
+    },
+    {
+      "path": "host/candidate-boot-args.bin",
+      "sha256": "8971c60b7399ceaf65a735ffa4b59af9c0e921b3fd632690da538b5f2e2dcbcd"
+    },
+    {
+      "path": "host/host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "host/host-tests.log",
+      "sha256": "1c4f6d2369f43231e0174ae6e37ba2cff7d125399563b105c94d26ae391d635b"
+    },
+    {
+      "path": "host/report.json",
+      "sha256": "aa2bdc2c56b791923c9ed7306aac2dbb32d957bee81e37a8bc0ba2b1703fd7f9"
+    },
+    {
+      "path": "native-source-binding.json",
+      "sha256": "1ebc416d3e11cbbbd590e7081150400d18dec5e401008d61684d80138ace1b36"
+    },
+    {
+      "path": "qemu-boot-args/build.json",
+      "sha256": "81b34f6138135e83d44d5b332a36b83e4a0f5450c2b0331df2cf317245bfcac8"
+    },
+    {
+      "path": "qemu-boot-args/build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "qemu-boot-args/emulation.json",
+      "sha256": "fb1c1821fc4daef3443b8ed3e36bdda8b0f1732c8fbbb70952a95869097b1bf7"
+    },
+    {
+      "path": "qemu-boot-args/entry.bin",
+      "sha256": "01291c01fdde95c28150b14aaa1e76ed67670f2d44917a9709c378c7fedb96e5"
+    },
+    {
+      "path": "qemu-boot-args/entry.elf",
+      "sha256": "24b19e1f3810bea93005065e60cd26c4a4b83bed37ff59433e9d335f82c43760"
+    },
+    {
+      "path": "qemu-boot-args/entry.map",
+      "sha256": "3431f015999763b633ec721378cff0deeb00869910848ba98d96974be757fba5"
+    },
+    {
+      "path": "qemu-boot-args/qemu-el1.log",
+      "sha256": "3af1fd9ff089a441b267f1063c1a778766b12199f69b94a7278bd4884cbba693"
+    },
+    {
+      "path": "qemu-boot-args/qemu-el2.log",
+      "sha256": "6e6b97158964c306b260b74275ac1aaff484ab94e9e655613f8c2f20bdb0d77f"
+    },
+    {
+      "path": "qemu-el1-trap/build.json",
+      "sha256": "e7414a1dbaccebbcc5c091a576ba147c5403f639d83117ccf6e6248160168a91"
+    },
+    {
+      "path": "qemu-el1-trap/build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "qemu-el1-trap/emulation.json",
+      "sha256": "700f79cc491b51915c3f0804e24684e48772cdc0b1f42630697e7e2c8069f805"
+    },
+    {
+      "path": "qemu-el1-trap/entry.bin",
+      "sha256": "a59af148b6932e54bed71251640e2a7f92feb5b83a9ff43bcfb9999d72d7a02c"
+    },
+    {
+      "path": "qemu-el1-trap/entry.elf",
+      "sha256": "52f1d295b884e28b538068504a85923ee16ccf9da8a590f43d7d680be5ebf03f"
+    },
+    {
+      "path": "qemu-el1-trap/entry.map",
+      "sha256": "73feabb256a7b95bbb19230a1b66ea7825fb6ab4b8196855c19d2ce445a14a72"
+    },
+    {
+      "path": "qemu-el1-trap/qemu-el1.log",
+      "sha256": "19eaf8fc580d2c7777828de2530ec6e3950819396df949c924a80f2cae070bc1"
+    },
+    {
+      "path": "qemu-el1-trap/qemu-el2.log",
+      "sha256": "8895d310ebae5e0df33ddea5e6edc35f51607391842df061dff0502e3d81a95f"
+    },
+    {
+      "path": "qemu-normal/build.json",
+      "sha256": "40ecb4f48b72a0a5fe270d1da4d7d3a0f1e9bd978ef00c4581044b950e311e7d"
+    },
+    {
+      "path": "qemu-normal/build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "qemu-normal/emulation.json",
+      "sha256": "db70c10a9f3ac042d39227c5b953e67725a700248423962b4e8b35d1f4d02f39"
+    },
+    {
+      "path": "qemu-normal/entry.bin",
+      "sha256": "360fc268e74d9171bb28d3896a0dea35aa8bdada9c4b919c43eec56661973cc5"
+    },
+    {
+      "path": "qemu-normal/entry.elf",
+      "sha256": "ccbe30ae002e295f9f7f25ecee0ece972f4ba5e16cf5781922e52d23ff36aea0"
+    },
+    {
+      "path": "qemu-normal/entry.map",
+      "sha256": "93782b36fe5e4420dfbf2da9c39a673634e87761e31c8ed74387581480924e9f"
+    },
+    {
+      "path": "qemu-normal/qemu-el1.log",
+      "sha256": "1e0f151e313cdcf4c8c687de0e7eb6a1930a742aaaf1217228a3370c0798de0a"
+    },
+    {
+      "path": "qemu-normal/qemu-el2.log",
+      "sha256": "2a35630fd3b6d96ecb52fdfff716764db8332b9cfac9ec1aec920a682149cd27"
+    },
+    {
+      "path": "source/atlantic-core/boot_prepare.c",
+      "sha256": "282132fe1dcdd141ae48e3c2bb21d9b927768aea0cf0a8c3f2ab889a8e1e243f"
+    },
+    {
+      "path": "source/atlantic-core/boot_tree.c",
+      "sha256": "27713731e13e2b814ce95f3d9ced44bb2d67a4a17d9d3b22a82fba1ad2119f57"
+    },
+    {
+      "path": "source/atlantic-core/fdt.c",
+      "sha256": "b8d9a0a6f33a7016c0b57ec1bd11ae7fc397a637c2af6d29898767d7b00f3a2e"
+    },
+    {
+      "path": "source/atlantic-core/macho.c",
+      "sha256": "4121a066fb9127070b70af7095d04ca7c10a73c0e3327ea88a086a69cded391c"
+    },
+    {
+      "path": "source/atlantic-entry/entry.S",
+      "sha256": "208942a50ae668f014153bd106c9cd8b50cbdae9d1076fb971bd24fb6a3aef5b"
+    },
+    {
+      "path": "source/atlantic-entry/link.ld",
+      "sha256": "2400b0d818ead824e9a3962500ccf603b172ff50d565db8f452ee710c4432c57"
+    },
+    {
+      "path": "source/atlantic-entry/preflight.c",
+      "sha256": "4f2e24cd567c2bf80e88a0c00598b03581dc27a7d88b17ef131d87dcf00cd2e2"
+    },
+    {
+      "path": "source/evidence/static-image-plan-20261025/lld-fixtures/high.macho",
+      "sha256": "06b3bb2ca32f77cc38873726923b4dc9587c3afe0f82472d2ea9abf95c979f13"
+    },
+    {
+      "path": "source/include/atlantic/boot_prepare.h",
+      "sha256": "beffc303558bdbed0d4a63fab4defde01cb96c491a82e3db9221180d2fc6b27e"
+    },
+    {
+      "path": "source/include/atlantic/boot_tree.h",
+      "sha256": "b7e09b6ff1b8e85606b5239115222e32e784e0d6bb67933f82e20dd745312a5e"
+    },
+    {
+      "path": "source/include/atlantic/entry.h",
+      "sha256": "6dfdf8d3f2cd2e0201ac9bc0dc18eb3e6cc0a3e9def2a2d14cf4f8b4abde10ea"
+    },
+    {
+      "path": "source/include/atlantic/fdt.h",
+      "sha256": "dcfb68be452c03828559d671459e2890606ee4d37cc5d3afb395848f3361a6d3"
+    },
+    {
+      "path": "source/include/atlantic/macho.h",
+      "sha256": "6b9c78d2908b06accaec84f3eef8aa2d5daa6b091ea9e7911445029744d64ed3"
+    },
+    {
+      "path": "source/platforms/qemu-virt/board.json",
+      "sha256": "c0e202f6c51cfc76e940e8f1c3706ffbdaae473ccbca9755e1bba466b5f0f2d2"
+    },
+    {
+      "path": "source/platforms/qemu-virt/boot_probe.c",
+      "sha256": "ef3b6039f82dc0393541d3781ac0a11ac592b980f43a211c4ec421a70952b230"
+    },
+    {
+      "path": "source/platforms/qemu-virt/early.c",
+      "sha256": "05de3e073c049ea2c7a6be3c1afeb85e23f1eaaa49f86199a64125c9379066b0"
+    },
+    {
+      "path": "source/platforms/qemu-virt/el1.S",
+      "sha256": "f6accddc7b1fc4fe6e5d68bf4eb1e5f4e87c96121b5a7772890907d162bb67c1"
+    },
+    {
+      "path": "source/tests/c/test_boot_prepare.c",
+      "sha256": "8373984b5ad810a156ff4a080225ddeded86e6a8e34371c89f55697d5f8afa32"
+    },
+    {
+      "path": "source/tests/entry/boot_image.S",
+      "sha256": "36824fafca12a0feab67a11e0d173c1491564577d2c047ab5507d9585fc48641"
+    },
+    {
+      "path": "source/tests/xnu_port/boot_prepare_abi.c",
+      "sha256": "5ea6e393dc1c75e3bf488322026beeaaee2c76afdf9bce02703a5d288e5aee53"
+    },
+    {
+      "path": "source/tools/build_entry.py",
+      "sha256": "ecd660af9617327af5dc0a7f3e83644cb34027d5bf58f0591c616c73ddafa99d"
+    },
+    {
+      "path": "source/tools/emulate_entry.py",
+      "sha256": "1692f497e5b8125bd71a72b3fb63e5fced8f71c556b8fa664e493009e096d743"
+    },
+    {
+      "path": "source/tools/test_boot_prepare.py",
+      "sha256": "50a46881e31a5b0d85e583b94ea2554f5a465a2dc819b5f036ff013131c00def"
+    },
+    {
+      "path": "source/tools/test_xnu_brk_scope.py",
+      "sha256": "1a6e6f113f75696727166f46d3a65024cd4d6484928b926b49c087c209ee678a"
+    },
+    {
+      "path": "std/arm64-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std/arm64-imports.log",
+      "sha256": "947a80ea60db5855d76182a6acd769e8106565525b6d85eaa2161c560ceb2dcc"
+    },
+    {
+      "path": "std/boot-prepare-arm64.o",
+      "sha256": "d7449e81a9b4367bf15d47baadc0fec7cb65c9da3f3b3cd9b830cd7edfc86bfe"
+    },
+    {
+      "path": "std/candidate-boot-args.bin",
+      "sha256": "8971c60b7399ceaf65a735ffa4b59af9c0e921b3fd632690da538b5f2e2dcbcd"
+    },
+    {
+      "path": "std/host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std/host-tests.log",
+      "sha256": "1c4f6d2369f43231e0174ae6e37ba2cff7d125399563b105c94d26ae391d635b"
+    },
+    {
+      "path": "std/native-boot-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std/native-boot-abi.o",
+      "sha256": "b4d591182c78b795b4cff190699c26be7a2e0820e1292d1582d7549827533f78"
+    },
+    {
+      "path": "std/report.json",
+      "sha256": "d106648e74323568fd7d607730db0a00927f881e6f11a9392f2054d62743cb5c"
+    }
+  ]
+}

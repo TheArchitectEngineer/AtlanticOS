@@ -89,8 +89,11 @@ Aquella revisión registra 594 diagnósticos indefinidos y cero duplicados.
 El [validador de imagen original](docs/STATIC_IMAGE_PLAN.md) comprueba formato,
 segmentos, permisos, símbolos y entrada de nuestro Mach-O ARM64 estático.
 Pasan 45 099 casos host con ASan/UBSan, incluidas 15 salidas reales de LLD;
-produce un plan sin asignar, mapear o ejecutar una imagen. Boot_args y el
-contexto retenido BSP siguen pendientes; el total de unidades XNU no cambia.
+produce un plan sin asignar, mapear o ejecutar una imagen.
+La [preparación de boot_args](docs/BOOT_PREPARATION.md) añade 10 038 casos por
+lane y contrasta los 1 152 bytes con el ABI nativo. Se ejecuta el productor
+original en QEMU EL1/EL2 y se rechaza una ventana que cruza su DTB. Falta colocar
+la imagen y construir el contexto BSP; el total de unidades XNU no cambia.
 La [política IPC y los límites de componentes](docs/XNU_IPC_POLICY_SCOPE.md)
 incorporan el registro de kobjects y las descripciones Mach nativos, sin
 identidad BSD ni CoreAnalytics ficticios. Conservan 17 cuerpos core y el contador

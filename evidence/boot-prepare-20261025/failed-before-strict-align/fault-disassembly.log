@@ -1,0 +1,22 @@
+
+<ROOT>/work/entry-boot-args-v2-20261025/entry.elf:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+0000000040083930 <atl_xnu_boot_prepare>:
+40083d50: 54ffed48     	b.hi	0x40083af8 <atl_xnu_boot_prepare+0x1c8>
+40083d54: 320f83ef     	mov	w15, #0x20002           // =131074
+40083d58: 390323e9     	strb	w9, [sp, #0xc8]
+40083d5c: 390343e8     	strb	w8, [sp, #0xd0]
+40083d60: b900bbef     	str	w15, [sp, #0xb8]
+40083d64: b25c6fef     	mov	x15, #-0x1000000000     // =-68719476736
+40083d68: f2a0e00f     	movk	x15, #0x700, lsl #16
+40083d6c: 390483eb     	strb	w11, [sp, #0x120]
+40083d70: 780d53ff     	sturh	wzr, [sp, #0xd5]
+40083d74: 39035fff     	strb	wzr, [sp, #0xd7]
+40083d78: f90063ef     	str	x15, [sp, #0xc0]
+40083d7c: d348fd2f     	lsr	x15, x9, #8
+40083d80: 390363ec     	strb	w12, [sp, #0xd8]
+40083d84: 390327ef     	strb	w15, [sp, #0xc9]
+40083d88: d350fd2f     	lsr	x15, x9, #16
+40083d8c: 390463ee     	strb	w14, [sp, #0x118]

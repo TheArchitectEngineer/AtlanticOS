@@ -6,6 +6,10 @@ se ejecuta en el preflight QEMU y conserva las exclusiones de memoria en una
 estructura separada. **No construye boot_args ni inicia XNU.** SecureDT todavía
 no ha consumido este resultado en una instancia de kernel.
 
+El módulo posterior [boot_prepare](BOOT_PREPARATION.md) serializa boot_args como
+candidato y prueba alcance por bloques con este inventario. No cambia la función
+del serializador del árbol ni demuestra colocación, traducciones o ownership.
+
 ```mermaid
 flowchart LR
   F[FDT inmutable] --> V[Validación completa]
