@@ -169,3 +169,11 @@ indefinidos y cero duplicados, sin imagen. La identidad, persona y notificación
 siguen sin implementación/runtime completos; debug VM desactivado mantiene el
 error upstream. No hay XNU físico, handoff EDK2 ni RAM firmware medida; el
 objetivo y las restricciones del dispositivo no cambian.
+
+El [plan original de imagen estática](STATIC_IMAGE_PLAN.md), 2026-10-25, valida
+45 099 casos host con ASan/UBSan y 15 salidas LLD reales. ABI de formato verificada
+en ambas toolchains; objeto ARM64 sin imports, no ejecutado. Falta integrar
+asignación propia, copy/zero-fill, MMU, autenticación, boot_args y contexto BSP.
+No cambia el enlace de 179 objetos / 476 indefinidos ni acredita arranque.
+La [CI limpia de 153 unidades y headers MIG](https://github.com/h0nda1337/AtlanticOS/actions/runs/40155055535)
+terminó success en c8fc3cd. Ese run es anterior a este nuevo parser y no lo prueba.

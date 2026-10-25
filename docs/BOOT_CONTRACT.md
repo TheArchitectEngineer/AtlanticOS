@@ -83,6 +83,12 @@ comprobado. Las llamadas al Platform Expert y al scheduler deben usar las rutas
 reales de XNU y el PE propio, con símbolos resueltos e instrumentación verificable.
 Todavía no hay imagen XNU enlazada. El Python host no participa en ese arranque.
 
+El [validador original de imagen estática](STATIC_IMAGE_PLAN.md) produce un plan
+acotado de segmentos/PC para nuestro perfil Mach-O ARM64. No asigna memoria,
+autentica, mapea, construye boot_args ni entra a XNU. Sus rangos virtuales no son
+direcciones físicas ni acreditan ownership; solo el productor BSP futuro podrá
+probar la carga real y conservar ese contexto para los callbacks PE.
+
 ## ABI BSP en ejecución
 
 `include/atlantic/platform.h`: ABI v1 con struct_bytes, ID y lista de capacidades.

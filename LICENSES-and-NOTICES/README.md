@@ -11,6 +11,11 @@ LLVM-LICENSE.txt cubre sus avisos. El modo de enlace no procede de un port de
 kernel o firmware ajeno. Las bibliotecas LLVM host se registran como dependencias
 externas y no se incluyen como binarios en el repositorio.
 
+atlantic-core/macho.c, su API y harness son originales MIT. Solo se contrastan
+constantes/layouts con headers oficiales XNU; no se copia un loader Apple o del
+port UEFI G20. Los fixtures de evidencia proceden de nuestras fuentes assembler
+MIT enlazadas por LLD; no contienen un kernel XNU o firmware OEM.
+
 XNU oficial fijado en dependencies.lock.json: fuente externa intacta, checkout
 ignorado, no incorporado en el paquete fuente AtlanticOS. Se conserva su
 APPLE_LICENSE íntegra junto a este archivo; los avisos por archivo siguen en

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "ORIGINAL_STATIC_MACHO_PLAN_ONLY_NO_LOADING_OR_XNU_OR_DEVICE_EXECUTION",
+  "inputs": {
+    "include/atlantic/macho.h": "6b9c78d2908b06accaec84f3eef8aa2d5daa6b091ea9e7911445029744d64ed3",
+    "atlantic-core/macho.c": "4121a066fb9127070b70af7095d04ca7c10a73c0e3327ea88a086a69cded391c",
+    "tests/c/test_macho.c": "8d46ab73d244cd8e7156f557ab1bd6a2a3c52c54020c5ea6c3f7a55b292392e6",
+    "tests/xnu_port/macho_format_abi.c": "e0f909dc8b2d2971a49f5dbeaf37c4bcedee0afca5022285ccdceee87d126808",
+    "tools/test_macho.py": "95bb990d72f5dd154f6ae7ada57b68c4617dac588234545e87f186f00351e457"
+  },
+  "commands": [
+    [
+      "/usr/bin/clang",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I<ROOT>/include",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "<ROOT>/atlantic-core/macho.c",
+      "<ROOT>/tests/c/test_macho.c",
+      "-o",
+      "<ROOT>/work/macho-plan-host-verified-20261025/host-tests"
+    ],
+    [
+      "<ROOT>/work/macho-plan-host-verified-20261025/host-tests"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=aarch64-none-elf",
+      "-std=c11",
+      "-O2",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I<ROOT>/include",
+      "-c",
+      "<ROOT>/atlantic-core/macho.c",
+      "-o",
+      "<ROOT>/work/macho-plan-host-verified-20261025/macho-arm64.o"
+    ],
+    [
+      "llvm-nm",
+      "--undefined-only",
+      "<ROOT>/work/macho-plan-host-verified-20261025/macho-arm64.o"
+    ]
+  ],
+  "sanitizers": true,
+  "host_contracts": {
+    "cases": 45084,
+    "truncations": 33024,
+    "mutations": 12000,
+    "rejections": 53,
+    "files": 0
+  },
+  "lld_fixture_audits": [],
+  "lld_fixture_proof": null,
+  "native_header_abi": null,
+  "arm64_object_sha256": "dcff97dc1c8ac3c58ae96fe3e03c6482ea5d093bea0d779637698e09eec8ed72",
+  "compiler_version": "Debian clang version 19.1.7 (3+b1)",
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "image_loaded": false,
+  "signature_checked": false,
+  "physical_memory_measured": false
+}

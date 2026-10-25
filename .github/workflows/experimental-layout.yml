@@ -40,6 +40,8 @@ jobs:
         run: python3 tools/test_xnu_memory_providers.py --build work/xnu-lab-builds/*/report.json --output work/memory-provider-tests
       - name: Compare boot-data wire layout with native XNU using the experimental target
         run: python3 tools/test_boot_tree.py --sanitize --xnu-build work/xnu-lab-builds/*/report.json --output work/boot-tree-tests
+      - name: Test static-image plans and compare official Mach-O ARM64 header ABI
+        run: python3 tools/test_macho.py --sanitize --xnu-build work/xnu-lab-builds/*/report.json --output work/macho-plan-tests
       - name: Verify pmap API rejection, object symbols and actual header dependencies
         run: |
           python3 tools/test_pmap_firmware.py --build work/xnu-lab-builds/*/report.json
@@ -98,6 +100,8 @@ jobs:
             work/core-scope-tests/*
             work/brk-scope-tests/report.json
             work/boot-tree-tests/report.json
+            work/macho-plan-tests/report.json
+            work/macho-plan-tests/*.log
             work/pe-platform-tests/report.json
             work/pe-platform-tests/*.log
             work/startup-scope-tests/report.json

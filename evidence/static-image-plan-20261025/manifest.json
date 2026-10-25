@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-25",
+  "label": "HOST_TESTED",
+  "scope": "ORIGINAL_MACHO_STATIC_PLAN_HOST_SANITIZERS_AND_NATIVE_HEADER_ABI_ONLY_NO_LOADING_OR_XNU_EXECUTION",
+  "host_cases_per_native_lane": 45099,
+  "exact_allocation_truncations": 33024,
+  "mutation_cases": 12000,
+  "directed_rejection_cases": 53,
+  "genuine_lld_fixture_images": 15,
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "image_loaded": false,
+  "signature_checked": false,
+  "physical_memory_measured": false,
+  "prior_ci_is_before_this_parser": true,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "7028b9d119be966359c75740d2ad53f19168293c39a560fdd9f1eaed446f7e7e"
+    },
+    {
+      "path": "experimental/arm64-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experimental/arm64-imports.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experimental/host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experimental/host-tests.log",
+      "sha256": "eba9621d5993bc675c29570e9b6e5facda520200158e2e25c08ca205c07d6b02"
+    },
+    {
+      "path": "experimental/macho-arm64.o",
+      "sha256": "dcff97dc1c8ac3c58ae96fe3e03c6482ea5d093bea0d779637698e09eec8ed72"
+    },
+    {
+      "path": "experimental/native-format-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experimental/native-format-abi.o",
+      "sha256": "f3124e9d286263b952339a435a7ec73a9e11122ef7024abe7d38e09a42c6b6ca"
+    },
+    {
+      "path": "experimental/report.json",
+      "sha256": "6600b1d9c12f90393d3a9b731527a2292ce2549d71a74d022ac9852ed075eec1"
+    },
+    {
+      "path": "host/arm64-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "host/arm64-imports.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "host/host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "host/host-tests.log",
+      "sha256": "45d4bd1da0f71862aa6be7d0c31b8620b18234f677b04b1dda969402b3c575b6"
+    },
+    {
+      "path": "host/macho-arm64.o",
+      "sha256": "dcff97dc1c8ac3c58ae96fe3e03c6482ea5d093bea0d779637698e09eec8ed72"
+    },
+    {
+      "path": "host/report.json",
+      "sha256": "ced4305376485a7f6b41bf9a157b550203f0682f88fe28776ffaf7ec8ed0cc22"
+    },
+    {
+      "path": "lld-fixtures/archive-weak-then-strong.macho",
+      "sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f"
+    },
+    {
+      "path": "lld-fixtures/archive-weak.macho",
+      "sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822"
+    },
+    {
+      "path": "lld-fixtures/archive.macho",
+      "sha256": "f63cb73b9bc813b26d0b4510dea343e94c347c92da569480c9aab8db4babaf3c"
+    },
+    {
+      "path": "lld-fixtures/high-weak.macho",
+      "sha256": "84e34d78ecd418c284e8bbf9f515470360e9f06d1a867ce198aec3d015ada3cd"
+    },
+    {
+      "path": "lld-fixtures/high.macho",
+      "sha256": "06b3bb2ca32f77cc38873726923b4dc9587c3afe0f82472d2ea9abf95c979f13"
+    },
+    {
+      "path": "lld-fixtures/low.macho",
+      "sha256": "d861a1d1d0f50147aebeca76ebc9b482d7c7c578f9d3ae9ad52dfcceff002c59"
+    },
+    {
+      "path": "lld-fixtures/report.json",
+      "sha256": "5dfd83df8cd779447b234556f457f8715b312268a3d91dc29e08f0982bebd0da"
+    },
+    {
+      "path": "lld-fixtures/strong-then-weak.macho",
+      "sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f"
+    },
+    {
+      "path": "lld-fixtures/weak-a.macho",
+      "sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822"
+    },
+    {
+      "path": "lld-fixtures/weak-ab.macho",
+      "sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822"
+    },
+    {
+      "path": "lld-fixtures/weak-ba.macho",
+      "sha256": "c109c047cbfc9b2d0f87247876735cc5cd88aeeca4073e660b64f7c8564a228a"
+    },
+    {
+      "path": "lld-fixtures/weak-private-ab.macho",
+      "sha256": "0fa3ca6e81923dc6daff3da88b426253b51b9b029dbf4b024b9960ae63fa2475"
+    },
+    {
+      "path": "lld-fixtures/weak-private-ba.macho",
+      "sha256": "6a585ddc6afe20c6599c929be3895412fba6da2e726ec258165d1c025de7f741"
+    },
+    {
+      "path": "lld-fixtures/weak-strong-weak.macho",
+      "sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f"
+    },
+    {
+      "path": "lld-fixtures/weak-then-strong-archive.macho",
+      "sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822"
+    },
+    {
+      "path": "lld-fixtures/weak-then-strong.macho",
+      "sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f"
+    },
+    {
+      "path": "prior-native153-ci.json",
+      "sha256": "cfdd309ca732715415b95973133176c29845f7ac1255455f6e03a64098f29679"
+    },
+    {
+      "path": "source/atlantic-core/macho.c",
+      "sha256": "4121a066fb9127070b70af7095d04ca7c10a73c0e3327ea88a086a69cded391c"
+    },
+    {
+      "path": "source/include/atlantic/macho.h",
+      "sha256": "6b9c78d2908b06accaec84f3eef8aa2d5daa6b091ea9e7911445029744d64ed3"
+    },
+    {
+      "path": "source/tests/c/test_macho.c",
+      "sha256": "8d46ab73d244cd8e7156f557ab1bd6a2a3c52c54020c5ea6c3f7a55b292392e6"
+    },
+    {
+      "path": "source/tests/xnu_port/macho_format_abi.c",
+      "sha256": "e0f909dc8b2d2971a49f5dbeaf37c4bcedee0afca5022285ccdceee87d126808"
+    },
+    {
+      "path": "source/tools/test_macho.py",
+      "sha256": "95bb990d72f5dd154f6ae7ada57b68c4617dac588234545e87f186f00351e457"
+    },
+    {
+      "path": "standard/arm64-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "standard/arm64-imports.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "standard/host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "standard/host-tests.log",
+      "sha256": "eba9621d5993bc675c29570e9b6e5facda520200158e2e25c08ca205c07d6b02"
+    },
+    {
+      "path": "standard/macho-arm64.o",
+      "sha256": "dcff97dc1c8ac3c58ae96fe3e03c6482ea5d093bea0d779637698e09eec8ed72"
+    },
+    {
+      "path": "standard/native-format-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "standard/native-format-abi.o",
+      "sha256": "f3124e9d286263b952339a435a7ec73a9e11122ef7024abe7d38e09a42c6b6ca"
+    },
+    {
+      "path": "standard/report.json",
+      "sha256": "77ce74bad7b37bde73451a1ea2b867148dd9c13eff097fc48912a6c68455f8d7"
+    }
+  ]
+}

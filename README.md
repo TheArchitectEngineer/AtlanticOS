@@ -86,6 +86,11 @@ El [soporte de cadenas e imagen](docs/XNU_STRING_IMAGE_SUPPORT.md) incorpora cua
 primitivas originales y dos unidades nativas intactas. Pasan 79 344 contratos
 host con sanitizadores; los lectores Mach-O nativos todavía no se ejecutan.
 Aquella revisión registra 594 diagnósticos indefinidos y cero duplicados.
+El [validador de imagen original](docs/STATIC_IMAGE_PLAN.md) comprueba formato,
+segmentos, permisos, símbolos y entrada de nuestro Mach-O ARM64 estático.
+Pasan 45 099 casos host con ASan/UBSan, incluidas 15 salidas reales de LLD;
+produce un plan sin asignar, mapear o ejecutar una imagen. Boot_args y el
+contexto retenido BSP siguen pendientes; el total de unidades XNU no cambia.
 La [política IPC y los límites de componentes](docs/XNU_IPC_POLICY_SCOPE.md)
 incorporan el registro de kobjects y las descripciones Mach nativos, sin
 identidad BSD ni CoreAnalytics ficticios. Conservan 17 cuerpos core y el contador

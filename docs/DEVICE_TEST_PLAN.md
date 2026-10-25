@@ -231,6 +231,13 @@ traducción/ownership y canal de salida fiables; carga únicamente temporal.
    Validar fuera del lector nativo todos los load commands, tamaños, overflow,
    segmentos/secciones, VM y permisos. Registrar la dirección real que resuelve
    _mh_execute_header; un símbolo definido o un struct del mismo tamaño no basta.
+   El [plan de imagen original](STATIC_IMAGE_PLAN.md), probado solo en host,
+   deberá integrarse antes de esta prueba: conservar bytes autenticados, registrar
+   plan y asignaciones físicas excluyendo carveouts, verificar copy/zero-fill por
+   readback y capturar traducciones/permisos activos por segmento. PC fuera de
+   instrucciones, BSS/padding no cero, páginas W+X o cualquier alias con una
+   reserva hacen fallar la prueba antes de entrar a XNU. Un plan aceptado sin
+   esos registros no prueba que la imagen haya sido cargada correctamente.
 2. Durante arm_vm_init, capturar PCs simbolizados de los lectores genuinos y sus
    resultados para segmentos/secciones/UUID/final de imagen. Comparar con el
    manifiesto auditado y con traducciones activas. Direcciones de cabecera OEM

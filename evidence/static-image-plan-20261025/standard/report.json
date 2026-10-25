@@ -1,0 +1,381 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "ORIGINAL_STATIC_MACHO_PLAN_ONLY_NO_LOADING_OR_XNU_OR_DEVICE_EXECUTION",
+  "inputs": {
+    "include/atlantic/macho.h": "6b9c78d2908b06accaec84f3eef8aa2d5daa6b091ea9e7911445029744d64ed3",
+    "atlantic-core/macho.c": "4121a066fb9127070b70af7095d04ca7c10a73c0e3327ea88a086a69cded391c",
+    "tests/c/test_macho.c": "8d46ab73d244cd8e7156f557ab1bd6a2a3c52c54020c5ea6c3f7a55b292392e6",
+    "tests/xnu_port/macho_format_abi.c": "e0f909dc8b2d2971a49f5dbeaf37c4bcedee0afca5022285ccdceee87d126808",
+    "tools/test_macho.py": "95bb990d72f5dd154f6ae7ada57b68c4617dac588234545e87f186f00351e457"
+  },
+  "commands": [
+    [
+      "/usr/bin/clang",
+      "-std=c11",
+      "-O1",
+      "-g",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I<ROOT>/include",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "<ROOT>/atlantic-core/macho.c",
+      "<ROOT>/tests/c/test_macho.c",
+      "-o",
+      "<ROOT>/work/macho-plan-std-verified-20261025/host-tests"
+    ],
+    [
+      "<ROOT>/work/macho-plan-std-verified-20261025/host-tests",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/low.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/high.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/archive.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/archive-weak.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-a.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-ba.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/archive-weak-then-strong.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/strong-then-weak.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-strong-weak.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/high-weak.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-ab.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-then-strong.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-then-strong-archive.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-private-ab.macho",
+      "<ROOT>/work/lld-static-weak-clean-tests-v2/weak-private-ba.macho"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=aarch64-none-elf",
+      "-std=c11",
+      "-O2",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I<ROOT>/include",
+      "-c",
+      "<ROOT>/atlantic-core/macho.c",
+      "-o",
+      "<ROOT>/work/macho-plan-std-verified-20261025/macho-arm64.o"
+    ],
+    [
+      "llvm-nm",
+      "--undefined-only",
+      "<ROOT>/work/macho-plan-std-verified-20261025/macho-arm64.o"
+    ],
+    [
+      "clang",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-std=gnu11",
+      "-ffreestanding",
+      "-nostdinc",
+      "-fno-builtin",
+      "-fno-stack-protector",
+      "-mkernel",
+      "-fblocks",
+      "-O1",
+      "-g",
+      "-Darm64",
+      "-DARM64",
+      "-D__ARM64__",
+      "-DLP64",
+      "-DPAGE_SIZE_FIXED",
+      "-DVM_KERNEL_LINK_ADDRESS=0xfffffff007004000",
+      "-DPRIVATE",
+      "-DAPPLE",
+      "-D__MACHO__=1",
+      "-DXNU_KERN_EVENT_DATA_IS_VLA",
+      "-DKERNEL",
+      "-DKERNEL_PRIVATE",
+      "-DXNU_KERNEL_PRIVATE",
+      "-DMACH_KERNEL_PRIVATE",
+      "-DMACH_KERNEL",
+      "-DARM64_BOARD_CONFIG_ATLANTIC_LAB",
+      "-include",
+      "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h",
+      "-ffile-prefix-map=<ROOT>=.",
+      "-fdebug-compilation-dir=.",
+      "-I<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config",
+      "-I<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/include",
+      "-I<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk",
+      "-I<ROOT>/work/xnu-lab-sources/25598af2b83969b1/bsd",
+      "-I<ROOT>/work/xnu-lab-sources/25598af2b83969b1/pexpert",
+      "-I<ROOT>/work/xnu-lab-sources/25598af2b83969b1/libkern",
+      "-I<ROOT>/work/xnu-lab-sources/25598af2b83969b1/iokit",
+      "-I<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa",
+      "-I<ROOT>/work/xnu-lab-sources/25598af2b83969b1/libsa",
+      "-I<ROOT>/work/xnu-lab-sources/25598af2b83969b1/EXTERNAL_HEADERS",
+      "-I<ROOT>/work/xnu-lab-sources/25598af2b83969b1",
+      "-isystem",
+      "/usr/lib/llvm-19/lib/clang/19/include",
+      "-DMACH",
+      "-DMULTICAST",
+      "-DCONFIG_KN_HASHSIZE=48",
+      "-DCONFIG_NC_HASH=2048",
+      "-DCONFIG_VFS_NAMES=3072",
+      "-DCONFIG_MAX_CLUSTERS=4",
+      "-DCONFIG_MIN_NBUF=80",
+      "-DCONFIG_MIN_NIOBUF=64",
+      "-DCONFIG_NMBCLUSTERS=((1024 * 256) / MCLBYTES)",
+      "-DCONFIG_TCBHASHSIZE=128",
+      "-DCONFIG_AIO_MAX=20",
+      "-DCONFIG_AIO_PROCESS_MAX=8",
+      "-DCONFIG_AIO_THREAD_COUNT=2",
+      "-DCONFIG_MAXVIFS=16",
+      "-DCONFIG_MFCTBLSIZ=128",
+      "-DCONFIG_MSG_BSIZE_REL=16384",
+      "-DCONFIG_MSG_BSIZE_DEV=131072",
+      "-DCONFIG_MSG_BSIZE=CONFIG_MSG_BSIZE_DEV",
+      "-DCONFIG_IPC_TABLE_ENTRIES_SIZE_MAX=3145728",
+      "-DCONFIG_IPC_TABLE_REQUEST_SIZE_MAX=1048576",
+      "-DCONFIG_IPC_KERNEL_MAP_SIZE=32",
+      "-DCONFIG_EMBEDDED",
+      "-DCONFIG_PMAP_PPL",
+      "-DNOS_ARM_ASM",
+      "-DNOS_ARM_PMAP",
+      "-DCONFIG_MAX_THREADS=500",
+      "-DCONFIG_BLOCKS",
+      "-DDEVELOPMENT",
+      "-DCONFIG_THREAD_MAX=1536",
+      "-DCONFIG_TASK_MAX=512",
+      "-DCONFIG_ZONE_MAP_MIN=120586240",
+      "-DCONFIG_SCHED_TIMESHARE_CORE",
+      "-DCONFIG_SCHED_DEFERRED_AST",
+      "-DCONFIG_TASKWATCH",
+      "-DCONFIG_COALITIONS",
+      "-DSERIAL_CONSOLE",
+      "-DVIDEO_CONSOLE",
+      "-DCONFIG_ATLANTIC_FIRMWARE",
+      "-c",
+      "<ROOT>/tests/xnu_port/macho_format_abi.c",
+      "-o",
+      "<ROOT>/work/macho-plan-std-verified-20261025/native-format-abi.o"
+    ]
+  ],
+  "sanitizers": true,
+  "host_contracts": {
+    "cases": 45099,
+    "truncations": 33024,
+    "mutations": 12000,
+    "rejections": 53,
+    "files": 15
+  },
+  "lld_fixture_audits": [
+    {
+      "file": "low.macho",
+      "sha256": "d861a1d1d0f50147aebeca76ebc9b482d7c7c578f9d3ae9ad52dfcceff002c59",
+      "plan": {
+        "entry": 1073743000,
+        "base": 1073741824,
+        "span": 81920,
+        "segments": 4,
+        "sections": 5,
+        "symbols": 11
+      }
+    },
+    {
+      "file": "high.macho",
+      "sha256": "06b3bb2ca32f77cc38873726923b4dc9587c3afe0f82472d2ea9abf95c979f13",
+      "plan": {
+        "entry": 18446744005107532952,
+        "base": 18446744005107531776,
+        "span": 81920,
+        "segments": 4,
+        "sections": 5,
+        "symbols": 11
+      }
+    },
+    {
+      "file": "archive.macho",
+      "sha256": "f63cb73b9bc813b26d0b4510dea343e94c347c92da569480c9aab8db4babaf3c",
+      "plan": {
+        "entry": 1073743000,
+        "base": 1073741824,
+        "span": 81920,
+        "segments": 4,
+        "sections": 5,
+        "symbols": 11
+      }
+    },
+    {
+      "file": "archive-weak.macho",
+      "sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822",
+      "plan": {
+        "entry": 1073742840,
+        "base": 1073741824,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    },
+    {
+      "file": "weak-a.macho",
+      "sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822",
+      "plan": {
+        "entry": 1073742840,
+        "base": 1073741824,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    },
+    {
+      "file": "weak-ba.macho",
+      "sha256": "c109c047cbfc9b2d0f87247876735cc5cd88aeeca4073e660b64f7c8564a228a",
+      "plan": {
+        "entry": 1073742840,
+        "base": 1073741824,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    },
+    {
+      "file": "archive-weak-then-strong.macho",
+      "sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f",
+      "plan": {
+        "entry": 1073742840,
+        "base": 1073741824,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    },
+    {
+      "file": "strong-then-weak.macho",
+      "sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f",
+      "plan": {
+        "entry": 1073742840,
+        "base": 1073741824,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    },
+    {
+      "file": "weak-strong-weak.macho",
+      "sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f",
+      "plan": {
+        "entry": 1073742840,
+        "base": 1073741824,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    },
+    {
+      "file": "high-weak.macho",
+      "sha256": "84e34d78ecd418c284e8bbf9f515470360e9f06d1a867ce198aec3d015ada3cd",
+      "plan": {
+        "entry": 18446744005107532792,
+        "base": 18446744005107531776,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    },
+    {
+      "file": "weak-ab.macho",
+      "sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822",
+      "plan": {
+        "entry": 1073742840,
+        "base": 1073741824,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    },
+    {
+      "file": "weak-then-strong.macho",
+      "sha256": "3f39bf209cab3c32e1fc4186a35707224a15410399e97a0d2e07c245c4a86d2f",
+      "plan": {
+        "entry": 1073742840,
+        "base": 1073741824,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    },
+    {
+      "file": "weak-then-strong-archive.macho",
+      "sha256": "640f4a28a04526e6ddffb044d7657072fba5a5b78e9ed3e13ef700e7a345d822",
+      "plan": {
+        "entry": 1073742840,
+        "base": 1073741824,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    },
+    {
+      "file": "weak-private-ab.macho",
+      "sha256": "0fa3ca6e81923dc6daff3da88b426253b51b9b029dbf4b024b9960ae63fa2475",
+      "plan": {
+        "entry": 1073742840,
+        "base": 1073741824,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    },
+    {
+      "file": "weak-private-ba.macho",
+      "sha256": "6a585ddc6afe20c6599c929be3895412fba6da2e726ec258165d1c025de7f741",
+      "plan": {
+        "entry": 18446744005107532792,
+        "base": 18446744005107531776,
+        "span": 65536,
+        "segments": 4,
+        "sections": 3,
+        "symbols": 8
+      }
+    }
+  ],
+  "lld_fixture_proof": {
+    "report_sha256": "5dfd83df8cd779447b234556f457f8715b312268a3d91dc29e08f0982bebd0da",
+    "linker_sha256": "0366272978de83b5da6c47d37f458b9e0feaa58f9ac5dd14e831a23420f06133",
+    "source_inputs": {
+      "tools/test_atlantic_lld.py": "62ecefcb67930d85576b7053d95a56d0c033f37f2a5c020720fa731e5c20d8a6",
+      "tests/lld_static/entry.s": "319940297694d92d79518da91a8296040c70faceced7a4a19f44195b3e8a73a4",
+      "tests/lld_static/data.s": "c3d2153463b6789ade371a7c4c21a745babbe383f521a412192a7395495e37ed",
+      "tests/lld_static/weak-entry.s": "98b9d21f5e4388721333540f38efb1892b119be96fb6bffb9942cea471ba81b7",
+      "tests/lld_static/weak-definition.S": "fd1ca9b4776618fabb219f752b70b423c8d5777191ead31e9336710e8fe4f6bd",
+      "linker-port/0001-add-bounded-static-arm64-link-mode.patch": "0b7ff37bab7c8bcc27267990b47b7068896f552dc9e07f28649dfec6d749222f",
+      "linker-port/patches.lock.json": "26617f3e078c7e7554dbc7e6b78e4162cc34d302a4845c2b404f6a5d015e5cba"
+    }
+  },
+  "native_header_abi": {
+    "build_report_sha256": "516eceb39d2019dd22eb27de3c4b16b2e650dcb5d56be3994151141823eaa9cc",
+    "object_sha256": "f3124e9d286263b952339a435a7ec73a9e11122ef7024abe7d38e09a42c6b6ca",
+    "headers": {
+      "EXTERNAL_HEADERS/mach-o/loader.h": "8780a1e622375833b563f488bc820422c2fb5b8727bb8df8ceaa73ab6f0f88e3",
+      "EXTERNAL_HEADERS/mach-o/nlist.h": "9e1a328c1a9632fae48d4d95b09d377f5007374ddb8addad97e0841052304c96",
+      "osfmk/mach/arm/thread_status.h": "1e1ffb69bb7a8724d5b6238fb6d78f91cc2602907dba4bfd11ceb2fde10ede04",
+      "osfmk/mach/arm/_structs.h": "473f9b6ae29da5d58ee65aed0002f4730a031a21a3a6c4cd61074db77b66dcfd"
+    },
+    "xnu_executed": false
+  },
+  "arm64_object_sha256": "dcff97dc1c8ac3c58ae96fe3e03c6482ea5d093bea0d779637698e09eec8ed72",
+  "compiler_version": "Debian clang version 19.1.7 (3+b1)",
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "image_loaded": false,
+  "signature_checked": false,
+  "physical_memory_measured": false
+}
