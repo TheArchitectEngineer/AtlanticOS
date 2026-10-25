@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "c12fbf206f5085f0ef4b5641d89f6583d3716a80f2548d1de0ec34c7eb8d4816",
+  "port_id": "df455b8290a910db564e29bbb95fd758690eacc9ff9f35425752f1ee8feac17a",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -29,7 +29,8 @@
     "0024-retain-real-debug-callout-registry-in-firmware.patch": "ae14ccaecb485bf60ad7b7a53e19a13151e95917b943b6fdb5c5093251c24f2f",
     "0025-scope-bootstrap-services-to-selected-firmware-components.patch": "0f42ca7604ce702314fddbaddcdfbf8d2bf4e0dc3a332ba6c192c75163f0c3f8",
     "0026-add-original-string-support-with-native-xnu-abi.patch": "0e7c9852d8b9f6492df8ae738f8c7d3821f7913ec097b8121534447199d57ca0",
-    "0027-scope-ipc-process-analytics-sdk-and-iokit-descriptions.patch": "52958786edbd82547c08a8106417509778dc979800c309507a2cebdb20998c40"
+    "0027-scope-ipc-process-analytics-sdk-and-iokit-descriptions.patch": "52958786edbd82547c08a8106417509778dc979800c309507a2cebdb20998c40",
+    "0028-scope-bsd-throttle-callbacks-and-fix-native-resource-failure-path.patch": "306dab51ce7db3acb84be207a1015b267e53ecb59fa7d027df95d1a61c726611"
   },
   "canonical_lf_files": [
     {
@@ -261,6 +262,16 @@
       "path": "osfmk/ipc/mach_debug.c",
       "preimage_sha256": "e7ef959bf431faa64bbef8d7cb18fd6a350fd960fdfe197923544511fb407ccc",
       "postimage_sha256": "00ab1369e82ee4f2635a775ce45201b9ca3055ab2cf50098605e9a03bb38d5c4"
+    },
+    {
+      "path": "osfmk/kern/thread_policy.c",
+      "preimage_sha256": "6380ddc20c5af9ba8d52bda8d18ddf9021b49fa298ca2038af899b4f89df2493",
+      "postimage_sha256": "efed2d4489cb17afb5f13939b1a42aee995a409bb78e3ade4cb4d3323f0b5281"
+    },
+    {
+      "path": "osfmk/kern/task_policy.c",
+      "preimage_sha256": "9f2e8eaad2dfe8046c8ce9ee8425945b4d4e7e4790954ad806c8de848a4a47f4",
+      "postimage_sha256": "e8594eee0356d546ed517dff516114e9279d7aab34f15138a55df6bbd7fd3366"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

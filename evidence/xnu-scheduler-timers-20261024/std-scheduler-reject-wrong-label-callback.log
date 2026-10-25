@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/scheduler_provider_abi.c:35:8: error: incompatible function pointer types initializing 'void (*)(uintptr_t)' (aka 'void (*)(unsigned long)') with an expression of type 'void (ipc_object_label_t)' (aka 'void (struct ipc_object)') [-Wincompatible-function-pointer-types]
+   35 | void (*bad_label_callback)(uintptr_t) = mk_timer_port_label_dealloc;
+      |        ^                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.

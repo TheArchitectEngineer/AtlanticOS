@@ -1,0 +1,5 @@
+void
+kdp_register_callout(kdp_callout_fn_t fn, void *arg)
+{
+#pragma unused(fn,arg)
+}

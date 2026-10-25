@@ -1,0 +1,7 @@
+<ROOT>/work/xnu-lab-builds/465ced375102e360/memory_object.o:
+(__TEXT,__text) section
+_memory_object_data_request:
+    1fc0:	08 04 40 f9	ldr	x8, [x0, #0x8]
+    1fc4:	05 11 40 f9	ldr	x5, [x8, #0x20]
+    1fc8:	a0 00 1f d6	br	x5
+    1fcc:	1f 20 03 d5	nop

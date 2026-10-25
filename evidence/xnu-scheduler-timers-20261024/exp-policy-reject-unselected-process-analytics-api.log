@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/ipc_policy_abi.c:15:13: error: use of undeclared identifier 'ipc_stash_policy_violations_telemetry'
+   15 | __typeof__(&ipc_stash_policy_violations_telemetry) unavailable_process_analytics;
+      |             ^
+1 error generated.

@@ -1,0 +1,149 @@
+{
+  "scope": "STRICT_LINK_DIAGNOSTIC_NAME_COMPARISON_NOT_EXECUTION",
+  "previous_link_sha256": "b23361b24740a25763152accbe035a762365684c6b29296b901df99c130135b5",
+  "current_link_sha256": "537169c0c675f73d0d161c3748b5d4af47b23f00d87697494bce230cfe4d7cd1",
+  "previous_undefined": 561,
+  "current_undefined": 502,
+  "previous_symbols_now_provided": [
+    "__Z11counter_decPy",
+    "__Z11counter_incPy",
+    "__Z12counter_freePPy",
+    "__Z12counter_loadPPy",
+    "__Z13counter_allocPPy",
+    "_convert_port_to_task_id_token",
+    "_convert_task_id_token_to_port",
+    "_default_task_effective_policy",
+    "_default_task_requested_policy",
+    "_default_thread_requested_policy",
+    "_first_free_is_valid_ll",
+    "_kern_timeout_end",
+    "_kern_timeout_start",
+    "_kern_timeout_try_panic",
+    "_mk_timer_port_label_dealloc",
+    "_proc_get_effective_task_policy",
+    "_proc_get_effective_thread_policy",
+    "_proc_init_cpumon_params",
+    "_proc_set_task_policy",
+    "_proc_set_thread_policy",
+    "_proc_thread_qos_deallocate",
+    "_scalable_counter_static_boot_mangle",
+    "_scalable_counter_static_init",
+    "_send_resource_violation",
+    "_sfi_class_offtime_cancel",
+    "_sfi_set_class_offtime",
+    "_sfi_set_window",
+    "_sfi_thread_classify",
+    "_sfi_window_cancel",
+    "_task_affinity_create",
+    "_task_affinity_deallocate",
+    "_task_affinity_info",
+    "_task_create_identity_token",
+    "_task_id_token_release",
+    "_task_identity_token_get_task_grp",
+    "_task_identity_token_get_task_port",
+    "_task_importance_init_from_parent",
+    "_task_importance_reset",
+    "_task_is_app",
+    "_task_is_daemon",
+    "_task_is_driver",
+    "_task_is_importance_donor",
+    "_task_policy_create",
+    "_task_policy_get",
+    "_task_policy_set",
+    "_task_policy_update_complete_unlocked",
+    "_task_removewatchers",
+    "_task_suspend_cpumon",
+    "_task_update_boost_locked",
+    "_thead_remove_taskwatch",
+    "_thread_affinity_dup",
+    "_thread_affinity_terminate",
+    "_thread_depress_abort",
+    "_thread_depress_abort_locked",
+    "_thread_depress_expire",
+    "_thread_get_requested_qos",
+    "_thread_handoff_deallocate",
+    "_thread_handoff_parameter",
+    "_thread_policy_create",
+    "_thread_policy_get",
+    "_thread_policy_reset",
+    "_thread_policy_set",
+    "_thread_poll_yield",
+    "_thread_qos_policy_params",
+    "_thread_recompute_kernel_promotion_locked",
+    "_thread_recompute_priority",
+    "_thread_recompute_user_promotion_locked",
+    "_thread_update_qos_cpu_time",
+    "_thread_user_promotion_qos_for_pri",
+    "_thread_yield_to_preemption",
+    "_trace_resource_violation",
+    "_update_first_free_ll",
+    "_vm_map_store_copy_reset_ll",
+    "_vm_map_store_entry_link_ll",
+    "_vm_map_store_entry_unlink_ll",
+    "_vm_map_store_init_ll"
+  ],
+  "previous_symbols_no_longer_referenced": [],
+  "new_unresolved_dependencies": [
+    "_find_corpse_task_by_uniqueid_grp",
+    "_get_task_pidsuspended",
+    "_mach_eventlink_handoff_success_count",
+    "_memorystatus_update_priority_for_appnap",
+    "_proc_apply_resource_actions",
+    "_proc_find_ident",
+    "_proc_ident_with_policy",
+    "_proc_rele",
+    "_proc_restore_resource_actions",
+    "_proc_task",
+    "_task_coalition_adjust_focal_count",
+    "_task_coalition_adjust_nonfocal_count",
+    "_task_coalition_thread_group_application_set",
+    "_task_coalition_thread_group_focal_update",
+    "_task_get_effective_jetsam_coalition_policy",
+    "_trap_telemetry_report_latency_violation",
+    "_work_interval_get_priority"
+  ],
+  "reason": "GENUINE_NATIVE_TIMER_SCHEDULER_POLICY_VM_LIST_COUNTER_IDENTITY_PROVIDERS_NO_SERVICES_FABRICATED",
+  "new_units": [
+    {
+      "source": "osfmk/kern/mk_timer.c",
+      "source_sha256": "aa73f8976c8be7e2dbb89bedee9de7d245eb67fa5f29de3b05ee7c3083ea22ff"
+    },
+    {
+      "source": "osfmk/kern/syscall_subr.c",
+      "source_sha256": "0e13889d4b285241393e6acb64956d4a505a0469e6e210ab11c4c1cd2a76a528"
+    },
+    {
+      "source": "osfmk/kern/timeout.c",
+      "source_sha256": "99e604ef0294e33b2b6e949b51118cab0267e3de2afb36e91156e9d1497ed37c"
+    },
+    {
+      "source": "osfmk/kern/thread_policy.c",
+      "source_sha256": "efed2d4489cb17afb5f13939b1a42aee995a409bb78e3ade4cb4d3323f0b5281"
+    },
+    {
+      "source": "osfmk/kern/task_policy.c",
+      "source_sha256": "e8594eee0356d546ed517dff516114e9279d7aab34f15138a55df6bbd7fd3366"
+    },
+    {
+      "source": "osfmk/kern/affinity.c",
+      "source_sha256": "c46831e196b832791c013c8138f598466addb11e584f748fd05d7ba8b2cb59b2"
+    },
+    {
+      "source": "osfmk/vm/vm_map_store_ll.c",
+      "source_sha256": "11febd188fa394c3e200169c55e188369b68f813af53dc174b442cbc7bab4a57"
+    },
+    {
+      "source": "osfmk/kern/counter_common.c",
+      "source_sha256": "d54cca3af8db8058b1a9501ab32eb10022e6d852992673f422d1ec534b6e775d"
+    },
+    {
+      "source": "osfmk/kern/task_ident.c",
+      "source_sha256": "f23c85a60448b1c75409bb9fb70cf939b79a84376ee2d9069d781711335f1656"
+    },
+    {
+      "source": "osfmk/kern/sfi.c",
+      "source_sha256": "44300711067389ce4a7e2bff7611fdec52c470f6aceef36b6dcea6a17544a0f5"
+    }
+  ],
+  "changed_native_callers": []
+}

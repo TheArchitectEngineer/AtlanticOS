@@ -95,6 +95,15 @@ el registro de kobjects y las operaciones de derechos siguen siendo XNU.
 Las herramientas y fixtures de auditoría originales son MIT; no relicencian
 los cuerpos nativos ni implementan CoreAnalytics o IOKit.
 
+La ampliación de scheduler/timers selecciona diez unidades osfmk genuinas. Ocho
+permanecen intactas. El patch 0028 conserva los avisos de thread_policy.c y
+task_policy.c al acotar dos callbacks BSD y corregir una rama de error ya
+prevista. mk_timer, syscall_subr, timeout, affinity, vm_map_store_ll,
+counter_common, task_ident y sfi conservan sus avisos Apple/APSL y los demás
+avisos por archivo, incluidos CMU/OSF cuando corresponden. Los algoritmos,
+retornos no soportados y funciones vacías upstream no son código MIT AtlanticOS.
+Las herramientas y fixtures originales de comprobación sí son MIT.
+
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias
 BSD-2-Clause-Patent y por componente. No se distribuyen sus binarios o wrappers.

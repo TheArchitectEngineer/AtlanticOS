@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/scheduler_provider_abi.c:32:70: error: incompatible pointer types returning 'uint64_t *' (aka 'unsigned long long *') from a function with result type 'uint32_t *' (aka 'unsigned int *') [-Werror,-Wincompatible-pointer-types]
+   32 | uint32_t *bad_deadline(struct mk_timer_arm_trap_args *args) { return &args->expire_time; }
+      |                                                                      ^~~~~~~~~~~~~~~~~~
+1 error generated.

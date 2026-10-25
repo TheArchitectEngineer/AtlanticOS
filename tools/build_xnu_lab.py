@@ -196,6 +196,32 @@ EXPERIMENTAL_UNITS.update({
     'bsd/kern/qsort.c': '_qsort'})
 EXPERIMENTAL_UNITS['pexpert/atlantic/pe_platform.c'] = '_PE_init_platform'
 EXPERIMENTAL_UNITS.update({
+    'osfmk/kern/mk_timer.c': '_mk_timer_port_label_dealloc',
+    'osfmk/kern/syscall_subr.c': '_thread_depress_expire',
+    'osfmk/kern/timeout.c': '_kern_timeout_start',
+    'osfmk/kern/thread_policy.c': '_thread_policy_create',
+    'osfmk/kern/task_policy.c': '_task_policy_create',
+    'osfmk/kern/affinity.c': '_task_affinity_create',
+    'osfmk/vm/vm_map_store_ll.c': '_vm_map_store_init_ll',
+    'osfmk/kern/counter_common.c': '_scalable_counter_static_init',
+    'osfmk/kern/task_ident.c': '_task_create_identity_token',
+    'osfmk/kern/sfi.c': '_sfi_thread_classify'})
+EXTRA_SYMBOLS.update({
+    'osfmk/kern/mk_timer.c': ['_mk_timer_create_trap', '_mk_timer_arm_trap',
+        '_mk_timer_arm_leeway_trap', '_mk_timer_cancel_trap', '_mk_timer_destroy_trap'],
+    'osfmk/kern/syscall_subr.c': ['_thread_depress_abort', '_thread_depress_abort_locked',
+        '_thread_handoff_parameter', '_thread_yield_to_preemption'],
+    'osfmk/kern/timeout.c': ['_kern_timeout_end', '_kern_timeout_try_panic'],
+    'osfmk/kern/thread_policy.c': ['_thread_recompute_priority', '_thread_policy_update_complete_unlocked',
+        '_set_thread_iotier_override'],
+    'osfmk/kern/task_policy.c': ['_task_policy_update_complete_unlocked', '_proc_get_effective_task_policy',
+        '_send_resource_violation_with_fatal_port'],
+    'osfmk/kern/affinity.c': ['_task_affinity_deallocate', '_thread_affinity_dup', '_thread_affinity_terminate'],
+    'osfmk/vm/vm_map_store_ll.c': ['_vm_map_store_entry_link_ll', '_vm_map_store_entry_unlink_ll', '_update_first_free_ll'],
+    'osfmk/kern/counter_common.c': ['_scalable_counter_static_boot_mangle'],
+    'osfmk/kern/task_ident.c': ['_convert_task_id_token_to_port', '_task_id_token_release'],
+    'osfmk/kern/sfi.c': ['_sfi_set_window', '_sfi_window_cancel', '_sfi_reevaluate']})
+EXPERIMENTAL_UNITS.update({
     'osfmk/ipc/ipc_policy.c': '_ipc_kobject_register_startup',
     'osfmk/ipc/mach_debug.c': '_mach_port_kobject_description_from_user'})
 EXTRA_SYMBOLS.update({

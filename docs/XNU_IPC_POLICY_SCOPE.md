@@ -76,7 +76,7 @@ El enlace estricto de **164 objetos** con LLD v2 falla con **561 diagnósticos
 indefinidos, cero duplicados y ninguna imagen**. Frente a 594, 33 nombres
 tienen proveedor real y uno deja de referenciarse por selección: el envío de
 eventos CoreAnalytics. Aparece una dependencia nueva, mk_timer_port_label_dealloc,
-cuyo proveedor genuino está en osfmk/kern/mk_timer.c, todavía no seleccionado.
+cuyo proveedor genuino está en osfmk/kern/mk_timer.c, no seleccionado en esa revisión.
 La comparación separa esos efectos; excluir un evento no implementa su servicio.
 El estándar conserva 39 objetos, 825
 diagnósticos y el rechazo upstream de las opciones estáticas, sin imagen.
@@ -87,3 +87,8 @@ de dependencias. Las pruebas vigentes de Clang API v2 y LLD v2 se reutilizan por
 hashes comprobados. No hay kernel enlazado, IPC o XNU ejecutados ni acceso al
 teléfono. La recuperación independiente, RAM firmware y handoff EDK2 siguen
 sin prueba física.
+
+La ampliación posterior de [timers y políticas](XNU_SCHEDULER_TIMER_PROVIDERS.md)
+selecciona el proveedor mk_timer genuino. El manifiesto IPC permanece como
+registro de sus 138 unidades y 561 diagnósticos. La terminación de guards sin
+BSD y su prueba física siguen pendientes.

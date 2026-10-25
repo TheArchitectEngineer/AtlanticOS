@@ -150,7 +150,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y 138 experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y 148 experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.
@@ -217,3 +217,13 @@ probe mach_debug por el builtin de allocator ausente. El enlace de 164 objetos
 conserva 561 diagnósticos indefinidos y cero duplicados, sin imagen. No hay
 telemetría de proceso implementada ni terminación Mach de guards verificada.
 Véase [XNU_IPC_POLICY_SCOPE](../docs/XNU_IPC_POLICY_SCOPE.md).
+
+El patch 0028 acota dos callbacks de I/O BSD de thread_policy.c en firmware
+y corrige el alcance de kr en la rama no soportada sin BSD de task_policy.c.
+Conserva la rama BSD preprocesada, doce cuerpos core, CAS, prioridad y turnstiles.
+La ampliación selecciona diez fuentes nativas, ocho intactas, con timers Mach,
+políticas, afinidad, lista VM, contadores, tokens y la rama desactivada de SFI.
+Compilan 148 unidades experimentales y 13 estándar; pasan 129/98 checks.
+El enlace de 174 objetos conserva 502 diagnósticos indefinidos y cero duplicados,
+sin imagen. SFI/PMU no se acreditan; identidad y guards requieren sus proveedores.
+Véase [XNU_SCHEDULER_TIMER_PROVIDERS](../docs/XNU_SCHEDULER_TIMER_PROVIDERS.md).

@@ -149,3 +149,13 @@ El enlace estricto de 164 objetos conserva 561 diagnósticos indefinidos y cero
 duplicados, sin imagen. exit_with_mach_exception sigue sin proveedor; no se
 declara la terminación de guards operativa. No hay IPC, XNU o arranque físico
 ejecutados, y la aceptación completa del objetivo no cambia.
+
+Los [proveedores nativos de timers y políticas](XNU_SCHEDULER_TIMER_PROVIDERS.md)
+alcanzan 148 unidades experimentales y 13 estándar: ocho fuentes nuevas intactas
+y dos ajustadas en sus límites BSD. Se conserva el ciclo de timers, prioridad,
+QoS, lista VM y contadores per-CPU, sin ejecutar esos servicios. Pasan 129/98
+checks; el enlace de 174 objetos conserva 502 diagnósticos indefinidos y cero
+duplicados, sin imagen. Los retornos upstream de SFI y notificaciones sin BSD
+siguen siendo no soportados. No se inventan identidad, IRQ o mediciones PMU/RAM.
+El header MIG de coaliciones, el BSP, boot_args, la carga temporal, XNU físico
+y el handoff EDK2 siguen pendientes; la meta completa no cambia.

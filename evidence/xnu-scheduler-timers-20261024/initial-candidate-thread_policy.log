@@ -1,0 +1,7 @@
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/thread_policy.c:1990:3: error: call to undeclared function 'rethrottle_thread'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 1990 |                 rethrottle_thread(get_bsdthread_info(thread));
+      |                 ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/thread_policy.c:2588:2: error: call to undeclared function 'rethrottle_thread'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+ 2588 |         rethrottle_thread(get_bsdthread_info(thread));
+      |         ^
+2 errors generated.

@@ -69,3 +69,4 @@ jobs:
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-bootstrap-scope-20261024/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-string-image-support-20261024/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-ipc-policy-scope-20261024/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/xnu-scheduler-timers-20261024/manifest.json

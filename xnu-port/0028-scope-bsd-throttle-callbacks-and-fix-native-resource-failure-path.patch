@@ -1,0 +1,53 @@
+Scope only BSD I/O callbacks in firmware thread policy; preserve native
+Mach scheduler, QoS, turnstile and atomic override updates.
+Fix the existing no-BSD resource notification branch to return its
+intended KERN_NOT_SUPPORTED without using a BSD-local variable.
+
+diff --git a/osfmk/kern/thread_policy.c b/osfmk/kern/thread_policy.c
+--- a/osfmk/kern/thread_policy.c
++++ b/osfmk/kern/thread_policy.c
+@@ -1986,9 +1986,11 @@
+ 	}
+ #endif /* MACH_BSD */
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ 	if (pend_token->tpt_update_throttle) {
+ 		rethrottle_thread(get_bsdthread_info(thread));
+ 	}
++#endif /* selected BSD I/O throttling */
+ 
+ 	if (pend_token->tpt_update_thread_sfi) {
+ 		sfi_reevaluate(thread);
+@@ -2585,7 +2587,9 @@
+ 	 * re-evaluate tiers and potentially break out
+ 	 * of an msleep
+ 	 */
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ 	rethrottle_thread(get_bsdthread_info(thread));
++#endif /* selected BSD I/O throttling */
+ }
+ 
+ /*
+diff --git a/osfmk/kern/task_policy.c b/osfmk/kern/task_policy.c
+--- a/osfmk/kern/task_policy.c
++++ b/osfmk/kern/task_policy.c
+@@ -4032,7 +4032,7 @@
+     resource_notify_flags_t flags)
+ {
+ #ifndef MACH_BSD
+-	kr = KERN_NOT_SUPPORTED; goto finish;
++	return KERN_NOT_SUPPORTED;
+ #else
+ 	kern_return_t   kr = KERN_SUCCESS;
+ 	proc_t          proc = NULL;
+@@ -4081,9 +4081,9 @@
+ 
+ 	ipc_port_release_send(dstport);
+ 
+-#endif /* MACH_BSD */
+ finish:
+ 	return kr;
++#endif /* MACH_BSD */
+ }
+ 
+ /*

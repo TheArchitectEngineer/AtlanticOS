@@ -271,3 +271,38 @@ Registrar los códigos y PCs esperados según el caso exacto de XNU, el hash de
 imagen y la captura física. La exclusión de eventos CoreAnalytics no acredita
 un servicio de telemetría. Conservar prueba de retorno Android por T01; no hay
 resultado aceptado para estos pasos todavía.
+
+## Subprueba pendiente de T08: timers y políticas nativas
+
+Estado: PENDING_HARDWARE. [XNU_SCHEDULER_TIMER_PROVIDERS](XNU_SCHEDULER_TIMER_PROVIDERS.md)
+solo comprueba compilación, ABI, selección y objetos. Requiere T01/T04/T05/T06,
+kernel auditado, BSP/MMU/IRQ y un canal de captura fiable; carga temporal.
+
+1. Registrar la ejecución de los inicializadores nativos de políticas y
+   contadores per-CPU, con PCs, CPU/MPIDR y rangos de allocations. Comprobar que
+   las referencias iniciales se conservan al pasar del almacenamiento temprano
+   a las zonas per-CPU y que esas páginas pertenecen al mapa validado. Tamaño de
+   objetos o contadores no sustituye una medición de RAM residente.
+2. Crear un timer Mach scratch en un contexto admitido por su API. Capturar
+   port/label, deadline de 64 bits, entrada thread_call, IRQ real, ejecución de
+   mk_timer_expire y recepción de su mensaje. Comparar mach_absolute_time con
+   el contador/frecuencia capturados por T06. Repetir con leeway, deadline ya
+   vencido y cancelación antes de expirar. No inferir entrega por un callback
+   programado ni por un retorno KERN_SUCCESS.
+3. Destruir el puerto con el callback pendiente y verificar cancelación,
+   referencias, keep-alive y liberación de zona cuando active llega a cero.
+   Repetir bajo concurrencia controlada para detectar doble liberación, uso
+   posterior a free o notificaciones después del punto de cancelación definido
+   por XNU. Conservar el caso exacto y el orden de eventos; una traza parcial
+   no demuestra ausencia de carreras.
+4. Capturar cambios reales de prioridad/QoS y propagación por turnstiles en
+   hilos Mach descartables. Comprobar que los callbacks de I/O BSD no se invocan
+   sin ese componente. Los controles SFI y notificaciones de recursos no
+   soportados deben devolver su error nativo; no interpretar ese resultado como
+   servicio activo. No atribuir identidad de proceso a un token sin sus
+   proveedores y contexto reales.
+
+El resultado exige PCs, retornos, contabilidad de referencias y evidencia física
+vinculados al hash de imagen. Un callback sin IRQ/cancelación/cleanup verificables
+es PARTIAL; un bloqueo sin captura fiable es INDETERMINATE. Registrar retorno
+Android por T01. No hay aceptación física de esta subprueba todavía.

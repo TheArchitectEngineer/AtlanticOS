@@ -1,0 +1,9 @@
+0000000000000040 T _sfi_class_offtime_cancel
+0000000000000050 T _sfi_get_class_offtime
+0000000000000020 T _sfi_get_window
+0000000000000060 T _sfi_reevaluate
+0000000000000030 T _sfi_set_class_offtime
+0000000000000000 T _sfi_set_window
+0000000000000070 T _sfi_thread_classify
+0000000000000010 T _sfi_window_cancel
+0000000000000000 t ltmp0

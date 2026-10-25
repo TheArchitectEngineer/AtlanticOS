@@ -1,0 +1,10 @@
+<ROOT>/tests/xnu_port/string_support_abi.c:16:10: error: incompatible function pointer types initializing 'size_t (*)(char *, const char *, uint32_t)' (aka 'unsigned long (*)(char *, const char *, unsigned int)') with an expression of type '<overloaded function type>' [-Wincompatible-function-pointer-types]
+   16 | size_t (*bad_copy)(char *,const char *,uint32_t) = strlcpy;
+      |          ^                                         ~~~~~~~
+<ROOT>/work/xnu-lab-sources/df455b8290a910db/osfmk/libsa/string.h:751:1: note: candidate address cannot be taken because parameter 1 has pass_object_size attribute
+  751 | strlcpy(
+      | ^
+<ROOT>/work/xnu-lab-sources/df455b8290a910db/osfmk/libsa/string.h:747:15: note: candidate function has type mismatch at 3rd parameter (expected 'uint32_t' (aka 'unsigned int') but has 'size_t' (aka 'unsigned long'))
+  747 | extern size_t strlcpy(char *__counted_by(n) dst, const char *__null_terminated src, size_t n);
+      |               ^
+1 error generated.
