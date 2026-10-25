@@ -1,0 +1,112 @@
+Original AtlanticOS freestanding comparison/copy/append implementations.
+The native entry points preserve actual XNU string header types and ABI.
+No host libc, fake SDK, kernel substitute or device driver is linked.
+
+diff --git a/osfmk/atlantic/string.c b/osfmk/atlantic/string.c
+new file mode 100644
+--- /dev/null
++++ b/osfmk/atlantic/string.c
+@@ -0,0 +1,50 @@
++/* SPDX-License-Identifier: MIT - Original AtlanticOS, no host/kernel services. */
++#include <atlantic/string.h>
++
++int
++atl_memory_compare(const void *left, const void *right, size_t bytes)
++{
++    const unsigned char *a = left, *b = right;
++    for (size_t i = 0; i < bytes; ++i) {
++        if (a[i] != b[i]) return (int)a[i] - (int)b[i];
++    }
++    return 0;
++}
++
++int
++atl_string_compare(const char *left, const char *right)
++{
++    const unsigned char *a = (const unsigned char *)left;
++    const unsigned char *b = (const unsigned char *)right;
++    while (*a == *b) {
++        if (!*a) return 0;
++        ++a; ++b;
++    }
++    return (int)*a - (int)*b;
++}
++
++size_t
++atl_string_copy(char *destination, const char *source, size_t capacity)
++{
++    size_t length = 0;
++    while (source[length]) {
++        if (capacity && length < capacity - 1) destination[length] = source[length];
++        ++length;
++    }
++    if (capacity) destination[length < capacity ? length : capacity - 1] = 0;
++    return length;
++}
++
++size_t
++atl_string_append(char *destination, const char *source, size_t capacity)
++{
++    size_t used = 0;
++    while (used < capacity && destination[used]) ++used;
++    /* No destination terminator within capacity: do not access it again. */
++    if (used == capacity) {
++        size_t length = 0;
++        while (source[length]) ++length;
++        return capacity + length;
++    }
++    return used + atl_string_copy(destination + used, source, capacity - used);
++}
+diff --git a/osfmk/atlantic/string.h b/osfmk/atlantic/string.h
+new file mode 100644
+--- /dev/null
++++ b/osfmk/atlantic/string.h
+@@ -0,0 +1,17 @@
++/* SPDX-License-Identifier: MIT - Original AtlanticOS freestanding primitives. */
++#ifndef ATLANTIC_STRING_H
++#define ATLANTIC_STRING_H
++#include <stddef.h>
++
++/* Callers provide valid readable spans / NUL-terminated strings and writable
++ * destination capacity. Copy/append source and destination must not overlap.
++ * Comparisons use unsigned bytes; only the sign of nonzero results is API.
++ * Copy/append return the length attempted, including when truncated; capacity
++ * counts the NUL slot. Capacity zero never reads/writes the destination.
++ * Append scans the destination only within capacity; if no NUL is found it
++ * writes nothing and returns capacity + source length (size_t arithmetic). */
++int atl_memory_compare(const void *left, const void *right, size_t bytes);
++int atl_string_compare(const char *left, const char *right);
++size_t atl_string_copy(char *destination, const char *source, size_t capacity);
++size_t atl_string_append(char *destination, const char *source, size_t capacity);
++#endif
+diff --git a/osfmk/kern/atlantic_string.c b/osfmk/kern/atlantic_string.c
+new file mode 100644
+--- /dev/null
++++ b/osfmk/kern/atlantic_string.c
+@@ -0,0 +1,26 @@
++/* SPDX-License-Identifier: MIT - Original AtlanticOS providers of native ABI.
++ * Unique C names avoid collisions with XNU's inline overloads. The assembly
++ * names are the exact external ABI those native headers and callers require.
++ * The actual implementations are the original freestanding primitives.
++ */
++#include <string.h>
++#include <atlantic/string.h>
++
++#if !CONFIG_ATLANTIC_FIRMWARE || !defined(__arm64__)
++#error AtlanticOS string providers require the explicit ARM64 firmware profile
++#endif
++
++int atlantic_xnu_strcmp(const char *, const char *) __asm("_strcmp");
++int atlantic_xnu_memcmp(const void *, const void *, size_t) __asm("_memcmp");
++size_t atlantic_xnu_strlcpy(char *, const char *, size_t) __asm("_strlcpy");
++size_t atlantic_xnu_strlcat(char *, const char *, size_t) __asm("_strlcat");
++
++_Static_assert(__builtin_types_compatible_p(__typeof__(&atlantic_xnu_strcmp), __typeof__(&strcmp)), "native strcmp ABI");
++_Static_assert(__builtin_types_compatible_p(__typeof__(&atlantic_xnu_memcmp), __typeof__(&memcmp)), "native memcmp ABI");
++_Static_assert(__builtin_types_compatible_p(__typeof__(&atlantic_xnu_strlcpy), __typeof__(&strlcpy)), "native strlcpy ABI");
++_Static_assert(__builtin_types_compatible_p(__typeof__(&atlantic_xnu_strlcat), __typeof__(&strlcat)), "native strlcat ABI");
++
++int atlantic_xnu_strcmp(const char *a, const char *b) { return atl_string_compare(a, b); }
++int atlantic_xnu_memcmp(const void *a, const void *b, size_t n) { return atl_memory_compare(a, b, n); }
++size_t atlantic_xnu_strlcpy(char *dst, const char *src, size_t n) { return atl_string_copy(dst, src, n); }
++size_t atlantic_xnu_strlcat(char *dst, const char *src, size_t n) { return atl_string_append(dst, src, n); }

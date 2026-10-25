@@ -1,0 +1,40 @@
+{
+  "scope": "STRICT_LINK_DIAGNOSTIC_NAME_COMPARISON_NOT_EXECUTION",
+  "previous_link_sha256": "5f5cf557fa36775a1ddc6fcb4ef3f89b7e42a11c7f761862d873d50ecf64b298",
+  "current_link_sha256": "7a9ac9348997459f2677fbc29436ca94d953764e745921a933b3bfdca6c93443",
+  "previous_undefined": 605,
+  "current_undefined": 594,
+  "previous_symbols_now_provided": [
+    "_getlastkerneladdr",
+    "_getsectbynamefromheader",
+    "_getsectbynamefromseg",
+    "_getsectdatafromheader",
+    "_getsegdatafromheader",
+    "_getuuidfromheader",
+    "_memcmp",
+    "_strcmp",
+    "_strlcat",
+    "_strlcpy",
+    "_strsep"
+  ],
+  "new_unresolved_dependencies": [],
+  "reason": "REAL_ORIGINAL_STRING_FUNCTIONS_AND_UNCHANGED_NATIVE_IMAGE_SUPPORT_PROVIDERS",
+  "new_units": [
+    {
+      "source": "osfmk/atlantic/string.c",
+      "source_sha256": "03e446cf48976450c6644b13f709ea53190fbb7224c572b7c8bc8f26f7cbda66"
+    },
+    {
+      "source": "osfmk/kern/atlantic_string.c",
+      "source_sha256": "5d3a1214b0a1b3c8acaad07c26f259ece85dd51d78b6fa765de84a7b33bfd70c"
+    },
+    {
+      "source": "libkern/kernel_mach_header.c",
+      "source_sha256": "68c68abb28a178edd07fe006fd0eda79654d0ab0e2b0661144a73773ec43668f"
+    },
+    {
+      "source": "bsd/libkern/strsep.c",
+      "source_sha256": "cad132838edc4336c452d07c3e1233ecd5ceb020abe906323762da5ebfeca6bd"
+    }
+  ]
+}

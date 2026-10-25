@@ -1,4 +1,4 @@
-# Estado del port real — 2026-10-21
+# Estado del port real — 2026-10-24
 
 Upstream: apple-oss-distributions/xnu, xnu-12377.1.9,
 f6217f891ac0bb64f3d375211650a4c1ff8ca1ea. El snapshot auditado en xnu-upstream
@@ -128,8 +128,8 @@ no contiene BootShim ni código de plataforma de ports ajenos.
 
 El modo firmware se plantea sin userland ni carga dinámica de código. La
 verificación propia de payloads continúa sin implementar y en estado deny;
-este recorte no satisface ese requisito. Todavía hay dependencias sin enlazar,
-incluidas workq_init, bsd_scale_setup y OSKextRemoveKextBootstrap. No se afirma
+este recorte no satisface ese requisito. Todavía hay dependencias sin enlazar;
+el patch 0025 acota las llamadas BSD/IOKit no seleccionadas. No se afirma
 que BSD/IOKit/kexts hayan sido eliminados correctamente de un kernel completo.
 
 Preimágenes, postimágenes y hashes de la serie:
@@ -150,7 +150,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y 132 experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y 136 experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.
@@ -193,6 +193,17 @@ ejecución del kernel o los proveedores de memoria.
 El patch 0025 condiciona cuatro llamadas de startup.c a sus componentes BSD/IOKit
 en firmware. No aporta implementaciones de esas APIs ni elimina la inicialización
 Mach. El [alcance de bootstrap](../docs/XNU_BOOTSTRAP_SCOPE.md) se comprueba en
-fuente y startup.o real: 97/65 checks totales. El enlace actual conserva 605
+fuente y startup.o real: 97/65 checks totales. El enlace de aquella revisión conserva 605
 diagnósticos indefinidos, cero duplicados y ninguna imagen, con las mismas 132
 unidades experimentales. No hay ejecución del bootstrap o del kernel.
+
+El patch 0026 añade las primitivas de cadenas originales y sus cuatro entradas
+de ABI XNU, sin interponer libc host. Se cotejan los tres mirrors con sus
+fuentes AtlanticOS. También se seleccionan kernel_mach_header.c y strsep.c
+upstream intactos. Compilan 136 unidades experimentales; las 13 estándar no
+cambian. Pasan 105/74 checks de alcance/ABI/objetos y 79 344 contratos host con
+ASan/UBSan. El enlace de 162 objetos falla con 594 diagnósticos indefinidos y
+cero duplicados; no produce kernel. Los lectores nativos exigen un header real
+previamente validado y mapeado; no se define uno vacío para satisfacer el enlace.
+No hay ejecución de esos lectores ni de XNU. Véase
+[XNU_STRING_IMAGE_SUPPORT](../docs/XNU_STRING_IMAGE_SUPPORT.md).

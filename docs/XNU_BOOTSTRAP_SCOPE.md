@@ -79,3 +79,7 @@ No se ejecuta bootstrap, scheduler, hilo, IRQ, Mach, PE o XNU. Los recorridos QE
 anteriores solo ejercitan el preflight original. Siguen pendientes el cierre de
 imagen, boot_args/BSP/MMU, carga temporal y recuperación independiente probada,
 el arranque físico, RAM firmware medida y el handoff EDK2.
+
+La ampliación posterior de [cadenas e imagen](XNU_STRING_IMAGE_SUPPORT.md)
+registra 136 unidades y 594 diagnósticos indefinidos. La evidencia de esta
+revisión permanece como registro de sus 132 unidades y 605 diagnósticos.

@@ -66,7 +66,7 @@ cuatro cláusulas; el reconocimiento a Berkeley anterior también corresponde
 a este componente. No se atribuyen esos cuerpos a la licencia MIT del proyecto.
 
 Los archivos de xnu-port/platform/ son código original AtlanticOS bajo MIT. El
-patchset 0022/0023 añade sus copias exactas al árbol XNU; el builder verifica esa igualdad
+patchset 0022/0023/0026 añade sus copias exactas al árbol XNU; el builder verifica esa igualdad
 y las preimágenes nulas de archivos nuevos. Los tipos y proveedores XNU que
 incluyen o llaman conservan sus licencias upstream. No se incorpora pe_init.c
 de Apple ni un BSP de un port UEFI como implementación de la plataforma.
@@ -81,6 +81,12 @@ El patch 0025 conserva los avisos de startup.c y solo condiciona cuatro llamadas
 a componentes BSD/IOKit no seleccionados por el perfil de firmware. No incorpora
 implementaciones de esos servicios. La herramienta original que audita alcance,
 orden Mach y objetos es MIT; los cuerpos nativos conservan sus licencias.
+
+El patch 0026 también incorpora copias exactas de atlantic-core/string.c e
+include/atlantic/string.h, originales MIT, junto al proveedor ABI original de
+xnu-port/platform/string.c. Las fuentes kernel_mach_header.c y strsep.c se
+seleccionan directamente del snapshot XNU intacto y mantienen sus avisos
+Apple/APSL y, en strsep.c, Berkeley. No son implementaciones MIT AtlanticOS.
 
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias

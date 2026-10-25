@@ -23,3 +23,4 @@
 0023-add-generic-arm64-cache-force-entry-points.patch
 0024-retain-real-debug-callout-registry-in-firmware.patch
 0025-scope-bootstrap-services-to-selected-firmware-components.patch
+0026-add-original-string-support-with-native-xnu-abi.patch

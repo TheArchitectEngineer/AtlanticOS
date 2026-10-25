@@ -5,7 +5,7 @@ de XNU. Primera placa: Motorola Moto G20 / Unisoc T700 (UMS512).
 
 **Estado 2026-10-24: auditoría Fase 0, prototipo host Fase 1 y port XNU
 incremental. Trece unidades reales de XNU compilan a objetos ARM64 con Clang
-estándar; 132 con el proveedor experimental explícito, incluidos
+estándar; 136 con el proveedor experimental explícito, incluidos
 VM residente/faults/objetos, hilos, tareas, locks, ledgers, SMR e IPC/importance.
 Se compilan además 42 archivos RPC generados por MIG como probes, con 57 headers
 coherentes; el configurador oficial selecciona 26 para el enlace de este perfil.
@@ -81,8 +81,12 @@ real de callbacks y un adaptador original hacia el mantenimiento nativo de cach�
 Aquella ampliación registra 609 diagnósticos indefinidos y cero duplicados.
 Las [guardas del bootstrap](docs/XNU_BOOTSTRAP_SCOPE.md) excluyen cuatro llamadas
 a componentes BSD/IOKit no seleccionados y conservan la inicialización Mach real.
-El enlace actual de 158 objetos falla con **605 diagnósticos indefinidos y cero
-duplicados**, sin imagen. Pasan 97/65 checks de alcance/ABI/objetos. boot_args
+Aquella revisión registra 605 diagnósticos indefinidos y cero duplicados.
+El [soporte de cadenas e imagen](docs/XNU_STRING_IMAGE_SUPPORT.md) incorpora cuatro
+primitivas originales y dos unidades nativas intactas. Pasan 79 344 contratos
+host con sanitizadores; los lectores Mach-O nativos todavía no se ejecutan.
+El enlace actual de 162 objetos falla con **594 diagnósticos indefinidos y cero
+duplicados**, sin imagen. Pasan 105/74 checks de alcance/ABI/objetos. boot_args
 completo, backend BSP y ejecución de PE/SecureDT/XNU siguen pendientes.
 
 ## Reproducir

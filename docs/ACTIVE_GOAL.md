@@ -129,3 +129,14 @@ proveedores ficticios. Las rutas nativas de VM, scheduler, tareas, hilos y carga
 de contexto permanecen. Pasan 97/65 checks. El enlace de 158 objetos conserva
 605 símbolos indefinidos y cero duplicados; no genera imagen ni acredita Mach
 ejecutado. El objetivo físico, recuperación, medición RAM y handoff no cambian.
+
+El [soporte de cadenas e imagen](XNU_STRING_IMAGE_SUPPORT.md) añade dos unidades
+originales y dos nativas intactas: 136 experimentales y 13 estándar. Las
+primitivas originales pasan 79 344 contratos host con ASan/UBSan; sus entradas
+externas se cotejan con el ABI XNU real. Pasan 105/74 checks de alcance, ABI y
+objetos; las 137 constantes de genassym y 26 RPC seleccionados no cambian.
+El enlace estricto de 162 objetos conserva 594 diagnósticos indefinidos y cero
+duplicados, sin generar imagen. No se ejecutan el lector Mach-O nativo, Mach,
+PE o BSP; no hay acceso al teléfono. El lector requiere una imagen real validada
+y mapeada. Faltan aún los productores de contexto/boot_args, IRQ, integración
+VM y carga temporal antes de poder intentar la aceptación física.

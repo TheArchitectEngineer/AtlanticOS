@@ -21,7 +21,10 @@ ROOT = Path(__file__).resolve().parents[1]
 PROFILE = ROOT/'xnu-port/config/MASTER.arm64.atlanticlab.AtlanticOS'
 PLATFORM_SOURCES = {'xnu-port/platform/atlantic.h': 'pexpert/pexpert/atlantic.h',
                     'xnu-port/platform/pe_platform.c': 'pexpert/atlantic/pe_platform.c',
-                    'xnu-port/platform/cache_asm.s': 'osfmk/arm64/atlantic_cache_asm.s'}
+                    'xnu-port/platform/cache_asm.s': 'osfmk/arm64/atlantic_cache_asm.s',
+                    'atlantic-core/string.c': 'osfmk/atlantic/string.c',
+                    'include/atlantic/string.h': 'osfmk/atlantic/string.h',
+                    'xnu-port/platform/string.c': 'osfmk/kern/atlantic_string.c'}
 UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
          'osfmk/kern/sched_prim.c': '_sched_init',
          'osfmk/kern/clock.c': '_clock_init',
@@ -191,6 +194,17 @@ EXPERIMENTAL_UNITS.update({
     'osfmk/arm/machine_cpuid.c': '_machine_read_midr',
     'bsd/kern/qsort.c': '_qsort'})
 EXPERIMENTAL_UNITS['pexpert/atlantic/pe_platform.c'] = '_PE_init_platform'
+EXPERIMENTAL_UNITS.update({
+    'osfmk/atlantic/string.c': '_atl_string_compare',
+    'osfmk/kern/atlantic_string.c': '_strcmp',
+    'libkern/kernel_mach_header.c': '_getlastkerneladdr',
+    'bsd/libkern/strsep.c': '_strsep'})
+EXTRA_SYMBOLS.update({
+    'osfmk/atlantic/string.c': ['_atl_memory_compare', '_atl_string_copy', '_atl_string_append'],
+    'osfmk/kern/atlantic_string.c': ['_memcmp', '_strlcpy', '_strlcat'],
+    'libkern/kernel_mach_header.c': ['_getlastaddr', '_getcommandfromheader', '_getuuidfromheader',
+        '_getsectdatafromheader', '_getsegdatafromheader', '_getsectbynamefromseg', '_getsectbynamefromheader',
+        '_firstsegfromheader', '_nextsegfromheader']})
 EXPERIMENTAL_UNITS.update({
     'osfmk/arm/caches.c': '_cache_sync_page',
     'osfmk/arm64/caches_asm.s': '_CleanPoC_DcacheRegion_Force',

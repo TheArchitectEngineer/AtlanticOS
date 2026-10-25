@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "label": "HOST_TESTED",
+  "scope": "NATIVE_BOOTSTRAP_SOURCE_PREPROCESSING_AND_OBJECT_IMPORTS_ONLY_NOT_MACH_OR_XNU_EXECUTION",
+  "port_id": "e09ecda836114583643034b42edef761e3b10e31730d30ac07d795e7d0f3dc38",
+  "build_report_sha256": "7799acb82cab571c1363a359cb7e6431874f2a0da448e36edfb9fe0331aed61a",
+  "inputs": {
+    "tools/test_xnu_startup_scope.py": "f1ae97ba65d1de630f7d92cf8ee714b6a07c6be908e683b00dec701d3d2f87e5",
+    "tools/test_xnu_brk_scope.py": "1a6e6f113f75696727166f46d3a65024cd4d6484928b926b49c087c209ee678a"
+  },
+  "upstream_source_sha256": "0196b64546c2845df7898fcab3203017f08fe2477df7ab0946dd7433097d13c5",
+  "adapted_source_sha256": "76a310854d6f1a1c8e8c40de11aea79fcdf62bbbc32076d58c72cfcc5b0036ec",
+  "patch_sha256": "0f42ca7604ce702314fddbaddcdfbf8d2bf4e0dc3a332ba6c192c75163f0c3f8",
+  "outcomes": [
+    {
+      "name": "outside-firmware-none",
+      "passed": true,
+      "component_calls": {
+        "workq_init": true,
+        "bsd_scale_setup": true,
+        "device_service_create": true,
+        "OSKextRemoveKextBootstrap": true
+      },
+      "upstream_byte_identical_required": true,
+      "mach_calls_retained": [
+        "_clock_init",
+        "_kernel_thread_create",
+        "_machine_load_context",
+        "_sched_init",
+        "_task_init",
+        "_thread_daemon_init",
+        "_thread_init",
+        "_turnstiles_init",
+        "_vm_mem_bootstrap",
+        "_vm_pageout"
+      ]
+    },
+    {
+      "name": "outside-firmware-providers",
+      "passed": true,
+      "component_calls": {
+        "workq_init": true,
+        "bsd_scale_setup": true,
+        "device_service_create": true,
+        "OSKextRemoveKextBootstrap": true
+      },
+      "upstream_byte_identical_required": true,
+      "mach_calls_retained": [
+        "_clock_init",
+        "_kernel_thread_create",
+        "_machine_load_context",
+        "_sched_init",
+        "_task_init",
+        "_thread_daemon_init",
+        "_thread_init",
+        "_turnstiles_init",
+        "_vm_mem_bootstrap",
+        "_vm_pageout"
+      ]
+    },
+    {
+      "name": "firmware-mach",
+      "passed": true,
+      "component_calls": {
+        "workq_init": false,
+        "bsd_scale_setup": false,
+        "device_service_create": false,
+        "OSKextRemoveKextBootstrap": false
+      },
+      "upstream_byte_identical_required": false,
+      "mach_calls_retained": [
+        "_clock_init",
+        "_kernel_thread_create",
+        "_machine_load_context",
+        "_sched_init",
+        "_task_init",
+        "_thread_daemon_init",
+        "_thread_init",
+        "_turnstiles_init",
+        "_vm_mem_bootstrap",
+        "_vm_pageout"
+      ]
+    },
+    {
+      "name": "firmware-bsd",
+      "passed": true,
+      "component_calls": {
+        "workq_init": true,
+        "bsd_scale_setup": true,
+        "device_service_create": false,
+        "OSKextRemoveKextBootstrap": false
+      },
+      "upstream_byte_identical_required": false,
+      "mach_calls_retained": [
+        "_clock_init",
+        "_kernel_thread_create",
+        "_machine_load_context",
+        "_sched_init",
+        "_task_init",
+        "_thread_daemon_init",
+        "_thread_init",
+        "_turnstiles_init",
+        "_vm_mem_bootstrap",
+        "_vm_pageout"
+      ]
+    },
+    {
+      "name": "firmware-iokit",
+      "passed": true,
+      "component_calls": {
+        "workq_init": false,
+        "bsd_scale_setup": false,
+        "device_service_create": true,
+        "OSKextRemoveKextBootstrap": true
+      },
+      "upstream_byte_identical_required": false,
+      "mach_calls_retained": [
+        "_clock_init",
+        "_kernel_thread_create",
+        "_machine_load_context",
+        "_sched_init",
+        "_task_init",
+        "_thread_daemon_init",
+        "_thread_init",
+        "_turnstiles_init",
+        "_vm_mem_bootstrap",
+        "_vm_pageout"
+      ]
+    },
+    {
+      "name": "firmware-providers",
+      "passed": true,
+      "component_calls": {
+        "workq_init": true,
+        "bsd_scale_setup": true,
+        "device_service_create": true,
+        "OSKextRemoveKextBootstrap": true
+      },
+      "upstream_byte_identical_required": false,
+      "mach_calls_retained": [
+        "_clock_init",
+        "_kernel_thread_create",
+        "_machine_load_context",
+        "_sched_init",
+        "_task_init",
+        "_thread_daemon_init",
+        "_thread_init",
+        "_turnstiles_init",
+        "_vm_mem_bootstrap",
+        "_vm_pageout"
+      ]
+    },
+    {
+      "name": "substantive-native-mach-bootstrap-order-retained",
+      "passed": true,
+      "executed": false
+    },
+    {
+      "name": "actual-native-startup-mach-imports-without-unselected-services",
+      "passed": true,
+      "object_sha256": "661e75bb265381a215ac422d3791043e13a556ab6f0f40f87f02951b5d9be384",
+      "required_mach_imports": [
+        "_clock_init",
+        "_kernel_thread_create",
+        "_machine_load_context",
+        "_sched_init",
+        "_task_init",
+        "_thread_daemon_init",
+        "_thread_init",
+        "_turnstiles_init",
+        "_vm_mem_bootstrap",
+        "_vm_pageout"
+      ]
+    }
+  ],
+  "commands": [
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "<ROOT>/work/llvm-toolchain/native-active/clang-layout-usage-v2/build/bin/clang-19",
+      "--target=arm64-apple-macos11.0",
+      "-mcpu=cortex-a57",
+      "-E",
+      "-P",
+      "-x",
+      "c",
+      "-"
+    ],
+    [
+      "llvm-nm",
+      "--undefined-only",
+      "<ROOT>/work/xnu-lab-builds/ccc2fdcd6369b6b3/startup.o"
+    ]
+  ],
+  "full_firmware_bsd_or_iokit_compositions_supported": false,
+  "xnu_executed": false,
+  "phone_accessed": false
+}

@@ -219,3 +219,28 @@ El resultado solo pasa con evidencia física del camino Mach y retorno Android
 por T01. Una parada sin registro fiable es INDETERMINATE. Los contextos BSD/IOKit
 del test de preprocesado no son configuraciones hardware habilitadas, y este
 ensayo tampoco acredita drivers, framebuffer, VNC o transferencia EDK2.
+
+## Subprueba pendiente de T08: soporte de cadenas e imagen
+
+Estado: PENDING_HARDWARE. Los contratos host de
+[XNU_STRING_IMAGE_SUPPORT](XNU_STRING_IMAGE_SUPPORT.md) no ejecutan XNU ni su
+lector Mach-O. Antes se exigen T01/T04/T05, imagen XNU auditada, contexto BSP,
+traducción/ownership y canal de salida fiables; carga únicamente temporal.
+
+1. Capturar el header realmente mapeado y su vínculo con binario/mapa/commit.
+   Validar fuera del lector nativo todos los load commands, tamaños, overflow,
+   segmentos/secciones, VM y permisos. Registrar la dirección real que resuelve
+   _mh_execute_header; un símbolo definido o un struct del mismo tamaño no basta.
+2. Durante arm_vm_init, capturar PCs simbolizados de los lectores genuinos y sus
+   resultados para segmentos/secciones/UUID/final de imagen. Comparar con el
+   manifiesto auditado y con traducciones activas. Direcciones de cabecera OEM
+   o de una imagen diferente no son referencias válidas. No pasar headers
+   malformados al parser nativo suponiendo que los rechazará de forma segura.
+3. Desde un hilo Mach real y sobre buffers scratch propios, capturar la entrada
+   strcmp/memcmp/strlcpy/strlcat, transferencia al helper original y resultados.
+   Repetir igualdad/desigualdad, byte alto, capacidad 0/1, truncamiento y append
+   sin NUL dentro de su límite, con canarios y tamaños previamente auditados.
+   Los 79 344 casos host no prueban por sí solos este ABI/contexto en hardware.
+
+Guardar evidencia física y comprobar retorno stock por T01. La prueba no
+acredita lectura de almacenamiento, servicios IPC, EDK2 o RAM firmware completa.
