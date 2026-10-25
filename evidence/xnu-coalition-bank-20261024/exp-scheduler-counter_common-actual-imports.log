@@ -1,0 +1,10 @@
+_PAGE_SHIFT_CONST
+_cpu_number
+_mach_assert_jump_key
+_percpu_u64_zone
+_startup_phase
+_zalloc_percpu
+_zalloc_percpu_permanent
+_zfree_percpu
+_zone_view_startup_init
+_zpercpu_count

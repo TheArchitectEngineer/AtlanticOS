@@ -1,0 +1,5 @@
+0000000000000030 T _host_virtual_physical_table_info
+0000000000000000 T _vm32_mach_vm_region_info
+0000000000000010 T _vm32_mach_vm_region_info_64
+0000000000000020 T _vm32_vm_mapped_pages_info
+0000000000000000 t ltmp0

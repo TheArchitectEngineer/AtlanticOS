@@ -1,0 +1,37 @@
+Match two bank telemetry field consumers to the existing native field
+guard CONFIG_COALITIONS && CONFIG_TELEMETRY. No field, identity, PID,
+persona, entitlement or successful service is fabricated.
+
+diff --git a/osfmk/bank/bank.c b/osfmk/bank/bank.c
+--- a/osfmk/bank/bank.c
++++ b/osfmk/bank/bank.c
+@@ -982,10 +982,10 @@
+ #if CONFIG_THREAD_GROUPS
+ 	new_bank_task->bt_thread_group = thread_group_retain(task_coalition_get_thread_group(task));
+ #endif /* CONFIG_THREAD_GROUPS */
+-#if CONFIG_COALITIONS
++#if CONFIG_COALITIONS && CONFIG_TELEMETRY
+ 	coalition_t rsrc_coal = task->coalition[COALITION_TYPE_RESOURCE];
+ 	new_bank_task->bt_rsrc_coal_id = rsrc_coal != COALITION_NULL ? coalition_id(rsrc_coal) : 0;
+-#endif /* CONFIG_COALITIONS */
++#endif /* CONFIG_COALITIONS && CONFIG_TELEMETRY */
+ 	proc_getexecutableuuid(bsd_info, new_bank_task->bt_macho_uuid, sizeof(new_bank_task->bt_macho_uuid));
+ 
+ 	persona_put(persona);
+@@ -1843,14 +1843,14 @@
+ static uint64_t
+ bank_get_bank_account_holder_resource_coalition_id(bank_account_t bank_account __unused)
+ {
+-#if CONFIG_COALITIONS
++#if CONFIG_COALITIONS && CONFIG_TELEMETRY
+ 	if (bank_account != BANK_ACCOUNT_NULL) {
+ 		bank_task_t bank_task = bank_account->ba_holder;
+ 		if (bank_task != BANK_TASK_NULL) {
+ 			return bank_task->bt_rsrc_coal_id;
+ 		}
+ 	}
+-#endif /* CONFIG_COALITIONS */
++#endif /* CONFIG_COALITIONS && CONFIG_TELEMETRY */
+ 	return 0;
+ }
+ 

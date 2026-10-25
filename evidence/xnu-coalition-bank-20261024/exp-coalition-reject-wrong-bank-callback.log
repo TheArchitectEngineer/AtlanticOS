@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/coalition_bank_abi.c:23:8: error: incompatible function pointer types initializing 'void (*)(uint32_t)' (aka 'void (*)(unsigned int)') with an expression of type 'void (task_t)' (aka 'void (struct task *)') [-Wincompatible-function-pointer-types]
+   23 | void (*bad_bank_callback)(uint32_t) = bank_task_initialize;
+      |        ^                              ~~~~~~~~~~~~~~~~~~~~
+1 error generated.

@@ -1,0 +1,13 @@
+In file included from /mnt/g/AtlanticOS/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/coalition.c:39:
+In file included from /mnt/g/AtlanticOS/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/policy_internal.h:42:
+In file included from /mnt/g/AtlanticOS/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/task.h:133:
+/mnt/g/AtlanticOS/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/thread.h:1641:49: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1641 | extern void             uthread_cred_ref(struct ucred *);
+      |                                                 ^
+/mnt/g/AtlanticOS/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/thread.h:1642:50: warning: declaration of 'struct ucred' will not be visible outside of this function [-Wvisibility]
+ 1642 | extern void             uthread_cred_free(struct ucred *);
+      |                                                  ^
+/mnt/g/AtlanticOS/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/coalition.c:513:63: warning: cast to smaller integer type 'int' from 'const void *' [-Wvoid-pointer-to-int-cast]
+  513 |                 SENDING_NOTIFICATION__THIS_COALITION_IS_CAUSING_TOO_MUCH_IO((int)param0);
+      |                                                                             ^~~~~~~~~~~
+3 warnings generated.

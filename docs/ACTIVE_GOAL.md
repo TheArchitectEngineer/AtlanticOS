@@ -159,3 +159,13 @@ duplicados, sin imagen. Los retornos upstream de SFI y notificaciones sin BSD
 siguen siendo no soportados. No se inventan identidad, IRQ o mediciones PMU/RAM.
 El header MIG de coaliciones, el BSP, boot_args, la carga temporal, XNU físico
 y el handoff EDK2 siguen pendientes; la meta completa no cambia.
+
+La [integración de coaliciones/bank y roles MIG](XNU_COALITION_BANK_PROVIDERS.md)
+alcanza 153 unidades experimentales y 13 estándar. Genera los 70 headers de las
+listas oficiales con prioridad interna, sin headers manuales. Cinco proveedores
+se añaden, cuatro intactos; bank alinea dos usos con la guarda de su campo.
+Pasan 143/110 checks. El enlace de 179 objetos conserva 476 diagnósticos
+indefinidos y cero duplicados, sin imagen. La identidad, persona y notificación
+siguen sin implementación/runtime completos; debug VM desactivado mantiene el
+error upstream. No hay XNU físico, handoff EDK2 ni RAM firmware medida; el
+objetivo y las restricciones del dispositivo no cambian.

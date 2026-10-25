@@ -104,6 +104,13 @@ avisos por archivo, incluidos CMU/OSF cuando corresponden. Los algoritmos,
 retornos no soportados y funciones vacías upstream no son código MIT AtlanticOS.
 Las herramientas y fixtures originales de comprobación sí son MIT.
 
+La ampliación de coaliciones/bank selecciona cuatro unidades osfmk intactas y
+bank.c con el patch 0029, que alinea dos guardas con el campo nativo existente.
+Conserva los avisos Apple/APSL y CMU/OSF por archivo. Los headers adicionales
+se generan con MIG oficial desde la lista MIG_USHDRS y sus .defs; no son SDK
+ni declaraciones originales MIT. Los retornos de debug VM desactivado siguen
+siendo la implementación upstream y no acreditan ese servicio en AtlanticOS.
+
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias
 BSD-2-Clause-Patent y por componente. No se distribuyen sus binarios o wrappers.

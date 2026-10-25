@@ -1,0 +1,86 @@
+{
+  "scope": "STRICT_LINK_DIAGNOSTIC_NAME_COMPARISON_NOT_EXECUTION",
+  "previous_link_sha256": "537169c0c675f73d0d161c3748b5d4af47b23f00d87697494bce230cfe4d7cd1",
+  "current_link_sha256": "b5ec5a7ac6ba55ec255e0231dfaa1cd4912b3ed01d6fbdc2dba429c7ec201ab0",
+  "previous_undefined": 502,
+  "current_undefined": 476,
+  "previous_symbols_now_provided": [
+    "_bank_get_bank_ledger_resource_coalition_id",
+    "_bank_get_bank_ledger_thread_group_and_persona",
+    "_bank_ledgers",
+    "_bank_swap_thread_bank_ledger",
+    "_bank_task_destroy",
+    "_bank_task_initialize",
+    "_coalition_io_ledger_update",
+    "_coalition_is_swappable",
+    "_coalition_ledger_get_from_task",
+    "_coalitions_adopt_corpse_task",
+    "_coalitions_adopt_init_task",
+    "_coalitions_adopt_task",
+    "_coalitions_init",
+    "_coalitions_remove_task",
+    "_coalitions_set_roles",
+    "_host_virtual_physical_table_info",
+    "_task_coalition_adjust_carplay_mode_count",
+    "_task_coalition_adjust_focal_count",
+    "_task_coalition_adjust_game_mode_count",
+    "_task_coalition_adjust_nonfocal_count",
+    "_task_coalition_get_thread_group",
+    "_task_coalition_roles",
+    "_task_coalition_thread_group_application_set",
+    "_task_coalition_thread_group_carplay_mode_update",
+    "_task_coalition_thread_group_focal_update",
+    "_task_coalition_thread_group_game_mode_update",
+    "_task_coalition_update_gpu_stats",
+    "_task_get_effective_jetsam_coalition_policy",
+    "_task_release_coalitions",
+    "_thread_policy",
+    "_thread_set_policy",
+    "_unified_page_list_iterator_end",
+    "_unified_page_list_iterator_init",
+    "_unified_page_list_iterator_next",
+    "_unified_page_list_iterator_page",
+    "_vm32_mach_vm_region_info",
+    "_vm32_mach_vm_region_info_64",
+    "_vm32_vm_mapped_pages_info"
+  ],
+  "previous_symbols_no_longer_referenced": [],
+  "new_unresolved_dependencies": [
+    "_get_task_uniqueid",
+    "_persona_get_id",
+    "_persona_get_uid",
+    "_persona_is_adoption_allowed",
+    "_persona_lookup",
+    "_persona_put",
+    "_proc_getexecutableuuid",
+    "_proc_getgid",
+    "_proc_getuid",
+    "_proc_persona_get",
+    "_proc_pidversion",
+    "_proc_uniqueid"
+  ],
+  "reason": "OFFICIAL_MIG_INSTALLED_SERVER_HEADER_ROLES_AND_GENUINE_COALITION_BANK_POLICY_VM_PROVIDERS",
+  "new_units": [
+    {
+      "source": "osfmk/kern/coalition.c",
+      "source_sha256": "244a162e8d29296b766c4dae07f7c8072bf67a742d8be5f233c71dae8e247976"
+    },
+    {
+      "source": "osfmk/bank/bank.c",
+      "source_sha256": "ce86a4b9111787cf7c55f781d14dbdc9ffd5fd0eac77b42e23c4ae01340bc3da"
+    },
+    {
+      "source": "osfmk/kern/mk_sp.c",
+      "source_sha256": "7b89d699eb65cb3b8b8f7a4a0d9100fdbbd4d43e7111fa82e42fc1fd0acaf6c4"
+    },
+    {
+      "source": "osfmk/vm/vm_pmap.c",
+      "source_sha256": "3ced1575b402614d5c3d0de8b1f3e4b6e6767c12fc1265e076875912c52ef462"
+    },
+    {
+      "source": "osfmk/vm/vm_debug.c",
+      "source_sha256": "55c76261894ba3691ddd332ebc200f2f14ad5596d369e93a394dc3abfdd9e73a"
+    }
+  ],
+  "changed_native_callers": []
+}

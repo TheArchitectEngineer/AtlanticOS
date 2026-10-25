@@ -5,9 +5,9 @@ de XNU. Primera placa: Motorola Moto G20 / Unisoc T700 (UMS512).
 
 **Estado 2026-10-24: auditoría Fase 0, prototipo host Fase 1 y port XNU
 incremental. Trece unidades reales de XNU compilan a objetos ARM64 con Clang
-estándar; 148 con el proveedor experimental explícito, incluidos
+estándar; 153 con el proveedor experimental explícito, incluidos
 VM residente/faults/objetos, hilos, tareas, locks, ledgers, SMR e IPC/importance.
-Se compilan además 42 archivos RPC generados por MIG como probes, con 57 headers
+Se compilan además 42 archivos RPC generados por MIG como probes, con 70 headers
 coherentes; el configurador oficial selecciona 26 para el enlace de este perfil.
 Tres interfaces no contienen métodos; esos objetos no acreditan servicios.
 Todavía no hay kernel enlazado, ejecución XNU ni drivers G20 funcionales. No hay firmware
@@ -95,8 +95,13 @@ Los [proveedores de timers y políticas](docs/XNU_SCHEDULER_TIMER_PROVIDERS.md)
 añaden diez unidades nativas: ocho intactas y dos con límites BSD corregidos.
 Conservan los algoritmos de prioridad, lifecycle de timers, lista VM y contadores.
 SFI permanece desactivado y la identidad de proceso aún requiere proveedores.
-El enlace actual de 174 objetos falla con **502 diagnósticos indefinidos y cero
-duplicados**, sin imagen. Pasan 129/98 checks de alcance/ABI/objetos. boot_args
+Aquella revisión registra 502 diagnósticos indefinidos y cero duplicados.
+La [integración de coaliciones y bank](docs/XNU_COALITION_BANK_PROVIDERS.md)
+completa MIG_USHDRS y conserva la prioridad de los headers internos. Añade cinco
+unidades nativas, cuatro intactas; la identidad de proceso/persona sigue pendiente.
+Los endpoints de debug VM desactivado conservan KERN_FAILURE upstream.
+El enlace actual de 179 objetos falla con **476 diagnósticos indefinidos y cero
+duplicados**, sin imagen. Pasan 143/110 checks de alcance/ABI/objetos. boot_args
 completo, backend BSP y ejecución de PE/SecureDT/XNU siguen pendientes.
 
 ## Reproducir

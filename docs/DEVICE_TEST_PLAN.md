@@ -306,3 +306,34 @@ El resultado exige PCs, retornos, contabilidad de referencias y evidencia físic
 vinculados al hash de imagen. Un callback sin IRQ/cancelación/cleanup verificables
 es PARTIAL; un bloqueo sin captura fiable es INDETERMINATE. Registrar retorno
 Android por T01. No hay aceptación física de esta subprueba todavía.
+
+## Subprueba pendiente de T08: coaliciones, bank y notificación MIG
+
+Estado: PENDING_HARDWARE. [XNU_COALITION_BANK_PROVIDERS](XNU_COALITION_BANK_PROVIDERS.md)
+solo comprueba fuentes, headers, ABI y objetos. Requiere T01/T04/T05/T06, imagen
+kernel auditada, BSP/MMU/IRQ/IPC y captura fiables; usar carga temporal.
+
+1. Registrar la ejecución real de coalitions_init y bank_init, creación de
+   ledgers, referencias y registro del gestor de vouchers. Comprobar que cada
+   tarea queda asociada a las coaliciones correctas y que adoption/remove/release
+   mantienen los balances y referencias; comparar contra el caso exacto nativo.
+2. Antes de crear un contexto bank, demostrar un proveedor y contexto reales de
+   proceso/persona o la política explícita que haga esa operación no disponible
+   en firmware sin BSD. No usar PID, UID, persona, entitlement o UUID ficticios.
+   Un registro de startup sin ese contexto no acredita bank operativo.
+3. En un ensayo aislado con un puerto destinatario propio, capturar los PCs de
+   coalition_notification y mach_msg_send_from_kernel, ID de mensaje, ID de
+   coalición de 64 bits, flags de 32 bits y recepción del mensaje. Verificar la
+   liberación del send right y el camino nativo cuando no hay destinatario.
+   Generar dos headers o compilar el emisor no demuestra entrega.
+4. Con telemetría desactivada, comprobar que el campo bank ausente no se accede
+   y que su getter conserva el cero de dato no disponible. No interpretar ese
+   cero como la identidad real de una coalición. Verificar iteración UPL solo
+   sobre páginas propias, con referencias y cleanup trazados. Los endpoints VM
+   debug desactivados deben conservar KERN_FAILURE, sin anunciar inspección VM.
+
+Guardar binario, mapa, PCs, payloads, errores y balances antes/después con sus
+hashes y captura física. Falta de contexto de identidad o referencias sin
+trazar deja el componente como UNVERIFIED. Un cuelgue sin registro fiable es
+INDETERMINATE. Comprobar el retorno Android por T01; no hay resultado físico
+aceptado de esta subprueba todavía.

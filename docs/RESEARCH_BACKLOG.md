@@ -7,7 +7,7 @@
 | P0 | Vía temporal aceptada por OEM, header/compresión | T03/T04; formato y mecanismo demostrados; BLOCKED si no existe |
 | P0 | Toolchain XNU y librerías no resueltas | Headers/assym/MIG; grafo de símbolos; clasificar -lcc_kext y seguridad |
 | P0 | Builtins Apple de tipos y dependencia TrustCache en VM | [Requisitos de compilador](XNU_COMPILER_REQUIREMENTS.md); preservar firmas/segregación de allocator y definir límites sin userland; no generar éxitos ficticios |
-| P0 | Proveedores core y límites de features | Timers/políticas nativos ya se seleccionan; guards, identidad de proceso y callbacks conservan dependencias reales. Coalition necesita su header MIG oficial. SLEH/pageout permanecen seleccionados. XNU_SCHEDULER_TIMER_PROVIDERS.md registra 502 diagnósticos actuales, incluido el BSP original aún no implementado |
+| P0 | Proveedores core y límites de features | Roles MIG instalados completados; coaliciones/bank compilan. Guards, contexto de proceso/persona, logging y BSP conservan dependencias reales. SLEH/pageout permanecen seleccionados. XNU_COALITION_BANK_PROVIDERS.md registra 476 diagnósticos actuales; no hay kernel enlazado |
 | P0 | Backend BSP y productor boot_args | PE original compila con dos fases y SecureDT nativo como dependencia. Faltan atlantic_pe_platform real, contexto retenido, boot_args, allocator/MMU y consumidor ejecutado. No declarar ownership o IRQ por devolver un éxito de prueba |
 | P0 | EL inicial / transición EL2→EL1, DT y carveouts | T05; registros capturados con entry original y rangos validados |
 | P1 | Logging temprano y fallback sin framebuffer | Canal real identificado, trazas verificables sin MMIO especulativo |

@@ -1,0 +1,15 @@
+00000000000001d0 T _unified_page_list_iterator_end
+0000000000000000 T _unified_page_list_iterator_init
+00000000000000e0 T _unified_page_list_iterator_next
+0000000000000230 T _unified_page_list_iterator_page
+00000000000002e0 T _unified_page_list_iterator_vm_page
+00000000000003d0 s _vm_page_unpack_ptr.__desc
+0000000000000350 s l_.str
+000000000000039c s l_.str.1
+00000000000003a6 s l_.str.2
+00000000000003b0 s l_.str.3
+000000000000037c s l___func__.unified_page_list_iterator_init
+0000000000000000 t ltmp0
+0000000000000320 s ltmp1
+0000000000000350 s ltmp2
+00000000000003d0 s ltmp3

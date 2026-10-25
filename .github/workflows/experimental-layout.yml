@@ -21,7 +21,7 @@ jobs:
           python3 tools/fetch_xnu.py
           python3 tools/fetch_mig.py
           python3 tools/build_mig.py
-      - name: Compile 148 XNU-derived and original support units (no execution)
+      - name: Compile 153 XNU-derived and original support units (no execution)
         run: |
           python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
       - name: Audit original PE native ABI and required BSP import without executing it
@@ -32,6 +32,8 @@ jobs:
         run: python3 tools/test_xnu_ipc_policy_scope.py --build work/xnu-lab-builds/*/report.json --output work/ipc-policy-scope-tests
       - name: Audit native timers, scheduler policy and unsupported feature returns
         run: python3 tools/test_xnu_scheduler_providers.py --build work/xnu-lab-builds/*/report.json --output work/scheduler-provider-tests
+      - name: Audit genuine MIG installed roles, coalitions and bank telemetry scopes
+        run: python3 tools/test_xnu_coalition_bank.py --build work/xnu-lab-builds/*/report.json --output work/coalition-bank-tests
       - name: Test original string contracts and audit genuine XNU support ABI
         run: python3 tools/test_string_support.py --sanitize --xnu-build work/xnu-lab-builds/*/report.json --output work/string-support-tests
       - name: Audit native memory providers and original cache branch without executing them
@@ -104,6 +106,8 @@ jobs:
             work/ipc-policy-scope-tests/*.log
             work/scheduler-provider-tests/report.json
             work/scheduler-provider-tests/*.log
+            work/coalition-bank-tests/report.json
+            work/coalition-bank-tests/*.log
             work/string-support-tests/report.json
             work/string-support-tests/*.log
             work/memory-provider-tests/report.json

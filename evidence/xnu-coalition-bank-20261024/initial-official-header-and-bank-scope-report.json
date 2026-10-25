@@ -1,0 +1,115 @@
+{
+  "scope": "GENUINE_MIG_USER_SERVER_HEADERS_AND_BANK_SCOPE_CANDIDATE_ONLY",
+  "base_build_report_sha256": "2ecd4b6ac6eaacf49455375f69e0c3e5afef9ef86318e87c4cf8940641974c34",
+  "headers": [
+    {
+      "path": "audit_triggers_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/audit_triggers.defs",
+      "definition_sha256": "bc2fafb7f19efdfeee0baf27a70373a37f681fadfdc0e91af614616701cd2182",
+      "header_sha256": "20787f5a3ff20bbc1d8f8876d1a494aa60cb38f9cdf87aa3a04fb4be9ec47025",
+      "preprocessed_sha256": "b0004a55fc64994d9a391f1fa2b733666ad53b62181f902757b46512523da6ac"
+    },
+    {
+      "path": "clock_reply_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/clock_reply.defs",
+      "definition_sha256": "9d3f939e8d78da25deed658740b15217c3aa335613478ba78b9f74208a765106",
+      "header_sha256": "7f28a0ea82331d3110679065a4ad869ee13cec49f57ed342a4398c3e7e8be1c4",
+      "preprocessed_sha256": "f366159b398ce441a3ebe7cca8fcb739fc3ff79ce2054640369e6f6be848ccd6"
+    },
+    {
+      "path": "coalition_notification_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/coalition_notification.defs",
+      "definition_sha256": "1370f1272ecf0394928a1bb1e7ef7420e130db921f357775c143d43d8de57ba7",
+      "header_sha256": "ced0c51b8033c24ecc5269b5b2bb6d5b62f371c25d7ee9fc9bf6bf9f7344169f",
+      "preprocessed_sha256": "0fc8d62744b3a8a08a6bab3c67eb38831d9f0cc6ba79579b4fc70bd7a1c15ecb"
+    },
+    {
+      "path": "doubleagent_mig_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/doubleagent_mig.defs",
+      "definition_sha256": "92c6c7e4903d1469b7e2e7ef1197cfa7f11be630c0419d4f97e10cb7bd731cea",
+      "header_sha256": "a0ef50b6fed67f3cb9ea022d2c880787db36b01189f41f6a5d8be962d47a8afa",
+      "preprocessed_sha256": "139ceaa40bec06a618139487d5c224bb6c8329cf7f80fab934cd5aedf0cd673e"
+    },
+    {
+      "path": "fairplayd_notification_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/fairplayd_notification.defs",
+      "definition_sha256": "190e16f041a1444b3da293254a933383433bd7de53bf9ada747c88123c898106",
+      "header_sha256": "7bbdc39d398872a9fa10b457e5d82d55b4d3df9ee378328b92a80afd1b27d556",
+      "preprocessed_sha256": "462926f24668c7143dc7bb24f956c562344fc6d91cb244845f6d0164ffbeaf56"
+    },
+    {
+      "path": "arcade_upcall_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/arcade_upcall.defs",
+      "definition_sha256": "95c338f42bfcbedf4697249496985a91375c2bc9b2e0e53056af7674b54057c4",
+      "header_sha256": "60a87fa04e5f91ff9ccb3b427a35621c5ff306c4ba98b7851f3222eadabda4ea",
+      "preprocessed_sha256": "e114496961a66276ce725fc9b8b50d65d3c1645b6239fbefaa148521cb189dbd"
+    },
+    {
+      "path": "memory_error_notification_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/memory_error_notification.defs",
+      "definition_sha256": "64d93bacefe3479513faf9f88dad698e7f6733c7dbaa334efe264a2a87c40bc6",
+      "header_sha256": "9f86b3cc6b9e90da2fc25cdc1af99196685e0a60fde589d87cc7d1dc44e3c9e0",
+      "preprocessed_sha256": "663eaac409c88d6ce179218a9ffa7176d1b4fd5302cc44ee4478f4cceaab81dc"
+    },
+    {
+      "path": "notify_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/notify.defs",
+      "definition_sha256": "84168a4578177d0036d380033ebb54c47ca156af0fa9019b95fcc2dde8f443e2",
+      "header_sha256": "e0d7a13f849c48c543780d79024e2a036e73212a5b3fcfdec0e02ec19002f413",
+      "preprocessed_sha256": "6b06703bbaba6505ec1fa5a5833077f663c791c7c45bbda29d1c3260b3eb9542"
+    },
+    {
+      "path": "task_access_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/task_access.defs",
+      "definition_sha256": "ce6dc64647264bae2f801d05b27fc85fcf54277ce88e9af067231d740dce94e6",
+      "header_sha256": "64fb30cac3096477785d7bb945f42dabff6142777f331e38a3cf882f72a22e9f",
+      "preprocessed_sha256": "52d1003f3e68fca258763e13533cd38970d4a6ee687b5e8bf05434e06c64c62d"
+    },
+    {
+      "path": "telemetry_notification_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/telemetry_notification.defs",
+      "definition_sha256": "9296da2e3478225aa5359b3dcb23a316eb3a8d8bfe2dc28165914b9fef0e29c5",
+      "header_sha256": "fb03002dfe1b02bd7a429d9860d957b9fd7e5673e962e1e42814ca34e87bee80",
+      "preprocessed_sha256": "7822462ed8e39523b3b5adbd9f88cf06076a39dea6b7681d9974c4d447f1b716"
+    },
+    {
+      "path": "sysdiagnose_notification_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/sysdiagnose_notification.defs",
+      "definition_sha256": "f44f82271d7a2a2a81fe8a93d58bcfceed64d706d1d40b0223c81118d3985c02",
+      "header_sha256": "8ce51d4897acdab8321965f2ea7e8004ee7ffa416d0d59034d1578ca241bd745",
+      "preprocessed_sha256": "f1e33bd8d43ebf08e63538e758565d961c4e62e329a35acb3c33f1b390da5d91"
+    },
+    {
+      "path": "iocompressionstats_notification_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/iocompressionstats_notification.defs",
+      "definition_sha256": "280c5c3baed8c32cb503a429079fe7b9d2e11ccd4354a5fc3a493fab4cb2e351",
+      "header_sha256": "18204d8aecfe5685708522b8556ad5724205b1e8abbb2946c0e7ce829bfa8b9b",
+      "preprocessed_sha256": "f2a11a37dbc92d29d5aef5ca6972140b977c357483c7d7ffdaa41b2f3adc29bb"
+    },
+    {
+      "path": "vfs_nspace_server.h",
+      "role": "user-server",
+      "definition": "osfmk/mach/vfs_nspace.defs",
+      "definition_sha256": "d695633b8d0c70957e636ee1815116d0626eab34f6757e34db3303c074b1efa3",
+      "header_sha256": "b2016a37ae8b53297bfc8126911cdc613b5ba201f12d6cca8c27e141d59116cf",
+      "preprocessed_sha256": "eab0704adc25990d246bbd0dd1854183330d27c02c50b46e79e214f8026221e9"
+    }
+  ],
+  "bank_source_sha256": "ce86a4b9111787cf7c55f781d14dbdc9ffd5fd0eac77b42e23c4ae01340bc3da",
+  "bank_object_sha256": "7f07966142b79ddfdd4318e7957d13ac84e7cbd801401c7aabd93564ddbe5e73",
+  "migcom_sha256": "56232caefb36e4f73b320bd283bb92a6fbfeaa9105cb66ac13401e869d7a2a17",
+  "xnu_executed": false,
+  "phone_accessed": false
+}

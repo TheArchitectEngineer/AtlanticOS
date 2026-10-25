@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "df455b8290a910db564e29bbb95fd758690eacc9ff9f35425752f1ee8feac17a",
+  "port_id": "25598af2b83969b18f5d9911863b13e210cdc1fa07818471aec6b2b7c521547b",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -30,7 +30,8 @@
     "0025-scope-bootstrap-services-to-selected-firmware-components.patch": "0f42ca7604ce702314fddbaddcdfbf8d2bf4e0dc3a332ba6c192c75163f0c3f8",
     "0026-add-original-string-support-with-native-xnu-abi.patch": "0e7c9852d8b9f6492df8ae738f8c7d3821f7913ec097b8121534447199d57ca0",
     "0027-scope-ipc-process-analytics-sdk-and-iokit-descriptions.patch": "52958786edbd82547c08a8106417509778dc979800c309507a2cebdb20998c40",
-    "0028-scope-bsd-throttle-callbacks-and-fix-native-resource-failure-path.patch": "306dab51ce7db3acb84be207a1015b267e53ecb59fa7d027df95d1a61c726611"
+    "0028-scope-bsd-throttle-callbacks-and-fix-native-resource-failure-path.patch": "306dab51ce7db3acb84be207a1015b267e53ecb59fa7d027df95d1a61c726611",
+    "0029-match-bank-telemetry-uses-to-native-field-guard.patch": "67d594c0a1f46679b376621ac4077d560f0475e12d9be8b90015363cf4df344f"
   },
   "canonical_lf_files": [
     {
@@ -272,6 +273,11 @@
       "path": "osfmk/kern/task_policy.c",
       "preimage_sha256": "9f2e8eaad2dfe8046c8ce9ee8425945b4d4e7e4790954ad806c8de848a4a47f4",
       "postimage_sha256": "e8594eee0356d546ed517dff516114e9279d7aab34f15138a55df6bbd7fd3366"
+    },
+    {
+      "path": "osfmk/bank/bank.c",
+      "preimage_sha256": "cd39a03f15eef8446d131f99e8d086998a4c77aea0583bfe242b41da933a4b91",
+      "postimage_sha256": "ce86a4b9111787cf7c55f781d14dbdc9ffd5fd0eac77b42e23c4ae01340bc3da"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

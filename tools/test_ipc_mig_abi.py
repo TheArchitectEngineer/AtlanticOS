@@ -33,10 +33,10 @@ def main():
         if digest(ROOT/rel) != expected:
             ap.error('Changed build input: '+rel)
     headers = build['generated_headers']
-    if len(headers) != 57 or len({h['path'] for h in headers}) != 57:
-        ap.error('Pinned recipes require 57 unique selected headers, including native source side effects')
+    if len(headers) != 70 or len({h['path'] for h in headers}) != 70:
+        ap.error('Pinned recipes require 70 unique selected headers, including native installed server variants')
     roles = Counter(h['role'] for h in headers)
-    if dict(roles) != {'sender':14, 'kernel-server':22, 'kernel-sender':21}:
+    if dict(roles) != {'sender':14, 'user-server':13, 'kernel-server':22, 'kernel-sender':21}:
         ap.error('Unexpected MIG role counts')
     selected = {h['path']:h['role'] for h in headers}
     for name in ['mach_notify', 'task_access', 'upl', 'vm_map', 'ktrace_background', 'vfs_nspace']:
@@ -44,6 +44,12 @@ def main():
             ap.error('Kernel sender precedence lost: '+name)
     if selected.get('include/device/device_server.h') != 'kernel-server':
         ap.error('Native device kernel-server header missing')
+    if (selected.get('include/mach/coalition_notification_server.h') != 'user-server' or
+        selected.get('include/mach/coalition_notification.h') != 'kernel-sender'):
+        ap.error('Native coalition header roles missing')
+    for name in ['exc_server.h','mach_exc_server.h']:
+        if selected.get('include/mach/'+name) != 'kernel-server':
+            ap.error('Internal server precedence lost: '+name)
     for item in headers:
         path = (args.build.parent/item['path']).resolve()
         if not path.is_relative_to(args.build.parent.resolve()) or digest(path) != item['sha256']:
@@ -57,7 +63,8 @@ def main():
     outcomes = []
     for name,flags,expected,diagnostic in [('declarations',[],0,None),
         ('reject-port-name',['-DATL_TEST_PORT_NAME_AS_OBJECT=1'],1,'incompatible integer to pointer conversion'),
-        ('reject-legacy-server',['-DATL_TEST_LEGACY_SERVER_ABI=1'],1,'incompatible function pointer types')]:
+        ('reject-legacy-server',['-DATL_TEST_LEGACY_SERVER_ABI=1'],1,'incompatible function pointer types'),
+        ('reject-coalition-port-name',['-DATL_TEST_COALITION_PORT_NAME=1'],1,'incompatible integer to pointer conversion')]:
         cmd = [*base,*flags,'-Werror=int-conversion','-Werror=incompatible-function-pointer-types',
                '-fsyntax-only',str(fixture)]
         r = subprocess.run(cmd,text=True,capture_output=True,timeout=60)

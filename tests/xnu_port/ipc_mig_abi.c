@@ -2,6 +2,8 @@
 #include <stddef.h>
 #include <mach/mach_notify.h>
 #include <mach/mach_notify_server.h>
+#include <mach/coalition_notification.h>
+#include <mach/coalition_notification_server.h>
 #include <device/device_server.h>
 #include <ipc/ipc_port.h>
 
@@ -17,6 +19,10 @@
 
 _Static_assert(sizeof(mach_port_t) == 8, "kernel port pointer ABI");
 _Static_assert(sizeof(mach_port_name_t) == 4, "port names remain 32-bit values");
+_Static_assert(__builtin_types_compatible_p(__typeof__(&coalition_notification),
+    kern_return_t (*)(ipc_port_t,uint64_t,uint32_t)), "native coalition sender ABI across both header roles");
+_Static_assert(sizeof(((__Request__coalition_notification_t *)0)->id)==8, "native coalition ID width");
+_Static_assert(sizeof(((__Request__coalition_notification_t *)0)->flags)==4, "native coalition flags width");
 _Static_assert(__builtin_types_compatible_p(mach_port_t, ipc_port_t),
     "kernel sender must use port objects");
 _Static_assert(__builtin_types_compatible_p(__typeof__(&mach_notify_port_deleted),
@@ -33,6 +39,13 @@ _Static_assert(__builtin_types_compatible_p(__typeof__(&iokit_server),
 kern_return_t atlantic_bad_kernel_sender(void)
 {
     return mach_notify_port_deleted((mach_port_name_t)1, 1);
+}
+#endif
+
+#ifdef ATL_TEST_COALITION_PORT_NAME
+kern_return_t atlantic_bad_coalition_sender(void)
+{
+    return coalition_notification((mach_port_name_t)1, 1, 0);
 }
 #endif
 

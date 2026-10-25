@@ -1,0 +1,7 @@
+<ROOT>/work/xnu-lab-sources/df455b8290a910db/osfmk/bank/bank.c:987:17: error: no member named 'bt_rsrc_coal_id' in 'struct bank_task'
+  987 |         new_bank_task->bt_rsrc_coal_id = rsrc_coal != COALITION_NULL ? coalition_id(rsrc_coal) : 0;
+      |         ~~~~~~~~~~~~~  ^
+<ROOT>/work/xnu-lab-sources/df455b8290a910db/osfmk/bank/bank.c:1850:22: error: no member named 'bt_rsrc_coal_id' in 'struct bank_task'
+ 1850 |                         return bank_task->bt_rsrc_coal_id;
+      |                                ~~~~~~~~~  ^
+2 errors generated.

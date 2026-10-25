@@ -1,0 +1,15 @@
+<ROOT>/work/xnu-lab-builds/edf226772d50eff0/OSAtomicOperations.o:
+(__TEXT,__text) section
+_OSCompareAndSwap64:
+      90:	48 fc 5f c8	ldaxr	x8, [x2]
+      94:	1f 01 00 eb	cmp	x8, x0
+      98:	a1 00 00 54	b.ne	0xac
+      9c:	41 fc 08 c8	stlxr	w8, x1, [x2]
+      a0:	88 ff ff 35	cbnz	w8, _OSCompareAndSwap64
+      a4:	20 00 80 52	mov	w0, #0x1
+      a8:	c0 03 5f d6	ret
+      ac:	e0 03 1f 2a	mov	w0, wzr
+      b0:	5f 3f 03 d5	clrex
+      b4:	c0 03 5f d6	ret
+      b8:	1f 20 03 d5	nop
+      bc:	1f 20 03 d5	nop

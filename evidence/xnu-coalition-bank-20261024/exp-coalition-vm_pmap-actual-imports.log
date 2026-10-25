@@ -1,0 +1,8 @@
+_mach_assert_jump_key
+_panic
+_vm_page_find_canonical
+_vm_page_is_fictitious
+_vm_pages
+_vm_pages_count
+_vm_pages_end
+_vm_pages_first_pnum

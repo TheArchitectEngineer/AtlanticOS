@@ -1,0 +1,4 @@
+_pset0
+_thread_mtx_lock
+_thread_mtx_unlock
+_thread_set_mode_and_absolute_pri

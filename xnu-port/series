@@ -26,3 +26,4 @@
 0026-add-original-string-support-with-native-xnu-abi.patch
 0027-scope-ipc-process-analytics-sdk-and-iokit-descriptions.patch
 0028-scope-bsd-throttle-callbacks-and-fix-native-resource-failure-path.patch
+0029-match-bank-telemetry-uses-to-native-field-guard.patch

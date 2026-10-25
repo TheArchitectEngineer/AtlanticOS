@@ -1,0 +1,11 @@
+_absolutetime_to_nanoseconds
+_backtrace
+_kernel_startup_tunable_dt_init
+_ml_get_current_core_type
+_ml_get_speculative_timebase
+_ml_get_timebase
+_ml_io_check_for_mmio_overrides
+_panic
+_recount_current_processor_interrupt_duration_mach
+_snprintf
+_trap_telemetry_report_latency_violation

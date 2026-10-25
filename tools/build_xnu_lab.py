@@ -46,6 +46,7 @@ STARTUP_SYMBOL_PREFIXES = {
     'osfmk/ipc/ipc_init.c': '___startup_MACH_IPC_entry_ipc_init_',
     'osfmk/ipc/ipc_importance.c': '___startup_MACH_IPC_entry_ipc_importance_init_',
     'osfmk/kern/ipc_kobject.c': '___startup_MACH_IPC_entry_mig_init_',
+    'osfmk/bank/bank.c': '___startup_MACH_IPC_entry_bank_init_',
     'osfmk/ipc/ipc_policy.c': '___startup_MACH_IPC_entry_ipc_policy_set_defaults_',
     'osfmk/ipc/ipc_voucher.c': '___startup_MACH_IPC_entry_ipc_voucher_init_'}
 EXTRA_SYMBOLS = {'osfmk/arm64/cswitch.s': ['_machine_load_context', '_Call_continuation'],
@@ -195,6 +196,22 @@ EXPERIMENTAL_UNITS.update({
     'osfmk/arm/machine_cpuid.c': '_machine_read_midr',
     'bsd/kern/qsort.c': '_qsort'})
 EXPERIMENTAL_UNITS['pexpert/atlantic/pe_platform.c'] = '_PE_init_platform'
+EXPERIMENTAL_UNITS.update({
+    'osfmk/kern/coalition.c': '_coalitions_init',
+    'osfmk/bank/bank.c': '_bank_task_initialize',
+    'osfmk/kern/mk_sp.c': '_thread_policy',
+    'osfmk/vm/vm_pmap.c': '_unified_page_list_iterator_init',
+    'osfmk/vm/vm_debug.c': '_host_virtual_physical_table_info'})
+EXTRA_SYMBOLS.update({
+    'osfmk/kern/coalition.c': ['_coalitions_adopt_task', '_coalitions_remove_task',
+        '_coalition_io_ledger_update', '_task_coalition_adjust_focal_count'],
+    'osfmk/bank/bank.c': ['_bank_task_destroy', '_bank_get_value', '_bank_swap_thread_bank_ledger',
+        '_bank_get_bank_ledger_thread_group_and_persona'],
+    'osfmk/kern/mk_sp.c': ['_thread_set_policy'],
+    'osfmk/vm/vm_pmap.c': ['_unified_page_list_iterator_next', '_unified_page_list_iterator_end',
+        '_unified_page_list_iterator_page'],
+    'osfmk/vm/vm_debug.c': ['_vm32_mach_vm_region_info', '_vm32_mach_vm_region_info_64',
+        '_vm32_vm_mapped_pages_info']})
 EXPERIMENTAL_UNITS.update({
     'osfmk/kern/mk_timer.c': '_mk_timer_port_label_dealloc',
     'osfmk/kern/syscall_subr.c': '_thread_depress_expire',
@@ -522,20 +539,26 @@ def main():
     kernel_senders = [name.removesuffix('_user.c')+'.h' for name in make_list(mk, 'MIG_KUSRC')]
     if not set(declared_kernel_senders).issubset(kernel_senders):
         raise RuntimeError('Native kernel sender header/source lists disagree')
-    groups = [('MIG_UUHDRS', 'sender'), ('MIG_KSHDRS', 'kernel-server')]
+    kernel_server_headers = set(make_list(mk, 'MIG_KSHDRS'))
+    groups = [('MIG_UUHDRS', 'sender'), ('MIG_USHDRS', 'user-server'), ('MIG_KSHDRS', 'kernel-server')]
     for variable, role in groups:
         for header in make_list(mk, variable):
             # Native kernel-user output takes precedence over public sender
             # headers with the same name, as explained in mach/Makefile.
             if role == 'sender' and header in kernel_senders:
                 continue
-            module = header.removesuffix('_server.h') if role == 'kernel-server' else header.removesuffix('.h')
+            # Internal kernel server variants take precedence over installed
+            # server variants with the same native name (exc and mach_exc).
+            if role == 'user-server' and header in kernel_server_headers:
+                continue
+            server_header = role in {'kernel-server', 'user-server'}
+            module = header.removesuffix('_server.h') if server_header else header.removesuffix('.h')
             flags = ['-DKERNEL_SERVER=1'] if role == 'kernel-server' else []
             cpp = run([*base, *flags, str(source/('osfmk/mach/'+module+'.defs'))], name='cpp-'+header)
             destination = inc/'mach'/header
             opts = ['-mach_msg2'] if role == 'kernel-server' else []
             run([str(mig_dir/'migcom'), '-novouchers', *opts, '-header', str(destination) if role=='sender' else '/dev/null',
-                 '-sheader', str(destination) if role=='kernel-server' else '/dev/null', '-server', '/dev/null', '-user', '/dev/null'],
+                 '-sheader', str(destination) if server_header else '/dev/null', '-server', '/dev/null', '-user', '/dev/null'],
                 cwd=out, data=cpp.stdout, name='mig-'+header)
             generated.append(destination)
             generated_roles[destination] = role

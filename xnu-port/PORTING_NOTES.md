@@ -150,7 +150,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y 148 experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y 153 experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.
@@ -227,3 +227,14 @@ Compilan 148 unidades experimentales y 13 estándar; pasan 129/98 checks.
 El enlace de 174 objetos conserva 502 diagnósticos indefinidos y cero duplicados,
 sin imagen. SFI/PMU no se acreditan; identidad y guards requieren sus proveedores.
 Véase [XNU_SCHEDULER_TIMER_PROVIDERS](../docs/XNU_SCHEDULER_TIMER_PROVIDERS.md).
+
+El patch 0029 alinea dos usos de bt_rsrc_coal_id con su guarda nativa
+CONFIG_COALITIONS && CONFIG_TELEMETRY; bank_internal.h y cinco cuerpos core
+permanecen intactos. El builder completa MIG_USHDRS: trece headers adicionales,
+70 únicos, con prioridad de las variantes internas. No se altera coalition.c
+ni se escribe su header a mano. Se añaden cinco unidades nativas, cuatro
+intactas. Compilan 153 experimentales y 13 estándar; pasan 143/110 checks.
+El enlace de 179 objetos conserva 476 diagnósticos indefinidos y cero duplicados,
+sin imagen. Proveedores de proceso/persona siguen pendientes y debug VM mantiene
+el error nativo desactivado. Véase
+[XNU_COALITION_BANK_PROVIDERS](../docs/XNU_COALITION_BANK_PROVIDERS.md).

@@ -1,0 +1,980 @@
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/atlantic_string.c"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 440 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 1
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/hibernation.h" 1
+# 2 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/crypto.h" 1
+# 3 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/kdebug.h" 1
+# 4 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/mach_assert.h" 1
+# 5 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/mach_kdp.h" 1
+# 6 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_serial_kdp.h" 1
+# 7 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/mach_ldebug.h" 1
+# 8 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/mach_vm_debug.h" 1
+# 9 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/mig_debug.h" 1
+# 10 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/importance_inheritance.h" 1
+# 11 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/importance_debug.h" 1
+# 12 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_ecc_logging.h" 1
+# 13 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_dtrace.h" 1
+# 14 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/no_kextd.h" 1
+# 15 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_quiesce_counter.h" 1
+# 16 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_cpu_counters.h" 1
+# 17 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_user_notification.h" 1
+# 18 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_kdp_interactive_debugging.h" 1
+# 19 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/debug.h" 1
+# 20 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_kdp_coredump_encryption.h" 1
+# 21 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_arcade.h" 1
+# 22 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_audit.h" 1
+# 23 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_exclaves.h" 1
+# 24 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_clutch.h" 1
+# 25 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_sysdiagnose.h" 1
+# 26 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/mach_bsd.h" 1
+# 27 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/copyout_shim.h" 1
+# 28 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_iotrace.h" 1
+# 29 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_xnupost.h" 1
+# 30 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_telemetry.h" 1
+# 31 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_atm.h" 1
+# 32 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_voucher_deprecated.h" 1
+# 33 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_io_compression_stats.h" 1
+# 34 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_phantom_cache.h" 1
+# 35 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_deferred_reclaim.h" 1
+# 36 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/iokit.h" 1
+# 37 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/kperf.h" 1
+# 38 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/fb.h" 1
+# 39 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/hi_res_clock.h" 1
+# 40 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_sptm.h" 1
+# 41 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_pv_ticket.h" 1
+# 42 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/profile.h" 1
+# 43 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_arm_pfz.h" 1
+# 44 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/ln.h" 1
+# 45 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/eisa.h" 1
+# 46 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/himem.h" 1
+# 47 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/ec.h" 1
+# 48 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/alternate_debugger.h" 1
+# 49 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/config_mach_bridge_recv_time.h" 1
+# 50 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/config/meta_features.h" 2
+# 2 "<built-in>" 2
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/atlantic_string.c" 2
+
+
+
+
+
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h" 1
+# 52 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/bsd/sys/cdefs.h" 1
+# 1145 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/bsd/sys/cdefs.h"
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/EXTERNAL_HEADERS/ptrcheck.h" 1
+# 1146 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/bsd/sys/cdefs.h" 2
+# 53 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h" 2
+
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/types.h" 1
+# 50 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/types.h"
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/EXTERNAL_HEADERS/stddef.h" 1
+# 53 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/EXTERNAL_HEADERS/stddef.h"
+typedef __typeof__(((int*)((void*)0)) - ((int*)((void*)0))) ptrdiff_t;
+
+
+
+typedef __typeof__(sizeof(int)) size_t;
+
+
+
+
+typedef int wchar_t;
+# 51 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/types.h" 2
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/machine/types.h" 1
+# 34 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/machine/types.h"
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/arm/types.h" 1
+# 59 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/arm/types.h"
+typedef long dev_t;
+
+typedef signed char bit8_t;
+typedef unsigned char u_bit8_t;
+
+typedef short bit16_t;
+typedef unsigned short u_bit16_t;
+
+typedef int bit32_t;
+typedef unsigned int u_bit32_t;
+
+
+typedef struct { int __val[2]; } bit64_t;
+typedef struct { unsigned int __val[2]; } u_bit64_t;
+# 35 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/machine/types.h" 2
+# 52 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/types.h" 2
+# 62 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/types.h"
+typedef unsigned char u_char;
+typedef unsigned short u_short;
+typedef unsigned int u_int;
+typedef unsigned long u_long;
+
+typedef struct _quad_ {
+ unsigned int val[2];
+} quad;
+
+typedef char * caddr_t;
+
+typedef unsigned int daddr_t;
+# 90 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/types.h"
+typedef unsigned char uchar_t;
+typedef unsigned short ushort_t;
+typedef unsigned int uint_t;
+typedef unsigned long ulong_t;
+typedef volatile unsigned char vuchar_t;
+typedef volatile unsigned short vushort_t;
+typedef volatile unsigned int vuint_t;
+typedef volatile unsigned long vulong_t;
+# 55 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h" 2
+
+
+
+
+
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/machine/trap.h" 1
+# 34 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/machine/trap.h"
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/arm/trap.h" 1
+# 133 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/arm/trap.h"
+__attribute__((cold, always_inline))
+static inline void
+ml_bound_chk_soft_trap(unsigned char code)
+{
+ switch (code) {
+
+  case 0: ({ __builtin_arm_trap(0x5500 + 0); __builtin_unreachable(); }); case 0 + 1: ({ __builtin_arm_trap(0x5500 + 0 + 1); __builtin_unreachable(); }); case 0 + 2: ({ __builtin_arm_trap(0x5500 + 0 + 2); __builtin_unreachable(); }); case 0 + 3: ({ __builtin_arm_trap(0x5500 + 0 + 3); __builtin_unreachable(); }); case 0 + 4: ({ __builtin_arm_trap(0x5500 + 0 + 4); __builtin_unreachable(); });
+  case 5: ({ __builtin_arm_trap(0x5500 + 5); __builtin_unreachable(); }); case 5 + 1: ({ __builtin_arm_trap(0x5500 + 5 + 1); __builtin_unreachable(); }); case 5 + 2: ({ __builtin_arm_trap(0x5500 + 5 + 2); __builtin_unreachable(); }); case 5 + 3: ({ __builtin_arm_trap(0x5500 + 5 + 3); __builtin_unreachable(); }); case 5 + 4: ({ __builtin_arm_trap(0x5500 + 5 + 4); __builtin_unreachable(); });
+  case 10: ({ __builtin_arm_trap(0x5500 + 10); __builtin_unreachable(); }); case 10 + 1: ({ __builtin_arm_trap(0x5500 + 10 + 1); __builtin_unreachable(); }); case 10 + 2: ({ __builtin_arm_trap(0x5500 + 10 + 2); __builtin_unreachable(); }); case 10 + 3: ({ __builtin_arm_trap(0x5500 + 10 + 3); __builtin_unreachable(); }); case 10 + 4: ({ __builtin_arm_trap(0x5500 + 10 + 4); __builtin_unreachable(); });
+  case 15: ({ __builtin_arm_trap(0x5500 + 15); __builtin_unreachable(); }); case 15 + 1: ({ __builtin_arm_trap(0x5500 + 15 + 1); __builtin_unreachable(); }); case 15 + 2: ({ __builtin_arm_trap(0x5500 + 15 + 2); __builtin_unreachable(); }); case 15 + 3: ({ __builtin_arm_trap(0x5500 + 15 + 3); __builtin_unreachable(); }); case 15 + 4: ({ __builtin_arm_trap(0x5500 + 15 + 4); __builtin_unreachable(); });
+  case 20: ({ __builtin_arm_trap(0x5500 + 20); __builtin_unreachable(); }); case 20 + 1: ({ __builtin_arm_trap(0x5500 + 20 + 1); __builtin_unreachable(); }); case 20 + 2: ({ __builtin_arm_trap(0x5500 + 20 + 2); __builtin_unreachable(); }); case 20 + 3: ({ __builtin_arm_trap(0x5500 + 20 + 3); __builtin_unreachable(); }); case 20 + 4: ({ __builtin_arm_trap(0x5500 + 20 + 4); __builtin_unreachable(); });
+ case 25:
+# 155 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/arm/trap.h"
+  __asm__ volatile ("brk #%0" : : "i"(0xFF00 + 25));
+
+  break;
+ default:
+  ({ __builtin_arm_trap(0x0); __builtin_unreachable(); });
+ }
+}
+# 35 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/machine/trap.h" 2
+# 105 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/machine/trap.h"
+__attribute__((cold, noreturn, always_inline))
+static inline void
+ml_fatal_trap_invalid_list_linkage(unsigned long e)
+{
+ ({ ({ register long _a __asm__("x8") = (long)(e); __asm__ __volatile__ ("" : "+r"(_a)); }); ({ __builtin_arm_trap(0xbffd); __builtin_unreachable(); }); });
+}
+# 61 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h" 2
+# 233 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__cold__)) __attribute__((__noreturn__)) void
+__xnu_fortify_trap_write(void)
+{
+ ({ __builtin_arm_trap(0xbffe); __builtin_unreachable(); });
+}
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__cold__)) void
+__xnu_fortify_trap_read(void)
+{
+
+
+
+
+}
+# 281 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+extern int bcmp(const void *s1 , const void *s2 , size_t n) __attribute__((__pure__));
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__pure__))
+int
+bcmp(
+ const void *const s1 __attribute__((__pass_dynamic_object_size__(0))) ,
+ const void *const s2 __attribute__((__pass_dynamic_object_size__(0))) ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s1, 0) < (n), "read overflow (first argument)", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s2, 0) < (n), "read overflow (second argument)", "error")))
+{
+ extern int __xnu_bcmp(
+  const void * ,
+  const void * ,
+  size_t n) __asm("_bcmp");
+
+ ({ if (__builtin_dynamic_object_size(s1, 0) < (n)) { __xnu_fortify_trap_read(); } });
+ ({ if (__builtin_dynamic_object_size(s2, 0) < (n)) { __xnu_fortify_trap_read(); } });
+
+ return __builtin_bcmp(s1, s2, n);
+
+
+
+}
+
+
+extern int memcmp(const void *s1 , const void *s2 , size_t n) __attribute__((__pure__));
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__pure__))
+int
+memcmp(
+ const void *const s1 __attribute__((__pass_dynamic_object_size__(0))) ,
+ const void *const s2 __attribute__((__pass_dynamic_object_size__(0))) ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s1, 0) < (n), "read overflow (first argument)", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s2, 0) < (n), "read overflow (second argument)", "error")))
+{
+ extern int __xnu_memcmp(
+  const void *,
+  const void *,
+  size_t n) __asm("_memcmp");
+
+ ({ if (__builtin_dynamic_object_size(s1, 0) < (n)) { __xnu_fortify_trap_read(); } });
+ ({ if (__builtin_dynamic_object_size(s2, 0) < (n)) { __xnu_fortify_trap_read(); } });
+
+ return __builtin_memcmp(s1, s2, n);
+
+
+
+}
+# 339 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+extern unsigned long memcmp_zero_ptr_aligned(const void *s , size_t n) __attribute__((__pure__));
+
+
+
+extern int timingsafe_bcmp(const void *b1 , const void *b2 , size_t n);
+
+
+extern void bzero(void *s , size_t n);
+
+static inline __attribute__((__always_inline__, __overloadable__))
+void
+bzero(
+ void *const s __attribute__((__pass_dynamic_object_size__(0))) ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s, 0) < (n), "write overflow", "error")))
+{
+ extern void __xnu_bzero(
+  const void *,
+  size_t n) __asm("_bzero");
+
+ ({ if (__builtin_dynamic_object_size(s, 0) < (n)) { __xnu_fortify_trap_write(); } });
+
+ __builtin_bzero(s, n);
+
+
+
+}
+
+
+extern void *memset(void *s , int c, size_t n);
+
+static inline __attribute__((__always_inline__, __overloadable__))
+void *
+
+memset(
+ void *const s __attribute__((__pass_dynamic_object_size__(1))) ,
+ int c,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s, 1) < (n), "write overflow", "error")))
+{
+ extern void __xnu_memset(
+  void *,
+  int,
+  size_t n) __asm("_memset");
+
+ ({ if (__builtin_dynamic_object_size(s, 1) < (n)) { __xnu_fortify_trap_write(); } });
+
+ return __builtin_memset(s, c, n);
+
+
+
+}
+
+
+extern int memset_s(void *s , size_t smax, int c, size_t n);
+
+
+extern void *memmove(void *dst , const void *src , size_t n);
+
+static inline __attribute__((__always_inline__, __overloadable__))
+void *
+
+memmove(
+ void *const dst __attribute__((__pass_dynamic_object_size__(1))) ,
+ const void *const src __attribute__((__pass_dynamic_object_size__(1))) ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(dst, 1) < (n), "write overflow", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(src, 1) < (n), "read overflow", "error")))
+{
+ extern void *__xnu_memmove(
+  void *dst ,
+  const void *src ,
+  size_t n) __asm("_memmove");
+
+ ({ if (__builtin_dynamic_object_size(dst, 1) < (n)) { __xnu_fortify_trap_write(); } });
+ ({ if (__builtin_dynamic_object_size(src, 1) < (n)) { __xnu_fortify_trap_read(); } });
+
+ return __builtin_memmove(dst, src, n);
+
+
+
+}
+
+static inline __attribute__((__always_inline__, __overloadable__))
+void *
+
+__nochk_memmove(
+ void *const dst __attribute__((__pass_dynamic_object_size__(0))) ,
+ const void *const src __attribute__((__pass_dynamic_object_size__(0))) ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(dst, 0) < (n), "write overflow", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(src, 0) < (n), "read overflow", "error")))
+{
+ extern void *__xnu_memmove(
+  void *dst ,
+  const void *src ,
+  size_t n) __asm("_memmove");
+
+ ({ if (__builtin_dynamic_object_size(dst, 0) < (n)) { __xnu_fortify_trap_write(); } });
+ ({ if (__builtin_dynamic_object_size(src, 0) < (n)) { __xnu_fortify_trap_read(); } });
+
+ return __builtin_memmove(dst, src, n);
+
+
+
+}
+
+
+extern void bcopy(const void *src , void *dst , size_t n);
+
+static inline __attribute__((__always_inline__, __overloadable__))
+void
+bcopy(
+ const void *const src __attribute__((__pass_dynamic_object_size__(1))) ,
+ void *const dst __attribute__((__pass_dynamic_object_size__(1))) ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(dst, 0) < (n), "write overflow", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(src, 0) < (n), "read overflow", "error")))
+{
+ (void)memmove(dst, src, n);
+}
+
+static inline __attribute__((__always_inline__, __overloadable__))
+void
+__nochk_bcopy(
+ const void *const src __attribute__((__pass_dynamic_object_size__(0))) ,
+ void *const dst __attribute__((__pass_dynamic_object_size__(0))) ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(dst, 0) < (n), "write overflow", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(src, 0) < (n), "read overflow", "error")))
+{
+ (void)__nochk_memmove(dst, src, n);
+}
+
+
+extern void *memcpy(void *dst , const void *src , size_t n);
+
+static inline __attribute__((__always_inline__, __overloadable__))
+void *
+
+memcpy(
+ void *const dst __attribute__((__pass_dynamic_object_size__(1))) ,
+ const void *const src __attribute__((__pass_dynamic_object_size__(1))) ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(dst, 0) < (n), "write overflow", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(src, 0) < (n), "read overflow", "error")))
+{
+ return memmove(dst, src, n);
+}
+
+static inline __attribute__((__always_inline__, __overloadable__))
+void *
+
+__nochk_memcpy(
+ void *const dst __attribute__((__pass_dynamic_object_size__(0))) ,
+ const void *const src __attribute__((__pass_dynamic_object_size__(0))) ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(dst, 0) < (n), "write overflow", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(src, 0) < (n), "read overflow", "error")))
+{
+ return __nochk_memmove(dst, src, n);
+}
+
+
+
+
+extern size_t strlen(const char * s) __attribute__((__pure__));
+
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__pure__))
+size_t
+strlen(const char * const s __attribute__((__pass_dynamic_object_size__(1))))
+{
+ return __builtin_strlen(s);
+}
+
+
+
+extern size_t strnlen(const char *s, size_t n) __attribute__((__pure__));
+# 538 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+extern int strcmp(const char * s1, const char * s2) __attribute__((__pure__));
+
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__pure__))
+int
+strcmp(
+ const char *const s1 __attribute__((__pass_dynamic_object_size__(1))),
+ const char *const s2)
+{
+ return __builtin_strcmp(s1, s2);
+}
+
+
+
+
+
+extern int strncmp(const char * s1, const char * s2, size_t n) __attribute__((__pure__));
+
+
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__pure__))
+int
+strncmp(
+ const char *const s1 __attribute__((__pass_dynamic_object_size__(1))),
+ const char *const s2, size_t n)
+{
+ return __builtin_strncmp(s1, s2, n);
+}
+# 574 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+extern int strlcmp(const char *s1, const char *s2, size_t n) __attribute__((__pure__));
+
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__pure__))
+int
+strlcmp(
+ const char *const s1 __attribute__((__pass_dynamic_object_size__(1))),
+ const char *const s2, size_t s1len)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s1, 1) < (s1len), "read overflow", "error")))
+{
+ extern int __xnu_strlcmp(
+  const char * s1,
+  const char * s2,
+  size_t s1len) __asm("_strlcmp");
+
+ ({ if (__builtin_dynamic_object_size(s1, 1) < (s1len)) { __xnu_fortify_trap_read(); } });
+ return __xnu_strlcmp(s1, s2, s1len);
+}
+
+
+
+
+
+
+
+extern int strbufcmp(const char *s1, size_t s1len, const char *s2, size_t s2len) __attribute__((__pure__));
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__pure__))
+int
+strbufcmp(
+ const char *const s1 __attribute__((__pass_dynamic_object_size__(1))), size_t s1len,
+ const char *const s2 __attribute__((__pass_dynamic_object_size__(1))), size_t s2len)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s1, 1) < (s1len), "read overflow", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s2, 1) < (s2len), "read overflow", "error")))
+{
+ extern int __xnu_strbufcmp(
+  const char * s1,
+  size_t s1len,
+  const char * s2,
+  size_t s2len) __asm("_strbufcmp");
+
+ ({ if (__builtin_dynamic_object_size(s1, 1) < (s1len)) { __xnu_fortify_trap_read(); } });
+ ({ if (__builtin_dynamic_object_size(s2, 1) < (s2len)) { __xnu_fortify_trap_read(); } });
+ return __xnu_strbufcmp(s1, s1len, s2, s2len);
+}
+# 629 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+extern int strprefix(const char * s1, const char * s2) __attribute__((__pure__));
+
+
+extern int strcasecmp(const char * s1, const char * s2) __attribute__((__pure__));
+
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__pure__))
+int
+strcasecmp(
+ const char *const s1 __attribute__((__pass_dynamic_object_size__(1))),
+ const char *const s2)
+{
+ return __builtin_strcasecmp(s1, s2);
+}
+
+
+
+
+extern int strncasecmp(const char * s1, const char * s2, size_t n) __attribute__((__pure__));
+
+
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__pure__))
+int
+strncasecmp(
+ const char *const s1 __attribute__((__pass_dynamic_object_size__(1))),
+ const char *const s2, size_t n)
+{
+ return __builtin_strncasecmp(s1, s2, n);
+}
+# 667 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+extern int strlcasecmp(const char *s1, const char *s2, size_t n) __attribute__((__pure__));
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__pure__))
+int
+strlcasecmp(
+ const char *const s1 __attribute__((__pass_dynamic_object_size__(1))),
+ const char * const s2, size_t s1len)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s1, 1) < (s1len), "read overflow", "error")))
+{
+ extern int __xnu_strlcasecmp(
+  const char * s1,
+  const char * s2,
+  size_t s1len) __asm("_strlcasecmp");
+
+ ({ if (__builtin_dynamic_object_size(s1, 1) < (s1len)) { __xnu_fortify_trap_read(); } });
+ return __xnu_strlcasecmp(s1, s2, s1len);
+}
+
+
+
+
+
+
+extern int strbufcasecmp(const char *s1, size_t s1len, const char *s2, size_t s2len) __attribute__((__pure__));
+
+static inline __attribute__((__always_inline__, __overloadable__)) __attribute__((__pure__))
+int
+strbufcasecmp(
+ const char *const s1 __attribute__((__pass_dynamic_object_size__(1))), size_t s1len,
+ const char *const s2 __attribute__((__pass_dynamic_object_size__(1))), size_t s2len)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s1, 1) < (s1len), "read overflow", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(s2, 1) < (s2len), "read overflow", "error")))
+{
+ extern int __xnu_strbufcasecmp(
+  const char * s1,
+  size_t s1len,
+  const char * s2,
+  size_t s2len) __asm("_strbufcasecmp");
+
+ ({ if (__builtin_dynamic_object_size(s1, 1) < (s1len)) { __xnu_fortify_trap_read(); } });
+ ({ if (__builtin_dynamic_object_size(s2, 1) < (s2len)) { __xnu_fortify_trap_read(); } });
+ return __xnu_strbufcasecmp(s1, s1len, s2, s2len);
+}
+# 721 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+static inline __attribute__((__always_inline__, __overloadable__))
+char *
+strchr(const char *const s __attribute__((__pass_dynamic_object_size__(1))), int c)
+{
+ return ((char *)(__builtin_strchr(s, c)));
+}
+
+
+
+
+extern char * strrchr(const char * s, int c) __attribute__((__pure__));
+
+
+static inline __attribute__((__always_inline__, __overloadable__))
+char *
+strrchr(const char *const s __attribute__((__pass_dynamic_object_size__(1))), int c)
+{
+ return __builtin_strrchr(s, c);
+}
+
+
+
+
+extern char * strnstr(const char * s, const char * find, size_t slen) __attribute__((__pure__));
+
+
+extern size_t strlcpy(char * dst, const char * src, size_t n);
+
+static inline __attribute__((__always_inline__, __overloadable__))
+size_t
+strlcpy(
+ char *const dst __attribute__((__pass_dynamic_object_size__(1))) ,
+ const char *const src ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(dst, 1) < (n), "write overflow", "error")))
+{
+ extern size_t __xnu_strlcpy(
+  char * ,
+  const char *,
+  size_t n) __asm("_strlcpy");
+
+ ({ if (__builtin_dynamic_object_size(dst, 1) < (n)) { __xnu_fortify_trap_write(); } });
+
+
+
+ return __xnu_strlcpy(dst, src, n);
+
+}
+
+
+
+
+
+
+static inline __attribute__((__always_inline__, __overloadable__))
+char *
+strlcpy_ret(
+ char *const dst __attribute__((__pass_dynamic_object_size__(1))) ,
+ const char *const src ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(dst, 1) < (n), "write overflow", "error")))
+{
+ size_t cnt = strlcpy(dst, src, n);
+
+
+
+ if (cnt >= n) {
+
+
+
+  return (dst);
+ } else {
+
+
+
+  return (dst);
+ }
+}
+
+
+
+
+
+
+
+extern const char *
+    strbufcpy(
+ char * dst,
+ size_t dstsz,
+ const char * src,
+ size_t srcsz);
+
+static inline __attribute__((__always_inline__, __overloadable__))
+const char *
+strbufcpy(
+ char *const dst __attribute__((__pass_dynamic_object_size__(1))) ,
+ size_t dstsz,
+ const char *const src __attribute__((__pass_dynamic_object_size__(1))) ,
+ size_t srcsz)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(dst, 1) < (dstsz), "write overflow", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(src, 1) < (srcsz), "read overflow", "error")))
+{
+ extern const char *__xnu_strbufcpy(
+  char * dst,
+  size_t dstsz,
+  const char * src,
+  size_t srcsz) __asm("_strbufcpy");
+
+ ({ if (__builtin_dynamic_object_size(dst, 1) < (dstsz)) { __xnu_fortify_trap_write(); } });
+ ({ if (__builtin_dynamic_object_size(src, 1) < (srcsz)) { __xnu_fortify_trap_read(); } });
+ return __xnu_strbufcpy(dst, dstsz, src, srcsz);
+}
+# 842 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+extern size_t strlcat(char * dst, const char * src, size_t n);
+
+static inline __attribute__((__always_inline__, __overloadable__))
+size_t
+strlcat(
+ char *const dst __attribute__((__pass_dynamic_object_size__(1))) ,
+ const char *const src ,
+ size_t n)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(dst, 1) < (n), "write overflow", "error")))
+{
+ extern size_t __xnu_strlcat(
+  char * ,
+  const char *,
+  size_t n) __asm("_strlcat");
+
+ ({ if (__builtin_dynamic_object_size(dst, 1) < (n)) { __xnu_fortify_trap_write(); } });
+
+
+
+ return __xnu_strlcat(dst, src, n);
+
+}
+
+
+
+
+
+
+
+extern const char *
+    strbufcat(
+ char * dst,
+ size_t dstsz,
+ const char * src,
+ size_t srcsz);
+
+static inline __attribute__((__always_inline__, __overloadable__))
+const char *
+strbufcat(
+ char *const dst __attribute__((__pass_dynamic_object_size__(1))) ,
+ size_t dstsz,
+ const char *const src __attribute__((__pass_dynamic_object_size__(1))) ,
+ size_t srcsz)
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(dst, 1) < (dstsz), "write overflow", "error")))
+__attribute__((__diagnose_if__(__builtin_dynamic_object_size(src, 1) < (srcsz), "read overflow", "error")))
+{
+ extern const char *__xnu_strbufcat(
+  char * dst,
+  size_t dstsz,
+  const char * src,
+  size_t srcsz) __asm("_strbufcat");
+
+ ({ if (__builtin_dynamic_object_size(dst, 1) < (dstsz)) { __xnu_fortify_trap_write(); } });
+ ({ if (__builtin_dynamic_object_size(src, 1) < (srcsz)) { __xnu_fortify_trap_read(); } });
+ return __xnu_strbufcat(dst, dstsz, src, srcsz);
+}
+# 920 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+__attribute__((__deprecated__("use strlcat")))
+
+extern char *strncat(char *dst, const char *src, size_t n);
+
+
+
+
+
+__attribute__((__deprecated__("use strlcpy")))
+
+extern char *strncpy(char *dst, const char *src, size_t n);
+
+
+
+
+__attribute__((__deprecated__("use strlcpy")))
+
+extern char *strcpy(char *, const char *);
+
+
+
+
+
+__attribute__((__deprecated__("use strlcat")))
+
+extern char *strcat(char *dst, const char *src);
+# 959 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h"
+# 1 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/include/san/memintrinsics.h" 1
+# 36 "<ROOT>/work/xnu-lab-builds/1c4a90f22196b807/include/san/memintrinsics.h"
+static inline void *
+
+__nosan_memcpy(void *dst , const void *src , size_t sz)
+{
+ return memcpy(dst, src, sz);
+}
+static inline void *
+
+__nosan_memset(void *dst , int c, size_t sz)
+{
+ return memset(dst, c, sz);
+}
+static inline void *
+
+__nosan_memmove(void *dst , const void *src , size_t sz)
+{
+ return memmove(dst, src, sz);
+}
+static inline int
+__nosan_bcmp(const void *a , const void *b , size_t sz)
+{
+ return bcmp(a, b, sz);
+}
+static inline void
+__nosan_bcopy(const void *src , void *dst , size_t sz)
+{
+ bcopy(src, dst, sz);
+}
+static inline int
+__nosan_memcmp(const void *a , const void *b , size_t sz)
+{
+ return memcmp(a, b, sz);
+}
+static inline void
+__nosan_bzero(void *dst , size_t sz)
+{
+ bzero(dst, sz);
+}
+
+static inline size_t
+__nosan_strlcpy(char *dst, const char * src, size_t sz)
+{
+ return strlcpy(dst, src, sz);
+}
+static inline size_t
+__nosan_strlcat(char *dst, const char * src, size_t sz)
+{
+ return strlcat(dst, src, sz);
+}
+static inline size_t
+__nosan_strnlen(const char *src, size_t sz)
+{
+ return strnlen(src, sz);
+}
+static inline size_t
+__nosan_strlen(const char * src)
+{
+ return strlen(src);
+}
+static inline int
+__nosan_strcmp(const char * s1, const char * s2)
+{
+ return strcmp(s1, s2);
+}
+static inline int
+__nosan_strncmp(const char * s1, const char * s2, size_t n)
+{
+ return (strbufcmp)(((const char *)(s1)), n, ((const char *)(s2)), n);
+}
+static inline int
+__nosan_strlcmp(const char *s1, const char *s2, size_t n)
+{
+ return strlcmp(s1, s2, n);
+}
+static inline int
+__nosan_strbufcmp(const char *s1, size_t s1len, const char *s2, size_t s2len)
+{
+ return (strbufcmp)(s1, s1len, s2, s2len);
+}
+static inline int
+__nosan_strcasecmp(const char * s1, const char * s2)
+{
+ return strcasecmp(s1, s2);
+}
+static inline int
+__nosan_strncasecmp(const char * s1, const char * s2, size_t n)
+{
+ return (strbufcasecmp)(((const char *)(s1)), n, ((const char *)(s2)), n);
+}
+static inline int
+__nosan_strlcasecmp(const char *s1, const char *s2, size_t n)
+{
+ return strlcasecmp(s1, s2, n);
+}
+static inline int
+__nosan_strbufcasecmp(const char *s1, size_t s1len, const char *s2, size_t s2len)
+{
+ return (strbufcasecmp)(s1, s1len, s2, s2len);
+}
+
+static inline char *
+__nosan_strncpy(char *dst, const char *src, size_t sz)
+{
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
+ return __builtin___strncpy_chk(dst, src, sz, __builtin_dynamic_object_size(dst, 1));
+
+#pragma clang diagnostic pop
+
+}
+static inline char *
+__nosan_strncat(char *dst, const char *src, size_t sz)
+{
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
+ return __builtin___strncat_chk(dst, src, sz, __builtin_dynamic_object_size(dst, 1));
+
+#pragma clang diagnostic pop
+
+}
+# 960 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/libsa/string.h" 2
+# 7 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/atlantic_string.c" 2
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/atlantic/string.h" 1
+
+
+
+# 1 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/EXTERNAL_HEADERS/stddef.h" 1
+# 5 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/atlantic/string.h" 2
+
+
+
+
+
+
+
+
+int atl_memory_compare(const void *left, const void *right, size_t bytes);
+int atl_string_compare(const char *left, const char *right);
+size_t atl_string_copy(char *destination, const char *source, size_t capacity);
+size_t atl_string_append(char *destination, const char *source, size_t capacity);
+# 8 "<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/atlantic_string.c" 2
+
+
+
+
+
+int atlantic_xnu_strcmp(const char *, const char *) __asm("_strcmp");
+int atlantic_xnu_memcmp(const void *, const void *, size_t) __asm("_memcmp");
+size_t atlantic_xnu_strlcpy(char *, const char *, size_t) __asm("_strlcpy");
+size_t atlantic_xnu_strlcat(char *, const char *, size_t) __asm("_strlcat");
+
+_Static_assert(__builtin_types_compatible_p(__typeof__(&atlantic_xnu_strcmp), __typeof__(&strcmp)), "native strcmp ABI");
+_Static_assert(__builtin_types_compatible_p(__typeof__(&atlantic_xnu_memcmp), __typeof__(&memcmp)), "native memcmp ABI");
+_Static_assert(__builtin_types_compatible_p(__typeof__(&atlantic_xnu_strlcpy), __typeof__(&strlcpy)), "native strlcpy ABI");
+_Static_assert(__builtin_types_compatible_p(__typeof__(&atlantic_xnu_strlcat), __typeof__(&strlcat)), "native strlcat ABI");
+
+int atlantic_xnu_strcmp(const char *a, const char *b) { return atl_string_compare(a, b); }
+int atlantic_xnu_memcmp(const void *a, const void *b, size_t n) { return atl_memory_compare(a, b, n); }
+size_t atlantic_xnu_strlcpy(char *dst, const char *src, size_t n) { return atl_string_copy(dst, src, n); }
+size_t atlantic_xnu_strlcat(char *dst, const char *src, size_t n) { return atl_string_append(dst, src, n); }
+<ROOT>/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/atlantic_string.c:10:2: error: AtlanticOS string providers require the explicit ARM64 firmware profile
+   10 | #error AtlanticOS string providers require the explicit ARM64 firmware profile
+      |  ^
+1 error generated.

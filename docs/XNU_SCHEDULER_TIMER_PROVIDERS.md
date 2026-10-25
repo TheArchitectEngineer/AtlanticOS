@@ -99,10 +99,15 @@ previo independiente de estos candidatos. El estándar conserva 39 objetos,
 
 La [evidencia](../evidence/xnu-scheduler-timers-20261024/manifest.json) contiene
 282 artefactos con hashes. Conserva los fallos iniciales de thread_policy,
-task_policy y coalition como diagnósticos anteriores. Coalition todavía exige
-coalition_notification_server.h de MIG oficial; no hay header vacío ni unidad
-integrada. Las pruebas vigentes de Clang API v2 y LLD v2 se reutilizan por hashes
+task_policy y coalition como diagnósticos anteriores. En esa revisión faltaba
+coalition_notification_server.h de MIG oficial; no se creó un header vacío ni
+se declaró integrada esa unidad. Las pruebas vigentes de Clang API v2 y LLD v2 se reutilizan por hashes
 comprobados. Los recorridos QEMU anteriores solo ejecutan el preflight original.
 
 No hay timer, scheduler, política, IRQ, IPC o XNU ejecutado en el teléfono.
 No hay acceso al dispositivo, handoff EDK2 o medición de RAM firmware.
+
+La ampliación posterior de [coaliciones/bank](XNU_COALITION_BANK_PROVIDERS.md)
+genera el header faltante mediante MIG_USHDRS y selecciona coalition.c intacto.
+El manifiesto de timers conserva el alcance de sus 148 unidades y 502
+diagnósticos; no se le atribuye la ampliación posterior ni ejecución física.
