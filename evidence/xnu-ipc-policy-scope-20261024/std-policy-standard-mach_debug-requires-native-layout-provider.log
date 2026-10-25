@@ -1,0 +1,250 @@
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:182:5: error: use of unknown builtin '__builtin_xnu_types_compatible' [-Wimplicit-function-declaration]
+  182 |                                 kfree_type(ipc_object_t, pptrsize, port_pointers);
+      |                                 ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 3 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:888:17: note: expanded from macro 'KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER'
+  888 |         _Static_assert(KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type), \
+      |                        ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:884:3: note: expanded from macro 'KALLOC_TYPE_IS_COMPATIBLE_PTR'
+  884 |         (KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), type) ||   \
+      |          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:818:40: note: expanded from macro 'KALLOC_LAYOUT_COMPATIBLE'
+  818 | #define KALLOC_LAYOUT_COMPATIBLE(a, b) __builtin_xnu_types_compatible(a, b)
+      |                                        ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:182:5: error: expected expression
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 3 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:888:17: note: expanded from macro 'KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER'
+  888 |         _Static_assert(KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type), \
+      |                        ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:884:28: note: expanded from macro 'KALLOC_TYPE_IS_COMPATIBLE_PTR'
+  884 |         (KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), type) ||   \
+      |                                   ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/libkern/os/alloc_util.h:108:2: note: expanded from macro 'os_get_pointee_type'
+  108 |         __typeof__(*(ptr))                                             \
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:182:16: error: unexpected type name 'ipc_object_t': expected expression
+  182 |                                 kfree_type(ipc_object_t, pptrsize, port_pointers);
+      |                                            ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:182:5: error: expected expression
+  182 |                                 kfree_type(ipc_object_t, pptrsize, port_pointers);
+      |                                 ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 3 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:888:17: note: expanded from macro 'KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER'
+  888 |         _Static_assert(KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type), \
+      |                        ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:885:31: note: expanded from macro 'KALLOC_TYPE_IS_COMPATIBLE_PTR'
+  885 |             KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), void))  \
+      |                                      ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/libkern/os/alloc_util.h:108:2: note: expanded from macro 'os_get_pointee_type'
+  108 |         __typeof__(*(ptr))                                             \
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:182:5: error: expected expression
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 2 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1334:2: note: expanded from macro 'kfree_type_3'
+ 1334 |         KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER(elem, type);                     \
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:888:17: note: expanded from macro 'KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER'
+  888 |         _Static_assert(KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type), \
+      |                        ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:885:57: note: expanded from macro 'KALLOC_TYPE_IS_COMPATIBLE_PTR'
+  885 |             KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), void))  \
+      |                                                                ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:182:5: error: use of unknown builtin '__builtin_xnu_type_summary' [-Wimplicit-function-declaration]
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 11 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:816:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  816 | #define KALLOC_LAYOUT_SUMMARY(type) __builtin_xnu_type_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:182:16: error: unexpected type name 'ipc_object_t': expected expression
+  182 |                                 kfree_type(ipc_object_t, pptrsize, port_pointers);
+      |                                            ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:182:16: error: unexpected type name 'ipc_object_t': expected expression
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:182:16: error: unexpected type name 'ipc_object_t': expected expression
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:182:5: error: use of unknown builtin '__builtin_xnu_type_signature' [-Wimplicit-function-declaration]
+  182 |                                 kfree_type(ipc_object_t, pptrsize, port_pointers);
+      |                                 ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 3 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1640:21: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE_3'
+ 1640 |             .kt_sig_type = KALLOC_TYPE_EMIT_SIG(type),                  \
+      |                            ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1603:7: note: expanded from macro 'KALLOC_TYPE_EMIT_SIG'
+ 1603 |         "" : KALLOC_LAYOUT_SIGNATURE(sig_type)
+      |              ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:817:39: note: expanded from macro 'KALLOC_LAYOUT_SIGNATURE'
+  817 | #define KALLOC_LAYOUT_SIGNATURE(type) __builtin_xnu_type_signature(type)
+      |                                       ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:182:16: error: unexpected type name 'ipc_object_t': expected expression
+  182 |                                 kfree_type(ipc_object_t, pptrsize, port_pointers);
+      |                                            ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:204:4: error: use of unknown builtin '__builtin_xnu_types_compatible' [-Wimplicit-function-declaration]
+  204 |                         kfree_type(ipc_object_t, pptrsize, port_pointers);
+      |                         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 3 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:888:17: note: expanded from macro 'KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER'
+  888 |         _Static_assert(KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type), \
+      |                        ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:884:3: note: expanded from macro 'KALLOC_TYPE_IS_COMPATIBLE_PTR'
+  884 |         (KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), type) ||   \
+      |          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:818:40: note: expanded from macro 'KALLOC_LAYOUT_COMPATIBLE'
+  818 | #define KALLOC_LAYOUT_COMPATIBLE(a, b) __builtin_xnu_types_compatible(a, b)
+      |                                        ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:204:4: error: expected expression
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 3 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:888:17: note: expanded from macro 'KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER'
+  888 |         _Static_assert(KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type), \
+      |                        ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:884:28: note: expanded from macro 'KALLOC_TYPE_IS_COMPATIBLE_PTR'
+  884 |         (KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), type) ||   \
+      |                                   ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/libkern/os/alloc_util.h:108:2: note: expanded from macro 'os_get_pointee_type'
+  108 |         __typeof__(*(ptr))                                             \
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:204:15: error: unexpected type name 'ipc_object_t': expected expression
+  204 |                         kfree_type(ipc_object_t, pptrsize, port_pointers);
+      |                                    ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:204:4: error: expected expression
+  204 |                         kfree_type(ipc_object_t, pptrsize, port_pointers);
+      |                         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 3 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:888:17: note: expanded from macro 'KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER'
+  888 |         _Static_assert(KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type), \
+      |                        ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:885:31: note: expanded from macro 'KALLOC_TYPE_IS_COMPATIBLE_PTR'
+  885 |             KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), void))  \
+      |                                      ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/libkern/os/alloc_util.h:108:2: note: expanded from macro 'os_get_pointee_type'
+  108 |         __typeof__(*(ptr))                                             \
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:204:4: error: expected expression
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 2 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1334:2: note: expanded from macro 'kfree_type_3'
+ 1334 |         KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER(elem, type);                     \
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:888:17: note: expanded from macro 'KALLOC_TYPE_ASSERT_COMPATIBLE_POINTER'
+  888 |         _Static_assert(KALLOC_TYPE_IS_COMPATIBLE_PTR(ptr, type), \
+      |                        ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:885:57: note: expanded from macro 'KALLOC_TYPE_IS_COMPATIBLE_PTR'
+  885 |             KALLOC_LAYOUT_COMPATIBLE(os_get_pointee_type(ptr), void))  \
+      |                                                                ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:204:4: error: use of unknown builtin '__builtin_xnu_type_summary' [-Wimplicit-function-declaration]
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:692:26: note: expanded from macro 'kfree_type'
+  692 | #define kfree_type(...)  KALLOC_DISPATCH(kfree_type, ##__VA_ARGS__)
+      |                          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 11 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/kern/kalloc.h:816:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  816 | #define KALLOC_LAYOUT_SUMMARY(type) __builtin_xnu_type_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:204:15: error: unexpected type name 'ipc_object_t': expected expression
+  204 |                         kfree_type(ipc_object_t, pptrsize, port_pointers);
+      |                                    ^
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/ipc/mach_debug.c:204:15: error: unexpected type name 'ipc_object_t': expected expression
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.

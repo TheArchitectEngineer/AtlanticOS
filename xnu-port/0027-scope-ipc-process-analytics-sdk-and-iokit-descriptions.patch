@@ -1,0 +1,200 @@
+Scope process-identified CoreAnalytics and legacy SDK exceptions to BSD
+only in firmware. Retain native Mach policy, kobject registration and
+atomic diagnostic counts; no fabricated identities or no-op providers.
+Scope IOKit description cases to the selected provider.
+
+diff --git a/osfmk/ipc/ipc_policy.c b/osfmk/ipc/ipc_policy.c
+--- a/osfmk/ipc/ipc_policy.c
++++ b/osfmk/ipc/ipc_policy.c
+@@ -54,7 +54,9 @@
+ #include <sys/proc_ro.h>
+ #include <sys/reason.h>
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ #include <libkern/coreanalytics/coreanalytics.h>
++#endif /* process-identified CoreAnalytics / BSD compatibility */
+ 
+ extern bool proc_is_simulated(struct proc *);
+ extern char *proc_name_address(struct proc *p);
+@@ -427,6 +429,7 @@
+  * As CA framework replies on successfully allocating zalloc memory,
+  * we maintain a small buffer that gets flushed when full. This helps us avoid taking spinlocks when working with CA.
+  */
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ #define IPC_POLICY_VIOLATIONS_RB_SIZE         2
+ 
+ /*
+@@ -447,11 +450,13 @@
+ struct ipc_policy_violations_rb_entry ipc_policy_violations_rb[IPC_POLICY_VIOLATIONS_RB_SIZE];
+ static uint8_t ipc_policy_violations_rb_index = 0;
+ 
++#endif /* process-identified CoreAnalytics / BSD compatibility */
+ #if DEBUG || DEVELOPMENT
+ /* sysctl debug.ipcpv_telemetry_count */
+ _Atomic unsigned int ipcpv_telemetry_count = 0;
+ #endif
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ LCK_GRP_DECLARE(ipc_telemetry_lock_grp, "ipc_telemetry_lock_grp");
+ LCK_TICKET_DECLARE(ipc_telemetry_lock, &ipc_telemetry_lock_grp);
+ 
+@@ -607,6 +612,7 @@
+ 	lck_ticket_unlock(&ipc_telemetry_lock);
+ }
+ 
++#endif /* process-identified CoreAnalytics / BSD compatibility */
+ #if DEBUG || DEVELOPMENT
+ void
+ ipc_inc_telemetry_count(void)
+@@ -666,10 +672,12 @@
+ 
+ 	/* bootstrap port defense */
+ 	if (ip_is_bootstrap_port(dest_port) && ipc_should_apply_policy(pol, IPC_POLICY_ENHANCED_V2)) {
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ 		if (bootstrap_port_telemetry_enabled &&
+ 		    !ipc_space_has_telemetry_type(current_space(), IS_HAS_BOOTSTRAP_PORT_TELEMETRY)) {
+ 			ipc_stash_policy_violations_telemetry(IPCPV_BOOTSTRAP_PORT, dest_port, 0);
+ 		}
++#endif /* process-identified CoreAnalytics / BSD compatibility */
+ 		if (bootstrap_port_enforcement_enabled) {
+ 			mach_port_guard_exception(ip_get_receiver_name(dest_port), 1, kGUARD_EXC_REQUIRE_REPLY_PORT_SEMANTICS);
+ 			return MACH_SEND_INVALID_REPLY;
+@@ -678,9 +686,11 @@
+ 
+ 	/* regular enforcement */
+ 	if (!ip_is_bootstrap_port(dest_port)) {
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ 		if (ip_type(dest_port) == IOT_SERVICE_PORT) {
+ 			ipc_stash_policy_violations_telemetry(IPCPV_REPLY_PORT_SEMANTICS_OPTOUT, dest_port, 0);
+ 		}
++#endif /* process-identified CoreAnalytics / BSD compatibility */
+ 		mach_port_guard_exception(ip_get_receiver_name(dest_port), 0, kGUARD_EXC_REQUIRE_REPLY_PORT_SEMANTICS);
+ 		return MACH_SEND_INVALID_REPLY;
+ 	}
+@@ -798,6 +808,7 @@
+ 	return MACH_SEND_MSG_FILTERED;
+ }
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ static bool
+ ipc_policy_allow_send_only_kobject_calls(void)
+ {
+@@ -828,6 +839,7 @@
+ 	}
+ }
+ 
++#endif /* process-identified CoreAnalytics / BSD compatibility */
+ static mach_msg_return_t
+ ipc_validate_kmsg_dest_from_user(
+ 	mach_msg_header_t      *hdr,
+@@ -886,11 +898,16 @@
+ 
+ 			/* kobject calls must be a combined send/receive */
+ 			if (__improbable((opts & MACH64_RCV_MSG) == 0)) {
++#if CONFIG_ATLANTIC_FIRMWARE && !MACH_BSD
++				/* No process SDK exists to grant a legacy send-only exception. */
++				return MACH_SEND_INVALID_OPTIONS;
++#else
+ 				if ((opts & MACH64_POLICY_ENHANCED) ||
+ 				    IP_VALID(hdr->msgh_local_port) ||
+ 				    !ipc_policy_allow_send_only_kobject_calls()) {
+ 					return MACH_SEND_INVALID_OPTIONS;
+ 				}
++#endif
+ 			}
+ 		}
+ #if CONFIG_CSR
+diff --git a/osfmk/ipc/ipc_policy.h b/osfmk/ipc/ipc_policy.h
+--- a/osfmk/ipc/ipc_policy.h
++++ b/osfmk/ipc/ipc_policy.h
+@@ -476,10 +476,12 @@
+  * @param aux_data          additional data to include in the CA event:
+  *                          violator msgh_id for reply port defense
+  */
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ extern void ipc_stash_policy_violations_telemetry(
+ 	ipc_policy_violation_id_t   violation_id,
+ 	ipc_port_t                  service_port,
+ 	int                         aux_data);
++#endif /* process-identified CoreAnalytics / BSD compatibility */
+ 
+ #if DEBUG || DEVELOPMENT
+ /*!
+diff --git a/osfmk/ipc/ipc_object.c b/osfmk/ipc/ipc_object.c
+--- a/osfmk/ipc/ipc_object.c
++++ b/osfmk/ipc/ipc_object.c
+@@ -561,6 +561,7 @@
+ 	ipc_right_copyin_cleanup_destroy(&icc, name);
+ 	ipc_right_copyin_rcleanup_destroy(&icrc);
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ 	if (IP_VALID(*portp) &&
+ 	    ip_type(*portp) == IOT_SERVICE_PORT &&
+ 	    msgt_name == MACH_MSG_TYPE_MOVE_RECEIVE &&
+@@ -569,6 +570,7 @@
+ 		ipc_stash_policy_violations_telemetry(IPCPV_MOVE_SERVICE_PORT,
+ 		    *portp, name);
+ 	}
++#endif /* process-identified CoreAnalytics / BSD compatibility */
+ 
+ 	return kr;
+ }
+diff --git a/osfmk/ipc/ipc_kmsg.c b/osfmk/ipc/ipc_kmsg.c
+--- a/osfmk/ipc/ipc_kmsg.c
++++ b/osfmk/ipc/ipc_kmsg.c
+@@ -1884,8 +1884,10 @@
+ 	ipc_object_copyin_flags_t dest_xtra;
+ 	kern_return_t kr = KERN_SUCCESS;
+ 	/* for service port immovability violation */
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ 	ipc_port_t violation_port = MACH_PORT_NULL;
+ 	mach_port_name_t violation_name = 0;
++#endif
+ 
+ 	is_write_lock(space);
+ 	if (__improbable(!is_active(space))) {
+@@ -2020,6 +2022,7 @@
+ 	is_write_unlock(space);
+ 
+ send_telemetry:
++#if !CONFIG_ATLANTIC_FIRMWARE || MACH_BSD
+ 	if (IP_VALID(st->dest_port) &&
+ 	    ip_type(st->dest_port) == IOT_SERVICE_PORT &&
+ 	    st->dest_type == MACH_MSG_TYPE_MOVE_RECEIVE) {
+@@ -2043,6 +2046,7 @@
+ 		ipc_stash_policy_violations_telemetry(IPCPV_MOVE_SERVICE_PORT,
+ 		    violation_port, violation_name);
+ 	}
++#endif /* process-identified CoreAnalytics / BSD compatibility */
+ 
+ 	return kr;
+ }
+diff --git a/osfmk/ipc/mach_debug.c b/osfmk/ipc/mach_debug.c
+--- a/osfmk/ipc/mach_debug.c
++++ b/osfmk/ipc/mach_debug.c
+@@ -565,6 +565,7 @@
+ 	if (desc) {
+ 		*desc = '\0';
+ 		switch (ip_type(port)) {
++#if !CONFIG_ATLANTIC_FIRMWARE || IOKIT
+ 		case IKOT_IOKIT_OBJECT:
+ 		case IKOT_IOKIT_CONNECT:
+ 		case IKOT_IOKIT_IDENT:
+@@ -587,6 +588,7 @@
+ 			}
+ 			break;
+ 		}
++#endif /* selected IOKit descriptions */
+ 		case IKOT_TASK_ID_TOKEN:
+ 		{
+ 			task_id_token_t token;
+@@ -607,7 +609,9 @@
+ 
+ 	io_unlock(ipc_object);
+ 
++#if !CONFIG_ATLANTIC_FIRMWARE || IOKIT
+ unlocked:
++#endif
+ #if (DEVELOPMENT || DEBUG)
+ 	*addrp = VM_KERNEL_ADDRHASH(kaddr);
+ #endif

@@ -244,3 +244,30 @@ traducción/ownership y canal de salida fiables; carga únicamente temporal.
 
 Guardar evidencia física y comprobar retorno stock por T01. La prueba no
 acredita lectura de almacenamiento, servicios IPC, EDK2 o RAM firmware completa.
+
+## Subprueba pendiente de T08: política y registro IPC nativos
+
+Estado: PENDING_HARDWARE. [XNU_IPC_POLICY_SCOPE](XNU_IPC_POLICY_SCOPE.md) comprueba
+fuentes, ABI y objetos. Antes de la prueba física se requieren T01/T04/T05,
+imagen kernel auditada, contexto BSP/MMU y salida fiables; carga solo temporal.
+
+1. Capturar PCs simbolizados de ipc_kobject_register_startup y de los tres
+   inicializadores de políticas seleccionados por STARTUP. Inspeccionar la tabla
+   real después del registro: tipo, nombre, inmovilidad y callbacks deben
+   corresponder a los ops nativos del binario. Un símbolo definido o un listado
+   del objeto no prueba que el inicializador se haya ejecutado.
+2. Desde contexto Mach propio, verificar creación y copia de derechos sobre
+   puertos scratch, con cuentas antes/después y cleanup real. Confirmar que las
+   llamadas combinadas válidas mantienen su comportamiento y que la excepción
+   de SDK para llamadas de kobject sin recepción no está habilitada.
+3. Antes de habilitar mensajes de emisores no confiables, resolver el camino
+   Mach de terminación de guards que aún depende de BSD. Después, provocar una
+   infracción controlada en una tarea descartable y capturar validación,
+   EXC_GUARD, resultado y terminación cuando corresponda. Debe comprobarse que
+   la tarea no sigue ejecutando tras una violación fatal. Una excepción sin
+   terminación demostrada no satisface esa propiedad.
+
+Registrar los códigos y PCs esperados según el caso exacto de XNU, el hash de
+imagen y la captura física. La exclusión de eventos CoreAnalytics no acredita
+un servicio de telemetría. Conservar prueba de retorno Android por T01; no hay
+resultado aceptado para estos pasos todavía.

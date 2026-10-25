@@ -46,6 +46,7 @@ STARTUP_SYMBOL_PREFIXES = {
     'osfmk/ipc/ipc_init.c': '___startup_MACH_IPC_entry_ipc_init_',
     'osfmk/ipc/ipc_importance.c': '___startup_MACH_IPC_entry_ipc_importance_init_',
     'osfmk/kern/ipc_kobject.c': '___startup_MACH_IPC_entry_mig_init_',
+    'osfmk/ipc/ipc_policy.c': '___startup_MACH_IPC_entry_ipc_policy_set_defaults_',
     'osfmk/ipc/ipc_voucher.c': '___startup_MACH_IPC_entry_ipc_voucher_init_'}
 EXTRA_SYMBOLS = {'osfmk/arm64/cswitch.s': ['_machine_load_context', '_Call_continuation'],
                  'osfmk/arm64/start.s': ['__start', '_LowResetVectorBase'],
@@ -194,6 +195,15 @@ EXPERIMENTAL_UNITS.update({
     'osfmk/arm/machine_cpuid.c': '_machine_read_midr',
     'bsd/kern/qsort.c': '_qsort'})
 EXPERIMENTAL_UNITS['pexpert/atlantic/pe_platform.c'] = '_PE_init_platform'
+EXPERIMENTAL_UNITS.update({
+    'osfmk/ipc/ipc_policy.c': '_ipc_kobject_register_startup',
+    'osfmk/ipc/mach_debug.c': '_mach_port_kobject_description_from_user'})
+EXTRA_SYMBOLS.update({
+    'osfmk/ipc/ipc_policy.c': ['_ipc_policy_array', '_ipc_validate_kmsg_header_from_user',
+        '_ipc_validate_kmsg_schema_from_user', '_mach_port_guard_exception', '_mach_port_guard_ast',
+        '_ipc_policy_for_task', '_ipc_should_apply_policy', '_ipc_entry_init', '_ipc_inc_telemetry_count'],
+    'osfmk/ipc/mach_debug.c': ['_mach_port_kobject_from_user', '_mach_port_get_srights',
+        '_mach_port_space_info_from_user', '_mach_port_dnrequest_info']})
 EXPERIMENTAL_UNITS.update({
     'osfmk/atlantic/string.c': '_atl_string_compare',
     'osfmk/kern/atlantic_string.c': '_strcmp',

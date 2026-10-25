@@ -140,3 +140,12 @@ duplicados, sin generar imagen. No se ejecutan el lector Mach-O nativo, Mach,
 PE o BSP; no hay acceso al teléfono. El lector requiere una imagen real validada
 y mapeada. Faltan aún los productores de contexto/boot_args, IRQ, integración
 VM y carga temporal antes de poder intentar la aceptación física.
+
+La [política IPC nativa](XNU_IPC_POLICY_SCOPE.md) alcanza 138 unidades
+experimentales y 13 estándar. Se conservan 17 cuerpos core, la tabla de políticas,
+el registro de kobjects y cleanup de derechos; solo se acotan eventos de proceso,
+excepciones de SDK y descripciones IOKit no seleccionadas. Pasan 117/88 checks.
+El enlace estricto de 164 objetos conserva 561 diagnósticos indefinidos y cero
+duplicados, sin imagen. exit_with_mach_exception sigue sin proveedor; no se
+declara la terminación de guards operativa. No hay IPC, XNU o arranque físico
+ejecutados, y la aceptación completa del objetivo no cambia.

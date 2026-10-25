@@ -24,3 +24,4 @@
 0024-retain-real-debug-callout-registry-in-firmware.patch
 0025-scope-bootstrap-services-to-selected-firmware-components.patch
 0026-add-original-string-support-with-native-xnu-abi.patch
+0027-scope-ipc-process-analytics-sdk-and-iokit-descriptions.patch

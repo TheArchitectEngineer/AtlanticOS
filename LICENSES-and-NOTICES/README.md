@@ -88,6 +88,13 @@ xnu-port/platform/string.c. Las fuentes kernel_mach_header.c y strsep.c se
 seleccionan directamente del snapshot XNU intacto y mantienen sus avisos
 Apple/APSL y, en strsep.c, Berkeley. No son implementaciones MIT AtlanticOS.
 
+El patch 0027 adapta cinco archivos IPC nativos para seleccionar componentes
+en firmware. Conserva sus avisos Apple/APSL y los avisos CMU de ipc_object.c,
+ipc_kmsg.c y mach_debug.c. La tabla de políticas, sus 17 cuerpos core auditados,
+el registro de kobjects y las operaciones de derechos siguen siendo XNU.
+Las herramientas y fixtures de auditoría originales son MIT; no relicencian
+los cuerpos nativos ni implementan CoreAnalytics o IOKit.
+
 EDK2 es un destino futuro, no una dependencia enlazada en esta entrega. El commit
 registrado corresponde a la referencia UEFI auditada y conserva sus licencias
 BSD-2-Clause-Patent y por componente. No se distribuyen sus binarios o wrappers.

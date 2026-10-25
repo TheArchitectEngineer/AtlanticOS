@@ -1,0 +1,69 @@
+{
+  "scope": "STRICT_LINK_DIAGNOSTIC_NAME_COMPARISON_NOT_EXECUTION",
+  "previous_link_sha256": "7a9ac9348997459f2677fbc29436ca94d953764e745921a933b3bfdca6c93443",
+  "current_link_sha256": "b23361b24740a25763152accbe035a762365684c6b29296b901df99c130135b5",
+  "previous_undefined": 594,
+  "current_undefined": 561,
+  "previous_symbols_now_provided": [
+    "_enforce_strict_reply",
+    "_ipc_allow_register_pd_notification",
+    "_ipc_can_stash_naked_send",
+    "_ipc_control_port_options",
+    "_ipc_convert_msg_options_to_space",
+    "_ipc_current_msg_options",
+    "_ipc_entry_init",
+    "_ipc_inc_telemetry_count",
+    "_ipc_is_valid_exception_port",
+    "_ipc_kobject_register_startup",
+    "_ipc_move_receive_allowed",
+    "_ipc_policy_array",
+    "_ipc_policy_for_task",
+    "_ipc_preflight_msg_option64",
+    "_ipc_should_apply_policy",
+    "_ipc_should_mark_immovable_send",
+    "_ipc_validate_kmsg_header_from_user",
+    "_ipc_validate_kmsg_header_schema_from_user",
+    "_ipc_validate_kmsg_schema_from_user",
+    "_ipcpv_telemetry_enabled",
+    "_mach_port_dnrequest_info",
+    "_mach_port_get_srights",
+    "_mach_port_guard_ast",
+    "_mach_port_guard_exception",
+    "_mach_port_guard_exception_immovable",
+    "_mach_port_guard_exception_pinned",
+    "_mach_port_kobject_description_from_user",
+    "_mach_port_kobject_from_user",
+    "_mach_port_space_basic_info",
+    "_mach_port_space_info_from_user",
+    "_mach_port_special_reply_port_reset_link",
+    "_ool_port_array_enforced",
+    "_prp_enforcement_enabled"
+  ],
+  "previous_symbols_no_longer_referenced": [
+    "_ipc_stash_policy_violations_telemetry"
+  ],
+  "new_unresolved_dependencies": [
+    "_mk_timer_port_label_dealloc"
+  ],
+  "reason": "NATIVE_MACH_POLICY_AND_DEBUG_PROVIDERS_WITH_OPTIONAL_PROCESS_ANALYTICS_AND_IOKIT_SCOPED",
+  "new_units": [
+    {
+      "source": "osfmk/ipc/ipc_policy.c",
+      "source_sha256": "f60a7621ef53d8d0db4f971d2adac23803350ee4bddd686ec962ffa182213b8b"
+    },
+    {
+      "source": "osfmk/ipc/mach_debug.c",
+      "source_sha256": "00ab1369e82ee4f2635a775ce45201b9ca3055ab2cf50098605e9a03bb38d5c4"
+    }
+  ],
+  "changed_native_callers": [
+    {
+      "source": "osfmk/ipc/ipc_object.c",
+      "source_sha256": "e6df6050da3562e43f3ee8186881cf9148ab40677bd367400c7941a1da6a936c"
+    },
+    {
+      "source": "osfmk/ipc/ipc_kmsg.c",
+      "source_sha256": "374f21771644bb254fcf3598f95254024a7b75da5bc102daf44662eebb7964d9"
+    }
+  ]
+}

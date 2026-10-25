@@ -1,0 +1,19 @@
+<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/atlantic_string.o:
+(__TEXT,__text) section
+_strcmp:
+       0:	00 00 00 14	b	_atl_string_compare
+       4:	1f 20 03 d5	nop
+       8:	1f 20 03 d5	nop
+       c:	1f 20 03 d5	nop
+_memcmp:
+      10:	00 00 00 14	b	_atl_memory_compare
+      14:	1f 20 03 d5	nop
+      18:	1f 20 03 d5	nop
+      1c:	1f 20 03 d5	nop
+_strlcpy:
+      20:	00 00 00 14	b	_atl_string_copy
+      24:	1f 20 03 d5	nop
+      28:	1f 20 03 d5	nop
+      2c:	1f 20 03 d5	nop
+_strlcat:
+      30:	00 00 00 14	b	_atl_string_append

@@ -150,7 +150,7 @@ con metadata nativa conjunta; su vida útil real aún exige pruebas runtime.
 Pmap compila tras
 separar los servicios Apple no seleccionados, sin ejecutarse.
 
-Los trece objetos estándar y 136 experimentales tienen símbolos sin resolver. No hay kernel, entry
+Los trece objetos estándar y 138 experimentales tienen símbolos sin resolver. No hay kernel, entry
 XNU operativo, VM/hilo en ejecución, IRQ G20, handoff EDK2 ni medición de RAM.
 La aceptación sigue exigiendo evidencia física de rutas sustantivas Mach/XNU.
 Compilar estos objetos es un avance de implementación, no su aceptación.
@@ -207,3 +207,13 @@ cero duplicados; no produce kernel. Los lectores nativos exigen un header real
 previamente validado y mapeado; no se define uno vacío para satisfacer el enlace.
 No hay ejecución de esos lectores ni de XNU. Véase
 [XNU_STRING_IMAGE_SUPPORT](../docs/XNU_STRING_IMAGE_SUPPORT.md).
+
+El patch 0027 acota CoreAnalytics identificado por proceso y la excepción de SDK
+a BSD, y las descripciones IOKit a su proveedor, solo en firmware. Los 17 cuerpos
+core de política IPC, la tabla y el cleanup nativo permanecen intactos. Se
+seleccionan ipc_policy.c y mach_debug.c: 138 unidades experimentales. Pasan
+117/88 checks; el estándar conserva 13 unidades y rechaza correctamente el
+probe mach_debug por el builtin de allocator ausente. El enlace de 164 objetos
+conserva 561 diagnósticos indefinidos y cero duplicados, sin imagen. No hay
+telemetría de proceso implementada ni terminación Mach de guards verificada.
+Véase [XNU_IPC_POLICY_SCOPE](../docs/XNU_IPC_POLICY_SCOPE.md).

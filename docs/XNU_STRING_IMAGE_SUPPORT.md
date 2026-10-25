@@ -92,3 +92,7 @@ aprobó d984bc1 y sus 132 unidades; no prueba esta ampliación de 136.
 No hay ejecución del parser nativo, strsep, bootstrap Mach, XNU o código en el teléfono.
 Los fallos de ipc_policy siguen requiriendo separar política Mach de SDK/identidad
 BSD; no se fabrica un proc_ro para superar esos errores.
+
+La ampliación posterior de [política IPC](XNU_IPC_POLICY_SCOPE.md) conserva
+estas funciones e incorpora dos unidades nativas más. El manifiesto de cadenas
+permanece como registro de sus 136 unidades y 594 diagnósticos.

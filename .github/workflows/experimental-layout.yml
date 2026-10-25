@@ -21,13 +21,15 @@ jobs:
           python3 tools/fetch_xnu.py
           python3 tools/fetch_mig.py
           python3 tools/build_mig.py
-      - name: Compile 136 XNU-derived and original support units (no execution)
+      - name: Compile 138 XNU-derived and original support units (no execution)
         run: |
           python3 tools/build_xnu_lab.py --layout-compiler work/clang-layout-ci/build/bin/clang --layout-proof work/clang-layout-ci/tests/report.json
       - name: Audit original PE native ABI and required BSP import without executing it
         run: python3 tools/test_xnu_platform.py --build work/xnu-lab-builds/*/report.json --output work/pe-platform-tests
       - name: Audit selected bootstrap components and retained native Mach initialization
         run: python3 tools/test_xnu_startup_scope.py --build work/xnu-lab-builds/*/report.json --output work/startup-scope-tests
+      - name: Audit native IPC policy, optional process analytics and IOKit descriptions
+        run: python3 tools/test_xnu_ipc_policy_scope.py --build work/xnu-lab-builds/*/report.json --output work/ipc-policy-scope-tests
       - name: Test original string contracts and audit genuine XNU support ABI
         run: python3 tools/test_string_support.py --sanitize --xnu-build work/xnu-lab-builds/*/report.json --output work/string-support-tests
       - name: Audit native memory providers and original cache branch without executing them
@@ -96,6 +98,8 @@ jobs:
             work/pe-platform-tests/*.log
             work/startup-scope-tests/report.json
             work/startup-scope-tests/*.log
+            work/ipc-policy-scope-tests/report.json
+            work/ipc-policy-scope-tests/*.log
             work/string-support-tests/report.json
             work/string-support-tests/*.log
             work/memory-provider-tests/report.json

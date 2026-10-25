@@ -1,0 +1,213 @@
+# 1 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/atlantic_cache_asm.s"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 442 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 1
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/hibernation.h" 1
+# 2 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/crypto.h" 1
+# 3 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/kdebug.h" 1
+# 4 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/mach_assert.h" 1
+# 5 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/mach_kdp.h" 1
+# 6 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_serial_kdp.h" 1
+# 7 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/mach_ldebug.h" 1
+# 8 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/mach_vm_debug.h" 1
+# 9 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/mig_debug.h" 1
+# 10 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/importance_inheritance.h" 1
+# 11 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/importance_debug.h" 1
+# 12 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_ecc_logging.h" 1
+# 13 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_dtrace.h" 1
+# 14 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/no_kextd.h" 1
+# 15 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_quiesce_counter.h" 1
+# 16 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_cpu_counters.h" 1
+# 17 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_user_notification.h" 1
+# 18 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_kdp_interactive_debugging.h" 1
+# 19 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/debug.h" 1
+# 20 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_kdp_coredump_encryption.h" 1
+# 21 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_arcade.h" 1
+# 22 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_audit.h" 1
+# 23 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_exclaves.h" 1
+# 24 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_clutch.h" 1
+# 25 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_sysdiagnose.h" 1
+# 26 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/mach_bsd.h" 1
+# 27 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/copyout_shim.h" 1
+# 28 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_iotrace.h" 1
+# 29 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_xnupost.h" 1
+# 30 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_telemetry.h" 1
+# 31 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_atm.h" 1
+# 32 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_voucher_deprecated.h" 1
+# 33 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_io_compression_stats.h" 1
+# 34 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_phantom_cache.h" 1
+# 35 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_deferred_reclaim.h" 1
+# 36 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/iokit.h" 1
+# 37 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/kperf.h" 1
+# 38 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/fb.h" 1
+# 39 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/hi_res_clock.h" 1
+# 40 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_sptm.h" 1
+# 41 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_pv_ticket.h" 1
+# 42 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/profile.h" 1
+# 43 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_arm_pfz.h" 1
+# 44 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/ln.h" 1
+# 45 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/eisa.h" 1
+# 46 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/himem.h" 1
+# 47 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/ec.h" 1
+# 48 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/alternate_debugger.h" 1
+# 49 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 1 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/config_mach_bridge_recv_time.h" 1
+# 50 "<ROOT>/work/xnu-lab-builds/d0a6f2d786c94689/config/meta_features.h" 2
+# 2 "<built-in>" 2
+# 1 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/atlantic_cache_asm.s" 2
+
+
+
+
+
+
+
+
+# 1 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/machine/asm.h" 1
+# 36 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/machine/asm.h"
+# 1 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/asm.h" 1
+# 62 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/asm.h"
+# 1 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm/arch.h" 1
+# 63 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/asm.h" 2
+
+# 1 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/pexpert/pexpert/arm64/board_config.h" 1
+# 17 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/pexpert/pexpert/arm64/board_config.h"
+# 1 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/mach/machine.h" 1
+# 18 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/pexpert/pexpert/arm64/board_config.h" 2
+# 53 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/pexpert/pexpert/arm64/board_config.h"
+# 1 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/pexpert/pexpert/arm64/ATLANTIC_LAB.h" 1
+# 54 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/pexpert/pexpert/arm64/board_config.h" 2
+# 65 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/asm.h" 2
+# 123 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/asm.h"
+.macro ENTRY
+ .align 2
+ .globl _$0
+ _$0 :
+.endmacro
+
+.macro ENTRY2
+ .align 2
+ .globl _$0
+ .globl _$1
+ _$0 :
+ _$1 :
+.endmacro
+
+.macro READ_THREAD
+ mrs $0, TPIDR_EL1
+.endmacro
+
+.macro BRANCH_EXTERN
+ b _$0
+.endmacro
+
+.macro CALL_EXTERN
+ bl _$0
+.endmacro
+
+.macro MOV64
+ movk $0, #((($1) >> 48) & 0x000000000000FFFF), lsl #48
+ movk $0, #((($1) >> 32) & 0x000000000000FFFF), lsl #32
+ movk $0, #((($1) >> 16) & 0x000000000000FFFF), lsl #16
+ movk $0, #((($1) >> 00) & 0x000000000000FFFF), lsl #00
+.endmacro
+
+.macro MOV32
+ movz $0, #((($1) >> 16) & 0x000000000000FFFF), lsl #16
+ movk $0, #((($1) >> 00) & 0x000000000000FFFF), lsl #00
+.endmacro
+
+.macro ARM64_STACK_PROLOG
+
+
+
+.endmacro
+
+.macro ARM64_STACK_EPILOG
+
+
+
+ ret
+
+.endmacro
+# 212 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/asm.h"
+.macro PANIC_UNIMPLEMENTED
+ bl _panic_unimplemented
+.endmacro
+# 225 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/asm.h"
+.macro ARM64_PROLOG
+
+
+
+.endmacro
+# 238 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/asm.h"
+.macro ARM64_JUMP_TARGET
+
+
+
+.endmacro
+# 37 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/machine/asm.h" 2
+# 10 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/atlantic_cache_asm.s" 2
+# 19 "<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/atlantic_cache_asm.s"
+    .text
+    .align 2
+    .globl _CleanPoC_DcacheRegion_Force_nopreempt
+    .globl _CleanPoC_DcacheRegion_Force_nopreempt_nohid
+_CleanPoC_DcacheRegion_Force_nopreempt :
+_CleanPoC_DcacheRegion_Force_nopreempt_nohid :
+    ARM64_PROLOG
+    b _CleanPoC_DcacheRegion_Force
+<ROOT>/work/xnu-lab-sources/c12fbf206f5085f0/osfmk/arm64/atlantic_cache_asm.s:13:2: error: AtlanticOS cache adapter requires the explicit ARM64 firmware profile
+   13 | #error AtlanticOS cache adapter requires the explicit ARM64 firmware profile
+      |  ^
+1 error generated.
