@@ -1,0 +1,394 @@
+In file included from <ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:23:
+In file included from <ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libkern/Block_private.h:24:
+In file included from <ROOT>/work/xnu-lab-sources/560ed77e6b991310/bsd/sys/systm.h:110:
+In file included from <ROOT>/work/xnu-lab-sources/560ed77e6b991310/bsd/sys/proc.h:88:
+In file included from <ROOT>/work/xnu-lab-sources/560ed77e6b991310/bsd/sys/codesign.h:32:
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/cs_blobs.h:201:2: warning: array designators are a C99 extension [-Wc99-designator]
+  201 |         [CS_LINKAGE_APPLICATION_OOPJIT_INVALID] = NULL,
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+   29 | KALLOC_TYPE_VAR_DEFINE(KT_BLOCK_LAYOUT, struct Block_layout, void *, KT_DEFAULT);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 2 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1654:20: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE_4'
+ 1654 |             .kt_sig_hdr = KALLOC_TYPE_EMIT_SIG(hdr, type),              \
+      |                           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1603:7: note: expanded from macro 'KALLOC_TYPE_EMIT_SIG'
+ 1603 |         "" : KALLOC_LAYOUT_SIGNATURE(sig_type)
+      |              ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:813:39: note: expanded from macro 'KALLOC_LAYOUT_SIGNATURE'
+  813 | #define KALLOC_LAYOUT_SIGNATURE(type) __atlantic_layout_signature(type)
+      |                                       ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 2 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1655:21: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE_4'
+ 1655 |             .kt_sig_type = KALLOC_TYPE_EMIT_SIG(type, hdr),             \
+      |                            ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1603:7: note: expanded from macro 'KALLOC_TYPE_EMIT_SIG'
+ 1603 |         "" : KALLOC_LAYOUT_SIGNATURE(sig_type)
+      |              ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:813:39: note: expanded from macro 'KALLOC_LAYOUT_SIGNATURE'
+  813 | #define KALLOC_LAYOUT_SIGNATURE(type) __atlantic_layout_signature(type)
+      |                                       ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 5 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:29:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 5 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:30:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+   30 | KALLOC_TYPE_VAR_DEFINE(KT_BLOCK_BYREF, struct Block_byref, void *, KT_DEFAULT);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:30:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:30:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:30:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:30:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:30:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 10 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:834:4: note: expanded from macro 'KALLOC_TYPE_SIG_CHECK'
+  834 |         ((KT_SUMMARY_GRANULES(type) & ~(mask)) == 0)
+      |           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:822:3: note: expanded from macro 'KT_SUMMARY_GRANULES'
+  822 |         (KALLOC_LAYOUT_SUMMARY(type) & KT_SUMMARY_MASK_TYPE_BITS)
+      |          ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:812:37: note: expanded from macro 'KALLOC_LAYOUT_SUMMARY'
+  812 | #define KALLOC_LAYOUT_SUMMARY(type) __atlantic_layout_summary(type)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/libkern/libclosure/runtime.cpp:30:1: error: AtlanticOS layout: requires C and little-endian, non-arm64e AArch64 LP64
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:524:37: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE'
+  524 | #define KALLOC_TYPE_VAR_DEFINE(...) KALLOC_DISPATCH(KALLOC_TYPE_VAR_DEFINE, ##__VA_ARGS__)
+      |                                     ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1531:2: note: expanded from macro 'KALLOC_DISPATCH'
+ 1531 |         KALLOC_DISPATCH1(base, KALLOC_COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+      |         ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1529:40: note: expanded from macro 'KALLOC_DISPATCH1'
+ 1529 | #define KALLOC_DISPATCH1(base, N, ...) __CONCAT(base, N)(__VA_ARGS__)
+      |                                        ^
+note: (skipping 2 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1654:20: note: expanded from macro 'KALLOC_TYPE_VAR_DEFINE_4'
+ 1654 |             .kt_sig_hdr = KALLOC_TYPE_EMIT_SIG(hdr, type),              \
+      |                           ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:1603:7: note: expanded from macro 'KALLOC_TYPE_EMIT_SIG'
+ 1603 |         "" : KALLOC_LAYOUT_SIGNATURE(sig_type)
+      |              ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/kalloc.h:813:39: note: expanded from macro 'KALLOC_LAYOUT_SIGNATURE'
+  813 | #define KALLOC_LAYOUT_SIGNATURE(type) __atlantic_layout_signature(type)
+      |                                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+1 warning and 20 errors generated.

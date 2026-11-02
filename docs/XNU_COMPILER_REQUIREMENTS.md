@@ -1,5 +1,16 @@
 # Requisitos abiertos del compilador XNU — 2026-10-21
 
+Revisión 2026-11-02: la API original C v2 se utiliza en el build experimental de
+159 unidades base. Un probe separado del runtime íntegro
+`libkern/libclosure/runtime.cpp` encuentra un requisito adicional:
+`KALLOC_TYPE_VAR_DEFINE` necesita metadata real de records C++. Con los flags
+privados de libkern, el compilador rechaza esas llamadas porque su contrato v2
+solo admite C. La compilación de `priority_queue.cpp` no prueba este requisito:
+esa unidad no instancia estos descriptores. El [diagnóstico conservado](../evidence/progress-review-20261102/blocks-runtime-exp.log)
+es un fallo de integración, sin objeto runtime ni ejecución. Corresponde ampliar
+el compilador con semántica C++ explícita y pruebas propias; no compilar el
+runtime como C, vaciar su metadata o aceptar la prueba C como validación C++.
+
 La compilación incremental aprobada no acredita que Clang genérico pueda
 construir todas las unidades. El probe real de thread.c llega a tres builtins
 Apple que no están disponibles en los dos toolchains examinados. Sus usos están

@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "scope": "ENGINEERING_ESTIMATE_AND_EVIDENCE_REVIEW_NOT_RUNTIME_OR_DEVICE_VERIFICATION",
+  "reviewed_at_utc": "2026-11-02T18:22:59.926664+00:00",
+  "source_commit": "1073f78e9fa3b9ca1f36177eb51050e44c10483d",
+  "port_id": "560ed77e6b991310aa660d45319de4ef438447ada8a714c8fc88b0b27ed42c74",
+  "estimate_is_measured_completion": false,
+  "estimate_is_success_probability": false,
+  "first_physical_xnu_estimate_percent": 30,
+  "first_physical_xnu_heuristic_range_percent": [
+    20,
+    40
+  ],
+  "xnu_to_edk2_estimate_percent": 25,
+  "xnu_to_edk2_heuristic_range_percent": [
+    15,
+    35
+  ],
+  "ranges_are_statistical_confidence_intervals": false,
+  "evidence_inputs": [
+    {
+      "path": "evidence/xnu-queue-vm-20261102/exp-base-report.json",
+      "sha256": "c69a667316e06c0c8646051e8a09ba39207af51e8755e59ea87538e29fcf8c62"
+    },
+    {
+      "path": "evidence/xnu-queue-vm-20261102/exp-rpc-report.json",
+      "sha256": "ac8ac39cf68f92534b948175288029377acfe96c700f4b8f099efdd0747b5f6f"
+    },
+    {
+      "path": "evidence/xnu-queue-vm-20261102/exp-link-report.json",
+      "sha256": "0c42d0a833ca0bf7afbf5ef57c75ef73ef1f908d0ade0ab37b77030b8b04ff33"
+    }
+  ],
+  "experimental_base_units": 159,
+  "rpc_probe_objects": 42,
+  "strict_link": {
+    "object_count": 185,
+    "link_exit_code": 1,
+    "undefined_symbol_error_count": 436,
+    "duplicate_symbol_error_count": 0,
+    "output_exists": false,
+    "kernel_linked": false
+  },
+  "acceptance_gates_passed": 0,
+  "first_physical_xnu_acceptance_gates": [
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "full_xnu_to_edk2_acceptance_gates": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+  ],
+  "equal_gate_count_is_not_effort_percentage": true,
+  "workflow_observations": [
+    {
+      "id": 41495850965,
+      "head_sha": "1073f78e9fa3b9ca1f36177eb51050e44c10483d",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/h0nda1337/AtlanticOS/actions/runs/41495850965",
+      "created_at": "2026-11-02T17:56:31Z",
+      "updated_at": "2026-11-02T17:57:17Z",
+      "event": "push",
+      "run_attempt": 1,
+      "name": "Host policy and ARM64 ABI"
+    },
+    {
+      "id": 41495851003,
+      "head_sha": "1073f78e9fa3b9ca1f36177eb51050e44c10483d",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/h0nda1337/AtlanticOS/actions/runs/41495851003",
+      "created_at": "2026-11-02T17:56:31Z",
+      "updated_at": "2026-11-02T17:57:45Z",
+      "event": "push",
+      "run_attempt": 1,
+      "name": "XNU generators and ARM64 core objects"
+    },
+    {
+      "id": 41496031846,
+      "head_sha": "1073f78e9fa3b9ca1f36177eb51050e44c10483d",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/h0nda1337/AtlanticOS/actions/runs/41496031846",
+      "created_at": "2026-11-02T17:57:44Z",
+      "updated_at": "2026-11-02T17:57:47Z",
+      "event": "workflow_dispatch",
+      "run_attempt": 1,
+      "name": "Experimental layout compiler and XNU core objects"
+    }
+  ],
+  "workflow_observations_are_snapshots": true,
+  "blocks_runtime_probe_exit_code": 1,
+  "blocks_runtime_integrated": false,
+  "xnu_executed": false,
+  "physical_atlanticos_executed": false,
+  "edk2_handoff_executed": false,
+  "firmware_ram_measured": false,
+  "phone_accessed_for_this_review": false,
+  "partitions_modified": false
+}
