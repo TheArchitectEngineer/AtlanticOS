@@ -1,0 +1,12 @@
+_NDR_record
+_convert_host_to_port
+_convert_port_to_processor
+_convert_port_to_pset
+_convert_pset_name_to_port
+_ipc_port_release_send
+_processor_assign
+_processor_control
+_processor_exit_from_user
+_processor_get_assignment
+_processor_info
+_processor_start_from_user

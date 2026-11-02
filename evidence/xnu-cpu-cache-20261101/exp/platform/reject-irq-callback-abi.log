@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/pe_platform_abi.c:32:40: error: incompatible function pointer types initializing 'kern_return_t (*)(void *)' (aka 'int (*)(void *)') with an expression of type 'void (void *)' [-Wincompatible-function-pointer-types]
+   32 |     test_boot_record,test_tree_mapping,test_interrupt_init
+      |                                        ^~~~~~~~~~~~~~~~~~~
+1 error generated.

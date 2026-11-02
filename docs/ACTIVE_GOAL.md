@@ -186,3 +186,13 @@ Se corrige una excepción de alineación con -mstrict-align y pasan seis recorri
 originales, incluidos normal/BRK. No se coloca el payload ni se construye el
 contexto retenido real. Siguen pendientes cierre de enlace, asignación/ownership,
 traducción e IRQ/BSP, carga temporal, XNU físico y handoff EDK2; la meta no cambia.
+
+La integración de [CPU y cachés](XNU_CPU_CACHE_PROVIDERS.md), verificada para
+publicación el 2026-11-01, conserva los builds locales del 2026-10-25 y añade
+dos fuentes nativas intactas. Compilan 155 unidades experimentales y 13 estándar;
+pasan 164/134 comprobaciones. El enlace de 181 objetos conserva 465 indefinidos,
+cero duplicados y ninguna imagen: once proveedores, cero dependencias nuevas.
+Los hooks Apple upstream vacíos no implementan el hardware; no se ejecutan
+registros de CPU o cachés. La normalización de MIDR y las suposiciones NEON del
+target se distinguen de observaciones físicas. Continúan pendientes contexto,
+BSP/IRQ, carga temporal y ejecución genuina de XNU y handoff EDK2.

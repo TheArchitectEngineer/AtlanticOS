@@ -21,6 +21,11 @@ inicializadores del fixture usan los tipos reales XNU para comprobar layout;
 no son proveedores del kernel ni reemplazos de su bootstrap. La prueba ARM
 solo incorpora nuestra imagen assembler de LLD anterior, sin ejecutarla.
 
+cpuid.c y machine_routines_apple.c se compilan completos desde el XNU oficial
+fijado, sin cambios; no son código MIT original ni controladores G20 importados.
+El backend machine_cpuid.c ya seleccionado conserva también su procedencia XNU.
+La selección, fixture ABI y auditor de objetos nuevos son originales AtlanticOS.
+
 XNU oficial fijado en dependencies.lock.json: fuente externa intacta, checkout
 ignorado, no incorporado en el paquete fuente AtlanticOS. Se conserva su
 APPLE_LICENSE íntegra junto a este archivo; los avisos por archivo siguen en

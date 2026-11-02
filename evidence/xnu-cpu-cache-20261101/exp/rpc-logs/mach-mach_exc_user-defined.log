@@ -1,0 +1,7 @@
+0000000000000000 T _mach_exception_raise
+00000000000007f0 T _mach_exception_raise_backtrace
+0000000000000680 T _mach_exception_raise_identity_protected
+0000000000000180 T _mach_exception_raise_state
+00000000000003f0 T _mach_exception_raise_state_identity
+0000000000000970 T _mach_exception_raise_state_identity_protected
+0000000000000000 t ltmp0

@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/cpu_cache_abi.c:27:12: error: incompatible function pointer types initializing 'uint64_t (*)(void)' (aka 'unsigned long long (*)(void)') with an expression of type 'uint32_t (void)' (aka 'unsigned int (void)') [-Wincompatible-function-pointer-types]
+   27 | uint64_t (*bad_midr)(void)=machine_read_midr;
+      |            ^               ~~~~~~~~~~~~~~~~~
+1 error generated.

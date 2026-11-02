@@ -1,0 +1,6 @@
+_send_cpu_usage_violation T 0 0
+_send_cpu_wakes_violation T 110 0
+_send_disk_writes_violation T 220 0
+_send_file_descriptors_violation T 3e0 0
+_send_kqworkloops_violation T 490 0
+_send_port_space_violation T 330 0

@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/ipc_policy_abi.c:12:21: error: incompatible function pointer types initializing 'mach_msg_return_t (*)(mach_msg_header_t *, mach_msg_send_uctx_t *, uint32_t)' (aka 'int (*)(mach_msg_header_t *, mach_msg_send_uctx_t *, unsigned int)') with an expression of type 'mach_msg_return_t (mach_msg_header_t *, mach_msg_send_uctx_t *, mach_msg_option64_t)' (aka 'int (mach_msg_header_t *, mach_msg_send_uctx_t *, mach_msg_option64_t)') [-Wincompatible-function-pointer-types]
+   12 | mach_msg_return_t (*bad_options)(mach_msg_header_t *,mach_msg_send_uctx_t *,uint32_t) = ipc_validate_kmsg_header_from_user;
+      |                     ^                                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.

@@ -1,0 +1,4 @@
+_doubleagent_allocate_xattr T 1c0 0
+_doubleagent_list_xattrs T 390 0
+_doubleagent_lookup_xattr T 0 0
+_doubleagent_remove_xattr T 520 0

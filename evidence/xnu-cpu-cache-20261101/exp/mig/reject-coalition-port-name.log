@@ -1,0 +1,7 @@
+<ROOT>/tests/xnu_port/ipc_mig_abi.c:48:35: error: incompatible integer to pointer conversion passing 'mach_port_name_t' (aka 'unsigned int') to parameter of type 'mach_port_t' (aka 'struct ipc_port *') [-Wint-conversion]
+   48 |     return coalition_notification((mach_port_name_t)1, 1, 0);
+      |                                   ^~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-builds/24560146b549e6c0/include/mach/coalition_notification_server.h:82:14: note: passing argument to parameter 'coalition_port' here
+   82 |         mach_port_t coalition_port,
+      |                     ^
+1 error generated.

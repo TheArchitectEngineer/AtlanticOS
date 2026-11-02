@@ -353,3 +353,29 @@ hashes y captura física. Falta de contexto de identidad o referencias sin
 trazar deja el componente como UNVERIFIED. Un cuelgue sin registro fiable es
 INDETERMINATE. Comprobar el retorno Android por T01; no hay resultado físico
 aceptado de esta subprueba todavía.
+
+## Subprueba pendiente de T08: identificación y caché nativas
+
+Estado: PENDING_HARDWARE. [XNU_CPU_CACHE_PROVIDERS](XNU_CPU_CACHE_PROVIDERS.md)
+solo compila/inspecciona código. Antes se requieren T01/T04/T05, imagen XNU real,
+CPU/topología inicializadas, memoria propia y una salida fiable, sin flash.
+
+1. Conservar MIDR crudo y registros de capacidad observados. Capturar PCs
+   simbolizados de do_cpuid y machine_read_midr y comparar los campos sin
+   confundir arm_arch normalizado por XNU con su valor crudo. Una familia
+   UNKNOWN puede ser el resultado nativo para un part no incluido en su tabla;
+   no asignar una familia Apple para hacer pasar la prueba. Contrastar los
+   requisitos FP/ASIMD del target con ID_AA64PFR0: la metadata NEON no los mide.
+2. En la clase de cluster del CPU primario válida, capturar do_cacheid, CLIDR,
+   selecciones CSSELR, ISB y lecturas CCSIDR. Comparar tamaños/lineas/asociatividad
+   calculados por XNU con una interpretación independiente de esos registros.
+   Controlar el contexto por CPU y conservar/restaurar el selector en cualquier
+   medición auxiliar. No extrapolar resultados a clusters aún sin inicializar.
+3. Solo después de arrancar realmente otros clusters y disponer de hilos Mach,
+   comprobar la publicación c_valid y el recorrido de espera/despertar de
+   cache_info_type. Si no se cumple ese contexto, registrar UNVERIFIED y no
+   invocar la espera suponiendo que terminará. Los hooks Apple vacíos no prueban
+   timer o IRQ; sus pruebas BSP permanecen independientes en T06/T08.
+
+Guardar binario/mapa/registros/PCs y captura física con hashes y retorno stock
+por T01. Esto no acredita coherencia DMA, handoff EDK2 o RAM firmware medida.

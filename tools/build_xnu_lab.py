@@ -197,6 +197,14 @@ EXPERIMENTAL_UNITS.update({
     'bsd/kern/qsort.c': '_qsort'})
 EXPERIMENTAL_UNITS['pexpert/atlantic/pe_platform.c'] = '_PE_init_platform'
 EXPERIMENTAL_UNITS.update({
+    'osfmk/arm/cpuid.c': '_do_cpuid',
+    'osfmk/arm/machine_routines_apple.c': '_configure_misc_apple_regs'})
+EXTRA_SYMBOLS.update({
+    'osfmk/arm/cpuid.c': ['_cpuid_info', '_cpuid_get_cpufamily', '_cpuid_get_cpusubfamily',
+        '_do_cacheid', '_cache_info', '_cache_info_type', '_do_debugid', '_arm_debug_info',
+        '_do_mvfpid', '_arm_mvfp_info'],
+    'osfmk/arm/machine_routines_apple.c': ['_configure_misc_apple_boot_args', '_configure_timer_apple_regs']})
+EXPERIMENTAL_UNITS.update({
     'osfmk/kern/coalition.c': '_coalitions_init',
     'osfmk/bank/bank.c': '_bank_task_initialize',
     'osfmk/kern/mk_sp.c': '_thread_policy',

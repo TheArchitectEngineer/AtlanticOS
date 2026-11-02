@@ -1,0 +1,4 @@
+0000000000000000 T _check_task_access
+0000000000000230 T _check_task_access_with_flavor
+0000000000000120 T _find_code_signature
+0000000000000000 t ltmp0

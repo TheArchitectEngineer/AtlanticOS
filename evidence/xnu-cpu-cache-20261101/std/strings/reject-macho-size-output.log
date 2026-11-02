@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/string_support_abi.c:19:9: error: incompatible function pointer types initializing 'void *(*)(kernel_mach_header_t *, const char *, uint32_t *)' (aka 'void *(*)(struct mach_header_64 *, const char *, unsigned int *)') with an expression of type 'void *(kernel_mach_header_t *, const char *, unsigned long *)' (aka 'void *(struct mach_header_64 *, const char *, unsigned long *)') [-Wincompatible-function-pointer-types]
+   19 | void *(*bad_segment)(kernel_mach_header_t *,const char *,uint32_t *) = getsegdatafromheader;
+      |         ^                                                              ~~~~~~~~~~~~~~~~~~~~
+1 error generated.

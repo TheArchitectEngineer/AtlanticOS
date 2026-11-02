@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/coalition_bank_abi.c:20:63: error: no member named 'bt_rsrc_coal_id' in 'struct bank_task'
+   20 | uint64_t bad_telemetry_field(bank_task_t task) { return task->bt_rsrc_coal_id; }
+      |                                                         ~~~~  ^
+1 error generated.

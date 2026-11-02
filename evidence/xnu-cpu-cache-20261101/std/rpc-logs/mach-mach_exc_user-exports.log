@@ -1,0 +1,6 @@
+_mach_exception_raise T 0 0
+_mach_exception_raise_backtrace T 7f0 0
+_mach_exception_raise_identity_protected T 680 0
+_mach_exception_raise_state T 180 0
+_mach_exception_raise_state_identity T 3f0 0
+_mach_exception_raise_state_identity_protected T 970 0

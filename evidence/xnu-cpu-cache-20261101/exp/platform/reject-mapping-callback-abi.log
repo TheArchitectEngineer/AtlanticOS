@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/pe_platform_abi.c:32:22: error: incompatible function pointer types initializing 'kern_return_t (*)(const void *, vm_size_t)' (aka 'int (*)(const void *, unsigned long)') with an expression of type 'kern_return_t (const void *, uint32_t)' (aka 'int (const void *, unsigned int)') [-Wincompatible-function-pointer-types]
+   32 |     test_boot_record,test_tree_mapping,test_interrupt_init
+      |                      ^~~~~~~~~~~~~~~~~
+1 error generated.

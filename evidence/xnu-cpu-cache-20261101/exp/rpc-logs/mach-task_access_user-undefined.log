@@ -1,0 +1,6 @@
+_NDR_record
+_mach_msg_destroy_from_kernel
+_mach_msg_rpc_from_kernel
+_mig_dealloc_reply_port
+_mig_get_reply_port
+_mig_put_reply_port

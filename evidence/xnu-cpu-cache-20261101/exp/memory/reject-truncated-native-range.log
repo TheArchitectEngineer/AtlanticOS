@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/memory_provider_abi.c:12:8: error: incompatible function pointer types initializing 'void (*)(uint32_t, uint32_t)' (aka 'void (*)(unsigned int, unsigned int)') with an expression of type 'void (vm_offset_t, size_t)' (aka 'void (unsigned long, unsigned long)') [-Wincompatible-function-pointer-types]
+   12 | void (*atlantic_bad_range)(uint32_t,uint32_t) = CleanPoC_DcacheRegion_Force_nopreempt_nohid;
+      |        ^                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.

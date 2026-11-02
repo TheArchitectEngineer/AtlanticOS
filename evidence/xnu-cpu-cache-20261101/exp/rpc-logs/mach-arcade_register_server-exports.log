@@ -1,0 +1,3 @@
+_arcade_register_server T 10 0
+_arcade_register_server_routine T 0 0
+_arcade_register_subsystem S 58 0

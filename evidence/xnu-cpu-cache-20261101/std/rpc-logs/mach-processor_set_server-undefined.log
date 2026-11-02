@@ -1,0 +1,10 @@
+_NDR_record
+_convert_host_to_port
+_convert_port_to_pset
+_convert_port_to_pset_name
+_processor_set_info
+_processor_set_stack_usage
+_processor_set_statistics
+_processor_set_tasks
+_processor_set_tasks_with_flavor
+_processor_set_threads

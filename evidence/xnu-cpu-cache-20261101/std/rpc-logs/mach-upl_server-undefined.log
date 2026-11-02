@@ -1,0 +1,7 @@
+_NDR_record
+_convert_port_to_upl
+_upl_abort
+_upl_abort_range
+_upl_commit
+_upl_commit_range
+_upl_deallocate

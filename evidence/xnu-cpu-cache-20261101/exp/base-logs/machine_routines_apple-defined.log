@@ -1,0 +1,4 @@
+0000000000000000 T _configure_misc_apple_boot_args
+0000000000000010 T _configure_misc_apple_regs
+0000000000000020 T _configure_timer_apple_regs
+0000000000000000 t ltmp0

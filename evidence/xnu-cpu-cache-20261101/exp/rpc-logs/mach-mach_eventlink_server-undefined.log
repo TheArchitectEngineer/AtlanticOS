@@ -1,0 +1,12 @@
+_NDR_record
+_convert_port_to_eventlink
+_convert_port_to_task_mig
+_convert_port_to_thread
+_ipc_eventlink_deallocate
+_ipc_port_release_send
+_mach_eventlink_associate
+_mach_eventlink_create
+_mach_eventlink_destroy
+_mach_eventlink_disassociate
+_task_deallocate_grp
+_thread_deallocate

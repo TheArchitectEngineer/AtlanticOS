@@ -1,0 +1,3 @@
+_configure_misc_apple_boot_args T 0 0
+_configure_misc_apple_regs T 10 0
+_configure_timer_apple_regs T 20 0

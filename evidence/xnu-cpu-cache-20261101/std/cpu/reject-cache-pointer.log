@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/cpu_cache_abi.c:30:12: error: incompatible function pointer types initializing 'uint32_t (*)(cluster_type_t)' (aka 'unsigned int (*)(cluster_type_t)') with an expression of type 'cache_info_t *(cluster_type_t)' [-Wincompatible-function-pointer-types]
+   30 | uint32_t (*bad_cache)(cluster_type_t)=cache_info_type;
+      |            ^                          ~~~~~~~~~~~~~~~
+1 error generated.

@@ -1,0 +1,27 @@
+{
+  "before": 476,
+  "after": 465,
+  "resolved": [
+    "_arm_debug_info",
+    "_cache_info_type",
+    "_configure_misc_apple_boot_args",
+    "_configure_misc_apple_regs",
+    "_configure_timer_apple_regs",
+    "_cpuid_get_cpufamily",
+    "_cpuid_info",
+    "_do_cacheid",
+    "_do_cpuid",
+    "_do_debugid",
+    "_do_mvfpid"
+  ],
+  "new_dependencies": [],
+  "removed_old_references": [],
+  "new_native_sources": [
+    "osfmk/arm/cpuid.c",
+    "osfmk/arm/machine_routines_apple.c"
+  ],
+  "prior_units_source_unchanged": 153,
+  "headers_unchanged": 70,
+  "same_port_id": "25598af2b83969b18f5d9911863b13e210cdc1fa07818471aec6b2b7c521547b",
+  "xnu_executed": false
+}

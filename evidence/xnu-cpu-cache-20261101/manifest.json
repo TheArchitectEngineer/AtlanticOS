@@ -1,0 +1,1547 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-11-01",
+  "build_and_test_date": "2026-10-25",
+  "label": "BUILT_ARM64",
+  "scope": "AUTHENTIC_XNU_CPU_CACHE_SOURCES_ABI_AND_OBJECTS_ONLY_NO_XNU_OR_REGISTER_EXECUTION",
+  "experimental_base_units": 155,
+  "standard_base_units": 13,
+  "rpc_probes": 42,
+  "rpc_selected": 26,
+  "native_headers": 70,
+  "experimental_checks": 164,
+  "standard_checks": 134,
+  "new_cpu_checks": [
+    21,
+    24
+  ],
+  "strict_link_objects": 181,
+  "undefined_symbols": 465,
+  "duplicate_symbols": 0,
+  "image_exists": false,
+  "xnu_executed": false,
+  "cpu_registers_read": false,
+  "cache_geometry_measured": false,
+  "phone_accessed": false,
+  "physical_memory_measured": false,
+  "artifacts": [
+    {
+      "path": "README.md",
+      "sha256": "0872c2c3166b968ce99b8cf169b93a2e324a50bc52999dd0baa4c247e8e28d60"
+    },
+    {
+      "path": "exp/base-logs/cpuid-defined.log",
+      "sha256": "b5a66fc2281b779c0d2092682e98fa9687d0a5b55846162a9011dc2f3347928a"
+    },
+    {
+      "path": "exp/base-logs/cpuid-exports.log",
+      "sha256": "acd14bc75bebce0c77264691fe9f85372e4073ac6e5ddf91cbd6bbc55e667965"
+    },
+    {
+      "path": "exp/base-logs/cpuid-undefined.log",
+      "sha256": "2d00117473d854e8e437d3a0723b3ac2eb2a6688a34c7687adc3116f262e63be"
+    },
+    {
+      "path": "exp/base-logs/cpuid.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp/base-logs/machine_cpuid-defined.log",
+      "sha256": "9780a5218cc9a90e02929d845d74ef7026138d2ce0bc86bc841bd1cc727a79ac"
+    },
+    {
+      "path": "exp/base-logs/machine_cpuid-exports.log",
+      "sha256": "2afccbb970da9ddeca552c394506c400289d726249ac7c5f78be4a142ffd30f5"
+    },
+    {
+      "path": "exp/base-logs/machine_cpuid-undefined.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp/base-logs/machine_cpuid.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp/base-logs/machine_routines_apple-defined.log",
+      "sha256": "437c4c5239365d08b9d87a18d0b5d16c9a25d335f33d74f87257772abdf98f57"
+    },
+    {
+      "path": "exp/base-logs/machine_routines_apple-exports.log",
+      "sha256": "8a8755424ec76574d218c8ecef44c30e08cf1f944cdf11c0a116337d1ee61d2f"
+    },
+    {
+      "path": "exp/base-logs/machine_routines_apple-undefined.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp/base-logs/machine_routines_apple.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp/boot-prepare/candidate-boot-args.bin",
+      "sha256": "8971c60b7399ceaf65a735ffa4b59af9c0e921b3fd632690da538b5f2e2dcbcd"
+    },
+    {
+      "path": "exp/boot-prepare/report.json",
+      "sha256": "a308c4eb9a48c4d19ea91753ccd0a748feac6f8a86fd293ff1cd632d6ef56da6"
+    },
+    {
+      "path": "exp/boot-tree/report.json",
+      "sha256": "a6bd4bc43b23902240814dc28d4dbaf457866a58c4345e8590593b3199256db3"
+    },
+    {
+      "path": "exp/brk/report.json",
+      "sha256": "16c55047c5e93453f0c865c25e79f5957fc0334563d2ffbcfb83100f7bf6d8b7"
+    },
+    {
+      "path": "exp/brk/wrong-reserved-trap-rejected.log",
+      "sha256": "3d6bcc650d2c8b9365addde5ce8943b85322a0ffe391c9751001dd18c0e58bb7"
+    },
+    {
+      "path": "exp/coalition/reject-absent-telemetry-field.log",
+      "sha256": "6b3b389c8de414b918610c90aecb4e709e38288faf097b06699cb76ad29d8ad5"
+    },
+    {
+      "path": "exp/coalition/reject-wrong-bank-callback.log",
+      "sha256": "c35a731e0479027a1a07cbbdc2adb92c5a2c022f9c1a9804a1d4c7ab95e1239e"
+    },
+    {
+      "path": "exp/coalition/report.json",
+      "sha256": "e5a81b594bcf2c78fb969b3792e846a37ba407eb661d78137313e9f537034dd6"
+    },
+    {
+      "path": "exp/core/printf-reject-return-type.log",
+      "sha256": "40d3200493a8b1772e6d4c0af6ac1b52a373939abfa804860b900d54642b78e0"
+    },
+    {
+      "path": "exp/core/report.json",
+      "sha256": "90761c993faaa346c8a64bf6ffba78c3061d96e038460a3077bed2249b57b0f8"
+    },
+    {
+      "path": "exp/cpu/cpuid.o",
+      "sha256": "6244e63101165d6dade6e9b6c9ce674bbe099cf1a0197530f958a3239e1304ea"
+    },
+    {
+      "path": "exp/cpu/machine_cpuid.o",
+      "sha256": "6d8b8eeab8a3736326ff63c5f70adc4bee3e0a110bcdff68f1c3c4b9b12c8262"
+    },
+    {
+      "path": "exp/cpu/machine_routines_apple.o",
+      "sha256": "848a0aca10a1158fd32db4794d90561262c40cf73af6fb9465cf7c9c9990bc77"
+    },
+    {
+      "path": "exp/cpu/native-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp/cpu/native-cpu-cache-abi.o",
+      "sha256": "e619259a8e5464501d3fdf3fccafa63bf4e3a15fbe002b8d2b746d093e901b08"
+    },
+    {
+      "path": "exp/cpu/reject-cache-pointer.log",
+      "sha256": "23ce78d5dc7a706618341372a4bba3785e5c0bb852b526a35935a55aedbfce12"
+    },
+    {
+      "path": "exp/cpu/reject-midr-width.log",
+      "sha256": "91788c64a3ed1cc63df80999ec3f4f885d20c5f1b1c2a69d844645abd7238845"
+    },
+    {
+      "path": "exp/cpu/report.json",
+      "sha256": "719628e036301118ab5149835055c286deeabcb8bc5d026d3868af3b188b4bd2"
+    },
+    {
+      "path": "exp/kobject/report.json",
+      "sha256": "fbc23d0bfab25007872705dccafae616acab2a20074af455278355870c92b712"
+    },
+    {
+      "path": "exp/macho/report.json",
+      "sha256": "6d3f530cfc29a6b1d88f82a8eee3504cc88745cb25f5a205bb6bdac4f3c81961"
+    },
+    {
+      "path": "exp/memory/reject-apple-provider.log",
+      "sha256": "ffc7f1aec77faeedc897ecb1429d66431e7969e7aaf2998b4c8d122895b07cbe"
+    },
+    {
+      "path": "exp/memory/reject-outside-firmware.log",
+      "sha256": "a0c363e5e9c7563b9773ae72a77e9a79a398e9d096989b5f199e72f0ce42e030"
+    },
+    {
+      "path": "exp/memory/reject-truncated-native-range.log",
+      "sha256": "21644cc70335546034912a553e5349fd774e1368e8b38dec6ff63d9dec1ca513"
+    },
+    {
+      "path": "exp/memory/reject-vmapple-provider.log",
+      "sha256": "ffc7f1aec77faeedc897ecb1429d66431e7969e7aaf2998b4c8d122895b07cbe"
+    },
+    {
+      "path": "exp/memory/report.json",
+      "sha256": "95879ef7d7399bc9ae2886222631efb9993e0d111adc2d7c4a5c167f12b3974c"
+    },
+    {
+      "path": "exp/mig/reject-coalition-port-name.log",
+      "sha256": "7b9bb64c1597a302d0eee0868fffeb3792bb1fcf1f527a1963f7561c90644f64"
+    },
+    {
+      "path": "exp/mig/reject-legacy-server.log",
+      "sha256": "f6afc285a31d4089afd9127a84e6f81a7b95c6d0ee278a49890bac1b04bab659"
+    },
+    {
+      "path": "exp/mig/reject-port-name.log",
+      "sha256": "4f3e169d4a460e2180b113dc9236abd6b658fe2cb56d36501916cc65c6667647"
+    },
+    {
+      "path": "exp/mig/report.json",
+      "sha256": "c5c290a8ff0994ab6fa58bbefd452bac066591004aaf5f012fa8ad1a88384bda"
+    },
+    {
+      "path": "exp/platform/reject-irq-callback-abi.log",
+      "sha256": "795cc6abbc63bb879a5606e86e13ef8fbbc6f12b61c7ae0b72fe0c144e9b3670"
+    },
+    {
+      "path": "exp/platform/reject-mapping-callback-abi.log",
+      "sha256": "52f002696657279da25f7a675e14514952538f25c7329b070d673d10c21ef312"
+    },
+    {
+      "path": "exp/platform/report.json",
+      "sha256": "c74a114531eb2321066ea40a3a0f8cf4caaabe1309dfefa0243a417b4325e559"
+    },
+    {
+      "path": "exp/pmap/report.json",
+      "sha256": "ba9673939fb0b0a28d98aab3b07d0307dce7376c58914455a5570278e87b3ea1"
+    },
+    {
+      "path": "exp/pmap-scope/report.json",
+      "sha256": "15d7f4124aa768b106cc3d704372f6194f96389381f6e8750fa9466d32fd6574"
+    },
+    {
+      "path": "exp/policy/reject-truncated-option-abi.log",
+      "sha256": "003db6fc07a6fce7a77568eb4b1f48b07ab510369f814d475199d2ab2eb327e5"
+    },
+    {
+      "path": "exp/policy/reject-unselected-process-analytics-api.log",
+      "sha256": "136708860316485a6a84f93c78d88c6d18357dac30d4007f053b91760217fa69"
+    },
+    {
+      "path": "exp/policy/report.json",
+      "sha256": "15b145f6a84756944ed7b4ce0df45373d95ef9fa57bc644830ebf56b6d335aee"
+    },
+    {
+      "path": "exp/rpc/reject-descriptor-prefix.log",
+      "sha256": "4d6a00564d2e6d92c29bf7e913c229651abd223e3deb8af5ae01a05060dce78d"
+    },
+    {
+      "path": "exp/rpc/report.json",
+      "sha256": "e93854c32e4584f639b23fa710601d8f570731db6ba9d804b7d8e55e61fde59a"
+    },
+    {
+      "path": "exp/rpc-logs/compile-mach-upl_user.log",
+      "sha256": "72b3d7284c3e0210b1e6e20158cfdbdc5836058bac57f958ffca397b9d981524"
+    },
+    {
+      "path": "exp/rpc-logs/compile-mach-vm_map_user.log",
+      "sha256": "7381baeece57147d11889091025d3ebbbb158c35660edd903d6197cf7ccb12e3"
+    },
+    {
+      "path": "exp/rpc-logs/device-device_server-defined.log",
+      "sha256": "ca2f62b305dfa512e17873350b0bfc36b318c9a1d4379ef2a5c20b59ea926f43"
+    },
+    {
+      "path": "exp/rpc-logs/device-device_server-exports.log",
+      "sha256": "aae7c5cc84547f83ac40425143a2c6112e9d6f9e0e5d4333f0421eeab835e8b9"
+    },
+    {
+      "path": "exp/rpc-logs/device-device_server-undefined.log",
+      "sha256": "9449e8d457f67edef3c0be7e4b7c7bb78f1eefb70bfb4ad1abc7bd48aef7e49b"
+    },
+    {
+      "path": "exp/rpc-logs/mach-arcade_register_server-defined.log",
+      "sha256": "b900c86bdee7e2db018ef01263fac92686d6cff07fa51088a5c2eeb21cb937ec"
+    },
+    {
+      "path": "exp/rpc-logs/mach-arcade_register_server-exports.log",
+      "sha256": "3b7d9551b6eae07f03aedd5903b4f28cb56719f0e656188d2b4a7a3da2120632"
+    },
+    {
+      "path": "exp/rpc-logs/mach-arcade_register_server-undefined.log",
+      "sha256": "9449e8d457f67edef3c0be7e4b7c7bb78f1eefb70bfb4ad1abc7bd48aef7e49b"
+    },
+    {
+      "path": "exp/rpc-logs/mach-arcade_upcall_user-defined.log",
+      "sha256": "3ad144526b3356490c82d0292fdd655ceeaafe3df8a44f7f7efd63f8e7572c00"
+    },
+    {
+      "path": "exp/rpc-logs/mach-audit_triggers_user-defined.log",
+      "sha256": "16593c3703639a07fa692dc51c56f38756607d7dd291df2bde48d789e2ae62a8"
+    },
+    {
+      "path": "exp/rpc-logs/mach-audit_triggers_user-exports.log",
+      "sha256": "bf74ada2100c9b9c5c7690aeab3fcd517f8bc84552242767f17ed5106a29e89a"
+    },
+    {
+      "path": "exp/rpc-logs/mach-audit_triggers_user-undefined.log",
+      "sha256": "59377643e569ef5697e851616f18e7bcd4c1b0f0addb101d22f3f1a33f85b730"
+    },
+    {
+      "path": "exp/rpc-logs/mach-clock_reply_user-defined.log",
+      "sha256": "300c5dde1f712ea6b195721bcac3171c0a97d31390b3b4b74d3dc1a76e060aea"
+    },
+    {
+      "path": "exp/rpc-logs/mach-clock_reply_user-exports.log",
+      "sha256": "844c9867da5b64bac0f0f6be2ee9eb0a01ec41170e5c5a59048fe0447793f57f"
+    },
+    {
+      "path": "exp/rpc-logs/mach-clock_reply_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "exp/rpc-logs/mach-clock_server-defined.log",
+      "sha256": "1bfeeb626a4b19995dbc565c3e369a4c10392372ca3a84852e166422219b6cd9"
+    },
+    {
+      "path": "exp/rpc-logs/mach-clock_server-exports.log",
+      "sha256": "9d6035ab5f3f2d3f705114b3c3baa3b6d5a8e8596e8f9e13e131d032622e0a9d"
+    },
+    {
+      "path": "exp/rpc-logs/mach-clock_server-undefined.log",
+      "sha256": "edb0b09243ad40e9abadeb90f632aea55ade09dd8d9bd668a04b0771cbc35e1e"
+    },
+    {
+      "path": "exp/rpc-logs/mach-coalition_notification_user-defined.log",
+      "sha256": "69b2e923a42fdc12aa5d3a1df77e71958212deb4272bba0987aa87c92d5f7183"
+    },
+    {
+      "path": "exp/rpc-logs/mach-coalition_notification_user-exports.log",
+      "sha256": "53f30e976809d8329208016471f4214f7692c02af065df46a4d6a09f02389c17"
+    },
+    {
+      "path": "exp/rpc-logs/mach-coalition_notification_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "exp/rpc-logs/mach-doubleagent_mig_user-defined.log",
+      "sha256": "e3a66e9826c88fb4e5a4ba167f01e693ad3a027a6c04c31358510906f452faf5"
+    },
+    {
+      "path": "exp/rpc-logs/mach-doubleagent_mig_user-exports.log",
+      "sha256": "a8c66e4140b521cbf90b980fec84a9a25e19711273f2701ea8dafc182ea104d7"
+    },
+    {
+      "path": "exp/rpc-logs/mach-doubleagent_mig_user-undefined.log",
+      "sha256": "3d44ba7c4cd066a3d4e4bd2a00da77ae6a9cf84449cecdd5b92a780d849b682c"
+    },
+    {
+      "path": "exp/rpc-logs/mach-exc_server-defined.log",
+      "sha256": "e39e94b4ffc91d83c311c42a2c31db3b8fec9dd241a0d36d50bb75b0d13e7064"
+    },
+    {
+      "path": "exp/rpc-logs/mach-exc_server-exports.log",
+      "sha256": "67f3ec2d66090b959cec50fec8c2be7e65533e55b691e47ccd2df85a962e0029"
+    },
+    {
+      "path": "exp/rpc-logs/mach-exc_server-undefined.log",
+      "sha256": "09e887150bc1c1ac3569cfaee4ea9ce7c52029869777faaa011ce52989569681"
+    },
+    {
+      "path": "exp/rpc-logs/mach-exc_user-defined.log",
+      "sha256": "283065a62cb7514bf4fb0f2b4cc0d76e22fe32cc14a4b52ca5a6d1605fb7c291"
+    },
+    {
+      "path": "exp/rpc-logs/mach-exc_user-exports.log",
+      "sha256": "1048ca81bf09c5b10d5c9808a7471e22d662dc939d5147d7878fcbe5c703a446"
+    },
+    {
+      "path": "exp/rpc-logs/mach-exc_user-undefined.log",
+      "sha256": "c5124b2e0f5a91b6563714487469d5d30d2838c94a3c4b531f5f12212f8b43eb"
+    },
+    {
+      "path": "exp/rpc-logs/mach-fairplayd_notification_user-defined.log",
+      "sha256": "84526bd66086d6e17f13db891d657c541976a11b9309b1edc41d69ddd9480973"
+    },
+    {
+      "path": "exp/rpc-logs/mach-fairplayd_notification_user-exports.log",
+      "sha256": "b69768f5ca71fe70a5b9d50be959c2ae9ab12896b7f2599c879d5364dfc5e8d2"
+    },
+    {
+      "path": "exp/rpc-logs/mach-fairplayd_notification_user-undefined.log",
+      "sha256": "ead47307b549038e914fd6d0d29e160af0444843460036e7a005b26347f3dafa"
+    },
+    {
+      "path": "exp/rpc-logs/mach-host_notify_reply_user-defined.log",
+      "sha256": "ee0f1d924f7f09740fb5f6a664d4d595b34fb7218fbaa243f8593ce24ae51e77"
+    },
+    {
+      "path": "exp/rpc-logs/mach-host_notify_reply_user-exports.log",
+      "sha256": "14ed285d8d0d182811c128c95ffe84a0971a57141f39eeea2d5d085ddbdc94bc"
+    },
+    {
+      "path": "exp/rpc-logs/mach-host_notify_reply_user-undefined.log",
+      "sha256": "ead47307b549038e914fd6d0d29e160af0444843460036e7a005b26347f3dafa"
+    },
+    {
+      "path": "exp/rpc-logs/mach-host_priv_server-defined.log",
+      "sha256": "0ae8682d3bf73c161c16f4a43828f0263ec312366737e0890954957f63847074"
+    },
+    {
+      "path": "exp/rpc-logs/mach-host_priv_server-exports.log",
+      "sha256": "8d0903dfb963441594ea95f43cd7648c69133ab909ef2ed12fbf25f8433ddf58"
+    },
+    {
+      "path": "exp/rpc-logs/mach-host_priv_server-undefined.log",
+      "sha256": "15fa50382d4c0eb3e5c9dc7774f410b189e15f04bdc7228ac5a5a4468eca7f94"
+    },
+    {
+      "path": "exp/rpc-logs/mach-iocompressionstats_notification_user-defined.log",
+      "sha256": "364ed4db45beef9a9fa2e06f2c48c7d19c76372bb7f62dd9a4f09b3992b6e19c"
+    },
+    {
+      "path": "exp/rpc-logs/mach-iocompressionstats_notification_user-exports.log",
+      "sha256": "e34184e41163103399e21c3707a9b942d06c6c0fadeabb5634d4ea5a5f7c365b"
+    },
+    {
+      "path": "exp/rpc-logs/mach-iocompressionstats_notification_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "exp/rpc-logs/mach-ktrace_background_user-defined.log",
+      "sha256": "5912ee299670225d8a7f827f854ab64d6dae15e48c604ece11d0b8ce9530c665"
+    },
+    {
+      "path": "exp/rpc-logs/mach-ktrace_background_user-exports.log",
+      "sha256": "d1fc9699914a8ae4337f909e88c5453e53be4c42c6b576510f955420b8cfc042"
+    },
+    {
+      "path": "exp/rpc-logs/mach-ktrace_background_user-undefined.log",
+      "sha256": "ead47307b549038e914fd6d0d29e160af0444843460036e7a005b26347f3dafa"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_eventlink_server-defined.log",
+      "sha256": "487c99e6f2a21e782f0815874972e44e3aebb6fdb234de8d3568906a2fe74242"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_eventlink_server-exports.log",
+      "sha256": "95ad793b8698ced04aeecbe5db279616b37a01c447ad9c4d388d79a6fdcf1f68"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_eventlink_server-undefined.log",
+      "sha256": "0b2927476826b54403130a9575a7c92e405583b6103f3c62f8c119900bb1fc39"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_exc_server-defined.log",
+      "sha256": "883c9a7966d967906a534abece2d47653f4e542b36679f59f853cdd5ff6d279a"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_exc_server-exports.log",
+      "sha256": "a0ddbaedcbaa7e3ad8bb16535bc25a816862c801f5a709fb85ee9ae7d503ece9"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_exc_server-undefined.log",
+      "sha256": "289d88bb015a82a32577003dae6857ce046eb4e9604602f8d6ec5c270df59814"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_exc_user-defined.log",
+      "sha256": "1f089082903d0a87a3a51c5fc32afa7b83833a9b02b251c79d1c4c50a3d7c6d7"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_exc_user-exports.log",
+      "sha256": "d68303859142c672f096b761241ac9bd34d8bf588212568379cf110bb0b41df7"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_exc_user-undefined.log",
+      "sha256": "c5124b2e0f5a91b6563714487469d5d30d2838c94a3c4b531f5f12212f8b43eb"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_host_server-defined.log",
+      "sha256": "b1482e8089e966130f10efe1a532f72955642f2cdb8d66277dd1bc864aafb31b"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_host_server-exports.log",
+      "sha256": "b31cd724cf72694eb86ff54e06743171a4c88cfd79ee750178efeb8d39c48a13"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_host_server-undefined.log",
+      "sha256": "3cc90840180ecfb762dca9b75987e312d553edbf97904a735c34c15125e938a3"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_notify_server-defined.log",
+      "sha256": "9a51f693b74e57aec0350e0b7ab16fbc0c2eb99e166d698f8744f8b1a5629663"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_notify_server-exports.log",
+      "sha256": "f76eea11c15218a0fc181926e982919196c51e985063fd93b0760f43dc866206"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_notify_server-undefined.log",
+      "sha256": "570d4c5ae507b49a9d9fd1aaef88972e47b01fb19541dc646230cbdd5a7270bf"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_notify_user-defined.log",
+      "sha256": "fa3bacb3287f4271c4fc4c7eef1f9268b7f6f6599ca34a23d2123e25d4bb1530"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_notify_user-exports.log",
+      "sha256": "5db017d6cb5b79c22dd40b21f0bc6e3b642ae216ceb4bd427d970e06b128cd9b"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_notify_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_port_server-defined.log",
+      "sha256": "a3e6e1de107d5b416bb7a6c889911d8277c556974fdd6c2dd657d19ef0b3d5d9"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_port_server-exports.log",
+      "sha256": "50963788e7b27d3654c344407dae8aabe200a093f85b837a2e894924d8c1e50e"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_port_server-undefined.log",
+      "sha256": "4367834f5b5c15373d74f0047a776890aad5a5fd9778fc8bd11a962895ce36cc"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_test_upcall_user-defined.log",
+      "sha256": "3d3251bef2cd8c885d1042037c643d756c49c1200bd6f9b655c0b3b5a9f5c0a5"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_test_upcall_user-exports.log",
+      "sha256": "7c59b381800cf8c207014b1262ed4e24ceb780ce90d05424c748ca739fd4471c"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_test_upcall_user-undefined.log",
+      "sha256": "6b256565de789ded1fada012a3415b872f434c6700925ba6fa1b53af08424929"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_vm_server-defined.log",
+      "sha256": "e5cc7b70f9b2fa6898d3fbe7f5feacd2cbfa16b9116086cd0e261d7c0b5815fb"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_vm_server-exports.log",
+      "sha256": "323f78d88579352b03fc52e2fb94bb4f3e9b10d9b655bfc526c73f3516d7e1ae"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_vm_server-undefined.log",
+      "sha256": "6727625343422c9b8dc804857eb96385957f9f7504c05ee6c1eb855ca404d298"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_voucher_server-defined.log",
+      "sha256": "0c953ee91bf0c9385cb6fd481ada6487584ff1e4d742b793faf153596c6c921c"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_voucher_server-exports.log",
+      "sha256": "152fad7f01742dbe492f47f50dc1c54dbf1693042dd93f40b6361ff268df38c5"
+    },
+    {
+      "path": "exp/rpc-logs/mach-mach_voucher_server-undefined.log",
+      "sha256": "1fc1f5293ed381ec193f8ceaffe5b41b4ba099a3f38eeeb00e39736ba78946d8"
+    },
+    {
+      "path": "exp/rpc-logs/mach-memory_entry_server-defined.log",
+      "sha256": "97c9f56bc817beb980a848b08e2f1de93ad0f0b5cb50adc0ce23f23ff68e5ed2"
+    },
+    {
+      "path": "exp/rpc-logs/mach-memory_entry_server-exports.log",
+      "sha256": "b6d471398256e69a88d4c2964ea503ac620ca2a76a204a6725443b563f691c6a"
+    },
+    {
+      "path": "exp/rpc-logs/mach-memory_entry_server-undefined.log",
+      "sha256": "64721d93c2ac580a548f3e99a126b9960aa25cab1f288223c907c83415540e6c"
+    },
+    {
+      "path": "exp/rpc-logs/mach-memory_error_notification_user-defined.log",
+      "sha256": "cc548c8b09cc94549ba00211c8c35f50a1a947883169ad842030d1a49688e09f"
+    },
+    {
+      "path": "exp/rpc-logs/mach-memory_error_notification_user-exports.log",
+      "sha256": "2afcc5a8fbffe68123b941a4b24e2e48dbbff52efa3856dcba32c7c19cb83614"
+    },
+    {
+      "path": "exp/rpc-logs/mach-memory_error_notification_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "exp/rpc-logs/mach-processor_server-defined.log",
+      "sha256": "e597fb95b18ea8c503a930e044e4a690981d87feef5f17074d5021979adc3928"
+    },
+    {
+      "path": "exp/rpc-logs/mach-processor_server-exports.log",
+      "sha256": "18a4ccc0fe3847242309d7e07b4080125c007195e3afb5e198b08edcd15bbf43"
+    },
+    {
+      "path": "exp/rpc-logs/mach-processor_server-undefined.log",
+      "sha256": "d9f8b6a903e45b34a62320f505b30cf8c459fc28e6778b42d1cf6dc0489f7ef3"
+    },
+    {
+      "path": "exp/rpc-logs/mach-processor_set_server-defined.log",
+      "sha256": "14aa008441297d6dc1e54573be4d11f092856fb5230e6d6d6af08efc9ba3d05d"
+    },
+    {
+      "path": "exp/rpc-logs/mach-processor_set_server-exports.log",
+      "sha256": "a87375e5892f6b25f83b9fafd18d3ef483c8223ee90c8860ae9e21c0091d1470"
+    },
+    {
+      "path": "exp/rpc-logs/mach-processor_set_server-undefined.log",
+      "sha256": "a8513557a3f1ec78c6b66b3a688d8fcd306a714cfac5c0d2f235ca5d579d051b"
+    },
+    {
+      "path": "exp/rpc-logs/mach-resource_notify_user-defined.log",
+      "sha256": "1945c82bd5b01957644c8e1f377ccea8af80e1585c5b93775034af3f6e278cce"
+    },
+    {
+      "path": "exp/rpc-logs/mach-resource_notify_user-exports.log",
+      "sha256": "9e587abf30f87528020133fbeb5639af096fd726148fb637fbc4257ae878e597"
+    },
+    {
+      "path": "exp/rpc-logs/mach-resource_notify_user-undefined.log",
+      "sha256": "17f93bff37d5f8d3a372901fb0327f608110e927f6622beb37258c310af4aa29"
+    },
+    {
+      "path": "exp/rpc-logs/mach-restartable_server-defined.log",
+      "sha256": "a8bd43c10e4005a76b81780eae4a1ab609d084117dbc3367d042cb46ef967335"
+    },
+    {
+      "path": "exp/rpc-logs/mach-restartable_server-exports.log",
+      "sha256": "a32a6dbe821ef9ac78089a807faa5d8a506ec6ff6a4da78ccc1e23d845abdad2"
+    },
+    {
+      "path": "exp/rpc-logs/mach-restartable_server-undefined.log",
+      "sha256": "10613a7d106eeab54953db5193280f399abf99d2d14af366f10fcc9300571f2b"
+    },
+    {
+      "path": "exp/rpc-logs/mach-sysdiagnose_notification_user-defined.log",
+      "sha256": "a65c22c5353e4939d206c798299374633c5ba56a0fdebbc3c1d2e2f16c6b2041"
+    },
+    {
+      "path": "exp/rpc-logs/mach-sysdiagnose_notification_user-exports.log",
+      "sha256": "c93f942acbd8c9d015e528fb7da835b646dee1820d6209712f27b018c9bae196"
+    },
+    {
+      "path": "exp/rpc-logs/mach-sysdiagnose_notification_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "exp/rpc-logs/mach-task_access_user-defined.log",
+      "sha256": "9263ac95d3dd450fcd269ba3b8fb1c7ddc268ed3e200cc7a7605d315912440a6"
+    },
+    {
+      "path": "exp/rpc-logs/mach-task_access_user-exports.log",
+      "sha256": "8f16e8929de390362dab67778ce318555fd3b40941a498f281da6b9c24c67d7b"
+    },
+    {
+      "path": "exp/rpc-logs/mach-task_access_user-undefined.log",
+      "sha256": "a8532a29e9a073dc993ea6f26bc494ed0a9d47141438a79e7882a762eae0ca08"
+    },
+    {
+      "path": "exp/rpc-logs/mach-task_server-defined.log",
+      "sha256": "cad6045ca9f1ead63005d3f85b629f4caf832edb8cad7145ff9bcc72d69d66a8"
+    },
+    {
+      "path": "exp/rpc-logs/mach-task_server-exports.log",
+      "sha256": "690b96092dee35436ae61d48f3baf637be4fa2c589f30c4cae558caaf4a162f5"
+    },
+    {
+      "path": "exp/rpc-logs/mach-task_server-undefined.log",
+      "sha256": "0cd6d9416522544ab5afbdbafac3ab6de82c4f40e630cc3646c6750cdf5cc200"
+    },
+    {
+      "path": "exp/rpc-logs/mach-telemetry_notification_user-defined.log",
+      "sha256": "f1ffcb9960a2fb26a7004a496d486845cdc75bf63d9c077ddcded2726071de90"
+    },
+    {
+      "path": "exp/rpc-logs/mach-telemetry_notification_user-exports.log",
+      "sha256": "264d4f338780c91eb89109c9d463942f2974e71171e83996ec30a363f0a0d28f"
+    },
+    {
+      "path": "exp/rpc-logs/mach-telemetry_notification_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "exp/rpc-logs/mach-thread_act_server-defined.log",
+      "sha256": "dc0034084648fd9cb43b76b2a65811e2574f63da38f6eee9ea20e0ce0525253b"
+    },
+    {
+      "path": "exp/rpc-logs/mach-thread_act_server-exports.log",
+      "sha256": "3524fce39bae2bd818c26fc491fae20faac4fd003b10bd2ff655fd2030b2636d"
+    },
+    {
+      "path": "exp/rpc-logs/mach-thread_act_server-undefined.log",
+      "sha256": "5ababbd0fae3971793648f1829527e297010ef15ce0a17d9778e5c1b2e55b501"
+    },
+    {
+      "path": "exp/rpc-logs/mach-upl_server-defined.log",
+      "sha256": "83620f52db4ae3eec2dbb1379a9cd4310fd5f2d0ea01ed5ac099c11b735cd388"
+    },
+    {
+      "path": "exp/rpc-logs/mach-upl_server-exports.log",
+      "sha256": "48f89cd6fee85538f9e87e0df9fd7f247c007bb01b8b87796126893ed001f826"
+    },
+    {
+      "path": "exp/rpc-logs/mach-upl_server-undefined.log",
+      "sha256": "f7da34866267ccc35d2b123bbf3e271b4673f25332b0628e77eae446390bb78e"
+    },
+    {
+      "path": "exp/rpc-logs/mach-upl_user-defined.log",
+      "sha256": "90e677200be6bc4a93620b2568c382a4a79dc4e34e60005e3087a458c7a4ebc2"
+    },
+    {
+      "path": "exp/rpc-logs/mach-upl_user-exports.log",
+      "sha256": "a1bd6af4dfba56f32abf68bdd6d6915432a2394aceaab3f5a28ceecf2423924c"
+    },
+    {
+      "path": "exp/rpc-logs/mach-upl_user-undefined.log",
+      "sha256": "259a198f5471f5c89039f57265ae33fad3824cbf10a3e6c5c85962fea031b298"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vfs_nspace_user-defined.log",
+      "sha256": "5109cb02a1fbf998141a96cb35a5bb00174a5b8ed3832468e31548cbacc7e4c8"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vfs_nspace_user-exports.log",
+      "sha256": "91894aeec0d5ebdd92b02a8dca49209b5e35fd2e475464923415e60f08d9bd9f"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vfs_nspace_user-undefined.log",
+      "sha256": "13d89fe046475fcb54106522ae6a7c2fedd8b5bfb8af06c491bc0e7227206061"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vm32_map_server-defined.log",
+      "sha256": "a14f290f2508576bbf85896e18b4a0ad4dc14dc4ea1ddad0e4fa03437ae3e977"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vm32_map_server-exports.log",
+      "sha256": "82beb273beb05e5ba8afb9165ff53e1d71093e87e80e2abf4146f9de98529335"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vm32_map_server-undefined.log",
+      "sha256": "126278fdcdce84f21a92c013a2b4f0c7f7a9c7e5d5357ef9cf8505f9904383cf"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vm_map_server-defined.log",
+      "sha256": "4535702853c120beba0453e9651b24ed09a478f91b26410c87a36635e7e9e0d0"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vm_map_server-exports.log",
+      "sha256": "1edd909e8445793ca2b99196443ce7895ee4d77c36a00dc57cfb8db79f415b3c"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vm_map_server-undefined.log",
+      "sha256": "1fb18fd15fdf8a21d4112fa339359d9a7d74fee9afd4b1d0f00dd912f7b30c2b"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vm_map_user-defined.log",
+      "sha256": "8d2faba991abdaca724c225061690a0afb11a4534ced0c052b54607990a82028"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vm_map_user-exports.log",
+      "sha256": "4b553b97c7421984ebee2cc44db0487506b867193a8f49d41850c3b30626a6e0"
+    },
+    {
+      "path": "exp/rpc-logs/mach-vm_map_user-undefined.log",
+      "sha256": "5603b8d1fe74880dba0033b09be7383728834c66c0220673e050babf76a1f7e1"
+    },
+    {
+      "path": "exp/rpc-logs/reject-disabled-typecheck.log",
+      "sha256": "ca4c4d3f19bac509fc5a107748d8ef0222aebd08fd61acd3439dd47abe5c6747"
+    },
+    {
+      "path": "exp/scheduler/reject-narrow-deadline.log",
+      "sha256": "a93566863d0e28b1d03985c836b3769a6e7171ca94110fe93a0c522c8416e34c"
+    },
+    {
+      "path": "exp/scheduler/reject-wrong-label-callback.log",
+      "sha256": "77d2f29a3392eb56f4196999a7aac45b4842fcb194ba57b9335b745e271088a7"
+    },
+    {
+      "path": "exp/scheduler/report.json",
+      "sha256": "451f48923578d63c231de699db35b3f212a592c1633190a5ab21ef81cb87c861"
+    },
+    {
+      "path": "exp/startup/report.json",
+      "sha256": "d6bf80219b6da9daabf25544d7189547d5ff25a1c152e75a90c2e2c262bc1c67"
+    },
+    {
+      "path": "exp/strings/reject-copy-capacity.log",
+      "sha256": "42ded2686c5719eb96e607cdad3454a87379190938c95e87f8821084c7f492ef"
+    },
+    {
+      "path": "exp/strings/reject-macho-size-output.log",
+      "sha256": "44234b7f852340e70741a02202d3f1df2859e76cdea3cda1babb24431cc6b4ec"
+    },
+    {
+      "path": "exp/strings/report.json",
+      "sha256": "8b38d621289dada957fd0a3b3d7eb113f1b41fe4d8aa9af2b61a6a8d77f1782f"
+    },
+    {
+      "path": "exp/task/bsd-reject-owner.log",
+      "sha256": "f73d3ea7844e0c1deb3be97b02ce3dabcb607ba7fe8a72754e498045f4f844dd"
+    },
+    {
+      "path": "exp/task/mach-reject-owner.log",
+      "sha256": "e095fef343ec19a6d54679e8ac23a30090498d3284968da37755796acd5d0604"
+    },
+    {
+      "path": "exp/task/mach-reject-thread-owner.log",
+      "sha256": "2bf571996dcde07511133dff43b28173b30fe35b6c81c2174ee4b7ad85f39400"
+    },
+    {
+      "path": "exp/task/report.json",
+      "sha256": "840a427d0dde9efe15633ec75974333b33f9cb87f7cf2b49c7ea123dfd45c80d"
+    },
+    {
+      "path": "exp/usage/report.json",
+      "sha256": "024e6afc090a9eb13480325608652f6a109add1c252dc0696d548c77605661c4"
+    },
+    {
+      "path": "exp-base-report.json",
+      "sha256": "98c17c3fadaf51fb8e57b688f3f8c57bc1fb535bb8b31d28f2134b36451735ff"
+    },
+    {
+      "path": "exp-link-report.json",
+      "sha256": "097d934c23ced0c3d981cab3cc322836be83c09cc40ac0ba3b84ab480a9bd22d"
+    },
+    {
+      "path": "exp-link.log",
+      "sha256": "9912888f7c2f62ed31552a99f012650e69b2d7b61a1e29b7cf80e147d5981ef9"
+    },
+    {
+      "path": "exp-rpc-report.json",
+      "sha256": "97f3fe1f66176ea28fc867efda888d223330368b1ee71d5689612a269d1aeda9"
+    },
+    {
+      "path": "full-local-inventory.json",
+      "sha256": "beb695e2bd5ad75cc63db8a5e3742a2d9446eea0e7035fddd3384756e067dfaa"
+    },
+    {
+      "path": "link-delta.json",
+      "sha256": "9d094a9833c9fa034f3c66cbeb38b0b082418688a84de18f28956d542dcf79f2"
+    },
+    {
+      "path": "source/tests/xnu_port/cpu_cache_abi.c",
+      "sha256": "f60e67050a6059f8832da94da1edd355ae79dbb5a11fcdc1d47cb88635e62360"
+    },
+    {
+      "path": "source/tools/build_xnu_lab.py",
+      "sha256": "705e3a0287ea77247e12d71d42b1169814a7e982afae900d99f378c3e2928f97"
+    },
+    {
+      "path": "source/tools/test_xnu_cpu_cache.py",
+      "sha256": "01bc5000ab46e6d1e3d028a2b33e54f4c71a2bd9f5c7a1e4cd66e826089e4e1a"
+    },
+    {
+      "path": "std/boot-prepare/candidate-boot-args.bin",
+      "sha256": "8971c60b7399ceaf65a735ffa4b59af9c0e921b3fd632690da538b5f2e2dcbcd"
+    },
+    {
+      "path": "std/boot-prepare/report.json",
+      "sha256": "bedeadde6fd859f6bb7ead0159149aa989b287b9bf3f02e59c6b2507f3f412a9"
+    },
+    {
+      "path": "std/boot-tree/report.json",
+      "sha256": "5b4efb7871c0669d88829f28c425a98afdfe3dc97b1b6d4d3e0e2d0f6c25b95d"
+    },
+    {
+      "path": "std/brk/report.json",
+      "sha256": "c768c675b2c56109edd123ea70060b89e88d7c57dff4ee12d7eef5dd50ced6b8"
+    },
+    {
+      "path": "std/brk/wrong-reserved-trap-rejected.log",
+      "sha256": "3d6bcc650d2c8b9365addde5ce8943b85322a0ffe391c9751001dd18c0e58bb7"
+    },
+    {
+      "path": "std/coalition/reject-absent-telemetry-field.log",
+      "sha256": "6b3b389c8de414b918610c90aecb4e709e38288faf097b06699cb76ad29d8ad5"
+    },
+    {
+      "path": "std/coalition/reject-wrong-bank-callback.log",
+      "sha256": "c35a731e0479027a1a07cbbdc2adb92c5a2c022f9c1a9804a1d4c7ab95e1239e"
+    },
+    {
+      "path": "std/coalition/report.json",
+      "sha256": "baa3f8d34717b5fa94f52b444eaace94849e0af570b105f6ac9df1ffabf32239"
+    },
+    {
+      "path": "std/core/printf-reject-return-type.log",
+      "sha256": "52ac60966c4e8582efc47cc2de6a2e1c77e08ea6592740aae5e9ddd810dea953"
+    },
+    {
+      "path": "std/core/report.json",
+      "sha256": "15a2f30caa4c26d807ad21f49bbce241e012829813cfa33d5a6ac38471bb4ec5"
+    },
+    {
+      "path": "std/cpu/cpuid-probe.o",
+      "sha256": "e2483cfc44f93cdbc8dd6baf5fb78e1e1d8a4b4e1c3a7fb7c4d879da67e5fe4a"
+    },
+    {
+      "path": "std/cpu/machine_cpuid-probe.o",
+      "sha256": "e847eda1ddb749c00733b63fbe291fe2ccec33dc90a87f37f2a0de8d22e54b1e"
+    },
+    {
+      "path": "std/cpu/machine_routines_apple-probe.o",
+      "sha256": "e697443e91a7ac111f13e617687ad60e8c6ce4addd4e760750046c6baff3ea5c"
+    },
+    {
+      "path": "std/cpu/native-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std/cpu/native-cpu-cache-abi.o",
+      "sha256": "5356e8422002462c24ac2fb14e0744b2f09fe2c826a2571ff00bff10c1b47870"
+    },
+    {
+      "path": "std/cpu/reject-cache-pointer.log",
+      "sha256": "23ce78d5dc7a706618341372a4bba3785e5c0bb852b526a35935a55aedbfce12"
+    },
+    {
+      "path": "std/cpu/reject-midr-width.log",
+      "sha256": "91788c64a3ed1cc63df80999ec3f4f885d20c5f1b1c2a69d844645abd7238845"
+    },
+    {
+      "path": "std/cpu/report.json",
+      "sha256": "e0b7400e28253a13d8f4d7d9b040caa4319bdd9be3a0e45f37eed4744d73e4dc"
+    },
+    {
+      "path": "std/cpu/standard-cpuid-probe.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std/cpu/standard-machine_cpuid-probe.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std/cpu/standard-machine_routines_apple-probe.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "std/kobject/report.json",
+      "sha256": "942a20940aacec900d2e8c37450ae980818282876b0c2d19e18befe529cbdc9f"
+    },
+    {
+      "path": "std/macho/report.json",
+      "sha256": "079714d5d137653477b2328d3379be8db6362b1faa0eda396cbba250e55db77b"
+    },
+    {
+      "path": "std/mig/reject-coalition-port-name.log",
+      "sha256": "5e54f2417361e9c39cccbfd04b305b6e1c3f5a440d28d3293b536cdf6ab20565"
+    },
+    {
+      "path": "std/mig/reject-legacy-server.log",
+      "sha256": "f6afc285a31d4089afd9127a84e6f81a7b95c6d0ee278a49890bac1b04bab659"
+    },
+    {
+      "path": "std/mig/reject-port-name.log",
+      "sha256": "7e0bad2b2f604c3ebde6cff2030ac5075e9dfbb2f47c7d625d5c8896626bf0d5"
+    },
+    {
+      "path": "std/mig/report.json",
+      "sha256": "a3545238bf71c869ce42543f9093aec27849f7d27d32bd3444513957c6a22844"
+    },
+    {
+      "path": "std/platform/reject-irq-callback-abi.log",
+      "sha256": "795cc6abbc63bb879a5606e86e13ef8fbbc6f12b61c7ae0b72fe0c144e9b3670"
+    },
+    {
+      "path": "std/platform/reject-mapping-callback-abi.log",
+      "sha256": "52f002696657279da25f7a675e14514952538f25c7329b070d673d10c21ef312"
+    },
+    {
+      "path": "std/platform/report.json",
+      "sha256": "fdfd885cc58c1903a02c0b47e2fd6227c82be5458beb38c80b667812a4cef732"
+    },
+    {
+      "path": "std/pmap/report.json",
+      "sha256": "acb5c3d722a38b32644f724b58e42a55594f7af3d8fa91ba75adbf070b72d4b4"
+    },
+    {
+      "path": "std/pmap-scope/report.json",
+      "sha256": "0ac1cbc5c643daf64c439b4eaa18628384d36e810c9446b596f7b02315299cc7"
+    },
+    {
+      "path": "std/policy/reject-truncated-option-abi.log",
+      "sha256": "003db6fc07a6fce7a77568eb4b1f48b07ab510369f814d475199d2ab2eb327e5"
+    },
+    {
+      "path": "std/policy/reject-unselected-process-analytics-api.log",
+      "sha256": "136708860316485a6a84f93c78d88c6d18357dac30d4007f053b91760217fa69"
+    },
+    {
+      "path": "std/policy/report.json",
+      "sha256": "266a546da37d9754270901a93dfd06f1a31c0c92c51c0c1c52e2fbea2d5cf398"
+    },
+    {
+      "path": "std/rpc/reject-descriptor-prefix.log",
+      "sha256": "d0850f2e722ffe25d61985e6f609460b6d31d045aa3ac3daa17019e63f9f6eb5"
+    },
+    {
+      "path": "std/rpc/report.json",
+      "sha256": "390a24e41eee8554b9661fae60adbd5fded814f2251e56403af8c617c6c2b741"
+    },
+    {
+      "path": "std/rpc-logs/compile-mach-upl_user.log",
+      "sha256": "6208f3ce155d6c8592c4eae64a1c4692e0c1216304551d01d9cd0a03c17c2152"
+    },
+    {
+      "path": "std/rpc-logs/compile-mach-vm_map_user.log",
+      "sha256": "97b1b6671e9775f0cf9a6f795e075d6bd4c2f35341e4a5d084b74a4b9610f682"
+    },
+    {
+      "path": "std/rpc-logs/device-device_server-defined.log",
+      "sha256": "ca2f62b305dfa512e17873350b0bfc36b318c9a1d4379ef2a5c20b59ea926f43"
+    },
+    {
+      "path": "std/rpc-logs/device-device_server-exports.log",
+      "sha256": "aae7c5cc84547f83ac40425143a2c6112e9d6f9e0e5d4333f0421eeab835e8b9"
+    },
+    {
+      "path": "std/rpc-logs/device-device_server-undefined.log",
+      "sha256": "9449e8d457f67edef3c0be7e4b7c7bb78f1eefb70bfb4ad1abc7bd48aef7e49b"
+    },
+    {
+      "path": "std/rpc-logs/mach-arcade_register_server-defined.log",
+      "sha256": "b900c86bdee7e2db018ef01263fac92686d6cff07fa51088a5c2eeb21cb937ec"
+    },
+    {
+      "path": "std/rpc-logs/mach-arcade_register_server-exports.log",
+      "sha256": "3b7d9551b6eae07f03aedd5903b4f28cb56719f0e656188d2b4a7a3da2120632"
+    },
+    {
+      "path": "std/rpc-logs/mach-arcade_register_server-undefined.log",
+      "sha256": "9449e8d457f67edef3c0be7e4b7c7bb78f1eefb70bfb4ad1abc7bd48aef7e49b"
+    },
+    {
+      "path": "std/rpc-logs/mach-arcade_upcall_user-defined.log",
+      "sha256": "3ad144526b3356490c82d0292fdd655ceeaafe3df8a44f7f7efd63f8e7572c00"
+    },
+    {
+      "path": "std/rpc-logs/mach-audit_triggers_user-defined.log",
+      "sha256": "16593c3703639a07fa692dc51c56f38756607d7dd291df2bde48d789e2ae62a8"
+    },
+    {
+      "path": "std/rpc-logs/mach-audit_triggers_user-exports.log",
+      "sha256": "bf74ada2100c9b9c5c7690aeab3fcd517f8bc84552242767f17ed5106a29e89a"
+    },
+    {
+      "path": "std/rpc-logs/mach-audit_triggers_user-undefined.log",
+      "sha256": "59377643e569ef5697e851616f18e7bcd4c1b0f0addb101d22f3f1a33f85b730"
+    },
+    {
+      "path": "std/rpc-logs/mach-clock_reply_user-defined.log",
+      "sha256": "300c5dde1f712ea6b195721bcac3171c0a97d31390b3b4b74d3dc1a76e060aea"
+    },
+    {
+      "path": "std/rpc-logs/mach-clock_reply_user-exports.log",
+      "sha256": "844c9867da5b64bac0f0f6be2ee9eb0a01ec41170e5c5a59048fe0447793f57f"
+    },
+    {
+      "path": "std/rpc-logs/mach-clock_reply_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "std/rpc-logs/mach-clock_server-defined.log",
+      "sha256": "1bfeeb626a4b19995dbc565c3e369a4c10392372ca3a84852e166422219b6cd9"
+    },
+    {
+      "path": "std/rpc-logs/mach-clock_server-exports.log",
+      "sha256": "9d6035ab5f3f2d3f705114b3c3baa3b6d5a8e8596e8f9e13e131d032622e0a9d"
+    },
+    {
+      "path": "std/rpc-logs/mach-clock_server-undefined.log",
+      "sha256": "edb0b09243ad40e9abadeb90f632aea55ade09dd8d9bd668a04b0771cbc35e1e"
+    },
+    {
+      "path": "std/rpc-logs/mach-coalition_notification_user-defined.log",
+      "sha256": "69b2e923a42fdc12aa5d3a1df77e71958212deb4272bba0987aa87c92d5f7183"
+    },
+    {
+      "path": "std/rpc-logs/mach-coalition_notification_user-exports.log",
+      "sha256": "53f30e976809d8329208016471f4214f7692c02af065df46a4d6a09f02389c17"
+    },
+    {
+      "path": "std/rpc-logs/mach-coalition_notification_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "std/rpc-logs/mach-doubleagent_mig_user-defined.log",
+      "sha256": "e3a66e9826c88fb4e5a4ba167f01e693ad3a027a6c04c31358510906f452faf5"
+    },
+    {
+      "path": "std/rpc-logs/mach-doubleagent_mig_user-exports.log",
+      "sha256": "a8c66e4140b521cbf90b980fec84a9a25e19711273f2701ea8dafc182ea104d7"
+    },
+    {
+      "path": "std/rpc-logs/mach-doubleagent_mig_user-undefined.log",
+      "sha256": "3d44ba7c4cd066a3d4e4bd2a00da77ae6a9cf84449cecdd5b92a780d849b682c"
+    },
+    {
+      "path": "std/rpc-logs/mach-exc_server-defined.log",
+      "sha256": "e39e94b4ffc91d83c311c42a2c31db3b8fec9dd241a0d36d50bb75b0d13e7064"
+    },
+    {
+      "path": "std/rpc-logs/mach-exc_server-exports.log",
+      "sha256": "67f3ec2d66090b959cec50fec8c2be7e65533e55b691e47ccd2df85a962e0029"
+    },
+    {
+      "path": "std/rpc-logs/mach-exc_server-undefined.log",
+      "sha256": "09e887150bc1c1ac3569cfaee4ea9ce7c52029869777faaa011ce52989569681"
+    },
+    {
+      "path": "std/rpc-logs/mach-exc_user-defined.log",
+      "sha256": "283065a62cb7514bf4fb0f2b4cc0d76e22fe32cc14a4b52ca5a6d1605fb7c291"
+    },
+    {
+      "path": "std/rpc-logs/mach-exc_user-exports.log",
+      "sha256": "1048ca81bf09c5b10d5c9808a7471e22d662dc939d5147d7878fcbe5c703a446"
+    },
+    {
+      "path": "std/rpc-logs/mach-exc_user-undefined.log",
+      "sha256": "c5124b2e0f5a91b6563714487469d5d30d2838c94a3c4b531f5f12212f8b43eb"
+    },
+    {
+      "path": "std/rpc-logs/mach-fairplayd_notification_user-defined.log",
+      "sha256": "84526bd66086d6e17f13db891d657c541976a11b9309b1edc41d69ddd9480973"
+    },
+    {
+      "path": "std/rpc-logs/mach-fairplayd_notification_user-exports.log",
+      "sha256": "b69768f5ca71fe70a5b9d50be959c2ae9ab12896b7f2599c879d5364dfc5e8d2"
+    },
+    {
+      "path": "std/rpc-logs/mach-fairplayd_notification_user-undefined.log",
+      "sha256": "ead47307b549038e914fd6d0d29e160af0444843460036e7a005b26347f3dafa"
+    },
+    {
+      "path": "std/rpc-logs/mach-host_notify_reply_user-defined.log",
+      "sha256": "ee0f1d924f7f09740fb5f6a664d4d595b34fb7218fbaa243f8593ce24ae51e77"
+    },
+    {
+      "path": "std/rpc-logs/mach-host_notify_reply_user-exports.log",
+      "sha256": "14ed285d8d0d182811c128c95ffe84a0971a57141f39eeea2d5d085ddbdc94bc"
+    },
+    {
+      "path": "std/rpc-logs/mach-host_notify_reply_user-undefined.log",
+      "sha256": "ead47307b549038e914fd6d0d29e160af0444843460036e7a005b26347f3dafa"
+    },
+    {
+      "path": "std/rpc-logs/mach-host_priv_server-defined.log",
+      "sha256": "0ae8682d3bf73c161c16f4a43828f0263ec312366737e0890954957f63847074"
+    },
+    {
+      "path": "std/rpc-logs/mach-host_priv_server-exports.log",
+      "sha256": "8d0903dfb963441594ea95f43cd7648c69133ab909ef2ed12fbf25f8433ddf58"
+    },
+    {
+      "path": "std/rpc-logs/mach-host_priv_server-undefined.log",
+      "sha256": "15fa50382d4c0eb3e5c9dc7774f410b189e15f04bdc7228ac5a5a4468eca7f94"
+    },
+    {
+      "path": "std/rpc-logs/mach-iocompressionstats_notification_user-defined.log",
+      "sha256": "364ed4db45beef9a9fa2e06f2c48c7d19c76372bb7f62dd9a4f09b3992b6e19c"
+    },
+    {
+      "path": "std/rpc-logs/mach-iocompressionstats_notification_user-exports.log",
+      "sha256": "e34184e41163103399e21c3707a9b942d06c6c0fadeabb5634d4ea5a5f7c365b"
+    },
+    {
+      "path": "std/rpc-logs/mach-iocompressionstats_notification_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "std/rpc-logs/mach-ktrace_background_user-defined.log",
+      "sha256": "5912ee299670225d8a7f827f854ab64d6dae15e48c604ece11d0b8ce9530c665"
+    },
+    {
+      "path": "std/rpc-logs/mach-ktrace_background_user-exports.log",
+      "sha256": "d1fc9699914a8ae4337f909e88c5453e53be4c42c6b576510f955420b8cfc042"
+    },
+    {
+      "path": "std/rpc-logs/mach-ktrace_background_user-undefined.log",
+      "sha256": "ead47307b549038e914fd6d0d29e160af0444843460036e7a005b26347f3dafa"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_eventlink_server-defined.log",
+      "sha256": "487c99e6f2a21e782f0815874972e44e3aebb6fdb234de8d3568906a2fe74242"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_eventlink_server-exports.log",
+      "sha256": "95ad793b8698ced04aeecbe5db279616b37a01c447ad9c4d388d79a6fdcf1f68"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_eventlink_server-undefined.log",
+      "sha256": "0b2927476826b54403130a9575a7c92e405583b6103f3c62f8c119900bb1fc39"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_exc_server-defined.log",
+      "sha256": "883c9a7966d967906a534abece2d47653f4e542b36679f59f853cdd5ff6d279a"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_exc_server-exports.log",
+      "sha256": "a0ddbaedcbaa7e3ad8bb16535bc25a816862c801f5a709fb85ee9ae7d503ece9"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_exc_server-undefined.log",
+      "sha256": "289d88bb015a82a32577003dae6857ce046eb4e9604602f8d6ec5c270df59814"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_exc_user-defined.log",
+      "sha256": "1f089082903d0a87a3a51c5fc32afa7b83833a9b02b251c79d1c4c50a3d7c6d7"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_exc_user-exports.log",
+      "sha256": "d68303859142c672f096b761241ac9bd34d8bf588212568379cf110bb0b41df7"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_exc_user-undefined.log",
+      "sha256": "c5124b2e0f5a91b6563714487469d5d30d2838c94a3c4b531f5f12212f8b43eb"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_host_server-defined.log",
+      "sha256": "b1482e8089e966130f10efe1a532f72955642f2cdb8d66277dd1bc864aafb31b"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_host_server-exports.log",
+      "sha256": "b31cd724cf72694eb86ff54e06743171a4c88cfd79ee750178efeb8d39c48a13"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_host_server-undefined.log",
+      "sha256": "3cc90840180ecfb762dca9b75987e312d553edbf97904a735c34c15125e938a3"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_notify_server-defined.log",
+      "sha256": "9a51f693b74e57aec0350e0b7ab16fbc0c2eb99e166d698f8744f8b1a5629663"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_notify_server-exports.log",
+      "sha256": "f76eea11c15218a0fc181926e982919196c51e985063fd93b0760f43dc866206"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_notify_server-undefined.log",
+      "sha256": "570d4c5ae507b49a9d9fd1aaef88972e47b01fb19541dc646230cbdd5a7270bf"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_notify_user-defined.log",
+      "sha256": "fa3bacb3287f4271c4fc4c7eef1f9268b7f6f6599ca34a23d2123e25d4bb1530"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_notify_user-exports.log",
+      "sha256": "5db017d6cb5b79c22dd40b21f0bc6e3b642ae216ceb4bd427d970e06b128cd9b"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_notify_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_port_server-defined.log",
+      "sha256": "a3e6e1de107d5b416bb7a6c889911d8277c556974fdd6c2dd657d19ef0b3d5d9"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_port_server-exports.log",
+      "sha256": "50963788e7b27d3654c344407dae8aabe200a093f85b837a2e894924d8c1e50e"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_port_server-undefined.log",
+      "sha256": "4367834f5b5c15373d74f0047a776890aad5a5fd9778fc8bd11a962895ce36cc"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_test_upcall_user-defined.log",
+      "sha256": "3d3251bef2cd8c885d1042037c643d756c49c1200bd6f9b655c0b3b5a9f5c0a5"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_test_upcall_user-exports.log",
+      "sha256": "7c59b381800cf8c207014b1262ed4e24ceb780ce90d05424c748ca739fd4471c"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_test_upcall_user-undefined.log",
+      "sha256": "6b256565de789ded1fada012a3415b872f434c6700925ba6fa1b53af08424929"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_vm_server-defined.log",
+      "sha256": "e5cc7b70f9b2fa6898d3fbe7f5feacd2cbfa16b9116086cd0e261d7c0b5815fb"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_vm_server-exports.log",
+      "sha256": "323f78d88579352b03fc52e2fb94bb4f3e9b10d9b655bfc526c73f3516d7e1ae"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_vm_server-undefined.log",
+      "sha256": "6727625343422c9b8dc804857eb96385957f9f7504c05ee6c1eb855ca404d298"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_voucher_server-defined.log",
+      "sha256": "0c953ee91bf0c9385cb6fd481ada6487584ff1e4d742b793faf153596c6c921c"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_voucher_server-exports.log",
+      "sha256": "152fad7f01742dbe492f47f50dc1c54dbf1693042dd93f40b6361ff268df38c5"
+    },
+    {
+      "path": "std/rpc-logs/mach-mach_voucher_server-undefined.log",
+      "sha256": "1fc1f5293ed381ec193f8ceaffe5b41b4ba099a3f38eeeb00e39736ba78946d8"
+    },
+    {
+      "path": "std/rpc-logs/mach-memory_entry_server-defined.log",
+      "sha256": "97c9f56bc817beb980a848b08e2f1de93ad0f0b5cb50adc0ce23f23ff68e5ed2"
+    },
+    {
+      "path": "std/rpc-logs/mach-memory_entry_server-exports.log",
+      "sha256": "b6d471398256e69a88d4c2964ea503ac620ca2a76a204a6725443b563f691c6a"
+    },
+    {
+      "path": "std/rpc-logs/mach-memory_entry_server-undefined.log",
+      "sha256": "64721d93c2ac580a548f3e99a126b9960aa25cab1f288223c907c83415540e6c"
+    },
+    {
+      "path": "std/rpc-logs/mach-memory_error_notification_user-defined.log",
+      "sha256": "cc548c8b09cc94549ba00211c8c35f50a1a947883169ad842030d1a49688e09f"
+    },
+    {
+      "path": "std/rpc-logs/mach-memory_error_notification_user-exports.log",
+      "sha256": "2afcc5a8fbffe68123b941a4b24e2e48dbbff52efa3856dcba32c7c19cb83614"
+    },
+    {
+      "path": "std/rpc-logs/mach-memory_error_notification_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "std/rpc-logs/mach-processor_server-defined.log",
+      "sha256": "e597fb95b18ea8c503a930e044e4a690981d87feef5f17074d5021979adc3928"
+    },
+    {
+      "path": "std/rpc-logs/mach-processor_server-exports.log",
+      "sha256": "18a4ccc0fe3847242309d7e07b4080125c007195e3afb5e198b08edcd15bbf43"
+    },
+    {
+      "path": "std/rpc-logs/mach-processor_server-undefined.log",
+      "sha256": "d9f8b6a903e45b34a62320f505b30cf8c459fc28e6778b42d1cf6dc0489f7ef3"
+    },
+    {
+      "path": "std/rpc-logs/mach-processor_set_server-defined.log",
+      "sha256": "14aa008441297d6dc1e54573be4d11f092856fb5230e6d6d6af08efc9ba3d05d"
+    },
+    {
+      "path": "std/rpc-logs/mach-processor_set_server-exports.log",
+      "sha256": "a87375e5892f6b25f83b9fafd18d3ef483c8223ee90c8860ae9e21c0091d1470"
+    },
+    {
+      "path": "std/rpc-logs/mach-processor_set_server-undefined.log",
+      "sha256": "a8513557a3f1ec78c6b66b3a688d8fcd306a714cfac5c0d2f235ca5d579d051b"
+    },
+    {
+      "path": "std/rpc-logs/mach-resource_notify_user-defined.log",
+      "sha256": "1945c82bd5b01957644c8e1f377ccea8af80e1585c5b93775034af3f6e278cce"
+    },
+    {
+      "path": "std/rpc-logs/mach-resource_notify_user-exports.log",
+      "sha256": "9e587abf30f87528020133fbeb5639af096fd726148fb637fbc4257ae878e597"
+    },
+    {
+      "path": "std/rpc-logs/mach-resource_notify_user-undefined.log",
+      "sha256": "17f93bff37d5f8d3a372901fb0327f608110e927f6622beb37258c310af4aa29"
+    },
+    {
+      "path": "std/rpc-logs/mach-restartable_server-defined.log",
+      "sha256": "a8bd43c10e4005a76b81780eae4a1ab609d084117dbc3367d042cb46ef967335"
+    },
+    {
+      "path": "std/rpc-logs/mach-restartable_server-exports.log",
+      "sha256": "a32a6dbe821ef9ac78089a807faa5d8a506ec6ff6a4da78ccc1e23d845abdad2"
+    },
+    {
+      "path": "std/rpc-logs/mach-restartable_server-undefined.log",
+      "sha256": "10613a7d106eeab54953db5193280f399abf99d2d14af366f10fcc9300571f2b"
+    },
+    {
+      "path": "std/rpc-logs/mach-sysdiagnose_notification_user-defined.log",
+      "sha256": "a65c22c5353e4939d206c798299374633c5ba56a0fdebbc3c1d2e2f16c6b2041"
+    },
+    {
+      "path": "std/rpc-logs/mach-sysdiagnose_notification_user-exports.log",
+      "sha256": "c93f942acbd8c9d015e528fb7da835b646dee1820d6209712f27b018c9bae196"
+    },
+    {
+      "path": "std/rpc-logs/mach-sysdiagnose_notification_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "std/rpc-logs/mach-task_access_user-defined.log",
+      "sha256": "9263ac95d3dd450fcd269ba3b8fb1c7ddc268ed3e200cc7a7605d315912440a6"
+    },
+    {
+      "path": "std/rpc-logs/mach-task_access_user-exports.log",
+      "sha256": "8f16e8929de390362dab67778ce318555fd3b40941a498f281da6b9c24c67d7b"
+    },
+    {
+      "path": "std/rpc-logs/mach-task_access_user-undefined.log",
+      "sha256": "a8532a29e9a073dc993ea6f26bc494ed0a9d47141438a79e7882a762eae0ca08"
+    },
+    {
+      "path": "std/rpc-logs/mach-task_server-defined.log",
+      "sha256": "cad6045ca9f1ead63005d3f85b629f4caf832edb8cad7145ff9bcc72d69d66a8"
+    },
+    {
+      "path": "std/rpc-logs/mach-task_server-exports.log",
+      "sha256": "690b96092dee35436ae61d48f3baf637be4fa2c589f30c4cae558caaf4a162f5"
+    },
+    {
+      "path": "std/rpc-logs/mach-task_server-undefined.log",
+      "sha256": "0cd6d9416522544ab5afbdbafac3ab6de82c4f40e630cc3646c6750cdf5cc200"
+    },
+    {
+      "path": "std/rpc-logs/mach-telemetry_notification_user-defined.log",
+      "sha256": "f1ffcb9960a2fb26a7004a496d486845cdc75bf63d9c077ddcded2726071de90"
+    },
+    {
+      "path": "std/rpc-logs/mach-telemetry_notification_user-exports.log",
+      "sha256": "264d4f338780c91eb89109c9d463942f2974e71171e83996ec30a363f0a0d28f"
+    },
+    {
+      "path": "std/rpc-logs/mach-telemetry_notification_user-undefined.log",
+      "sha256": "25180328fe4de9e9dc7cb76cc98793d4978fa708b9ba5f34e2b2ca8102329a01"
+    },
+    {
+      "path": "std/rpc-logs/mach-thread_act_server-defined.log",
+      "sha256": "dc0034084648fd9cb43b76b2a65811e2574f63da38f6eee9ea20e0ce0525253b"
+    },
+    {
+      "path": "std/rpc-logs/mach-thread_act_server-exports.log",
+      "sha256": "3524fce39bae2bd818c26fc491fae20faac4fd003b10bd2ff655fd2030b2636d"
+    },
+    {
+      "path": "std/rpc-logs/mach-thread_act_server-undefined.log",
+      "sha256": "5ababbd0fae3971793648f1829527e297010ef15ce0a17d9778e5c1b2e55b501"
+    },
+    {
+      "path": "std/rpc-logs/mach-upl_server-defined.log",
+      "sha256": "83620f52db4ae3eec2dbb1379a9cd4310fd5f2d0ea01ed5ac099c11b735cd388"
+    },
+    {
+      "path": "std/rpc-logs/mach-upl_server-exports.log",
+      "sha256": "48f89cd6fee85538f9e87e0df9fd7f247c007bb01b8b87796126893ed001f826"
+    },
+    {
+      "path": "std/rpc-logs/mach-upl_server-undefined.log",
+      "sha256": "f7da34866267ccc35d2b123bbf3e271b4673f25332b0628e77eae446390bb78e"
+    },
+    {
+      "path": "std/rpc-logs/mach-upl_user-defined.log",
+      "sha256": "90e677200be6bc4a93620b2568c382a4a79dc4e34e60005e3087a458c7a4ebc2"
+    },
+    {
+      "path": "std/rpc-logs/mach-upl_user-exports.log",
+      "sha256": "a1bd6af4dfba56f32abf68bdd6d6915432a2394aceaab3f5a28ceecf2423924c"
+    },
+    {
+      "path": "std/rpc-logs/mach-upl_user-undefined.log",
+      "sha256": "259a198f5471f5c89039f57265ae33fad3824cbf10a3e6c5c85962fea031b298"
+    },
+    {
+      "path": "std/rpc-logs/mach-vfs_nspace_user-defined.log",
+      "sha256": "5109cb02a1fbf998141a96cb35a5bb00174a5b8ed3832468e31548cbacc7e4c8"
+    },
+    {
+      "path": "std/rpc-logs/mach-vfs_nspace_user-exports.log",
+      "sha256": "91894aeec0d5ebdd92b02a8dca49209b5e35fd2e475464923415e60f08d9bd9f"
+    },
+    {
+      "path": "std/rpc-logs/mach-vfs_nspace_user-undefined.log",
+      "sha256": "13d89fe046475fcb54106522ae6a7c2fedd8b5bfb8af06c491bc0e7227206061"
+    },
+    {
+      "path": "std/rpc-logs/mach-vm32_map_server-defined.log",
+      "sha256": "a14f290f2508576bbf85896e18b4a0ad4dc14dc4ea1ddad0e4fa03437ae3e977"
+    },
+    {
+      "path": "std/rpc-logs/mach-vm32_map_server-exports.log",
+      "sha256": "82beb273beb05e5ba8afb9165ff53e1d71093e87e80e2abf4146f9de98529335"
+    },
+    {
+      "path": "std/rpc-logs/mach-vm32_map_server-undefined.log",
+      "sha256": "126278fdcdce84f21a92c013a2b4f0c7f7a9c7e5d5357ef9cf8505f9904383cf"
+    },
+    {
+      "path": "std/rpc-logs/mach-vm_map_server-defined.log",
+      "sha256": "4535702853c120beba0453e9651b24ed09a478f91b26410c87a36635e7e9e0d0"
+    },
+    {
+      "path": "std/rpc-logs/mach-vm_map_server-exports.log",
+      "sha256": "1edd909e8445793ca2b99196443ce7895ee4d77c36a00dc57cfb8db79f415b3c"
+    },
+    {
+      "path": "std/rpc-logs/mach-vm_map_server-undefined.log",
+      "sha256": "1fb18fd15fdf8a21d4112fa339359d9a7d74fee9afd4b1d0f00dd912f7b30c2b"
+    },
+    {
+      "path": "std/rpc-logs/mach-vm_map_user-defined.log",
+      "sha256": "8d2faba991abdaca724c225061690a0afb11a4534ced0c052b54607990a82028"
+    },
+    {
+      "path": "std/rpc-logs/mach-vm_map_user-exports.log",
+      "sha256": "4b553b97c7421984ebee2cc44db0487506b867193a8f49d41850c3b30626a6e0"
+    },
+    {
+      "path": "std/rpc-logs/mach-vm_map_user-undefined.log",
+      "sha256": "5603b8d1fe74880dba0033b09be7383728834c66c0220673e050babf76a1f7e1"
+    },
+    {
+      "path": "std/rpc-logs/reject-disabled-typecheck.log",
+      "sha256": "026b58d3e7e829baae45fdb1c13c9632da5d9ad01835bb28fe03329d39e26429"
+    },
+    {
+      "path": "std/scheduler/reject-narrow-deadline.log",
+      "sha256": "a93566863d0e28b1d03985c836b3769a6e7171ca94110fe93a0c522c8416e34c"
+    },
+    {
+      "path": "std/scheduler/reject-wrong-label-callback.log",
+      "sha256": "77d2f29a3392eb56f4196999a7aac45b4842fcb194ba57b9335b745e271088a7"
+    },
+    {
+      "path": "std/scheduler/report.json",
+      "sha256": "ddec821cb3f5105e76ae93b4aa0b596b8d822c2b644cbcd3fc852045aaf6baef"
+    },
+    {
+      "path": "std/startup/report.json",
+      "sha256": "4cccc64b8bfa35f5566cb61c0cbcb93b65987862acc0310319ceac1c7e2e76ad"
+    },
+    {
+      "path": "std/strings/reject-copy-capacity.log",
+      "sha256": "42ded2686c5719eb96e607cdad3454a87379190938c95e87f8821084c7f492ef"
+    },
+    {
+      "path": "std/strings/reject-macho-size-output.log",
+      "sha256": "44234b7f852340e70741a02202d3f1df2859e76cdea3cda1babb24431cc6b4ec"
+    },
+    {
+      "path": "std/strings/report.json",
+      "sha256": "bfa28943671ddd09622485cd7a20e0c37dfa99d8db3eff393016258dfc7b6b6a"
+    },
+    {
+      "path": "std/task/bsd-reject-owner.log",
+      "sha256": "f73d3ea7844e0c1deb3be97b02ce3dabcb607ba7fe8a72754e498045f4f844dd"
+    },
+    {
+      "path": "std/task/mach-reject-owner.log",
+      "sha256": "e095fef343ec19a6d54679e8ac23a30090498d3284968da37755796acd5d0604"
+    },
+    {
+      "path": "std/task/mach-reject-thread-owner.log",
+      "sha256": "2bf571996dcde07511133dff43b28173b30fe35b6c81c2174ee4b7ad85f39400"
+    },
+    {
+      "path": "std/task/report.json",
+      "sha256": "4be6d5925a5702655fd537ec3e2e638c8167e195562d853dbb03acc39efc7139"
+    },
+    {
+      "path": "std-base-report.json",
+      "sha256": "e60aba5c7718e236ba7e715fe421a6212e53b3b16b1afae02c90ea2ed77402a3"
+    },
+    {
+      "path": "std-link-report.json",
+      "sha256": "347d825d11fe3d66399aefa760d97e7735c5a658de51b4a18623b4e3b5491f9b"
+    },
+    {
+      "path": "std-link.log",
+      "sha256": "54c7f35d2648bb4762d96adeb866841bf826eb724a7a4266d4c1f595b8e59b1d"
+    },
+    {
+      "path": "std-rpc-report.json",
+      "sha256": "86fdd0996d93dc52ef40618df30eab3961f434edfa6d50190b678f9d527ea349"
+    }
+  ],
+  "full_local_snapshot_artifacts": 2006,
+  "published_evidence_is_bounded_selection": true
+}

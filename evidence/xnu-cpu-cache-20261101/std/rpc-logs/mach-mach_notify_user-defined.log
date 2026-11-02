@@ -1,0 +1,7 @@
+0000000000000190 T _mach_notify_dead_name
+0000000000000100 T _mach_notify_no_senders
+0000000000000000 T _mach_notify_port_deleted
+00000000000000a0 T _mach_notify_port_destroyed
+0000000000000150 T _mach_notify_send_once
+0000000000000050 T _mach_notify_send_possible
+0000000000000000 t ltmp0

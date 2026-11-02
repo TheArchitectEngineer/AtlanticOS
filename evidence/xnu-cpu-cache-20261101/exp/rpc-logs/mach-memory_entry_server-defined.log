@@ -1,0 +1,9 @@
+00000000000000f0 t __Xmach_memory_entry_access_tracking
+0000000000000240 t __Xmach_memory_entry_get_page_counts
+00000000000001a0 t __Xmach_memory_entry_ownership_from_user
+0000000000000040 t __Xmach_memory_entry_purgable_control
+00000000000002e0 T _memory_entry_server
+0000000000000000 T _memory_entry_server_routine
+0000000000000370 S _memory_entry_subsystem
+0000000000000000 t ltmp0
+0000000000000370 s ltmp1

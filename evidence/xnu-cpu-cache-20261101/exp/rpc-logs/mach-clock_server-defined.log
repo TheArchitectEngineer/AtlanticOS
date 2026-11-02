@@ -1,0 +1,8 @@
+00000000000001a0 t __Xclock_alarm
+00000000000000d0 t __Xclock_get_attributes
+0000000000000030 t __Xclock_get_time
+0000000000000250 T _clock_server
+0000000000000000 T _clock_server_routine
+00000000000002d8 S _clock_subsystem
+0000000000000000 t ltmp0
+00000000000002d8 s ltmp1

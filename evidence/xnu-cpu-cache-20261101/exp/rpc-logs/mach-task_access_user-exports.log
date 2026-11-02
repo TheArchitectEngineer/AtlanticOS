@@ -1,0 +1,3 @@
+_check_task_access T 0 0
+_check_task_access_with_flavor T 230 0
+_find_code_signature T 120 0

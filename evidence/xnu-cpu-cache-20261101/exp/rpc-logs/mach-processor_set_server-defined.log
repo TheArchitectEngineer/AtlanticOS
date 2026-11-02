@@ -1,0 +1,11 @@
+0000000000000370 t __Xprocessor_set_info
+00000000000002c0 t __Xprocessor_set_stack_usage
+0000000000000030 t __Xprocessor_set_statistics
+0000000000000100 t __Xprocessor_set_tasks
+0000000000000470 t __Xprocessor_set_tasks_with_flavor
+00000000000001e0 t __Xprocessor_set_threads
+0000000000000560 T _processor_set_server
+0000000000000000 T _processor_set_server_routine
+00000000000005e8 S _processor_set_subsystem
+0000000000000000 t ltmp0
+00000000000005e8 s ltmp1

@@ -1,0 +1,12 @@
+0000000000000e80 b _cpuid_debug_info
+0000000000000e88 b _cpuid_mvfp_info
+0000000000000070 T _machine_arm_debug_info
+00000000000000a0 T _machine_arm_mvfp_info
+0000000000000040 T _machine_do_debugid
+0000000000000080 T _machine_do_mvfpid
+0000000000000020 T _machine_read_ccsidr
+0000000000000010 T _machine_read_clidr
+0000000000000000 T _machine_read_midr
+0000000000000030 T _machine_write_csselr
+0000000000000000 t ltmp0
+0000000000000e80 b ltmp1

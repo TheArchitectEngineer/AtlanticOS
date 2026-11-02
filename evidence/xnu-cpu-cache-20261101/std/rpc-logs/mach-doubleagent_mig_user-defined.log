@@ -1,0 +1,5 @@
+00000000000001c0 T _doubleagent_allocate_xattr
+0000000000000390 T _doubleagent_list_xattrs
+0000000000000000 T _doubleagent_lookup_xattr
+0000000000000520 T _doubleagent_remove_xattr
+0000000000000000 t ltmp0
