@@ -3,9 +3,9 @@
 Firmware de prearranque ARM64 propuesto, basado en un port auténtico y reducido
 de XNU. Primera placa: Motorola Moto G20 / Unisoc T700 (UMS512).
 
-**Estado 2026-11-01: auditoría Fase 0, prototipo host Fase 1 y port XNU
+**Estado 2026-11-02: auditoría Fase 0, prototipo host Fase 1 y port XNU
 incremental. Trece unidades reales de XNU compilan a objetos ARM64 con Clang
-estándar; 155 con el proveedor experimental explícito, incluidos
+estándar; 157 unidades de XNU y soporte original con el proveedor experimental explícito, incluidos
 VM residente/faults/objetos, hilos, tareas, locks, ledgers, SMR e IPC/importance.
 Se compilan además 42 archivos RPC generados por MIG como probes, con 70 headers
 coherentes; el configurador oficial selecciona 26 para el enlace de este perfil.
@@ -112,7 +112,7 @@ Aquella revisión registra 476 diagnósticos indefinidos y cero duplicados.
 Los [proveedores de CPU y caché](docs/XNU_CPU_CACHE_PROVIDERS.md) añaden dos fuentes
 intactas. Conservan lecturas arquitectónicas y esperas Mach; tres hooks Apple
 siguen vacíos en upstream y no aportan drivers G20.
-El enlace actual de 181 objetos falla con **465 diagnósticos indefinidos y cero
+El enlace de aquella revisión de 181 objetos falla con **465 diagnósticos indefinidos y cero
 duplicados**, sin imagen. Pasan 164/134 checks de alcance/ABI/objetos. La carga
 de boot_args, contexto BSP y ejecución de PE/SecureDT/XNU siguen pendientes.
 
@@ -121,6 +121,14 @@ terminó correctamente en GitHub. Reproduce fuentes y ABI; su LLD upstream
 conserva errores de opciones estáticas y los mismos 465 nombres indefinidos,
 sin imagen ni ejecución XNU. La [estimación por hitos](docs/PROGRESS_ESTIMATE.md)
 explica el trabajo pendiente hacia el primer arranque físico y el handoff.
+
+El [registro temprano original en RAM](docs/XNU_EARLY_RAM_LOG.md) conserva mensajes
+de kprintf mediante el formateador auténtico de XNU y punteros PE reales.
+Pasan ASan/UBSan y ThreadSanitizer host; el transporte no implementa UART,
+pantalla, os_log ni consola nativa. La instancia de 16 432 bytes de BSS no mide
+el consumo de RAM del firmware. El conjunto actual alcanza 157 unidades y
+178/150 checks; el enlace estricto de 183 objetos deja **463 nombres indefinidos,
+cero duplicados y ninguna imagen**. No se ejecutan el adaptador ARM64 ni XNU.
 
 ## Reproducir
 

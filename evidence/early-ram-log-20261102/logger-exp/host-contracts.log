@@ -1,0 +1,2 @@
+STRESS: 899 accepted, 15101 busy, 16384 bytes retained; no torn records
+PASS: 49699 checks, 6000 model records and 16000 concurrent attempts; RAM transport only

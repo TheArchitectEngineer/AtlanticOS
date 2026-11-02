@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "upstream_commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
-  "port_id": "25598af2b83969b18f5d9911863b13e210cdc1fa07818471aec6b2b7c521547b",
+  "port_id": "5647a1f4c6efdb54864c33f22420ccd5669e260f7911b2ef61e33d18e16de646",
   "patches": {
     "0001-add-atlantic-arm64-laboratory-profile.patch": "68f342277d68cbd35f532a0fcfe35f99742569f960a7f37fa155c774055e1d5c",
     "0002-define-atlantic-laboratory-boot-line-abi.patch": "5c62558a6221b17377966b5b4c678004cd813fd37cacdf6849cc9dd011f6ea84",
@@ -31,7 +31,8 @@
     "0026-add-original-string-support-with-native-xnu-abi.patch": "0e7c9852d8b9f6492df8ae738f8c7d3821f7913ec097b8121534447199d57ca0",
     "0027-scope-ipc-process-analytics-sdk-and-iokit-descriptions.patch": "52958786edbd82547c08a8106417509778dc979800c309507a2cebdb20998c40",
     "0028-scope-bsd-throttle-callbacks-and-fix-native-resource-failure-path.patch": "306dab51ce7db3acb84be207a1015b267e53ecb59fa7d027df95d1a61c726611",
-    "0029-match-bank-telemetry-uses-to-native-field-guard.patch": "67d594c0a1f46679b376621ac4077d560f0475e12d9be8b90015363cf4df344f"
+    "0029-match-bank-telemetry-uses-to-native-field-guard.patch": "67d594c0a1f46679b376621ac4077d560f0475e12d9be8b90015363cf4df344f",
+    "0030-add-original-early-ram-log-transport.patch": "99e42eaa0ecb19c290a16c1bc84c1669d00a535a22dfbc6d25ef0d3580f21f5b"
   },
   "canonical_lf_files": [
     {
@@ -278,6 +279,26 @@
       "path": "osfmk/bank/bank.c",
       "preimage_sha256": "cd39a03f15eef8446d131f99e8d086998a4c77aea0583bfe242b41da933a4b91",
       "postimage_sha256": "ce86a4b9111787cf7c55f781d14dbdc9ffd5fd0eac77b42e23c4ae01340bc3da"
+    },
+    {
+      "path": "osfmk/atlantic/early_log.c",
+      "preimage_sha256": null,
+      "postimage_sha256": "f2f3558b49d34733c5de277cfffb70c8bcb0ae1ffe189b77ac54da5df41b30b0"
+    },
+    {
+      "path": "osfmk/atlantic/early_log.h",
+      "preimage_sha256": null,
+      "postimage_sha256": "10cfe706b24813579c9079e693d79cae9cd919d2757774f141da154298b3db27"
+    },
+    {
+      "path": "pexpert/pexpert/atlantic_log.h",
+      "preimage_sha256": null,
+      "postimage_sha256": "7bd3c82f2d2a48f131a4be729d02b7ba3c6bbb6c32a5c6cdf8691cbea248bbdd"
+    },
+    {
+      "path": "osfmk/kern/atlantic_early_log.c",
+      "preimage_sha256": null,
+      "postimage_sha256": "4a090df63f1be923bcda879a75c52a0dc51ce827437a502a7cff8a7055e0cb4d"
     }
   ],
   "scope": "LABORATORY_ONLY_NOT_G20_PORT_OR_KERNEL_BOOT"

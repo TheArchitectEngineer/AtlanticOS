@@ -1,0 +1,266 @@
+Original AtlanticOS bounded RAM transport and native XNU formatter adapter.
+No UART/video, IRQ, os_log or native console initialization is substituted.
+Requires mapped normal/shareable memory; not an MMU-off entry transport.
+
+diff --git a/osfmk/atlantic/early_log.c b/osfmk/atlantic/early_log.c
+new file mode 100644
+--- /dev/null
++++ b/osfmk/atlantic/early_log.c
+@@ -0,0 +1,120 @@
++/* SPDX-License-Identifier: MIT - Original AtlanticOS; no host/kernel services. */
++#include <atlantic/early_log.h>
++
++_Static_assert(__atomic_always_lock_free(sizeof(uint32_t), 0), "inline 32-bit atomics required");
++
++static int
++span_valid(const void *pointer, size_t bytes)
++{
++    return !bytes || (pointer && bytes <= UINTPTR_MAX - (uintptr_t)pointer);
++}
++
++static int
++overlap(const void *a, size_t na, const void *b, size_t nb)
++{
++    return na && nb && (uintptr_t)a < (uintptr_t)b + nb &&
++           (uintptr_t)b < (uintptr_t)a + na;
++}
++
++static int
++log_valid(struct AtlanticEarlyLog *log)
++{
++    return log && !((uintptr_t)log % _Alignof(struct AtlanticEarlyLog)) &&
++           span_valid(log, sizeof(*log));
++}
++
++static int
++enter(struct AtlanticEarlyLog *log)
++{
++    uint32_t expected = 0;
++    if (__atomic_compare_exchange_n(&log->gate, &expected, 1, 1,
++            __ATOMIC_ACQUIRE, __ATOMIC_RELAXED)) return 1;
++    /* A single store avoids an unbounded atomic-increment retry loop. */
++    __atomic_store_n(&log->contention_seen, 1, __ATOMIC_RELAXED);
++    return 0;
++}
++
++static void
++leave(struct AtlanticEarlyLog *log)
++{
++    __atomic_store_n(&log->gate, 0, __ATOMIC_RELEASE);
++}
++
++void
++atl_early_log_capture(int character, void *context)
++{
++    struct AtlanticEarlyLogRecord *record = context;
++    if (record->bytes < sizeof(record->data)) {
++        record->data[record->bytes++] = (unsigned char)character;
++    } else {
++        ++record->truncated_bytes;
++    }
++}
++
++enum AtlanticEarlyLogStatus
++atl_early_log_append(struct AtlanticEarlyLog *log, const void *source, size_t bytes,
++    uint64_t truncated_bytes)
++{
++    if (!log_valid(log) || bytes > ATL_EARLY_LOG_CAPACITY ||
++        !span_valid(source, bytes) || overlap(log, sizeof(*log), source, bytes)) {
++        return ATL_LOG_INVALID;
++    }
++    if (!enter(log)) return ATL_LOG_BUSY;
++    if (log->head >= ATL_EARLY_LOG_CAPACITY || log->size > ATL_EARLY_LOG_CAPACITY) {
++        leave(log);
++        return ATL_LOG_INVALID;
++    }
++    size_t excess = log->size + bytes > ATL_EARLY_LOG_CAPACITY ?
++        log->size + bytes - ATL_EARLY_LOG_CAPACITY : 0;
++    size_t next = (log->head + log->size) % ATL_EARLY_LOG_CAPACITY;
++    const unsigned char *input = source;
++    for (size_t i = 0; i < bytes; ++i) {
++        log->data[next] = input[i];
++        if (++next == ATL_EARLY_LOG_CAPACITY) next = 0;
++    }
++    log->head = (uint32_t)((log->head + excess) % ATL_EARLY_LOG_CAPACITY);
++    log->size = (uint32_t)(log->size + bytes - excess);
++    ++log->records;
++    log->accepted_bytes += bytes;
++    log->overwritten_bytes += excess;
++    log->truncated_bytes += truncated_bytes;
++    leave(log);
++    return ATL_LOG_OK;
++}
++
++enum AtlanticEarlyLogStatus
++atl_early_log_snapshot(struct AtlanticEarlyLog *log, void *destination, size_t capacity,
++    struct AtlanticEarlyLogSnapshot *metadata)
++{
++    if (!log_valid(log) || !metadata ||
++        (uintptr_t)metadata % _Alignof(struct AtlanticEarlyLogSnapshot) ||
++        !span_valid(metadata, sizeof(*metadata)) || !span_valid(destination, capacity) ||
++        overlap(log, sizeof(*log), destination, capacity) ||
++        overlap(log, sizeof(*log), metadata, sizeof(*metadata)) ||
++        overlap(destination, capacity, metadata, sizeof(*metadata))) return ATL_LOG_INVALID;
++    if (!enter(log)) return ATL_LOG_BUSY;
++    if (log->head >= ATL_EARLY_LOG_CAPACITY || log->size > ATL_EARLY_LOG_CAPACITY) {
++        leave(log);
++        return ATL_LOG_INVALID;
++    }
++    if (capacity < log->size) {
++        leave(log);
++        return ATL_LOG_BUFFER_SMALL;
++    }
++    unsigned char *output = destination;
++    size_t next = log->head;
++    for (size_t i = 0; i < log->size; ++i) {
++        output[i] = log->data[next];
++        if (++next == ATL_EARLY_LOG_CAPACITY) next = 0;
++    }
++    metadata->abi_version = ATL_EARLY_LOG_SNAPSHOT_ABI;
++    metadata->struct_bytes = sizeof(*metadata);
++    metadata->data_bytes = log->size;
++    metadata->contention_seen = __atomic_load_n(&log->contention_seen, __ATOMIC_RELAXED);
++    metadata->records = log->records;
++    metadata->accepted_bytes = log->accepted_bytes;
++    metadata->overwritten_bytes = log->overwritten_bytes;
++    metadata->truncated_bytes = log->truncated_bytes;
++    leave(log);
++    return ATL_LOG_OK;
++}
+diff --git a/osfmk/atlantic/early_log.h b/osfmk/atlantic/early_log.h
+new file mode 100644
+--- /dev/null
++++ b/osfmk/atlantic/early_log.h
+@@ -0,0 +1,60 @@
++/* SPDX-License-Identifier: MIT - Original AtlanticOS early RAM diagnostics. */
++#ifndef ATLANTIC_EARLY_LOG_H
++#define ATLANTIC_EARLY_LOG_H
++#include <stddef.h>
++#include <stdint.h>
++
++#define ATL_EARLY_LOG_CAPACITY 16384u
++#define ATL_EARLY_LOG_RECORD_CAPACITY 1024u
++#define ATL_EARLY_LOG_SNAPSHOT_ABI 1u
++
++enum AtlanticEarlyLogStatus {
++    ATL_LOG_OK = 0, ATL_LOG_INVALID = -1, ATL_LOG_BUSY = -2,
++    ATL_LOG_BUFFER_SMALL = -3
++};
++
++/* Zero-initialize once, before concurrent access; never reset a live instance.
++ * All storage must be owned, mapped normal/shareable RAM supporting exclusive
++ * accesses. This is NOT a logger for an MMU-off/device-memory entry path.
++ * Fields are private to these functions after publication. Counters wrap mod
++ * 2^64. contention_seen is a sticky observation, not an exact drop counter. */
++struct AtlanticEarlyLog {
++    uint32_t gate, contention_seen, head, size;
++    uint64_t records, accepted_bytes, overwritten_bytes, truncated_bytes;
++    unsigned char data[ATL_EARLY_LOG_CAPACITY];
++};
++
++struct AtlanticEarlyLogSnapshot {
++    uint32_t abi_version, struct_bytes, data_bytes, contention_seen;
++    uint64_t records, accepted_bytes, overwritten_bytes, truncated_bytes;
++};
++
++/* Formatter callback context, initialized to zero for each record. No NUL
++ * terminator is inserted: these are bytes, including any embedded NUL. */
++struct AtlanticEarlyLogRecord {
++    size_t bytes;
++    uint64_t truncated_bytes;
++    unsigned char data[ATL_EARLY_LOG_RECORD_CAPACITY];
++};
++void atl_early_log_capture(int character, void *record);
++
++/* One weak compare-exchange attempt; no spin, wait, allocation, I/O or drain.
++ * Contention (including a spurious weak-CAS failure) returns BUSY and marks
++ * contention_seen. Records are committed as a unit; old bytes may be evicted.
++ * bytes must be <= CAPACITY. Source must not overlap the instance. A NULL
++ * source is allowed only for zero bytes. truncated_bytes describes formatter
++ * omissions for this accepted record; rejected records do not add counters.
++ * Callers supply valid objects/readable spans; pointer checks do not map RAM. */
++enum AtlanticEarlyLogStatus atl_early_log_append(struct AtlanticEarlyLog *log,
++    const void *source, size_t bytes, uint64_t truncated_bytes);
++
++/* Copies retained bytes oldest-first and metadata under the same gate.
++ * A CAPACITY-byte destination is always large enough. Smaller buffers can
++ * return BUFFER_SMALL. On failure, destination and metadata are unchanged.
++ * Writable outputs must not overlap each other or the instance. Metadata must
++ * be naturally aligned; destination is a byte buffer. NULL/zero is valid for
++ * the destination of an empty snapshot. Reading does not consume or clear.
++ * contention_seen is sampled atomically and may change during a snapshot. */
++enum AtlanticEarlyLogStatus atl_early_log_snapshot(struct AtlanticEarlyLog *log,
++    void *destination, size_t capacity, struct AtlanticEarlyLogSnapshot *metadata);
++#endif
+diff --git a/pexpert/pexpert/atlantic_log.h b/pexpert/pexpert/atlantic_log.h
+new file mode 100644
+--- /dev/null
++++ b/pexpert/pexpert/atlantic_log.h
+@@ -0,0 +1,11 @@
++/* SPDX-License-Identifier: MIT - Original AtlanticOS/XNU RAM trace boundary. */
++#ifndef _PEXPERT_ATLANTIC_LOG_H_
++#define _PEXPERT_ATLANTIC_LOG_H_
++#include <atlantic/early_log.h>
++
++/* Private boot diagnostics, not native console initialization or serial I/O.
++ * The caller must satisfy the normal-RAM and writable-buffer contract of
++ * atl_early_log_snapshot. No address/ownership proof is implied by this API. */
++enum AtlanticEarlyLogStatus atlantic_xnu_log_snapshot(void *destination,
++    size_t capacity, struct AtlanticEarlyLogSnapshot *metadata);
++#endif
+diff --git a/osfmk/kern/atlantic_early_log.c b/osfmk/kern/atlantic_early_log.c
+new file mode 100644
+--- /dev/null
++++ b/osfmk/kern/atlantic_early_log.c
+@@ -0,0 +1,51 @@
++/* SPDX-License-Identifier: MIT - Original AtlanticOS platform diagnostics.
++ * XNU's genuine __doprnt remains the formatter, including its log policy.
++ * This transport retains bytes in owned kernel BSS. No serial, video, IRQ,
++ * input, os_log service or native console initialization is claimed/provided.
++ */
++#include <pexpert/pexpert.h>
++#include <kern/misc_protos.h>
++#include <pexpert/atlantic_log.h>
++#include <libkern/section_keywords.h>
++
++#if !CONFIG_ATLANTIC_FIRMWARE || !defined(__arm64__)
++#error AtlanticOS RAM diagnostics require the explicit ARM64 firmware profile
++#endif
++#if defined(MACH_BSD) || defined(IOKIT)
++#error AtlanticOS RAM diagnostics do not implement the BSD or IOKit log service
++#endif
++#if CONFIG_NO_KPRINTF_STRINGS
++#undef kprintf
++#endif
++
++static struct AtlanticEarlyLog boot_log;
++
++static void
++memory_putc(char character)
++{
++    (void)atl_early_log_append(&boot_log, &character, 1, 0);
++}
++
++typedef void (*atlantic_putc_t)(char);
++SECURITY_READ_ONLY_LATE(atlantic_putc_t) PE_kputc = memory_putc;
++SECURITY_READ_ONLY_LATE(atlantic_putc_t) PE_putc = memory_putc;
++
++__attribute__((noinline)) void
++kprintf(const char *format, ...)
++{
++    struct AtlanticEarlyLogRecord record = { 0 };
++    va_list arguments;
++    va_start(arguments, format);
++    /* Formatting occurs outside the gate, so recursive formatting cannot
++     * retain the gate. Preserve native kprintf's radix and is_log semantics. */
++    __doprnt(format, arguments, atl_early_log_capture, &record, 16, TRUE);
++    va_end(arguments);
++    (void)atl_early_log_append(&boot_log, record.data, record.bytes, record.truncated_bytes);
++}
++
++enum AtlanticEarlyLogStatus
++atlantic_xnu_log_snapshot(void *destination, size_t capacity,
++    struct AtlanticEarlyLogSnapshot *metadata)
++{
++    return atl_early_log_snapshot(&boot_log, destination, capacity, metadata);
++}

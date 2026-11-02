@@ -238,3 +238,16 @@ El enlace de 179 objetos conserva 476 diagnósticos indefinidos y cero duplicado
 sin imagen. Proveedores de proceso/persona siguen pendientes y debug VM mantiene
 el error nativo desactivado. Véase
 [XNU_COALITION_BANK_PROVIDERS](../docs/XNU_COALITION_BANK_PROVIDERS.md).
+
+El patch 0030 añade cuatro archivos originales de transporte de diagnóstico RAM
+y adaptador al formatter genuino __doprnt, sin alterar fuentes nativas anteriores.
+kprintf conserva radix 16/is_log; PE_kputc/PE_putc son punteros reales al writer.
+No implementa ni suplanta consola nativa, UART, pantalla, IRQ o os_log. El gate
+intenta un único CAS débil; su store de contención evita un contador con retries.
+Solo se usa con RAM normal/shareable y MMU operativa; queda fuera del preflight
+MMU-off. Ambos objetos nuevos usan alineación estricta y atómicos integrados.
+Compilan 157 unidades experimentales y 13 estándar; pasan 178/150 checks.
+El enlace de 183 objetos conserva 463 indefinidos, cero duplicados y ninguna
+imagen. Pasan ASan/UBSan y una ejecución host con ThreadSanitizer. Sin formatter
+nativo/XNU ejecutado, prueba física, handoff EDK2 ni RAM residente medida.
+Véase [XNU_EARLY_RAM_LOG](../docs/XNU_EARLY_RAM_LOG.md).

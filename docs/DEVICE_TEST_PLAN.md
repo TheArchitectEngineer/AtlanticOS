@@ -379,3 +379,33 @@ CPU/topología inicializadas, memoria propia y una salida fiable, sin flash.
 
 Guardar binario/mapa/registros/PCs y captura física con hashes y retorno stock
 por T01. Esto no acredita coherencia DMA, handoff EDK2 o RAM firmware medida.
+
+## Subprueba pendiente de T08: logging XNU y transporte RAM original
+
+Estado: PENDING_HARDWARE. [XNU_EARLY_RAM_LOG](XNU_EARLY_RAM_LOG.md) acredita
+pruebas host/ABI/objetos. Requiere T01/T04/T05, imagen XNU auditada y un canal
+original ya verificado para exportar buffers. No se intenta en el preflight
+MMU-off ni se asume que conservar RAM permita leerla desde el PC.
+
+1. Probar el ownership y atributos normales/shareable del BSS del registro,
+   inicialización a cero y stack válido tras el bootstrap MMU. Registrar mapa,
+   SCTLR/TCR/MAIR/TTBR permitidos y PCs simbolizados. La validación de un objeto
+   o una dirección virtual no prueba esos atributos en el G20.
+2. Desde XNU real, emitir mensajes con enteros/cadenas conocidos y una cadena
+   propia de más de 1 024 bytes. Capturar las llamadas a kprintf, __doprnt y
+   atl_early_log_append. Exportar un snapshot por el canal probado, con metadata
+   ABI v1 y hash del buffer; comparar bytes con los argumentos/formatos exactos.
+   Deben observarse el prefijo de 1 024 bytes y las truncaciones correspondientes.
+   Superar 16 384 bytes debe conservar la cola correcta y contar el overwrite;
+   el inicio puede ser un mensaje antiguo parcial porque el ring es de bytes.
+3. Solo con hilos/CPUs/IRQ realmente operativos, provocar contención controlada
+   entre escritores y snapshots. Verificar mensajes aceptados sin intercalado,
+   orden por escritor y marca de contención cuando haya BUSY. No exigir entrega
+   de todos los mensajes ni confundir ausencia de deadlock con entrega garantizada.
+4. Registrar uso de BSS, buffers de extracción y high-water de stack, incluido
+   el formateador. Los 16 432 bytes de instancia y 1 040 de contexto C no son una
+   medición del pico total. Un reset sin exportación previa no prueba persistencia.
+
+Guardar commit/patchset, imagen/mapa, argumentos, bytes, PCs y captura física
+hasheados. Un mensaje visible sin traza de ejecución genuina no cierra T08;
+si no se observa salida, el resultado es INDETERMINATE. Comprobar retorno stock por T01.

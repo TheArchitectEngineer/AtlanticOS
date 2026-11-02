@@ -81,10 +81,17 @@ cuatro cláusulas; el reconocimiento a Berkeley anterior también corresponde
 a este componente. No se atribuyen esos cuerpos a la licencia MIT del proyecto.
 
 Los archivos de xnu-port/platform/ son código original AtlanticOS bajo MIT. El
-patchset 0022/0023/0026 añade sus copias exactas al árbol XNU; el builder verifica esa igualdad
+patchset 0022/0023/0026/0030 añade sus copias exactas al árbol XNU; el builder verifica esa igualdad
 y las preimágenes nulas de archivos nuevos. Los tipos y proveedores XNU que
 incluyen o llaman conservan sus licencias upstream. No se incorpora pe_init.c
 de Apple ni un BSP de un port UEFI como implementación de la plataforma.
+
+early_log.c/.h, atlantic_log.h, pe_early_log.c, su harness y auditor son originales
+MIT. El patch 0030 añade esos cuatro archivos; no copia el pe_kprintf.c Apple.
+El formatter __doprnt se conserva completo en printf.c oficial, con sus avisos
+upstream; llamarlo mediante su ABI no convierte su implementación en código MIT.
+Los objetos nuevos de evidencia son del transporte/adaptador originales y
+conservan imports fuertes a los proveedores nativos, sin incorporar sus cuerpos.
 
 El adaptador cache_asm.s es original MIT y transfiere la llamada a la rutina de
 caché genérica genuina. Seis fuentes nativas de la ampliación de memoria permanecen

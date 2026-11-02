@@ -24,7 +24,11 @@ PLATFORM_SOURCES = {'xnu-port/platform/atlantic.h': 'pexpert/pexpert/atlantic.h'
                     'xnu-port/platform/cache_asm.s': 'osfmk/arm64/atlantic_cache_asm.s',
                     'atlantic-core/string.c': 'osfmk/atlantic/string.c',
                     'include/atlantic/string.h': 'osfmk/atlantic/string.h',
-                    'xnu-port/platform/string.c': 'osfmk/kern/atlantic_string.c'}
+                    'xnu-port/platform/string.c': 'osfmk/kern/atlantic_string.c',
+                    'atlantic-core/early_log.c': 'osfmk/atlantic/early_log.c',
+                    'include/atlantic/early_log.h': 'osfmk/atlantic/early_log.h',
+                    'xnu-port/platform/atlantic_log.h': 'pexpert/pexpert/atlantic_log.h',
+                    'xnu-port/platform/pe_early_log.c': 'osfmk/kern/atlantic_early_log.c'}
 UNITS = {'osfmk/kern/startup.c': '_kernel_bootstrap',
          'osfmk/kern/sched_prim.c': '_sched_init',
          'osfmk/kern/clock.c': '_clock_init',
@@ -266,6 +270,12 @@ EXTRA_SYMBOLS.update({
     'libkern/kernel_mach_header.c': ['_getlastaddr', '_getcommandfromheader', '_getuuidfromheader',
         '_getsectdatafromheader', '_getsegdatafromheader', '_getsectbynamefromseg', '_getsectbynamefromheader',
         '_firstsegfromheader', '_nextsegfromheader']})
+EXPERIMENTAL_UNITS.update({
+    'osfmk/atlantic/early_log.c': '_atl_early_log_append',
+    'osfmk/kern/atlantic_early_log.c': '_kprintf'})
+EXTRA_SYMBOLS.update({
+    'osfmk/atlantic/early_log.c': ['_atl_early_log_capture', '_atl_early_log_snapshot'],
+    'osfmk/kern/atlantic_early_log.c': ['_PE_kputc', '_PE_putc', '_atlantic_xnu_log_snapshot']})
 EXPERIMENTAL_UNITS.update({
     'osfmk/arm/caches.c': '_cache_sync_page',
     'osfmk/arm64/caches_asm.s': '_CleanPoC_DcacheRegion_Force',
@@ -668,6 +678,10 @@ def main():
         obj = out/(Path(rel).stem+'.o')
         # This flag is mandated for VM sources by upstream Makefile.template.
         per_file = ['-DVM_UNSAFE_TYPES'] if rel.startswith('osfmk/vm/') else []
+        if rel in {'osfmk/atlantic/early_log.c', 'osfmk/kern/atlantic_early_log.c'}:
+            # Byte buffers may be unaligned; emit inline, weak-CAS atomics.
+            # This mapped-RAM transport is not used by the MMU-off entry.
+            per_file += ['-mstrict-align', '-mno-outline-atomics']
         if rel in {'osfmk/kern/atlantic_task_metadata.c', 'libkern/os/refcnt.c'}:
             # Match the real BSD-private header context, without BSD userland.
             per_file += ['-UMACH_KERNEL_PRIVATE', '-DBSD_KERNEL_PRIVATE=1']

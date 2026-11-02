@@ -1,0 +1,8 @@
+In file included from /mnt/g/AtlanticOS/xnu-port/platform/pe_early_log.c:7:
+/mnt/g/AtlanticOS/work/xnu-lab-sources/25598af2b83969b1/osfmk/kern/misc_protos.h:174:12: error: conflicting types for 'printf'
+  174 | extern int printf(const char *format, ...) __printflike(1, 2);
+      |            ^
+/mnt/g/AtlanticOS/work/xnu-lab-sources/25598af2b83969b1/pexpert/pexpert/protos.h:45:13: note: previous declaration is here
+   45 | extern void printf(const char *fmt, ...) __printflike(1, 2);
+      |             ^
+1 error generated.

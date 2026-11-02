@@ -1,0 +1,4 @@
+<ROOT>/tests/xnu_port/early_log_abi.c:19:7: error: incompatible function pointer types initializing 'int (*)(void *, unsigned int, struct AtlanticEarlyLogSnapshot *)' with an expression of type 'enum AtlanticEarlyLogStatus (void *, size_t, struct AtlanticEarlyLogSnapshot *)' (aka 'enum AtlanticEarlyLogStatus (void *, unsigned long, struct AtlanticEarlyLogSnapshot *)') [-Wincompatible-function-pointer-types]
+   19 | int (*atl_bad_snapshot)(void *, unsigned int, struct AtlanticEarlyLogSnapshot *) = atlantic_xnu_log_snapshot;
+      |       ^                                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.

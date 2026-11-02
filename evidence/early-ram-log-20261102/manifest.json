@@ -1,0 +1,426 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-11-02",
+  "label": "BUILT_ARM64",
+  "scope": "ORIGINAL_RAM_DIAGNOSTICS_HOST_TESTS_AND_NATIVE_ABI_OBJECTS_ONLY_NO_XNU_OR_PHONE_EXECUTION",
+  "port_id": "5647a1f4c6efdb54864c33f22420ccd5669e260f7911b2ef61e33d18e16de646",
+  "source_parent_commit": "01af7b267af07b576ccbc6cc869be7dbabbf3da6",
+  "source_inputs_bound_by_sha256": true,
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "artifacts": [
+    {
+      "path": "audit.json",
+      "sha256": "b5519ca77ca1faa69227668b95a88707acdce155bbeff8e9e94c24f2f843f606"
+    },
+    {
+      "path": "exp-assym.s",
+      "sha256": "3276ada4a5d0c83bf02ace5e5a55e08aa659e753c72ff1411455dab031eb43f7"
+    },
+    {
+      "path": "exp-atlantic_early_log-compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-atlantic_early_log.o",
+      "sha256": "e6f90fadd5c381ce13cd0414c4fee2d87e4740b91975b3afc64971befaa15868"
+    },
+    {
+      "path": "exp-base-report.json",
+      "sha256": "254295f14bb491f671e4f34c3a0cddc9823d834cb678c2c9a4ea47e658e67dac"
+    },
+    {
+      "path": "exp-boot-prepare-report.json",
+      "sha256": "4b570fce3c7273459dd52b7fee379641cd8f9ef5e25d94e03e6bf960f09c81d8"
+    },
+    {
+      "path": "exp-boot-tree-report.json",
+      "sha256": "25185108a30390eb718b3cf4050a22018f0372c590bbd8b5867ab34b94fed93d"
+    },
+    {
+      "path": "exp-early_log-compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "exp-early_log.o",
+      "sha256": "0a65c2c8b0c5eb15c278a2e5223f1e7f69dc4bf804959c421c2e90232cbc63f6"
+    },
+    {
+      "path": "exp-genassym.s",
+      "sha256": "db40d91c51eaebe6f394f27ee4ea57f7ac4c083e627ad43c56647e402d9a7da7"
+    },
+    {
+      "path": "exp-link-report.json",
+      "sha256": "581e20507b01f535f02651995d4011254cade2ecc862e5b026f6d8c52c0f45dd"
+    },
+    {
+      "path": "exp-link.log",
+      "sha256": "033b7fcd9a88bddea3670670e65edab9931bf01b3263aac764683386c353bec6"
+    },
+    {
+      "path": "exp-macho-report.json",
+      "sha256": "cd882843c7a195e577b10e0247c99c5de51789f02df51ec2b12204788a36d7f6"
+    },
+    {
+      "path": "exp-Makefile",
+      "sha256": "b2952042d5bb23f936a54cba76f1fb3e632c5f2d899ba2535f53359b15a69a85"
+    },
+    {
+      "path": "exp-rpc-report.json",
+      "sha256": "0804b6a11bf70a38a011e000e34de93411a8d72925ca45e12e22db2877eb73eb"
+    },
+    {
+      "path": "exp-scope-brk-report.json",
+      "sha256": "50ef4dd2ea8d84d13d37eb9fb27a8593146fbdd2ed8169b15054842bb2792432"
+    },
+    {
+      "path": "exp-scope-coalition-report.json",
+      "sha256": "5ccf2638fdc02bb198aed63d67553578ef84bc60586706cd269f7bcbb9b5d55f"
+    },
+    {
+      "path": "exp-scope-core-report.json",
+      "sha256": "fb18e2ecc130c04f7d98fd4b70a4b42fff24bc7f8d3cec157db7bfc393b864fa"
+    },
+    {
+      "path": "exp-scope-cpu-report.json",
+      "sha256": "f7d3a08bb926e664f1be532c4a9e84c6f9f458b85e521cf38ec4751b7fbac546"
+    },
+    {
+      "path": "exp-scope-kobject-report.json",
+      "sha256": "e955e13a892091255f852d3458a25129b47f27e616274dec1115936f935fbf4c"
+    },
+    {
+      "path": "exp-scope-memory-report.json",
+      "sha256": "99c954c2a4984dc4598633336f54d90a570a0761360cb823eec0af3f46f4d3cd"
+    },
+    {
+      "path": "exp-scope-mig-report.json",
+      "sha256": "0ea606668f70870df804215adb15f62c19728c379387b3ba31bb826b23e94d76"
+    },
+    {
+      "path": "exp-scope-platform-report.json",
+      "sha256": "f43e0db921bb9dbad68e449c67b463b49b9b70ecffd1d29e679a49e22aa31896"
+    },
+    {
+      "path": "exp-scope-pmap-report.json",
+      "sha256": "0228588d625e311cba0d1ff2a5429cccf524ea137852df3248f9bb112d0988a9"
+    },
+    {
+      "path": "exp-scope-pmap-scope-report.json",
+      "sha256": "83d7fc5f186540d4fe7819746c42f0535ad71c9ce190d47044df95fce40c57f9"
+    },
+    {
+      "path": "exp-scope-policy-report.json",
+      "sha256": "8f1e9fbb672cc78f181abbb213a1019eff5eab56c87c4f19aa2ceb754422598f"
+    },
+    {
+      "path": "exp-scope-rpc-report.json",
+      "sha256": "c03415c3cb0d70e2293e1d0c788d1e5569af7d7ee4ae18a22dec94da44433387"
+    },
+    {
+      "path": "exp-scope-scheduler-report.json",
+      "sha256": "38329673f7676f7a014df662ad7ad32944538a8face9ef6190fa041f70781a2f"
+    },
+    {
+      "path": "exp-scope-startup-report.json",
+      "sha256": "12a82047e3098175ed78ed34558b40b0cdfe7f88f492f49b7e8003d250084b76"
+    },
+    {
+      "path": "exp-scope-strings-report.json",
+      "sha256": "dc0ac1315899fe3f373541e2e0390fb24a121da4ead2551296980354d983470a"
+    },
+    {
+      "path": "exp-scope-task-report.json",
+      "sha256": "d718706ecce186c80fc8da9bc15c0fdbbed4c2f21f9d871fa579485113879dc0"
+    },
+    {
+      "path": "exp-scope-usage-report.json",
+      "sha256": "d5a40771915858520738264ea1de69024cab5c5ac10e8cd83371349bfee4cf2a"
+    },
+    {
+      "path": "header-conflict-before-context-fix.log",
+      "sha256": "cbeca192291359625dbd6bf0f0e3223ac82a26c362b9a7e0f2c562418f312b6d"
+    },
+    {
+      "path": "local-inventory.json",
+      "sha256": "20ac5938567ae2ed8cd49a493c4daaa04f1af04d3a0d137f4e0b23114b5af91e"
+    },
+    {
+      "path": "logger-exp/adapter.ll",
+      "sha256": "247b157dd047ba5a73e6d4fc3a49e84a1937ed4ff7a579954f826e1a233f77c0"
+    },
+    {
+      "path": "logger-exp/early-log-arm64.o",
+      "sha256": "9705665cadbf0ebdd6a64a4e1e412a981b25ddcef90f1367c746c25709cd0380"
+    },
+    {
+      "path": "logger-exp/host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-exp/host-contracts.log",
+      "sha256": "9ba11261054a924b5750da94df40caa06259d64a5fd8a6f18881de9904da2aff"
+    },
+    {
+      "path": "logger-exp/native-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-exp/native-adapter-disassembly.log",
+      "sha256": "05555dd03f75a684e4b40988e5ec904fa81e86a5d09c0f9e4a41f828d3b9f770"
+    },
+    {
+      "path": "logger-exp/native-adapter-imports.log",
+      "sha256": "b95d9288f729058ac371b3e69b8956f31967c7f444aa69bb7465c5d038dd2ddc"
+    },
+    {
+      "path": "logger-exp/native-adapter-ir.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-exp/native-core-disassembly.log",
+      "sha256": "3a5b6c229aea0a0adf120fd2221cd906ed17db07d89c0b21bc26077475b0533e"
+    },
+    {
+      "path": "logger-exp/native-core-imports.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-exp/portable-arm64-compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-exp/portable-elf-imports.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-exp/reject-bsd-log-service.log",
+      "sha256": "67c9f12e104ca07162f15ab4c26068d3936b2f76ef28b03c940023c29448ff20"
+    },
+    {
+      "path": "logger-exp/reject-iokit-log-service.log",
+      "sha256": "67c9f12e104ca07162f15ab4c26068d3936b2f76ef28b03c940023c29448ff20"
+    },
+    {
+      "path": "logger-exp/reject-outside-firmware.log",
+      "sha256": "6ad6d5b700c21c064a7c5f3268fe61fa9cd5fe37d8a47489d92788ddf39dd944"
+    },
+    {
+      "path": "logger-exp/reject-putc-type.log",
+      "sha256": "916d44fca51691a8022e0614d51a5f1ee56a578c533458ab111f64c5e0660029"
+    },
+    {
+      "path": "logger-exp/reject-snapshot-capacity.log",
+      "sha256": "ea3b5ef6141fe86c08aa151dda45f344a19622a61c9b8bd0a857a2c75e26a39d"
+    },
+    {
+      "path": "logger-exp/report.json",
+      "sha256": "23590e90bd9c5cd533af1dbda9bdcb247130fd877875b0a9c1ecad6091ed9cec"
+    },
+    {
+      "path": "logger-exp/thread-sanitizer-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-exp/thread-sanitizer-contracts.log",
+      "sha256": "76b9248a253b2bdab66ae6a0de8ff8269c76633a2c47b38e268f7c0f2fdafb02"
+    },
+    {
+      "path": "logger-std/adapter.ll",
+      "sha256": "db69cdf4325eab2adaa748ec3facd8d609580a839ac09b32ff8f77f3279ad96a"
+    },
+    {
+      "path": "logger-std/atlantic_early_log-probe.o",
+      "sha256": "be741e242f5a6cf8cabfa374bd00541c2e59cbfb5cddb45bb3b321d5e0a32f99"
+    },
+    {
+      "path": "logger-std/early-log-arm64.o",
+      "sha256": "9705665cadbf0ebdd6a64a4e1e412a981b25ddcef90f1367c746c25709cd0380"
+    },
+    {
+      "path": "logger-std/early_log-probe.o",
+      "sha256": "3294935500c2625aa8a4e97b0b5c30caa5b948693764df9030dd4e3821bf4594"
+    },
+    {
+      "path": "logger-std/host-build.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-std/host-contracts.log",
+      "sha256": "0d77737109137e9bcba1f4f9935561f77bdfaa88427de11dffb73189059d38fe"
+    },
+    {
+      "path": "logger-std/native-abi.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-std/native-adapter-disassembly.log",
+      "sha256": "06b825afa60c51eae1d5194a08c513e71da6a2d06089de41d3842097cc232c09"
+    },
+    {
+      "path": "logger-std/native-adapter-imports.log",
+      "sha256": "b95d9288f729058ac371b3e69b8956f31967c7f444aa69bb7465c5d038dd2ddc"
+    },
+    {
+      "path": "logger-std/native-adapter-ir.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-std/native-core-disassembly.log",
+      "sha256": "9a4c813875df017bc30a982fbb11b02bbe6651aa0e31b3e05ac649069a11d8c6"
+    },
+    {
+      "path": "logger-std/native-core-imports.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-std/portable-arm64-compile.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-std/portable-elf-imports.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-std/reject-bsd-log-service.log",
+      "sha256": "ff1b03d065b6e14456a05133fe16d61d091e854c173adb2a28c0ded7a00f6baf"
+    },
+    {
+      "path": "logger-std/reject-iokit-log-service.log",
+      "sha256": "ff1b03d065b6e14456a05133fe16d61d091e854c173adb2a28c0ded7a00f6baf"
+    },
+    {
+      "path": "logger-std/reject-outside-firmware.log",
+      "sha256": "84bf2a4e098ab54f8140620e403918be4f6fda45dab2e04ffe3c475ee172e378"
+    },
+    {
+      "path": "logger-std/reject-putc-type.log",
+      "sha256": "916d44fca51691a8022e0614d51a5f1ee56a578c533458ab111f64c5e0660029"
+    },
+    {
+      "path": "logger-std/reject-snapshot-capacity.log",
+      "sha256": "ea3b5ef6141fe86c08aa151dda45f344a19622a61c9b8bd0a857a2c75e26a39d"
+    },
+    {
+      "path": "logger-std/report.json",
+      "sha256": "a43a57ebf9dd30474403dd2780de026999becaf5f10df7495303ea198a4b0baa"
+    },
+    {
+      "path": "logger-std/standard-atlantic_early_log.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logger-std/standard-early_log.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "publish_audit.py",
+      "sha256": "2d945937a850e883531e7596d57cf6fc705ad58257c32bce9956c2fcf9d14618"
+    },
+    {
+      "path": "README.md",
+      "sha256": "3fb9ef2094c3b757bec9f1e02ca6b02a255253afc7dc192a4631c43efdcc3207"
+    },
+    {
+      "path": "std-assym.s",
+      "sha256": "3276ada4a5d0c83bf02ace5e5a55e08aa659e753c72ff1411455dab031eb43f7"
+    },
+    {
+      "path": "std-base-report.json",
+      "sha256": "d8518113c232b7aadac8108c1a04d5d15021b7096b65b06b54d5ea805cdb5f38"
+    },
+    {
+      "path": "std-boot-prepare-report.json",
+      "sha256": "340201a66ec2eabc12c69b156f980db213acf7374919409f6f386d207a5a1042"
+    },
+    {
+      "path": "std-boot-tree-report.json",
+      "sha256": "3cb0f0d25a367db17c9cd6e0cbcd942206813652670319a28a8bc47c3ce63f34"
+    },
+    {
+      "path": "std-genassym.s",
+      "sha256": "c5bab8e3e824dbe4851c0b0a38b8b026657396ce070ebbbfd950b04684b8f8ea"
+    },
+    {
+      "path": "std-link-report.json",
+      "sha256": "7e4823c4cbd7c696faff7daf6442251e17f605deb38e647c070bbe43d46db4ea"
+    },
+    {
+      "path": "std-link.log",
+      "sha256": "c7b520e68f3f7833f66dbdb791cc02da75f184140f0455b54ff17c259a34def3"
+    },
+    {
+      "path": "std-macho-report.json",
+      "sha256": "7fc883c43fb18a19569d1fdfc7c3a453665deaa85c7600fdf443238f950e949a"
+    },
+    {
+      "path": "std-Makefile",
+      "sha256": "b2952042d5bb23f936a54cba76f1fb3e632c5f2d899ba2535f53359b15a69a85"
+    },
+    {
+      "path": "std-rpc-report.json",
+      "sha256": "6cae8003b8bc1bea34b0e8c766938f7271fc036c224eca8fac321192a84c4854"
+    },
+    {
+      "path": "std-scope-brk-report.json",
+      "sha256": "5de69f2750e592c857bd86727c91f509b15cbb620e6040198f3558e339defd17"
+    },
+    {
+      "path": "std-scope-coalition-report.json",
+      "sha256": "d9b802b629f4154a7ac0fa2a7bfdd5f1417186d4203b49444a89a389022c85f5"
+    },
+    {
+      "path": "std-scope-core-report.json",
+      "sha256": "2e2b06c225e21f232f54477f45ff6ae990f6c2b779354b1437ea8ce3ebd08b3f"
+    },
+    {
+      "path": "std-scope-cpu-report.json",
+      "sha256": "6671edb6ec72a651bea8e150849f9d1e3b71737e3f5e595dd4eda7371047b957"
+    },
+    {
+      "path": "std-scope-kobject-report.json",
+      "sha256": "39f3527c0929115f91539ac333f345f329f4fd6a82ad693683d97603a957ca27"
+    },
+    {
+      "path": "std-scope-mig-report.json",
+      "sha256": "faf1389554356efc7e514cab2e8efecc02736eff6a3071d0e40c8773928359ca"
+    },
+    {
+      "path": "std-scope-platform-report.json",
+      "sha256": "dfbb3f33de03b29d76803c7e84c4c9ad42aec08396522f840a61509a60f85d1b"
+    },
+    {
+      "path": "std-scope-pmap-report.json",
+      "sha256": "0137f2512b11c4f9057efbf78c7190938dc4c0502c03134b939dee2ac137996c"
+    },
+    {
+      "path": "std-scope-pmap-scope-report.json",
+      "sha256": "3720b412dddf9ef51dce4046f82df63fb46c5b297083d260c1049b2f64fbf316"
+    },
+    {
+      "path": "std-scope-policy-report.json",
+      "sha256": "0570979579304ffe658946da20d949c94b816f3da04f22d5bb2e32e76e232577"
+    },
+    {
+      "path": "std-scope-rpc-report.json",
+      "sha256": "f08775fc39f2e7eaed4021c6ad4cef25d37fb41275290fa1a771bb4bc337b7b8"
+    },
+    {
+      "path": "std-scope-scheduler-report.json",
+      "sha256": "31c9607b1c68d5de578d8d6df20c827ac0667a171ef20fe212d8e4065521c906"
+    },
+    {
+      "path": "std-scope-startup-report.json",
+      "sha256": "65d4193d64082b5018dc2876b6d1c0e28ae2252facf4b73f36efbcf5f42486a3"
+    },
+    {
+      "path": "std-scope-strings-report.json",
+      "sha256": "e586aae1fde676b7e3abb850df7f93b6cf5b1bdab470530dfdea41d5c4ff8ff3"
+    },
+    {
+      "path": "std-scope-task-report.json",
+      "sha256": "bc6bf2ed4dbd84441c6c2218feeb2e45ff4dc63d6d9bb8b3bae5f3c7b413ea5c"
+    }
+  ]
+}

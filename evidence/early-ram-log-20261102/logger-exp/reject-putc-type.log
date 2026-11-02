@@ -1,0 +1,7 @@
+<ROOT>/tests/xnu_port/early_log_abi.c:16:8: error: incompatible function pointer types initializing 'void (*)(int)' with an expression of type 'void (*)(char)' [-Wincompatible-function-pointer-types]
+   16 | void (*atl_bad_putc)(int) = PE_kputc;
+      |        ^                    ~~~~~~~~
+<ROOT>/tests/xnu_port/early_log_abi.c:16:29: error: initializer element is not a compile-time constant
+   16 | void (*atl_bad_putc)(int) = PE_kputc;
+      |                             ^~~~~~~~
+2 errors generated.

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "scope": "LOCAL_NATIVE_BUILD_AND_HOST_DIAGNOSTICS_NO_XNU_EXECUTION",
+  "lanes": {
+    "exp": {
+      "units": 157,
+      "checks": 178,
+      "base_report_sha256": "254295f14bb491f671e4f34c3a0cddc9823d834cb678c2c9a4ea47e658e67dac",
+      "rpc_report_sha256": "0804b6a11bf70a38a011e000e34de93411a8d72925ca45e12e22db2877eb73eb",
+      "old_source_hashes_preserved": 155,
+      "genassym_equal_except_source_path": true,
+      "undefined": 463
+    },
+    "std": {
+      "units": 13,
+      "checks": 150,
+      "base_report_sha256": "d8518113c232b7aadac8108c1a04d5d15021b7096b65b06b54d5ea805cdb5f38",
+      "rpc_report_sha256": "6cae8003b8bc1bea34b0e8c766938f7271fc036c224eca8fac321192a84c4854",
+      "old_source_hashes_preserved": 13,
+      "genassym_equal_except_source_path": true,
+      "undefined": 825
+    }
+  },
+  "port_id": "5647a1f4c6efdb54864c33f22420ccd5669e260f7911b2ef61e33d18e16de646",
+  "patch_count": 30,
+  "resolved_old_names": [
+    "_PE_kputc",
+    "_kprintf"
+  ],
+  "new_undefined_names": [],
+  "native_formatter_unchanged": true,
+  "kernel_linked": false,
+  "native_formatter_executed": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "physical_memory_measured": false
+}

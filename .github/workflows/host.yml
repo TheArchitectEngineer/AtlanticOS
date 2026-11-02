@@ -25,6 +25,8 @@ jobs:
         run: python3 tools/test_boot_tree.py --sanitize --output work/boot-tree-tests
       - name: Test original freestanding string contracts without interposing host libc
         run: python3 tools/test_string_support.py --sanitize --output work/string-support-tests
+      - name: Test bounded original RAM diagnostics with pthread contention and sanitizers
+        run: python3 tools/test_early_log.py --sanitize --output work/early-log-tests
       - name: Validate original static Mach-O plans without loading or executing images
         run: python3 tools/test_macho.py --sanitize --output work/macho-plan-tests
       - name: Prepare original candidate boot_args without loading XNU or claiming memory ownership
@@ -83,3 +85,4 @@ jobs:
           python3 tools/evidence-validator/validate_evidence.py evidence/boot-prepare-20261025/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-cpu-cache-20261101/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-ci155-20261102/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/early-ram-log-20261102/manifest.json

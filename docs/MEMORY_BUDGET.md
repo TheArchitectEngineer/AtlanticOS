@@ -41,6 +41,13 @@ Reportar total retenido y pico de asignaciones por separado. Incluir tamaño de
 imagen comprimida/descomprimida y doble residencia temporal durante handoff.
 Un firmware de 20 MiB en disco no es una medición de 20 MiB RAM.
 
+El [registro temprano original](XNU_EARLY_RAM_LOG.md) tiene una instancia de
+16 432 bytes de BSS y un contexto C de captura de 1 040 bytes por kprintf,
+además del frame nativo/va_list/formateador y los buffers de snapshot del caller.
+Son tamaños de tipos/objetos, no high-water ni RAM residente medida. Contar el
+BSS dentro de sus páginas de imagen, sin sumarlo otra vez a la misma reserva,
+y medir la ocupación de stack y copias retenidas durante T09.
+
 `atlantic_core.validation.memory_report` prueba contabilidad de fixtures con
 solapamientos/overflow rechazados y el límite estricto. No calcula RAM de un
 teléfono. La futura instrumentación XNU necesita hooks originales en su allocator

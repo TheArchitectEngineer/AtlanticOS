@@ -196,3 +196,13 @@ Los hooks Apple upstream vacíos no implementan el hardware; no se ejecutan
 registros de CPU o cachés. La normalización de MIDR y las suposiciones NEON del
 target se distinguen de observaciones físicas. Continúan pendientes contexto,
 BSP/IRQ, carga temporal y ejecución genuina de XNU y handoff EDK2.
+
+El [logging RAM original](XNU_EARLY_RAM_LOG.md), 2026-11-02, amplía el conjunto
+a 157 unidades experimentales y conserva 13 estándar. Pasan 178/150 checks,
+ASan/UBSan y un ensayo host separado con ThreadSanitizer. El adaptador llama
+al formatter XNU intacto; los punteros PE apuntan a un writer real en RAM.
+El enlace de 183 objetos deja 463 indefinidos, cero duplicados y ninguna imagen.
+Se resuelven dos nombres sin dependencias nuevas. No hay transporte físico de
+logs, consola/IRQ G20, formatter nativo o XNU ejecutados, ni RAM residente medida.
+Este soporte requiere MMU/RAM normal y no sustituye la entrada temprana o el BSP;
+la aceptación física y el handoff EDK2 mantienen su alcance completo.
