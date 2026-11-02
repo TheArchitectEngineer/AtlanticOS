@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-11-02",
+  "label": "BUILT_ARM64",
+  "scope": "CLEAN_CI155_SOURCE_ABI_REPRODUCTION_ONLY_NO_KERNEL_OR_HARDWARE_EXECUTION",
+  "repository_commit": "1f2fa529cb1c567f3f405f532017d77ad24f8bfa",
+  "github_run_id": 41374630610,
+  "port_id": "25598af2b83969b18f5d9911863b13e210cdc1fa07818471aec6b2b7c521547b",
+  "kernel_linked": false,
+  "xnu_executed": false,
+  "phone_accessed": false,
+  "artifacts": [
+    {
+      "path": "audit.json",
+      "sha256": "2031d2f3097295c15f8d979a42b9d454795317b76596e02eacb4c8b3c96c06c8"
+    },
+    {
+      "path": "audit_ci155.py",
+      "sha256": "a3c3e614b884e3a827b37acbd8f35bc081129c7b8abd64899acdf930ae91ce13"
+    },
+    {
+      "path": "download-inventory.json",
+      "sha256": "ee72a9b671a75af7aa52c536c681f89bc4d8021d01461c1ce1a2e834ee426f99"
+    },
+    {
+      "path": "github-artifacts.json",
+      "sha256": "bbd99de80de7c5edf10d2254e7deca3d4096190f91b7d21d355c60937482614f"
+    },
+    {
+      "path": "github-run.json",
+      "sha256": "2bc9c889dc0cd80059de32220f5cafcd721c412e92b1bf086b7d4ddf725d12e5"
+    },
+    {
+      "path": "README.md",
+      "sha256": "1fe8e81c9854900fc6f81e96a406e8cb10caf58588571dc750d4d36c39d67c02"
+    },
+    {
+      "path": "remote/boot-prepare-tests/candidate-boot-args.bin",
+      "sha256": "8971c60b7399ceaf65a735ffa4b59af9c0e921b3fd632690da538b5f2e2dcbcd"
+    },
+    {
+      "path": "remote/boot-prepare-tests/report.json",
+      "sha256": "619d353112653a13dfa41ae23c971138464fab44978ff9fef5359dd2e4a2252e"
+    },
+    {
+      "path": "remote/boot-tree-tests/report.json",
+      "sha256": "18d338adc38b121bcabf810d94d6969bcadf2eb2484f2f7faa61ae5827aa1c15"
+    },
+    {
+      "path": "remote/brk-scope-tests/report.json",
+      "sha256": "3b34e33b285d5236bd7388257dc4d89aeea916a9c898ba9693310a0dc28395ed"
+    },
+    {
+      "path": "remote/clang-layout-ci/report.json",
+      "sha256": "105465b3069a3989a1b3b7213475117dc934fc63f131e27f149d938770e36d98"
+    },
+    {
+      "path": "remote/clang-layout-ci/tests/report.json",
+      "sha256": "ff62309294c444fb5c6ef9557d399f67a6ed282f6b5bf2a1df8cc076a25788d1"
+    },
+    {
+      "path": "remote/coalition-bank-tests/report.json",
+      "sha256": "341e8c6555ab0661c7074f3bec79b2a98d66b8ed28d1d7373e2ec8d2939f29ad"
+    },
+    {
+      "path": "remote/core-probes/report.json",
+      "sha256": "c6278b22446d1242941245550de856c17b1b69ae201fa2778418b1a499c607bd"
+    },
+    {
+      "path": "remote/core-scope-tests/report.json",
+      "sha256": "1cd184d84f1f4c171f77adb112beab4b15ebedf349ac4e842d52ce284a1e6834"
+    },
+    {
+      "path": "remote/cpu-cache-tests/report.json",
+      "sha256": "449880a54093f013d917e5db1f1607e2e97acd0d6c5bb6c9651966221f6b20d8"
+    },
+    {
+      "path": "remote/ipc-mig-abi-tests/report.json",
+      "sha256": "2e7372034693341659093bb3d80767592d0ab113308af939284297473745dba5"
+    },
+    {
+      "path": "remote/ipc-policy-scope-tests/report.json",
+      "sha256": "df2e2cce6a8089336d824f5e0438efdea5ade646237804a342864fc5c4cf31f5"
+    },
+    {
+      "path": "remote/kobject-scope-tests/report.json",
+      "sha256": "158f65e17d23c8e8d9e9193aefe154561b0e63380fc2d423d44cd5ae113732c4"
+    },
+    {
+      "path": "remote/macho-plan-tests/report.json",
+      "sha256": "31ad65f3f5f3bde53193a85daa9082fbf4d833c66289b5bacb83c16d4b52a3c9"
+    },
+    {
+      "path": "remote/memory-provider-tests/report.json",
+      "sha256": "06432abbf758e948b70ad11108821e337bfaefc72aa8339b1e17dfa80283b88b"
+    },
+    {
+      "path": "remote/mig-host/report.json",
+      "sha256": "7e5dbc737fa596f993e7aefffe0f8adf00394d94ab9bdc0b4163b4d6b69f1f91"
+    },
+    {
+      "path": "remote/pe-platform-tests/report.json",
+      "sha256": "44e2097b47c95f5ec27d68baf672c2f042cb8322f05cf003efdb4a4853fd9f00"
+    },
+    {
+      "path": "remote/pmap-cs-scope-tests/report.json",
+      "sha256": "40f9d4b50ecf8e2075f3ebe67fd6e4885b897d7f509380164acb8251e366be3d"
+    },
+    {
+      "path": "remote/pmap-firmware-tests/report.json",
+      "sha256": "3dab298a31df88a315fb1bb291a35557149a446ed89568fe0b7db3bfd7cc9f0b"
+    },
+    {
+      "path": "remote/scheduler-provider-tests/report.json",
+      "sha256": "398c2ef7c3ef60b6e098a3f19acdaa66f1c7418f99b4de8677d18240ce524bef"
+    },
+    {
+      "path": "remote/startup-scope-tests/report.json",
+      "sha256": "6c976ea050f578c552cb2d80269d849e8e879b6dea493ccc5f5df5295610b4ea"
+    },
+    {
+      "path": "remote/string-support-tests/report.json",
+      "sha256": "02bb7ac4083bf612d2df282eabfff7af3aa2d0bc17bde98a38dae86dba9be100"
+    },
+    {
+      "path": "remote/task-metadata-tests/report.json",
+      "sha256": "773417e3db20ef9ec8da902e409fae263ba6f66c1c0809ce941fa4195bd88909"
+    },
+    {
+      "path": "remote/usage-semantics-tests/report.json",
+      "sha256": "fb6a8363f4f56300df9e4938df0c7869eda51332ecfdf3b5eaa9beef3e6ddbea"
+    },
+    {
+      "path": "remote/xnu-lab-builds/3c96c0b01af86cac/config/Makefile",
+      "sha256": "3dd899980d27320c16ebb2f489ae1ee859720ede0aa7ac72835da56f1b659c7b"
+    },
+    {
+      "path": "remote/xnu-lab-builds/3c96c0b01af86cac/report.json",
+      "sha256": "3cc89141c73e3482cc035840d8d4cc6b1cfefb94450d1a1917d897df0a32197e"
+    },
+    {
+      "path": "remote/xnu-link-diagnostics/link.log",
+      "sha256": "43d2fa9df9696a66279b8e2451618de073079c5e003d22418a769c1f3dd8408d"
+    },
+    {
+      "path": "remote/xnu-link-diagnostics/report.json",
+      "sha256": "fa4581f08a0a2f64b65d7d1a19631a9539f6d707bc0ce5274b856ad7307a3573"
+    },
+    {
+      "path": "remote/xnu-rpc-builds/584f70e92e3cedad/report.json",
+      "sha256": "23dd657186072ea52bd00b12bcac00de5154287cfe9e3b6367f5795381c58f19"
+    },
+    {
+      "path": "remote/xnu-rpc-tests/report.json",
+      "sha256": "03aa946743e3273b34d5cc4e9b1ac484724438e34f1c107f6fee55e819cffd5b"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# Puertas de entrega — actualizado 2026-10-24
+# Puertas de entrega — actualizado 2026-11-02
 
 | Fase / requisito | Estado exacto | Evidencia / siguiente puerta |
 |---|---|---|
@@ -30,6 +30,7 @@
 | 2: timers, políticas y contadores nativos | BUILT_ARM64 / ABI y objetos | Diez unidades añadidas, ocho intactas; doce cuerpos core conservados. SFI devuelve el error upstream de función no soportada; tokens requieren contexto de proceso real. Sin timer, política o IRQ ejecutados |
 | 2: roles MIG instalados, coaliciones y bank | BUILT_ARM64 / ABI y objetos | 70 headers oficiales en cuatro roles; prioridad interna conservada. Cinco unidades, cuatro intactas; dos guardas bank coherentes con su campo. Identidad y entrega sin prueba; debug VM desactivado conserva error nativo |
 | Reproducción remota de API v2 y 100 unidades | CI success / BUILT_ARM64 | Run 39891229141 de 49bbae4: 26 checks, fuentes/defines y 137 constantes coincidentes. evidencia/clang-layout-ci100-20261023; no prueba la ampliación posterior o hardware |
+| Reproducción remota limpia de 155 unidades | CI success / BUILT_ARM64 | Run 41374630610 de 1f2fa52: 26 checks API y 164 alcance/ABI; coinciden fuentes, selección, 70 headers MIG y 137 constantes. LLD upstream conserva 465 indefinidos y tres errores de opciones estáticas; sin imagen. evidence/xnu-ci155-20261102; no acredita reproducción binaria, XNU ejecutado o hardware |
 | Código RPC MIG de XNU | BUILT_ARM64 | 42 probes compilados por carril; CFILES selecciona 26 para enlace. ABI de 21 descriptores; 14 tablas kobject del perfil sin BSD/IOKit. Sin RPC ejecutado; XNU_RPC_PROVIDERS.md |
 | Enlazador ARM64 estático experimental | HOST_TESTED / fixtures enlazados | LLD_STATIC_ARM64.md: v2, 54 checks y 15 imágenes, incluida selección weak/strong; XNU mantiene referencias indefinidas, sin imagen kernel |
 | 2: ABI C BSP | BUILT_ARM64 si build_abi termina | objeto sin drivers y sin kernel, hash propio |
@@ -47,3 +48,7 @@ ARM64 original después de la primera entrega; los registros están separados.
 Prioridad actual: ACTIVE_GOAL.md. AtlanticBIOS completo, VNC y Wi-Fi se posponen
 hasta núcleo y handoff. Este G20 se trata como sin fastbootd por indicación del
 usuario; no se intentará entrar para investigar o instalar.
+
+La [estimación de avance](PROGRESS_ESTIMATE.md) distingue trabajo parcial de
+puertas superadas: aproximadamente 30 % hacia el primer XNU físico y 25 % hacia
+XNU → EDK2, con incertidumbre amplia. Es un juicio de planificación, no una medición.

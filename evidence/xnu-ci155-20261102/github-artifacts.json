@@ -1,0 +1,25 @@
+{
+  "total_count": 1,
+  "artifacts": [
+    {
+      "id": 13113151913,
+      "node_id": "MDg6QXJ0aWZhY3QxMzExMzE1MTkxMw==",
+      "name": "experimental-layout-and-xnu-metadata",
+      "size_in_bytes": 1838231,
+      "url": "https://api.github.com/repos/h0nda1337/AtlanticOS/actions/artifacts/13113151913",
+      "archive_download_url": "https://api.github.com/repos/h0nda1337/AtlanticOS/actions/artifacts/13113151913/zip",
+      "expired": false,
+      "digest": "sha256:7dddb6ce380e3271cb5a0fbf251534536b766076620316950b74c1cbfffac11a",
+      "created_at": "2026-11-02T02:54:47Z",
+      "updated_at": "2026-11-02T02:54:47Z",
+      "expires_at": "2026-11-09T02:54:45Z",
+      "workflow_run": {
+        "id": 41374630610,
+        "repository_id": 1426151970,
+        "head_repository_id": 1426151970,
+        "head_branch": "main",
+        "head_sha": "1f2fa529cb1c567f3f405f532017d77ad24f8bfa"
+      }
+    }
+  ]
+}

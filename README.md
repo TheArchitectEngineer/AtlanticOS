@@ -116,6 +116,12 @@ El enlace actual de 181 objetos falla con **465 diagnósticos indefinidos y cero
 duplicados**, sin imagen. Pasan 164/134 checks de alcance/ABI/objetos. La carga
 de boot_args, contexto BSP y ejecución de PE/SecureDT/XNU siguen pendientes.
 
+La [reconstrucción limpia de 155 unidades](evidence/xnu-ci155-20261102/README.md)
+terminó correctamente en GitHub. Reproduce fuentes y ABI; su LLD upstream
+conserva errores de opciones estáticas y los mismos 465 nombres indefinidos,
+sin imagen ni ejecución XNU. La [estimación por hitos](docs/PROGRESS_ESTIMATE.md)
+explica el trabajo pendiente hacia el primer arranque físico y el handoff.
+
 ## Reproducir
 
 Python 3.11 o superior, sin paquetes adicionales. Desde la raíz:

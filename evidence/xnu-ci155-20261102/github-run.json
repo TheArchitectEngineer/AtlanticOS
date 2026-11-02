@@ -1,0 +1,269 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-11-02T01:51:21Z",
+  "headSha": "1f2fa529cb1c567f3f405f532017d77ad24f8bfa",
+  "jobs": [
+    {
+      "completedAt": "2026-11-02T02:54:49Z",
+      "conclusion": "success",
+      "databaseId": 125052099291,
+      "name": "compiler",
+      "startedAt": "2026-11-02T01:51:24Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-11-02T01:51:26Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-11-02T01:51:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T01:51:28Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "number": 2,
+          "startedAt": "2026-11-02T01:51:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T01:51:41Z",
+          "conclusion": "success",
+          "name": "Install explicit Linux build dependencies",
+          "number": 3,
+          "startedAt": "2026-11-02T01:51:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:53:03Z",
+          "conclusion": "success",
+          "name": "Build pinned LLVM with original API and run its contract fixtures",
+          "number": 4,
+          "startedAt": "2026-11-02T01:51:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:53:08Z",
+          "conclusion": "success",
+          "name": "Fetch official XNU and MIG; build genuine host generator",
+          "number": 5,
+          "startedAt": "2026-11-02T02:53:03Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:18Z",
+          "conclusion": "success",
+          "name": "Compile 155 XNU-derived and original support units (no execution)",
+          "number": 6,
+          "startedAt": "2026-11-02T02:53:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:19Z",
+          "conclusion": "success",
+          "name": "Audit original PE native ABI and required BSP import without executing it",
+          "number": 7,
+          "startedAt": "2026-11-02T02:54:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:19Z",
+          "conclusion": "success",
+          "name": "Audit selected bootstrap components and retained native Mach initialization",
+          "number": 8,
+          "startedAt": "2026-11-02T02:54:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:20Z",
+          "conclusion": "success",
+          "name": "Audit native IPC policy, optional process analytics and IOKit descriptions",
+          "number": 9,
+          "startedAt": "2026-11-02T02:54:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:21Z",
+          "conclusion": "success",
+          "name": "Audit native timers, scheduler policy and unsupported feature returns",
+          "number": 10,
+          "startedAt": "2026-11-02T02:54:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:22Z",
+          "conclusion": "success",
+          "name": "Audit genuine MIG installed roles, coalitions and bank telemetry scopes",
+          "number": 11,
+          "startedAt": "2026-11-02T02:54:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:23Z",
+          "conclusion": "success",
+          "name": "Audit genuine CPU/cache call chains, architectural opcodes and empty upstream compatibility hooks",
+          "number": 12,
+          "startedAt": "2026-11-02T02:54:22Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:24Z",
+          "conclusion": "success",
+          "name": "Test original string contracts and audit genuine XNU support ABI",
+          "number": 13,
+          "startedAt": "2026-11-02T02:54:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:24Z",
+          "conclusion": "success",
+          "name": "Audit native memory providers and original cache branch without executing them",
+          "number": 14,
+          "startedAt": "2026-11-02T02:54:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:26Z",
+          "conclusion": "success",
+          "name": "Compare boot-data wire layout with native XNU using the experimental target",
+          "number": 15,
+          "startedAt": "2026-11-02T02:54:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:28Z",
+          "conclusion": "success",
+          "name": "Test static-image plans and compare official Mach-O ARM64 header ABI",
+          "number": 16,
+          "startedAt": "2026-11-02T02:54:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:29Z",
+          "conclusion": "success",
+          "name": "Compare all candidate boot_args bytes and native bootstrap geometry without execution",
+          "number": 17,
+          "startedAt": "2026-11-02T02:54:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:30Z",
+          "conclusion": "success",
+          "name": "Verify pmap API rejection, object symbols and actual header dependencies",
+          "number": 18,
+          "startedAt": "2026-11-02T02:54:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:31Z",
+          "conclusion": "success",
+          "name": "Compare real Mach and BSD metadata layouts and reject corrupted owner offsets",
+          "number": 19,
+          "startedAt": "2026-11-02T02:54:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:32Z",
+          "conclusion": "success",
+          "name": "Verify genuine MIG roles and reject kernel port and server ABI mismatches",
+          "number": 20,
+          "startedAt": "2026-11-02T02:54:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:32Z",
+          "conclusion": "success",
+          "name": "Check native dispatch feature scope and unchanged upstream contexts",
+          "number": 21,
+          "startedAt": "2026-11-02T02:54:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:33Z",
+          "conclusion": "success",
+          "name": "Check native panic scope and retained formatting ABI against original definitions",
+          "number": 22,
+          "startedAt": "2026-11-02T02:54:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:33Z",
+          "conclusion": "success",
+          "name": "Audit native fatal descriptors and emitted ARM64 BRK/register encodings",
+          "number": 23,
+          "startedAt": "2026-11-02T02:54:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:34Z",
+          "conclusion": "success",
+          "name": "Compare native usage metadata and unchanged ARM64 type ABI",
+          "number": 24,
+          "startedAt": "2026-11-02T02:54:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:37Z",
+          "conclusion": "success",
+          "name": "Retain unresolved native compilation probes as diagnostics",
+          "number": 25,
+          "startedAt": "2026-11-02T02:54:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:43Z",
+          "conclusion": "success",
+          "name": "Generate and compile forty-two native RPC files and check selected IDL scopes",
+          "number": 26,
+          "startedAt": "2026-11-02T02:54:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:44Z",
+          "conclusion": "success",
+          "name": "Check actual kobject table providers and generated descriptor ABI",
+          "number": 27,
+          "startedAt": "2026-11-02T02:54:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:44Z",
+          "conclusion": "success",
+          "name": "Record strict static linker rejection without accepting an image",
+          "number": 28,
+          "startedAt": "2026-11-02T02:54:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:47Z",
+          "conclusion": "success",
+          "name": "Retain commands, checks and diagnostics, including partial failures",
+          "number": 29,
+          "startedAt": "2026-11-02T02:54:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:47Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "number": 58,
+          "startedAt": "2026-11-02T02:54:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-11-02T02:54:47Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 59,
+          "startedAt": "2026-11-02T02:54:47Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/h0nda1337/AtlanticOS/actions/runs/41374630610/job/125052099291"
+    }
+  ],
+  "status": "completed",
+  "updatedAt": "2026-11-02T02:54:50Z",
+  "url": "https://github.com/h0nda1337/AtlanticOS/actions/runs/41374630610"
+}

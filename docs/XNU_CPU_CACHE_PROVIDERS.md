@@ -85,6 +85,14 @@ cierre del kernel, contexto retenido/ownership, traducciones, BSP real y carga
 temporal/recuperación independientes comprobadas. Tampoco hay handoff EDK2 o
 RAM firmware medida. Las pruebas físicas están en DEVICE_TEST_PLAN.md.
 
+Actualización 2026-11-02: la [CI limpia de 155 unidades](https://github.com/h0nda1337/AtlanticOS/actions/runs/41374630610)
+terminó success en 1f2fa52. Coinciden fuentes, defines, selección RPC, 70 headers
+MIG y 137 constantes; pasan 26 checks API y 164 de alcance/ABI/objetos.
+La [auditoría](../evidence/xnu-ci155-20261102/README.md) conserva los informes:
+ese run usa LLD upstream, que rechaza tres opciones estáticas, y no reproduce
+el enlazador original local. Conserva los mismos 465 nombres indefinidos y
+ninguna imagen; no acredita ejecución XNU ni reproducción binaria completa.
+
 Fuentes oficiales fijadas:
 [cpuid.c](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.1.9/osfmk/arm/cpuid.c),
 [machine_cpuid.c](https://github.com/apple-oss-distributions/xnu/blob/xnu-12377.1.9/osfmk/arm/machine_cpuid.c)
