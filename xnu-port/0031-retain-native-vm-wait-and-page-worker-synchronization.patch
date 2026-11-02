@@ -1,0 +1,29 @@
+Original AtlanticOS scope correction for the explicit firmware profile.
+Keep native VM wait/wakeup and page-worker algorithms without CONFIG_IOSCHED.
+I/O reprioritization remains scoped to CONFIG_IOSCHED; native bodies are intact.
+
+diff --git a/osfmk/vm/vm_object.c b/osfmk/vm/vm_object.c
+--- a/osfmk/vm/vm_object.c
++++ b/osfmk/vm/vm_object.c
+@@ -8188,6 +8188,10 @@
+ 	return;
+ }
+ 
++#endif /* CONFIG_IOSCHED */
++
++#if CONFIG_IOSCHED || CONFIG_ATLANTIC_FIRMWARE
++
+ void
+ kdp_vm_object_sleep_find_owner(
+ 	event64_t          wait_event,
+@@ -8622,6 +8626,10 @@
+ 	return ret;
+ }
+ #endif  /* PAGE_SLEEP_WITH_INHERITOR */
++
++#endif /* CONFIG_IOSCHED || CONFIG_ATLANTIC_FIRMWARE */
++
++#if CONFIG_IOSCHED
+ 
+ static void
+ io_reprioritize(mpsc_queue_chain_t elm, __assert_only mpsc_daemon_queue_t dq)

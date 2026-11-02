@@ -1,0 +1,2965 @@
+<ROOT>/work/queue-vm-scope-std-v2-20261102/priority_queue-probe.o:
+(__TEXT,__text) section
+__Z23_priority_queue_destroyP18priority_queue_minmU13block_pointerFvPvE:
+       0:	00 00 00 14	b	__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE7destroyES1_mU13block_pointerFvPvE
+       4:	1f 20 03 d5	nop
+       8:	1f 20 03 d5	nop
+       c:	1f 20 03 d5	nop
+__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE7destroyES1_mU13block_pointerFvPvE:
+      10:	f8 5f bc a9	stp	x24, x23, [sp, #-0x40]!
+      14:	f6 57 01 a9	stp	x22, x21, [sp, #0x10]
+      18:	f4 4f 02 a9	stp	x20, x19, [sp, #0x20]
+      1c:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+      20:	fd c3 00 91	add	x29, sp, #0x30
+      24:	f4 03 02 aa	mov	x20, x2
+      28:	f3 03 00 aa	mov	x19, x0
+      2c:	20 00 00 14	b	0xac
+      30:	68 02 40 f9	ldr	x8, [x19]
+      34:	e8 02 00 b4	cbz	x8, 0x90
+      38:	f5 03 01 cb	neg	x21, x1
+      3c:	e9 03 08 aa	mov	x9, x8
+      40:	0a 00 00 14	b	0x68
+      44:	f6 03 09 aa	mov	x22, x9
+      48:	89 0a 40 f9	ldr	x9, [x20, #0x10]
+      4c:	01 01 15 8b	add	x1, x8, x21
+      50:	e0 03 14 aa	mov	x0, x20
+      54:	17 01 40 f9	ldr	x23, [x8]
+      58:	20 01 3f d6	blr	x9
+      5c:	e8 03 17 aa	mov	x8, x23
+      60:	e9 03 16 aa	mov	x9, x22
+      64:	77 01 00 b4	cbz	x23, 0x90
+      68:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+      6c:	5f 41 40 f1	cmp	x10, #0x10, lsl #12
+      70:	a3 fe ff 54	b.lo	0x44
+      74:	4a fd 50 93	asr	x10, x10, #16
+      78:	2a 01 00 f9	str	x10, [x9]
+      7c:	1f 20 03 d5	nop
+      80:	f6 03 09 aa	mov	x22, x9
+      84:	29 01 40 f9	ldr	x9, [x9]
+      88:	c9 ff ff b5	cbnz	x9, 0x80
+      8c:	ef ff ff 17	b	0x48
+      90:	08 00 80 92	mov	x8, #-0x1
+      94:	fd 7b 43 a9	ldp	x29, x30, [sp, #0x30]
+      98:	68 02 00 f9	str	x8, [x19]
+      9c:	f4 4f 42 a9	ldp	x20, x19, [sp, #0x20]
+      a0:	f6 57 41 a9	ldp	x22, x21, [sp, #0x10]
+      a4:	f8 5f c4 a8	ldp	x24, x23, [sp], #0x40
+      a8:	c0 03 5f d6	ret
+      ac:	34 fc ff b5	cbnz	x20, 0x30
+      b0:	08 00 00 90	adrp	x8, __ZZN6pqueueIP18priority_queue_minP20priority_queue_entryE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGE
+      b4:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP18priority_queue_minP20priority_queue_entryE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGEOFF
+      b8:	80 ff 37 d4	brk	#0xbffc
+      bc:	1f 20 03 d5	nop
+__Z21priority_queue_insertP18priority_queue_minP20priority_queue_entry:
+      c0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+      c4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+      c8:	fd 43 00 91	add	x29, sp, #0x10
+      cc:	28 20 40 79	ldrh	w8, [x1, #0x10]
+      d0:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+      d4:	f3 03 01 aa	mov	x19, x1
+      d8:	e2 03 13 aa	mov	x2, x19
+      dc:	f4 03 00 aa	mov	x20, x0
+      e0:	28 08 00 f9	str	x8, [x1, #0x10]
+      e4:	01 00 40 f9	ldr	x1, [x0]
+      e8:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE10merge_pairES1_S3_S3_
+      ec:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+      f0:	1f 00 13 eb	cmp	x0, x19
+      f4:	80 02 00 f9	str	x0, [x20]
+      f8:	e0 17 9f 1a	cset	w0, eq
+      fc:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     100:	c0 03 5f d6	ret
+     104:	1f 20 03 d5	nop
+     108:	1f 20 03 d5	nop
+     10c:	1f 20 03 d5	nop
+__Z27_priority_queue_remove_rootP18priority_queue_min:
+     110:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     114:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     118:	fd 43 00 91	add	x29, sp, #0x10
+     11c:	13 00 40 f9	ldr	x19, [x0]
+     120:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     124:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     128:	62 00 00 54	b.hs	0x134
+     12c:	1f 00 00 f9	str	xzr, [x0]
+     130:	07 00 00 14	b	0x14c
+     134:	01 fd 50 93	asr	x1, x8, #16
+     138:	f4 03 00 aa	mov	x20, x0
+     13c:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE9meld_pairES1_S3_
+     140:	80 02 00 f9	str	x0, [x20]
+     144:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     148:	68 0a 00 f9	str	x8, [x19, #0x10]
+     14c:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     150:	e0 03 13 aa	mov	x0, x19
+     154:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     158:	c0 03 5f d6	ret
+     15c:	1f 20 03 d5	nop
+__Z21priority_queue_removeP18priority_queue_minP20priority_queue_entry:
+     160:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+     164:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+     168:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+     16c:	fd 83 00 91	add	x29, sp, #0x20
+     170:	15 00 40 f9	ldr	x21, [x0]
+     174:	f3 03 01 aa	mov	x19, x1
+     178:	bf 02 01 eb	cmp	x21, x1
+     17c:	e0 02 00 54	b.eq	0x1d8
+     180:	2c 00 00 14	b	0x230
+     184:	69 22 40 a9	ldp	x9, x8, [x19]
+     188:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     18c:	7f 42 8a eb	cmp	x19, x10, asr #16
+     190:	e0 02 00 54	b.eq	0x1ec
+     194:	09 01 00 f9	str	x9, [x8]
+     198:	68 02 40 f9	ldr	x8, [x19]
+     19c:	68 00 00 b4	cbz	x8, 0x1a8
+     1a0:	69 06 40 f9	ldr	x9, [x19, #0x8]
+     1a4:	09 05 00 f9	str	x9, [x8, #0x8]
+     1a8:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     1ac:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+     1b0:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     1b4:	23 03 00 54	b.lo	0x218
+     1b8:	01 fd 50 93	asr	x1, x8, #16
+     1bc:	f4 03 00 aa	mov	x20, x0
+     1c0:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE9meld_pairES1_S3_
+     1c4:	81 02 40 f9	ldr	x1, [x20]
+     1c8:	e2 03 00 aa	mov	x2, x0
+     1cc:	e0 03 14 aa	mov	x0, x20
+     1d0:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE10merge_pairES1_S3_S3_
+     1d4:	0e 00 00 14	b	0x20c
+     1d8:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     1dc:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     1e0:	02 01 00 54	b.hs	0x200
+     1e4:	1f 00 00 f9	str	xzr, [x0]
+     1e8:	0c 00 00 14	b	0x218
+     1ec:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     1f0:	0a 09 00 f9	str	x10, [x8, #0x10]
+     1f4:	68 02 40 f9	ldr	x8, [x19]
+     1f8:	48 fd ff b5	cbnz	x8, 0x1a0
+     1fc:	eb ff ff 17	b	0x1a8
+     200:	01 fd 50 93	asr	x1, x8, #16
+     204:	f4 03 00 aa	mov	x20, x0
+     208:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE9meld_pairES1_S3_
+     20c:	80 02 00 f9	str	x0, [x20]
+     210:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     214:	68 0a 00 f9	str	x8, [x19, #0x10]
+     218:	bf 02 13 eb	cmp	x21, x19
+     21c:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+     220:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+     224:	e0 17 9f 1a	cset	w0, eq
+     228:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+     22c:	c0 03 5f d6	ret
+     230:	68 06 40 f9	ldr	x8, [x19, #0x8]
+     234:	88 fa ff b5	cbnz	x8, 0x184
+     238:	08 00 00 90	adrp	x8, __ZZN6pqueueIP18priority_queue_minP20priority_queue_entryE11list_removeES3_E6__desc@PAGE
+     23c:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP18priority_queue_minP20priority_queue_entryE11list_removeES3_E6__desc@PAGEOFF
+     240:	80 ff 37 d4	brk	#0xbffc
+     244:	1f 20 03 d5	nop
+     248:	1f 20 03 d5	nop
+     24c:	1f 20 03 d5	nop
+__Z30priority_queue_entry_decreasedP18priority_queue_minP20priority_queue_entry:
+     250:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     254:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     258:	fd 43 00 91	add	x29, sp, #0x10
+     25c:	08 00 40 f9	ldr	x8, [x0]
+     260:	1f 01 01 eb	cmp	x8, x1
+     264:	c0 02 00 54	b.eq	0x2bc
+     268:	1e 00 00 14	b	0x2e0
+     26c:	29 20 40 a9	ldp	x9, x8, [x1]
+     270:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     274:	3f 40 8a eb	cmp	x1, x10, asr #16
+     278:	a0 02 00 54	b.eq	0x2cc
+     27c:	09 01 00 f9	str	x9, [x8]
+     280:	28 00 40 f9	ldr	x8, [x1]
+     284:	68 00 00 b4	cbz	x8, 0x290
+     288:	29 04 40 f9	ldr	x9, [x1, #0x8]
+     28c:	09 05 00 f9	str	x9, [x8, #0x8]
+     290:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+     294:	f4 03 01 aa	mov	x20, x1
+     298:	08 00 40 f9	ldr	x8, [x0]
+     29c:	e2 03 14 aa	mov	x2, x20
+     2a0:	f3 03 00 aa	mov	x19, x0
+     2a4:	e1 03 08 aa	mov	x1, x8
+     2a8:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE10merge_pairES1_S3_S3_
+     2ac:	1f 00 14 eb	cmp	x0, x20
+     2b0:	60 02 00 f9	str	x0, [x19]
+     2b4:	e0 17 9f 1a	cset	w0, eq
+     2b8:	02 00 00 14	b	0x2c0
+     2bc:	20 00 80 52	mov	w0, #0x1
+     2c0:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     2c4:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     2c8:	c0 03 5f d6	ret
+     2cc:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     2d0:	0a 09 00 f9	str	x10, [x8, #0x10]
+     2d4:	28 00 40 f9	ldr	x8, [x1]
+     2d8:	88 fd ff b5	cbnz	x8, 0x288
+     2dc:	ed ff ff 17	b	0x290
+     2e0:	28 04 40 f9	ldr	x8, [x1, #0x8]
+     2e4:	48 fc ff b5	cbnz	x8, 0x26c
+     2e8:	08 00 00 90	adrp	x8, __ZZN6pqueueIP18priority_queue_minP20priority_queue_entryE11list_removeES3_E6__desc@PAGE
+     2ec:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP18priority_queue_minP20priority_queue_entryE11list_removeES3_E6__desc@PAGEOFF
+     2f0:	80 ff 37 d4	brk	#0xbffc
+     2f4:	1f 20 03 d5	nop
+     2f8:	1f 20 03 d5	nop
+     2fc:	1f 20 03 d5	nop
+__Z30priority_queue_entry_increasedP18priority_queue_minP20priority_queue_entry:
+     300:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+     304:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+     308:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+     30c:	fd 83 00 91	add	x29, sp, #0x20
+     310:	15 00 40 f9	ldr	x21, [x0]
+     314:	f3 03 01 aa	mov	x19, x1
+     318:	f4 03 00 aa	mov	x20, x0
+     31c:	bf 02 01 eb	cmp	x21, x1
+     320:	e0 02 00 54	b.eq	0x37c
+     324:	2f 00 00 14	b	0x3e0
+     328:	69 22 40 a9	ldp	x9, x8, [x19]
+     32c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     330:	7f 42 8a eb	cmp	x19, x10, asr #16
+     334:	c0 04 00 54	b.eq	0x3cc
+     338:	09 01 00 f9	str	x9, [x8]
+     33c:	68 02 40 f9	ldr	x8, [x19]
+     340:	68 00 00 b4	cbz	x8, 0x34c
+     344:	69 06 40 f9	ldr	x9, [x19, #0x8]
+     348:	09 05 00 f9	str	x9, [x8, #0x8]
+     34c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     350:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+     354:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     358:	43 02 00 54	b.lo	0x3a0
+     35c:	01 fd 50 93	asr	x1, x8, #16
+     360:	e0 03 14 aa	mov	x0, x20
+     364:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE9meld_pairES1_S3_
+     368:	81 02 40 f9	ldr	x1, [x20]
+     36c:	e2 03 00 aa	mov	x2, x0
+     370:	e0 03 14 aa	mov	x0, x20
+     374:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE10merge_pairES1_S3_S3_
+     378:	07 00 00 14	b	0x394
+     37c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     380:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     384:	83 01 00 54	b.lo	0x3b4
+     388:	01 fd 50 93	asr	x1, x8, #16
+     38c:	e0 03 14 aa	mov	x0, x20
+     390:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE9meld_pairES1_S3_
+     394:	80 02 00 f9	str	x0, [x20]
+     398:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     39c:	68 0a 00 f9	str	x8, [x19, #0x10]
+     3a0:	81 02 40 f9	ldr	x1, [x20]
+     3a4:	e0 03 14 aa	mov	x0, x20
+     3a8:	e2 03 13 aa	mov	x2, x19
+     3ac:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE10merge_pairES1_S3_S3_
+     3b0:	80 02 00 f9	str	x0, [x20]
+     3b4:	bf 02 13 eb	cmp	x21, x19
+     3b8:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+     3bc:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+     3c0:	e0 17 9f 1a	cset	w0, eq
+     3c4:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+     3c8:	c0 03 5f d6	ret
+     3cc:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     3d0:	0a 09 00 f9	str	x10, [x8, #0x10]
+     3d4:	68 02 40 f9	ldr	x8, [x19]
+     3d8:	68 fb ff b5	cbnz	x8, 0x344
+     3dc:	dc ff ff 17	b	0x34c
+     3e0:	68 06 40 f9	ldr	x8, [x19, #0x8]
+     3e4:	28 fa ff b5	cbnz	x8, 0x328
+     3e8:	08 00 00 90	adrp	x8, __ZZN6pqueueIP18priority_queue_minP20priority_queue_entryE11list_removeES3_E6__desc@PAGE
+     3ec:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP18priority_queue_minP20priority_queue_entryE11list_removeES3_E6__desc@PAGEOFF
+     3f0:	80 ff 37 d4	brk	#0xbffc
+     3f4:	1f 20 03 d5	nop
+     3f8:	1f 20 03 d5	nop
+     3fc:	1f 20 03 d5	nop
+__Z23_priority_queue_destroyP18priority_queue_maxmU13block_pointerFvPvE:
+     400:	00 00 00 14	b	__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE7destroyES1_mU13block_pointerFvPvE
+     404:	1f 20 03 d5	nop
+     408:	1f 20 03 d5	nop
+     40c:	1f 20 03 d5	nop
+__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE7destroyES1_mU13block_pointerFvPvE:
+     410:	f8 5f bc a9	stp	x24, x23, [sp, #-0x40]!
+     414:	f6 57 01 a9	stp	x22, x21, [sp, #0x10]
+     418:	f4 4f 02 a9	stp	x20, x19, [sp, #0x20]
+     41c:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+     420:	fd c3 00 91	add	x29, sp, #0x30
+     424:	f4 03 02 aa	mov	x20, x2
+     428:	f3 03 00 aa	mov	x19, x0
+     42c:	20 00 00 14	b	0x4ac
+     430:	68 02 40 f9	ldr	x8, [x19]
+     434:	e8 02 00 b4	cbz	x8, 0x490
+     438:	f5 03 01 cb	neg	x21, x1
+     43c:	e9 03 08 aa	mov	x9, x8
+     440:	0a 00 00 14	b	0x468
+     444:	f6 03 09 aa	mov	x22, x9
+     448:	89 0a 40 f9	ldr	x9, [x20, #0x10]
+     44c:	01 01 15 8b	add	x1, x8, x21
+     450:	e0 03 14 aa	mov	x0, x20
+     454:	17 01 40 f9	ldr	x23, [x8]
+     458:	20 01 3f d6	blr	x9
+     45c:	e8 03 17 aa	mov	x8, x23
+     460:	e9 03 16 aa	mov	x9, x22
+     464:	77 01 00 b4	cbz	x23, 0x490
+     468:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     46c:	5f 41 40 f1	cmp	x10, #0x10, lsl #12
+     470:	a3 fe ff 54	b.lo	0x444
+     474:	4a fd 50 93	asr	x10, x10, #16
+     478:	2a 01 00 f9	str	x10, [x9]
+     47c:	1f 20 03 d5	nop
+     480:	f6 03 09 aa	mov	x22, x9
+     484:	29 01 40 f9	ldr	x9, [x9]
+     488:	c9 ff ff b5	cbnz	x9, 0x480
+     48c:	ef ff ff 17	b	0x448
+     490:	08 00 80 92	mov	x8, #-0x1
+     494:	fd 7b 43 a9	ldp	x29, x30, [sp, #0x30]
+     498:	68 02 00 f9	str	x8, [x19]
+     49c:	f4 4f 42 a9	ldp	x20, x19, [sp, #0x20]
+     4a0:	f6 57 41 a9	ldp	x22, x21, [sp, #0x10]
+     4a4:	f8 5f c4 a8	ldp	x24, x23, [sp], #0x40
+     4a8:	c0 03 5f d6	ret
+     4ac:	34 fc ff b5	cbnz	x20, 0x430
+     4b0:	08 00 00 90	adrp	x8, __ZZN6pqueueIP18priority_queue_maxP20priority_queue_entryE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGE
+     4b4:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP18priority_queue_maxP20priority_queue_entryE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGEOFF
+     4b8:	80 ff 37 d4	brk	#0xbffc
+     4bc:	1f 20 03 d5	nop
+__Z21priority_queue_insertP18priority_queue_maxP20priority_queue_entry:
+     4c0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     4c4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     4c8:	fd 43 00 91	add	x29, sp, #0x10
+     4cc:	28 20 40 79	ldrh	w8, [x1, #0x10]
+     4d0:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+     4d4:	f3 03 01 aa	mov	x19, x1
+     4d8:	e2 03 13 aa	mov	x2, x19
+     4dc:	f4 03 00 aa	mov	x20, x0
+     4e0:	28 08 00 f9	str	x8, [x1, #0x10]
+     4e4:	01 00 40 f9	ldr	x1, [x0]
+     4e8:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE10merge_pairES1_S3_S3_
+     4ec:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     4f0:	1f 00 13 eb	cmp	x0, x19
+     4f4:	80 02 00 f9	str	x0, [x20]
+     4f8:	e0 17 9f 1a	cset	w0, eq
+     4fc:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     500:	c0 03 5f d6	ret
+     504:	1f 20 03 d5	nop
+     508:	1f 20 03 d5	nop
+     50c:	1f 20 03 d5	nop
+__Z27_priority_queue_remove_rootP18priority_queue_max:
+     510:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     514:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     518:	fd 43 00 91	add	x29, sp, #0x10
+     51c:	13 00 40 f9	ldr	x19, [x0]
+     520:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     524:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     528:	62 00 00 54	b.hs	0x534
+     52c:	1f 00 00 f9	str	xzr, [x0]
+     530:	07 00 00 14	b	0x54c
+     534:	01 fd 50 93	asr	x1, x8, #16
+     538:	f4 03 00 aa	mov	x20, x0
+     53c:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE9meld_pairES1_S3_
+     540:	80 02 00 f9	str	x0, [x20]
+     544:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     548:	68 0a 00 f9	str	x8, [x19, #0x10]
+     54c:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     550:	e0 03 13 aa	mov	x0, x19
+     554:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     558:	c0 03 5f d6	ret
+     55c:	1f 20 03 d5	nop
+__Z21priority_queue_removeP18priority_queue_maxP20priority_queue_entry:
+     560:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+     564:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+     568:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+     56c:	fd 83 00 91	add	x29, sp, #0x20
+     570:	15 00 40 f9	ldr	x21, [x0]
+     574:	f3 03 01 aa	mov	x19, x1
+     578:	bf 02 01 eb	cmp	x21, x1
+     57c:	e0 02 00 54	b.eq	0x5d8
+     580:	2c 00 00 14	b	0x630
+     584:	69 22 40 a9	ldp	x9, x8, [x19]
+     588:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     58c:	7f 42 8a eb	cmp	x19, x10, asr #16
+     590:	e0 02 00 54	b.eq	0x5ec
+     594:	09 01 00 f9	str	x9, [x8]
+     598:	68 02 40 f9	ldr	x8, [x19]
+     59c:	68 00 00 b4	cbz	x8, 0x5a8
+     5a0:	69 06 40 f9	ldr	x9, [x19, #0x8]
+     5a4:	09 05 00 f9	str	x9, [x8, #0x8]
+     5a8:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     5ac:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+     5b0:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     5b4:	23 03 00 54	b.lo	0x618
+     5b8:	01 fd 50 93	asr	x1, x8, #16
+     5bc:	f4 03 00 aa	mov	x20, x0
+     5c0:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE9meld_pairES1_S3_
+     5c4:	81 02 40 f9	ldr	x1, [x20]
+     5c8:	e2 03 00 aa	mov	x2, x0
+     5cc:	e0 03 14 aa	mov	x0, x20
+     5d0:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE10merge_pairES1_S3_S3_
+     5d4:	0e 00 00 14	b	0x60c
+     5d8:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     5dc:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     5e0:	02 01 00 54	b.hs	0x600
+     5e4:	1f 00 00 f9	str	xzr, [x0]
+     5e8:	0c 00 00 14	b	0x618
+     5ec:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     5f0:	0a 09 00 f9	str	x10, [x8, #0x10]
+     5f4:	68 02 40 f9	ldr	x8, [x19]
+     5f8:	48 fd ff b5	cbnz	x8, 0x5a0
+     5fc:	eb ff ff 17	b	0x5a8
+     600:	01 fd 50 93	asr	x1, x8, #16
+     604:	f4 03 00 aa	mov	x20, x0
+     608:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE9meld_pairES1_S3_
+     60c:	80 02 00 f9	str	x0, [x20]
+     610:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     614:	68 0a 00 f9	str	x8, [x19, #0x10]
+     618:	bf 02 13 eb	cmp	x21, x19
+     61c:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+     620:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+     624:	e0 17 9f 1a	cset	w0, eq
+     628:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+     62c:	c0 03 5f d6	ret
+     630:	68 06 40 f9	ldr	x8, [x19, #0x8]
+     634:	88 fa ff b5	cbnz	x8, 0x584
+     638:	08 00 00 90	adrp	x8, __ZZN6pqueueIP18priority_queue_maxP20priority_queue_entryE11list_removeES3_E6__desc@PAGE
+     63c:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP18priority_queue_maxP20priority_queue_entryE11list_removeES3_E6__desc@PAGEOFF
+     640:	80 ff 37 d4	brk	#0xbffc
+     644:	1f 20 03 d5	nop
+     648:	1f 20 03 d5	nop
+     64c:	1f 20 03 d5	nop
+__Z30priority_queue_entry_decreasedP18priority_queue_maxP20priority_queue_entry:
+     650:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+     654:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+     658:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+     65c:	fd 83 00 91	add	x29, sp, #0x20
+     660:	15 00 40 f9	ldr	x21, [x0]
+     664:	f3 03 01 aa	mov	x19, x1
+     668:	f4 03 00 aa	mov	x20, x0
+     66c:	bf 02 01 eb	cmp	x21, x1
+     670:	e0 02 00 54	b.eq	0x6cc
+     674:	2f 00 00 14	b	0x730
+     678:	69 22 40 a9	ldp	x9, x8, [x19]
+     67c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     680:	7f 42 8a eb	cmp	x19, x10, asr #16
+     684:	c0 04 00 54	b.eq	0x71c
+     688:	09 01 00 f9	str	x9, [x8]
+     68c:	68 02 40 f9	ldr	x8, [x19]
+     690:	68 00 00 b4	cbz	x8, 0x69c
+     694:	69 06 40 f9	ldr	x9, [x19, #0x8]
+     698:	09 05 00 f9	str	x9, [x8, #0x8]
+     69c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     6a0:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+     6a4:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     6a8:	43 02 00 54	b.lo	0x6f0
+     6ac:	01 fd 50 93	asr	x1, x8, #16
+     6b0:	e0 03 14 aa	mov	x0, x20
+     6b4:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE9meld_pairES1_S3_
+     6b8:	81 02 40 f9	ldr	x1, [x20]
+     6bc:	e2 03 00 aa	mov	x2, x0
+     6c0:	e0 03 14 aa	mov	x0, x20
+     6c4:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE10merge_pairES1_S3_S3_
+     6c8:	07 00 00 14	b	0x6e4
+     6cc:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     6d0:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     6d4:	83 01 00 54	b.lo	0x704
+     6d8:	01 fd 50 93	asr	x1, x8, #16
+     6dc:	e0 03 14 aa	mov	x0, x20
+     6e0:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE9meld_pairES1_S3_
+     6e4:	80 02 00 f9	str	x0, [x20]
+     6e8:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     6ec:	68 0a 00 f9	str	x8, [x19, #0x10]
+     6f0:	81 02 40 f9	ldr	x1, [x20]
+     6f4:	e0 03 14 aa	mov	x0, x20
+     6f8:	e2 03 13 aa	mov	x2, x19
+     6fc:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE10merge_pairES1_S3_S3_
+     700:	80 02 00 f9	str	x0, [x20]
+     704:	bf 02 13 eb	cmp	x21, x19
+     708:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+     70c:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+     710:	e0 17 9f 1a	cset	w0, eq
+     714:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+     718:	c0 03 5f d6	ret
+     71c:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     720:	0a 09 00 f9	str	x10, [x8, #0x10]
+     724:	68 02 40 f9	ldr	x8, [x19]
+     728:	68 fb ff b5	cbnz	x8, 0x694
+     72c:	dc ff ff 17	b	0x69c
+     730:	68 06 40 f9	ldr	x8, [x19, #0x8]
+     734:	28 fa ff b5	cbnz	x8, 0x678
+     738:	08 00 00 90	adrp	x8, __ZZN6pqueueIP18priority_queue_maxP20priority_queue_entryE11list_removeES3_E6__desc@PAGE
+     73c:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP18priority_queue_maxP20priority_queue_entryE11list_removeES3_E6__desc@PAGEOFF
+     740:	80 ff 37 d4	brk	#0xbffc
+     744:	1f 20 03 d5	nop
+     748:	1f 20 03 d5	nop
+     74c:	1f 20 03 d5	nop
+__Z30priority_queue_entry_increasedP18priority_queue_maxP20priority_queue_entry:
+     750:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     754:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     758:	fd 43 00 91	add	x29, sp, #0x10
+     75c:	08 00 40 f9	ldr	x8, [x0]
+     760:	1f 01 01 eb	cmp	x8, x1
+     764:	c0 02 00 54	b.eq	0x7bc
+     768:	1e 00 00 14	b	0x7e0
+     76c:	29 20 40 a9	ldp	x9, x8, [x1]
+     770:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     774:	3f 40 8a eb	cmp	x1, x10, asr #16
+     778:	a0 02 00 54	b.eq	0x7cc
+     77c:	09 01 00 f9	str	x9, [x8]
+     780:	28 00 40 f9	ldr	x8, [x1]
+     784:	68 00 00 b4	cbz	x8, 0x790
+     788:	29 04 40 f9	ldr	x9, [x1, #0x8]
+     78c:	09 05 00 f9	str	x9, [x8, #0x8]
+     790:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+     794:	f4 03 01 aa	mov	x20, x1
+     798:	08 00 40 f9	ldr	x8, [x0]
+     79c:	e2 03 14 aa	mov	x2, x20
+     7a0:	f3 03 00 aa	mov	x19, x0
+     7a4:	e1 03 08 aa	mov	x1, x8
+     7a8:	00 00 00 94	bl	__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE10merge_pairES1_S3_S3_
+     7ac:	1f 00 14 eb	cmp	x0, x20
+     7b0:	60 02 00 f9	str	x0, [x19]
+     7b4:	e0 17 9f 1a	cset	w0, eq
+     7b8:	02 00 00 14	b	0x7c0
+     7bc:	20 00 80 52	mov	w0, #0x1
+     7c0:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     7c4:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     7c8:	c0 03 5f d6	ret
+     7cc:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     7d0:	0a 09 00 f9	str	x10, [x8, #0x10]
+     7d4:	28 00 40 f9	ldr	x8, [x1]
+     7d8:	88 fd ff b5	cbnz	x8, 0x788
+     7dc:	ed ff ff 17	b	0x790
+     7e0:	28 04 40 f9	ldr	x8, [x1, #0x8]
+     7e4:	48 fc ff b5	cbnz	x8, 0x76c
+     7e8:	08 00 00 90	adrp	x8, __ZZN6pqueueIP18priority_queue_maxP20priority_queue_entryE11list_removeES3_E6__desc@PAGE
+     7ec:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP18priority_queue_maxP20priority_queue_entryE11list_removeES3_E6__desc@PAGEOFF
+     7f0:	80 ff 37 d4	brk	#0xbffc
+     7f4:	1f 20 03 d5	nop
+     7f8:	1f 20 03 d5	nop
+     7fc:	1f 20 03 d5	nop
+__Z23_priority_queue_destroyP24priority_queue_sched_minmU13block_pointerFvPvE:
+     800:	00 00 00 14	b	__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE7destroyES1_mU13block_pointerFvPvE
+     804:	1f 20 03 d5	nop
+     808:	1f 20 03 d5	nop
+     80c:	1f 20 03 d5	nop
+__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE7destroyES1_mU13block_pointerFvPvE:
+     810:	f8 5f bc a9	stp	x24, x23, [sp, #-0x40]!
+     814:	f6 57 01 a9	stp	x22, x21, [sp, #0x10]
+     818:	f4 4f 02 a9	stp	x20, x19, [sp, #0x20]
+     81c:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+     820:	fd c3 00 91	add	x29, sp, #0x30
+     824:	f4 03 02 aa	mov	x20, x2
+     828:	f3 03 00 aa	mov	x19, x0
+     82c:	20 00 00 14	b	0x8ac
+     830:	68 02 40 f9	ldr	x8, [x19]
+     834:	e8 02 00 b4	cbz	x8, 0x890
+     838:	f5 03 01 cb	neg	x21, x1
+     83c:	e9 03 08 aa	mov	x9, x8
+     840:	0a 00 00 14	b	0x868
+     844:	f6 03 09 aa	mov	x22, x9
+     848:	89 0a 40 f9	ldr	x9, [x20, #0x10]
+     84c:	01 01 15 8b	add	x1, x8, x21
+     850:	e0 03 14 aa	mov	x0, x20
+     854:	17 01 40 f9	ldr	x23, [x8]
+     858:	20 01 3f d6	blr	x9
+     85c:	e8 03 17 aa	mov	x8, x23
+     860:	e9 03 16 aa	mov	x9, x22
+     864:	77 01 00 b4	cbz	x23, 0x890
+     868:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     86c:	5f 41 40 f1	cmp	x10, #0x10, lsl #12
+     870:	a3 fe ff 54	b.lo	0x844
+     874:	4a fd 50 93	asr	x10, x10, #16
+     878:	2a 01 00 f9	str	x10, [x9]
+     87c:	1f 20 03 d5	nop
+     880:	f6 03 09 aa	mov	x22, x9
+     884:	29 01 40 f9	ldr	x9, [x9]
+     888:	c9 ff ff b5	cbnz	x9, 0x880
+     88c:	ef ff ff 17	b	0x848
+     890:	08 00 80 92	mov	x8, #-0x1
+     894:	fd 7b 43 a9	ldp	x29, x30, [sp, #0x30]
+     898:	68 02 00 f9	str	x8, [x19]
+     89c:	f4 4f 42 a9	ldp	x20, x19, [sp, #0x20]
+     8a0:	f6 57 41 a9	ldp	x22, x21, [sp, #0x10]
+     8a4:	f8 5f c4 a8	ldp	x24, x23, [sp], #0x40
+     8a8:	c0 03 5f d6	ret
+     8ac:	34 fc ff b5	cbnz	x20, 0x830
+     8b0:	08 00 00 90	adrp	x8, __ZZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGE
+     8b4:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGEOFF
+     8b8:	80 ff 37 d4	brk	#0xbffc
+     8bc:	1f 20 03 d5	nop
+__Z21priority_queue_insertP24priority_queue_sched_minP26priority_queue_entry_sched:
+     8c0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     8c4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     8c8:	fd 43 00 91	add	x29, sp, #0x10
+     8cc:	28 20 40 79	ldrh	w8, [x1, #0x10]
+     8d0:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+     8d4:	f4 03 00 aa	mov	x20, x0
+     8d8:	f3 03 01 aa	mov	x19, x1
+     8dc:	28 08 00 f9	str	x8, [x1, #0x10]
+     8e0:	00 00 40 f9	ldr	x0, [x0]
+     8e4:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE10merge_pairES1_S3_S3_
+     8e8:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     8ec:	1f 00 13 eb	cmp	x0, x19
+     8f0:	80 02 00 f9	str	x0, [x20]
+     8f4:	e0 17 9f 1a	cset	w0, eq
+     8f8:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     8fc:	c0 03 5f d6	ret
+__Z27_priority_queue_remove_rootP24priority_queue_sched_min:
+     900:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     904:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     908:	fd 43 00 91	add	x29, sp, #0x10
+     90c:	13 00 40 f9	ldr	x19, [x0]
+     910:	f4 03 00 aa	mov	x20, x0
+     914:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     918:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     91c:	62 00 00 54	b.hs	0x928
+     920:	9f 02 00 f9	str	xzr, [x20]
+     924:	06 00 00 14	b	0x93c
+     928:	00 fd 50 93	asr	x0, x8, #16
+     92c:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE9meld_pairES1_S3_
+     930:	80 02 00 f9	str	x0, [x20]
+     934:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     938:	68 0a 00 f9	str	x8, [x19, #0x10]
+     93c:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     940:	e0 03 13 aa	mov	x0, x19
+     944:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     948:	c0 03 5f d6	ret
+     94c:	1f 20 03 d5	nop
+__Z21priority_queue_removeP24priority_queue_sched_minP26priority_queue_entry_sched:
+     950:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+     954:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+     958:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+     95c:	fd 83 00 91	add	x29, sp, #0x20
+     960:	15 00 40 f9	ldr	x21, [x0]
+     964:	f3 03 01 aa	mov	x19, x1
+     968:	f4 03 00 aa	mov	x20, x0
+     96c:	bf 02 01 eb	cmp	x21, x1
+     970:	a0 02 00 54	b.eq	0x9c4
+     974:	29 00 00 14	b	0xa18
+     978:	69 22 40 a9	ldp	x9, x8, [x19]
+     97c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     980:	7f 42 8a eb	cmp	x19, x10, asr #16
+     984:	a0 02 00 54	b.eq	0x9d8
+     988:	09 01 00 f9	str	x9, [x8]
+     98c:	68 02 40 f9	ldr	x8, [x19]
+     990:	68 00 00 b4	cbz	x8, 0x99c
+     994:	69 06 40 f9	ldr	x9, [x19, #0x8]
+     998:	09 05 00 f9	str	x9, [x8, #0x8]
+     99c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     9a0:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+     9a4:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     9a8:	c3 02 00 54	b.lo	0xa00
+     9ac:	00 fd 50 93	asr	x0, x8, #16
+     9b0:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE9meld_pairES1_S3_
+     9b4:	e1 03 00 aa	mov	x1, x0
+     9b8:	80 02 40 f9	ldr	x0, [x20]
+     9bc:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE10merge_pairES1_S3_S3_
+     9c0:	0d 00 00 14	b	0x9f4
+     9c4:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     9c8:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     9cc:	02 01 00 54	b.hs	0x9ec
+     9d0:	9f 02 00 f9	str	xzr, [x20]
+     9d4:	0b 00 00 14	b	0xa00
+     9d8:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     9dc:	0a 09 00 f9	str	x10, [x8, #0x10]
+     9e0:	68 02 40 f9	ldr	x8, [x19]
+     9e4:	88 fd ff b5	cbnz	x8, 0x994
+     9e8:	ed ff ff 17	b	0x99c
+     9ec:	00 fd 50 93	asr	x0, x8, #16
+     9f0:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE9meld_pairES1_S3_
+     9f4:	80 02 00 f9	str	x0, [x20]
+     9f8:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     9fc:	68 0a 00 f9	str	x8, [x19, #0x10]
+     a00:	bf 02 13 eb	cmp	x21, x19
+     a04:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+     a08:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+     a0c:	e0 17 9f 1a	cset	w0, eq
+     a10:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+     a14:	c0 03 5f d6	ret
+     a18:	68 06 40 f9	ldr	x8, [x19, #0x8]
+     a1c:	e8 fa ff b5	cbnz	x8, 0x978
+     a20:	08 00 00 90	adrp	x8, __ZZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGE
+     a24:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGEOFF
+     a28:	80 ff 37 d4	brk	#0xbffc
+     a2c:	1f 20 03 d5	nop
+__Z30priority_queue_entry_decreasedP24priority_queue_sched_minP26priority_queue_entry_sched:
+     a30:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     a34:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     a38:	fd 43 00 91	add	x29, sp, #0x10
+     a3c:	08 00 40 f9	ldr	x8, [x0]
+     a40:	1f 01 01 eb	cmp	x8, x1
+     a44:	a0 02 00 54	b.eq	0xa98
+     a48:	1d 00 00 14	b	0xabc
+     a4c:	29 20 40 a9	ldp	x9, x8, [x1]
+     a50:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     a54:	3f 40 8a eb	cmp	x1, x10, asr #16
+     a58:	80 02 00 54	b.eq	0xaa8
+     a5c:	09 01 00 f9	str	x9, [x8]
+     a60:	28 00 40 f9	ldr	x8, [x1]
+     a64:	68 00 00 b4	cbz	x8, 0xa70
+     a68:	29 04 40 f9	ldr	x9, [x1, #0x8]
+     a6c:	09 05 00 f9	str	x9, [x8, #0x8]
+     a70:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+     a74:	f4 03 00 aa	mov	x20, x0
+     a78:	08 00 40 f9	ldr	x8, [x0]
+     a7c:	f3 03 01 aa	mov	x19, x1
+     a80:	e0 03 08 aa	mov	x0, x8
+     a84:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE10merge_pairES1_S3_S3_
+     a88:	1f 00 13 eb	cmp	x0, x19
+     a8c:	80 02 00 f9	str	x0, [x20]
+     a90:	e0 17 9f 1a	cset	w0, eq
+     a94:	02 00 00 14	b	0xa9c
+     a98:	20 00 80 52	mov	w0, #0x1
+     a9c:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     aa0:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     aa4:	c0 03 5f d6	ret
+     aa8:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     aac:	0a 09 00 f9	str	x10, [x8, #0x10]
+     ab0:	28 00 40 f9	ldr	x8, [x1]
+     ab4:	a8 fd ff b5	cbnz	x8, 0xa68
+     ab8:	ee ff ff 17	b	0xa70
+     abc:	28 04 40 f9	ldr	x8, [x1, #0x8]
+     ac0:	68 fc ff b5	cbnz	x8, 0xa4c
+     ac4:	08 00 00 90	adrp	x8, __ZZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGE
+     ac8:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGEOFF
+     acc:	80 ff 37 d4	brk	#0xbffc
+__Z30priority_queue_entry_increasedP24priority_queue_sched_minP26priority_queue_entry_sched:
+     ad0:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+     ad4:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+     ad8:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+     adc:	fd 83 00 91	add	x29, sp, #0x20
+     ae0:	15 00 40 f9	ldr	x21, [x0]
+     ae4:	f3 03 01 aa	mov	x19, x1
+     ae8:	f4 03 00 aa	mov	x20, x0
+     aec:	bf 02 01 eb	cmp	x21, x1
+     af0:	a0 02 00 54	b.eq	0xb44
+     af4:	2b 00 00 14	b	0xba0
+     af8:	69 22 40 a9	ldp	x9, x8, [x19]
+     afc:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     b00:	7f 42 8a eb	cmp	x19, x10, asr #16
+     b04:	40 04 00 54	b.eq	0xb8c
+     b08:	09 01 00 f9	str	x9, [x8]
+     b0c:	68 02 40 f9	ldr	x8, [x19]
+     b10:	68 00 00 b4	cbz	x8, 0xb1c
+     b14:	69 06 40 f9	ldr	x9, [x19, #0x8]
+     b18:	09 05 00 f9	str	x9, [x8, #0x8]
+     b1c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     b20:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+     b24:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     b28:	e3 01 00 54	b.lo	0xb64
+     b2c:	00 fd 50 93	asr	x0, x8, #16
+     b30:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE9meld_pairES1_S3_
+     b34:	e1 03 00 aa	mov	x1, x0
+     b38:	80 02 40 f9	ldr	x0, [x20]
+     b3c:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE10merge_pairES1_S3_S3_
+     b40:	06 00 00 14	b	0xb58
+     b44:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     b48:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     b4c:	43 01 00 54	b.lo	0xb74
+     b50:	00 fd 50 93	asr	x0, x8, #16
+     b54:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE9meld_pairES1_S3_
+     b58:	80 02 00 f9	str	x0, [x20]
+     b5c:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     b60:	68 0a 00 f9	str	x8, [x19, #0x10]
+     b64:	80 02 40 f9	ldr	x0, [x20]
+     b68:	e1 03 13 aa	mov	x1, x19
+     b6c:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE10merge_pairES1_S3_S3_
+     b70:	80 02 00 f9	str	x0, [x20]
+     b74:	bf 02 13 eb	cmp	x21, x19
+     b78:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+     b7c:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+     b80:	e0 17 9f 1a	cset	w0, eq
+     b84:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+     b88:	c0 03 5f d6	ret
+     b8c:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     b90:	0a 09 00 f9	str	x10, [x8, #0x10]
+     b94:	68 02 40 f9	ldr	x8, [x19]
+     b98:	e8 fb ff b5	cbnz	x8, 0xb14
+     b9c:	e0 ff ff 17	b	0xb1c
+     ba0:	68 06 40 f9	ldr	x8, [x19, #0x8]
+     ba4:	a8 fa ff b5	cbnz	x8, 0xaf8
+     ba8:	08 00 00 90	adrp	x8, __ZZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGE
+     bac:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGEOFF
+     bb0:	80 ff 37 d4	brk	#0xbffc
+     bb4:	1f 20 03 d5	nop
+     bb8:	1f 20 03 d5	nop
+     bbc:	1f 20 03 d5	nop
+__Z23_priority_queue_destroyP24priority_queue_sched_maxmU13block_pointerFvPvE:
+     bc0:	00 00 00 14	b	__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE7destroyES1_mU13block_pointerFvPvE
+     bc4:	1f 20 03 d5	nop
+     bc8:	1f 20 03 d5	nop
+     bcc:	1f 20 03 d5	nop
+__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE7destroyES1_mU13block_pointerFvPvE:
+     bd0:	f8 5f bc a9	stp	x24, x23, [sp, #-0x40]!
+     bd4:	f6 57 01 a9	stp	x22, x21, [sp, #0x10]
+     bd8:	f4 4f 02 a9	stp	x20, x19, [sp, #0x20]
+     bdc:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+     be0:	fd c3 00 91	add	x29, sp, #0x30
+     be4:	f4 03 02 aa	mov	x20, x2
+     be8:	f3 03 00 aa	mov	x19, x0
+     bec:	20 00 00 14	b	0xc6c
+     bf0:	68 02 40 f9	ldr	x8, [x19]
+     bf4:	e8 02 00 b4	cbz	x8, 0xc50
+     bf8:	f5 03 01 cb	neg	x21, x1
+     bfc:	e9 03 08 aa	mov	x9, x8
+     c00:	0a 00 00 14	b	0xc28
+     c04:	f6 03 09 aa	mov	x22, x9
+     c08:	89 0a 40 f9	ldr	x9, [x20, #0x10]
+     c0c:	01 01 15 8b	add	x1, x8, x21
+     c10:	e0 03 14 aa	mov	x0, x20
+     c14:	17 01 40 f9	ldr	x23, [x8]
+     c18:	20 01 3f d6	blr	x9
+     c1c:	e8 03 17 aa	mov	x8, x23
+     c20:	e9 03 16 aa	mov	x9, x22
+     c24:	77 01 00 b4	cbz	x23, 0xc50
+     c28:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     c2c:	5f 41 40 f1	cmp	x10, #0x10, lsl #12
+     c30:	a3 fe ff 54	b.lo	0xc04
+     c34:	4a fd 50 93	asr	x10, x10, #16
+     c38:	2a 01 00 f9	str	x10, [x9]
+     c3c:	1f 20 03 d5	nop
+     c40:	f6 03 09 aa	mov	x22, x9
+     c44:	29 01 40 f9	ldr	x9, [x9]
+     c48:	c9 ff ff b5	cbnz	x9, 0xc40
+     c4c:	ef ff ff 17	b	0xc08
+     c50:	08 00 80 92	mov	x8, #-0x1
+     c54:	fd 7b 43 a9	ldp	x29, x30, [sp, #0x30]
+     c58:	68 02 00 f9	str	x8, [x19]
+     c5c:	f4 4f 42 a9	ldp	x20, x19, [sp, #0x20]
+     c60:	f6 57 41 a9	ldp	x22, x21, [sp, #0x10]
+     c64:	f8 5f c4 a8	ldp	x24, x23, [sp], #0x40
+     c68:	c0 03 5f d6	ret
+     c6c:	34 fc ff b5	cbnz	x20, 0xbf0
+     c70:	08 00 00 90	adrp	x8, __ZZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGE
+     c74:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGEOFF
+     c78:	80 ff 37 d4	brk	#0xbffc
+     c7c:	1f 20 03 d5	nop
+__Z21priority_queue_insertP24priority_queue_sched_maxP26priority_queue_entry_sched:
+     c80:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     c84:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     c88:	fd 43 00 91	add	x29, sp, #0x10
+     c8c:	28 20 40 79	ldrh	w8, [x1, #0x10]
+     c90:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+     c94:	f4 03 00 aa	mov	x20, x0
+     c98:	f3 03 01 aa	mov	x19, x1
+     c9c:	28 08 00 f9	str	x8, [x1, #0x10]
+     ca0:	00 00 40 f9	ldr	x0, [x0]
+     ca4:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE10merge_pairES1_S3_S3_
+     ca8:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     cac:	1f 00 13 eb	cmp	x0, x19
+     cb0:	80 02 00 f9	str	x0, [x20]
+     cb4:	e0 17 9f 1a	cset	w0, eq
+     cb8:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     cbc:	c0 03 5f d6	ret
+__Z27_priority_queue_remove_rootP24priority_queue_sched_max:
+     cc0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     cc4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     cc8:	fd 43 00 91	add	x29, sp, #0x10
+     ccc:	13 00 40 f9	ldr	x19, [x0]
+     cd0:	f4 03 00 aa	mov	x20, x0
+     cd4:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     cd8:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     cdc:	62 00 00 54	b.hs	0xce8
+     ce0:	9f 02 00 f9	str	xzr, [x20]
+     ce4:	06 00 00 14	b	0xcfc
+     ce8:	00 fd 50 93	asr	x0, x8, #16
+     cec:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE9meld_pairES1_S3_
+     cf0:	80 02 00 f9	str	x0, [x20]
+     cf4:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     cf8:	68 0a 00 f9	str	x8, [x19, #0x10]
+     cfc:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     d00:	e0 03 13 aa	mov	x0, x19
+     d04:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     d08:	c0 03 5f d6	ret
+     d0c:	1f 20 03 d5	nop
+__Z21priority_queue_removeP24priority_queue_sched_maxP26priority_queue_entry_sched:
+     d10:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+     d14:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+     d18:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+     d1c:	fd 83 00 91	add	x29, sp, #0x20
+     d20:	15 00 40 f9	ldr	x21, [x0]
+     d24:	f3 03 01 aa	mov	x19, x1
+     d28:	f4 03 00 aa	mov	x20, x0
+     d2c:	bf 02 01 eb	cmp	x21, x1
+     d30:	a0 02 00 54	b.eq	0xd84
+     d34:	29 00 00 14	b	0xdd8
+     d38:	69 22 40 a9	ldp	x9, x8, [x19]
+     d3c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     d40:	7f 42 8a eb	cmp	x19, x10, asr #16
+     d44:	a0 02 00 54	b.eq	0xd98
+     d48:	09 01 00 f9	str	x9, [x8]
+     d4c:	68 02 40 f9	ldr	x8, [x19]
+     d50:	68 00 00 b4	cbz	x8, 0xd5c
+     d54:	69 06 40 f9	ldr	x9, [x19, #0x8]
+     d58:	09 05 00 f9	str	x9, [x8, #0x8]
+     d5c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     d60:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+     d64:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     d68:	c3 02 00 54	b.lo	0xdc0
+     d6c:	00 fd 50 93	asr	x0, x8, #16
+     d70:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE9meld_pairES1_S3_
+     d74:	e1 03 00 aa	mov	x1, x0
+     d78:	80 02 40 f9	ldr	x0, [x20]
+     d7c:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE10merge_pairES1_S3_S3_
+     d80:	0d 00 00 14	b	0xdb4
+     d84:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     d88:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     d8c:	02 01 00 54	b.hs	0xdac
+     d90:	9f 02 00 f9	str	xzr, [x20]
+     d94:	0b 00 00 14	b	0xdc0
+     d98:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     d9c:	0a 09 00 f9	str	x10, [x8, #0x10]
+     da0:	68 02 40 f9	ldr	x8, [x19]
+     da4:	88 fd ff b5	cbnz	x8, 0xd54
+     da8:	ed ff ff 17	b	0xd5c
+     dac:	00 fd 50 93	asr	x0, x8, #16
+     db0:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE9meld_pairES1_S3_
+     db4:	80 02 00 f9	str	x0, [x20]
+     db8:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     dbc:	68 0a 00 f9	str	x8, [x19, #0x10]
+     dc0:	bf 02 13 eb	cmp	x21, x19
+     dc4:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+     dc8:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+     dcc:	e0 17 9f 1a	cset	w0, eq
+     dd0:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+     dd4:	c0 03 5f d6	ret
+     dd8:	68 06 40 f9	ldr	x8, [x19, #0x8]
+     ddc:	e8 fa ff b5	cbnz	x8, 0xd38
+     de0:	08 00 00 90	adrp	x8, __ZZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGE
+     de4:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGEOFF
+     de8:	80 ff 37 d4	brk	#0xbffc
+     dec:	1f 20 03 d5	nop
+__Z30priority_queue_entry_decreasedP24priority_queue_sched_maxP26priority_queue_entry_sched:
+     df0:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+     df4:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+     df8:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+     dfc:	fd 83 00 91	add	x29, sp, #0x20
+     e00:	15 00 40 f9	ldr	x21, [x0]
+     e04:	f3 03 01 aa	mov	x19, x1
+     e08:	f4 03 00 aa	mov	x20, x0
+     e0c:	bf 02 01 eb	cmp	x21, x1
+     e10:	a0 02 00 54	b.eq	0xe64
+     e14:	2b 00 00 14	b	0xec0
+     e18:	69 22 40 a9	ldp	x9, x8, [x19]
+     e1c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     e20:	7f 42 8a eb	cmp	x19, x10, asr #16
+     e24:	40 04 00 54	b.eq	0xeac
+     e28:	09 01 00 f9	str	x9, [x8]
+     e2c:	68 02 40 f9	ldr	x8, [x19]
+     e30:	68 00 00 b4	cbz	x8, 0xe3c
+     e34:	69 06 40 f9	ldr	x9, [x19, #0x8]
+     e38:	09 05 00 f9	str	x9, [x8, #0x8]
+     e3c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     e40:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+     e44:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     e48:	e3 01 00 54	b.lo	0xe84
+     e4c:	00 fd 50 93	asr	x0, x8, #16
+     e50:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE9meld_pairES1_S3_
+     e54:	e1 03 00 aa	mov	x1, x0
+     e58:	80 02 40 f9	ldr	x0, [x20]
+     e5c:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE10merge_pairES1_S3_S3_
+     e60:	06 00 00 14	b	0xe78
+     e64:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+     e68:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+     e6c:	43 01 00 54	b.lo	0xe94
+     e70:	00 fd 50 93	asr	x0, x8, #16
+     e74:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE9meld_pairES1_S3_
+     e78:	80 02 00 f9	str	x0, [x20]
+     e7c:	68 22 40 79	ldrh	w8, [x19, #0x10]
+     e80:	68 0a 00 f9	str	x8, [x19, #0x10]
+     e84:	80 02 40 f9	ldr	x0, [x20]
+     e88:	e1 03 13 aa	mov	x1, x19
+     e8c:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE10merge_pairES1_S3_S3_
+     e90:	80 02 00 f9	str	x0, [x20]
+     e94:	bf 02 13 eb	cmp	x21, x19
+     e98:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+     e9c:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+     ea0:	e0 17 9f 1a	cset	w0, eq
+     ea4:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+     ea8:	c0 03 5f d6	ret
+     eac:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     eb0:	0a 09 00 f9	str	x10, [x8, #0x10]
+     eb4:	68 02 40 f9	ldr	x8, [x19]
+     eb8:	e8 fb ff b5	cbnz	x8, 0xe34
+     ebc:	e0 ff ff 17	b	0xe3c
+     ec0:	68 06 40 f9	ldr	x8, [x19, #0x8]
+     ec4:	a8 fa ff b5	cbnz	x8, 0xe18
+     ec8:	08 00 00 90	adrp	x8, __ZZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGE
+     ecc:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGEOFF
+     ed0:	80 ff 37 d4	brk	#0xbffc
+     ed4:	1f 20 03 d5	nop
+     ed8:	1f 20 03 d5	nop
+     edc:	1f 20 03 d5	nop
+__Z30priority_queue_entry_increasedP24priority_queue_sched_maxP26priority_queue_entry_sched:
+     ee0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     ee4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     ee8:	fd 43 00 91	add	x29, sp, #0x10
+     eec:	08 00 40 f9	ldr	x8, [x0]
+     ef0:	1f 01 01 eb	cmp	x8, x1
+     ef4:	a0 02 00 54	b.eq	0xf48
+     ef8:	1d 00 00 14	b	0xf6c
+     efc:	29 20 40 a9	ldp	x9, x8, [x1]
+     f00:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     f04:	3f 40 8a eb	cmp	x1, x10, asr #16
+     f08:	80 02 00 54	b.eq	0xf58
+     f0c:	09 01 00 f9	str	x9, [x8]
+     f10:	28 00 40 f9	ldr	x8, [x1]
+     f14:	68 00 00 b4	cbz	x8, 0xf20
+     f18:	29 04 40 f9	ldr	x9, [x1, #0x8]
+     f1c:	09 05 00 f9	str	x9, [x8, #0x8]
+     f20:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+     f24:	f4 03 00 aa	mov	x20, x0
+     f28:	08 00 40 f9	ldr	x8, [x0]
+     f2c:	f3 03 01 aa	mov	x19, x1
+     f30:	e0 03 08 aa	mov	x0, x8
+     f34:	00 00 00 94	bl	__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE10merge_pairES1_S3_S3_
+     f38:	1f 00 13 eb	cmp	x0, x19
+     f3c:	80 02 00 f9	str	x0, [x20]
+     f40:	e0 17 9f 1a	cset	w0, eq
+     f44:	02 00 00 14	b	0xf4c
+     f48:	20 00 80 52	mov	w0, #0x1
+     f4c:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     f50:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     f54:	c0 03 5f d6	ret
+     f58:	2a bd 70 b3	bfi	x10, x9, #16, #48
+     f5c:	0a 09 00 f9	str	x10, [x8, #0x10]
+     f60:	28 00 40 f9	ldr	x8, [x1]
+     f64:	a8 fd ff b5	cbnz	x8, 0xf18
+     f68:	ee ff ff 17	b	0xf20
+     f6c:	28 04 40 f9	ldr	x8, [x1, #0x8]
+     f70:	68 fc ff b5	cbnz	x8, 0xefc
+     f74:	08 00 00 90	adrp	x8, __ZZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGE
+     f78:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE11list_removeES3_E6__desc@PAGEOFF
+     f7c:	80 ff 37 d4	brk	#0xbffc
+__Z23_priority_queue_destroyP27priority_queue_deadline_minmU13block_pointerFvPvE:
+     f80:	00 00 00 14	b	__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE7destroyES1_mU13block_pointerFvPvE
+     f84:	1f 20 03 d5	nop
+     f88:	1f 20 03 d5	nop
+     f8c:	1f 20 03 d5	nop
+__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE7destroyES1_mU13block_pointerFvPvE:
+     f90:	f8 5f bc a9	stp	x24, x23, [sp, #-0x40]!
+     f94:	f6 57 01 a9	stp	x22, x21, [sp, #0x10]
+     f98:	f4 4f 02 a9	stp	x20, x19, [sp, #0x20]
+     f9c:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+     fa0:	fd c3 00 91	add	x29, sp, #0x30
+     fa4:	f4 03 02 aa	mov	x20, x2
+     fa8:	f3 03 00 aa	mov	x19, x0
+     fac:	20 00 00 14	b	0x102c
+     fb0:	68 02 40 f9	ldr	x8, [x19]
+     fb4:	e8 02 00 b4	cbz	x8, 0x1010
+     fb8:	f5 03 01 cb	neg	x21, x1
+     fbc:	e9 03 08 aa	mov	x9, x8
+     fc0:	0a 00 00 14	b	0xfe8
+     fc4:	f6 03 09 aa	mov	x22, x9
+     fc8:	89 0a 40 f9	ldr	x9, [x20, #0x10]
+     fcc:	01 01 15 8b	add	x1, x8, x21
+     fd0:	e0 03 14 aa	mov	x0, x20
+     fd4:	17 01 40 f9	ldr	x23, [x8]
+     fd8:	20 01 3f d6	blr	x9
+     fdc:	e8 03 17 aa	mov	x8, x23
+     fe0:	e9 03 16 aa	mov	x9, x22
+     fe4:	77 01 00 b4	cbz	x23, 0x1010
+     fe8:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+     fec:	5f 41 40 f1	cmp	x10, #0x10, lsl #12
+     ff0:	a3 fe ff 54	b.lo	0xfc4
+     ff4:	4a fd 50 93	asr	x10, x10, #16
+     ff8:	2a 01 00 f9	str	x10, [x9]
+     ffc:	1f 20 03 d5	nop
+    1000:	f6 03 09 aa	mov	x22, x9
+    1004:	29 01 40 f9	ldr	x9, [x9]
+    1008:	c9 ff ff b5	cbnz	x9, 0x1000
+    100c:	ef ff ff 17	b	0xfc8
+    1010:	08 00 80 92	mov	x8, #-0x1
+    1014:	fd 7b 43 a9	ldp	x29, x30, [sp, #0x30]
+    1018:	68 02 00 f9	str	x8, [x19]
+    101c:	f4 4f 42 a9	ldp	x20, x19, [sp, #0x20]
+    1020:	f6 57 41 a9	ldp	x22, x21, [sp, #0x10]
+    1024:	f8 5f c4 a8	ldp	x24, x23, [sp], #0x40
+    1028:	c0 03 5f d6	ret
+    102c:	34 fc ff b5	cbnz	x20, 0xfb0
+    1030:	08 00 00 90	adrp	x8, __ZZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGE
+    1034:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGEOFF
+    1038:	80 ff 37 d4	brk	#0xbffc
+    103c:	1f 20 03 d5	nop
+__Z21priority_queue_insertP27priority_queue_deadline_minP29priority_queue_entry_deadline:
+    1040:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    1044:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    1048:	fd 43 00 91	add	x29, sp, #0x10
+    104c:	28 20 40 79	ldrh	w8, [x1, #0x10]
+    1050:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+    1054:	f4 03 00 aa	mov	x20, x0
+    1058:	f3 03 01 aa	mov	x19, x1
+    105c:	28 08 00 f9	str	x8, [x1, #0x10]
+    1060:	00 00 40 f9	ldr	x0, [x0]
+    1064:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_
+    1068:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    106c:	1f 00 13 eb	cmp	x0, x19
+    1070:	80 02 00 f9	str	x0, [x20]
+    1074:	e0 17 9f 1a	cset	w0, eq
+    1078:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    107c:	c0 03 5f d6	ret
+__Z27_priority_queue_remove_rootP27priority_queue_deadline_min:
+    1080:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    1084:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    1088:	fd 43 00 91	add	x29, sp, #0x10
+    108c:	13 00 40 f9	ldr	x19, [x0]
+    1090:	f4 03 00 aa	mov	x20, x0
+    1094:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1098:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    109c:	62 00 00 54	b.hs	0x10a8
+    10a0:	9f 02 00 f9	str	xzr, [x20]
+    10a4:	06 00 00 14	b	0x10bc
+    10a8:	00 fd 50 93	asr	x0, x8, #16
+    10ac:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE9meld_pairES1_S3_
+    10b0:	80 02 00 f9	str	x0, [x20]
+    10b4:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    10b8:	68 0a 00 f9	str	x8, [x19, #0x10]
+    10bc:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    10c0:	e0 03 13 aa	mov	x0, x19
+    10c4:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    10c8:	c0 03 5f d6	ret
+    10cc:	1f 20 03 d5	nop
+__Z21priority_queue_removeP27priority_queue_deadline_minP29priority_queue_entry_deadline:
+    10d0:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+    10d4:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+    10d8:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+    10dc:	fd 83 00 91	add	x29, sp, #0x20
+    10e0:	15 00 40 f9	ldr	x21, [x0]
+    10e4:	f3 03 01 aa	mov	x19, x1
+    10e8:	f4 03 00 aa	mov	x20, x0
+    10ec:	bf 02 01 eb	cmp	x21, x1
+    10f0:	a0 02 00 54	b.eq	0x1144
+    10f4:	29 00 00 14	b	0x1198
+    10f8:	69 22 40 a9	ldp	x9, x8, [x19]
+    10fc:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    1100:	7f 42 8a eb	cmp	x19, x10, asr #16
+    1104:	a0 02 00 54	b.eq	0x1158
+    1108:	09 01 00 f9	str	x9, [x8]
+    110c:	68 02 40 f9	ldr	x8, [x19]
+    1110:	68 00 00 b4	cbz	x8, 0x111c
+    1114:	69 06 40 f9	ldr	x9, [x19, #0x8]
+    1118:	09 05 00 f9	str	x9, [x8, #0x8]
+    111c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1120:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+    1124:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    1128:	c3 02 00 54	b.lo	0x1180
+    112c:	00 fd 50 93	asr	x0, x8, #16
+    1130:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE9meld_pairES1_S3_
+    1134:	e1 03 00 aa	mov	x1, x0
+    1138:	80 02 40 f9	ldr	x0, [x20]
+    113c:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_
+    1140:	0d 00 00 14	b	0x1174
+    1144:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1148:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    114c:	02 01 00 54	b.hs	0x116c
+    1150:	9f 02 00 f9	str	xzr, [x20]
+    1154:	0b 00 00 14	b	0x1180
+    1158:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    115c:	0a 09 00 f9	str	x10, [x8, #0x10]
+    1160:	68 02 40 f9	ldr	x8, [x19]
+    1164:	88 fd ff b5	cbnz	x8, 0x1114
+    1168:	ed ff ff 17	b	0x111c
+    116c:	00 fd 50 93	asr	x0, x8, #16
+    1170:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE9meld_pairES1_S3_
+    1174:	80 02 00 f9	str	x0, [x20]
+    1178:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    117c:	68 0a 00 f9	str	x8, [x19, #0x10]
+    1180:	bf 02 13 eb	cmp	x21, x19
+    1184:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+    1188:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+    118c:	e0 17 9f 1a	cset	w0, eq
+    1190:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+    1194:	c0 03 5f d6	ret
+    1198:	68 06 40 f9	ldr	x8, [x19, #0x8]
+    119c:	e8 fa ff b5	cbnz	x8, 0x10f8
+    11a0:	08 00 00 90	adrp	x8, __ZZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGE
+    11a4:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGEOFF
+    11a8:	80 ff 37 d4	brk	#0xbffc
+    11ac:	1f 20 03 d5	nop
+__Z30priority_queue_entry_decreasedP27priority_queue_deadline_minP29priority_queue_entry_deadline:
+    11b0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    11b4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    11b8:	fd 43 00 91	add	x29, sp, #0x10
+    11bc:	08 00 40 f9	ldr	x8, [x0]
+    11c0:	1f 01 01 eb	cmp	x8, x1
+    11c4:	a0 02 00 54	b.eq	0x1218
+    11c8:	1d 00 00 14	b	0x123c
+    11cc:	29 20 40 a9	ldp	x9, x8, [x1]
+    11d0:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    11d4:	3f 40 8a eb	cmp	x1, x10, asr #16
+    11d8:	80 02 00 54	b.eq	0x1228
+    11dc:	09 01 00 f9	str	x9, [x8]
+    11e0:	28 00 40 f9	ldr	x8, [x1]
+    11e4:	68 00 00 b4	cbz	x8, 0x11f0
+    11e8:	29 04 40 f9	ldr	x9, [x1, #0x8]
+    11ec:	09 05 00 f9	str	x9, [x8, #0x8]
+    11f0:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+    11f4:	f4 03 00 aa	mov	x20, x0
+    11f8:	08 00 40 f9	ldr	x8, [x0]
+    11fc:	f3 03 01 aa	mov	x19, x1
+    1200:	e0 03 08 aa	mov	x0, x8
+    1204:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_
+    1208:	1f 00 13 eb	cmp	x0, x19
+    120c:	80 02 00 f9	str	x0, [x20]
+    1210:	e0 17 9f 1a	cset	w0, eq
+    1214:	02 00 00 14	b	0x121c
+    1218:	20 00 80 52	mov	w0, #0x1
+    121c:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    1220:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    1224:	c0 03 5f d6	ret
+    1228:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    122c:	0a 09 00 f9	str	x10, [x8, #0x10]
+    1230:	28 00 40 f9	ldr	x8, [x1]
+    1234:	a8 fd ff b5	cbnz	x8, 0x11e8
+    1238:	ee ff ff 17	b	0x11f0
+    123c:	28 04 40 f9	ldr	x8, [x1, #0x8]
+    1240:	68 fc ff b5	cbnz	x8, 0x11cc
+    1244:	08 00 00 90	adrp	x8, __ZZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGE
+    1248:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGEOFF
+    124c:	80 ff 37 d4	brk	#0xbffc
+__Z30priority_queue_entry_increasedP27priority_queue_deadline_minP29priority_queue_entry_deadline:
+    1250:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+    1254:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+    1258:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+    125c:	fd 83 00 91	add	x29, sp, #0x20
+    1260:	15 00 40 f9	ldr	x21, [x0]
+    1264:	f3 03 01 aa	mov	x19, x1
+    1268:	f4 03 00 aa	mov	x20, x0
+    126c:	bf 02 01 eb	cmp	x21, x1
+    1270:	a0 02 00 54	b.eq	0x12c4
+    1274:	2b 00 00 14	b	0x1320
+    1278:	69 22 40 a9	ldp	x9, x8, [x19]
+    127c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    1280:	7f 42 8a eb	cmp	x19, x10, asr #16
+    1284:	40 04 00 54	b.eq	0x130c
+    1288:	09 01 00 f9	str	x9, [x8]
+    128c:	68 02 40 f9	ldr	x8, [x19]
+    1290:	68 00 00 b4	cbz	x8, 0x129c
+    1294:	69 06 40 f9	ldr	x9, [x19, #0x8]
+    1298:	09 05 00 f9	str	x9, [x8, #0x8]
+    129c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    12a0:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+    12a4:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    12a8:	e3 01 00 54	b.lo	0x12e4
+    12ac:	00 fd 50 93	asr	x0, x8, #16
+    12b0:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE9meld_pairES1_S3_
+    12b4:	e1 03 00 aa	mov	x1, x0
+    12b8:	80 02 40 f9	ldr	x0, [x20]
+    12bc:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_
+    12c0:	06 00 00 14	b	0x12d8
+    12c4:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    12c8:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    12cc:	43 01 00 54	b.lo	0x12f4
+    12d0:	00 fd 50 93	asr	x0, x8, #16
+    12d4:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE9meld_pairES1_S3_
+    12d8:	80 02 00 f9	str	x0, [x20]
+    12dc:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    12e0:	68 0a 00 f9	str	x8, [x19, #0x10]
+    12e4:	80 02 40 f9	ldr	x0, [x20]
+    12e8:	e1 03 13 aa	mov	x1, x19
+    12ec:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_
+    12f0:	80 02 00 f9	str	x0, [x20]
+    12f4:	bf 02 13 eb	cmp	x21, x19
+    12f8:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+    12fc:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+    1300:	e0 17 9f 1a	cset	w0, eq
+    1304:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+    1308:	c0 03 5f d6	ret
+    130c:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    1310:	0a 09 00 f9	str	x10, [x8, #0x10]
+    1314:	68 02 40 f9	ldr	x8, [x19]
+    1318:	e8 fb ff b5	cbnz	x8, 0x1294
+    131c:	e0 ff ff 17	b	0x129c
+    1320:	68 06 40 f9	ldr	x8, [x19, #0x8]
+    1324:	a8 fa ff b5	cbnz	x8, 0x1278
+    1328:	08 00 00 90	adrp	x8, __ZZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGE
+    132c:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGEOFF
+    1330:	80 ff 37 d4	brk	#0xbffc
+    1334:	1f 20 03 d5	nop
+    1338:	1f 20 03 d5	nop
+    133c:	1f 20 03 d5	nop
+__Z23_priority_queue_destroyP27priority_queue_deadline_maxmU13block_pointerFvPvE:
+    1340:	00 00 00 14	b	__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE7destroyES1_mU13block_pointerFvPvE
+    1344:	1f 20 03 d5	nop
+    1348:	1f 20 03 d5	nop
+    134c:	1f 20 03 d5	nop
+__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE7destroyES1_mU13block_pointerFvPvE:
+    1350:	f8 5f bc a9	stp	x24, x23, [sp, #-0x40]!
+    1354:	f6 57 01 a9	stp	x22, x21, [sp, #0x10]
+    1358:	f4 4f 02 a9	stp	x20, x19, [sp, #0x20]
+    135c:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+    1360:	fd c3 00 91	add	x29, sp, #0x30
+    1364:	f4 03 02 aa	mov	x20, x2
+    1368:	f3 03 00 aa	mov	x19, x0
+    136c:	20 00 00 14	b	0x13ec
+    1370:	68 02 40 f9	ldr	x8, [x19]
+    1374:	e8 02 00 b4	cbz	x8, 0x13d0
+    1378:	f5 03 01 cb	neg	x21, x1
+    137c:	e9 03 08 aa	mov	x9, x8
+    1380:	0a 00 00 14	b	0x13a8
+    1384:	f6 03 09 aa	mov	x22, x9
+    1388:	89 0a 40 f9	ldr	x9, [x20, #0x10]
+    138c:	01 01 15 8b	add	x1, x8, x21
+    1390:	e0 03 14 aa	mov	x0, x20
+    1394:	17 01 40 f9	ldr	x23, [x8]
+    1398:	20 01 3f d6	blr	x9
+    139c:	e8 03 17 aa	mov	x8, x23
+    13a0:	e9 03 16 aa	mov	x9, x22
+    13a4:	77 01 00 b4	cbz	x23, 0x13d0
+    13a8:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    13ac:	5f 41 40 f1	cmp	x10, #0x10, lsl #12
+    13b0:	a3 fe ff 54	b.lo	0x1384
+    13b4:	4a fd 50 93	asr	x10, x10, #16
+    13b8:	2a 01 00 f9	str	x10, [x9]
+    13bc:	1f 20 03 d5	nop
+    13c0:	f6 03 09 aa	mov	x22, x9
+    13c4:	29 01 40 f9	ldr	x9, [x9]
+    13c8:	c9 ff ff b5	cbnz	x9, 0x13c0
+    13cc:	ef ff ff 17	b	0x1388
+    13d0:	08 00 80 92	mov	x8, #-0x1
+    13d4:	fd 7b 43 a9	ldp	x29, x30, [sp, #0x30]
+    13d8:	68 02 00 f9	str	x8, [x19]
+    13dc:	f4 4f 42 a9	ldp	x20, x19, [sp, #0x20]
+    13e0:	f6 57 41 a9	ldp	x22, x21, [sp, #0x10]
+    13e4:	f8 5f c4 a8	ldp	x24, x23, [sp], #0x40
+    13e8:	c0 03 5f d6	ret
+    13ec:	34 fc ff b5	cbnz	x20, 0x1370
+    13f0:	08 00 00 90	adrp	x8, __ZZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGE
+    13f4:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGEOFF
+    13f8:	80 ff 37 d4	brk	#0xbffc
+    13fc:	1f 20 03 d5	nop
+__Z21priority_queue_insertP27priority_queue_deadline_maxP29priority_queue_entry_deadline:
+    1400:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    1404:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    1408:	fd 43 00 91	add	x29, sp, #0x10
+    140c:	28 20 40 79	ldrh	w8, [x1, #0x10]
+    1410:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+    1414:	f4 03 00 aa	mov	x20, x0
+    1418:	f3 03 01 aa	mov	x19, x1
+    141c:	28 08 00 f9	str	x8, [x1, #0x10]
+    1420:	00 00 40 f9	ldr	x0, [x0]
+    1424:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_
+    1428:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    142c:	1f 00 13 eb	cmp	x0, x19
+    1430:	80 02 00 f9	str	x0, [x20]
+    1434:	e0 17 9f 1a	cset	w0, eq
+    1438:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    143c:	c0 03 5f d6	ret
+__Z27_priority_queue_remove_rootP27priority_queue_deadline_max:
+    1440:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    1444:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    1448:	fd 43 00 91	add	x29, sp, #0x10
+    144c:	13 00 40 f9	ldr	x19, [x0]
+    1450:	f4 03 00 aa	mov	x20, x0
+    1454:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1458:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    145c:	62 00 00 54	b.hs	0x1468
+    1460:	9f 02 00 f9	str	xzr, [x20]
+    1464:	06 00 00 14	b	0x147c
+    1468:	00 fd 50 93	asr	x0, x8, #16
+    146c:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE9meld_pairES1_S3_
+    1470:	80 02 00 f9	str	x0, [x20]
+    1474:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    1478:	68 0a 00 f9	str	x8, [x19, #0x10]
+    147c:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    1480:	e0 03 13 aa	mov	x0, x19
+    1484:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    1488:	c0 03 5f d6	ret
+    148c:	1f 20 03 d5	nop
+__Z21priority_queue_removeP27priority_queue_deadline_maxP29priority_queue_entry_deadline:
+    1490:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+    1494:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+    1498:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+    149c:	fd 83 00 91	add	x29, sp, #0x20
+    14a0:	15 00 40 f9	ldr	x21, [x0]
+    14a4:	f3 03 01 aa	mov	x19, x1
+    14a8:	f4 03 00 aa	mov	x20, x0
+    14ac:	bf 02 01 eb	cmp	x21, x1
+    14b0:	a0 02 00 54	b.eq	0x1504
+    14b4:	29 00 00 14	b	0x1558
+    14b8:	69 22 40 a9	ldp	x9, x8, [x19]
+    14bc:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    14c0:	7f 42 8a eb	cmp	x19, x10, asr #16
+    14c4:	a0 02 00 54	b.eq	0x1518
+    14c8:	09 01 00 f9	str	x9, [x8]
+    14cc:	68 02 40 f9	ldr	x8, [x19]
+    14d0:	68 00 00 b4	cbz	x8, 0x14dc
+    14d4:	69 06 40 f9	ldr	x9, [x19, #0x8]
+    14d8:	09 05 00 f9	str	x9, [x8, #0x8]
+    14dc:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    14e0:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+    14e4:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    14e8:	c3 02 00 54	b.lo	0x1540
+    14ec:	00 fd 50 93	asr	x0, x8, #16
+    14f0:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE9meld_pairES1_S3_
+    14f4:	e1 03 00 aa	mov	x1, x0
+    14f8:	80 02 40 f9	ldr	x0, [x20]
+    14fc:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_
+    1500:	0d 00 00 14	b	0x1534
+    1504:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1508:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    150c:	02 01 00 54	b.hs	0x152c
+    1510:	9f 02 00 f9	str	xzr, [x20]
+    1514:	0b 00 00 14	b	0x1540
+    1518:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    151c:	0a 09 00 f9	str	x10, [x8, #0x10]
+    1520:	68 02 40 f9	ldr	x8, [x19]
+    1524:	88 fd ff b5	cbnz	x8, 0x14d4
+    1528:	ed ff ff 17	b	0x14dc
+    152c:	00 fd 50 93	asr	x0, x8, #16
+    1530:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE9meld_pairES1_S3_
+    1534:	80 02 00 f9	str	x0, [x20]
+    1538:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    153c:	68 0a 00 f9	str	x8, [x19, #0x10]
+    1540:	bf 02 13 eb	cmp	x21, x19
+    1544:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+    1548:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+    154c:	e0 17 9f 1a	cset	w0, eq
+    1550:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+    1554:	c0 03 5f d6	ret
+    1558:	68 06 40 f9	ldr	x8, [x19, #0x8]
+    155c:	e8 fa ff b5	cbnz	x8, 0x14b8
+    1560:	08 00 00 90	adrp	x8, __ZZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGE
+    1564:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGEOFF
+    1568:	80 ff 37 d4	brk	#0xbffc
+    156c:	1f 20 03 d5	nop
+__Z30priority_queue_entry_decreasedP27priority_queue_deadline_maxP29priority_queue_entry_deadline:
+    1570:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+    1574:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+    1578:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+    157c:	fd 83 00 91	add	x29, sp, #0x20
+    1580:	15 00 40 f9	ldr	x21, [x0]
+    1584:	f3 03 01 aa	mov	x19, x1
+    1588:	f4 03 00 aa	mov	x20, x0
+    158c:	bf 02 01 eb	cmp	x21, x1
+    1590:	a0 02 00 54	b.eq	0x15e4
+    1594:	2b 00 00 14	b	0x1640
+    1598:	69 22 40 a9	ldp	x9, x8, [x19]
+    159c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    15a0:	7f 42 8a eb	cmp	x19, x10, asr #16
+    15a4:	40 04 00 54	b.eq	0x162c
+    15a8:	09 01 00 f9	str	x9, [x8]
+    15ac:	68 02 40 f9	ldr	x8, [x19]
+    15b0:	68 00 00 b4	cbz	x8, 0x15bc
+    15b4:	69 06 40 f9	ldr	x9, [x19, #0x8]
+    15b8:	09 05 00 f9	str	x9, [x8, #0x8]
+    15bc:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    15c0:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+    15c4:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    15c8:	e3 01 00 54	b.lo	0x1604
+    15cc:	00 fd 50 93	asr	x0, x8, #16
+    15d0:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE9meld_pairES1_S3_
+    15d4:	e1 03 00 aa	mov	x1, x0
+    15d8:	80 02 40 f9	ldr	x0, [x20]
+    15dc:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_
+    15e0:	06 00 00 14	b	0x15f8
+    15e4:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    15e8:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    15ec:	43 01 00 54	b.lo	0x1614
+    15f0:	00 fd 50 93	asr	x0, x8, #16
+    15f4:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE9meld_pairES1_S3_
+    15f8:	80 02 00 f9	str	x0, [x20]
+    15fc:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    1600:	68 0a 00 f9	str	x8, [x19, #0x10]
+    1604:	80 02 40 f9	ldr	x0, [x20]
+    1608:	e1 03 13 aa	mov	x1, x19
+    160c:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_
+    1610:	80 02 00 f9	str	x0, [x20]
+    1614:	bf 02 13 eb	cmp	x21, x19
+    1618:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+    161c:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+    1620:	e0 17 9f 1a	cset	w0, eq
+    1624:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+    1628:	c0 03 5f d6	ret
+    162c:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    1630:	0a 09 00 f9	str	x10, [x8, #0x10]
+    1634:	68 02 40 f9	ldr	x8, [x19]
+    1638:	e8 fb ff b5	cbnz	x8, 0x15b4
+    163c:	e0 ff ff 17	b	0x15bc
+    1640:	68 06 40 f9	ldr	x8, [x19, #0x8]
+    1644:	a8 fa ff b5	cbnz	x8, 0x1598
+    1648:	08 00 00 90	adrp	x8, __ZZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGE
+    164c:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGEOFF
+    1650:	80 ff 37 d4	brk	#0xbffc
+    1654:	1f 20 03 d5	nop
+    1658:	1f 20 03 d5	nop
+    165c:	1f 20 03 d5	nop
+__Z30priority_queue_entry_increasedP27priority_queue_deadline_maxP29priority_queue_entry_deadline:
+    1660:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    1664:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    1668:	fd 43 00 91	add	x29, sp, #0x10
+    166c:	08 00 40 f9	ldr	x8, [x0]
+    1670:	1f 01 01 eb	cmp	x8, x1
+    1674:	a0 02 00 54	b.eq	0x16c8
+    1678:	1d 00 00 14	b	0x16ec
+    167c:	29 20 40 a9	ldp	x9, x8, [x1]
+    1680:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    1684:	3f 40 8a eb	cmp	x1, x10, asr #16
+    1688:	80 02 00 54	b.eq	0x16d8
+    168c:	09 01 00 f9	str	x9, [x8]
+    1690:	28 00 40 f9	ldr	x8, [x1]
+    1694:	68 00 00 b4	cbz	x8, 0x16a0
+    1698:	29 04 40 f9	ldr	x9, [x1, #0x8]
+    169c:	09 05 00 f9	str	x9, [x8, #0x8]
+    16a0:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+    16a4:	f4 03 00 aa	mov	x20, x0
+    16a8:	08 00 40 f9	ldr	x8, [x0]
+    16ac:	f3 03 01 aa	mov	x19, x1
+    16b0:	e0 03 08 aa	mov	x0, x8
+    16b4:	00 00 00 94	bl	__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_
+    16b8:	1f 00 13 eb	cmp	x0, x19
+    16bc:	80 02 00 f9	str	x0, [x20]
+    16c0:	e0 17 9f 1a	cset	w0, eq
+    16c4:	02 00 00 14	b	0x16cc
+    16c8:	20 00 80 52	mov	w0, #0x1
+    16cc:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    16d0:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    16d4:	c0 03 5f d6	ret
+    16d8:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    16dc:	0a 09 00 f9	str	x10, [x8, #0x10]
+    16e0:	28 00 40 f9	ldr	x8, [x1]
+    16e4:	a8 fd ff b5	cbnz	x8, 0x1698
+    16e8:	ee ff ff 17	b	0x16a0
+    16ec:	28 04 40 f9	ldr	x8, [x1, #0x8]
+    16f0:	68 fc ff b5	cbnz	x8, 0x167c
+    16f4:	08 00 00 90	adrp	x8, __ZZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGE
+    16f8:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE11list_removeES3_E6__desc@PAGEOFF
+    16fc:	80 ff 37 d4	brk	#0xbffc
+__Z23_priority_queue_destroyP31priority_queue_sched_stable_minmU13block_pointerFvPvE:
+    1700:	00 00 00 14	b	__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE7destroyES1_mU13block_pointerFvPvE
+    1704:	1f 20 03 d5	nop
+    1708:	1f 20 03 d5	nop
+    170c:	1f 20 03 d5	nop
+__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE7destroyES1_mU13block_pointerFvPvE:
+    1710:	f8 5f bc a9	stp	x24, x23, [sp, #-0x40]!
+    1714:	f6 57 01 a9	stp	x22, x21, [sp, #0x10]
+    1718:	f4 4f 02 a9	stp	x20, x19, [sp, #0x20]
+    171c:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+    1720:	fd c3 00 91	add	x29, sp, #0x30
+    1724:	f4 03 02 aa	mov	x20, x2
+    1728:	f3 03 00 aa	mov	x19, x0
+    172c:	20 00 00 14	b	0x17ac
+    1730:	68 02 40 f9	ldr	x8, [x19]
+    1734:	e8 02 00 b4	cbz	x8, 0x1790
+    1738:	f5 03 01 cb	neg	x21, x1
+    173c:	e9 03 08 aa	mov	x9, x8
+    1740:	0a 00 00 14	b	0x1768
+    1744:	f6 03 09 aa	mov	x22, x9
+    1748:	89 0a 40 f9	ldr	x9, [x20, #0x10]
+    174c:	01 01 15 8b	add	x1, x8, x21
+    1750:	e0 03 14 aa	mov	x0, x20
+    1754:	17 01 40 f9	ldr	x23, [x8]
+    1758:	20 01 3f d6	blr	x9
+    175c:	e8 03 17 aa	mov	x8, x23
+    1760:	e9 03 16 aa	mov	x9, x22
+    1764:	77 01 00 b4	cbz	x23, 0x1790
+    1768:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    176c:	5f 41 40 f1	cmp	x10, #0x10, lsl #12
+    1770:	a3 fe ff 54	b.lo	0x1744
+    1774:	4a fd 50 93	asr	x10, x10, #16
+    1778:	2a 01 00 f9	str	x10, [x9]
+    177c:	1f 20 03 d5	nop
+    1780:	f6 03 09 aa	mov	x22, x9
+    1784:	29 01 40 f9	ldr	x9, [x9]
+    1788:	c9 ff ff b5	cbnz	x9, 0x1780
+    178c:	ef ff ff 17	b	0x1748
+    1790:	08 00 80 92	mov	x8, #-0x1
+    1794:	fd 7b 43 a9	ldp	x29, x30, [sp, #0x30]
+    1798:	68 02 00 f9	str	x8, [x19]
+    179c:	f4 4f 42 a9	ldp	x20, x19, [sp, #0x20]
+    17a0:	f6 57 41 a9	ldp	x22, x21, [sp, #0x10]
+    17a4:	f8 5f c4 a8	ldp	x24, x23, [sp], #0x40
+    17a8:	c0 03 5f d6	ret
+    17ac:	34 fc ff b5	cbnz	x20, 0x1730
+    17b0:	08 00 00 90	adrp	x8, __ZZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGE
+    17b4:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGEOFF
+    17b8:	80 ff 37 d4	brk	#0xbffc
+    17bc:	1f 20 03 d5	nop
+__Z21priority_queue_insertP31priority_queue_sched_stable_minP27priority_queue_entry_stable:
+    17c0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    17c4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    17c8:	fd 43 00 91	add	x29, sp, #0x10
+    17cc:	28 20 40 79	ldrh	w8, [x1, #0x10]
+    17d0:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+    17d4:	f4 03 00 aa	mov	x20, x0
+    17d8:	f3 03 01 aa	mov	x19, x1
+    17dc:	28 08 00 f9	str	x8, [x1, #0x10]
+    17e0:	00 00 40 f9	ldr	x0, [x0]
+    17e4:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE10merge_pairES1_S3_S3_
+    17e8:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    17ec:	1f 00 13 eb	cmp	x0, x19
+    17f0:	80 02 00 f9	str	x0, [x20]
+    17f4:	e0 17 9f 1a	cset	w0, eq
+    17f8:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    17fc:	c0 03 5f d6	ret
+__Z27_priority_queue_remove_rootP31priority_queue_sched_stable_min:
+    1800:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    1804:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    1808:	fd 43 00 91	add	x29, sp, #0x10
+    180c:	13 00 40 f9	ldr	x19, [x0]
+    1810:	f4 03 00 aa	mov	x20, x0
+    1814:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1818:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    181c:	62 00 00 54	b.hs	0x1828
+    1820:	9f 02 00 f9	str	xzr, [x20]
+    1824:	06 00 00 14	b	0x183c
+    1828:	00 fd 50 93	asr	x0, x8, #16
+    182c:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE9meld_pairES1_S3_
+    1830:	80 02 00 f9	str	x0, [x20]
+    1834:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    1838:	68 0a 00 f9	str	x8, [x19, #0x10]
+    183c:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    1840:	e0 03 13 aa	mov	x0, x19
+    1844:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    1848:	c0 03 5f d6	ret
+    184c:	1f 20 03 d5	nop
+__Z21priority_queue_removeP31priority_queue_sched_stable_minP27priority_queue_entry_stable:
+    1850:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+    1854:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+    1858:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+    185c:	fd 83 00 91	add	x29, sp, #0x20
+    1860:	15 00 40 f9	ldr	x21, [x0]
+    1864:	f3 03 01 aa	mov	x19, x1
+    1868:	f4 03 00 aa	mov	x20, x0
+    186c:	bf 02 01 eb	cmp	x21, x1
+    1870:	a0 02 00 54	b.eq	0x18c4
+    1874:	29 00 00 14	b	0x1918
+    1878:	69 22 40 a9	ldp	x9, x8, [x19]
+    187c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    1880:	7f 42 8a eb	cmp	x19, x10, asr #16
+    1884:	a0 02 00 54	b.eq	0x18d8
+    1888:	09 01 00 f9	str	x9, [x8]
+    188c:	68 02 40 f9	ldr	x8, [x19]
+    1890:	68 00 00 b4	cbz	x8, 0x189c
+    1894:	69 06 40 f9	ldr	x9, [x19, #0x8]
+    1898:	09 05 00 f9	str	x9, [x8, #0x8]
+    189c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    18a0:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+    18a4:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    18a8:	c3 02 00 54	b.lo	0x1900
+    18ac:	00 fd 50 93	asr	x0, x8, #16
+    18b0:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE9meld_pairES1_S3_
+    18b4:	e1 03 00 aa	mov	x1, x0
+    18b8:	80 02 40 f9	ldr	x0, [x20]
+    18bc:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE10merge_pairES1_S3_S3_
+    18c0:	0d 00 00 14	b	0x18f4
+    18c4:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    18c8:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    18cc:	02 01 00 54	b.hs	0x18ec
+    18d0:	9f 02 00 f9	str	xzr, [x20]
+    18d4:	0b 00 00 14	b	0x1900
+    18d8:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    18dc:	0a 09 00 f9	str	x10, [x8, #0x10]
+    18e0:	68 02 40 f9	ldr	x8, [x19]
+    18e4:	88 fd ff b5	cbnz	x8, 0x1894
+    18e8:	ed ff ff 17	b	0x189c
+    18ec:	00 fd 50 93	asr	x0, x8, #16
+    18f0:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE9meld_pairES1_S3_
+    18f4:	80 02 00 f9	str	x0, [x20]
+    18f8:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    18fc:	68 0a 00 f9	str	x8, [x19, #0x10]
+    1900:	bf 02 13 eb	cmp	x21, x19
+    1904:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+    1908:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+    190c:	e0 17 9f 1a	cset	w0, eq
+    1910:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+    1914:	c0 03 5f d6	ret
+    1918:	68 06 40 f9	ldr	x8, [x19, #0x8]
+    191c:	e8 fa ff b5	cbnz	x8, 0x1878
+    1920:	08 00 00 90	adrp	x8, __ZZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGE
+    1924:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGEOFF
+    1928:	80 ff 37 d4	brk	#0xbffc
+    192c:	1f 20 03 d5	nop
+__Z30priority_queue_entry_decreasedP31priority_queue_sched_stable_minP27priority_queue_entry_stable:
+    1930:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    1934:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    1938:	fd 43 00 91	add	x29, sp, #0x10
+    193c:	08 00 40 f9	ldr	x8, [x0]
+    1940:	1f 01 01 eb	cmp	x8, x1
+    1944:	a0 02 00 54	b.eq	0x1998
+    1948:	1d 00 00 14	b	0x19bc
+    194c:	29 20 40 a9	ldp	x9, x8, [x1]
+    1950:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    1954:	3f 40 8a eb	cmp	x1, x10, asr #16
+    1958:	80 02 00 54	b.eq	0x19a8
+    195c:	09 01 00 f9	str	x9, [x8]
+    1960:	28 00 40 f9	ldr	x8, [x1]
+    1964:	68 00 00 b4	cbz	x8, 0x1970
+    1968:	29 04 40 f9	ldr	x9, [x1, #0x8]
+    196c:	09 05 00 f9	str	x9, [x8, #0x8]
+    1970:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+    1974:	f4 03 00 aa	mov	x20, x0
+    1978:	08 00 40 f9	ldr	x8, [x0]
+    197c:	f3 03 01 aa	mov	x19, x1
+    1980:	e0 03 08 aa	mov	x0, x8
+    1984:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE10merge_pairES1_S3_S3_
+    1988:	1f 00 13 eb	cmp	x0, x19
+    198c:	80 02 00 f9	str	x0, [x20]
+    1990:	e0 17 9f 1a	cset	w0, eq
+    1994:	02 00 00 14	b	0x199c
+    1998:	20 00 80 52	mov	w0, #0x1
+    199c:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    19a0:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    19a4:	c0 03 5f d6	ret
+    19a8:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    19ac:	0a 09 00 f9	str	x10, [x8, #0x10]
+    19b0:	28 00 40 f9	ldr	x8, [x1]
+    19b4:	a8 fd ff b5	cbnz	x8, 0x1968
+    19b8:	ee ff ff 17	b	0x1970
+    19bc:	28 04 40 f9	ldr	x8, [x1, #0x8]
+    19c0:	68 fc ff b5	cbnz	x8, 0x194c
+    19c4:	08 00 00 90	adrp	x8, __ZZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGE
+    19c8:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGEOFF
+    19cc:	80 ff 37 d4	brk	#0xbffc
+__Z30priority_queue_entry_increasedP31priority_queue_sched_stable_minP27priority_queue_entry_stable:
+    19d0:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+    19d4:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+    19d8:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+    19dc:	fd 83 00 91	add	x29, sp, #0x20
+    19e0:	15 00 40 f9	ldr	x21, [x0]
+    19e4:	f3 03 01 aa	mov	x19, x1
+    19e8:	f4 03 00 aa	mov	x20, x0
+    19ec:	bf 02 01 eb	cmp	x21, x1
+    19f0:	a0 02 00 54	b.eq	0x1a44
+    19f4:	2b 00 00 14	b	0x1aa0
+    19f8:	69 22 40 a9	ldp	x9, x8, [x19]
+    19fc:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    1a00:	7f 42 8a eb	cmp	x19, x10, asr #16
+    1a04:	40 04 00 54	b.eq	0x1a8c
+    1a08:	09 01 00 f9	str	x9, [x8]
+    1a0c:	68 02 40 f9	ldr	x8, [x19]
+    1a10:	68 00 00 b4	cbz	x8, 0x1a1c
+    1a14:	69 06 40 f9	ldr	x9, [x19, #0x8]
+    1a18:	09 05 00 f9	str	x9, [x8, #0x8]
+    1a1c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1a20:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+    1a24:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    1a28:	e3 01 00 54	b.lo	0x1a64
+    1a2c:	00 fd 50 93	asr	x0, x8, #16
+    1a30:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE9meld_pairES1_S3_
+    1a34:	e1 03 00 aa	mov	x1, x0
+    1a38:	80 02 40 f9	ldr	x0, [x20]
+    1a3c:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE10merge_pairES1_S3_S3_
+    1a40:	06 00 00 14	b	0x1a58
+    1a44:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1a48:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    1a4c:	43 01 00 54	b.lo	0x1a74
+    1a50:	00 fd 50 93	asr	x0, x8, #16
+    1a54:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE9meld_pairES1_S3_
+    1a58:	80 02 00 f9	str	x0, [x20]
+    1a5c:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    1a60:	68 0a 00 f9	str	x8, [x19, #0x10]
+    1a64:	80 02 40 f9	ldr	x0, [x20]
+    1a68:	e1 03 13 aa	mov	x1, x19
+    1a6c:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE10merge_pairES1_S3_S3_
+    1a70:	80 02 00 f9	str	x0, [x20]
+    1a74:	bf 02 13 eb	cmp	x21, x19
+    1a78:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+    1a7c:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+    1a80:	e0 17 9f 1a	cset	w0, eq
+    1a84:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+    1a88:	c0 03 5f d6	ret
+    1a8c:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    1a90:	0a 09 00 f9	str	x10, [x8, #0x10]
+    1a94:	68 02 40 f9	ldr	x8, [x19]
+    1a98:	e8 fb ff b5	cbnz	x8, 0x1a14
+    1a9c:	e0 ff ff 17	b	0x1a1c
+    1aa0:	68 06 40 f9	ldr	x8, [x19, #0x8]
+    1aa4:	a8 fa ff b5	cbnz	x8, 0x19f8
+    1aa8:	08 00 00 90	adrp	x8, __ZZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGE
+    1aac:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGEOFF
+    1ab0:	80 ff 37 d4	brk	#0xbffc
+    1ab4:	1f 20 03 d5	nop
+    1ab8:	1f 20 03 d5	nop
+    1abc:	1f 20 03 d5	nop
+__Z23_priority_queue_destroyP31priority_queue_sched_stable_maxmU13block_pointerFvPvE:
+    1ac0:	00 00 00 14	b	__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE7destroyES1_mU13block_pointerFvPvE
+    1ac4:	1f 20 03 d5	nop
+    1ac8:	1f 20 03 d5	nop
+    1acc:	1f 20 03 d5	nop
+__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE7destroyES1_mU13block_pointerFvPvE:
+    1ad0:	f8 5f bc a9	stp	x24, x23, [sp, #-0x40]!
+    1ad4:	f6 57 01 a9	stp	x22, x21, [sp, #0x10]
+    1ad8:	f4 4f 02 a9	stp	x20, x19, [sp, #0x20]
+    1adc:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+    1ae0:	fd c3 00 91	add	x29, sp, #0x30
+    1ae4:	f4 03 02 aa	mov	x20, x2
+    1ae8:	f3 03 00 aa	mov	x19, x0
+    1aec:	20 00 00 14	b	0x1b6c
+    1af0:	68 02 40 f9	ldr	x8, [x19]
+    1af4:	e8 02 00 b4	cbz	x8, 0x1b50
+    1af8:	f5 03 01 cb	neg	x21, x1
+    1afc:	e9 03 08 aa	mov	x9, x8
+    1b00:	0a 00 00 14	b	0x1b28
+    1b04:	f6 03 09 aa	mov	x22, x9
+    1b08:	89 0a 40 f9	ldr	x9, [x20, #0x10]
+    1b0c:	01 01 15 8b	add	x1, x8, x21
+    1b10:	e0 03 14 aa	mov	x0, x20
+    1b14:	17 01 40 f9	ldr	x23, [x8]
+    1b18:	20 01 3f d6	blr	x9
+    1b1c:	e8 03 17 aa	mov	x8, x23
+    1b20:	e9 03 16 aa	mov	x9, x22
+    1b24:	77 01 00 b4	cbz	x23, 0x1b50
+    1b28:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    1b2c:	5f 41 40 f1	cmp	x10, #0x10, lsl #12
+    1b30:	a3 fe ff 54	b.lo	0x1b04
+    1b34:	4a fd 50 93	asr	x10, x10, #16
+    1b38:	2a 01 00 f9	str	x10, [x9]
+    1b3c:	1f 20 03 d5	nop
+    1b40:	f6 03 09 aa	mov	x22, x9
+    1b44:	29 01 40 f9	ldr	x9, [x9]
+    1b48:	c9 ff ff b5	cbnz	x9, 0x1b40
+    1b4c:	ef ff ff 17	b	0x1b08
+    1b50:	08 00 80 92	mov	x8, #-0x1
+    1b54:	fd 7b 43 a9	ldp	x29, x30, [sp, #0x30]
+    1b58:	68 02 00 f9	str	x8, [x19]
+    1b5c:	f4 4f 42 a9	ldp	x20, x19, [sp, #0x20]
+    1b60:	f6 57 41 a9	ldp	x22, x21, [sp, #0x10]
+    1b64:	f8 5f c4 a8	ldp	x24, x23, [sp], #0x40
+    1b68:	c0 03 5f d6	ret
+    1b6c:	34 fc ff b5	cbnz	x20, 0x1af0
+    1b70:	08 00 00 90	adrp	x8, __ZZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGE
+    1b74:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE7destroyES1_mU13block_pointerFvPvEE6__desc@PAGEOFF
+    1b78:	80 ff 37 d4	brk	#0xbffc
+    1b7c:	1f 20 03 d5	nop
+__Z21priority_queue_insertP31priority_queue_sched_stable_maxP27priority_queue_entry_stable:
+    1b80:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    1b84:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    1b88:	fd 43 00 91	add	x29, sp, #0x10
+    1b8c:	28 20 40 79	ldrh	w8, [x1, #0x10]
+    1b90:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+    1b94:	f4 03 00 aa	mov	x20, x0
+    1b98:	f3 03 01 aa	mov	x19, x1
+    1b9c:	28 08 00 f9	str	x8, [x1, #0x10]
+    1ba0:	00 00 40 f9	ldr	x0, [x0]
+    1ba4:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE10merge_pairES1_S3_S3_
+    1ba8:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    1bac:	1f 00 13 eb	cmp	x0, x19
+    1bb0:	80 02 00 f9	str	x0, [x20]
+    1bb4:	e0 17 9f 1a	cset	w0, eq
+    1bb8:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    1bbc:	c0 03 5f d6	ret
+__Z27_priority_queue_remove_rootP31priority_queue_sched_stable_max:
+    1bc0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    1bc4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    1bc8:	fd 43 00 91	add	x29, sp, #0x10
+    1bcc:	13 00 40 f9	ldr	x19, [x0]
+    1bd0:	f4 03 00 aa	mov	x20, x0
+    1bd4:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1bd8:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    1bdc:	62 00 00 54	b.hs	0x1be8
+    1be0:	9f 02 00 f9	str	xzr, [x20]
+    1be4:	06 00 00 14	b	0x1bfc
+    1be8:	00 fd 50 93	asr	x0, x8, #16
+    1bec:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE9meld_pairES1_S3_
+    1bf0:	80 02 00 f9	str	x0, [x20]
+    1bf4:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    1bf8:	68 0a 00 f9	str	x8, [x19, #0x10]
+    1bfc:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    1c00:	e0 03 13 aa	mov	x0, x19
+    1c04:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    1c08:	c0 03 5f d6	ret
+    1c0c:	1f 20 03 d5	nop
+__Z21priority_queue_removeP31priority_queue_sched_stable_maxP27priority_queue_entry_stable:
+    1c10:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+    1c14:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+    1c18:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+    1c1c:	fd 83 00 91	add	x29, sp, #0x20
+    1c20:	15 00 40 f9	ldr	x21, [x0]
+    1c24:	f3 03 01 aa	mov	x19, x1
+    1c28:	f4 03 00 aa	mov	x20, x0
+    1c2c:	bf 02 01 eb	cmp	x21, x1
+    1c30:	a0 02 00 54	b.eq	0x1c84
+    1c34:	29 00 00 14	b	0x1cd8
+    1c38:	69 22 40 a9	ldp	x9, x8, [x19]
+    1c3c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    1c40:	7f 42 8a eb	cmp	x19, x10, asr #16
+    1c44:	a0 02 00 54	b.eq	0x1c98
+    1c48:	09 01 00 f9	str	x9, [x8]
+    1c4c:	68 02 40 f9	ldr	x8, [x19]
+    1c50:	68 00 00 b4	cbz	x8, 0x1c5c
+    1c54:	69 06 40 f9	ldr	x9, [x19, #0x8]
+    1c58:	09 05 00 f9	str	x9, [x8, #0x8]
+    1c5c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1c60:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+    1c64:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    1c68:	c3 02 00 54	b.lo	0x1cc0
+    1c6c:	00 fd 50 93	asr	x0, x8, #16
+    1c70:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE9meld_pairES1_S3_
+    1c74:	e1 03 00 aa	mov	x1, x0
+    1c78:	80 02 40 f9	ldr	x0, [x20]
+    1c7c:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE10merge_pairES1_S3_S3_
+    1c80:	0d 00 00 14	b	0x1cb4
+    1c84:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1c88:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    1c8c:	02 01 00 54	b.hs	0x1cac
+    1c90:	9f 02 00 f9	str	xzr, [x20]
+    1c94:	0b 00 00 14	b	0x1cc0
+    1c98:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    1c9c:	0a 09 00 f9	str	x10, [x8, #0x10]
+    1ca0:	68 02 40 f9	ldr	x8, [x19]
+    1ca4:	88 fd ff b5	cbnz	x8, 0x1c54
+    1ca8:	ed ff ff 17	b	0x1c5c
+    1cac:	00 fd 50 93	asr	x0, x8, #16
+    1cb0:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE9meld_pairES1_S3_
+    1cb4:	80 02 00 f9	str	x0, [x20]
+    1cb8:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    1cbc:	68 0a 00 f9	str	x8, [x19, #0x10]
+    1cc0:	bf 02 13 eb	cmp	x21, x19
+    1cc4:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+    1cc8:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+    1ccc:	e0 17 9f 1a	cset	w0, eq
+    1cd0:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+    1cd4:	c0 03 5f d6	ret
+    1cd8:	68 06 40 f9	ldr	x8, [x19, #0x8]
+    1cdc:	e8 fa ff b5	cbnz	x8, 0x1c38
+    1ce0:	08 00 00 90	adrp	x8, __ZZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGE
+    1ce4:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGEOFF
+    1ce8:	80 ff 37 d4	brk	#0xbffc
+    1cec:	1f 20 03 d5	nop
+__Z30priority_queue_entry_decreasedP31priority_queue_sched_stable_maxP27priority_queue_entry_stable:
+    1cf0:	f6 57 bd a9	stp	x22, x21, [sp, #-0x30]!
+    1cf4:	f4 4f 01 a9	stp	x20, x19, [sp, #0x10]
+    1cf8:	fd 7b 02 a9	stp	x29, x30, [sp, #0x20]
+    1cfc:	fd 83 00 91	add	x29, sp, #0x20
+    1d00:	15 00 40 f9	ldr	x21, [x0]
+    1d04:	f3 03 01 aa	mov	x19, x1
+    1d08:	f4 03 00 aa	mov	x20, x0
+    1d0c:	bf 02 01 eb	cmp	x21, x1
+    1d10:	a0 02 00 54	b.eq	0x1d64
+    1d14:	2b 00 00 14	b	0x1dc0
+    1d18:	69 22 40 a9	ldp	x9, x8, [x19]
+    1d1c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    1d20:	7f 42 8a eb	cmp	x19, x10, asr #16
+    1d24:	40 04 00 54	b.eq	0x1dac
+    1d28:	09 01 00 f9	str	x9, [x8]
+    1d2c:	68 02 40 f9	ldr	x8, [x19]
+    1d30:	68 00 00 b4	cbz	x8, 0x1d3c
+    1d34:	69 06 40 f9	ldr	x9, [x19, #0x8]
+    1d38:	09 05 00 f9	str	x9, [x8, #0x8]
+    1d3c:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1d40:	7f 7e 00 a9	stp	xzr, xzr, [x19]
+    1d44:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    1d48:	e3 01 00 54	b.lo	0x1d84
+    1d4c:	00 fd 50 93	asr	x0, x8, #16
+    1d50:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE9meld_pairES1_S3_
+    1d54:	e1 03 00 aa	mov	x1, x0
+    1d58:	80 02 40 f9	ldr	x0, [x20]
+    1d5c:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE10merge_pairES1_S3_S3_
+    1d60:	06 00 00 14	b	0x1d78
+    1d64:	68 0a 40 f9	ldr	x8, [x19, #0x10]
+    1d68:	1f 41 40 f1	cmp	x8, #0x10, lsl #12
+    1d6c:	43 01 00 54	b.lo	0x1d94
+    1d70:	00 fd 50 93	asr	x0, x8, #16
+    1d74:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE9meld_pairES1_S3_
+    1d78:	80 02 00 f9	str	x0, [x20]
+    1d7c:	68 22 40 79	ldrh	w8, [x19, #0x10]
+    1d80:	68 0a 00 f9	str	x8, [x19, #0x10]
+    1d84:	80 02 40 f9	ldr	x0, [x20]
+    1d88:	e1 03 13 aa	mov	x1, x19
+    1d8c:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE10merge_pairES1_S3_S3_
+    1d90:	80 02 00 f9	str	x0, [x20]
+    1d94:	bf 02 13 eb	cmp	x21, x19
+    1d98:	fd 7b 42 a9	ldp	x29, x30, [sp, #0x20]
+    1d9c:	f4 4f 41 a9	ldp	x20, x19, [sp, #0x10]
+    1da0:	e0 17 9f 1a	cset	w0, eq
+    1da4:	f6 57 c3 a8	ldp	x22, x21, [sp], #0x30
+    1da8:	c0 03 5f d6	ret
+    1dac:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    1db0:	0a 09 00 f9	str	x10, [x8, #0x10]
+    1db4:	68 02 40 f9	ldr	x8, [x19]
+    1db8:	e8 fb ff b5	cbnz	x8, 0x1d34
+    1dbc:	e0 ff ff 17	b	0x1d3c
+    1dc0:	68 06 40 f9	ldr	x8, [x19, #0x8]
+    1dc4:	a8 fa ff b5	cbnz	x8, 0x1d18
+    1dc8:	08 00 00 90	adrp	x8, __ZZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGE
+    1dcc:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGEOFF
+    1dd0:	80 ff 37 d4	brk	#0xbffc
+    1dd4:	1f 20 03 d5	nop
+    1dd8:	1f 20 03 d5	nop
+    1ddc:	1f 20 03 d5	nop
+__Z30priority_queue_entry_increasedP31priority_queue_sched_stable_maxP27priority_queue_entry_stable:
+    1de0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    1de4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    1de8:	fd 43 00 91	add	x29, sp, #0x10
+    1dec:	08 00 40 f9	ldr	x8, [x0]
+    1df0:	1f 01 01 eb	cmp	x8, x1
+    1df4:	a0 02 00 54	b.eq	0x1e48
+    1df8:	1d 00 00 14	b	0x1e6c
+    1dfc:	29 20 40 a9	ldp	x9, x8, [x1]
+    1e00:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    1e04:	3f 40 8a eb	cmp	x1, x10, asr #16
+    1e08:	80 02 00 54	b.eq	0x1e58
+    1e0c:	09 01 00 f9	str	x9, [x8]
+    1e10:	28 00 40 f9	ldr	x8, [x1]
+    1e14:	68 00 00 b4	cbz	x8, 0x1e20
+    1e18:	29 04 40 f9	ldr	x9, [x1, #0x8]
+    1e1c:	09 05 00 f9	str	x9, [x8, #0x8]
+    1e20:	3f 7c 00 a9	stp	xzr, xzr, [x1]
+    1e24:	f4 03 00 aa	mov	x20, x0
+    1e28:	08 00 40 f9	ldr	x8, [x0]
+    1e2c:	f3 03 01 aa	mov	x19, x1
+    1e30:	e0 03 08 aa	mov	x0, x8
+    1e34:	00 00 00 94	bl	__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE10merge_pairES1_S3_S3_
+    1e38:	1f 00 13 eb	cmp	x0, x19
+    1e3c:	80 02 00 f9	str	x0, [x20]
+    1e40:	e0 17 9f 1a	cset	w0, eq
+    1e44:	02 00 00 14	b	0x1e4c
+    1e48:	20 00 80 52	mov	w0, #0x1
+    1e4c:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    1e50:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    1e54:	c0 03 5f d6	ret
+    1e58:	2a bd 70 b3	bfi	x10, x9, #16, #48
+    1e5c:	0a 09 00 f9	str	x10, [x8, #0x10]
+    1e60:	28 00 40 f9	ldr	x8, [x1]
+    1e64:	a8 fd ff b5	cbnz	x8, 0x1e18
+    1e68:	ee ff ff 17	b	0x1e20
+    1e6c:	28 04 40 f9	ldr	x8, [x1, #0x8]
+    1e70:	68 fc ff b5	cbnz	x8, 0x1dfc
+    1e74:	08 00 00 90	adrp	x8, __ZZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGE
+    1e78:	08 01 00 91	add	x8, x8, __ZZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE11list_removeES3_E6__desc@PAGEOFF
+    1e7c:	80 ff 37 d4	brk	#0xbffc
+__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE10merge_pairES1_S3_S3_:
+    1e80:	c1 03 00 b4	cbz	x1, 0x1ef8
+    1e84:	e2 03 00 b4	cbz	x2, 0x1f00
+    1e88:	3f 00 02 eb	cmp	x1, x2
+    1e8c:	a0 03 00 54	b.eq	0x1f00
+    1e90:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    1e94:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    1e98:	fd 43 00 91	add	x29, sp, #0x10
+    1e9c:	00 04 40 f9	ldr	x0, [x0, #0x8]
+    1ea0:	f3 03 01 aa	mov	x19, x1
+    1ea4:	f4 03 02 aa	mov	x20, x2
+    1ea8:	08 08 40 f9	ldr	x8, [x0, #0x10]
+    1eac:	00 01 3f d6	blr	x8
+    1eb0:	1f 00 00 71	cmp	w0, #0x0
+    1eb4:	80 b2 93 9a	csel	x0, x20, x19, lt
+    1eb8:	68 b2 94 9a	csel	x8, x19, x20, lt
+    1ebc:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    1ec0:	29 fd 50 93	asr	x9, x9, #16
+    1ec4:	09 01 00 a9	stp	x9, x0, [x8]
+    1ec8:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    1ecc:	3f 41 40 f1	cmp	x9, #0x10, lsl #12
+    1ed0:	63 00 00 54	b.lo	0x1edc
+    1ed4:	29 fd 50 93	asr	x9, x9, #16
+    1ed8:	28 05 00 f9	str	x8, [x9, #0x8]
+    1edc:	09 20 40 79	ldrh	w9, [x0, #0x10]
+    1ee0:	1f 00 00 f9	str	xzr, [x0]
+    1ee4:	28 41 08 aa	orr	x8, x9, x8, lsl #16
+    1ee8:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    1eec:	1f a0 00 a9	stp	xzr, x8, [x0, #0x8]
+    1ef0:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    1ef4:	c0 03 5f d6	ret
+    1ef8:	e0 03 02 aa	mov	x0, x2
+    1efc:	c0 03 5f d6	ret
+    1f00:	e0 03 01 aa	mov	x0, x1
+    1f04:	c0 03 5f d6	ret
+    1f08:	1f 20 03 d5	nop
+    1f0c:	1f 20 03 d5	nop
+__ZN6pqueueIP18priority_queue_minP20priority_queue_entryE9meld_pairES1_S3_:
+    1f10:	f8 5f bc a9	stp	x24, x23, [sp, #-0x40]!
+    1f14:	f6 57 01 a9	stp	x22, x21, [sp, #0x10]
+    1f18:	f4 4f 02 a9	stp	x20, x19, [sp, #0x20]
+    1f1c:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+    1f20:	fd c3 00 91	add	x29, sp, #0x30
+    1f24:	01 00 00 14	b	0x1f28
+    1f28:	f5 03 01 aa	mov	x21, x1
+    1f2c:	f3 03 00 aa	mov	x19, x0
+    1f30:	f7 03 1f aa	mov	x23, xzr
+    1f34:	b4 02 40 f9	ldr	x20, [x21]
+    1f38:	74 03 00 b4	cbz	x20, 0x1fa4
+    1f3c:	98 02 40 f9	ldr	x24, [x20]
+    1f40:	bf 02 14 eb	cmp	x21, x20
+    1f44:	e0 03 00 54	b.eq	0x1fc0
+    1f48:	60 06 40 f9	ldr	x0, [x19, #0x8]
+    1f4c:	e1 03 15 aa	mov	x1, x21
+    1f50:	e2 03 14 aa	mov	x2, x20
+    1f54:	08 08 40 f9	ldr	x8, [x0, #0x10]
+    1f58:	00 01 3f d6	blr	x8
+    1f5c:	1f 00 00 71	cmp	w0, #0x0
+    1f60:	96 b2 95 9a	csel	x22, x20, x21, lt
+    1f64:	a8 b2 94 9a	csel	x8, x21, x20, lt
+    1f68:	c9 0a 40 f9	ldr	x9, [x22, #0x10]
+    1f6c:	29 fd 50 93	asr	x9, x9, #16
+    1f70:	09 59 00 a9	stp	x9, x22, [x8]
+    1f74:	c9 0a 40 f9	ldr	x9, [x22, #0x10]
+    1f78:	3f 41 40 f1	cmp	x9, #0x10, lsl #12
+    1f7c:	63 00 00 54	b.lo	0x1f88
+    1f80:	29 fd 50 93	asr	x9, x9, #16
+    1f84:	28 05 00 f9	str	x8, [x9, #0x8]
+    1f88:	c9 22 40 79	ldrh	w9, [x22, #0x10]
+    1f8c:	df 02 00 f9	str	xzr, [x22]
+    1f90:	28 41 08 aa	orr	x8, x9, x8, lsl #16
+    1f94:	df a2 00 a9	stp	xzr, x8, [x22, #0x8]
+    1f98:	d7 06 00 f9	str	x23, [x22, #0x8]
+    1f9c:	94 01 00 b5	cbnz	x20, 0x1fcc
+    1fa0:	0e 00 00 14	b	0x1fd8
+    1fa4:	f6 03 15 aa	mov	x22, x21
+    1fa8:	f8 03 15 aa	mov	x24, x21
+    1fac:	d7 06 00 f9	str	x23, [x22, #0x8]
+    1fb0:	f4 00 00 b5	cbnz	x20, 0x1fcc
+    1fb4:	09 00 00 14	b	0x1fd8
+    1fb8:	1f 20 03 d5	nop
+    1fbc:	1f 20 03 d5	nop
+    1fc0:	f6 03 15 aa	mov	x22, x21
+    1fc4:	d7 06 00 f9	str	x23, [x22, #0x8]
+    1fc8:	94 00 00 b4	cbz	x20, 0x1fd8
+    1fcc:	f7 03 16 aa	mov	x23, x22
+    1fd0:	f5 03 18 aa	mov	x21, x24
+    1fd4:	18 fb ff b5	cbnz	x24, 0x1f34
+    1fd8:	f4 03 1f aa	mov	x20, xzr
+    1fdc:	03 00 00 14	b	0x1fe8
+    1fe0:	f4 03 15 aa	mov	x20, x21
+    1fe4:	b6 03 00 b4	cbz	x22, 0x2058
+    1fe8:	f5 03 16 aa	mov	x21, x22
+    1fec:	d6 06 40 f9	ldr	x22, [x22, #0x8]
+    1ff0:	94 ff ff b4	cbz	x20, 0x1fe0
+    1ff4:	95 ff ff b4	cbz	x21, 0x1fe4
+    1ff8:	9f 02 15 eb	cmp	x20, x21
+    1ffc:	40 ff ff 54	b.eq	0x1fe4
+    2000:	60 06 40 f9	ldr	x0, [x19, #0x8]
+    2004:	e1 03 14 aa	mov	x1, x20
+    2008:	e2 03 15 aa	mov	x2, x21
+    200c:	08 08 40 f9	ldr	x8, [x0, #0x10]
+    2010:	00 01 3f d6	blr	x8
+    2014:	1f 00 00 71	cmp	w0, #0x0
+    2018:	a8 b2 94 9a	csel	x8, x21, x20, lt
+    201c:	89 b2 95 9a	csel	x9, x20, x21, lt
+    2020:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    2024:	4a fd 50 93	asr	x10, x10, #16
+    2028:	2a 21 00 a9	stp	x10, x8, [x9]
+    202c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    2030:	5f 41 40 f1	cmp	x10, #0x10, lsl #12
+    2034:	63 00 00 54	b.lo	0x2040
+    2038:	4a fd 50 93	asr	x10, x10, #16
+    203c:	49 05 00 f9	str	x9, [x10, #0x8]
+    2040:	0a 21 40 79	ldrh	w10, [x8, #0x10]
+    2044:	f4 03 08 aa	mov	x20, x8
+    2048:	1f 01 00 f9	str	xzr, [x8]
+    204c:	49 41 09 aa	orr	x9, x10, x9, lsl #16
+    2050:	1f a5 00 a9	stp	xzr, x9, [x8, #0x8]
+    2054:	e4 ff ff 17	b	0x1fe4
+    2058:	e0 03 14 aa	mov	x0, x20
+    205c:	fd 7b 43 a9	ldp	x29, x30, [sp, #0x30]
+    2060:	f4 4f 42 a9	ldp	x20, x19, [sp, #0x20]
+    2064:	f6 57 41 a9	ldp	x22, x21, [sp, #0x10]
+    2068:	f8 5f c4 a8	ldp	x24, x23, [sp], #0x40
+    206c:	c0 03 5f d6	ret
+__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE10merge_pairES1_S3_S3_:
+    2070:	c1 03 00 b4	cbz	x1, 0x20e8
+    2074:	e2 03 00 b4	cbz	x2, 0x20f0
+    2078:	3f 00 02 eb	cmp	x1, x2
+    207c:	a0 03 00 54	b.eq	0x20f0
+    2080:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+    2084:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+    2088:	fd 43 00 91	add	x29, sp, #0x10
+    208c:	00 04 40 f9	ldr	x0, [x0, #0x8]
+    2090:	f3 03 01 aa	mov	x19, x1
+    2094:	f4 03 02 aa	mov	x20, x2
+    2098:	08 08 40 f9	ldr	x8, [x0, #0x10]
+    209c:	00 01 3f d6	blr	x8
+    20a0:	1f 00 00 71	cmp	w0, #0x0
+    20a4:	80 c2 93 9a	csel	x0, x20, x19, gt
+    20a8:	68 c2 94 9a	csel	x8, x19, x20, gt
+    20ac:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    20b0:	29 fd 50 93	asr	x9, x9, #16
+    20b4:	09 01 00 a9	stp	x9, x0, [x8]
+    20b8:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    20bc:	3f 41 40 f1	cmp	x9, #0x10, lsl #12
+    20c0:	63 00 00 54	b.lo	0x20cc
+    20c4:	29 fd 50 93	asr	x9, x9, #16
+    20c8:	28 05 00 f9	str	x8, [x9, #0x8]
+    20cc:	09 20 40 79	ldrh	w9, [x0, #0x10]
+    20d0:	1f 00 00 f9	str	xzr, [x0]
+    20d4:	28 41 08 aa	orr	x8, x9, x8, lsl #16
+    20d8:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+    20dc:	1f a0 00 a9	stp	xzr, x8, [x0, #0x8]
+    20e0:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+    20e4:	c0 03 5f d6	ret
+    20e8:	e0 03 02 aa	mov	x0, x2
+    20ec:	c0 03 5f d6	ret
+    20f0:	e0 03 01 aa	mov	x0, x1
+    20f4:	c0 03 5f d6	ret
+    20f8:	1f 20 03 d5	nop
+    20fc:	1f 20 03 d5	nop
+__ZN6pqueueIP18priority_queue_maxP20priority_queue_entryE9meld_pairES1_S3_:
+    2100:	f8 5f bc a9	stp	x24, x23, [sp, #-0x40]!
+    2104:	f6 57 01 a9	stp	x22, x21, [sp, #0x10]
+    2108:	f4 4f 02 a9	stp	x20, x19, [sp, #0x20]
+    210c:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+    2110:	fd c3 00 91	add	x29, sp, #0x30
+    2114:	01 00 00 14	b	0x2118
+    2118:	f5 03 01 aa	mov	x21, x1
+    211c:	f3 03 00 aa	mov	x19, x0
+    2120:	f7 03 1f aa	mov	x23, xzr
+    2124:	b4 02 40 f9	ldr	x20, [x21]
+    2128:	74 03 00 b4	cbz	x20, 0x2194
+    212c:	98 02 40 f9	ldr	x24, [x20]
+    2130:	bf 02 14 eb	cmp	x21, x20
+    2134:	e0 03 00 54	b.eq	0x21b0
+    2138:	60 06 40 f9	ldr	x0, [x19, #0x8]
+    213c:	e1 03 15 aa	mov	x1, x21
+    2140:	e2 03 14 aa	mov	x2, x20
+    2144:	08 08 40 f9	ldr	x8, [x0, #0x10]
+    2148:	00 01 3f d6	blr	x8
+    214c:	1f 00 00 71	cmp	w0, #0x0
+    2150:	96 c2 95 9a	csel	x22, x20, x21, gt
+    2154:	a8 c2 94 9a	csel	x8, x21, x20, gt
+    2158:	c9 0a 40 f9	ldr	x9, [x22, #0x10]
+    215c:	29 fd 50 93	asr	x9, x9, #16
+    2160:	09 59 00 a9	stp	x9, x22, [x8]
+    2164:	c9 0a 40 f9	ldr	x9, [x22, #0x10]
+    2168:	3f 41 40 f1	cmp	x9, #0x10, lsl #12
+    216c:	63 00 00 54	b.lo	0x2178
+    2170:	29 fd 50 93	asr	x9, x9, #16
+    2174:	28 05 00 f9	str	x8, [x9, #0x8]
+    2178:	c9 22 40 79	ldrh	w9, [x22, #0x10]
+    217c:	df 02 00 f9	str	xzr, [x22]
+    2180:	28 41 08 aa	orr	x8, x9, x8, lsl #16
+    2184:	df a2 00 a9	stp	xzr, x8, [x22, #0x8]
+    2188:	d7 06 00 f9	str	x23, [x22, #0x8]
+    218c:	94 01 00 b5	cbnz	x20, 0x21bc
+    2190:	0e 00 00 14	b	0x21c8
+    2194:	f6 03 15 aa	mov	x22, x21
+    2198:	f8 03 15 aa	mov	x24, x21
+    219c:	d7 06 00 f9	str	x23, [x22, #0x8]
+    21a0:	f4 00 00 b5	cbnz	x20, 0x21bc
+    21a4:	09 00 00 14	b	0x21c8
+    21a8:	1f 20 03 d5	nop
+    21ac:	1f 20 03 d5	nop
+    21b0:	f6 03 15 aa	mov	x22, x21
+    21b4:	d7 06 00 f9	str	x23, [x22, #0x8]
+    21b8:	94 00 00 b4	cbz	x20, 0x21c8
+    21bc:	f7 03 16 aa	mov	x23, x22
+    21c0:	f5 03 18 aa	mov	x21, x24
+    21c4:	18 fb ff b5	cbnz	x24, 0x2124
+    21c8:	f4 03 1f aa	mov	x20, xzr
+    21cc:	03 00 00 14	b	0x21d8
+    21d0:	f4 03 15 aa	mov	x20, x21
+    21d4:	b6 03 00 b4	cbz	x22, 0x2248
+    21d8:	f5 03 16 aa	mov	x21, x22
+    21dc:	d6 06 40 f9	ldr	x22, [x22, #0x8]
+    21e0:	94 ff ff b4	cbz	x20, 0x21d0
+    21e4:	95 ff ff b4	cbz	x21, 0x21d4
+    21e8:	9f 02 15 eb	cmp	x20, x21
+    21ec:	40 ff ff 54	b.eq	0x21d4
+    21f0:	60 06 40 f9	ldr	x0, [x19, #0x8]
+    21f4:	e1 03 14 aa	mov	x1, x20
+    21f8:	e2 03 15 aa	mov	x2, x21
+    21fc:	08 08 40 f9	ldr	x8, [x0, #0x10]
+    2200:	00 01 3f d6	blr	x8
+    2204:	1f 00 00 71	cmp	w0, #0x0
+    2208:	a8 c2 94 9a	csel	x8, x21, x20, gt
+    220c:	89 c2 95 9a	csel	x9, x20, x21, gt
+    2210:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    2214:	4a fd 50 93	asr	x10, x10, #16
+    2218:	2a 21 00 a9	stp	x10, x8, [x9]
+    221c:	0a 09 40 f9	ldr	x10, [x8, #0x10]
+    2220:	5f 41 40 f1	cmp	x10, #0x10, lsl #12
+    2224:	63 00 00 54	b.lo	0x2230
+    2228:	4a fd 50 93	asr	x10, x10, #16
+    222c:	49 05 00 f9	str	x9, [x10, #0x8]
+    2230:	0a 21 40 79	ldrh	w10, [x8, #0x10]
+    2234:	f4 03 08 aa	mov	x20, x8
+    2238:	1f 01 00 f9	str	xzr, [x8]
+    223c:	49 41 09 aa	orr	x9, x10, x9, lsl #16
+    2240:	1f a5 00 a9	stp	xzr, x9, [x8, #0x8]
+    2244:	e4 ff ff 17	b	0x21d4
+    2248:	e0 03 14 aa	mov	x0, x20
+    224c:	fd 7b 43 a9	ldp	x29, x30, [sp, #0x30]
+    2250:	f4 4f 42 a9	ldp	x20, x19, [sp, #0x20]
+    2254:	f6 57 41 a9	ldp	x22, x21, [sp, #0x10]
+    2258:	f8 5f c4 a8	ldp	x24, x23, [sp], #0x40
+    225c:	c0 03 5f d6	ret
+__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE10merge_pairES1_S3_S3_:
+    2260:	00 03 00 b4	cbz	x0, 0x22c0
+    2264:	01 03 00 b4	cbz	x1, 0x22c4
+    2268:	1f 00 01 eb	cmp	x0, x1
+    226c:	c0 02 00 54	b.eq	0x22c4
+    2270:	28 08 40 f9	ldr	x8, [x1, #0x10]
+    2274:	08 3d 50 d3	lsl	x8, x8, #48
+    2278:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    227c:	1f c1 09 eb	cmp	x8, x9, lsl #48
+    2280:	e8 03 00 aa	mov	x8, x0
+    2284:	20 b0 80 9a	csel	x0, x1, x0, lt
+    2288:	08 b1 81 9a	csel	x8, x8, x1, lt
+    228c:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    2290:	29 fd 50 93	asr	x9, x9, #16
+    2294:	09 01 00 a9	stp	x9, x0, [x8]
+    2298:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    229c:	3f 41 40 f1	cmp	x9, #0x10, lsl #12
+    22a0:	63 00 00 54	b.lo	0x22ac
+    22a4:	29 fd 50 93	asr	x9, x9, #16
+    22a8:	28 05 00 f9	str	x8, [x9, #0x8]
+    22ac:	09 20 40 79	ldrh	w9, [x0, #0x10]
+    22b0:	1f 00 00 f9	str	xzr, [x0]
+    22b4:	28 41 08 aa	orr	x8, x9, x8, lsl #16
+    22b8:	1f a0 00 a9	stp	xzr, x8, [x0, #0x8]
+    22bc:	c0 03 5f d6	ret
+    22c0:	e0 03 01 aa	mov	x0, x1
+    22c4:	c0 03 5f d6	ret
+    22c8:	1f 20 03 d5	nop
+    22cc:	1f 20 03 d5	nop
+__ZN6pqueueIP24priority_queue_sched_minP26priority_queue_entry_schedE9meld_pairES1_S3_:
+    22d0:	01 00 00 14	b	0x22d4
+    22d4:	e9 03 1f aa	mov	x9, xzr
+    22d8:	1f 20 03 d5	nop
+    22dc:	1f 20 03 d5	nop
+    22e0:	0a 00 40 f9	ldr	x10, [x0]
+    22e4:	6a 03 00 b4	cbz	x10, 0x2350
+    22e8:	4b 01 40 f9	ldr	x11, [x10]
+    22ec:	1f 00 0a eb	cmp	x0, x10
+    22f0:	a0 03 00 54	b.eq	0x2364
+    22f4:	48 09 40 f9	ldr	x8, [x10, #0x10]
+    22f8:	08 3d 50 d3	lsl	x8, x8, #48
+    22fc:	0c 08 40 f9	ldr	x12, [x0, #0x10]
+    2300:	1f c1 0c eb	cmp	x8, x12, lsl #48
+    2304:	48 b1 80 9a	csel	x8, x10, x0, lt
+    2308:	0c b0 8a 9a	csel	x12, x0, x10, lt
+    230c:	0d 09 40 f9	ldr	x13, [x8, #0x10]
+    2310:	ad fd 50 93	asr	x13, x13, #16
+    2314:	8d 21 00 a9	stp	x13, x8, [x12]
+    2318:	0d 09 40 f9	ldr	x13, [x8, #0x10]
+    231c:	bf 41 40 f1	cmp	x13, #0x10, lsl #12
+    2320:	63 00 00 54	b.lo	0x232c
+    2324:	ad fd 50 93	asr	x13, x13, #16
+    2328:	ac 05 00 f9	str	x12, [x13, #0x8]
+    232c:	0d 21 40 79	ldrh	w13, [x8, #0x10]
+    2330:	1f 01 00 f9	str	xzr, [x8]
+    2334:	ac 41 0c aa	orr	x12, x13, x12, lsl #16
+    2338:	1f b1 00 a9	stp	xzr, x12, [x8, #0x8]
+    233c:	09 05 00 f9	str	x9, [x8, #0x8]
+    2340:	8a 01 00 b5	cbnz	x10, 0x2370
+    2344:	0e 00 00 14	b	0x237c
+    2348:	1f 20 03 d5	nop
+    234c:	1f 20 03 d5	nop
+    2350:	e8 03 00 aa	mov	x8, x0
+    2354:	eb 03 00 aa	mov	x11, x0
+    2358:	09 05 00 f9	str	x9, [x8, #0x8]
+    235c:	aa 00 00 b5	cbnz	x10, 0x2370
+    2360:	07 00 00 14	b	0x237c
+    2364:	e8 03 00 aa	mov	x8, x0
+    2368:	09 05 00 f9	str	x9, [x8, #0x8]
+    236c:	8a 00 00 b4	cbz	x10, 0x237c
+    2370:	e9 03 08 aa	mov	x9, x8
+    2374:	e0 03 0b aa	mov	x0, x11
+    2378:	4b fb ff b5	cbnz	x11, 0x22e0
+    237c:	e0 03 1f aa	mov	x0, xzr
+    2380:	03 00 00 14	b	0x238c
+    2384:	e0 03 0a aa	mov	x0, x10
+    2388:	68 03 00 b4	cbz	x8, 0x23f4
+    238c:	ea 03 08 aa	mov	x10, x8
+    2390:	08 05 40 f9	ldr	x8, [x8, #0x8]
+    2394:	80 ff ff b4	cbz	x0, 0x2384
+    2398:	8a ff ff b4	cbz	x10, 0x2388
+    239c:	1f 00 0a eb	cmp	x0, x10
+    23a0:	40 ff ff 54	b.eq	0x2388
+    23a4:	49 09 40 f9	ldr	x9, [x10, #0x10]
+    23a8:	29 3d 50 d3	lsl	x9, x9, #48
+    23ac:	0b 08 40 f9	ldr	x11, [x0, #0x10]
+    23b0:	3f c1 0b eb	cmp	x9, x11, lsl #48
+    23b4:	49 b1 80 9a	csel	x9, x10, x0, lt
+    23b8:	0a b0 8a 9a	csel	x10, x0, x10, lt
+    23bc:	2b 09 40 f9	ldr	x11, [x9, #0x10]
+    23c0:	6b fd 50 93	asr	x11, x11, #16
+    23c4:	4b 25 00 a9	stp	x11, x9, [x10]
+    23c8:	2b 09 40 f9	ldr	x11, [x9, #0x10]
+    23cc:	7f 41 40 f1	cmp	x11, #0x10, lsl #12
+    23d0:	63 00 00 54	b.lo	0x23dc
+    23d4:	6b fd 50 93	asr	x11, x11, #16
+    23d8:	6a 05 00 f9	str	x10, [x11, #0x8]
+    23dc:	2b 21 40 79	ldrh	w11, [x9, #0x10]
+    23e0:	e0 03 09 aa	mov	x0, x9
+    23e4:	3f 01 00 f9	str	xzr, [x9]
+    23e8:	6a 41 0a aa	orr	x10, x11, x10, lsl #16
+    23ec:	3f a9 00 a9	stp	xzr, x10, [x9, #0x8]
+    23f0:	e6 ff ff 17	b	0x2388
+    23f4:	c0 03 5f d6	ret
+    23f8:	1f 20 03 d5	nop
+    23fc:	1f 20 03 d5	nop
+__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE10merge_pairES1_S3_S3_:
+    2400:	00 03 00 b4	cbz	x0, 0x2460
+    2404:	01 03 00 b4	cbz	x1, 0x2464
+    2408:	1f 00 01 eb	cmp	x0, x1
+    240c:	c0 02 00 54	b.eq	0x2464
+    2410:	28 08 40 f9	ldr	x8, [x1, #0x10]
+    2414:	08 3d 50 d3	lsl	x8, x8, #48
+    2418:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    241c:	1f c1 09 eb	cmp	x8, x9, lsl #48
+    2420:	e8 03 00 aa	mov	x8, x0
+    2424:	20 c0 80 9a	csel	x0, x1, x0, gt
+    2428:	08 c1 81 9a	csel	x8, x8, x1, gt
+    242c:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    2430:	29 fd 50 93	asr	x9, x9, #16
+    2434:	09 01 00 a9	stp	x9, x0, [x8]
+    2438:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    243c:	3f 41 40 f1	cmp	x9, #0x10, lsl #12
+    2440:	63 00 00 54	b.lo	0x244c
+    2444:	29 fd 50 93	asr	x9, x9, #16
+    2448:	28 05 00 f9	str	x8, [x9, #0x8]
+    244c:	09 20 40 79	ldrh	w9, [x0, #0x10]
+    2450:	1f 00 00 f9	str	xzr, [x0]
+    2454:	28 41 08 aa	orr	x8, x9, x8, lsl #16
+    2458:	1f a0 00 a9	stp	xzr, x8, [x0, #0x8]
+    245c:	c0 03 5f d6	ret
+    2460:	e0 03 01 aa	mov	x0, x1
+    2464:	c0 03 5f d6	ret
+    2468:	1f 20 03 d5	nop
+    246c:	1f 20 03 d5	nop
+__ZN6pqueueIP24priority_queue_sched_maxP26priority_queue_entry_schedE9meld_pairES1_S3_:
+    2470:	01 00 00 14	b	0x2474
+    2474:	e9 03 1f aa	mov	x9, xzr
+    2478:	1f 20 03 d5	nop
+    247c:	1f 20 03 d5	nop
+    2480:	0a 00 40 f9	ldr	x10, [x0]
+    2484:	6a 03 00 b4	cbz	x10, 0x24f0
+    2488:	4b 01 40 f9	ldr	x11, [x10]
+    248c:	1f 00 0a eb	cmp	x0, x10
+    2490:	a0 03 00 54	b.eq	0x2504
+    2494:	48 09 40 f9	ldr	x8, [x10, #0x10]
+    2498:	08 3d 50 d3	lsl	x8, x8, #48
+    249c:	0c 08 40 f9	ldr	x12, [x0, #0x10]
+    24a0:	1f c1 0c eb	cmp	x8, x12, lsl #48
+    24a4:	48 c1 80 9a	csel	x8, x10, x0, gt
+    24a8:	0c c0 8a 9a	csel	x12, x0, x10, gt
+    24ac:	0d 09 40 f9	ldr	x13, [x8, #0x10]
+    24b0:	ad fd 50 93	asr	x13, x13, #16
+    24b4:	8d 21 00 a9	stp	x13, x8, [x12]
+    24b8:	0d 09 40 f9	ldr	x13, [x8, #0x10]
+    24bc:	bf 41 40 f1	cmp	x13, #0x10, lsl #12
+    24c0:	63 00 00 54	b.lo	0x24cc
+    24c4:	ad fd 50 93	asr	x13, x13, #16
+    24c8:	ac 05 00 f9	str	x12, [x13, #0x8]
+    24cc:	0d 21 40 79	ldrh	w13, [x8, #0x10]
+    24d0:	1f 01 00 f9	str	xzr, [x8]
+    24d4:	ac 41 0c aa	orr	x12, x13, x12, lsl #16
+    24d8:	1f b1 00 a9	stp	xzr, x12, [x8, #0x8]
+    24dc:	09 05 00 f9	str	x9, [x8, #0x8]
+    24e0:	8a 01 00 b5	cbnz	x10, 0x2510
+    24e4:	0e 00 00 14	b	0x251c
+    24e8:	1f 20 03 d5	nop
+    24ec:	1f 20 03 d5	nop
+    24f0:	e8 03 00 aa	mov	x8, x0
+    24f4:	eb 03 00 aa	mov	x11, x0
+    24f8:	09 05 00 f9	str	x9, [x8, #0x8]
+    24fc:	aa 00 00 b5	cbnz	x10, 0x2510
+    2500:	07 00 00 14	b	0x251c
+    2504:	e8 03 00 aa	mov	x8, x0
+    2508:	09 05 00 f9	str	x9, [x8, #0x8]
+    250c:	8a 00 00 b4	cbz	x10, 0x251c
+    2510:	e9 03 08 aa	mov	x9, x8
+    2514:	e0 03 0b aa	mov	x0, x11
+    2518:	4b fb ff b5	cbnz	x11, 0x2480
+    251c:	e0 03 1f aa	mov	x0, xzr
+    2520:	03 00 00 14	b	0x252c
+    2524:	e0 03 0a aa	mov	x0, x10
+    2528:	68 03 00 b4	cbz	x8, 0x2594
+    252c:	ea 03 08 aa	mov	x10, x8
+    2530:	08 05 40 f9	ldr	x8, [x8, #0x8]
+    2534:	80 ff ff b4	cbz	x0, 0x2524
+    2538:	8a ff ff b4	cbz	x10, 0x2528
+    253c:	1f 00 0a eb	cmp	x0, x10
+    2540:	40 ff ff 54	b.eq	0x2528
+    2544:	49 09 40 f9	ldr	x9, [x10, #0x10]
+    2548:	29 3d 50 d3	lsl	x9, x9, #48
+    254c:	0b 08 40 f9	ldr	x11, [x0, #0x10]
+    2550:	3f c1 0b eb	cmp	x9, x11, lsl #48
+    2554:	49 c1 80 9a	csel	x9, x10, x0, gt
+    2558:	0a c0 8a 9a	csel	x10, x0, x10, gt
+    255c:	2b 09 40 f9	ldr	x11, [x9, #0x10]
+    2560:	6b fd 50 93	asr	x11, x11, #16
+    2564:	4b 25 00 a9	stp	x11, x9, [x10]
+    2568:	2b 09 40 f9	ldr	x11, [x9, #0x10]
+    256c:	7f 41 40 f1	cmp	x11, #0x10, lsl #12
+    2570:	63 00 00 54	b.lo	0x257c
+    2574:	6b fd 50 93	asr	x11, x11, #16
+    2578:	6a 05 00 f9	str	x10, [x11, #0x8]
+    257c:	2b 21 40 79	ldrh	w11, [x9, #0x10]
+    2580:	e0 03 09 aa	mov	x0, x9
+    2584:	3f 01 00 f9	str	xzr, [x9]
+    2588:	6a 41 0a aa	orr	x10, x11, x10, lsl #16
+    258c:	3f a9 00 a9	stp	xzr, x10, [x9, #0x8]
+    2590:	e6 ff ff 17	b	0x2528
+    2594:	c0 03 5f d6	ret
+    2598:	1f 20 03 d5	nop
+    259c:	1f 20 03 d5	nop
+__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_:
+    25a0:	e0 02 00 b4	cbz	x0, 0x25fc
+    25a4:	e1 02 00 b4	cbz	x1, 0x2600
+    25a8:	1f 00 01 eb	cmp	x0, x1
+    25ac:	a0 02 00 54	b.eq	0x2600
+    25b0:	08 0c 40 f9	ldr	x8, [x0, #0x18]
+    25b4:	29 0c 40 f9	ldr	x9, [x1, #0x18]
+    25b8:	1f 01 09 eb	cmp	x8, x9
+    25bc:	e8 03 00 aa	mov	x8, x0
+    25c0:	00 30 81 9a	csel	x0, x0, x1, lo
+    25c4:	28 30 88 9a	csel	x8, x1, x8, lo
+    25c8:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    25cc:	29 fd 50 93	asr	x9, x9, #16
+    25d0:	09 01 00 a9	stp	x9, x0, [x8]
+    25d4:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    25d8:	3f 41 40 f1	cmp	x9, #0x10, lsl #12
+    25dc:	63 00 00 54	b.lo	0x25e8
+    25e0:	29 fd 50 93	asr	x9, x9, #16
+    25e4:	28 05 00 f9	str	x8, [x9, #0x8]
+    25e8:	09 20 40 79	ldrh	w9, [x0, #0x10]
+    25ec:	1f 00 00 f9	str	xzr, [x0]
+    25f0:	28 41 08 aa	orr	x8, x9, x8, lsl #16
+    25f4:	1f a0 00 a9	stp	xzr, x8, [x0, #0x8]
+    25f8:	c0 03 5f d6	ret
+    25fc:	e0 03 01 aa	mov	x0, x1
+    2600:	c0 03 5f d6	ret
+    2604:	1f 20 03 d5	nop
+    2608:	1f 20 03 d5	nop
+    260c:	1f 20 03 d5	nop
+__ZN6pqueueIP27priority_queue_deadline_minP29priority_queue_entry_deadlineE9meld_pairES1_S3_:
+    2610:	01 00 00 14	b	0x2614
+    2614:	e9 03 1f aa	mov	x9, xzr
+    2618:	1f 20 03 d5	nop
+    261c:	1f 20 03 d5	nop
+    2620:	0a 00 40 f9	ldr	x10, [x0]
+    2624:	0a 03 00 b4	cbz	x10, 0x2684
+    2628:	4b 01 40 f9	ldr	x11, [x10]
+    262c:	1f 00 0a eb	cmp	x0, x10
+    2630:	80 03 00 54	b.eq	0x26a0
+    2634:	08 0c 40 f9	ldr	x8, [x0, #0x18]
+    2638:	4c 0d 40 f9	ldr	x12, [x10, #0x18]
+    263c:	1f 01 0c eb	cmp	x8, x12
+    2640:	08 30 8a 9a	csel	x8, x0, x10, lo
+    2644:	4c 31 80 9a	csel	x12, x10, x0, lo
+    2648:	0d 09 40 f9	ldr	x13, [x8, #0x10]
+    264c:	ad fd 50 93	asr	x13, x13, #16
+    2650:	8d 21 00 a9	stp	x13, x8, [x12]
+    2654:	0d 09 40 f9	ldr	x13, [x8, #0x10]
+    2658:	bf 41 40 f1	cmp	x13, #0x10, lsl #12
+    265c:	63 00 00 54	b.lo	0x2668
+    2660:	ad fd 50 93	asr	x13, x13, #16
+    2664:	ac 05 00 f9	str	x12, [x13, #0x8]
+    2668:	0d 21 40 79	ldrh	w13, [x8, #0x10]
+    266c:	1f 01 00 f9	str	xzr, [x8]
+    2670:	ac 41 0c aa	orr	x12, x13, x12, lsl #16
+    2674:	1f b1 00 a9	stp	xzr, x12, [x8, #0x8]
+    2678:	09 05 00 f9	str	x9, [x8, #0x8]
+    267c:	8a 01 00 b5	cbnz	x10, 0x26ac
+    2680:	0e 00 00 14	b	0x26b8
+    2684:	e8 03 00 aa	mov	x8, x0
+    2688:	eb 03 00 aa	mov	x11, x0
+    268c:	09 05 00 f9	str	x9, [x8, #0x8]
+    2690:	ea 00 00 b5	cbnz	x10, 0x26ac
+    2694:	09 00 00 14	b	0x26b8
+    2698:	1f 20 03 d5	nop
+    269c:	1f 20 03 d5	nop
+    26a0:	e8 03 00 aa	mov	x8, x0
+    26a4:	09 05 00 f9	str	x9, [x8, #0x8]
+    26a8:	8a 00 00 b4	cbz	x10, 0x26b8
+    26ac:	e9 03 08 aa	mov	x9, x8
+    26b0:	e0 03 0b aa	mov	x0, x11
+    26b4:	6b fb ff b5	cbnz	x11, 0x2620
+    26b8:	e0 03 1f aa	mov	x0, xzr
+    26bc:	03 00 00 14	b	0x26c8
+    26c0:	e0 03 0a aa	mov	x0, x10
+    26c4:	48 03 00 b4	cbz	x8, 0x272c
+    26c8:	ea 03 08 aa	mov	x10, x8
+    26cc:	08 05 40 f9	ldr	x8, [x8, #0x8]
+    26d0:	80 ff ff b4	cbz	x0, 0x26c0
+    26d4:	8a ff ff b4	cbz	x10, 0x26c4
+    26d8:	1f 00 0a eb	cmp	x0, x10
+    26dc:	40 ff ff 54	b.eq	0x26c4
+    26e0:	09 0c 40 f9	ldr	x9, [x0, #0x18]
+    26e4:	4b 0d 40 f9	ldr	x11, [x10, #0x18]
+    26e8:	3f 01 0b eb	cmp	x9, x11
+    26ec:	09 30 8a 9a	csel	x9, x0, x10, lo
+    26f0:	4a 31 80 9a	csel	x10, x10, x0, lo
+    26f4:	2b 09 40 f9	ldr	x11, [x9, #0x10]
+    26f8:	6b fd 50 93	asr	x11, x11, #16
+    26fc:	4b 25 00 a9	stp	x11, x9, [x10]
+    2700:	2b 09 40 f9	ldr	x11, [x9, #0x10]
+    2704:	7f 41 40 f1	cmp	x11, #0x10, lsl #12
+    2708:	63 00 00 54	b.lo	0x2714
+    270c:	6b fd 50 93	asr	x11, x11, #16
+    2710:	6a 05 00 f9	str	x10, [x11, #0x8]
+    2714:	2b 21 40 79	ldrh	w11, [x9, #0x10]
+    2718:	e0 03 09 aa	mov	x0, x9
+    271c:	3f 01 00 f9	str	xzr, [x9]
+    2720:	6a 41 0a aa	orr	x10, x11, x10, lsl #16
+    2724:	3f a9 00 a9	stp	xzr, x10, [x9, #0x8]
+    2728:	e7 ff ff 17	b	0x26c4
+    272c:	c0 03 5f d6	ret
+__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE10merge_pairES1_S3_S3_:
+    2730:	e0 02 00 b4	cbz	x0, 0x278c
+    2734:	e1 02 00 b4	cbz	x1, 0x2790
+    2738:	1f 00 01 eb	cmp	x0, x1
+    273c:	a0 02 00 54	b.eq	0x2790
+    2740:	08 0c 40 f9	ldr	x8, [x0, #0x18]
+    2744:	29 0c 40 f9	ldr	x9, [x1, #0x18]
+    2748:	1f 01 09 eb	cmp	x8, x9
+    274c:	e8 03 00 aa	mov	x8, x0
+    2750:	20 30 80 9a	csel	x0, x1, x0, lo
+    2754:	08 31 81 9a	csel	x8, x8, x1, lo
+    2758:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    275c:	29 fd 50 93	asr	x9, x9, #16
+    2760:	09 01 00 a9	stp	x9, x0, [x8]
+    2764:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    2768:	3f 41 40 f1	cmp	x9, #0x10, lsl #12
+    276c:	63 00 00 54	b.lo	0x2778
+    2770:	29 fd 50 93	asr	x9, x9, #16
+    2774:	28 05 00 f9	str	x8, [x9, #0x8]
+    2778:	09 20 40 79	ldrh	w9, [x0, #0x10]
+    277c:	1f 00 00 f9	str	xzr, [x0]
+    2780:	28 41 08 aa	orr	x8, x9, x8, lsl #16
+    2784:	1f a0 00 a9	stp	xzr, x8, [x0, #0x8]
+    2788:	c0 03 5f d6	ret
+    278c:	e0 03 01 aa	mov	x0, x1
+    2790:	c0 03 5f d6	ret
+    2794:	1f 20 03 d5	nop
+    2798:	1f 20 03 d5	nop
+    279c:	1f 20 03 d5	nop
+__ZN6pqueueIP27priority_queue_deadline_maxP29priority_queue_entry_deadlineE9meld_pairES1_S3_:
+    27a0:	01 00 00 14	b	0x27a4
+    27a4:	e9 03 1f aa	mov	x9, xzr
+    27a8:	1f 20 03 d5	nop
+    27ac:	1f 20 03 d5	nop
+    27b0:	0a 00 40 f9	ldr	x10, [x0]
+    27b4:	0a 03 00 b4	cbz	x10, 0x2814
+    27b8:	4b 01 40 f9	ldr	x11, [x10]
+    27bc:	1f 00 0a eb	cmp	x0, x10
+    27c0:	80 03 00 54	b.eq	0x2830
+    27c4:	08 0c 40 f9	ldr	x8, [x0, #0x18]
+    27c8:	4c 0d 40 f9	ldr	x12, [x10, #0x18]
+    27cc:	1f 01 0c eb	cmp	x8, x12
+    27d0:	48 31 80 9a	csel	x8, x10, x0, lo
+    27d4:	0c 30 8a 9a	csel	x12, x0, x10, lo
+    27d8:	0d 09 40 f9	ldr	x13, [x8, #0x10]
+    27dc:	ad fd 50 93	asr	x13, x13, #16
+    27e0:	8d 21 00 a9	stp	x13, x8, [x12]
+    27e4:	0d 09 40 f9	ldr	x13, [x8, #0x10]
+    27e8:	bf 41 40 f1	cmp	x13, #0x10, lsl #12
+    27ec:	63 00 00 54	b.lo	0x27f8
+    27f0:	ad fd 50 93	asr	x13, x13, #16
+    27f4:	ac 05 00 f9	str	x12, [x13, #0x8]
+    27f8:	0d 21 40 79	ldrh	w13, [x8, #0x10]
+    27fc:	1f 01 00 f9	str	xzr, [x8]
+    2800:	ac 41 0c aa	orr	x12, x13, x12, lsl #16
+    2804:	1f b1 00 a9	stp	xzr, x12, [x8, #0x8]
+    2808:	09 05 00 f9	str	x9, [x8, #0x8]
+    280c:	8a 01 00 b5	cbnz	x10, 0x283c
+    2810:	0e 00 00 14	b	0x2848
+    2814:	e8 03 00 aa	mov	x8, x0
+    2818:	eb 03 00 aa	mov	x11, x0
+    281c:	09 05 00 f9	str	x9, [x8, #0x8]
+    2820:	ea 00 00 b5	cbnz	x10, 0x283c
+    2824:	09 00 00 14	b	0x2848
+    2828:	1f 20 03 d5	nop
+    282c:	1f 20 03 d5	nop
+    2830:	e8 03 00 aa	mov	x8, x0
+    2834:	09 05 00 f9	str	x9, [x8, #0x8]
+    2838:	8a 00 00 b4	cbz	x10, 0x2848
+    283c:	e9 03 08 aa	mov	x9, x8
+    2840:	e0 03 0b aa	mov	x0, x11
+    2844:	6b fb ff b5	cbnz	x11, 0x27b0
+    2848:	e0 03 1f aa	mov	x0, xzr
+    284c:	03 00 00 14	b	0x2858
+    2850:	e0 03 0a aa	mov	x0, x10
+    2854:	48 03 00 b4	cbz	x8, 0x28bc
+    2858:	ea 03 08 aa	mov	x10, x8
+    285c:	08 05 40 f9	ldr	x8, [x8, #0x8]
+    2860:	80 ff ff b4	cbz	x0, 0x2850
+    2864:	8a ff ff b4	cbz	x10, 0x2854
+    2868:	1f 00 0a eb	cmp	x0, x10
+    286c:	40 ff ff 54	b.eq	0x2854
+    2870:	09 0c 40 f9	ldr	x9, [x0, #0x18]
+    2874:	4b 0d 40 f9	ldr	x11, [x10, #0x18]
+    2878:	3f 01 0b eb	cmp	x9, x11
+    287c:	49 31 80 9a	csel	x9, x10, x0, lo
+    2880:	0a 30 8a 9a	csel	x10, x0, x10, lo
+    2884:	2b 09 40 f9	ldr	x11, [x9, #0x10]
+    2888:	6b fd 50 93	asr	x11, x11, #16
+    288c:	4b 25 00 a9	stp	x11, x9, [x10]
+    2890:	2b 09 40 f9	ldr	x11, [x9, #0x10]
+    2894:	7f 41 40 f1	cmp	x11, #0x10, lsl #12
+    2898:	63 00 00 54	b.lo	0x28a4
+    289c:	6b fd 50 93	asr	x11, x11, #16
+    28a0:	6a 05 00 f9	str	x10, [x11, #0x8]
+    28a4:	2b 21 40 79	ldrh	w11, [x9, #0x10]
+    28a8:	e0 03 09 aa	mov	x0, x9
+    28ac:	3f 01 00 f9	str	xzr, [x9]
+    28b0:	6a 41 0a aa	orr	x10, x11, x10, lsl #16
+    28b4:	3f a9 00 a9	stp	xzr, x10, [x9, #0x8]
+    28b8:	e7 ff ff 17	b	0x2854
+    28bc:	c0 03 5f d6	ret
+__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE10merge_pairES1_S3_S3_:
+    28c0:	60 02 00 b4	cbz	x0, 0x290c
+    28c4:	61 02 00 b4	cbz	x1, 0x2910
+    28c8:	1f 00 01 eb	cmp	x0, x1
+    28cc:	20 02 00 54	b.eq	0x2910
+    28d0:	08 20 80 79	ldrsh	x8, [x0, #0x10]
+    28d4:	29 08 40 f9	ldr	x9, [x1, #0x10]
+    28d8:	1f a1 29 eb	cmp	x8, w9, sxth
+    28dc:	c1 01 00 54	b.ne	0x2914
+    28e0:	09 0c 40 f9	ldr	x9, [x0, #0x18]
+    28e4:	2b 00 80 52	mov	w11, #0x1
+    28e8:	2a 0c 40 f9	ldr	x10, [x1, #0x18]
+    28ec:	3f 01 0a eb	cmp	x9, x10
+    28f0:	6c 85 8b 5a	cneg	w12, w11, ls
+    28f4:	6b 35 8b 5a	cneg	w11, w11, hs
+    28f8:	1f 01 00 72	tst	w8, #0x1
+    28fc:	88 01 8b 1a	csel	w8, w12, w11, eq
+    2900:	3f 01 0a eb	cmp	x9, x10
+    2904:	e8 03 88 1a	csel	w8, wzr, w8, eq
+    2908:	06 00 00 14	b	0x2920
+    290c:	e0 03 01 aa	mov	x0, x1
+    2910:	c0 03 5f d6	ret
+    2914:	29 3d 50 d3	lsl	x9, x9, #48
+    2918:	29 fd 70 93	asr	x9, x9, #48
+    291c:	28 01 08 4b	sub	w8, w9, w8
+    2920:	1f 01 00 71	cmp	w8, #0x0
+    2924:	29 b0 80 9a	csel	x9, x1, x0, lt
+    2928:	08 b0 81 9a	csel	x8, x0, x1, lt
+    292c:	e0 03 09 aa	mov	x0, x9
+    2930:	29 09 40 f9	ldr	x9, [x9, #0x10]
+    2934:	29 fd 50 93	asr	x9, x9, #16
+    2938:	09 01 00 a9	stp	x9, x0, [x8]
+    293c:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    2940:	3f 41 40 f1	cmp	x9, #0x10, lsl #12
+    2944:	63 00 00 54	b.lo	0x2950
+    2948:	29 fd 50 93	asr	x9, x9, #16
+    294c:	28 05 00 f9	str	x8, [x9, #0x8]
+    2950:	09 20 40 79	ldrh	w9, [x0, #0x10]
+    2954:	1f 00 00 f9	str	xzr, [x0]
+    2958:	28 41 08 aa	orr	x8, x9, x8, lsl #16
+    295c:	1f a0 00 a9	stp	xzr, x8, [x0, #0x8]
+    2960:	c0 03 5f d6	ret
+    2964:	1f 20 03 d5	nop
+    2968:	1f 20 03 d5	nop
+    296c:	1f 20 03 d5	nop
+__ZN6pqueueIP31priority_queue_sched_stable_minP27priority_queue_entry_stableE9meld_pairES1_S3_:
+    2970:	01 00 00 14	b	0x2974
+    2974:	ea 03 1f aa	mov	x10, xzr
+    2978:	29 00 80 52	mov	w9, #0x1
+    297c:	1f 20 03 d5	nop
+    2980:	0b 00 40 f9	ldr	x11, [x0]
+    2984:	6b 02 00 b4	cbz	x11, 0x29d0
+    2988:	6c 01 40 f9	ldr	x12, [x11]
+    298c:	1f 00 0b eb	cmp	x0, x11
+    2990:	80 02 00 54	b.eq	0x29e0
+    2994:	08 20 80 79	ldrsh	x8, [x0, #0x10]
+    2998:	6d 09 40 f9	ldr	x13, [x11, #0x10]
+    299c:	1f a1 2d eb	cmp	x8, w13, sxth
+    29a0:	41 02 00 54	b.ne	0x29e8
+    29a4:	0d 0c 40 f9	ldr	x13, [x0, #0x18]
+    29a8:	6e 0d 40 f9	ldr	x14, [x11, #0x18]
+    29ac:	bf 01 0e eb	cmp	x13, x14
+    29b0:	2f 85 89 5a	cneg	w15, w9, ls
+    29b4:	30 35 89 5a	cneg	w16, w9, hs
+    29b8:	1f 01 00 72	tst	w8, #0x1
+    29bc:	e8 01 90 1a	csel	w8, w15, w16, eq
+    29c0:	bf 01 0e eb	cmp	x13, x14
+    29c4:	e8 03 88 1a	csel	w8, wzr, w8, eq
+    29c8:	0b 00 00 14	b	0x29f4
+    29cc:	1f 20 03 d5	nop
+    29d0:	e8 03 00 aa	mov	x8, x0
+    29d4:	ec 03 00 aa	mov	x12, x0
+    29d8:	16 00 00 14	b	0x2a30
+    29dc:	1f 20 03 d5	nop
+    29e0:	e8 03 00 aa	mov	x8, x0
+    29e4:	13 00 00 14	b	0x2a30
+    29e8:	ad 3d 50 d3	lsl	x13, x13, #48
+    29ec:	ad fd 70 93	asr	x13, x13, #48
+    29f0:	a8 01 08 4b	sub	w8, w13, w8
+    29f4:	1f 01 00 71	cmp	w8, #0x0
+    29f8:	68 b1 80 9a	csel	x8, x11, x0, lt
+    29fc:	0d b0 8b 9a	csel	x13, x0, x11, lt
+    2a00:	0e 09 40 f9	ldr	x14, [x8, #0x10]
+    2a04:	ce fd 50 93	asr	x14, x14, #16
+    2a08:	ae 21 00 a9	stp	x14, x8, [x13]
+    2a0c:	0e 09 40 f9	ldr	x14, [x8, #0x10]
+    2a10:	df 41 40 f1	cmp	x14, #0x10, lsl #12
+    2a14:	63 00 00 54	b.lo	0x2a20
+    2a18:	ce fd 50 93	asr	x14, x14, #16
+    2a1c:	cd 05 00 f9	str	x13, [x14, #0x8]
+    2a20:	0e 21 40 79	ldrh	w14, [x8, #0x10]
+    2a24:	1f 01 00 f9	str	xzr, [x8]
+    2a28:	cd 41 0d aa	orr	x13, x14, x13, lsl #16
+    2a2c:	1f b5 00 a9	stp	xzr, x13, [x8, #0x8]
+    2a30:	0a 05 00 f9	str	x10, [x8, #0x8]
+    2a34:	8b 00 00 b4	cbz	x11, 0x2a44
+    2a38:	ea 03 08 aa	mov	x10, x8
+    2a3c:	e0 03 0c aa	mov	x0, x12
+    2a40:	0c fa ff b5	cbnz	x12, 0x2980
+    2a44:	e0 03 1f aa	mov	x0, xzr
+    2a48:	29 00 80 52	mov	w9, #0x1
+    2a4c:	03 00 00 14	b	0x2a58
+    2a50:	e0 03 0a aa	mov	x0, x10
+    2a54:	28 05 00 b4	cbz	x8, 0x2af8
+    2a58:	ea 03 08 aa	mov	x10, x8
+    2a5c:	08 05 40 f9	ldr	x8, [x8, #0x8]
+    2a60:	80 ff ff b4	cbz	x0, 0x2a50
+    2a64:	8a ff ff b4	cbz	x10, 0x2a54
+    2a68:	1f 00 0a eb	cmp	x0, x10
+    2a6c:	40 ff ff 54	b.eq	0x2a54
+    2a70:	0b 20 80 79	ldrsh	x11, [x0, #0x10]
+    2a74:	4c 09 40 f9	ldr	x12, [x10, #0x10]
+    2a78:	7f a1 2c eb	cmp	x11, w12, sxth
+    2a7c:	61 01 00 54	b.ne	0x2aa8
+    2a80:	0c 0c 40 f9	ldr	x12, [x0, #0x18]
+    2a84:	4d 0d 40 f9	ldr	x13, [x10, #0x18]
+    2a88:	9f 01 0d eb	cmp	x12, x13
+    2a8c:	2e 85 89 5a	cneg	w14, w9, ls
+    2a90:	2f 35 89 5a	cneg	w15, w9, hs
+    2a94:	7f 01 00 72	tst	w11, #0x1
+    2a98:	cb 01 8f 1a	csel	w11, w14, w15, eq
+    2a9c:	9f 01 0d eb	cmp	x12, x13
+    2aa0:	eb 03 8b 1a	csel	w11, wzr, w11, eq
+    2aa4:	04 00 00 14	b	0x2ab4
+    2aa8:	8c 3d 50 d3	lsl	x12, x12, #48
+    2aac:	8c fd 70 93	asr	x12, x12, #48
+    2ab0:	8b 01 0b 4b	sub	w11, w12, w11
+    2ab4:	7f 01 00 71	cmp	w11, #0x0
+    2ab8:	4b b1 80 9a	csel	x11, x10, x0, lt
+    2abc:	0a b0 8a 9a	csel	x10, x0, x10, lt
+    2ac0:	6c 09 40 f9	ldr	x12, [x11, #0x10]
+    2ac4:	8c fd 50 93	asr	x12, x12, #16
+    2ac8:	4c 2d 00 a9	stp	x12, x11, [x10]
+    2acc:	6c 09 40 f9	ldr	x12, [x11, #0x10]
+    2ad0:	9f 41 40 f1	cmp	x12, #0x10, lsl #12
+    2ad4:	63 00 00 54	b.lo	0x2ae0
+    2ad8:	8c fd 50 93	asr	x12, x12, #16
+    2adc:	8a 05 00 f9	str	x10, [x12, #0x8]
+    2ae0:	6c 21 40 79	ldrh	w12, [x11, #0x10]
+    2ae4:	e0 03 0b aa	mov	x0, x11
+    2ae8:	7f 01 00 f9	str	xzr, [x11]
+    2aec:	8a 41 0a aa	orr	x10, x12, x10, lsl #16
+    2af0:	7f a9 00 a9	stp	xzr, x10, [x11, #0x8]
+    2af4:	d8 ff ff 17	b	0x2a54
+    2af8:	c0 03 5f d6	ret
+    2afc:	1f 20 03 d5	nop
+__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE10merge_pairES1_S3_S3_:
+    2b00:	60 02 00 b4	cbz	x0, 0x2b4c
+    2b04:	61 02 00 b4	cbz	x1, 0x2b50
+    2b08:	1f 00 01 eb	cmp	x0, x1
+    2b0c:	20 02 00 54	b.eq	0x2b50
+    2b10:	08 08 40 f9	ldr	x8, [x0, #0x10]
+    2b14:	09 3d 40 93	sxth	x9, w8
+    2b18:	2a 20 80 79	ldrsh	x10, [x1, #0x10]
+    2b1c:	3f 01 0a eb	cmp	x9, x10
+    2b20:	a1 01 00 54	b.ne	0x2b54
+    2b24:	09 0c 40 f9	ldr	x9, [x0, #0x18]
+    2b28:	2a 0c 40 f9	ldr	x10, [x1, #0x18]
+    2b2c:	3f 01 0a eb	cmp	x9, x10
+    2b30:	eb 97 9f 1a	cset	w11, hi
+    2b34:	ec 27 9f 1a	cset	w12, lo
+    2b38:	1f 01 00 72	tst	w8, #0x1
+    2b3c:	68 01 8c 1a	csel	w8, w11, w12, eq
+    2b40:	3f 01 0a eb	cmp	x9, x10
+    2b44:	e8 03 88 1a	csel	w8, wzr, w8, eq
+    2b48:	05 00 00 14	b	0x2b5c
+    2b4c:	e0 03 01 aa	mov	x0, x1
+    2b50:	c0 03 5f d6	ret
+    2b54:	5f 01 09 eb	cmp	x10, x9
+    2b58:	e8 d7 9f 1a	cset	w8, gt
+    2b5c:	1f 01 00 71	cmp	w8, #0x0
+    2b60:	29 10 80 9a	csel	x9, x1, x0, ne
+    2b64:	08 10 81 9a	csel	x8, x0, x1, ne
+    2b68:	e0 03 09 aa	mov	x0, x9
+    2b6c:	29 09 40 f9	ldr	x9, [x9, #0x10]
+    2b70:	29 fd 50 93	asr	x9, x9, #16
+    2b74:	09 01 00 a9	stp	x9, x0, [x8]
+    2b78:	09 08 40 f9	ldr	x9, [x0, #0x10]
+    2b7c:	3f 41 40 f1	cmp	x9, #0x10, lsl #12
+    2b80:	63 00 00 54	b.lo	0x2b8c
+    2b84:	29 fd 50 93	asr	x9, x9, #16
+    2b88:	28 05 00 f9	str	x8, [x9, #0x8]
+    2b8c:	09 20 40 79	ldrh	w9, [x0, #0x10]
+    2b90:	1f 00 00 f9	str	xzr, [x0]
+    2b94:	28 41 08 aa	orr	x8, x9, x8, lsl #16
+    2b98:	1f a0 00 a9	stp	xzr, x8, [x0, #0x8]
+    2b9c:	c0 03 5f d6	ret
+__ZN6pqueueIP31priority_queue_sched_stable_maxP27priority_queue_entry_stableE9meld_pairES1_S3_:
+    2ba0:	01 00 00 14	b	0x2ba4
+    2ba4:	e9 03 1f aa	mov	x9, xzr
+    2ba8:	1f 20 03 d5	nop
+    2bac:	1f 20 03 d5	nop
+    2bb0:	0a 00 40 f9	ldr	x10, [x0]
+    2bb4:	6a 02 00 b4	cbz	x10, 0x2c00
+    2bb8:	4b 01 40 f9	ldr	x11, [x10]
+    2bbc:	1f 00 0a eb	cmp	x0, x10
+    2bc0:	80 02 00 54	b.eq	0x2c10
+    2bc4:	08 08 40 f9	ldr	x8, [x0, #0x10]
+    2bc8:	0c 3d 40 93	sxth	x12, w8
+    2bcc:	4d 21 80 79	ldrsh	x13, [x10, #0x10]
+    2bd0:	9f 01 0d eb	cmp	x12, x13
+    2bd4:	21 02 00 54	b.ne	0x2c18
+    2bd8:	0c 0c 40 f9	ldr	x12, [x0, #0x18]
+    2bdc:	4d 0d 40 f9	ldr	x13, [x10, #0x18]
+    2be0:	9f 01 0d eb	cmp	x12, x13
+    2be4:	ee 97 9f 1a	cset	w14, hi
+    2be8:	ef 27 9f 1a	cset	w15, lo
+    2bec:	1f 01 00 72	tst	w8, #0x1
+    2bf0:	c8 01 8f 1a	csel	w8, w14, w15, eq
+    2bf4:	9f 01 0d eb	cmp	x12, x13
+    2bf8:	e8 03 88 1a	csel	w8, wzr, w8, eq
+    2bfc:	09 00 00 14	b	0x2c20
+    2c00:	e8 03 00 aa	mov	x8, x0
+    2c04:	eb 03 00 aa	mov	x11, x0
+    2c08:	15 00 00 14	b	0x2c5c
+    2c0c:	1f 20 03 d5	nop
+    2c10:	e8 03 00 aa	mov	x8, x0
+    2c14:	12 00 00 14	b	0x2c5c
+    2c18:	bf 01 0c eb	cmp	x13, x12
+    2c1c:	e8 d7 9f 1a	cset	w8, gt
+    2c20:	1f 01 00 71	cmp	w8, #0x0
+    2c24:	48 11 80 9a	csel	x8, x10, x0, ne
+    2c28:	0c 10 8a 9a	csel	x12, x0, x10, ne
+    2c2c:	0d 09 40 f9	ldr	x13, [x8, #0x10]
+    2c30:	ad fd 50 93	asr	x13, x13, #16
+    2c34:	8d 21 00 a9	stp	x13, x8, [x12]
+    2c38:	0d 09 40 f9	ldr	x13, [x8, #0x10]
+    2c3c:	bf 41 40 f1	cmp	x13, #0x10, lsl #12
+    2c40:	63 00 00 54	b.lo	0x2c4c
+    2c44:	ad fd 50 93	asr	x13, x13, #16
+    2c48:	ac 05 00 f9	str	x12, [x13, #0x8]
+    2c4c:	0d 21 40 79	ldrh	w13, [x8, #0x10]
+    2c50:	1f 01 00 f9	str	xzr, [x8]
+    2c54:	ac 41 0c aa	orr	x12, x13, x12, lsl #16
+    2c58:	1f b1 00 a9	stp	xzr, x12, [x8, #0x8]
+    2c5c:	09 05 00 f9	str	x9, [x8, #0x8]
+    2c60:	8a 00 00 b4	cbz	x10, 0x2c70
+    2c64:	e9 03 08 aa	mov	x9, x8
+    2c68:	e0 03 0b aa	mov	x0, x11
+    2c6c:	2b fa ff b5	cbnz	x11, 0x2bb0
+    2c70:	e0 03 1f aa	mov	x0, xzr
+    2c74:	05 00 00 14	b	0x2c88
+    2c78:	1f 20 03 d5	nop
+    2c7c:	1f 20 03 d5	nop
+    2c80:	e0 03 09 aa	mov	x0, x9
+    2c84:	28 05 00 b4	cbz	x8, 0x2d28
+    2c88:	e9 03 08 aa	mov	x9, x8
+    2c8c:	08 05 40 f9	ldr	x8, [x8, #0x8]
+    2c90:	80 ff ff b4	cbz	x0, 0x2c80
+    2c94:	89 ff ff b4	cbz	x9, 0x2c84
+    2c98:	1f 00 09 eb	cmp	x0, x9
+    2c9c:	40 ff ff 54	b.eq	0x2c84
+    2ca0:	0a 08 40 f9	ldr	x10, [x0, #0x10]
+    2ca4:	4b 3d 40 93	sxth	x11, w10
+    2ca8:	2c 21 80 79	ldrsh	x12, [x9, #0x10]
+    2cac:	7f 01 0c eb	cmp	x11, x12
+    2cb0:	61 01 00 54	b.ne	0x2cdc
+    2cb4:	0b 0c 40 f9	ldr	x11, [x0, #0x18]
+    2cb8:	2c 0d 40 f9	ldr	x12, [x9, #0x18]
+    2cbc:	7f 01 0c eb	cmp	x11, x12
+    2cc0:	ed 97 9f 1a	cset	w13, hi
+    2cc4:	ee 27 9f 1a	cset	w14, lo
+    2cc8:	5f 01 00 72	tst	w10, #0x1
+    2ccc:	aa 01 8e 1a	csel	w10, w13, w14, eq
+    2cd0:	7f 01 0c eb	cmp	x11, x12
+    2cd4:	ea 03 8a 1a	csel	w10, wzr, w10, eq
+    2cd8:	03 00 00 14	b	0x2ce4
+    2cdc:	9f 01 0b eb	cmp	x12, x11
+    2ce0:	ea d7 9f 1a	cset	w10, gt
+    2ce4:	5f 01 00 71	cmp	w10, #0x0
+    2ce8:	2a 11 80 9a	csel	x10, x9, x0, ne
+    2cec:	09 10 89 9a	csel	x9, x0, x9, ne
+    2cf0:	4b 09 40 f9	ldr	x11, [x10, #0x10]
+    2cf4:	6b fd 50 93	asr	x11, x11, #16
+    2cf8:	2b 29 00 a9	stp	x11, x10, [x9]
+    2cfc:	4b 09 40 f9	ldr	x11, [x10, #0x10]
+    2d00:	7f 41 40 f1	cmp	x11, #0x10, lsl #12
+    2d04:	63 00 00 54	b.lo	0x2d10
+    2d08:	6b fd 50 93	asr	x11, x11, #16
+    2d0c:	69 05 00 f9	str	x9, [x11, #0x8]
+    2d10:	4b 21 40 79	ldrh	w11, [x10, #0x10]
+    2d14:	e0 03 0a aa	mov	x0, x10
+    2d18:	5f 01 00 f9	str	xzr, [x10]
+    2d1c:	69 41 09 aa	orr	x9, x11, x9, lsl #16
+    2d20:	5f a5 00 a9	stp	xzr, x9, [x10, #0x8]
+    2d24:	d8 ff ff 17	b	0x2c84
+    2d28:	c0 03 5f d6	ret

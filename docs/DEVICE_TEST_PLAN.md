@@ -409,3 +409,32 @@ MMU-off ni se asume que conservar RAM permita leerla desde el PC.
 Guardar commit/patchset, imagen/mapa, argumentos, bytes, PCs y captura física
 hasheados. Un mensaje visible sin traza de ejecución genuina no cierra T08;
 si no se observa salida, el resultado es INDETERMINATE. Comprobar retorno stock por T01.
+
+## Subpruebas pendientes de T08: colas, contadores y esperas VM
+
+Estado: PENDING_HARDWARE. [XNU_QUEUE_VM_PROVIDERS](XNU_QUEUE_VM_PROVIDERS.md)
+solo valida fuentes, alcance, ABI y objetos. Requiere T01/T04/T05/T06, imagen
+XNU auditada, memoria propia y hilos Mach con VM/stack/locks/CPU válidos.
+
+1. Capturar PCs simbolizados de las operaciones de heap del scheduler/deadlines
+   desde dos hilos reales. Contrastar root, enlaces, prioridad/deadline y orden
+   de extracción antes/después de insert/remove/increase/decrease, con la
+   sincronización del caller registrada. Invocar un heap en un harness aislado
+   no prueba que XNU haya programado un hilo ni atendido un timer.
+2. Sobre un contador propio creado con counter_alloc, comprobar startup/mangle,
+   CPU local y shard de RAM per-CPU antes de operar. Probar add/inc/dec con un
+   valor de más de 32 bits, lectura mediante counter_load y cleanup real. En
+   más CPUs, registrar cambios de CPU y suma de shards, sin hardcodear CPU 0.
+   Las variantes preemption_disabled no deshabilitan preempción en su cuerpo;
+   documentar el contexto del caller. Esto no es una prueba de PMU o frecuencia.
+3. Con objetos/páginas propios y sus locks válidos, hacer que un hilo se duerma
+   y otro despierte el evento. Guardar wanted/busy, block hint, wait_result y
+   prueba del cambio de contexto; no aceptar un retorno constante como espera.
+   Verificar también page-worker, token/heredero y balance de priority-floor,
+   incluyendo una colisión controlada y la ruta de fallback nativa. Registrar
+   allocations y tamaño efectivo de su tabla para T09. La ausencia de I/O
+   scheduler no autoriza anunciar repriorización de discos o vnode operativo.
+
+Guardar imagen, commit/patchset, mapa, PCs, estados y captura física con hashes;
+volver a Android por T01. Un fallo sin traza fiable queda INDETERMINATE. Estas
+subpruebas aún no se ejecutaron y no cierran por sí solas T09 o el handoff T12.

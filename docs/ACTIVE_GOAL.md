@@ -206,3 +206,12 @@ Se resuelven dos nombres sin dependencias nuevas. No hay transporte físico de
 logs, consola/IRQ G20, formatter nativo o XNU ejecutados, ni RAM residente medida.
 Este soporte requiere MMU/RAM normal y no sustituye la entrada temprana o el BSP;
 la aceptación física y el handoff EDK2 mantienen su alcance completo.
+
+Las [colas y esperas nativas](XNU_QUEUE_VM_PROVIDERS.md), 2026-11-02, llegan a
+159 unidades experimentales y conservan 13 estándar. El C++ de priority_queue
+y los contadores ARM permanecen intactos; el patch 0031 retiene doce funciones
+VM al separar su alcance del I/O scheduler. Pasan 202/176 checks. El enlace
+estricto de 185 objetos registra 436 indefinidos y cero duplicados, sin imagen.
+Se recuperan 27 proveedores y no aparecen dependencias nuevas. No se ejecutan
+colas, contadores, VM o kernel. La CI limpia de 157 unidades terminó success
+en 5ce46c8; la aceptación física del G20 y el handoff siguen pendientes.

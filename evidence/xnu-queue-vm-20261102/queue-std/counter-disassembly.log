@@ -1,0 +1,127 @@
+<ROOT>/work/queue-vm-scope-std-v2-20261102/counter-probe.o:
+(__TEXT,__text) section
+__Z11counter_addPPyy:
+       0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+       4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+       8:	fd 43 00 91	add	x29, sp, #0x10
+       c:	14 00 40 f9	ldr	x20, [x0]
+      10:	f3 03 01 aa	mov	x19, x1
+      14:	00 00 00 94	bl	_cpu_number
+      18:	09 00 00 90	adrp	x9, _PAGE_SHIFT_CONST@GOTPAGE
+      1c:	e8 03 00 2a	mov	w8, w0
+      20:	29 01 40 f9	ldr	x9, [x9, _PAGE_SHIFT_CONST@GOTPAGEOFF]
+      24:	29 01 40 b9	ldr	w9, [x9]
+      28:	08 21 c9 9a	lsl	x8, x8, x9
+      2c:	08 01 14 8b	add	x8, x8, x20
+      30:	09 7d 5f c8	ldxr	x9, [x8]
+      34:	29 01 13 8b	add	x9, x9, x19
+      38:	09 7d 0a c8	stxr	w10, x9, [x8]
+      3c:	aa ff ff 35	cbnz	w10, 0x30
+      40:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+      44:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+      48:	c0 03 5f d6	ret
+      4c:	1f 20 03 d5	nop
+__Z11counter_incPPy:
+      50:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+      54:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+      58:	fd 43 00 91	add	x29, sp, #0x10
+      5c:	13 00 40 f9	ldr	x19, [x0]
+      60:	00 00 00 94	bl	_cpu_number
+      64:	09 00 00 90	adrp	x9, _PAGE_SHIFT_CONST@GOTPAGE
+      68:	e8 03 00 2a	mov	w8, w0
+      6c:	29 01 40 f9	ldr	x9, [x9, _PAGE_SHIFT_CONST@GOTPAGEOFF]
+      70:	29 01 40 b9	ldr	w9, [x9]
+      74:	08 21 c9 9a	lsl	x8, x8, x9
+      78:	08 01 13 8b	add	x8, x8, x19
+      7c:	1f 20 03 d5	nop
+      80:	09 7d 5f c8	ldxr	x9, [x8]
+      84:	29 05 00 91	add	x9, x9, #0x1
+      88:	09 7d 0a c8	stxr	w10, x9, [x8]
+      8c:	aa ff ff 35	cbnz	w10, 0x80
+      90:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+      94:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+      98:	c0 03 5f d6	ret
+      9c:	1f 20 03 d5	nop
+__Z11counter_decPPy:
+      a0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+      a4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+      a8:	fd 43 00 91	add	x29, sp, #0x10
+      ac:	13 00 40 f9	ldr	x19, [x0]
+      b0:	00 00 00 94	bl	_cpu_number
+      b4:	09 00 00 90	adrp	x9, _PAGE_SHIFT_CONST@GOTPAGE
+      b8:	e8 03 00 2a	mov	w8, w0
+      bc:	29 01 40 f9	ldr	x9, [x9, _PAGE_SHIFT_CONST@GOTPAGEOFF]
+      c0:	29 01 40 b9	ldr	w9, [x9]
+      c4:	08 21 c9 9a	lsl	x8, x8, x9
+      c8:	08 01 13 8b	add	x8, x8, x19
+      cc:	1f 20 03 d5	nop
+      d0:	09 7d 5f c8	ldxr	x9, [x8]
+      d4:	29 05 00 d1	sub	x9, x9, #0x1
+      d8:	09 7d 0a c8	stxr	w10, x9, [x8]
+      dc:	aa ff ff 35	cbnz	w10, 0xd0
+      e0:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+      e4:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+      e8:	c0 03 5f d6	ret
+      ec:	1f 20 03 d5	nop
+__Z31counter_add_preemption_disabledPPyy:
+      f0:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+      f4:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+      f8:	fd 43 00 91	add	x29, sp, #0x10
+      fc:	14 00 40 f9	ldr	x20, [x0]
+     100:	f3 03 01 aa	mov	x19, x1
+     104:	00 00 00 94	bl	_cpu_number
+     108:	09 00 00 90	adrp	x9, _PAGE_SHIFT_CONST@GOTPAGE
+     10c:	e8 03 00 2a	mov	w8, w0
+     110:	29 01 40 f9	ldr	x9, [x9, _PAGE_SHIFT_CONST@GOTPAGEOFF]
+     114:	29 01 40 b9	ldr	w9, [x9]
+     118:	08 21 c9 9a	lsl	x8, x8, x9
+     11c:	08 01 14 8b	add	x8, x8, x20
+     120:	09 7d 5f c8	ldxr	x9, [x8]
+     124:	29 01 13 8b	add	x9, x9, x19
+     128:	09 7d 0a c8	stxr	w10, x9, [x8]
+     12c:	aa ff ff 35	cbnz	w10, 0x120
+     130:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     134:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     138:	c0 03 5f d6	ret
+     13c:	1f 20 03 d5	nop
+__Z31counter_inc_preemption_disabledPPy:
+     140:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     144:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     148:	fd 43 00 91	add	x29, sp, #0x10
+     14c:	13 00 40 f9	ldr	x19, [x0]
+     150:	00 00 00 94	bl	_cpu_number
+     154:	09 00 00 90	adrp	x9, _PAGE_SHIFT_CONST@GOTPAGE
+     158:	e8 03 00 2a	mov	w8, w0
+     15c:	29 01 40 f9	ldr	x9, [x9, _PAGE_SHIFT_CONST@GOTPAGEOFF]
+     160:	29 01 40 b9	ldr	w9, [x9]
+     164:	08 21 c9 9a	lsl	x8, x8, x9
+     168:	08 01 13 8b	add	x8, x8, x19
+     16c:	1f 20 03 d5	nop
+     170:	09 7d 5f c8	ldxr	x9, [x8]
+     174:	29 05 00 91	add	x9, x9, #0x1
+     178:	09 7d 0a c8	stxr	w10, x9, [x8]
+     17c:	aa ff ff 35	cbnz	w10, 0x170
+     180:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     184:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     188:	c0 03 5f d6	ret
+     18c:	1f 20 03 d5	nop
+__Z31counter_dec_preemption_disabledPPy:
+     190:	f4 4f be a9	stp	x20, x19, [sp, #-0x20]!
+     194:	fd 7b 01 a9	stp	x29, x30, [sp, #0x10]
+     198:	fd 43 00 91	add	x29, sp, #0x10
+     19c:	13 00 40 f9	ldr	x19, [x0]
+     1a0:	00 00 00 94	bl	_cpu_number
+     1a4:	09 00 00 90	adrp	x9, _PAGE_SHIFT_CONST@GOTPAGE
+     1a8:	e8 03 00 2a	mov	w8, w0
+     1ac:	29 01 40 f9	ldr	x9, [x9, _PAGE_SHIFT_CONST@GOTPAGEOFF]
+     1b0:	29 01 40 b9	ldr	w9, [x9]
+     1b4:	08 21 c9 9a	lsl	x8, x8, x9
+     1b8:	08 01 13 8b	add	x8, x8, x19
+     1bc:	1f 20 03 d5	nop
+     1c0:	09 7d 5f c8	ldxr	x9, [x8]
+     1c4:	29 05 00 d1	sub	x9, x9, #0x1
+     1c8:	09 7d 0a c8	stxr	w10, x9, [x8]
+     1cc:	aa ff ff 35	cbnz	w10, 0x1c0
+     1d0:	fd 7b 41 a9	ldp	x29, x30, [sp, #0x10]
+     1d4:	f4 4f c2 a8	ldp	x20, x19, [sp], #0x20
+     1d8:	c0 03 5f d6	ret

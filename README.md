@@ -5,7 +5,7 @@ de XNU. Primera placa: Motorola Moto G20 / Unisoc T700 (UMS512).
 
 **Estado 2026-11-02: auditoría Fase 0, prototipo host Fase 1 y port XNU
 incremental. Trece unidades reales de XNU compilan a objetos ARM64 con Clang
-estándar; 157 unidades de XNU y soporte original con el proveedor experimental explícito, incluidos
+estándar; 159 unidades de XNU y soporte original con el proveedor experimental explícito, incluidos
 VM residente/faults/objetos, hilos, tareas, locks, ledgers, SMR e IPC/importance.
 Se compilan además 42 archivos RPC generados por MIG como probes, con 70 headers
 coherentes; el configurador oficial selecciona 26 para el enlace de este perfil.
@@ -126,9 +126,17 @@ El [registro temprano original en RAM](docs/XNU_EARLY_RAM_LOG.md) conserva mensa
 de kprintf mediante el formateador auténtico de XNU y punteros PE reales.
 Pasan ASan/UBSan y ThreadSanitizer host; el transporte no implementa UART,
 pantalla, os_log ni consola nativa. La instancia de 16 432 bytes de BSS no mide
-el consumo de RAM del firmware. El conjunto actual alcanza 157 unidades y
+el consumo de RAM del firmware. Aquella entrega alcanza 157 unidades y
 178/150 checks; el enlace estricto de 183 objetos deja **463 nombres indefinidos,
 cero duplicados y ninguna imagen**. No se ejecutan el adaptador ARM64 ni XNU.
+
+Las [colas C++ nativas, contadores ARM y esperas VM](docs/XNU_QUEUE_VM_PROVIDERS.md)
+amplían el conjunto a 159 unidades y **202/176 checks**. Dos fuentes upstream
+permanecen intactas; el patch 0031 recupera sincronización VM conservando sus
+cuerpos y la selección independiente del I/O scheduler. El enlace actual de
+185 objetos falla con **436 nombres indefinidos, cero duplicados y ninguna
+imagen**. No hay colas, contadores, esperas VM o XNU ejecutados. La CI limpia
+anterior terminó success para 157 unidades; no se atribuye a la ampliación nueva.
 
 ## Reproducir
 

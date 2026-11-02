@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "scope": "NATIVE_QUEUES_COUNTERS_AND_VM_WAIT_BUILD_SCOPE_ABI_ONLY",
+  "port_id": "560ed77e6b991310aa660d45319de4ef438447ada8a714c8fc88b0b27ed42c74",
+  "lanes": {
+    "exp": {
+      "units": 159,
+      "checks": 202,
+      "unchanged_prior_source_hashes": 156,
+      "modified_source_paths": [
+        "osfmk/vm/vm_object.c"
+      ],
+      "added_native_sources": [
+        "libkern/c++/priority_queue.cpp",
+        "osfmk/arm/counter.c"
+      ],
+      "base_report_sha256": "c69a667316e06c0c8646051e8a09ba39207af51e8755e59ea87538e29fcf8c62",
+      "rpc_report_sha256": "ac8ac39cf68f92534b948175288029377acfe96c700f4b8f099efdd0747b5f6f",
+      "undefined": 436
+    },
+    "std": {
+      "units": 13,
+      "checks": 176,
+      "unchanged_prior_source_hashes": 13,
+      "modified_source_paths": [],
+      "added_native_sources": [],
+      "base_report_sha256": "4826fb608f0d8cac871b26a7547f8f3c7462be2c0a2f0a79f1c95815dad735b3",
+      "rpc_report_sha256": "e0e339a67e2ff73d637b5bcba39454604951fb9cdd2aaa7136573bd74a6aab24",
+      "undefined": 825
+    }
+  },
+  "resolved_old_names": [
+    "__Z11counter_addPPyy",
+    "__Z11counter_decPPy",
+    "__Z11counter_incPPy",
+    "__Z21priority_queue_insertP24priority_queue_sched_maxP26priority_queue_entry_sched",
+    "__Z21priority_queue_insertP27priority_queue_deadline_minP29priority_queue_entry_deadline",
+    "__Z21priority_queue_removeP24priority_queue_sched_maxP26priority_queue_entry_sched",
+    "__Z21priority_queue_removeP27priority_queue_deadline_minP29priority_queue_entry_deadline",
+    "__Z27_priority_queue_remove_rootP24priority_queue_sched_max",
+    "__Z30priority_queue_entry_decreasedP24priority_queue_sched_maxP26priority_queue_entry_sched",
+    "__Z30priority_queue_entry_decreasedP27priority_queue_deadline_minP29priority_queue_entry_deadline",
+    "__Z30priority_queue_entry_increasedP24priority_queue_sched_maxP26priority_queue_entry_sched",
+    "__Z30priority_queue_entry_increasedP27priority_queue_deadline_minP29priority_queue_entry_deadline",
+    "__Z31counter_add_preemption_disabledPPyy",
+    "__Z31counter_dec_preemption_disabledPPy",
+    "__Z31counter_inc_preemption_disabledPPy",
+    "_page_worker_init",
+    "_page_worker_register_worker",
+    "_vm_object_mapping_wait",
+    "_vm_object_paging_only_wait",
+    "_vm_object_paging_throttle_wait",
+    "_vm_object_paging_wait",
+    "_vm_object_sleep",
+    "_vm_object_wakeup",
+    "_vm_page_sleep",
+    "_vm_page_wakeup",
+    "_vm_page_wakeup_done",
+    "_vm_page_wakeup_done_with_inheritor"
+  ],
+  "new_undefined_names": [],
+  "native_code_executed": false,
+  "kernel_linked": false,
+  "phone_accessed": false,
+  "physical_memory_measured": false,
+  "discarded_earlier_link_comparison_used": false,
+  "host_security_settings_changed": false
+}

@@ -28,3 +28,4 @@
 0028-scope-bsd-throttle-callbacks-and-fix-native-resource-failure-path.patch
 0029-match-bank-telemetry-uses-to-native-field-guard.patch
 0030-add-original-early-ram-log-transport.patch
+0031-retain-native-vm-wait-and-page-worker-synchronization.patch

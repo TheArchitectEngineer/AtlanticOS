@@ -26,6 +26,12 @@ fijado, sin cambios; no son código MIT original ni controladores G20 importados
 El backend machine_cpuid.c ya seleccionado conserva también su procedencia XNU.
 La selección, fixture ABI y auditor de objetos nuevos son originales AtlanticOS.
 
+arm/counter.c y libkern/c++/priority_queue.cpp se conservan completos e intactos,
+con sus avisos Apple/APSL. El patch 0031 modifica solo límites de configuración
+de vm_object.c, conservando sus avisos y cuerpos nativos. Los fixtures C/C++,
+auditor y adaptación del builder son originales MIT; los algoritmos de heap,
+atómicos y sincronización VM siguen siendo XNU, con su licencia original.
+
 XNU oficial fijado en dependencies.lock.json: fuente externa intacta, checkout
 ignorado, no incorporado en el paquete fuente AtlanticOS. Se conserva su
 APPLE_LICENSE íntegra junto a este archivo; los avisos por archivo siguen en

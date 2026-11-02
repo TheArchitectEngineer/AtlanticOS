@@ -16,7 +16,7 @@ hechos verificables. Un crédito parcial no equivale a una puerta superada.
 | Bloque hasta primer XNU físico | Peso | Crédito estimado | Estado comprobado |
 |---|---:|---:|---|
 | Fuentes, toolchain, MIG y pruebas reproducibles | 10 | 10 | Reconstrucción limpia de Clang y 155 unidades; 70 headers MIG y 42 probes RPC. Comportamiento en un kernel ejecutado todavía sin validar |
-| Integración nativa y enlace | 25 | 10 | XNU genuino compilado; 183 objetos dejan 463 nombres sin proveedor y ninguna imagen. Falta cerrar y validar el ejecutable |
+| Integración nativa y enlace | 25 | 10 | XNU genuino compilado; 185 objetos dejan 436 nombres sin proveedor y ninguna imagen. Falta cerrar y validar el ejecutable |
 | Entry, datos, carga y MMU | 20 | 7 | Entry original y productor candidato ejecutados en QEMU; ABI boot_args cotejado. Faltan colocar imagen, contexto retenido, propiedad de RAM y traducciones conectadas a XNU |
 | Bootstrap Mach operativo | 15 | 0 | Sin ejecución XNU: VM/allocators, primer hilo, transición de contexto y timer pendientes |
 | BSP e instrumentación física G20 | 20 | 0 | Sin payload AtlanticOS ejecutado ni IRQ, timer o logging físico propios comprobados |

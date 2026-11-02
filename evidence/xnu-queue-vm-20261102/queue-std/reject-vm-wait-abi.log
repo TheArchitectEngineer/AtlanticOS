@@ -1,0 +1,6 @@
+<ROOT>/tests/xnu_port/vm_wait_abi.c:17:17: error: incompatible function pointer types initializing 'wait_result_t (*)(vm_object_t, vm_object_wait_reason_t, uint64_t, lck_sleep_action_t)' (aka 'int (*)(struct vm_object *, vm_object_wait_reason_t, unsigned long long, lck_sleep_action_t)') with an expression of type 'wait_result_t (vm_object_t, vm_object_wait_reason_t, wait_interrupt_t, lck_sleep_action_t)' (aka 'int (struct vm_object *, vm_object_wait_reason_t, int, lck_sleep_action_t)') [-Wincompatible-function-pointer-types]
+   17 | wait_result_t (*atl_bad_vm_sleep)(vm_object_t, vm_object_wait_reason_t,
+      |                 ^
+   18 |     uint64_t, lck_sleep_action_t) = vm_object_sleep;
+      |                                     ~~~~~~~~~~~~~~~
+1 error generated.

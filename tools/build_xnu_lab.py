@@ -273,9 +273,30 @@ EXTRA_SYMBOLS.update({
 EXPERIMENTAL_UNITS.update({
     'osfmk/atlantic/early_log.c': '_atl_early_log_append',
     'osfmk/kern/atlantic_early_log.c': '_kprintf'})
+EXPERIMENTAL_UNITS.update({
+    'osfmk/arm/counter.c': '__Z11counter_addPPyy',
+    'libkern/c++/priority_queue.cpp': '__Z21priority_queue_insertP24priority_queue_sched_maxP26priority_queue_entry_sched'})
 EXTRA_SYMBOLS.update({
     'osfmk/atlantic/early_log.c': ['_atl_early_log_capture', '_atl_early_log_snapshot'],
     'osfmk/kern/atlantic_early_log.c': ['_PE_kputc', '_PE_putc', '_atlantic_xnu_log_snapshot']})
+EXTRA_SYMBOLS.update({
+    'osfmk/arm/counter.c': ['__Z11counter_incPPy', '__Z11counter_decPPy',
+        '__Z31counter_add_preemption_disabledPPyy', '__Z31counter_inc_preemption_disabledPPy',
+        '__Z31counter_dec_preemption_disabledPPy'],
+    'libkern/c++/priority_queue.cpp': [
+        '__Z21priority_queue_insertP27priority_queue_deadline_minP29priority_queue_entry_deadline',
+        '__Z21priority_queue_removeP24priority_queue_sched_maxP26priority_queue_entry_sched',
+        '__Z21priority_queue_removeP27priority_queue_deadline_minP29priority_queue_entry_deadline',
+        '__Z27_priority_queue_remove_rootP24priority_queue_sched_max',
+        '__Z30priority_queue_entry_decreasedP24priority_queue_sched_maxP26priority_queue_entry_sched',
+        '__Z30priority_queue_entry_decreasedP27priority_queue_deadline_minP29priority_queue_entry_deadline',
+        '__Z30priority_queue_entry_increasedP24priority_queue_sched_maxP26priority_queue_entry_sched',
+        '__Z30priority_queue_entry_increasedP27priority_queue_deadline_minP29priority_queue_entry_deadline']})
+EXTRA_SYMBOLS['osfmk/vm/vm_object.c'] += [
+    '_vm_object_sleep', '_vm_object_wakeup', '_vm_object_mapping_wait',
+    '_vm_object_paging_wait', '_vm_object_paging_only_wait', '_vm_object_paging_throttle_wait',
+    '_vm_page_sleep', '_vm_page_wakeup', '_vm_page_wakeup_done',
+    '_vm_page_wakeup_done_with_inheritor', '_page_worker_init', '_page_worker_register_worker']
 EXPERIMENTAL_UNITS.update({
     'osfmk/arm/caches.c': '_cache_sync_page',
     'osfmk/arm64/caches_asm.s': '_CleanPoC_DcacheRegion_Force',
@@ -678,6 +699,14 @@ def main():
         obj = out/(Path(rel).stem+'.o')
         # This flag is mandated for VM sources by upstream Makefile.template.
         per_file = ['-DVM_UNSAFE_TYPES'] if rel.startswith('osfmk/vm/') else []
+        unit_target = target
+        if rel.endswith('.cpp'):
+            # Native makedefs/MakeInc.def CXXFLAGS_GEN and kernel mode;
+            # libkern/conf/Makefile.template supplies the private context.
+            # Keep the C recipe unchanged for native C and assembly units.
+            unit_target = [flag for flag in target if flag != '-std=gnu11']
+            per_file += ['-x', 'c++', '-std=gnu++2b', '-fsized-deallocation', '-fapple-kext',
+                         '-DLIBKERN_KERNEL_PRIVATE=1', '-DOSALLOCDEBUG=1']
         if rel in {'osfmk/atlantic/early_log.c', 'osfmk/kern/atlantic_early_log.c'}:
             # Byte buffers may be unaligned; emit inline, weak-CAS atomics.
             # This mapped-RAM transport is not used by the MMU-off entry.
@@ -695,7 +724,7 @@ def main():
         if rel.endswith('.s'):
             # Match upstream SFLAGS_GEN, including the non-Clang ASSEMBLER guard.
             per_file += ['-DASSEMBLER', '-D__ASSEMBLER__', '-x', 'assembler-with-cpp']
-        cmd = [*target, *per_file, '-c', str(source/rel), '-o', str(obj)]
+        cmd = [*unit_target, *per_file, '-c', str(source/rel), '-o', str(obj)]
         r = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, timeout=60)
         commands.append([str(s).replace(str(ROOT),'<ROOT>') for s in cmd])
         log = out/(obj.stem+'.log');log.write_text(r.stdout+r.stderr, encoding='utf-8', newline='\n')

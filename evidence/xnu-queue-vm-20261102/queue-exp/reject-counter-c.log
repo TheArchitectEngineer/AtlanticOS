@@ -1,0 +1,19 @@
+<ROOT>/tests/xnu_port/queue_counter_abi.c:48:8: error: initializing 'void (*)(scalable_counter_t *, uint32_t)' (aka 'void (*)(unsigned long long **, unsigned int)') with an expression of incompatible type '<overloaded function type>'
+   48 | void (*atl_bad_counter)(scalable_counter_t *, uint32_t) = counter_add;
+      |        ^                                                  ~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/counter.h:227:1: note: candidate function has type mismatch at 1st parameter (expected 'scalable_counter_t *' (aka 'unsigned long long **') but has 'atomic_counter_t *' (aka 'unsigned long long *'))
+  227 | COUNTER_MAKE_PROTOTYPES(atomic_counter_t);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/counter.h:206:13: note: expanded from macro 'COUNTER_MAKE_PROTOTYPES'
+  206 | extern void counter_add(counter_t *, uint64_t amount);                     \
+      |             ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/counter.h:226:1: note: candidate function has type mismatch at 2nd parameter (expected 'uint32_t' (aka 'unsigned int') but has 'uint64_t' (aka 'unsigned long long'))
+  226 | COUNTER_MAKE_PROTOTYPES(scalable_counter_t);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/counter.h:206:13: note: expanded from macro 'COUNTER_MAKE_PROTOTYPES'
+  206 | extern void counter_add(counter_t *, uint64_t amount);                     \
+      |             ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/counter.h:151:13: note: candidate function has type mismatch at 1st parameter (expected 'scalable_counter_t *' (aka 'unsigned long long **') but has 'struct generic_counter_t *')
+  151 | extern void counter_add(struct generic_counter_t *, uint64_t amount);
+      |             ^
+1 error generated.

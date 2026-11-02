@@ -251,3 +251,14 @@ El enlace de 183 objetos conserva 463 indefinidos, cero duplicados y ninguna
 imagen. Pasan ASan/UBSan y una ejecución host con ThreadSanitizer. Sin formatter
 nativo/XNU ejecutado, prueba física, handoff EDK2 ni RAM residente medida.
 Véase [XNU_EARLY_RAM_LOG](../docs/XNU_EARLY_RAM_LOG.md).
+
+El patch 0031 separa la repriorización I/O de las esperas/wakeups y page-workers
+nativos de vm_object.c. Solo amplía esos proveedores al perfil firmware;
+conserva literalmente los cuerpos y el comportamiento condicional ajeno.
+Se seleccionan arm/counter.c y libkern/c++/priority_queue.cpp intactos. El builder
+admite el C++ kernel con gnu++2b, sized-deallocation, apple-kext y el contexto
+privado nativo de libkern, preservando la receta C. Compilan 159/13 unidades;
+pasan 202/176 checks, incluidos 24/26 nuevos. El enlace de 185 objetos conserva
+436 indefinidos, cero duplicados y ninguna imagen: 27 proveedores recuperados,
+sin nuevas dependencias. No hay algoritmo, contador CPU o VM ejecutados.
+Véase [XNU_QUEUE_VM_PROVIDERS](../docs/XNU_QUEUE_VM_PROVIDERS.md).

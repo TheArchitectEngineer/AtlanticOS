@@ -86,3 +86,4 @@ jobs:
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-cpu-cache-20261101/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/xnu-ci155-20261102/manifest.json
           python3 tools/evidence-validator/validate_evidence.py evidence/early-ram-log-20261102/manifest.json
+          python3 tools/evidence-validator/validate_evidence.py evidence/xnu-queue-vm-20261102/manifest.json

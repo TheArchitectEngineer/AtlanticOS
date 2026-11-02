@@ -48,6 +48,12 @@ Son tamaños de tipos/objetos, no high-water ni RAM residente medida. Contar el
 BSS dentro de sus páginas de imagen, sin sumarlo otra vez a la misma reserva,
 y medir la ocupación de stack y copias retenidas durante T09.
 
+El patch 0031 conserva la tabla page-worker nativa, asignada con zalloc_permanent
+a partir de page_worker_table_size y sizeof(struct page_worker). El default es
+256 buckets, con tunable en DEVELOPMENT; registrar el tamaño efectivo, locks,
+contadores per-CPU y reservas asociadas. El código C++ añadido y sus secciones
+también forman parte de la imagen. Sus tamaños compilados no miden residencia.
+
 `atlantic_core.validation.memory_report` prueba contabilidad de fixtures con
 solapamientos/overflow rechazados y el límite estricto. No calcula RAM de un
 teléfono. La futura instrumentación XNU necesita hooks originales en su allocator

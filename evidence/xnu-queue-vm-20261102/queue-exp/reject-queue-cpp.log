@@ -1,0 +1,87 @@
+<ROOT>/tests/xnu_port/queue_counter_abi.c:45:93: error: address of overloaded function 'priority_queue_insert' does not match required type 'bool (priority_queue_sched_max *, priority_queue_entry_deadline *)'
+   45 | bool (*atl_bad_queue)(struct priority_queue_sched_max *, priority_queue_entry_deadline_t) = priority_queue_insert;
+      |                                                                                             ^~~~~~~~~~~~~~~~~~~~~
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:720:1: note: candidate function has type mismatch at 1st parameter (expected 'priority_queue_sched_max *' but has 'struct priority_queue_sched_stable_max *')
+  720 | PRIORITY_QUEUE_MAKE(struct priority_queue_sched_stable_max *, priority_queue_entry_stable_t);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:696:81: note: expanded from macro 'PRIORITY_QUEUE_MAKE'
+  696 |                                                                                 \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:674:81: note: expanded from macro '\
+PRIORITY_QUEUE_MAKE_BASE'
+  674 | __pqueue_overloadable extern bool                                               \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:719:1: note: candidate function has type mismatch at 1st parameter (expected 'priority_queue_sched_max *' but has 'struct priority_queue_sched_stable_min *')
+  719 | PRIORITY_QUEUE_MAKE(struct priority_queue_sched_stable_min *, priority_queue_entry_stable_t);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:696:81: note: expanded from macro 'PRIORITY_QUEUE_MAKE'
+  696 |                                                                                 \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:674:81: note: expanded from macro '\
+PRIORITY_QUEUE_MAKE_BASE'
+  674 | __pqueue_overloadable extern bool                                               \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:717:1: note: candidate function has type mismatch at 2nd parameter (expected 'priority_queue_entry_deadline *' but has 'priority_queue_entry_sched_t' (aka 'priority_queue_entry_sched *'))
+  717 | PRIORITY_QUEUE_MAKE(struct priority_queue_sched_max *, priority_queue_entry_sched_t);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:696:81: note: expanded from macro 'PRIORITY_QUEUE_MAKE'
+  696 |                                                                                 \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:674:81: note: expanded from macro '\
+PRIORITY_QUEUE_MAKE_BASE'
+  674 | __pqueue_overloadable extern bool                                               \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:716:1: note: candidate function has type mismatch at 1st parameter (expected 'priority_queue_sched_max *' but has 'struct priority_queue_sched_min *')
+  716 | PRIORITY_QUEUE_MAKE(struct priority_queue_sched_min *, priority_queue_entry_sched_t);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:696:81: note: expanded from macro 'PRIORITY_QUEUE_MAKE'
+  696 |                                                                                 \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:674:81: note: expanded from macro '\
+PRIORITY_QUEUE_MAKE_BASE'
+  674 | __pqueue_overloadable extern bool                                               \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:714:1: note: candidate function has type mismatch at 1st parameter (expected 'priority_queue_sched_max *' but has 'struct priority_queue_deadline_max *')
+  714 | PRIORITY_QUEUE_MAKE(struct priority_queue_deadline_max *, priority_queue_entry_deadline_t);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:696:81: note: expanded from macro 'PRIORITY_QUEUE_MAKE'
+  696 |                                                                                 \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:674:81: note: expanded from macro '\
+PRIORITY_QUEUE_MAKE_BASE'
+  674 | __pqueue_overloadable extern bool                                               \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:713:1: note: candidate function has type mismatch at 1st parameter (expected 'priority_queue_sched_max *' but has 'struct priority_queue_deadline_min *')
+  713 | PRIORITY_QUEUE_MAKE(struct priority_queue_deadline_min *, priority_queue_entry_deadline_t);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:696:81: note: expanded from macro 'PRIORITY_QUEUE_MAKE'
+  696 |                                                                                 \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:674:81: note: expanded from macro '\
+PRIORITY_QUEUE_MAKE_BASE'
+  674 | __pqueue_overloadable extern bool                                               \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:711:1: note: candidate function has type mismatch at 1st parameter (expected 'priority_queue_sched_max *' but has 'struct priority_queue_max *')
+  711 | PRIORITY_QUEUE_MAKE_CB(struct priority_queue_max *, priority_queue_entry_t);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:707:81: note: expanded from macro 'PRIORITY_QUEUE_MAKE_CB'
+  707 |                                                                                 \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:674:81: note: expanded from macro '\
+PRIORITY_QUEUE_MAKE_BASE'
+  674 | __pqueue_overloadable extern bool                                               \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:710:1: note: candidate function has type mismatch at 1st parameter (expected 'priority_queue_sched_max *' but has 'struct priority_queue_min *')
+  710 | PRIORITY_QUEUE_MAKE_CB(struct priority_queue_min *, priority_queue_entry_t);
+      | ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:707:81: note: expanded from macro 'PRIORITY_QUEUE_MAKE_CB'
+  707 |                                                                                 \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:674:81: note: expanded from macro '\
+PRIORITY_QUEUE_MAKE_BASE'
+  674 | __pqueue_overloadable extern bool                                               \
+      |                                                                                 ^
+<ROOT>/work/xnu-lab-sources/560ed77e6b991310/osfmk/kern/priority_queue.h:458:1: note: candidate function has type mismatch at 1st parameter (expected 'priority_queue_sched_max *' but has 'struct priority_queue *')
+  458 | priority_queue_insert(struct priority_queue *pq,
+      | ^
+1 error generated.
